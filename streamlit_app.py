@@ -324,6 +324,18 @@ def inject_design_system():
       font-weight: 600;
       color: #00F0FF !important;
       padding: 10px 16px !important;
+      display: flex !important;
+      align-items: center;
+      gap: 8px;
+    }
+    /* Fix expander arrow overlap */
+    [data-testid="stExpander"] summary > span:first-child {
+      flex-shrink: 0;
+    }
+    [data-testid="stExpander"] summary > span:last-child {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     /* === TABLES === */
@@ -1453,8 +1465,14 @@ def main():
     else:
         market_status = "🔴 已收盘"
 
-    st.caption(f"◈ {now.strftime('%Y-%m-%d %H:%M')}  |  {market_status}"
-               + ("  |  收盘后点「强制刷新」获取最终数据" if market_status in ["🟡 刚收盘（数据更新中）", "🔴 已收盘"] else ""))
+    st.markdown(
+        f"<p style='font-family:\"JetBrains Mono\",monospace;font-size:0.7rem;color:#6666AA;"
+        f"margin:0 0 0.3rem 0;padding:0;line-height:1.2;'>"
+        f"◈ {now.strftime('%Y-%m-%d %H:%M')}  |  {market_status}"
+        + ("  |  收盘后点「强制刷新」获取最终数据" if market_status in ["🟡 刚收盘（数据更新中）", "🔴 已收盘"] else "")
+        + "</p>",
+        unsafe_allow_html=True
+    )
 
     st.divider()
 
