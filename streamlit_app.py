@@ -1066,8 +1066,8 @@ def main():
             st.success(f"✅ 云端数据加载完成：{len(all_data)} 只")
 
         # 三模式筛选
-        with st.spinner("正在用三种模式筛选..."):
-            results, all_stats = screen_all_modes(all_data)
+        st.write("🔍 正在用三种模式筛选...")
+        results, all_stats = screen_all_modes(all_data)
 
         # 缓存筛选结果，后续点 AI 分析时不再重复扫描
         st.session_state['cached_results'] = results
