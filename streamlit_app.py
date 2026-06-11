@@ -128,7 +128,7 @@ def inject_design_system():
       font-family: 'JetBrains Mono', 'SF Mono', monospace !important;
     }
 
-    /* Preserve Material Icons font for Streamlit icons */
+    /* Preserve Material Icons font — keep icons rendering as icons */
     [data-testid="stIconMaterial"], span[translate="no"] {
       font-family: 'Material Icons' !important;
     }
