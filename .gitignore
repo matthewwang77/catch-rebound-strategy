@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+
+# Stock data (too large for git)
+stock_data/
+*.csv
+
+# Analysis outputs
+analysis_*/
+
+# Auto results
+auto_result_*.txt
+candidates_*.csv
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env

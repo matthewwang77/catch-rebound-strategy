@@ -1,0 +1,35 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c \"import py_compile; py_compile.compile\\('选股new.py', doraise=True\\)\")",
+      "Bash(python3 -c \"import py_compile; py_compile.compile\\('选股new.py', doraise=True\\); print\\('✅ 语法检查通过'\\)\")",
+      "Bash(python3 -c ' *)",
+      "Bash(python3 -c \"import streamlit; print\\(f'Streamlit {streamlit.__version__}'\\)\")",
+      "Bash(pip install *)",
+      "Bash(python3 streamlit_app.py)",
+      "Bash(timeout 8 streamlit run streamlit_app.py --server.headless true)",
+      "Bash(chmod +x *)",
+      "Bash(streamlit run *)",
+      "WebSearch",
+      "Bash(python3 -c \"import akshare; print\\(f'AKShare {akshare.__version__}'\\)\")",
+      "Bash(python3 -c \"import py_compile; py_compile.compile\\('streamlit_app.py', doraise=True\\); print\\('✅ 语法检查通过'\\)\")",
+      "Bash(python3 *)",
+      "Bash(osacompile -o /Users/mattsmacair/Desktop/选股.app -e ' *)",
+      "Bash([ -f \"$ICON_SRC\" ])",
+      "Bash(cp /System/Applications/Stocks.app/Contents/Resources/AppIcon.icns /Users/mattsmacair/Desktop/选股.app/Contents/Resources/applet.icns)",
+      "Bash(cp \"/System/Applications/Stocks.app/Contents/Resources/AppIcon.icns\" \"/Users/mattsmacair/Desktop/选股.app/Contents/Resources/applet.icns\")",
+      "Bash(launchctl unload *)",
+      "Bash(launchctl load *)",
+      "Bash(cd \"/Users/mattsmacair/Desktop/Coding/量化模型/抓反弹策略\" && mkdir -p auto_results && mv auto_result_*.txt auto_results/ && echo \"✅ 已移动 13 个文件到 auto_results/\" && ls auto_results/)",
+      "Read(//private/tmp/**)",
+      "Bash(launchctl list *)",
+      "Read(//Users/mattsmacair/Library/LaunchAgents/**)",
+      "Bash(git init *)",
+      "Bash(brew --version)",
+      "Bash(brew install *)"
+    ],
+    "additionalDirectories": [
+      "/Users/mattsmacair/Desktop/Coding/量化模型/抓反弹策略"
+    ]
+  }
+}
