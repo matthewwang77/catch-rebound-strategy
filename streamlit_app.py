@@ -321,56 +321,38 @@ def cloud_load_data():
     for i in range(688000, 690000):
         codes.append(f"{i}.SS")
 
-    # 过滤无效代码：只保留有 CSV 缓存或常见活跃代码段
-    import re
-    valid_codes = []
-    # 使用正则快速过滤常见活跃代码段
-    for code in codes:
-        # 排除明显无效的代码段（大量未分配号段）
-        if re.match(r'^60[3-9]\d{2}', code):  # 603000-609999 是活跃的
-            valid_codes.append(code)
-        elif re.match(r'^000[0-9]\d{2}', code):  # 000000-000999
-            valid_codes.append(code)
-        elif re.match(r'^002[0-9]\d{2}', code):  # 002000-002999
-            valid_codes.append(code)
-        elif re.match(r'^300[0-9]\d{2}', code):  # 300000-300999
-            valid_codes.append(code)
-        elif re.match(r'^301[0-2]\d{2}', code):  # 301000-301299
-            valid_codes.append(code)
-        elif re.match(r'^688[0-5]\d{2}', code):  # 688000-688599
-            valid_codes.append(code)
-        elif re.match(r'^001[2-3]\d{2}', code):  # 001200-001399
-            valid_codes.append(code)
-        elif re.match(r'^003[0-3]\d{2}', code):  # 003000-003399
-            valid_codes.append(code)
-        elif re.match(r'^605[0-5]\d{2}', code):  # 605000-605599
-            valid_codes.append(code)
+    # 云端模式：只扫描最活跃的 ~2000 只股票（30-60秒内完成）
+    codes = []
+    # 上海主板活跃段 600000-605999（约500只有效）
+    for i in range(600000, 606000):
+        codes.append(f"{i}.SS")
+    # 深圳主板活跃段 000001-003999（约200只有效）
+    for i in range(1, 4000):
+        codes.append(f"{i:06d}.SZ")
+    # 创业板活跃段 300000-301500（约800只有效）
+    for i in range(300000, 301500):
+        codes.append(f"{i}.SZ")
+    # 科创板活跃段 688000-688800（约500只有效）
+    for i in range(688000, 688800):
+        codes.append(f"{i}.SS")
 
-    st.info(f"📋 过滤后 {len(valid_codes)} 只活跃股票，开始下载...")
+    st.info(f"☁️ 云端模式：扫描 {len(codes)} 只A股（30天数据，约60-90秒）")
 
     all_data = {}
-    BATCH_SIZE = 1500  # 大批次，减少网络往返
-    batches = [valid_codes[i:i + BATCH_SIZE] for i in range(0, len(valid_codes), BATCH_SIZE)]
-    total_batches = len(batches)
+    BATCH_SIZE = len(codes)  # 一次性全部下载，不拆批次
+    progress_bar = st.progress(0, text="☁️ 正在从 Yahoo Finance 下载数据...")
 
-    progress_bar = st.progress(0, text=f"☁️ 云端下载中 ({total_batches} 批)...")
+    try:
+        hist = yf.download(tickers=codes, period="30d", progress=False, timeout=90)
+        progress_bar.progress(0.5, text="☁️ 解析数据中...")
 
-    for i, batch in enumerate(batches):
-        progress_bar.progress(
-            (i + 1) / total_batches,
-            text=f"☁️ 云端下载第 {i+1}/{total_batches} 批 ({len(batch)}只)..."
-        )
-        try:
-            hist = yf.download(tickers=batch, period="30d", progress=False, timeout=60)
-            if hist is None or hist.empty:
-                continue
-
+        if hist is not None and not hist.empty:
             try:
                 level_codes = set(hist.columns.get_level_values(1))
             except Exception:
-                continue
+                level_codes = set()
 
-            for code in batch:
+            for code in codes:
                 if code not in level_codes:
                     continue
                 try:
@@ -380,8 +362,34 @@ def cloud_load_data():
                         all_data[code] = stock_data[['Open', 'High', 'Low', 'Close', 'Volume']].copy()
                 except Exception:
                     pass
-        except Exception:
-            pass
+    except Exception as e:
+        st.warning(f"⚠️ 批量下载失败，降级为逐批下载：{e}")
+        # 降级：分批下载
+        BATCH_SIZE = 500
+        batches = [codes[i:i + BATCH_SIZE] for i in range(0, len(codes), BATCH_SIZE)]
+        for i, batch in enumerate(batches):
+            progress_bar.progress((i + 1) / len(batches),
+                                  text=f"☁️ 逐批下载 {i+1}/{len(batches)}...")
+            try:
+                hist = yf.download(tickers=batch, period="30d", progress=False, timeout=60)
+                if hist is None or hist.empty:
+                    continue
+                try:
+                    level_codes = set(hist.columns.get_level_values(1))
+                except Exception:
+                    continue
+                for code in batch:
+                    if code not in level_codes:
+                        continue
+                    try:
+                        stock_data = hist.xs(code, level=1, axis=1)
+                        stock_data = stock_data[stock_data['Close'].notna() & (stock_data['Close'] > 0)]
+                        if len(stock_data) >= 10:
+                            all_data[code] = stock_data[['Open', 'High', 'Low', 'Close', 'Volume']].copy()
+                    except Exception:
+                        pass
+            except Exception:
+                pass
 
     progress_bar.empty()
     return all_data
