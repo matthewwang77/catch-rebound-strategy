@@ -83,7 +83,7 @@ def get_market_data():
             try:
                 ticker = yf.Ticker(code)
                 # 同时获取日线数据（用于涨跌幅和5日高低）
-                df = ticker.history(period="5d")
+                df = ticker.history(period="1mo")
                 has_history = df is not None and len(df) >= 2
 
                 # 获取当前价格
@@ -512,7 +512,7 @@ def save_signals(all_candidates):
             'signal_date': today,
             'code': c['code'],
             'name': info.get('name', '') or '',
-            'sector': info.get('sector', '') or info.get('industry', '') or '',
+            'sector': info.get('sector_cn', '') or info.get('sector', '') or info.get('industry', '') or '',
             'mode': c.get('mode', ''),
             'entry_price': c['price'],
             'pullback_pct': c['pullback_pct'],
@@ -826,7 +826,7 @@ def perform_manual_analysis(codes, signal_date_str):
             'date': signal_date_str,
             'code': code,
             'name': info.get('name', '') or '',
-            'sector': info.get('sector', '') or info.get('industry', '') or '',
+            'sector': info.get('sector_cn', '') or info.get('sector', '') or info.get('industry', '') or '',
             'system_picked': system_picked,
             'system_mode': system_mode,
             'ai_analysis': analysis or '',
@@ -995,10 +995,16 @@ def main():
                     value=f"{data['price']:.0f}",
                     delta=delta_str,
                 )
+                # 量比：指数数据不可靠时显示 —
+                vr = data['vol_ratio']
+                if vr == 100 or vr == 0.01 or vr == 1:
+                    vol_str = "—"
+                else:
+                    vol_str = f"{vr:.1f}x"
                 st.caption(
                     f"5日高 {data['high_5d']:.0f} | "
                     f"5日低 {data['low_5d']:.0f} | "
-                    f"量比 {data['vol_ratio']:.1f}x"
+                    f"量比 {vol_str}"
                 )
             else:
                 st.metric(label=name, value="获取失败")
@@ -1088,7 +1094,7 @@ def main():
                 code = code_data['code']
                 info = name_info.get(code, {})
                 stock_name = info.get('name', '') or ''
-                stock_sector = info.get('sector', '') or info.get('industry', '') or ''
+                stock_sector = info.get('sector_cn', '') or info.get('sector', '') or info.get('industry', '') or ''
 
                 with st.container():
                     col1, col2, col3, col4, col5, col6 = st.columns([1.8, 1.2, 0.9, 0.9, 0.9, 1.5])
