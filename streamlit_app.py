@@ -1054,23 +1054,8 @@ def main():
         st.header("⚙️ 控制面板")
 
         # 页面导航
-        page = st.radio("📌 导航", ["📋 选股", "📊 复盘"], key="nav_page",
-                        help="切换选股和复盘界面")
-        st.divider()
-
-        if st.button("🚀 开始当日选股", type="primary", use_container_width=True):
-            st.session_state['trigger_scan'] = True
-
-        if st.button("🔄 重新扫描", use_container_width=True):
-            st.session_state.clear()
-            st.rerun()
-
-        if st.button("🔄 强制刷新（收盘后用）", use_container_width=True,
-                     help="跳过缓存检查，强制拉取今日最新收盘数据"):
-            st.session_state['trigger_scan'] = True
-            st.session_state['force_refresh'] = True
-            st.rerun()
-
+        st.radio("📌 导航", ["📋 选股", "📊 复盘"], key="nav_page",
+                 help="切换选股和复盘界面")
         st.divider()
 
         st.markdown("**三种模式说明**")
@@ -1141,8 +1126,25 @@ def main():
 
     # ============ 选股页面 ============
     if page == '📋 选股':
+        # 操作按钮
+        col_btn1, col_btn2, col_btn3 = st.columns([1, 1, 1])
+        with col_btn1:
+            if st.button("🚀 开始当日选股", type="primary", use_container_width=True):
+                st.session_state['trigger_scan'] = True
+                st.session_state['force_refresh'] = False
+                st.rerun()
+        with col_btn2:
+            if st.button("🔄 重新扫描", use_container_width=True):
+                st.session_state.clear()
+                st.rerun()
+        with col_btn3:
+            if st.button("🔄 强制刷新（收盘后用）", use_container_width=True):
+                st.session_state['trigger_scan'] = True
+                st.session_state['force_refresh'] = True
+                st.rerun()
+
         if results is None:
-            st.info("👈 点击左侧 **开始当日选股** 按钮启动扫描")
+            st.info("👆 点击 **开始当日选股** 启动扫描")
             return
 
         show_screening_results(results, all_stats)
@@ -1155,43 +1157,6 @@ def main():
         st.divider()
         st.header("✍️ 手动选股复盘")
         show_manual_review()
-
-    # 如果已有缓存结果，直接复用（点 AI 分析时不重新扫描 5000+ CSV）
-    if not force_refresh and 'cached_results' in st.session_state and 'cached_all_stats' in st.session_state:
-        all_data = st.session_state.get('all_data', {})
-        results = st.session_state['cached_results']
-        all_stats = st.session_state['cached_all_stats']
-    else:
-        # 获取代码列表
-        DATA_DIR = screener.DATA_DIR
-        if os.path.isdir(DATA_DIR):
-            cache_files = [
-                f for f in os.listdir(DATA_DIR)
-                if f.endswith('.csv') and os.path.getsize(os.path.join(DATA_DIR, f)) > 100
-            ]
-            codes = [f.replace('.csv', '') for f in cache_files]
-        else:
-            cache_files = []
-            codes = []
-
-        if len(codes) > 100:
-            # 本地模式：从 CSV 缓存极速加载（秒级）
-            all_data, failed_codes = load_all_recent_data(codes)
-
-            st.session_state['all_data'] = all_data
-        else:
-            # 云端模式：没有本地 CSV，从 yfinance 批量下载
-            all_data = cloud_load_data()
-            st.session_state['all_data'] = all_data
-
-        # 三模式筛选
-        results, all_stats = screen_all_modes(all_data)
-
-        # 缓存筛选结果，后续点 AI 分析时不再重复扫描
-        st.session_state['cached_results'] = results
-        st.session_state['cached_all_stats'] = all_stats
-        if force_refresh:
-            st.session_state['force_refresh'] = False
 
 if __name__ == "__main__":
     main()
