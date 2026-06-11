@@ -915,6 +915,114 @@ def show_manual_review():
             st.caption(f"读取历史记录失败: {e}")
 
 
+# ==================== 选股结果展示 ====================
+def show_screening_results(results, all_stats):
+    st.header("📋 选股结果")
+
+    tabs = st.tabs([
+        f"🔴 严格模式 ({len(results['strict'])}只)",
+        f"🟡 正常模式 ({len(results['normal'])}只)",
+        f"🟢 宽松模式 ({len(results['loose'])}只)",
+    ])
+
+    for tab_idx, mode in enumerate(["strict", "normal", "loose"]):
+        with tabs[tab_idx]:
+            candidates = results[mode]
+            stats = all_stats[mode]
+
+            if not candidates:
+                st.info(f"当前模式无符合条件的股票")
+                with st.expander("📊 筛选漏斗"):
+                    st.write(f"总扫描: {stats['total']} → 有涨停: {stats['has_limit_up']} → "
+                             f"连板达标: {stats['consecutive_ok']} → 实体板达标: {stats['entity_ratio_ok']} → "
+                             f"回调天数: {stats['pullback_days_ok']} → 回调幅度: {stats['pullback_range_ok']} → "
+                             f"均线: {stats['ma_ok']} → 量能: {stats['volume_shrink_ok']} → "
+                             f"阳线: {stats['yang_ok']} → 放量: {stats['volume_expand_ok']} → "
+                             f"最终: {stats['final']}")
+                continue
+
+            candidate_codes = [c['code'] for c in candidates]
+            name_info = name_lookup.batch_lookup(candidate_codes, max_fetch=5)
+
+            for code_data in candidates:
+                code = code_data['code']
+                info = name_info.get(code, {})
+                stock_name = info.get('name', '') or ''
+                with st.container():
+                    col1, col2, col3, col4, col5, col6 = st.columns([1.8, 1.2, 0.9, 0.9, 0.9, 1.5])
+
+                    with col1:
+                        name_line = f"**`{code}`**"
+                        if stock_name:
+                            name_line += f"  {stock_name}"
+                        st.markdown(name_line)
+                    with col2:
+                        st.metric("价格", f"{code_data['price']:.2f}")
+                    with col3:
+                        st.metric("回调", f"{code_data['pullback_pct']:.1f}%")
+                    with col4:
+                        st.metric("连板", f"{code_data['limit_days']}天")
+                    with col5:
+                        st.metric("实体板", f"{code_data['entity_ratio']:.0f}%")
+                    with col6:
+                        btn_key = f"ai_{mode}_{code}"
+                        if st.button(f"🤖 AI分析", key=btn_key, use_container_width=True):
+                            st.session_state[f'analyze_{code}'] = True
+
+                    if st.session_state.get(f'analyze_{code}'):
+                        st.write(f"🤖 正在对 {code} 进行AI深度分析（约8-15秒）...")
+                        try:
+                            stock_df = st.session_state.get('all_data', {}).get(code)
+                            market_ctx = ai_analyzer.get_market_context()
+                            analysis = fast_ai_analysis(code, stock_df, market_ctx)
+                            if analysis:
+                                st.session_state[f'analysis_result_{code}'] = analysis
+                                st.session_state[f'analyze_{code}'] = False
+                        except Exception as e:
+                            st.error(f"分析失败: {e}")
+                            st.session_state[f'analyze_{code}'] = False
+
+                    if st.session_state.get(f'analysis_result_{code}'):
+                        with st.expander(f"📝 {code} AI分析报告", expanded=True):
+                            st.markdown(st.session_state[f'analysis_result_{code}'])
+
+                    st.divider()
+
+            with st.expander("📊 筛选漏斗详情"):
+                stages = [
+                    ("总扫描", stats['total']),
+                    ("有涨停", stats['has_limit_up']),
+                    ("连板数达标", stats['consecutive_ok']),
+                    ("实体板达标", stats['entity_ratio_ok']),
+                    ("回调天数", stats['pullback_days_ok']),
+                    ("回调幅度", stats['pullback_range_ok']),
+                    ("均线达标", stats['ma_ok']),
+                    ("量能达标", stats['volume_shrink_ok']),
+                    ("阳线达标", stats['yang_ok']),
+                    ("放量达标", stats['volume_expand_ok']),
+                    ("✅ 最终候选", stats['final']),
+                ]
+                cols_funnel = st.columns(len(stages))
+                for i, (label, val) in enumerate(stages):
+                    with cols_funnel[i]:
+                        st.metric(label, val)
+
+    st.divider()
+    if any(len(v) > 0 for v in results.values()):
+        all_candidates = []
+        for mode in ["strict", "normal", "loose"]:
+            for c in results[mode]:
+                all_candidates.append({**c, 'mode': mode})
+        df_export = pd.DataFrame(all_candidates)
+        st.download_button(
+            label="📥 导出 CSV",
+            data=df_export.to_csv(index=False, encoding='utf-8-sig'),
+            file_name=f"candidates_all_{china_now().strftime('%Y%m%d')}.csv",
+            mime="text/csv",
+        )
+        save_signals(all_candidates)
+
+
 # ==================== 主界面 ====================
 def main():
     st.title("📈 A股连板回调策略")
@@ -946,12 +1054,9 @@ def main():
     with st.sidebar:
         st.header("⚙️ 控制面板")
 
-        st.markdown("""
-        **策略说明**
-        寻找连板后回调企稳的股票，在缩量止跌、
-        放量反弹时介入，捕捉龙回头机会。
-        """)
-
+        # 页面导航
+        page = st.radio("📌 导航", ["📋 选股", "📊 复盘"], key="nav_page",
+                        help="切换选股和复盘界面")
         st.divider()
 
         if st.button("🚀 开始当日选股", type="primary", use_container_width=True):
@@ -999,12 +1104,58 @@ def main():
                 st.metric(label=name, value="获取失败")
     st.divider()
 
-    # ---- 选股结果 ----
-    if 'trigger_scan' not in st.session_state:
-        st.info("👈 点击左侧 **开始当日选股** 按钮启动扫描")
-        return
+    # 获取当前页面
+    page = st.session_state.get('nav_page', '📋 选股')
 
-    force_refresh = st.session_state.get('force_refresh', False)
+    # ---- 选股逻辑（无论哪个页面，触发后都执行） ----
+    if 'trigger_scan' in st.session_state:
+        force_refresh = st.session_state.get('force_refresh', False)
+
+        if not force_refresh and 'cached_results' in st.session_state and 'cached_all_stats' in st.session_state:
+            all_data = st.session_state.get('all_data', {})
+            results = st.session_state['cached_results']
+            all_stats = st.session_state['cached_all_stats']
+        else:
+            DATA_DIR = screener.DATA_DIR
+            if os.path.isdir(DATA_DIR):
+                cache_files = [f for f in os.listdir(DATA_DIR)
+                               if f.endswith('.csv') and os.path.getsize(os.path.join(DATA_DIR, f)) > 100]
+                codes = [f.replace('.csv', '') for f in cache_files]
+            else:
+                codes = []
+
+            if len(codes) > 100:
+                all_data, failed_codes = load_all_recent_data(codes)
+                st.session_state['all_data'] = all_data
+            else:
+                all_data = cloud_load_data()
+                st.session_state['all_data'] = all_data
+
+            results, all_stats = screen_all_modes(all_data)
+            st.session_state['cached_results'] = results
+            st.session_state['cached_all_stats'] = all_stats
+            if force_refresh:
+                st.session_state['force_refresh'] = False
+    else:
+        results = None
+        all_stats = None
+
+    # ============ 选股页面 ============
+    if page == '📋 选股':
+        if results is None:
+            st.info("👈 点击左侧 **开始当日选股** 按钮启动扫描")
+            return
+
+        show_screening_results(results, all_stats)
+
+    # ============ 复盘页面 ============
+    elif page == '📊 复盘':
+        st.header("📋 信号复盘")
+        show_signal_review()
+
+        st.divider()
+        st.header("✍️ 手动选股复盘")
+        show_manual_review()
 
     # 如果已有缓存结果，直接复用（点 AI 分析时不重新扫描 5000+ CSV）
     if not force_refresh and 'cached_results' in st.session_state and 'cached_all_stats' in st.session_state:
@@ -1042,132 +1193,6 @@ def main():
         st.session_state['cached_all_stats'] = all_stats
         if force_refresh:
             st.session_state['force_refresh'] = False
-
-    # ---- 结果展示 ----
-    st.header("📋 选股结果")
-
-    tabs = st.tabs([
-        f"🔴 严格模式 ({len(results['strict'])}只)",
-        f"🟡 正常模式 ({len(results['normal'])}只)",
-        f"🟢 宽松模式 ({len(results['loose'])}只)",
-    ])
-
-    for tab_idx, mode in enumerate(["strict", "normal", "loose"]):
-        with tabs[tab_idx]:
-            candidates = results[mode]
-            stats = all_stats[mode]
-
-            if not candidates:
-                st.info(f"当前模式无符合条件的股票")
-                with st.expander("📊 筛选漏斗"):
-                    st.write(f"总扫描: {stats['total']} → 有涨停: {stats['has_limit_up']} → "
-                             f"连板达标: {stats['consecutive_ok']} → 实体板达标: {stats['entity_ratio_ok']} → "
-                             f"回调天数: {stats['pullback_days_ok']} → 回调幅度: {stats['pullback_range_ok']} → "
-                             f"均线: {stats['ma_ok']} → 量能: {stats['volume_shrink_ok']} → "
-                             f"阳线: {stats['yang_ok']} → 放量: {stats['volume_expand_ok']} → "
-                             f"最终: {stats['final']}")
-                continue
-
-            # 显示每只候选
-            # 批量加载名称/板块缓存
-            candidate_codes = [c['code'] for c in candidates]
-            name_info = name_lookup.batch_lookup(candidate_codes, max_fetch=5)
-
-            for code_data in candidates:
-                code = code_data['code']
-                info = name_info.get(code, {})
-                stock_name = info.get('name', '') or ''
-                with st.container():
-                    col1, col2, col3, col4, col5, col6 = st.columns([1.8, 1.2, 0.9, 0.9, 0.9, 1.5])
-
-                    with col1:
-                        name_line = f"**`{code}`**"
-                        if stock_name:
-                            name_line += f"  {stock_name}"
-                        st.markdown(name_line)
-                    with col2:
-                        st.metric("价格", f"{code_data['price']:.2f}")
-                    with col3:
-                        st.metric("回调", f"{code_data['pullback_pct']:.1f}%")
-                    with col4:
-                        st.metric("连板", f"{code_data['limit_days']}天")
-                    with col5:
-                        st.metric("实体板", f"{code_data['entity_ratio']:.0f}%")
-                    with col6:
-                        # 跨模式共享：任何 Tab 点 AI 都触发同一 analyze_{code}
-                        btn_key = f"ai_{mode}_{code}"
-                        if st.button(f"🤖 AI分析", key=btn_key, use_container_width=True):
-                            st.session_state[f'analyze_{code}'] = True
-
-                    # AI 分析区域（跨模式共享，点一次三个 Tab 都展开）
-                    if st.session_state.get(f'analyze_{code}'):
-                        st.write(f"🤖 正在对 {code} 进行AI深度分析（约8-15秒）...")
-                        try:
-                            stock_df = st.session_state.get('all_data', {}).get(code)
-                            market_ctx = ai_analyzer.get_market_context()
-                            analysis = fast_ai_analysis(code, stock_df, market_ctx)
-
-                            if analysis:
-                                st.session_state[f'analysis_result_{code}'] = analysis
-                                st.session_state[f'analyze_{code}'] = False
-                        except Exception as e:
-                            st.error(f"分析失败: {e}")
-                            st.session_state[f'analyze_{code}'] = False
-
-                    if st.session_state.get(f'analysis_result_{code}'):
-                        with st.expander(f"📝 {code} AI分析报告", expanded=True):
-                            st.markdown(st.session_state[f'analysis_result_{code}'])
-
-                    st.divider()
-
-            # 漏斗统计
-            with st.expander("📊 筛选漏斗详情"):
-                stages = [
-                    ("总扫描", stats['total']),
-                    ("有涨停", stats['has_limit_up']),
-                    ("连板数达标", stats['consecutive_ok']),
-                    ("实体板达标", stats['entity_ratio_ok']),
-                    ("回调天数", stats['pullback_days_ok']),
-                    ("回调幅度", stats['pullback_range_ok']),
-                    ("均线达标", stats['ma_ok']),
-                    ("量能达标", stats['volume_shrink_ok']),
-                    ("阳线达标", stats['yang_ok']),
-                    ("放量达标", stats['volume_expand_ok']),
-                    ("✅ 最终候选", stats['final']),
-                ]
-                cols_funnel = st.columns(len(stages))
-                for i, (label, val) in enumerate(stages):
-                    with cols_funnel[i]:
-                        st.metric(label, val)
-
-    # ---- 导出 ----
-    st.divider()
-    if any(len(v) > 0 for v in results.values()):
-        all_candidates = []
-        for mode in ["strict", "normal", "loose"]:
-            for c in results[mode]:
-                all_candidates.append({**c, 'mode': mode})
-        df_export = pd.DataFrame(all_candidates)
-        st.download_button(
-            label="📥 导出 CSV",
-            data=df_export.to_csv(index=False, encoding='utf-8-sig'),
-            file_name=f"candidates_all_{china_now().strftime('%Y%m%d')}.csv",
-            mime="text/csv",
-        )
-
-        # 自动保存到信号追踪
-        save_signals(all_candidates)
-
-    # ---- 信号复盘 ----
-    st.divider()
-    st.header("📋 信号复盘")
-    show_signal_review()
-
-    # ---- 手动选股复盘 ----
-    st.divider()
-    st.header("✍️ 手动选股复盘")
-    show_manual_review()
-
 
 if __name__ == "__main__":
     main()
