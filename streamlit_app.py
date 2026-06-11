@@ -48,13 +48,29 @@ def load_modules():
 
 screener, ai_analyzer = load_modules()
 
+# ==================== 北京时间工具 ====================
+from zoneinfo import ZoneInfo
+TZ_CHINA = ZoneInfo("Asia/Shanghai")
+
+def china_now():
+    """返回北京时间 datetime"""
+    return datetime.now(TZ_CHINA)
+
+def china_today_str():
+    """返回北京时间日期字符串 YYYYMMDD"""
+    return china_now().strftime('%Y%m%d')
+
+def china_today_dtstr():
+    """返回北京时间日期字符串 YYYY-MM-DD"""
+    return china_now().strftime('%Y-%m-%d')
+
 # ==================== 名称/板块查询 ====================
 import name_lookup
 
 # ==================== 大盘数据 ====================
 @st.cache_data(ttl=300, show_spinner=False)
 def get_market_data():
-    """获取三大指数最新数据"""
+    """获取三大指数最新数据（包含涨跌幅）"""
     indices = {
         "上证指数": "000001.SS",
         "深证成指": "399001.SZ",
@@ -66,44 +82,44 @@ def get_market_data():
         for attempt in range(2):
             try:
                 ticker = yf.Ticker(code)
-                # 优先用 fast_info（速度快，不依赖日线）
+                # 同时获取日线数据（用于涨跌幅和5日高低）
+                df = ticker.history(period="5d")
+                has_history = df is not None and len(df) >= 2
+
+                # 获取当前价格
+                current = None
                 try:
                     info = ticker.fast_info
-                    current = info.get('lastPrice') or info.get('regularMarketPrice') or info.get('previousClose')
-                    if current:
-                        data = {
-                            'code': code, 'price': round(float(current), 2),
-                            'pct': 0, 'has_delta': False,
-                            'high_5d': round(float(current), 2),
-                            'low_5d': round(float(current), 2),
-                            'vol_ratio': 1,
-                        }
-                        break
+                    current = info.get('lastPrice') or info.get('regularMarketPrice')
                 except Exception:
                     pass
-                # 降级：日线数据
-                df = ticker.history(period="5d")
-                if df is not None and len(df) >= 1:
+                if not current and has_history:
                     current = float(df['Close'].iloc[-1])
-                    high_5d = float(df['High'].max())
-                    low_5d = float(df['Low'].min())
-                    if len(df) >= 2:
-                        prev = float(df['Close'].iloc[-2])
-                        pct = (current / prev - 1) * 100
-                        has_delta = True
-                        vol_today = float(df['Volume'].iloc[-1])
-                        vol_prev = float(df['Volume'].iloc[-2])
-                        vol_ratio = vol_today / vol_prev if vol_prev > 0 else 1
-                    else:
-                        pct, has_delta, vol_ratio = 0, False, 1
-                    data = {
-                        'code': code, 'price': round(current, 2),
-                        'pct': round(pct, 2), 'has_delta': has_delta,
-                        'high_5d': round(high_5d, 2),
-                        'low_5d': round(low_5d, 2),
-                        'vol_ratio': round(vol_ratio, 2),
-                    }
-                    break
+                if not current:
+                    continue
+
+                current = float(current)
+                high_5d = float(df['High'].max()) if has_history else current
+                low_5d = float(df['Low'].min()) if has_history else current
+
+                if has_history:
+                    prev = float(df['Close'].iloc[-2])
+                    pct = round((current / prev - 1) * 100, 2)
+                    has_delta = True
+                    vol_today = float(df['Volume'].iloc[-1])
+                    vol_prev = float(df['Volume'].iloc[-2])
+                    vol_ratio = round(vol_today / vol_prev, 2) if vol_prev > 0 else 1
+                else:
+                    pct, has_delta, vol_ratio = 0, False, 1
+
+                data = {
+                    'code': code, 'price': round(current, 2),
+                    'pct': pct, 'has_delta': has_delta,
+                    'high_5d': round(high_5d, 2),
+                    'low_5d': round(low_5d, 2),
+                    'vol_ratio': vol_ratio,
+                }
+                break
             except Exception:
                 time.sleep(1)
         result[name] = data
@@ -124,8 +140,8 @@ def load_all_recent_data(codes, lookback_days=30):
     all_data = {}
     failed = []
 
-    today_int = int(datetime.now().strftime('%Y%m%d'))
-    today_str = datetime.now().strftime('%Y-%m-%d')
+    today_int = int(china_now().strftime('%Y%m%d'))
+    today_str = china_now().strftime('%Y-%m-%d')
     progress_bar = st.progress(0, text="📂 读取本地缓存...")
     total = len(codes)
 
@@ -469,7 +485,7 @@ def save_signals(all_candidates):
     if not all_candidates:
         return
 
-    today = datetime.now().strftime('%Y%m%d')
+    today = china_now().strftime('%Y%m%d')
 
     # 批量获取名称/板块
     codes = [c['code'] for c in all_candidates]
@@ -530,7 +546,7 @@ def show_signal_review():
     col1, col2, col3, col4 = st.columns(4)
 
     # 查找有足够天数来复盘（≥3 天前）
-    today_int = int(datetime.now().strftime('%Y%m%d'))
+    today_int = int(china_now().strftime('%Y%m%d'))
     reviewable = df[df['signal_date'].apply(lambda d: today_int - int(str(d)) >= 3)]
 
     with col1:
@@ -823,7 +839,7 @@ def show_manual_review():
             key="manual_stock_input"
         )
     with col2:
-        review_date = st.date_input("复盘日期", value=datetime.now(), key="manual_review_date")
+        review_date = st.date_input("复盘日期", value=china_now(), key="manual_review_date")
         if st.button("🔍 开始分析", type="primary", use_container_width=True, key="manual_analyze_btn"):
             if manual_input.strip():
                 st.session_state['trigger_manual_analysis'] = True
@@ -850,7 +866,7 @@ def show_manual_review():
                 st.caption(f"共 {len(df_hist)} 条手动选股记录")
 
                 # 计算收益（仅对 ≥3 天前的记录）
-                today_int = int(datetime.now().strftime('%Y%m%d'))
+                today_int = int(china_now().strftime('%Y%m%d'))
                 hist_rows = []
                 for _, row in df_hist.tail(30).iterrows():
                     sdate = str(row['date'])
@@ -894,7 +910,7 @@ def main():
     st.title("📈 A股连板回调策略")
 
     # 实时时间戳
-    now = datetime.now()
+    now = china_now()
     market_status = ""
     weekday = now.weekday()
     hour = now.hour
@@ -1136,7 +1152,7 @@ def main():
         st.download_button(
             label="📥 导出 CSV",
             data=df_export.to_csv(index=False, encoding='utf-8-sig'),
-            file_name=f"candidates_all_{datetime.now().strftime('%Y%m%d')}.csv",
+            file_name=f"candidates_all_{china_now().strftime('%Y%m%d')}.csv",
             mime="text/csv",
         )
 
