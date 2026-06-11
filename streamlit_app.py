@@ -610,12 +610,10 @@ def show_signal_review():
             d5_icon = "🟢" if (ret5 or 0) > 0 else ("🔴" if (ret5 or 0) < 0 else "⚪")
 
             stock_name = row.get('name', '') or ''
-            stock_sector = row.get('sector', '') or ''
             rows.append({
                 '日期': f"{sdate[:4]}-{sdate[4:6]}-{sdate[6:]}",
                 '代码': code,
                 '名称': stock_name,
-                '板块': stock_sector,
                 '模式': row.get('mode', ''),
                 '入场价': f"{price:.2f}",
                 '回调': f"{row['pullback_pct']:.1f}%",
@@ -651,28 +649,6 @@ def show_signal_review():
         if mode_stats:
             st.dataframe(pd.DataFrame(mode_stats), use_container_width=True, hide_index=True)
 
-        # 板块表现对比
-        if 'sector' in reviewable.columns:
-            st.subheader("📊 板块表现对比")
-            sector_data = []
-            for sector in reviewable['sector'].dropna().unique():
-                if not sector or sector == '':
-                    continue
-                sub = reviewable[reviewable['sector'] == sector]
-                gains = []
-                for _, r in sub.iterrows():
-                    ret = check_return(r['code'], str(r['signal_date']), r['entry_price'], 3)
-                    if ret is not None:
-                        gains.append(ret)
-                if gains:
-                    sector_data.append({
-                        '板块': sector,
-                        '信号数': len(sub),
-                        '3日胜率': f"{sum(1 for g in gains if g>0)/len(gains):.0%}",
-                        '3日均收益': f"{sum(gains)/len(gains):+.2%}",
-                    })
-            if sector_data:
-                st.dataframe(pd.DataFrame(sector_data), use_container_width=True, hide_index=True)
     else:
         st.info("最近3天内的信号需要再等等才能复盘。")
 
@@ -908,8 +884,7 @@ def show_manual_review():
                         '日期': f"{sdate[:4]}-{sdate[4:6]}-{sdate[6:]}" if len(sdate) >= 8 else sdate,
                         '代码': row['code'],
                         '名称': row.get('name', '') or '',
-                        '板块': row.get('sector', '') or '',
-                        '系统选中': '✅' if row.get('system_picked') else '❌',
+                            '系统选中': '✅' if row.get('system_picked') else '❌',
                         '3日收益': ret_str,
                     })
 
@@ -995,16 +970,9 @@ def main():
                     value=f"{data['price']:.0f}",
                     delta=delta_str,
                 )
-                # 量比：指数数据不可靠时显示 —
-                vr = data['vol_ratio']
-                if vr == 100 or vr == 0.01 or vr == 1:
-                    vol_str = "—"
-                else:
-                    vol_str = f"{vr:.1f}x"
                 st.caption(
                     f"5日高 {data['high_5d']:.0f} | "
-                    f"5日低 {data['low_5d']:.0f} | "
-                    f"量比 {vol_str}"
+                    f"5日低 {data['low_5d']:.0f}"
                 )
             else:
                 st.metric(label=name, value="获取失败")
@@ -1094,8 +1062,6 @@ def main():
                 code = code_data['code']
                 info = name_info.get(code, {})
                 stock_name = info.get('name', '') or ''
-                stock_sector = info.get('sector_cn', '') or info.get('sector', '') or info.get('industry', '') or ''
-
                 with st.container():
                     col1, col2, col3, col4, col5, col6 = st.columns([1.8, 1.2, 0.9, 0.9, 0.9, 1.5])
 
@@ -1104,8 +1070,6 @@ def main():
                         if stock_name:
                             name_line += f"  {stock_name}"
                         st.markdown(name_line)
-                        if stock_sector:
-                            st.caption(f"🏷 {stock_sector}")
                     with col2:
                         st.metric("价格", f"{code_data['price']:.2f}")
                     with col3:
