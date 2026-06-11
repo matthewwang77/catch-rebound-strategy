@@ -1,57 +1,51 @@
 """
-补充股票板块信息到 stock_names_cn.csv
-需要国内网络，在你的 Mac 上运行。
+补充股票板块到 stock_names_cn.csv（腾讯API）
 """
-import pandas as pd
-import json
-import requests
-import time
+import pandas as pd, requests, time
 
-# 读取现有中文名
 df = pd.read_csv("stock_names_cn.csv")
-print(f"现有 {len(df)} 只")
+if 'sector_cn' not in df.columns:
+    df['sector_cn'] = ''
 
-# 用东方财富API批量获取板块
-# 每次取500只
-all_data = []
-for i in range(0, len(df), 200):
-    batch = df.iloc[i:i+200]
-    codes_str = ",".join(batch['code'].str.replace('.SS','.SH').str.replace('.SZ','.SZ'))
-    # 转为东方财富格式
-    em_codes = []
+# 腾讯API字段: 第14位是行业
+BATCH = 60
+updated = 0
+for i in range(0, len(df), BATCH):
+    batch = df.iloc[i:i+BATCH]
+    qt = []
+    code_map = {}
     for _, row in batch.iterrows():
-        code = row['code']
-        if code.endswith('.SS'):
-            em_codes.append(f"1.{code[:6]}")
-        else:
-            em_codes.append(f"0.{code[:6]}")
+        c = row['code']
+        qt_code = f"sh{c[:6]}" if c.endswith('.SS') else f"sz{c[:6]}"
+        qt.append(qt_code)
+        code_map[qt_code] = c
 
     try:
-        url = f"http://push2.eastmoney.com/api/qt/ulist.np/get?fltt=2&fields=f12,f14,f100&secids={','.join(em_codes[:100])}"
-        resp = requests.get(url, headers={"User-Agent": "Mozilla/5.0"}, timeout=10)
-        data = resp.json()
-        if data and 'data' in data and data['data'] and 'diff' in data['data']:
-            for item in data['data']['diff']:
-                raw = item['f12']
-                suffix = '.SS' if raw.startswith('6') else '.SZ'
-                all_data.append({
-                    'code': f'{raw}{suffix}',
-                    'name': item.get('f14', ''),
-                    'sector_cn': item.get('f100', '')
-                })
+        url = f"http://qt.gtimg.cn/q={','.join(qt)}"
+        resp = requests.get(url, timeout=15)
+        resp.encoding = 'gbk'
+        for line in resp.text.strip().split('\n'):
+            if '~' not in line: continue
+            parts = line.split('~')
+            if len(parts) < 15: continue
+            # 提取代码和行业
+            raw_code = parts[2]
+            industry = parts[13] if len(parts) > 13 else ''
+            if raw_code and industry and industry.strip():
+                suffix = '.SS' if raw_code.startswith('6') else '.SZ'
+                full_code = f'{raw_code}{suffix}'
+                idx = df[df['code'] == full_code].index
+                if len(idx) > 0:
+                    df.at[idx[0], 'sector_cn'] = industry.strip()
+                    updated += 1
     except Exception as e:
-        print(f"  批次{i}失败: {e}")
-    time.sleep(0.3)
-    if i % 1000 == 0:
-        print(f"  已处理 {i}...")
+        pass
+    time.sleep(0.2)
+    if i % 2000 == 0:
+        print(f"  {i}/{len(df)}... 已更新{updated}")
 
-if all_data:
-    df_new = pd.DataFrame(all_data)
-    # 合并到现有
-    df_out = df.merge(df_new[['code','sector_cn']], on='code', how='left')
-    df_out['sector_cn'] = df_out['sector_cn'].fillna('')
-    df_out.to_csv('stock_names_cn.csv', index=False, encoding='utf-8-sig')
-    has_sector = (df_out['sector_cn'] != '').sum()
-    print(f"✅ 更新完成: {has_sector}/{len(df_out)} 只有板块")
-else:
-    print("❌ 未获取到板块数据")
+df.to_csv('stock_names_cn.csv', index=False, encoding='utf-8-sig')
+has = (df['sector_cn'] != '').sum()
+print(f"✅ 有板块: {has}/{len(df)}")
+if has > 0:
+    print(df[df['sector_cn']!=''][['code','name','sector_cn']].head(10).to_string())
