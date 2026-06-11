@@ -298,6 +298,69 @@ def load_all_recent_data(codes, lookback_days=30):
     return all_data, failed
 
 
+# ==================== 云端数据加载（Streamlit Cloud 无本地CSV时使用）====================
+@st.cache_data(ttl=3600)
+def cloud_load_data():
+    """云端模式：从 yfinance 批量下载近期数据，缓存1小时。
+
+    下载近30天数据用于筛选，比本地模式慢但能在 Streamlit Cloud 上运行。
+    首次约2-4分钟，缓存后秒开。
+    """
+    # 生成代码列表（云端用精简列表，减少下载量）
+    codes = []
+    # 上海主板
+    for i in range(600000, 606000):
+        codes.append(f"{i}.SS")
+    # 深圳主板+中小板
+    for i in range(1, 5000):
+        codes.append(f"{i:06d}.SZ")
+    # 创业板
+    for i in range(300000, 302000):
+        codes.append(f"{i}.SZ")
+    # 科创板
+    for i in range(688000, 690000):
+        codes.append(f"{i}.SS")
+
+    all_data = {}
+    BATCH_SIZE = 500
+    batches = [codes[i:i + BATCH_SIZE] for i in range(0, len(codes), BATCH_SIZE)]
+    total_batches = len(batches)
+
+    progress_bar = st.progress(0, text="☁️ 云端下载第 0 批...")
+
+    for i, batch in enumerate(batches):
+        progress_bar.progress(
+            (i + 1) / total_batches,
+            text=f"☁️ 云端下载第 {i+1}/{total_batches} 批 (每批{BATCH_SIZE}只)..."
+        )
+        try:
+            hist = yf.download(tickers=batch, period="30d", progress=False)
+            if hist is None or hist.empty:
+                continue
+
+            # 提取有数据的股票
+            try:
+                level_codes = set(hist.columns.get_level_values(1))
+            except Exception:
+                continue
+
+            for code in batch:
+                if code not in level_codes:
+                    continue
+                try:
+                    stock_data = hist.xs(code, level=1, axis=1)
+                    stock_data = stock_data[stock_data['Close'].notna() & (stock_data['Close'] > 0)]
+                    if len(stock_data) >= 10:
+                        all_data[code] = stock_data[['Open', 'High', 'Low', 'Close', 'Volume']].copy()
+                except Exception:
+                    pass
+        except Exception:
+            pass
+
+    progress_bar.empty()
+    return all_data
+
+
 # ==================== 快速 AI 分析（跳过板块信息，用已下载数据）====================
 def fast_ai_analysis(code, stock_df, market_context=""):
     """基于已下载的30天数据 + DeepSeek API 快速分析（比 AI.py 快 3-5 秒）"""
@@ -963,21 +1026,30 @@ def main():
     else:
         # 获取代码列表
         DATA_DIR = screener.DATA_DIR
-        cache_files = [
-            f for f in os.listdir(DATA_DIR)
-            if f.endswith('.csv') and os.path.getsize(os.path.join(DATA_DIR, f)) > 100
-        ]
-        codes = [f.replace('.csv', '') for f in cache_files]
+        if os.path.isdir(DATA_DIR):
+            cache_files = [
+                f for f in os.listdir(DATA_DIR)
+                if f.endswith('.csv') and os.path.getsize(os.path.join(DATA_DIR, f)) > 100
+            ]
+            codes = [f.replace('.csv', '') for f in cache_files]
+        else:
+            cache_files = []
+            codes = []
 
-        # 从本地 CSV 缓存极速加载（秒级）
-        with st.spinner("正在从本地缓存加载数据..."):
-            all_data, failed_codes = load_all_recent_data(codes)
+        if len(codes) > 100:
+            # 本地模式：从 CSV 缓存极速加载（秒级）
+            with st.spinner("正在从本地缓存加载数据..."):
+                all_data, failed_codes = load_all_recent_data(codes)
 
-        # 存入 session_state，供 AI 分析时复用
-        st.session_state['all_data'] = all_data
-
-        st.success(f"✅ 数据加载完成：{len(all_data)} 只有效数据（本地缓存，秒级）"
-                   + (f"，{len(failed_codes)} 只失败" if failed_codes else ""))
+            st.session_state['all_data'] = all_data
+            st.success(f"✅ 数据加载完成：{len(all_data)} 只有效数据（本地缓存，秒级）"
+                       + (f"，{len(failed_codes)} 只失败" if failed_codes else ""))
+        else:
+            # 云端模式：没有本地 CSV，从 yfinance 批量下载
+            st.info("☁️ 云端模式：从网络加载数据（首次较慢，后续秒开）")
+            all_data = cloud_load_data()
+            st.session_state['all_data'] = all_data
+            st.success(f"✅ 云端数据加载完成：{len(all_data)} 只")
 
         # 三模式筛选
         with st.spinner("正在用三种模式筛选..."):

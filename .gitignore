@@ -6,7 +6,12 @@ dist/
 
 # Stock data (too large for git)
 stock_data/
-*.csv
+stock_data/*.csv
+
+# Generated candidate lists
+candidates_*.csv
+optimization_results.csv
+backtest_signals_*.csv
 
 # Analysis outputs
 analysis_*/
