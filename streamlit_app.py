@@ -301,77 +301,29 @@ def load_all_recent_data(codes, lookback_days=30):
 # ==================== 云端数据加载（Streamlit Cloud 无本地CSV时使用）====================
 @st.cache_data(ttl=3600, show_spinner=False)
 def cloud_load_data():
-    """云端模式：从 yfinance 批量下载近期数据，缓存1小时。
+    """云端模式：从 stock_snapshot.csv.gz 加载预打包的30天数据，秒级完成。"""
+    snapshot_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "stock_snapshot.csv.gz")
 
-    下载近30天数据用于筛选，比本地模式慢但能在 Streamlit Cloud 上运行。
-    首次约2-4分钟，缓存后秒开。
-    """
-    # 生成代码列表（云端用精简列表，减少下载量）
-    codes = []
-    # 上海主板
-    for i in range(600000, 606000):
-        codes.append(f"{i}.SS")
-    # 深圳主板+中小板
-    for i in range(1, 5000):
-        codes.append(f"{i:06d}.SZ")
-    # 创业板
-    for i in range(300000, 302000):
-        codes.append(f"{i}.SZ")
-    # 科创板
-    for i in range(688000, 690000):
-        codes.append(f"{i}.SS")
+    if not os.path.exists(snapshot_path):
+        st.warning("⚠️ 未找到 stock_snapshot.csv.gz，云端暂无数据。")
+        return {}
 
-    # 云端模式：扫描最活跃的 ~2000 只股票
-    codes = []
-    # 上海主板: 600000-603999（最活跃段）
-    for i in range(600000, 604000):
-        codes.append(f"{i}.SS")
-    # 深圳主板: 000001-002999
-    for i in range(1, 3000):
-        codes.append(f"{i:06d}.SZ")
-    # 创业板: 300000-301000
-    for i in range(300000, 301000):
-        codes.append(f"{i}.SZ")
-    # 科创板: 688000-688600
-    for i in range(688000, 688600):
-        codes.append(f"{i}.SS")
-
-    st.info(f"☁️ 云端模式：扫描 {len(codes)} 只A股（分批下载，约60-90秒）")
+    df = pd.read_csv(snapshot_path, compression='gzip')
+    st.info(f"☁️ 云端模式：快照加载 {df['code'].nunique()} 只股票（秒级）")
 
     all_data = {}
-    BATCH_SIZE = 200
-    batches = [codes[i:i + BATCH_SIZE] for i in range(0, len(codes), BATCH_SIZE)]
-    total_batches = len(batches)
+    for code, group in df.groupby('code'):
+        group = group.sort_values('date')
+        stock_df = pd.DataFrame({
+            'Close': group['close'].values,
+            'Open': group['open'].values,
+            'High': group['high'].values,
+            'Low': group['low'].values,
+            'Volume': group['volume'].values,
+        }).dropna()
+        if len(stock_df) >= 10:
+            all_data[code] = stock_df
 
-    progress_bar = st.progress(0, text=f"☁️ 第 1/{total_batches} 批...")
-
-    for i, batch in enumerate(batches):
-        progress_bar.progress(
-            (i + 1) / total_batches,
-            text=f"☁️ 下载第 {i+1}/{total_batches} 批 ({len(batch)}只)..."
-        )
-        try:
-            hist = yf.download(tickers=batch, period="30d", progress=False, timeout=30)
-            if hist is None or hist.empty:
-                continue
-            try:
-                level_codes = set(hist.columns.get_level_values(1))
-            except Exception:
-                continue
-            for code in batch:
-                if code not in level_codes:
-                    continue
-                try:
-                    stock_data = hist.xs(code, level=1, axis=1)
-                    stock_data = stock_data[stock_data['Close'].notna() & (stock_data['Close'] > 0)]
-                    if len(stock_data) >= 10:
-                        all_data[code] = stock_data[['Open', 'High', 'Low', 'Close', 'Volume']].copy()
-                except Exception:
-                    pass
-        except Exception:
-            pass
-
-    progress_bar.empty()
     return all_data
 
 
