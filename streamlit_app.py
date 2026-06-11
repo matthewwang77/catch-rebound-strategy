@@ -110,7 +110,17 @@ def get_market_data():
                     vol_prev = float(df['Volume'].iloc[-2])
                     vol_ratio = round(vol_today / vol_prev, 2) if vol_prev > 0 else 1
                 else:
-                    pct, has_delta, vol_ratio = 0, False, 1
+                    # 降级：从 fast_info.previousClose 算涨跌
+                    try:
+                        prev_close = info.get('previousClose')
+                        if prev_close and float(prev_close) > 0:
+                            pct = round((current / float(prev_close) - 1) * 100, 2)
+                            has_delta = True
+                        else:
+                            pct, has_delta = 0, False
+                    except Exception:
+                        pct, has_delta = 0, False
+                    vol_ratio = 1
 
                 data = {
                     'code': code, 'price': round(current, 2),
