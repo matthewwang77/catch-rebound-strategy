@@ -453,6 +453,30 @@ def screen_all_modes(all_data):
     results = {}
     all_stats = {}
 
+    # 预筛选：快速排除近10天没有涨停的股票（消除90%+无效计算）
+    active_stocks = {}
+    for code, stock_data in all_data.items():
+        try:
+            close = stock_data['Close'].values
+            if len(close) < 3:
+                continue
+            pct_chg = (close[-1] / close[-2] - 1) * 100 if close[-2] > 0 else 0
+            # 快速检查最近10天是否有涨停
+            has_limit = False
+            threshold = 18.5 if code.startswith(('30', '688')) else 9.5
+            for i in range(max(0, len(close) - 10), len(close) - 1):
+                if close[i] > 0 and close[i-1] > 0:
+                    chg = (close[i] / close[i-1] - 1) * 100
+                    if chg >= threshold:
+                        has_limit = True
+                        break
+            if has_limit:
+                active_stocks[code] = stock_data
+        except Exception:
+            pass
+
+    st.write(f"⚡ 预筛选：{len(all_data)} → {len(active_stocks)} 只曾有涨停 ({len(active_stocks)*100//max(len(all_data),1)}%)")
+
     for mode in modes:
         params = screener.SCREEN_MODES[mode].copy()
 
@@ -462,7 +486,7 @@ def screen_all_modes(all_data):
 
         candidates = []
         stats = {
-            'total': len(all_data),
+            'total': len(active_stocks),
             'has_data': 0,
             'has_limit_up': 0,
             'consecutive_ok': 0,
@@ -476,7 +500,7 @@ def screen_all_modes(all_data):
             'final': 0,
         }
 
-        for code, stock_data in all_data.items():
+        for code, stock_data in active_stocks.items():
             try:
                 screener._screen_single_stock(code, stock_data, stats, candidates, mode)
             except Exception:
