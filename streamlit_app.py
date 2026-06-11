@@ -124,13 +124,9 @@ def inject_design_system():
     }
 
     /* === BODY TEXT === */
-    p, span, div, label, caption, li, td, th {
+    /* NOTE: span is intentionally excluded to preserve Material Icons font */
+    p, div, label, caption, li, td, th, button {
       font-family: 'JetBrains Mono', 'SF Mono', monospace !important;
-    }
-
-    /* Preserve Material Icons font — keep icons rendering as icons */
-    [data-testid="stIconMaterial"], span[translate="no"] {
-      font-family: 'Material Icons' !important;
     }
 
     [data-testid="stCaption"] {
@@ -331,9 +327,8 @@ def inject_design_system():
       display: flex !important;
       align-items: center;
     }
-    /* Only style the text portion of the expander, not the icon */
+    /* Expander icon styling */
     [data-testid="stExpander"] summary [data-testid="stIconMaterial"] {
-      font-family: 'Material Icons' !important;
       font-size: 1.1rem !important;
       color: #00F0FF !important;
       margin-right: 6px;
@@ -1466,12 +1461,13 @@ def main():
     else:
         market_status = "🔴 已收盘"
 
-    st.html(
+    st.markdown(
         f"<p style='font-family:\"JetBrains Mono\",monospace;font-size:0.7rem;color:#6666AA;"
         f"margin:0;padding:0;line-height:1;'>"
         f"◈ {now.strftime('%Y-%m-%d %H:%M')}  |  {market_status}"
         + ("  |  收盘后点「强制刷新」获取最终数据" if market_status in ["🟡 刚收盘（数据更新中）", "🔴 已收盘"] else "")
-        + "</p>"
+        + "</p>",
+        unsafe_allow_html=True
     )
 
     st.divider()
