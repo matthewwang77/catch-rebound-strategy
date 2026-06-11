@@ -128,6 +128,11 @@ def inject_design_system():
       font-family: 'JetBrains Mono', 'SF Mono', monospace !important;
     }
 
+    /* Preserve Material Icons font for Streamlit icons */
+    [data-testid="stIconMaterial"], span[translate="no"] {
+      font-family: 'Material Icons' !important;
+    }
+
     [data-testid="stCaption"] {
       font-family: 'JetBrains Mono', 'SF Mono', monospace !important;
       font-size: 0.7rem !important;
@@ -319,23 +324,19 @@ def inject_design_system():
     }
     [data-testid="stExpander"]:hover { border-color: rgba(0,240,255,0.2); }
     [data-testid="stExpander"] summary {
-      font-family: 'Orbitron', sans-serif !important;
       font-size: 0.72rem !important;
       font-weight: 600;
       color: #00F0FF !important;
       padding: 10px 16px !important;
       display: flex !important;
       align-items: center;
-      gap: 8px;
     }
-    /* Fix expander arrow overlap */
-    [data-testid="stExpander"] summary > span:first-child {
-      flex-shrink: 0;
-    }
-    [data-testid="stExpander"] summary > span:last-child {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+    /* Only style the text portion of the expander, not the icon */
+    [data-testid="stExpander"] summary [data-testid="stIconMaterial"] {
+      font-family: 'Material Icons' !important;
+      font-size: 1.1rem !important;
+      color: #00F0FF !important;
+      margin-right: 6px;
     }
 
     /* === TABLES === */
@@ -1465,13 +1466,12 @@ def main():
     else:
         market_status = "🔴 已收盘"
 
-    st.markdown(
+    st.html(
         f"<p style='font-family:\"JetBrains Mono\",monospace;font-size:0.7rem;color:#6666AA;"
-        f"margin:0 0 0.3rem 0;padding:0;line-height:1.2;'>"
+        f"margin:0;padding:0;line-height:1;'>"
         f"◈ {now.strftime('%Y-%m-%d %H:%M')}  |  {market_status}"
         + ("  |  收盘后点「强制刷新」获取最终数据" if market_status in ["🟡 刚收盘（数据更新中）", "🔴 已收盘"] else "")
-        + "</p>",
-        unsafe_allow_html=True
+        + "</p>"
     )
 
     st.divider()
