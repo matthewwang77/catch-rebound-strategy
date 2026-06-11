@@ -459,11 +459,10 @@ def screen_all_modes(all_data):
             close = stock_data['Close'].values
             if len(close) < 3:
                 continue
-            pct_chg = (close[-1] / close[-2] - 1) * 100 if close[-2] > 0 else 0
             # 快速检查最近20天是否有涨停
             has_limit = False
             threshold = 18.5 if code.startswith(('30', '688')) else 9.5
-            for i in range(max(0, len(close) - 20), len(close) - 1):
+            for i in range(max(1, len(close) - 20), len(close)):
                 if close[i] > 0 and close[i-1] > 0:
                     chg = (close[i] / close[i-1] - 1) * 100
                     if chg >= threshold:
