@@ -1,6 +1,5 @@
-
 """
-A股连板回调策略 - Streamlit UI
+A股连板回调策略 - Streamlit UI  |  NEON VAULT Edition
 一键运行：streamlit run streamlit_app.py
 
 功能：
@@ -19,11 +18,528 @@ import importlib.util
 
 # ==================== 页面配置 ====================
 st.set_page_config(
-    page_title="A股连板回调策略",
-    page_icon="📈",
+    page_title="A股连板回调策略 · NEON VAULT",
+    page_icon="◆",
     layout="wide",
     initial_sidebar_state="expanded",
 )
+
+# ==================== 🎨 NEON VAULT 设计系统 ====================
+def inject_design_system():
+    """注入完整的设计系统 CSS —— Cyber Trading Terminal 美学
+
+    使用 st.markdown(unsafe_allow_html=True) 注入 <style> + Google Fonts。
+    这是 Streamlit 社区验证的 CSS 注入方式，st.html() 会过滤掉 style 标签。
+    """
+    css = r"""
+    <style>
+    /* ============================================================
+       NEON VAULT — CSS Design System
+       Cyber Trading Terminal · 2087
+       ============================================================ */
+
+    /* --- Fonts --- */
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+
+    /* --- CSS Variables --- */
+    :root {
+      --bg-void: #06060B;
+      --bg-surface: #0A0A16;
+      --bg-card: rgba(12, 12, 28, 0.85);
+      --bg-card-hover: rgba(16, 16, 36, 0.92);
+      --border-subtle: rgba(0, 240, 255, 0.08);
+      --border-glow: rgba(0, 240, 255, 0.20);
+      --border-active: rgba(0, 240, 255, 0.45);
+      --accent-cyan: #00F0FF;
+      --accent-cyan-dim: #0099AA;
+      --accent-purple: #7B2FFF;
+      --accent-green: #00FF88;
+      --accent-red: #FF3366;
+      --accent-amber: #FFB800;
+      --text-primary: #E0E0F0;
+      --text-secondary: #8888AA;
+      --text-muted: #555577;
+      --font-display: 'Orbitron', 'Helvetica Neue', sans-serif;
+      --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+      --glow-cyan: 0 0 12px rgba(0, 240, 255, 0.3), 0 0 2px rgba(0, 240, 255, 0.6);
+      --glow-green: 0 0 10px rgba(0, 255, 136, 0.25);
+      --glow-red: 0 0 10px rgba(255, 51, 102, 0.25);
+      --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* --- GLOBAL OVERRIDES — broadest selectors first --- */
+
+    html, body, #root, [data-testid="stAppViewContainer"] {
+      background-color: #06060B !important;
+      color: #E0E0F0 !important;
+    }
+
+    body {
+      font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace !important;
+    }
+
+    /* Hex grid pattern on the main app container */
+    [data-testid="stAppViewContainer"] {
+      background:
+        linear-gradient(rgba(0, 240, 255, 0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 240, 255, 0.015) 1px, transparent 1px),
+        radial-gradient(ellipse at 50% 0%, rgba(0, 240, 255, 0.04) 0%, transparent 70%),
+        #06060B !important;
+      background-size: 24px 24px, 24px 24px, 100% 100%, 100% 100% !important;
+    }
+
+    /* Scan line overlay */
+    [data-testid="stAppViewContainer"]::after {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.03) 2px,
+        rgba(0, 0, 0, 0.03) 4px
+      );
+      pointer-events: none;
+      z-index: 99999;
+    }
+
+    /* --- Scrollbar --- */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #06060B; }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(0, 240, 255, 0.2);
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(0, 240, 255, 0.4); }
+
+    /* ============================================================
+       TYPOGRAPHY
+       ============================================================ */
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Orbitron', 'Helvetica Neue', sans-serif !important;
+      letter-spacing: 0.04em !important;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-weight: 800 !important;
+      font-size: 2rem !important;
+      background: linear-gradient(135deg, #00F0FF 0%, #00C8E0 40%, #7B2FFF 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: none !important;
+      letter-spacing: 0.06em !important;
+      padding-bottom: 0.3rem;
+      border-bottom: 2px solid rgba(0, 240, 255, 0.15);
+    }
+
+    h2 {
+      font-weight: 700 !important;
+      font-size: 1.25rem !important;
+      color: #00F0FF !important;
+      letter-spacing: 0.05em !important;
+    }
+
+    h3 {
+      font-weight: 600 !important;
+      font-size: 1rem !important;
+      color: #E0E0F0 !important;
+      letter-spacing: 0.03em !important;
+    }
+
+    /* Monospace all body text */
+    p, span, div, label, caption, li, td, th {
+      font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace !important;
+    }
+
+    [data-testid="stCaption"] {
+      font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace !important;
+      font-size: 0.75rem !important;
+      color: #8888AA !important;
+      letter-spacing: 0.02em;
+    }
+
+    /* ============================================================
+       SIDEBAR — Dark Glass Control Panel
+       ============================================================ */
+
+    [data-testid="stSidebar"] {
+      background: linear-gradient(180deg,
+        rgba(10, 10, 24, 0.99) 0%,
+        rgba(8, 8, 18, 0.99) 100%
+      ) !important;
+      border-right: 1px solid rgba(0, 240, 255, 0.08) !important;
+      backdrop-filter: blur(20px);
+    }
+
+    [data-testid="stSidebar"] h1,
+    [data-testid="stSidebar"] h2,
+    [data-testid="stSidebar"] h3 {
+      font-family: 'Orbitron', 'Helvetica Neue', sans-serif !important;
+      color: #00F0FF !important;
+      font-size: 0.9rem !important;
+      letter-spacing: 0.08em !important;
+      text-transform: uppercase;
+    }
+
+    [data-testid="stSidebar"] p {
+      font-size: 0.72rem !important;
+      color: #8888AA !important;
+      line-height: 1.6;
+    }
+
+    [data-testid="stSidebar"] [data-testid="stCaption"] {
+      font-size: 0.65rem !important;
+      color: #555577 !important;
+      text-align: center;
+      letter-spacing: 0.06em;
+    }
+
+    [data-testid="stSidebar"] hr {
+      border-color: rgba(0, 240, 255, 0.08) !important;
+      margin: 1rem 0 !important;
+    }
+
+    /* Sidebar radio buttons */
+    [data-testid="stSidebar"] [data-testid="stRadio"] label {
+      font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace !important;
+      font-size: 0.78rem !important;
+      color: #8888AA !important;
+      padding: 8px 12px !important;
+      border-radius: 6px !important;
+      transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid transparent;
+    }
+    [data-testid="stSidebar"] [data-testid="stRadio"] label:hover {
+      background: rgba(0, 240, 255, 0.05) !important;
+      border-color: rgba(0, 240, 255, 0.20) !important;
+      color: #00F0FF !important;
+    }
+
+    /* ============================================================
+       METRIC CARDS — Glowing Data Orbs
+       ============================================================ */
+
+    [data-testid="stMetric"] {
+      background: rgba(12, 12, 28, 0.85) !important;
+      border: 1px solid rgba(0, 240, 255, 0.08) !important;
+      border-radius: 10px !important;
+      padding: 14px 16px !important;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    [data-testid="stMetric"]::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #00F0FF, transparent);
+      opacity: 0;
+      transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    [data-testid="stMetric"]:hover {
+      border-color: rgba(0, 240, 255, 0.20) !important;
+      box-shadow: 0 0 12px rgba(0, 240, 255, 0.3), 0 0 2px rgba(0, 240, 255, 0.6);
+      transform: translateY(-1px);
+    }
+
+    [data-testid="stMetric"]:hover::before {
+      opacity: 1;
+    }
+
+    [data-testid="stMetric"] label {
+      font-family: 'Orbitron', 'Helvetica Neue', sans-serif !important;
+      font-size: 0.65rem !important;
+      font-weight: 600 !important;
+      color: #8888AA !important;
+      letter-spacing: 0.08em !important;
+      text-transform: uppercase;
+    }
+
+    [data-testid="stMetricValue"] {
+      font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace !important;
+      font-size: 1.6rem !important;
+      font-weight: 600 !important;
+      color: #E0E0F0 !important;
+    }
+
+    [data-testid="stMetricDelta"] {
+      font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace !important;
+      font-size: 0.85rem !important;
+    }
+
+    /* ============================================================
+       BUTTONS — Neon Action Triggers
+       ============================================================ */
+
+    .stButton > button {
+      font-family: 'Orbitron', 'Helvetica Neue', sans-serif !important;
+      font-weight: 600 !important;
+      font-size: 0.75rem !important;
+      letter-spacing: 0.06em !important;
+      text-transform: uppercase;
+      border-radius: 8px !important;
+      padding: 10px 20px !important;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+      position: relative;
+      overflow: hidden;
+    }
+
+    button[kind="primary"] {
+      background: linear-gradient(135deg, rgba(0, 240, 255, 0.15) 0%, rgba(123, 47, 255, 0.15) 100%) !important;
+      border: 1px solid rgba(0, 240, 255, 0.45) !important;
+      color: #00F0FF !important;
+    }
+    button[kind="primary"]:hover {
+      background: linear-gradient(135deg, rgba(0, 240, 255, 0.25) 0%, rgba(123, 47, 255, 0.25) 100%) !important;
+      box-shadow: 0 0 12px rgba(0, 240, 255, 0.3), 0 0 30px rgba(0, 240, 255, 0.15) !important;
+      transform: translateY(-2px);
+      border-color: #00F0FF !important;
+    }
+
+    button[kind="secondary"] {
+      background: rgba(12, 12, 28, 0.8) !important;
+      border: 1px solid rgba(0, 240, 255, 0.08) !important;
+      color: #8888AA !important;
+    }
+    button[kind="secondary"]:hover {
+      background: rgba(0, 240, 255, 0.06) !important;
+      border-color: rgba(0, 240, 255, 0.20) !important;
+      color: #00F0FF !important;
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.1);
+    }
+
+    /* Download button */
+    .stDownloadButton > button {
+      font-family: 'Orbitron', 'Helvetica Neue', sans-serif !important;
+      font-weight: 600 !important;
+      font-size: 0.75rem !important;
+      letter-spacing: 0.06em !important;
+      background: rgba(0, 255, 136, 0.08) !important;
+      border: 1px solid rgba(0, 255, 136, 0.3) !important;
+      color: #00FF88 !important;
+      border-radius: 8px !important;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+    .stDownloadButton > button:hover {
+      background: rgba(0, 255, 136, 0.15) !important;
+      box-shadow: 0 0 10px rgba(0, 255, 136, 0.25) !important;
+      border-color: #00FF88 !important;
+    }
+
+    /* ============================================================
+       TABS — Segmented Data Channels
+       ============================================================ */
+
+    [data-testid="stTabs"] {
+      margin-top: 0.5rem;
+    }
+
+    [data-baseweb="tab-list"] {
+      background: rgba(10, 10, 24, 0.6) !important;
+      border-radius: 10px !important;
+      padding: 4px !important;
+      gap: 4px !important;
+      border: 1px solid rgba(0, 240, 255, 0.08);
+    }
+
+    [data-baseweb="tab"] {
+      font-family: 'Orbitron', 'Helvetica Neue', sans-serif !important;
+      font-size: 0.7rem !important;
+      font-weight: 600 !important;
+      letter-spacing: 0.05em !important;
+      text-transform: uppercase;
+      color: #8888AA !important;
+      border-radius: 8px !important;
+      padding: 8px 20px !important;
+      transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid transparent;
+    }
+    [data-baseweb="tab"]:hover {
+      color: #00F0FF !important;
+      background: rgba(0, 240, 255, 0.04) !important;
+    }
+    [data-baseweb="tab"][aria-selected="true"] {
+      color: #00F0FF !important;
+      background: rgba(0, 240, 255, 0.08) !important;
+      border: 1px solid rgba(0, 240, 255, 0.45) !important;
+      box-shadow: 0 0 12px rgba(0, 240, 255, 0.3), 0 0 2px rgba(0, 240, 255, 0.6);
+    }
+
+    /* ============================================================
+       EXPANDERS — Collapsible Data Vaults
+       ============================================================ */
+
+    [data-testid="stExpander"] {
+      background: rgba(12, 12, 28, 0.85) !important;
+      border: 1px solid rgba(0, 240, 255, 0.08) !important;
+      border-radius: 10px !important;
+      margin: 8px 0 !important;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    [data-testid="stExpander"]:hover {
+      border-color: rgba(0, 240, 255, 0.20) !important;
+    }
+    [data-testid="stExpander"] summary {
+      font-family: 'Orbitron', 'Helvetica Neue', sans-serif !important;
+      font-size: 0.75rem !important;
+      font-weight: 600 !important;
+      color: #00F0FF !important;
+      letter-spacing: 0.04em !important;
+      padding: 10px 16px !important;
+    }
+
+    /* ============================================================
+       DATAFRAMES — Precision Data Tables
+       ============================================================ */
+
+    [data-testid="stDataFrame"] {
+      border: 1px solid rgba(0, 240, 255, 0.08) !important;
+      border-radius: 10px !important;
+      overflow: hidden;
+      background: rgba(12, 12, 28, 0.85) !important;
+    }
+
+    [data-testid="stDataFrame"] thead th {
+      font-family: 'Orbitron', 'Helvetica Neue', sans-serif !important;
+      font-size: 0.65rem !important;
+      font-weight: 600 !important;
+      letter-spacing: 0.06em !important;
+      text-transform: uppercase;
+      color: #00F0FF !important;
+      background: rgba(0, 240, 255, 0.04) !important;
+      border-bottom: 1px solid rgba(0, 240, 255, 0.20) !important;
+      padding: 10px 14px !important;
+    }
+
+    [data-testid="stDataFrame"] tbody td {
+      font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace !important;
+      font-size: 0.75rem !important;
+      color: #E0E0F0 !important;
+      padding: 8px 14px !important;
+      border-bottom: 1px solid rgba(255,255,255,0.03) !important;
+    }
+
+    [data-testid="stDataFrame"] tbody tr:hover td {
+      background: rgba(0, 240, 255, 0.03) !important;
+    }
+
+    /* ============================================================
+       PROGRESS BARS — Data Stream Indicators
+       ============================================================ */
+
+    .stProgress > div > div {
+      background: linear-gradient(90deg, #00F0FF, #7B2FFF) !important;
+      border-radius: 2px !important;
+    }
+    .stProgress > div {
+      background: rgba(0, 240, 255, 0.06) !important;
+      border-radius: 2px !important;
+      border: 1px solid rgba(0, 240, 255, 0.08);
+    }
+
+    /* ============================================================
+       DIVIDERS — Glowing Separators
+       ============================================================ */
+
+    hr, [data-testid="stDivider"] {
+      border: none !important;
+      height: 1px !important;
+      background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(0, 240, 255, 0.15) 20%,
+        rgba(0, 240, 255, 0.3) 50%,
+        rgba(0, 240, 255, 0.15) 80%,
+        transparent 100%
+      ) !important;
+      margin: 1.5rem 0 !important;
+    }
+
+    /* ============================================================
+       TEXT INPUTS & TEXT AREAS
+       ============================================================ */
+
+    input[data-testid="stTextInput"], textarea {
+      font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace !important;
+      font-size: 0.78rem !important;
+      background: rgba(10, 10, 24, 0.8) !important;
+      border: 1px solid rgba(0, 240, 255, 0.08) !important;
+      border-radius: 8px !important;
+      color: #E0E0F0 !important;
+      transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    input[data-testid="stTextInput"]:focus, textarea:focus {
+      border-color: rgba(0, 240, 255, 0.45) !important;
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.1) !important;
+      outline: none !important;
+    }
+    textarea::placeholder {
+      color: #555577 !important;
+      font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace !important;
+    }
+
+    /* ============================================================
+       ALERTS / INFO / WARNING / SUCCESS / ERROR
+       ============================================================ */
+
+    [data-testid="stAlert"] {
+      font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace !important;
+      font-size: 0.8rem !important;
+      border-radius: 10px !important;
+      border: 1px solid rgba(0, 240, 255, 0.08) !important;
+      background: rgba(12, 12, 28, 0.85) !important;
+    }
+
+    [data-testid="stNotification"] {
+      font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace !important;
+      border-radius: 10px !important;
+      background: rgba(10, 10, 28, 0.95) !important;
+      border: 1px solid rgba(0, 240, 255, 0.45) !important;
+      backdrop-filter: blur(20px);
+    }
+
+    /* ============================================================
+       ANIMATIONS
+       ============================================================ */
+
+    @keyframes fade-in-up {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 8px rgba(0, 240, 255, 0.2); }
+      50% { box-shadow: 0 0 18px rgba(0, 240, 255, 0.4); }
+    }
+
+    [data-testid="stMetric"] {
+      animation: fade-in-up 0.5s ease-out both;
+    }
+    [data-testid="stMetric"]:nth-child(1) { animation-delay: 0.05s; }
+    [data-testid="stMetric"]:nth-child(2) { animation-delay: 0.10s; }
+    [data-testid="stMetric"]:nth-child(3) { animation-delay: 0.15s; }
+
+    /* ============================================================
+       RESPONSIVE
+       ============================================================ */
+
+    @media (max-width: 768px) {
+      h1 { font-size: 1.4rem !important; }
+      [data-testid="stMetricValue"] { font-size: 1.2rem !important; }
+    }
+    </style>
+    """
+
+    # st.markdown(unsafe_allow_html=True) 是 Streamlit 中注入 <style> 的可靠方式
+    st.markdown(css, unsafe_allow_html=True)
+
 
 # ==================== 导入本地模块 ====================
 def _load_module(filepath, module_name):
@@ -156,7 +672,7 @@ def load_all_recent_data(codes, lookback_days=30):
 
     today_int = int(china_now().strftime('%Y%m%d'))
     today_str = china_now().strftime('%Y-%m-%d')
-    progress_bar = st.progress(0, text="📂 读取本地缓存...")
+    progress_bar = st.progress(0, text="◈ 读取本地缓存...")
     total = len(codes)
 
     # ====== 第一步：从 CSV 读取历史数据 ======
@@ -164,7 +680,7 @@ def load_all_recent_data(codes, lookback_days=30):
     has_today_count = 0  # 统计 CSV 已有今日数据的股票数
     for i, code in enumerate(codes):
         if (i + 1) % 1500 == 0:
-            progress_bar.progress(0.2 * i / total, text=f"📂 读取缓存 {i}/{total}...")
+            progress_bar.progress(0.2 * i / total, text=f"◈ 读取缓存 {i}/{total}...")
 
         csv_path = os.path.join(DATA_DIR, f"{code}.csv")
         if not os.path.exists(csv_path) or os.path.getsize(csv_path) < 100:
@@ -200,7 +716,7 @@ def load_all_recent_data(codes, lookback_days=30):
 
     today_coverage = has_today_count / len(all_data) if all_data else 0
     force_refresh = st.session_state.get('force_refresh', False)
-    progress_bar.progress(0.25, text=f"📂 缓存: {len(all_data)} 只 ({stale_count} 只过期, 今日覆盖 {today_coverage:.0%})")
+    progress_bar.progress(0.25, text=f"◈ 缓存: {len(all_data)} 只 ({stale_count} 只过期, 今日覆盖 {today_coverage:.0%})")
 
     # ====== 第二步：今日数据注入（强制刷新时必跑，正常时已有今日数据则跳过）======
     skip_injection = (not force_refresh) and (today_coverage > 0.95)
@@ -210,15 +726,15 @@ def load_all_recent_data(codes, lookback_days=30):
         st.session_state['force_refresh'] = False  # 用完即清
 
     if skip_injection:
-        progress_bar.progress(0.40, text=f"📡 今日数据已齐全（{today_coverage:.0%}），跳过注入 ⚡")
+        progress_bar.progress(0.40, text=f"◈ 今日数据已齐全（{today_coverage:.0%}），跳过注入 ⚡")
     else:
-        progress_bar.progress(0.28, text=f"📡 今日覆盖率 {today_coverage:.0%}，拉取最新数据...")
+        progress_bar.progress(0.28, text=f"◈ 今日覆盖率 {today_coverage:.0%}，拉取最新数据...")
         BATCH_SIZE = 200
         batches = [codes[i:i + BATCH_SIZE] for i in range(0, len(codes), BATCH_SIZE)]
 
         for i, batch in enumerate(batches):
             progress_bar.progress(0.28 + 0.12 * (i + 1) / len(batches),
-                                  text=f"📡 今日注入 {i+1}/{len(batches)} 批...")
+                                  text=f"◈ 今日注入 {i+1}/{len(batches)} 批...")
             try:
                 hist = yf.download(tickers=batch, period="3d", progress=False)
                 if hist is None or hist.empty:
@@ -255,11 +771,11 @@ def load_all_recent_data(codes, lookback_days=30):
             except Exception:
                 pass
 
-        progress_bar.progress(0.40, text=f"📡 今日数据注入: {injected} 只")
+        progress_bar.progress(0.40, text=f"◈ 今日数据注入: {injected} 只")
 
     # ====== 第三步：如果 CSV 过期，全量更新 + 回写 ======
     if stale_count > len(codes) * 0.3:
-        progress_bar.progress(0.42, text=f"⏳ {stale_count} 只过期，全量更新...")
+        progress_bar.progress(0.42, text=f"◈ {stale_count} 只过期，全量更新...")
 
         batches = [codes[i:i + BATCH_SIZE] for i in range(0, len(codes), BATCH_SIZE)]
         updated = 0
@@ -267,7 +783,7 @@ def load_all_recent_data(codes, lookback_days=30):
 
         for i, batch in enumerate(batches):
             progress_bar.progress(0.42 + 0.54 * (i + 1) / len(batches),
-                                  text=f"⏳ 全量更新 {i+1}/{len(batches)} 批...")
+                                  text=f"◈ 全量更新 {i+1}/{len(batches)} 批...")
             try:
                 hist = yf.download(tickers=batch, period="30d", progress=False)
                 codes_in_batch = set()
@@ -316,11 +832,11 @@ def load_all_recent_data(codes, lookback_days=30):
         for code, stock_data in fresh_all_data.items():
             all_data[code] = stock_data
 
-        progress_bar.progress(0.96, text=f"✅ CSV 更新: {updated} 只")
+        progress_bar.progress(0.96, text=f"◈ CSV 更新: {updated} 只")
         if updated > 0:
-            st.toast(f"💾 {updated} 只股票CSV已刷新，下次秒开", icon="✅")
+            st.toast(f"◆ {updated} 只股票CSV已刷新，下次秒开", icon="✅")
 
-    progress_bar.progress(1.0, text=f"✅ 加载完成: {len(all_data)} 只 (今日注入 {injected})")
+    progress_bar.progress(1.0, text=f"◈ 加载完成: {len(all_data)} 只 (今日注入 {injected})")
     progress_bar.empty()
     return all_data, failed
 
@@ -332,7 +848,7 @@ def cloud_load_data():
     snapshot_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "stock_snapshot.csv.gz")
 
     if not os.path.exists(snapshot_path):
-        st.warning("⚠️ 未找到 stock_snapshot.csv.gz，云端暂无数据。")
+        st.warning("◆ 未找到 stock_snapshot.csv.gz，云端暂无数据。")
         return {}
 
     df = pd.read_csv(snapshot_path, compression='gzip')
@@ -559,12 +1075,12 @@ def save_signals(all_candidates):
 def show_signal_review():
     """信号复盘面板：查看历史信号的实际表现"""
     if not os.path.exists(SIGNAL_FILE):
-        st.info("📋 暂无历史信号。选股后会自动记录。")
+        st.info("◆ 暂无历史信号。选股后会自动记录。")
         return
 
     df = pd.read_csv(SIGNAL_FILE)
     if len(df) == 0:
-        st.info("📋 暂无历史信号。")
+        st.info("◆ 暂无历史信号。")
         return
 
     # ---- 统计卡片 ----
@@ -575,7 +1091,7 @@ def show_signal_review():
     last_date = str(dates[-1])
     first_str = f"{first_date[:4]}-{first_date[4:6]}-{first_date[6:]}" if len(first_date) >= 8 else first_date
     last_str = f"{last_date[:4]}-{last_date[4:6]}-{last_date[6:]}" if len(last_date) >= 8 else last_date
-    st.caption(f"📋 共 {total} 条信号，{len(dates)} 个交易日（{first_str} ~ {last_str}）")
+    st.caption(f"◆ 共 {total} 条信号，{len(dates)} 个交易日（{first_str} ~ {last_str}）")
 
     col1, col2, col3, col4 = st.columns(4)
 
@@ -610,7 +1126,7 @@ def show_signal_review():
 
     # ---- 详细表格 ----
     if len(reviewable) > 0:
-        st.subheader("📊 最近信号详情")
+        st.subheader("◆ 最近信号详情")
 
         rows = []
         for _, row in reviewable.tail(30).iterrows():
@@ -626,8 +1142,8 @@ def show_signal_review():
             d7 = f"{ret7:+.1f}%" if ret7 is not None else "—"
 
             # 颜色标记
-            d3_icon = "🟢" if (ret3 or 0) > 0 else ("🔴" if (ret3 or 0) < 0 else "⚪")
-            d5_icon = "🟢" if (ret5 or 0) > 0 else ("🔴" if (ret5 or 0) < 0 else "⚪")
+            d3_icon = "◆" if (ret3 or 0) > 0 else ("◈" if (ret3 or 0) < 0 else "◇")
+            d5_icon = "◆" if (ret5 or 0) > 0 else ("◈" if (ret5 or 0) < 0 else "◇")
 
             stock_name = row.get('name', '') or ''
             rows.append({
@@ -646,7 +1162,7 @@ def show_signal_review():
         st.dataframe(df_show, use_container_width=True, hide_index=True)
 
         # 模式胜率对比
-        st.subheader("📊 各模式胜率对比")
+        st.subheader("◆ 各模式胜率对比")
         mode_stats = []
         for mode in reviewable['mode'].unique():
             if pd.isna(mode) or not mode:
@@ -670,10 +1186,10 @@ def show_signal_review():
             st.dataframe(pd.DataFrame(mode_stats), use_container_width=True, hide_index=True)
 
     else:
-        st.info("最近3天内的信号需要再等等才能复盘。")
+        st.info("◆ 最近3天内的信号需要再等等才能复盘。")
 
     # 刷新按钮
-    if st.button("🔄 刷新复盘数据", key="refresh_review"):
+    if st.button("◆ 刷新复盘数据", key="refresh_review"):
         st.cache_data.clear()
         st.rerun()
 
@@ -726,7 +1242,7 @@ def display_manual_results(results, picked_date_str):
     total = len(results)
     matched = sum(1 for r in results if r.get('system_picked'))
 
-    st.subheader("📊 分析结果")
+    st.subheader("◆ 分析结果")
 
     col1, col2, col3 = st.columns(3)
     with col1:
@@ -743,7 +1259,7 @@ def display_manual_results(results, picked_date_str):
             '代码': r['code'],
             '名称': r.get('name', '') or '',
             '板块': r.get('sector', '') or '',
-            '系统选中': '✅' if r.get('system_picked') else '❌',
+            '系统选中': '◆' if r.get('system_picked') else '◇',
             '系统模式': r.get('system_mode', '') or '—',
         })
     st.dataframe(pd.DataFrame(rows), use_container_width=True, hide_index=True)
@@ -752,23 +1268,23 @@ def display_manual_results(results, picked_date_str):
     for r in results:
         analysis_text = r.get('ai_analysis', '')
         if analysis_text:
-            with st.expander(f"🤖 {r['code']} {r.get('name', '')} - AI分析报告"):
+            with st.expander(f"◆ {r['code']} {r.get('name', '')} — AI分析报告"):
                 st.markdown(analysis_text)
 
     # 保存
     save_manual_picks(results)
-    st.success(f"✅ 已保存 {len(results)} 条手动选股记录")
+    st.success(f"◆ 已保存 {len(results)} 条手动选股记录")
 
 
 def perform_manual_analysis(codes, signal_date_str):
     """对手动输入的股票列表执行AI分析"""
-    progress = st.progress(0, text="准备分析...")
+    progress = st.progress(0, text="◈ 准备分析...")
 
     all_data = st.session_state.get('all_data', {})
     results = []
 
     for i, code in enumerate(codes):
-        progress.progress((i + 1) / len(codes), text=f"正在分析 {code} ({i+1}/{len(codes)})...")
+        progress.progress((i + 1) / len(codes), text=f"◈ 正在分析 {code} ({i+1}/{len(codes)})...")
 
         # 获取股票数据
         if code in all_data:
@@ -778,10 +1294,10 @@ def perform_manual_analysis(codes, signal_date_str):
                 ticker = yf.Ticker(code)
                 stock_df = ticker.history(period="30d")
                 if stock_df is None or len(stock_df) < 5:
-                    st.warning(f"⚠️ {code} 数据不足，跳过")
+                    st.warning(f"◆ {code} 数据不足，跳过")
                     continue
             except Exception:
-                st.warning(f"⚠️ {code} 数据获取失败，跳过")
+                st.warning(f"◆ {code} 数据获取失败，跳过")
                 continue
 
         # 检查系统是否会选中（用三种模式分别测试）
@@ -833,12 +1349,12 @@ def perform_manual_analysis(codes, signal_date_str):
     if results:
         display_manual_results(results, signal_date_str)
     else:
-        st.warning("没有成功分析任何股票")
+        st.warning("◆ 没有成功分析任何股票")
 
 
 def show_manual_review():
     """手动选股复盘界面"""
-    st.subheader("📝 输入你想复盘的股票")
+    st.subheader("◆ 输入你想复盘的股票")
 
     col1, col2 = st.columns([3, 1])
     with col1:
@@ -850,13 +1366,13 @@ def show_manual_review():
         )
     with col2:
         review_date = st.date_input("复盘日期", value=china_now(), key="manual_review_date")
-        if st.button("🔍 开始分析", type="primary", use_container_width=True, key="manual_analyze_btn"):
+        if st.button("◆ 开始分析", type="primary", use_container_width=True, key="manual_analyze_btn"):
             if manual_input.strip():
                 st.session_state['trigger_manual_analysis'] = True
                 st.session_state['manual_codes'] = [c.strip() for c in manual_input.split('\n') if c.strip()]
                 st.session_state['manual_date'] = review_date.strftime('%Y%m%d')
             else:
-                st.warning("请输入至少一只股票代码")
+                st.warning("◆ 请输入至少一只股票代码")
 
     # 触发分析
     if st.session_state.get('trigger_manual_analysis') and st.session_state.get('manual_codes'):
@@ -869,7 +1385,7 @@ def show_manual_review():
     # 历史手动选股回顾
     if os.path.exists(MANUAL_PICKS_FILE) and os.path.getsize(MANUAL_PICKS_FILE) > 10:
         st.divider()
-        st.subheader("📊 历史手动选股回顾")
+        st.subheader("◆ 历史手动选股回顾")
         try:
             df_hist = pd.read_csv(MANUAL_PICKS_FILE)
             if len(df_hist) > 0:
@@ -898,13 +1414,13 @@ def show_manual_review():
                             ret = None
                         ret_str = f"{ret:+.1f}%" if ret is not None else "—"
                     else:
-                        ret_str = "⏳"
+                        ret_str = "◆"
 
                     hist_rows.append({
                         '日期': f"{sdate[:4]}-{sdate[4:6]}-{sdate[6:]}" if len(sdate) >= 8 else sdate,
                         '代码': row['code'],
                         '名称': row.get('name', '') or '',
-                            '系统选中': '✅' if row.get('system_picked') else '❌',
+                            '系统选中': '◆' if row.get('system_picked') else '◇',
                         '3日收益': ret_str,
                     })
 
@@ -916,12 +1432,12 @@ def show_manual_review():
 
 # ==================== 选股结果展示 ====================
 def show_screening_results(results, all_stats):
-    st.header("📋 选股结果")
+    st.header("◆ 选股结果")
 
     tabs = st.tabs([
-        f"🔴 严格模式 ({len(results['strict'])}只)",
-        f"🟡 正常模式 ({len(results['normal'])}只)",
-        f"🟢 宽松模式 ({len(results['loose'])}只)",
+        f"◆ STRICT 严格 ({len(results['strict'])}只)",
+        f"◈ NORMAL 正常 ({len(results['normal'])}只)",
+        f"◇ LOOSE 宽松 ({len(results['loose'])}只)",
     ])
 
     for tab_idx, mode in enumerate(["strict", "normal", "loose"]):
@@ -930,8 +1446,8 @@ def show_screening_results(results, all_stats):
             stats = all_stats[mode]
 
             if not candidates:
-                st.info(f"当前模式无符合条件的股票")
-                with st.expander("📊 筛选漏斗"):
+                st.info(f"◆ 当前模式无符合条件的股票")
+                with st.expander("◆ 筛选漏斗"):
                     st.write(f"总扫描: {stats['total']} → 有涨停: {stats['has_limit_up']} → "
                              f"连板达标: {stats['consecutive_ok']} → 实体板达标: {stats['entity_ratio_ok']} → "
                              f"回调天数: {stats['pullback_days_ok']} → 回调幅度: {stats['pullback_range_ok']} → "
@@ -965,11 +1481,11 @@ def show_screening_results(results, all_stats):
                         st.metric("实体板", f"{code_data['entity_ratio']:.0f}%")
                     with col6:
                         btn_key = f"ai_{mode}_{code}"
-                        if st.button(f"🤖 AI分析", key=btn_key, use_container_width=True):
+                        if st.button(f"◆ AI分析", key=btn_key, use_container_width=True):
                             st.session_state[f'analyze_{code}'] = True
 
                     if st.session_state.get(f'analyze_{code}'):
-                        st.write(f"🤖 正在对 {code} 进行AI深度分析（约8-15秒）...")
+                        st.write(f"◆ 正在对 {code} 进行AI深度分析（约8-15秒）...")
                         try:
                             stock_df = st.session_state.get('all_data', {}).get(code)
                             market_ctx = ai_analyzer.get_market_context()
@@ -982,12 +1498,12 @@ def show_screening_results(results, all_stats):
                             st.session_state[f'analyze_{code}'] = False
 
                     if st.session_state.get(f'analysis_result_{code}'):
-                        with st.expander(f"📝 {code} AI分析报告", expanded=True):
+                        with st.expander(f"◆ {code} AI分析报告", expanded=True):
                             st.markdown(st.session_state[f'analysis_result_{code}'])
 
                     st.divider()
 
-            with st.expander("📊 筛选漏斗详情"):
+            with st.expander("◆ 筛选漏斗详情"):
                 stages = [
                     ("总扫描", stats['total']),
                     ("有涨停", stats['has_limit_up']),
@@ -999,7 +1515,7 @@ def show_screening_results(results, all_stats):
                     ("量能达标", stats['volume_shrink_ok']),
                     ("阳线达标", stats['yang_ok']),
                     ("放量达标", stats['volume_expand_ok']),
-                    ("✅ 最终候选", stats['final']),
+                    ("◆ 最终候选", stats['final']),
                 ]
                 cols_funnel = st.columns(len(stages))
                 for i, (label, val) in enumerate(stages):
@@ -1014,7 +1530,7 @@ def show_screening_results(results, all_stats):
                 all_candidates.append({**c, 'mode': mode})
         df_export = pd.DataFrame(all_candidates)
         st.download_button(
-            label="📥 导出 CSV",
+            label="◆ 导出 CSV",
             data=df_export.to_csv(index=False, encoding='utf-8-sig'),
             file_name=f"candidates_all_{china_now().strftime('%Y%m%d')}.csv",
             mime="text/csv",
@@ -1024,9 +1540,13 @@ def show_screening_results(results, all_stats):
 
 # ==================== 主界面 ====================
 def main():
-    st.title("📈 A股连板回调策略")
+    # 注入设计系统 CSS
+    inject_design_system()
 
-    # 实时时间戳
+    # 标题栏
+    st.title("◆ NEON VAULT")
+
+    # 实时时间戳 + 状态
     now = china_now()
     market_status = ""
     weekday = now.weekday()
@@ -1046,28 +1566,30 @@ def main():
     else:
         market_status = "🔴 已收盘"
 
-    st.caption(f"🕐 {now.strftime('%Y-%m-%d %H:%M')}  {market_status}"
+    st.caption(f"◈ {now.strftime('%Y-%m-%d %H:%M')}  |  {market_status}"
                + ("  |  收盘后点「强制刷新」获取最终数据" if market_status in ["🟡 刚收盘（数据更新中）", "🔴 已收盘"] else ""))
+
+    st.divider()
 
     # ---- 侧边栏 ----
     with st.sidebar:
-        st.header("⚙️ 控制面板")
+        st.markdown("### ◆ 控制面板")
 
         # 页面导航
-        st.radio("📌 导航", ["📋 选股", "📊 复盘"], key="nav_page",
+        st.radio("◆ 导航", ["◆ 选股", "◆ 复盘"], key="nav_page",
                  help="切换选股和复盘界面")
         st.divider()
 
-        st.markdown("**三种模式说明**")
-        st.markdown("- 🔴 **严格**: 历史回测最优参数，信号少但精准")
-        st.markdown("- 🟡 **正常**: 放宽实体板/阳线要求，日常推荐")
-        st.markdown("- 🟢 **宽松**: 几乎只保留连板+回调条件，弱势市场用")
+        st.markdown("**◆ 三种模式**")
+        st.markdown("- **STRICT** 严格 — 历史回测最优参数，信号少但精准")
+        st.markdown("- **NORMAL** 正常 — 放宽实体板/阳线要求，日常推荐")
+        st.markdown("- **LOOSE** 宽松 — 几乎只保留连板+回调条件，弱势市场用")
 
         st.divider()
-        st.caption(f"Powered by DeepSeek AI")
+        st.caption("NEON VAULT · DEEPSEEK AI")
 
     # ---- 大盘概览 ----
-    st.header("📊 大盘概况")
+    st.header("◆ 大盘概况")
     market = get_market_data()
 
     cols = st.columns(3)
@@ -1081,15 +1603,15 @@ def main():
                     delta=delta_str,
                 )
                 st.caption(
-                    f"5日高 {data['high_5d']:.0f} | "
+                    f"5日高 {data['high_5d']:.0f}  |  "
                     f"5日低 {data['low_5d']:.0f}"
                 )
             else:
-                st.metric(label=name, value="获取失败")
+                st.metric(label=name, value="—")
     st.divider()
 
     # 获取当前页面
-    page = st.session_state.get('nav_page', '📋 选股')
+    page = st.session_state.get('nav_page', '◆ 选股')
 
     # ---- 选股逻辑（无论哪个页面，触发后都执行） ----
     if 'trigger_scan' in st.session_state:
@@ -1125,37 +1647,37 @@ def main():
         all_stats = None
 
     # ============ 选股页面 ============
-    if page == '📋 选股':
+    if page == '◆ 选股':
         # 操作按钮
         col_btn1, col_btn2, col_btn3 = st.columns([1, 1, 1])
         with col_btn1:
-            if st.button("🚀 开始当日选股", type="primary", use_container_width=True):
+            if st.button("◆ 开始当日选股", type="primary", use_container_width=True):
                 st.session_state['trigger_scan'] = True
                 st.session_state['force_refresh'] = False
                 st.rerun()
         with col_btn2:
-            if st.button("🔄 重新扫描", use_container_width=True):
+            if st.button("◆ 重新扫描", use_container_width=True):
                 st.session_state.clear()
                 st.rerun()
         with col_btn3:
-            if st.button("🔄 强制刷新（收盘后用）", use_container_width=True):
+            if st.button("◆ 强制刷新（收盘后用）", use_container_width=True):
                 st.session_state['trigger_scan'] = True
                 st.session_state['force_refresh'] = True
                 st.rerun()
 
         if results is None:
-            st.info("👆 点击 **开始当日选股** 启动扫描")
+            st.info("◆ 点击 **开始当日选股** 启动扫描")
             return
 
         show_screening_results(results, all_stats)
 
     # ============ 复盘页面 ============
-    elif page == '📊 复盘':
-        st.header("📋 信号复盘")
+    elif page == '◆ 复盘':
+        st.header("◆ 信号复盘")
         show_signal_review()
 
         st.divider()
-        st.header("✍️ 手动选股复盘")
+        st.header("◆ 手动选股复盘")
         show_manual_review()
 
 if __name__ == "__main__":
