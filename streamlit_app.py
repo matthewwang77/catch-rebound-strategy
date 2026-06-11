@@ -336,7 +336,6 @@ def cloud_load_data():
         return {}
 
     df = pd.read_csv(snapshot_path, compression='gzip')
-    st.info(f"☁️ 云端模式：快照加载 {df['code'].nunique()} 只股票（秒级）")
 
     all_data = {}
     for code, group in df.groupby('code'):
@@ -474,8 +473,6 @@ def screen_all_modes(all_data):
                 active_stocks[code] = stock_data
         except Exception:
             pass
-
-    st.write(f"⚡ 预筛选：{len(all_data)} → {len(active_stocks)} 只曾有涨停 ({len(active_stocks)*100//max(len(all_data),1)}%)")
 
     for mode in modes:
         params = screener.SCREEN_MODES[mode].copy()
@@ -1029,21 +1026,15 @@ def main():
 
         if len(codes) > 100:
             # 本地模式：从 CSV 缓存极速加载（秒级）
-            st.write("📂 正在从本地缓存加载数据...")
             all_data, failed_codes = load_all_recent_data(codes)
 
             st.session_state['all_data'] = all_data
-            st.success(f"✅ 数据加载完成：{len(all_data)} 只有效数据（本地缓存，秒级）"
-                       + (f"，{len(failed_codes)} 只失败" if failed_codes else ""))
         else:
             # 云端模式：没有本地 CSV，从 yfinance 批量下载
-            st.info("☁️ 云端模式：从网络加载数据（首次较慢，后续秒开）")
             all_data = cloud_load_data()
             st.session_state['all_data'] = all_data
-            st.success(f"✅ 云端数据加载完成：{len(all_data)} 只")
 
         # 三模式筛选
-        st.write("🔍 正在用三种模式筛选...")
         results, all_stats = screen_all_modes(all_data)
 
         # 缓存筛选结果，后续点 AI 分析时不再重复扫描
