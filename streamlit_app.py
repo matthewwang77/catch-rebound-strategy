@@ -34,505 +34,392 @@ def inject_design_system():
     css = r"""
     <style>
     /* ============================================================
-       NEON VAULT — CSS Design System
-       Cyber Trading Terminal · 2087
+       NEON VAULT v2 — Quantum Trading Terminal
        ============================================================ */
 
-    /* --- Fonts --- */
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Share+Tech+Mono&display=swap');
 
-    /* --- CSS Variables --- */
     :root {
-      --bg-void: #06060B;
-      --bg-surface: #0A0A16;
-      --bg-card: rgba(12, 12, 28, 0.85);
-      --bg-card-hover: rgba(16, 16, 36, 0.92);
-      --border-subtle: rgba(0, 240, 255, 0.08);
-      --border-glow: rgba(0, 240, 255, 0.20);
-      --border-active: rgba(0, 240, 255, 0.45);
-      --accent-cyan: #00F0FF;
-      --accent-cyan-dim: #0099AA;
-      --accent-purple: #7B2FFF;
-      --accent-green: #00FF88;
-      --accent-red: #FF3366;
-      --accent-amber: #FFB800;
-      --text-primary: #E0E0F0;
-      --text-secondary: #8888AA;
-      --text-muted: #555577;
-      --font-display: 'Orbitron', 'Helvetica Neue', sans-serif;
-      --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
-      --glow-cyan: 0 0 12px rgba(0, 240, 255, 0.3), 0 0 2px rgba(0, 240, 255, 0.6);
-      --glow-green: 0 0 10px rgba(0, 255, 136, 0.25);
-      --glow-red: 0 0 10px rgba(255, 51, 102, 0.25);
-      --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-      --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --cyan: #00F0FF;
+      --purple: #7B2FFF;
+      --green: #00FF88;
+      --red: #FF3366;
+      --amber: #FFB800;
+      --bg: #050508;
+      --surface: #0A0B14;
+      --card: rgba(13, 13, 30, 0.9);
     }
 
-    /* --- GLOBAL OVERRIDES — broadest selectors first --- */
-
+    /* === BASE === */
     html, body, #root, [data-testid="stAppViewContainer"] {
-      background-color: #06060B !important;
-      color: #E0E0F0 !important;
+      background: #050508 !important;
+      color: #D0D0E8 !important;
     }
 
     body {
-      font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace !important;
+      font-family: 'JetBrains Mono', 'SF Mono', monospace !important;
     }
 
-    /* Hex grid pattern on the main app container */
+    /* === ANIMATED DOT GRID BACKGROUND === */
     [data-testid="stAppViewContainer"] {
-      background:
-        linear-gradient(rgba(0, 240, 255, 0.015) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 240, 255, 0.015) 1px, transparent 1px),
-        radial-gradient(ellipse at 50% 0%, rgba(0, 240, 255, 0.04) 0%, transparent 70%),
-        #06060B !important;
-      background-size: 24px 24px, 24px 24px, 100% 100%, 100% 100% !important;
+      background-color: #050508 !important;
+      background-image:
+        radial-gradient(circle, rgba(0,240,255,0.06) 1px, transparent 1px),
+        radial-gradient(circle at 20% 30%, rgba(123,47,255,0.04) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(0,240,255,0.03) 0%, transparent 50%),
+        radial-gradient(circle at 50% 10%, rgba(0,240,255,0.05) 0%, transparent 40%);
+      background-size: 20px 20px, 100% 100%, 100% 100%, 100% 100%;
+      background-position: 0 0, 0 0, 0 0, 0 0;
     }
 
-    /* Scan line overlay */
+    /* === SCAN LINES === */
     [data-testid="stAppViewContainer"]::after {
       content: '';
       position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 2px,
-        rgba(0, 0, 0, 0.03) 2px,
-        rgba(0, 0, 0, 0.03) 4px
-      );
+      inset: 0;
+      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.025) 2px, rgba(0,0,0,0.025) 4px);
       pointer-events: none;
       z-index: 99999;
     }
 
-    /* --- Scrollbar --- */
-    ::-webkit-scrollbar { width: 6px; height: 6px; }
-    ::-webkit-scrollbar-track { background: #06060B; }
-    ::-webkit-scrollbar-thumb {
-      background: rgba(0, 240, 255, 0.2);
-      border-radius: 3px;
-    }
-    ::-webkit-scrollbar-thumb:hover { background: rgba(0, 240, 255, 0.4); }
+    /* === SCROLLBAR === */
+    ::-webkit-scrollbar { width: 5px; height: 5px; }
+    ::-webkit-scrollbar-track { background: #050508; }
+    ::-webkit-scrollbar-thumb { background: rgba(0,240,255,0.15); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(0,240,255,0.35); }
 
-    /* ============================================================
-       TYPOGRAPHY
-       ============================================================ */
-
-    h1, h2, h3, h4, h5, h6 {
+    /* === HEADINGS === */
+    h1, h2, h3 {
       font-family: 'Orbitron', 'Helvetica Neue', sans-serif !important;
-      letter-spacing: 0.04em !important;
       text-transform: uppercase;
+      letter-spacing: 0.05em !important;
     }
 
     h1 {
-      font-weight: 800 !important;
-      font-size: 2rem !important;
-      background: linear-gradient(135deg, #00F0FF 0%, #00C8E0 40%, #7B2FFF 100%);
+      font-weight: 900 !important;
+      font-size: 2.4rem !important;
+      text-align: center;
+      background: linear-gradient(135deg, #00F0FF 0%, #00E5FF 25%, #7B2FFF 60%, #C44AFF 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      text-shadow: none !important;
-      letter-spacing: 0.06em !important;
-      padding-bottom: 0.3rem;
-      border-bottom: 2px solid rgba(0, 240, 255, 0.15);
+      filter: drop-shadow(0 0 18px rgba(0,240,255,0.3));
+      padding: 0.25rem 0 0.5rem;
+      margin-bottom: 0;
+      border-bottom: 2px solid rgba(0,240,255,0.12);
     }
 
     h2 {
       font-weight: 700 !important;
-      font-size: 1.25rem !important;
+      font-size: 1.15rem !important;
       color: #00F0FF !important;
-      letter-spacing: 0.05em !important;
+      border-left: 3px solid #00F0FF;
+      padding-left: 12px !important;
     }
 
     h3 {
       font-weight: 600 !important;
-      font-size: 1rem !important;
-      color: #E0E0F0 !important;
-      letter-spacing: 0.03em !important;
+      font-size: 0.9rem !important;
+      color: #B0B0D0 !important;
     }
 
-    /* Monospace all body text */
+    /* === BODY TEXT === */
     p, span, div, label, caption, li, td, th {
-      font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace !important;
+      font-family: 'JetBrains Mono', 'SF Mono', monospace !important;
     }
 
     [data-testid="stCaption"] {
-      font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace !important;
-      font-size: 0.75rem !important;
-      color: #8888AA !important;
-      letter-spacing: 0.02em;
+      font-family: 'JetBrains Mono', 'SF Mono', monospace !important;
+      font-size: 0.7rem !important;
+      color: #6666AA !important;
     }
 
-    /* ============================================================
-       SIDEBAR — Dark Glass Control Panel
-       ============================================================ */
-
+    /* === SIDEBAR === */
     [data-testid="stSidebar"] {
-      background: linear-gradient(180deg,
-        rgba(10, 10, 24, 0.99) 0%,
-        rgba(8, 8, 18, 0.99) 100%
-      ) !important;
-      border-right: 1px solid rgba(0, 240, 255, 0.08) !important;
-      backdrop-filter: blur(20px);
+      background: linear-gradient(180deg, rgba(8,8,20,0.995) 0%, rgba(5,5,14,0.995) 100%) !important;
+      border-right: 1px solid rgba(0,240,255,0.06) !important;
+      box-shadow: 2px 0 30px rgba(0,240,255,0.02);
     }
 
-    [data-testid="stSidebar"] h1,
-    [data-testid="stSidebar"] h2,
     [data-testid="stSidebar"] h3 {
-      font-family: 'Orbitron', 'Helvetica Neue', sans-serif !important;
+      font-family: 'Orbitron', sans-serif !important;
       color: #00F0FF !important;
-      font-size: 0.9rem !important;
-      letter-spacing: 0.08em !important;
-      text-transform: uppercase;
+      font-size: 0.85rem !important;
+      letter-spacing: 0.1em !important;
     }
 
-    [data-testid="stSidebar"] p {
-      font-size: 0.72rem !important;
-      color: #8888AA !important;
-      line-height: 1.6;
-    }
+    [data-testid="stSidebar"] p { font-size: 0.7rem; color: #7777AA; line-height: 1.7; }
 
-    [data-testid="stSidebar"] [data-testid="stCaption"] {
-      font-size: 0.65rem !important;
-      color: #555577 !important;
-      text-align: center;
-      letter-spacing: 0.06em;
-    }
-
-    [data-testid="stSidebar"] hr {
-      border-color: rgba(0, 240, 255, 0.08) !important;
-      margin: 1rem 0 !important;
-    }
-
-    /* Sidebar radio buttons */
     [data-testid="stSidebar"] [data-testid="stRadio"] label {
-      font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace !important;
-      font-size: 0.78rem !important;
-      color: #8888AA !important;
-      padding: 8px 12px !important;
-      border-radius: 6px !important;
-      transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.75rem;
+      color: #7777AA;
+      padding: 10px 14px !important;
+      border-radius: 6px;
       border: 1px solid transparent;
+      transition: all 0.2s;
     }
     [data-testid="stSidebar"] [data-testid="stRadio"] label:hover {
-      background: rgba(0, 240, 255, 0.05) !important;
-      border-color: rgba(0, 240, 255, 0.20) !important;
-      color: #00F0FF !important;
+      background: rgba(0,240,255,0.04);
+      border-color: rgba(0,240,255,0.2);
+      color: #00F0FF;
     }
 
-    /* ============================================================
-       METRIC CARDS — Glowing Data Orbs
-       ============================================================ */
+    [data-testid="stSidebar"] hr { border-color: rgba(0,240,255,0.06) !important; }
 
+    /* === METRIC CARDS === */
     [data-testid="stMetric"] {
-      background: rgba(12, 12, 28, 0.85) !important;
-      border: 1px solid rgba(0, 240, 255, 0.08) !important;
-      border-radius: 10px !important;
-      padding: 14px 16px !important;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      background: linear-gradient(135deg, rgba(13,13,30,0.95) 0%, rgba(10,10,22,0.95) 100%) !important;
+      border: 1px solid rgba(0,240,255,0.1) !important;
+      border-radius: 12px !important;
+      padding: 16px 20px !important;
       position: relative;
       overflow: hidden;
+      transition: all 0.3s ease;
     }
 
+    /* Corner accent */
     [data-testid="stMetric"]::before {
       content: '';
       position: absolute;
-      top: 0; left: 0; right: 0;
+      top: 0; right: 0;
+      width: 30px; height: 30px;
+      border-top: 2px solid rgba(0,240,255,0.2);
+      border-right: 2px solid rgba(0,240,255,0.2);
+      border-radius: 0 12px 0 0;
+      transition: all 0.3s ease;
+    }
+
+    /* Bottom glow bar */
+    [data-testid="stMetric"]::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 10%; right: 10%;
       height: 1px;
-      background: linear-gradient(90deg, transparent, #00F0FF, transparent);
+      background: linear-gradient(90deg, transparent, rgba(0,240,255,0.3), transparent);
       opacity: 0;
-      transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: opacity 0.3s ease;
     }
 
     [data-testid="stMetric"]:hover {
-      border-color: rgba(0, 240, 255, 0.20) !important;
-      box-shadow: 0 0 12px rgba(0, 240, 255, 0.3), 0 0 2px rgba(0, 240, 255, 0.6);
-      transform: translateY(-1px);
+      border-color: rgba(0,240,255,0.3) !important;
+      box-shadow: 0 0 20px rgba(0,240,255,0.15), 0 0 60px rgba(0,240,255,0.05), inset 0 0 30px rgba(0,240,255,0.02);
+      transform: translateY(-2px);
     }
-
+    [data-testid="stMetric"]:hover::after { opacity: 1; }
     [data-testid="stMetric"]:hover::before {
-      opacity: 1;
+      border-color: rgba(0,240,255,0.5);
+      box-shadow: 0 0 8px rgba(0,240,255,0.2);
     }
 
     [data-testid="stMetric"] label {
-      font-family: 'Orbitron', 'Helvetica Neue', sans-serif !important;
-      font-size: 0.65rem !important;
-      font-weight: 600 !important;
-      color: #8888AA !important;
-      letter-spacing: 0.08em !important;
-      text-transform: uppercase;
+      font-family: 'Orbitron', sans-serif !important;
+      font-size: 0.6rem !important;
+      font-weight: 700 !important;
+      color: #6666AA !important;
+      letter-spacing: 0.1em !important;
     }
 
     [data-testid="stMetricValue"] {
-      font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace !important;
-      font-size: 1.6rem !important;
-      font-weight: 600 !important;
-      color: #E0E0F0 !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 1.8rem !important;
+      font-weight: 700 !important;
+      color: #E8E8FF !important;
+      text-shadow: 0 0 8px rgba(0,240,255,0.15);
     }
 
     [data-testid="stMetricDelta"] {
-      font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace !important;
-      font-size: 0.85rem !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.9rem !important;
+      font-weight: 600;
     }
 
-    /* ============================================================
-       BUTTONS — Neon Action Triggers
-       ============================================================ */
-
+    /* === BUTTONS === */
     .stButton > button {
-      font-family: 'Orbitron', 'Helvetica Neue', sans-serif !important;
+      font-family: 'Orbitron', sans-serif !important;
       font-weight: 600 !important;
-      font-size: 0.75rem !important;
-      letter-spacing: 0.06em !important;
+      font-size: 0.7rem !important;
+      letter-spacing: 0.08em !important;
       text-transform: uppercase;
       border-radius: 8px !important;
-      padding: 10px 20px !important;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-      position: relative;
-      overflow: hidden;
+      padding: 12px 24px !important;
+      transition: all 0.3s ease !important;
     }
 
     button[kind="primary"] {
-      background: linear-gradient(135deg, rgba(0, 240, 255, 0.15) 0%, rgba(123, 47, 255, 0.15) 100%) !important;
-      border: 1px solid rgba(0, 240, 255, 0.45) !important;
+      background: linear-gradient(135deg, rgba(0,240,255,0.12), rgba(123,47,255,0.12)) !important;
+      border: 1px solid rgba(0,240,255,0.4) !important;
       color: #00F0FF !important;
     }
     button[kind="primary"]:hover {
-      background: linear-gradient(135deg, rgba(0, 240, 255, 0.25) 0%, rgba(123, 47, 255, 0.25) 100%) !important;
-      box-shadow: 0 0 12px rgba(0, 240, 255, 0.3), 0 0 30px rgba(0, 240, 255, 0.15) !important;
+      background: linear-gradient(135deg, rgba(0,240,255,0.22), rgba(123,47,255,0.22)) !important;
+      box-shadow: 0 0 20px rgba(0,240,255,0.3), 0 0 50px rgba(0,240,255,0.1) !important;
       transform: translateY(-2px);
       border-color: #00F0FF !important;
     }
 
     button[kind="secondary"] {
-      background: rgba(12, 12, 28, 0.8) !important;
-      border: 1px solid rgba(0, 240, 255, 0.08) !important;
-      color: #8888AA !important;
+      background: rgba(13,13,30,0.8) !important;
+      border: 1px solid rgba(0,240,255,0.08) !important;
+      color: #7777AA !important;
     }
     button[kind="secondary"]:hover {
-      background: rgba(0, 240, 255, 0.06) !important;
-      border-color: rgba(0, 240, 255, 0.20) !important;
+      background: rgba(0,240,255,0.05) !important;
+      border-color: rgba(0,240,255,0.2) !important;
       color: #00F0FF !important;
-      box-shadow: 0 0 15px rgba(0, 240, 255, 0.1);
     }
 
-    /* Download button */
     .stDownloadButton > button {
-      font-family: 'Orbitron', 'Helvetica Neue', sans-serif !important;
-      font-weight: 600 !important;
-      font-size: 0.75rem !important;
-      letter-spacing: 0.06em !important;
-      background: rgba(0, 255, 136, 0.08) !important;
-      border: 1px solid rgba(0, 255, 136, 0.3) !important;
+      font-family: 'Orbitron', sans-serif !important;
+      background: rgba(0,255,136,0.06) !important;
+      border: 1px solid rgba(0,255,136,0.25) !important;
       color: #00FF88 !important;
       border-radius: 8px !important;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
     }
     .stDownloadButton > button:hover {
-      background: rgba(0, 255, 136, 0.15) !important;
-      box-shadow: 0 0 10px rgba(0, 255, 136, 0.25) !important;
+      background: rgba(0,255,136,0.12) !important;
+      box-shadow: 0 0 15px rgba(0,255,136,0.2) !important;
       border-color: #00FF88 !important;
     }
 
-    /* ============================================================
-       TABS — Segmented Data Channels
-       ============================================================ */
-
-    [data-testid="stTabs"] {
-      margin-top: 0.5rem;
-    }
-
+    /* === TABS === */
     [data-baseweb="tab-list"] {
-      background: rgba(10, 10, 24, 0.6) !important;
+      background: rgba(10,10,24,0.5) !important;
       border-radius: 10px !important;
-      padding: 4px !important;
-      gap: 4px !important;
-      border: 1px solid rgba(0, 240, 255, 0.08);
+      padding: 3px !important;
+      gap: 3px !important;
+      border: 1px solid rgba(0,240,255,0.06);
     }
-
     [data-baseweb="tab"] {
-      font-family: 'Orbitron', 'Helvetica Neue', sans-serif !important;
-      font-size: 0.7rem !important;
-      font-weight: 600 !important;
-      letter-spacing: 0.05em !important;
-      text-transform: uppercase;
-      color: #8888AA !important;
-      border-radius: 8px !important;
-      padding: 8px 20px !important;
-      transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-      border: 1px solid transparent;
-    }
-    [data-baseweb="tab"]:hover {
-      color: #00F0FF !important;
-      background: rgba(0, 240, 255, 0.04) !important;
-    }
-    [data-baseweb="tab"][aria-selected="true"] {
-      color: #00F0FF !important;
-      background: rgba(0, 240, 255, 0.08) !important;
-      border: 1px solid rgba(0, 240, 255, 0.45) !important;
-      box-shadow: 0 0 12px rgba(0, 240, 255, 0.3), 0 0 2px rgba(0, 240, 255, 0.6);
-    }
-
-    /* ============================================================
-       EXPANDERS — Collapsible Data Vaults
-       ============================================================ */
-
-    [data-testid="stExpander"] {
-      background: rgba(12, 12, 28, 0.85) !important;
-      border: 1px solid rgba(0, 240, 255, 0.08) !important;
-      border-radius: 10px !important;
-      margin: 8px 0 !important;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    [data-testid="stExpander"]:hover {
-      border-color: rgba(0, 240, 255, 0.20) !important;
-    }
-    [data-testid="stExpander"] summary {
-      font-family: 'Orbitron', 'Helvetica Neue', sans-serif !important;
-      font-size: 0.75rem !important;
-      font-weight: 600 !important;
-      color: #00F0FF !important;
-      letter-spacing: 0.04em !important;
-      padding: 10px 16px !important;
-    }
-
-    /* ============================================================
-       DATAFRAMES — Precision Data Tables
-       ============================================================ */
-
-    [data-testid="stDataFrame"] {
-      border: 1px solid rgba(0, 240, 255, 0.08) !important;
-      border-radius: 10px !important;
-      overflow: hidden;
-      background: rgba(12, 12, 28, 0.85) !important;
-    }
-
-    [data-testid="stDataFrame"] thead th {
-      font-family: 'Orbitron', 'Helvetica Neue', sans-serif !important;
+      font-family: 'Orbitron', sans-serif !important;
       font-size: 0.65rem !important;
       font-weight: 600 !important;
       letter-spacing: 0.06em !important;
       text-transform: uppercase;
+      color: #6666AA !important;
+      border-radius: 8px !important;
+      padding: 10px 22px !important;
+      border: 1px solid transparent;
+    }
+    [data-baseweb="tab"]:hover { color: #00F0FF; background: rgba(0,240,255,0.03); }
+    [data-baseweb="tab"][aria-selected="true"] {
       color: #00F0FF !important;
-      background: rgba(0, 240, 255, 0.04) !important;
-      border-bottom: 1px solid rgba(0, 240, 255, 0.20) !important;
-      padding: 10px 14px !important;
+      background: rgba(0,240,255,0.07) !important;
+      border-color: rgba(0,240,255,0.35) !important;
+      box-shadow: 0 0 15px rgba(0,240,255,0.2);
     }
 
+    /* === EXPANDERS === */
+    [data-testid="stExpander"] {
+      background: rgba(13,13,30,0.9) !important;
+      border: 1px solid rgba(0,240,255,0.08) !important;
+      border-radius: 10px !important;
+      margin: 6px 0;
+      transition: all 0.3s ease;
+    }
+    [data-testid="stExpander"]:hover { border-color: rgba(0,240,255,0.2); }
+    [data-testid="stExpander"] summary {
+      font-family: 'Orbitron', sans-serif !important;
+      font-size: 0.72rem !important;
+      font-weight: 600;
+      color: #00F0FF !important;
+      padding: 10px 16px !important;
+    }
+
+    /* === TABLES === */
+    [data-testid="stDataFrame"] {
+      border: 1px solid rgba(0,240,255,0.06) !important;
+      border-radius: 10px !important;
+      background: rgba(13,13,30,0.85) !important;
+      overflow: hidden;
+    }
+    [data-testid="stDataFrame"] thead th {
+      font-family: 'Orbitron', sans-serif !important;
+      font-size: 0.6rem !important;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #00F0FF !important;
+      background: rgba(0,240,255,0.03) !important;
+      border-bottom: 1px solid rgba(0,240,255,0.15) !important;
+      padding: 12px 16px !important;
+    }
     [data-testid="stDataFrame"] tbody td {
-      font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace !important;
-      font-size: 0.75rem !important;
-      color: #E0E0F0 !important;
-      padding: 8px 14px !important;
-      border-bottom: 1px solid rgba(255,255,255,0.03) !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.72rem;
+      color: #D0D0E8;
+      padding: 10px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.02);
     }
+    [data-testid="stDataFrame"] tbody tr:hover td { background: rgba(0,240,255,0.025); }
 
-    [data-testid="stDataFrame"] tbody tr:hover td {
-      background: rgba(0, 240, 255, 0.03) !important;
-    }
-
-    /* ============================================================
-       PROGRESS BARS — Data Stream Indicators
-       ============================================================ */
-
+    /* === PROGRESS === */
     .stProgress > div > div {
       background: linear-gradient(90deg, #00F0FF, #7B2FFF) !important;
-      border-radius: 2px !important;
+      border-radius: 2px;
+      box-shadow: 0 0 6px rgba(0,240,255,0.3);
     }
     .stProgress > div {
-      background: rgba(0, 240, 255, 0.06) !important;
-      border-radius: 2px !important;
-      border: 1px solid rgba(0, 240, 255, 0.08);
+      background: rgba(0,240,255,0.04) !important;
+      border-radius: 2px;
+      border: 1px solid rgba(0,240,255,0.06);
     }
 
-    /* ============================================================
-       DIVIDERS — Glowing Separators
-       ============================================================ */
-
+    /* === DIVIDERS === */
     hr, [data-testid="stDivider"] {
       border: none !important;
       height: 1px !important;
-      background: linear-gradient(90deg,
-        transparent 0%,
-        rgba(0, 240, 255, 0.15) 20%,
-        rgba(0, 240, 255, 0.3) 50%,
-        rgba(0, 240, 255, 0.15) 80%,
-        transparent 100%
-      ) !important;
-      margin: 1.5rem 0 !important;
+      background: linear-gradient(90deg, transparent, rgba(0,240,255,0.12) 20%, rgba(0,240,255,0.25) 50%, rgba(0,240,255,0.12) 80%, transparent) !important;
     }
 
-    /* ============================================================
-       TEXT INPUTS & TEXT AREAS
-       ============================================================ */
-
+    /* === INPUTS === */
     input[data-testid="stTextInput"], textarea {
-      font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace !important;
-      font-size: 0.78rem !important;
-      background: rgba(10, 10, 24, 0.8) !important;
-      border: 1px solid rgba(0, 240, 255, 0.08) !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.75rem;
+      background: rgba(8,8,20,0.8) !important;
+      border: 1px solid rgba(0,240,255,0.08) !important;
       border-radius: 8px !important;
-      color: #E0E0F0 !important;
-      transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+      color: #D0D0E8 !important;
     }
     input[data-testid="stTextInput"]:focus, textarea:focus {
-      border-color: rgba(0, 240, 255, 0.45) !important;
-      box-shadow: 0 0 15px rgba(0, 240, 255, 0.1) !important;
-      outline: none !important;
+      border-color: rgba(0,240,255,0.35) !important;
+      box-shadow: 0 0 15px rgba(0,240,255,0.08) !important;
     }
-    textarea::placeholder {
-      color: #555577 !important;
-      font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace !important;
-    }
+    textarea::placeholder { color: #444477; }
 
-    /* ============================================================
-       ALERTS / INFO / WARNING / SUCCESS / ERROR
-       ============================================================ */
-
+    /* === ALERTS === */
     [data-testid="stAlert"] {
-      font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace !important;
-      font-size: 0.8rem !important;
+      font-family: 'JetBrains Mono', monospace !important;
       border-radius: 10px !important;
-      border: 1px solid rgba(0, 240, 255, 0.08) !important;
-      background: rgba(12, 12, 28, 0.85) !important;
+      border: 1px solid rgba(0,240,255,0.06) !important;
+      background: rgba(13,13,30,0.85) !important;
     }
 
     [data-testid="stNotification"] {
-      font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace !important;
+      background: rgba(8,8,24,0.98) !important;
+      border: 1px solid rgba(0,240,255,0.35) !important;
       border-radius: 10px !important;
-      background: rgba(10, 10, 28, 0.95) !important;
-      border: 1px solid rgba(0, 240, 255, 0.45) !important;
       backdrop-filter: blur(20px);
     }
 
-    /* ============================================================
-       ANIMATIONS
-       ============================================================ */
-
-    @keyframes fade-in-up {
-      from { opacity: 0; transform: translateY(10px); }
+    /* === ANIMATIONS === */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
-    @keyframes pulse-glow {
-      0%, 100% { box-shadow: 0 0 8px rgba(0, 240, 255, 0.2); }
-      50% { box-shadow: 0 0 18px rgba(0, 240, 255, 0.4); }
+    @keyframes scanPulse {
+      0%, 100% { border-color: rgba(0,240,255,0.1); }
+      50% { border-color: rgba(0,240,255,0.35); }
     }
 
-    [data-testid="stMetric"] {
-      animation: fade-in-up 0.5s ease-out both;
-    }
+    [data-testid="stMetric"] { animation: fadeUp 0.5s ease-out both; }
     [data-testid="stMetric"]:nth-child(1) { animation-delay: 0.05s; }
-    [data-testid="stMetric"]:nth-child(2) { animation-delay: 0.10s; }
+    [data-testid="stMetric"]:nth-child(2) { animation-delay: 0.1s; }
     [data-testid="stMetric"]:nth-child(3) { animation-delay: 0.15s; }
 
-    /* ============================================================
-       RESPONSIVE
-       ============================================================ */
-
     @media (max-width: 768px) {
-      h1 { font-size: 1.4rem !important; }
-      [data-testid="stMetricValue"] { font-size: 1.2rem !important; }
+      h1 { font-size: 1.6rem !important; }
+      [data-testid="stMetricValue"] { font-size: 1.3rem !important; }
     }
     </style>
     """
