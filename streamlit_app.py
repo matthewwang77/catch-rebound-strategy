@@ -52,7 +52,7 @@ screener, ai_analyzer = load_modules()
 import name_lookup
 
 # ==================== 大盘数据 ====================
-@st.cache_data(ttl=300)
+@st.cache_data(ttl=300, show_spinner=False)
 def get_market_data():
     """获取三大指数最新数据（日线不足时自动用日内数据补涨跌幅）"""
     indices = {
@@ -299,7 +299,7 @@ def load_all_recent_data(codes, lookback_days=30):
 
 
 # ==================== 云端数据加载（Streamlit Cloud 无本地CSV时使用）====================
-@st.cache_data(ttl=3600)
+@st.cache_data(ttl=3600, show_spinner=False)
 def cloud_load_data():
     """云端模式：从 yfinance 批量下载近期数据，缓存1小时。
 
@@ -703,7 +703,7 @@ def show_signal_review():
         st.rerun()
 
 
-@st.cache_data(ttl=600)
+@st.cache_data(ttl=600, show_spinner=False)
 def check_return(code, signal_date, entry_price, hold_days):
     """检查信号持有 N 天后的实际收益"""
     try:
@@ -1052,8 +1052,8 @@ def main():
 
         if len(codes) > 100:
             # 本地模式：从 CSV 缓存极速加载（秒级）
-            with st.spinner("正在从本地缓存加载数据..."):
-                all_data, failed_codes = load_all_recent_data(codes)
+            st.write("📂 正在从本地缓存加载数据...")
+            all_data, failed_codes = load_all_recent_data(codes)
 
             st.session_state['all_data'] = all_data
             st.success(f"✅ 数据加载完成：{len(all_data)} 只有效数据（本地缓存，秒级）"
@@ -1137,19 +1137,18 @@ def main():
 
                     # AI 分析区域（跨模式共享，点一次三个 Tab 都展开）
                     if st.session_state.get(f'analyze_{code}'):
-                        with st.spinner(f"🤖 正在对 {code} 进行AI深度分析（约8-15秒）..."):
-                            try:
-                                # 用已下载的 30 天数据 + 精简 prompt，比 AI.py 快一倍
-                                stock_df = st.session_state.get('all_data', {}).get(code)
-                                market_ctx = ai_analyzer.get_market_context()
-                                analysis = fast_ai_analysis(code, stock_df, market_ctx)
+                        st.write(f"🤖 正在对 {code} 进行AI深度分析（约8-15秒）...")
+                        try:
+                            stock_df = st.session_state.get('all_data', {}).get(code)
+                            market_ctx = ai_analyzer.get_market_context()
+                            analysis = fast_ai_analysis(code, stock_df, market_ctx)
 
-                                if analysis:
-                                    st.session_state[f'analysis_result_{code}'] = analysis
-                                    st.session_state[f'analyze_{code}'] = False  # 分析完成，重置触发
-                            except Exception as e:
-                                st.error(f"分析失败: {e}")
+                            if analysis:
+                                st.session_state[f'analysis_result_{code}'] = analysis
                                 st.session_state[f'analyze_{code}'] = False
+                        except Exception as e:
+                            st.error(f"分析失败: {e}")
+                            st.session_state[f'analyze_{code}'] = False
 
                     if st.session_state.get(f'analysis_result_{code}'):
                         with st.expander(f"📝 {code} AI分析报告", expanded=True):
