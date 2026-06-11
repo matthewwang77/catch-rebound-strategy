@@ -108,7 +108,11 @@ def get_market_data():
                     has_delta = True
                     vol_today = float(df['Volume'].iloc[-1])
                     vol_prev = float(df['Volume'].iloc[-2])
-                    vol_ratio = round(vol_today / vol_prev, 2) if vol_prev > 0 else 1
+                    if vol_prev > 0 and vol_today > 0:
+                        ratio = vol_today / vol_prev
+                        vol_ratio = round(max(0.01, min(ratio, 100)), 2)
+                    else:
+                        vol_ratio = 1
                 else:
                     # 降级：从 fast_info.previousClose 算涨跌
                     try:
