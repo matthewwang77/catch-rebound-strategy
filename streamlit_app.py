@@ -321,24 +321,50 @@ def cloud_load_data():
     for i in range(688000, 690000):
         codes.append(f"{i}.SS")
 
+    # 过滤无效代码：只保留有 CSV 缓存或常见活跃代码段
+    import re
+    valid_codes = []
+    # 使用正则快速过滤常见活跃代码段
+    for code in codes:
+        # 排除明显无效的代码段（大量未分配号段）
+        if re.match(r'^60[3-9]\d{2}', code):  # 603000-609999 是活跃的
+            valid_codes.append(code)
+        elif re.match(r'^000[0-9]\d{2}', code):  # 000000-000999
+            valid_codes.append(code)
+        elif re.match(r'^002[0-9]\d{2}', code):  # 002000-002999
+            valid_codes.append(code)
+        elif re.match(r'^300[0-9]\d{2}', code):  # 300000-300999
+            valid_codes.append(code)
+        elif re.match(r'^301[0-2]\d{2}', code):  # 301000-301299
+            valid_codes.append(code)
+        elif re.match(r'^688[0-5]\d{2}', code):  # 688000-688599
+            valid_codes.append(code)
+        elif re.match(r'^001[2-3]\d{2}', code):  # 001200-001399
+            valid_codes.append(code)
+        elif re.match(r'^003[0-3]\d{2}', code):  # 003000-003399
+            valid_codes.append(code)
+        elif re.match(r'^605[0-5]\d{2}', code):  # 605000-605599
+            valid_codes.append(code)
+
+    st.info(f"📋 过滤后 {len(valid_codes)} 只活跃股票，开始下载...")
+
     all_data = {}
-    BATCH_SIZE = 500
-    batches = [codes[i:i + BATCH_SIZE] for i in range(0, len(codes), BATCH_SIZE)]
+    BATCH_SIZE = 1500  # 大批次，减少网络往返
+    batches = [valid_codes[i:i + BATCH_SIZE] for i in range(0, len(valid_codes), BATCH_SIZE)]
     total_batches = len(batches)
 
-    progress_bar = st.progress(0, text="☁️ 云端下载第 0 批...")
+    progress_bar = st.progress(0, text=f"☁️ 云端下载中 ({total_batches} 批)...")
 
     for i, batch in enumerate(batches):
         progress_bar.progress(
             (i + 1) / total_batches,
-            text=f"☁️ 云端下载第 {i+1}/{total_batches} 批 (每批{BATCH_SIZE}只)..."
+            text=f"☁️ 云端下载第 {i+1}/{total_batches} 批 ({len(batch)}只)..."
         )
         try:
-            hist = yf.download(tickers=batch, period="30d", progress=False)
+            hist = yf.download(tickers=batch, period="30d", progress=False, timeout=60)
             if hist is None or hist.empty:
                 continue
 
-            # 提取有数据的股票
             try:
                 level_codes = set(hist.columns.get_level_values(1))
             except Exception:
