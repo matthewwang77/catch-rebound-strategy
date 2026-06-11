@@ -54,7 +54,7 @@ import name_lookup
 # ==================== 大盘数据 ====================
 @st.cache_data(ttl=300, show_spinner=False)
 def get_market_data():
-    """获取三大指数最新数据（日线不足时自动用日内数据补涨跌幅）"""
+    """获取三大指数最新数据"""
     indices = {
         "上证指数": "000001.SS",
         "深证成指": "399001.SZ",
@@ -63,52 +63,49 @@ def get_market_data():
     result = {}
     for name, code in indices.items():
         data = None
-        for attempt in range(3):
+        for attempt in range(2):
             try:
-                # 先拉日线
-                df = yf.download(code, period="5d", progress=False)
-                current = None
-                pct = 0
-                has_delta = False
-                high_5d = None
-                low_5d = None
-                vol_ratio = 1
-
+                ticker = yf.Ticker(code)
+                # 优先用 fast_info（速度快，不依赖日线）
+                try:
+                    info = ticker.fast_info
+                    current = info.get('lastPrice') or info.get('regularMarketPrice') or info.get('previousClose')
+                    if current:
+                        data = {
+                            'code': code, 'price': round(float(current), 2),
+                            'pct': 0, 'has_delta': False,
+                            'high_5d': round(float(current), 2),
+                            'low_5d': round(float(current), 2),
+                            'vol_ratio': 1,
+                        }
+                        break
+                except Exception:
+                    pass
+                # 降级：日线数据
+                df = ticker.history(period="5d")
                 if df is not None and len(df) >= 1:
                     current = float(df['Close'].iloc[-1])
                     high_5d = float(df['High'].max())
                     low_5d = float(df['Low'].min())
-
                     if len(df) >= 2:
                         prev = float(df['Close'].iloc[-2])
                         pct = (current / prev - 1) * 100
                         has_delta = True
                         vol_today = float(df['Volume'].iloc[-1])
-                        vol_prev = float(df['Volume'].iloc[-2]) if len(df) >= 2 else vol_today
+                        vol_prev = float(df['Volume'].iloc[-2])
                         vol_ratio = vol_today / vol_prev if vol_prev > 0 else 1
                     else:
-                        # 日线只有 1 行，用日内数据补涨跌幅
-                        try:
-                            intra = yf.download(code, period="1d", interval="5m", progress=False)
-                            if intra is not None and len(intra) >= 2:
-                                open_price = float(intra['Open'].iloc[0])
-                                if open_price > 0:
-                                    pct = (current / open_price - 1) * 100
-                                    has_delta = True
-                        except Exception:
-                            pass
-
+                        pct, has_delta, vol_ratio = 0, False, 1
                     data = {
                         'code': code, 'price': round(current, 2),
                         'pct': round(pct, 2), 'has_delta': has_delta,
-                        'high_5d': round(high_5d, 2) if high_5d else current,
-                        'low_5d': round(low_5d, 2) if low_5d else current,
+                        'high_5d': round(high_5d, 2),
+                        'low_5d': round(low_5d, 2),
                         'vol_ratio': round(vol_ratio, 2),
                     }
                     break
             except Exception:
-                if attempt < 2:
-                    time.sleep(1.5)
+                time.sleep(1)
         result[name] = data
     return result
 
