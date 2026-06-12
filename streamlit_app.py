@@ -730,9 +730,9 @@ def load_all_recent_data(codes, lookback_days=30):
 
 
 # ==================== 云端数据加载（Streamlit Cloud 无本地CSV时使用）====================
-@st.cache_data(ttl=3600, show_spinner=False)
+@st.cache_data(ttl=86400, show_spinner=False)  # 24h缓存，点强制刷新才更新
 def cloud_load_data(version="v5"):
-    """云端模式：yfinance 直接下载，0-100% 进度条"""
+    """云端模式：yfinance 直接下载。缓存24h，点「强制刷新」才更新数据"""
     _ = version
     all_data = {}
     progress_bar = st.progress(0, text="▸ 0% 云端加载...")
