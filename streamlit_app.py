@@ -761,6 +761,43 @@ def cloud_load_data():
         if len(stock_df) >= 10:
             all_data[code] = stock_df
 
+    # 今日数据注入：从 yfinance 拉最新交易日数据合并到快照
+    codes = list(all_data.keys())
+    BATCH = 300
+    injected = 0
+    for i in range(0, len(codes), BATCH):
+        batch = codes[i:i+BATCH]
+        try:
+            hist = yf.download(tickers=batch, period="3d", progress=False)
+            if hist is None or hist.empty:
+                continue
+            try:
+                batch_codes = set(hist.columns.get_level_values(1))
+            except Exception:
+                continue
+            for code in batch:
+                if code not in batch_codes:
+                    continue
+                try:
+                    recent = hist.xs(code, level=1, axis=1)
+                    recent = recent[recent['Close'].notna() & (recent['Close'] > 0)]
+                    if len(recent) == 0:
+                        continue
+                    new_rows = pd.DataFrame({
+                        'Close': recent['Close'].values,
+                        'Open': recent['Open'].values,
+                        'High': recent['High'].values,
+                        'Low': recent['Low'].values,
+                        'Volume': recent['Volume'].values,
+                    })
+                    if code in all_data:
+                        all_data[code] = pd.concat([all_data[code], new_rows]).tail(40)
+                    injected += 1
+                except Exception:
+                    pass
+        except Exception:
+            pass
+
     return all_data
 
 
