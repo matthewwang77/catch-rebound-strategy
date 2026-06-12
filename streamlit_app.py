@@ -763,8 +763,8 @@ def cloud_load_data(version="v5"):
         except Exception as e:
             progress_bar.progress(5, text=f"▸ 5% 快照失败: {str(e)[:60]}")
 
-    # ====== 2. 兜底：yfinance 下载（仅当快照不够时） ======
-    if len(all_data) < 1000:
+    # ====== 2. yfinance 下载（目前直接下载，等快照稳定后再启加快照） ======
+    if len(all_data) < 99999:
         # 用 active_codes.txt 而不是生成 15000 只
         if os.path.exists(codes_path):
             with open(codes_path) as f:
