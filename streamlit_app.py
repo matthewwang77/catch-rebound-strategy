@@ -1575,16 +1575,22 @@ def main():
             import time as _time
             DATA_DIR = screener.DATA_DIR
             csv_files = [f for f in os.listdir(DATA_DIR) if f.endswith('.csv') and os.path.getsize(os.path.join(DATA_DIR, f)) > 100]
+            # 也检查快照文件
+            snapshot_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "stock_snapshot.csv.gz")
+            has_snapshot = os.path.exists(snapshot_path)
             if csv_files:
                 newest = max(os.path.getmtime(os.path.join(DATA_DIR, f)) for f in csv_files)
                 age_seconds = _time.time() - newest
-                if age_seconds < 3600:
-                    data_age = f"{int(age_seconds/60)}分钟前"
-                elif age_seconds < 86400:
-                    data_age = f"{int(age_seconds/3600)}小时前"
-                else:
-                    data_age = f"{int(age_seconds/86400)}天前"
+                if age_seconds < 3600: data_age = f"{int(age_seconds/60)}分钟前"
+                elif age_seconds < 86400: data_age = f"{int(age_seconds/3600)}小时前"
+                else: data_age = f"{int(age_seconds/86400)}天前"
                 st.success(f"✅ {len(csv_files)}只 | 更新于 {data_age}")
+            elif has_snapshot:
+                snap_mtime = os.path.getmtime(snapshot_path)
+                snap_age = _time.time() - snap_mtime
+                if snap_age < 86400: snap_str = f"{int(snap_age/3600)}小时前"
+                else: snap_str = f"{int(snap_age/86400)}天前"
+                st.success(f"✅ 云端快照模式 ({snap_str})")
             else:
                 st.warning("⚠️ 无本地数据")
         except:
