@@ -730,84 +730,99 @@ def load_all_recent_data(codes, lookback_days=30):
 
 
 # ==================== 云端数据加载（Streamlit Cloud 无本地CSV时使用）====================
-@st.cache_data(ttl=86400, show_spinner=False)  # 24h缓存，点强制刷新才更新
+@st.cache_data(ttl=86400, show_spinner=False)
 def cloud_load_data(version="v5"):
-    """云端模式：yfinance 直接下载。缓存24h，点「强制刷新」才更新数据"""
+    """云端模式：快照优先 + 5检查点刷新。缓存24h"""
     _ = version
     all_data = {}
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    snapshot_path = os.path.join(base_dir, "stock_snapshot.csv.gz")
+    codes_path = os.path.join(base_dir, "active_codes.txt")
     progress_bar = st.progress(0, text="▸ 0% 云端加载...")
-    today_str = china_now().strftime('%Y-%m-%d')
 
-    # ====== 直接 yfinance 下载全量数据 ======
-    if len(all_data) == 0:
-        # 生成全A股代码列表
-        codes = []
-        for i in range(600000, 606000): codes.append(f"{i}.SS")
-        for i in range(1, 5000): codes.append(f"{i:06d}.SZ")
-        for i in range(300000, 302000): codes.append(f"{i}.SZ")
-        for i in range(688000, 690000): codes.append(f"{i}.SS")
+    # ====== 1. 快照加载（秒读） ======
+    if os.path.exists(snapshot_path):
+        try:
+            df = pd.read_csv(snapshot_path, compression='gzip')
+            loaded = 0
+            for code, group in df.groupby('code'):
+                group = group.sort_values('date').tail(30)
+                g = group.sort_values('date').tail(30).reset_index(drop=True)
+                dates = pd.to_datetime(g['date']).values
+                stock_df = pd.DataFrame({
+                    'Close':  pd.to_numeric(g['close'], errors='coerce').values,
+                    'Open':   pd.to_numeric(g['open'], errors='coerce').values,
+                    'High':   pd.to_numeric(g['high'], errors='coerce').values,
+                    'Low':    pd.to_numeric(g['low'], errors='coerce').values,
+                    'Volume': pd.to_numeric(g['volume'], errors='coerce').values,
+                }, index=dates).dropna()
+                if len(stock_df) >= 10:
+                    all_data[code] = stock_df
+                    loaded += 1
+            progress_bar.progress(15, text=f"▸ 15% 快照加载: {loaded}只")
+        except Exception as e:
+            progress_bar.progress(5, text=f"▸ 5% 快照失败: {str(e)[:60]}")
+
+    # ====== 2. 兜底：yfinance 下载（仅当快照不够时） ======
+    if len(all_data) < 1000:
+        # 用 active_codes.txt 而不是生成 15000 只
+        if os.path.exists(codes_path):
+            with open(codes_path) as f:
+                codes = [l.strip() for l in f if l.strip()]
+        else:
+            codes = []
+            for i in range(600000, 606000): codes.append(f"{i}.SS")
+            for i in range(1, 5000): codes.append(f"{i:06d}.SZ")
+            for i in range(300000, 302000): codes.append(f"{i}.SZ")
+            for i in range(688000, 690000): codes.append(f"{i}.SS")
 
         BATCH = 300
         total_batches = len(codes) // BATCH + 1
         downloaded = 0
-
         for i in range(0, len(codes), BATCH):
             batch = codes[i:i+BATCH]
             batch_num = i // BATCH + 1
             pct = 5 + int(40 * batch_num / total_batches)
-            progress_bar.progress(pct, text=f"▸ {pct}% 下载活跃股票 {batch_num}/{total_batches} 批 ({downloaded}只)...")
+            progress_bar.progress(pct, text=f"▸ {pct}% 下载 {batch_num}/{total_batches} 批 ({downloaded}只)...")
             try:
-                hist = yf.download(tickers=batch, period="30d", progress=False)
-                if hist is None or hist.empty:
-                    continue
-                try:
-                    batch_codes = set(hist.columns.get_level_values(1))
-                except Exception:
-                    continue
+                hist = yf.download(tickers=batch, period="30d", progress=False, auto_adjust=False)
+                if hist is None or hist.empty: continue
+                try: batch_codes = set(hist.columns.get_level_values(1))
+                except Exception: continue
                 for code in batch:
-                    if code not in batch_codes:
-                        continue
+                    if code not in batch_codes: continue
                     try:
                         recent = hist.xs(code, level=1, axis=1)
                         recent = recent[recent['Close'].notna() & (recent['Close'] > 0)]
-                        if len(recent) < 10:
-                            continue
+                        if len(recent) < 10: continue
                         stock_df = recent[['Open', 'High', 'Low', 'Close', 'Volume']].copy()
                         all_data[code] = stock_df
                         downloaded += 1
-                    except Exception:
-                        pass
-            except Exception:
-                pass
+                    except Exception: pass
+            except Exception: pass
         progress_bar.progress(45, text=f"▸ 45% 下载完成: {len(all_data)} 只")
 
-    # ====== 今日数据注入 ======
+    # ====== 3. 今日数据注入 ======
     codes = list(all_data.keys())
     BATCH = 300
     total_batches = len(codes) // BATCH + 1
     injected = 0
-
     for i in range(0, len(codes), BATCH):
         batch = codes[i:i+BATCH]
         batch_num = i // BATCH + 1
         pct = 45 + int(50 * batch_num / total_batches)
         progress_bar.progress(pct, text=f"▸ {pct}% 注入今日数据 {batch_num}/{total_batches} 批 ({injected}只)...")
         try:
-            hist = yf.download(tickers=batch, period="3d", progress=False)
-            if hist is None or hist.empty:
-                continue
-            try:
-                batch_codes = set(hist.columns.get_level_values(1))
-            except Exception:
-                continue
+            hist = yf.download(tickers=batch, period="3d", progress=False, auto_adjust=False)
+            if hist is None or hist.empty: continue
+            try: batch_codes = set(hist.columns.get_level_values(1))
+            except Exception: continue
             for code in batch:
-                if code not in batch_codes:
-                    continue
+                if code not in batch_codes: continue
                 try:
                     recent = hist.xs(code, level=1, axis=1)
                     recent = recent[recent['Close'].notna() & (recent['Close'] > 0)]
-                    if len(recent) == 0:
-                        continue
+                    if len(recent) == 0: continue
                     new_rows = pd.DataFrame({
                         'Close': recent['Close'].values, 'Open': recent['Open'].values,
                         'High': recent['High'].values, 'Low': recent['Low'].values,
@@ -816,12 +831,20 @@ def cloud_load_data(version="v5"):
                     if code in all_data:
                         all_data[code] = pd.concat([all_data[code], new_rows]).tail(40)
                     injected += 1
-                except Exception:
-                    pass
-        except Exception:
-            pass
+                except Exception: pass
+        except Exception: pass
 
-    progress_bar.progress(100, text=f"▸ 100% 云端加载完成: {len(all_data)} 只 (注入{injected}只)")
+    # ====== 4. 数据质量检查 ======
+    limit_up_count = 0
+    for code, df in all_data.items():
+        try:
+            close = df['Close'].values
+            if len(close) >= 2:
+                pct = (close[-1] / close[-2] - 1) * 100
+                if pct >= 9.5: limit_up_count += 1
+        except: pass
+
+    progress_bar.progress(100, text=f"▸ 100% 完成: {len(all_data)}只, 今日涨停{limit_up_count}只")
     progress_bar.empty()
     return all_data
 
@@ -1600,9 +1623,32 @@ def main():
     # 获取当前页面
     page = st.session_state.get('nav_page', '◆ 选股')
 
+    # ---- v5 检查点刷新逻辑 ----
+    CHECKPOINTS = [(10,0), (11,30), (14,0), (15,0), (15,30)]
+
+    def get_checkpoint_key():
+        """返回当前已过的最新检查点标识，如 '15:00'"""
+        now = china_now()
+        latest = None
+        for h, m in CHECKPOINTS:
+            cp = now.replace(hour=h, minute=m, second=0, microsecond=0)
+            if now >= cp:
+                latest = f"{h:02d}:{m:02d}"
+        return latest
+
     # ---- 选股逻辑（无论哪个页面，触发后都执行） ----
     if 'trigger_scan' in st.session_state:
         force_refresh = st.session_state.get('force_refresh', False)
+
+        # 检查点自动刷新：过了新检查点就强制刷新一次
+        if not force_refresh:
+            current_cp = get_checkpoint_key()
+            last_cp = st.session_state.get('last_checkpoint', '')
+            if current_cp and current_cp != last_cp:
+                force_refresh = True
+                st.session_state['last_checkpoint'] = current_cp
+                # 清除旧缓存，触发 cloud_load_data 重新下载
+                st.cache_data.clear()
 
         # v5: 强制刷新时自动增量更新今日数据
         if force_refresh and hasattr(screener, 'update_today_data'):
