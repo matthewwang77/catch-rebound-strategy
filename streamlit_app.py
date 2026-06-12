@@ -10,6 +10,7 @@ A股连板回调策略 - Streamlit UI  |  NEON VAULT Edition
 import streamlit as st
 import yfinance as yf
 import pandas as pd
+import json
 from datetime import datetime
 import time
 import os
@@ -452,12 +453,11 @@ def load_modules():
     base = os.path.dirname(os.path.abspath(__file__))
 
     screener = _load_module(os.path.join(base, "选股new_v5.py"), "screener")
-    ai_analyzer = None  # AI分析已集成在screener中
 
-    return screener, ai_analyzer
+    return screener
 
 
-screener, ai_analyzer = load_modules()
+screener = load_modules()
 
 # ==================== 北京时间工具 ====================
 from zoneinfo import ZoneInfo
@@ -917,7 +917,7 @@ def fast_ai_analysis(code, stock_df, market_context=""):
 
     try:
         api_key = os.environ.get("DEEPSEEK_API_KEY", "")
-        api_url = ai_analyzer.DEEPSEEK_API_URL
+        api_url = screener.DEEPSEEK_API_URL
 
         resp = requests.post(
             api_url,
@@ -1030,9 +1030,9 @@ def save_signals(all_candidates):
             'name': info.get('name', '') or '',
             'sector': info.get('sector_cn', '') or info.get('sector', '') or info.get('industry', '') or '',
             'mode': c.get('mode', ''),
-            'entry_price': c['price'],
-            'pullback_pct': c['pullback_pct'],
-            'limit_days': c['limit_days'],
+            'entry_price': c.get('price', c.get('最新价', 0)),
+            'pullback_pct': c.get('pullback_pct', c.get('回调比', 0)),
+            'limit_days': c.get('limit_days', c.get('连板数', 0)),
         })
 
     df_new = pd.DataFrame(new_rows)
@@ -1306,7 +1306,7 @@ def perform_manual_analysis(codes, signal_date_str):
         # AI分析
         analysis = None
         try:
-            market_ctx = ai_analyzer.get_market_context()
+            market_ctx = screener.get_market_context()
             analysis = fast_ai_analysis(code, stock_df, market_ctx)
         except Exception:
             pass
@@ -1467,7 +1467,7 @@ def show_screening_results(results, all_stats):
                         st.write(f"◆ 正在对 {code} 进行AI深度分析（约8-15秒）...")
                         try:
                             stock_df = st.session_state.get('all_data', {}).get(code)
-                            market_ctx = ai_analyzer.get_market_context()
+                            market_ctx = screener.get_market_context()
                             analysis = fast_ai_analysis(code, stock_df, market_ctx)
                             if analysis:
                                 st.session_state[f'analysis_result_{code}'] = analysis
@@ -1517,6 +1517,24 @@ def show_screening_results(results, all_stats):
         save_signals(all_candidates)
 
 
+# ==================== 自动加载结果 ====================
+def load_latest_results():
+    """从 JSON 文件加载预计算选股结果。返回 dict 或 None。"""
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    json_path = os.path.join(base_dir, "latest_scan_results.json")
+    if not os.path.exists(json_path):
+        return None
+    try:
+        with open(json_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        # 验证基本结构
+        if "modes" not in data:
+            return None
+        return data
+    except Exception:
+        return None
+
+
 # ==================== 主界面 ====================
 def main():
     # 注入设计系统 CSS
@@ -1549,7 +1567,7 @@ def main():
         f"<p style='font-family:\"JetBrains Mono\",monospace;font-size:0.7rem;color:#6666AA;"
         f"margin:0;padding:0;line-height:1;'>"
         f"◈ {now.strftime('%Y-%m-%d %H:%M')}  |  {market_status}"
-        + ("  |  收盘后点「强制刷新」获取最终数据" if market_status in ["🟡 刚收盘（数据更新中）", "🔴 已收盘"] else "")
+        + (" |  定时扫描: 10:00 / 11:30 / 14:00 / 15:00" if weekday < 5 else "")
         + "</p>",
         unsafe_allow_html=True
     )
@@ -1573,13 +1591,14 @@ def main():
 
         # 数据新鲜度
         st.markdown("**◆ 数据状态**")
-        data_age = "未知"
         try:
             import time as _time
             DATA_DIR = screener.DATA_DIR
-            csv_files = [f for f in os.listdir(DATA_DIR) if f.endswith('.csv') and os.path.getsize(os.path.join(DATA_DIR, f)) > 100]
-            # 也检查快照文件
-            snapshot_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "stock_snapshot.csv.gz")
+            csv_files = []
+            if os.path.isdir(DATA_DIR):
+                csv_files = [f for f in os.listdir(DATA_DIR) if f.endswith('.csv') and os.path.getsize(os.path.join(DATA_DIR, f)) > 100]
+            base_dir = os.path.dirname(os.path.abspath(__file__))
+            snapshot_path = os.path.join(base_dir, "stock_snapshot.csv.gz")
             has_snapshot = os.path.exists(snapshot_path)
             if csv_files:
                 newest = max(os.path.getmtime(os.path.join(DATA_DIR, f)) for f in csv_files)
@@ -1587,16 +1606,25 @@ def main():
                 if age_seconds < 3600: data_age = f"{int(age_seconds/60)}分钟前"
                 elif age_seconds < 86400: data_age = f"{int(age_seconds/3600)}小时前"
                 else: data_age = f"{int(age_seconds/86400)}天前"
-                st.success(f"✅ {len(csv_files)}只 | 更新于 {data_age}")
+                st.success(f"✅ 本地模式 · {len(csv_files)}只 | {data_age}")
             elif has_snapshot:
-                st.success("✅ 云端模式 (yfinance)")
+                st.success("☁️ 云端模式（快照 + yfinance）")
             else:
-                st.warning("⚠️ 无本地数据")
+                st.warning("⚠️ 无数据")
+            # 显示最近扫描时间
+            json_path = os.path.join(base_dir, "latest_scan_results.json")
+            if os.path.exists(json_path):
+                try:
+                    with open(json_path, "r") as f:
+                        scan_info = json.load(f)
+                    scan_time = scan_info.get("scan_time", "")
+                    if scan_time:
+                        st.caption(f"上次扫描: {scan_time}")
+                except Exception:
+                    pass
         except:
             st.warning("⚠️ 无法检测")
 
-        st.divider()
-        st.caption("NEON VAULT · v5 · fixed")
 
     # ---- 大盘概览 ----
     st.header("◆ 大盘概况")
@@ -1623,71 +1651,147 @@ def main():
     # 获取当前页面
     page = st.session_state.get('nav_page', '◆ 选股')
 
-    # ---- 选股逻辑（无论哪个页面，触发后都执行） ----
-    if 'trigger_scan' in st.session_state:
-        force_refresh = st.session_state.get('force_refresh', False)
-
-        # v5: 强制刷新时自动增量更新今日数据
-        if force_refresh and hasattr(screener, 'update_today_data'):
-            with st.spinner("正在更新今日数据..."):
-                try:
-                    screener.update_today_data()
-                except Exception:
-                    pass
-
-        if not force_refresh and 'cached_results' in st.session_state and 'cached_all_stats' in st.session_state:
-            all_data = st.session_state.get('all_data', {})
-            results = st.session_state['cached_results']
-            all_stats = st.session_state['cached_all_stats']
-        else:
-            DATA_DIR = screener.DATA_DIR
-            if os.path.isdir(DATA_DIR):
-                cache_files = [f for f in os.listdir(DATA_DIR)
-                               if f.endswith('.csv') and os.path.getsize(os.path.join(DATA_DIR, f)) > 100]
-                codes = [f.replace('.csv', '') for f in cache_files]
-            else:
-                codes = []
-
-            if len(codes) > 100:
-                all_data, failed_codes = load_all_recent_data(codes)
-                st.session_state['all_data'] = all_data
-            else:
-                all_data = cloud_load_data()
-                st.session_state['all_data'] = all_data
-
-            results, all_stats = screen_all_modes(all_data)
-            st.session_state['cached_results'] = results
-            st.session_state['cached_all_stats'] = all_stats
-            if force_refresh:
-                st.session_state['force_refresh'] = False
-    else:
-        results = None
-        all_stats = None
-
     # ============ 选股页面 ============
     if page == '◆ 选股':
-        # 操作按钮
-        col_btn1, col_btn2, col_btn3 = st.columns([1, 1, 1])
-        with col_btn1:
-            if st.button("◆ 开始当日选股", type="primary", use_container_width=True):
-                st.session_state['trigger_scan'] = True
-                st.session_state['force_refresh'] = False
-                st.rerun()
-        with col_btn2:
-            if st.button("◆ 重新扫描", use_container_width=True):
-                st.session_state.clear()
-                st.rerun()
-        with col_btn3:
-            if st.button("◆ 强制刷新（收盘后用）", use_container_width=True):
-                st.session_state['trigger_scan'] = True
-                st.session_state['force_refresh'] = True
-                st.rerun()
+        # 加载预计算选股结果
+        scan_data = load_latest_results()
 
-        if results is None:
-            st.info("◆ 点击 **开始当日选股** 启动扫描")
-            return
+        # 判断当前时段
+        now = china_now()
+        wd = now.weekday()
+        h, m = now.hour, now.minute
+        is_trading = (wd < 5 and ((9 <= h < 11) or (h == 11 and m <= 30) or (13 <= h < 15)))
+        is_post_close = (wd < 5 and h >= 15)
 
-        show_screening_results(results, all_stats)
+        if scan_data is None:
+            # 还没有任何扫描结果
+            st.info("◆ 等待首次定时扫描… 结果将在 10:00 / 11:30 / 14:00 / 15:00 自动出现")
+            st.caption("💡 也可以手动运行: `python archive/tools/auto_daily.py`")
+        else:
+            st.header("◆ 选股结果")
+
+            # 扫描时间
+            scan_time = scan_data.get("scan_time", "未知")
+            if is_post_close:
+                st.success(f"✅ 今日最终结果（收盘后）| 扫描时间: {scan_time}")
+            elif is_trading:
+                st.info(f"🔄 盘中结果（每5分钟自动刷新）| 最近扫描: {scan_time}")
+            else:
+                st.caption(f"最近扫描: {scan_time} | 市场已收盘")
+
+            # 显示大盘数据（来自扫描结果）
+            market = scan_data.get("market", {})
+            if market:
+                cols_mkt = st.columns(len(market))
+                mkt_items = list(market.items())
+                for i, (name, data) in enumerate(mkt_items):
+                    with cols_mkt[i]:
+                        pct_val = data.get("pct", 0)
+                        st.metric(
+                            label=name,
+                            value=f"{data.get('price', 0):.0f}",
+                            delta=f"{pct_val:+.2f}%" if pct_val else "—",
+                        )
+                st.divider()
+
+            # 两种模式 Tab 展示
+            modes = scan_data.get("modes", {})
+            tab_labels = [
+                f"STRICT 严格 ({modes.get('strict', {}).get('count', 0)}只)",
+                f"LOOSE 宽松 ({modes.get('loose', {}).get('count', 0)}只)",
+            ]
+            tabs = st.tabs(tab_labels)
+
+            for tab_idx, mode in enumerate(["strict", "loose"]):
+                with tabs[tab_idx]:
+                    mode_data = modes.get(mode, {})
+                    candidates = mode_data.get("candidates", [])
+                    if not candidates:
+                        st.info(f"当前 {mode.upper()} 模式无符合条件的股票")
+                        continue
+
+                    codes = [c["code"] for c in candidates]
+                    name_info = name_lookup.batch_lookup(codes, max_fetch=5)
+
+                    for c in candidates:
+                        code = c["code"]
+                        info = name_info.get(code, {})
+                        stock_name = info.get("name", "") or ""
+                        with st.container():
+                            col1, col2, col3, col4, col5, col6 = st.columns([1.8, 1.2, 0.9, 0.9, 0.9, 1.5])
+                            with col1:
+                                name_line = f"**`{code}`**"
+                                if stock_name:
+                                    name_line += f"  {stock_name}"
+                                st.markdown(name_line)
+                            with col2:
+                                st.metric("价格", f"{c['price']:.2f}")
+                            with col3:
+                                st.metric("回调", f"{c['pullback_pct']:.1f}%")
+                            with col4:
+                                st.metric("连板", f"{c['limit_days']}天")
+                            with col5:
+                                st.metric("实体板", f"{c.get('entity_ratio', 0):.0f}%")
+                            with col6:
+                                btn_key = f"ai_{mode}_{code}"
+                                if st.button(f"◆ AI分析", key=btn_key, use_container_width=True):
+                                    st.session_state[f"analyze_{code}"] = True
+
+                            # AI 分析
+                            if st.session_state.get(f"analyze_{code}"):
+                                st.write(f"◆ 正在对 {code} 进行AI深度分析（约8-15秒）...")
+                                try:
+                                    stock_df = None
+                                    # 优先从本地 CSV 加载（快速）
+                                    csv_path = os.path.join(screener.DATA_DIR, f"{code}.csv")
+                                    if os.path.exists(csv_path):
+                                        df = pd.read_csv(csv_path).tail(60)
+                                        stock_df = pd.DataFrame({
+                                            "Close": df["close"].values,
+                                            "Open": df["open"].values,
+                                            "High": df["high"].values,
+                                            "Low": df["low"].values,
+                                            "Volume": df["volume"].values,
+                                        }).dropna()
+                                    # 云端模式：从 yfinance 获取近期数据
+                                    if stock_df is None or len(stock_df) < 10:
+                                        try:
+                                            ticker = yf.Ticker(code)
+                                            df_yf = ticker.history(period="3mo")
+                                            if df_yf is not None and len(df_yf) >= 10:
+                                                stock_df = df_yf[['Open', 'High', 'Low', 'Close', 'Volume']].dropna()
+                                        except Exception:
+                                            pass
+                                    market_ctx = screener.get_market_context()
+                                    analysis = fast_ai_analysis(code, stock_df, market_ctx)
+                                    if analysis:
+                                        st.session_state[f"analysis_result_{code}"] = analysis
+                                        st.session_state[f"analyze_{code}"] = False
+                                except Exception as e:
+                                    st.error(f"分析失败: {e}")
+                                    st.session_state[f"analyze_{code}"] = False
+
+                            if st.session_state.get(f"analysis_result_{code}"):
+                                with st.expander(f"◆ {code} AI分析报告", expanded=True):
+                                    st.markdown(st.session_state[f"analysis_result_{code}"])
+
+                            st.divider()
+
+            # 导出 CSV
+            all_candidates = []
+            for mode in ["strict", "loose"]:
+                for c in modes.get(mode, {}).get("candidates", []):
+                    all_candidates.append({**c, "mode": mode})
+            if all_candidates:
+                st.divider()
+                df_export = pd.DataFrame(all_candidates)
+                st.download_button(
+                    label="◆ 导出 CSV",
+                    data=df_export.to_csv(index=False, encoding="utf-8-sig"),
+                    file_name=f"candidates_all_{china_now().strftime('%Y%m%d')}.csv",
+                    mime="text/csv",
+                )
+                save_signals(all_candidates)
 
     # ============ 复盘页面 ============
     elif page == '◆ 复盘':

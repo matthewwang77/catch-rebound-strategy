@@ -1894,6 +1894,32 @@ SCREEN_MODES = {
 }
 
 
+# DeepSeek API 配置
+DEEPSEEK_API_URL = "https://api.deepseek.com/v1/chat/completions"
+
+
+def get_market_context():
+    """获取大盘环境简要描述（供 AI 分析使用）"""
+    try:
+        indices = {"上证": "000001.SS", "深证": "399001.SZ", "创业板": "399006.SZ"}
+        parts = []
+        for name, code in indices.items():
+            df = yf.download(code, period="2d", progress=False)
+            if df is not None and len(df) >= 2:
+                close_col = df['Close']
+                if hasattr(close_col, 'iloc'):
+                    cur = float(close_col.iloc[-1].item() if hasattr(close_col.iloc[-1], 'item') else close_col.iloc[-1])
+                    prev = float(close_col.iloc[-2].item() if hasattr(close_col.iloc[-2], 'item') else close_col.iloc[-2])
+                else:
+                    cur = float(close_col.values[-1] if hasattr(close_col, 'values') else close_col[-1])
+                    prev = float(close_col.values[-2] if hasattr(close_col, 'values') else close_col[-2])
+                pct = (cur / prev - 1) * 100
+                parts.append(f"{name}: {cur:.0f} ({pct:+.2f}%)")
+        return " | ".join(parts) if parts else "大盘数据获取失败"
+    except Exception:
+        return "大盘数据获取失败"
+
+
 def _screen_single_stock(code, stock_df, stats, candidates, mode="normal"):
     """对单只股票的近期数据执行完整筛选流程"""
     close = stock_df['Close'].dropna()
@@ -1908,20 +1934,32 @@ def _screen_single_stock(code, stock_df, stats, candidates, mode="normal"):
         'high': high.values, 'low': low.values, 'volume': volume.values,
     }, index=close.index)
     recent['pct_chg'] = recent['close'].pct_change() * 100
-    recent['trade_date'] = close.index.strftime('%Y%m%d')
+    # trade_date: handle both DatetimeIndex and RangeIndex
+    try:
+        recent['trade_date'] = close.index.strftime('%Y%m%d')
+    except AttributeError:
+        recent['trade_date'] = [f'D{i}' for i in range(len(recent))]
     limit_series_list = identify_limit_up_series(recent.dropna(subset=['pct_chg']).reset_index(drop=True), code)
     found_signal = False
     for series in limit_series_list:
+        # 计算实体板比例（用于展示）
+        entity_boards = sum(1 for d in series if not d['is_one_word'])
+        entity_ratio = (entity_boards / len(series)) * 100 if len(series) > 0 else 0
+
         for offset in range(PARAMS['min_pullback_days'] + 1, 15):
             check_idx = len(recent) - offset
             if check_idx < 10: break
             result = check_pullback_conditions(recent.reset_index(drop=True), series, check_idx)
             if result:
                 candidates.append({
-                    '代码': code, '最新价': recent.iloc[-1]['close'],
-                    '信号日': result['trigger_date'], '信号价': result['trigger_price'],
-                    '回调比': result['pullback_ratio'], '连板数': result['limit_series_len'],
-                    '连板日期': result['limit_dates'],
+                    'code': code,
+                    'price': round(float(recent.iloc[-1]['close']), 2),
+                    'signal_date': result['trigger_date'],
+                    'signal_price': round(float(result['trigger_price']), 2),
+                    'pullback_pct': round(result['pullback_ratio'] * 100, 1),
+                    'limit_days': result['limit_series_len'],
+                    'limit_dates': result['limit_dates'],
+                    'entity_ratio': round(entity_ratio, 0),
                 })
                 found_signal = True; break
         if found_signal: break
