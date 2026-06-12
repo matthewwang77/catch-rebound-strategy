@@ -38,6 +38,7 @@ PARAMS = {
     "pullback_ratio_min": 0.08,
     "pullback_ratio_max": 0.25,
     "min_pullback_days": 2,
+    "max_pullback_days": 20,
     "ma_stabilize": 10,
     "volume_shrink_ratio": 0.4,
     "volume_shrink_ratio_min": 0.0,
@@ -561,6 +562,7 @@ def check_pullback_conditions(df_stock, limit_series_item, current_idx):
     if len(matching_rows) == 0: return None
     last_limit_idx = matching_rows.index[0]
     if current_idx - last_limit_idx < PARAMS['min_pullback_days']: return None
+    if current_idx - last_limit_idx > PARAMS.get('max_pullback_days', 20): return None
     highest_price = max([d['high'] for d in limit_series_item])
     current_price = df_stock.iloc[current_idx]['close']
     pullback_ratio = (highest_price - current_price) / highest_price
@@ -1859,6 +1861,7 @@ SCREEN_MODES = {
         "signal_today_yang": True,
         "signal_volume_expand": 1.2,
         "min_pullback_days": 2,
+        "max_pullback_days": 20,
         "ma_stabilize": 10,
         "volume_compare_days": 3,
         "hold_days": 10,
@@ -1881,6 +1884,7 @@ SCREEN_MODES = {
         "signal_today_yang": True,
         "signal_volume_expand": 1.2,
         "min_pullback_days": 2,
+        "max_pullback_days": 20,
         "ma_stabilize": 10,
         "volume_compare_days": 3,
         "hold_days": 7,
