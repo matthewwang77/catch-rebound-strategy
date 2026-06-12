@@ -731,8 +731,10 @@ def load_all_recent_data(codes, lookback_days=30):
 
 # ==================== 云端数据加载（Streamlit Cloud 无本地CSV时使用）====================
 @st.cache_data(ttl=3600, show_spinner=False)
-def cloud_load_data():
-    """云端模式：快照优先 → yfinance 兜底，0-100% 进度条"""
+def cloud_load_data(version="v5.2"):
+    """云端模式：快照优先 → yfinance 兜底，0-100% 进度条
+    version参数用于强制缓存刷新，每次升级改版本号即可"""
+    _ = version  # unused but changes cache key
     snapshot_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "stock_snapshot.csv.gz")
     all_data = {}
 
@@ -1589,7 +1591,7 @@ def main():
             st.warning("⚠️ 无法检测")
 
         st.divider()
-        st.caption("NEON VAULT · v5.1 · 60d")
+        st.caption("NEON VAULT · v5.2 · snapshot")
 
     # ---- 大盘概览 ----
     st.header("◆ 大盘概况")
