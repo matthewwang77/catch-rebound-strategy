@@ -775,7 +775,7 @@ def cloud_load_data():
             pct = 5 + int(40 * batch_num / total_batches)
             progress_bar.progress(pct, text=f"▸ {pct}% 下载活跃股票 {batch_num}/{total_batches} 批 ({downloaded}只)...")
             try:
-                hist = yf.download(tickers=batch, period="5d", progress=False)
+                hist = yf.download(tickers=batch, period="60d", progress=False)
                 if hist is None or hist.empty:
                     continue
                 try:
