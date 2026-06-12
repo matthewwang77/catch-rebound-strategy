@@ -1903,12 +1903,13 @@ DEEPSEEK_API_URL = "https://api.deepseek.com/v1/chat/completions"
 
 
 def get_market_context():
-    """获取大盘环境简要描述（供 AI 分析使用）"""
+    """获取大盘环境 + 情绪档位（供 AI 分析使用）"""
     try:
         indices = {"上证": "000001.SS", "深证": "399001.SZ", "创业板": "399006.SZ"}
         parts = []
+        trends = []
         for name, code in indices.items():
-            df = yf.download(code, period="2d", progress=False)
+            df = yf.download(code, period="6d", progress=False)
             if df is not None and len(df) >= 2:
                 close_col = df['Close']
                 if hasattr(close_col, 'iloc'):
@@ -1919,7 +1920,46 @@ def get_market_context():
                     prev = float(close_col.values[-2] if hasattr(close_col, 'values') else close_col[-2])
                 pct = (cur / prev - 1) * 100
                 parts.append(f"{name}: {cur:.0f} ({pct:+.2f}%)")
-        return " | ".join(parts) if parts else "大盘数据获取失败"
+
+                # 5日趋势
+                if len(df) >= 5:
+                    if hasattr(close_col, 'iloc'):
+                        close_5d_ago = float(close_col.iloc[-5].item() if hasattr(close_col.iloc[-5], 'item') else close_col.iloc[-5])
+                    else:
+                        close_5d_ago = float(close_col.values[-5] if hasattr(close_col, 'values') else close_col[-5])
+                    trend_5d = (cur / close_5d_ago - 1) * 100
+                    trends.append(trend_5d)
+            else:
+                parts.append(f"{name}: N/A")
+
+        market_str = " | ".join(parts) if parts else "大盘数据获取失败"
+
+        # 情绪档位判断
+        sentiment = ""
+        if len(trends) >= 2:
+            avg_trend = sum(trends) / len(trends)
+            up_count = sum(1 for t in trends if t > 0.5)
+            down_count = sum(1 for t in trends if t < -0.5)
+
+            if avg_trend > 3 and up_count >= len(trends):
+                gear = "高潮期(5档) — 涨停铺天盖地，短期风险积聚，建议减仓或快进快出"
+            elif avg_trend > 1 and up_count >= 2:
+                gear = "发酵期(4档) — 涨停数增加势头良好，可适度参与，仓位3-5成"
+            elif avg_trend > -0.5:
+                gear = "启动期(3档) — 开始回暖零星涨停，谨慎入场，仓位2-3成"
+            elif avg_trend > -2:
+                gear = "低迷期(2档) — 涨停稀少破位频发，建议减仓或观望，仓位≤1成"
+            else:
+                gear = "冰点期(1档) — 几乎无涨停普跌，坚决不参与"
+
+            sentiment = f"""5日趋势：{avg_trend:+.1f}%（{up_count}涨{down_count}跌）
+市场情绪档位：{gear}"""
+        else:
+            sentiment = "情绪数据不足"
+
+        return f"""【大盘环境】
+{market_str}
+{sentiment}"""
     except Exception:
         return "大盘数据获取失败"
 

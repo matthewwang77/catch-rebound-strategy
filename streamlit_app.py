@@ -851,18 +851,24 @@ def cloud_load_data(version="v5"):
 
 # ==================== 快速 AI 分析（跳过板块信息，用已下载数据）====================
 def fast_ai_analysis(code, stock_df, market_context=""):
-    """基于已下载的30天数据 + DeepSeek API 快速分析（比 AI.py 快 3-5 秒）"""
+    """v2: 四维框架（量价形时）+ 经典战法匹配 + DeepSeek API"""
     import requests
 
-    # ---- 从已下载数据计算技术指标 ----
+    # ---- 列名兼容（CSV 小写 / yfinance 首字母大写）----
+    if 'close' in stock_df.columns and 'Close' not in stock_df.columns:
+        stock_df = stock_df.rename(columns={'open': 'Open', 'high': 'High', 'low': 'Low', 'close': 'Close', 'volume': 'Volume'})
+
+    # ---- 数据提取 ----
     close = stock_df['Close'].dropna()
     high = stock_df['High'].dropna()
     low = stock_df['Low'].dropna()
     volume = stock_df['Volume'].dropna()
+    open_price = stock_df['Open'].dropna()
 
     if len(close) < 5:
         return None
 
+    # ========== 基础指标 ==========
     current_price = close.iloc[-1]
     prev_close = close.iloc[-2] if len(close) >= 2 else current_price
     pct_chg = (current_price / prev_close - 1) * 100
@@ -871,50 +877,264 @@ def fast_ai_analysis(code, stock_df, market_context=""):
     ma5 = close.rolling(5).mean().iloc[-1]
     ma10 = close.rolling(10).mean().iloc[-1]
     ma20 = close.rolling(20).mean().iloc[-1] if len(close) >= 20 else ma10
+    ma60 = close.rolling(60).mean().iloc[-1] if len(close) >= 60 else None
 
     vol_today = volume.iloc[-1]
     vol_ma5 = volume.rolling(5).mean().iloc[-1]
-    recent_high = high.tail(20).max()
-    drawdown = (recent_high - current_price) / recent_high * 100
+    vol_ma20 = volume.rolling(20).mean().iloc[-1] if len(volume) >= 20 else vol_ma5
+    recent_high_20 = high.tail(20).max()
+    recent_low_20 = low.tail(20).min()
+    drawdown_20 = (recent_high_20 - current_price) / recent_high_20 * 100
 
-    recent_closes = close.tail(5).tolist()
+    # ========== MACD (12,26,9) ==========
+    if len(close) >= 26:
+        ema12 = close.ewm(span=12, adjust=False).mean()
+        ema26 = close.ewm(span=26, adjust=False).mean()
+        dif = ema12 - ema26
+        dea = dif.ewm(span=9, adjust=False).mean()
+        macd_bar = 2 * (dif - dea)
+        dif_val = dif.iloc[-1]
+        dea_val = dea.iloc[-1]
+        macd_bar_val = macd_bar.iloc[-1]
+        dif_prev = dif.iloc[-3] if len(dif) >= 3 else dif.iloc[-1]
+        if dif_val > dea_val and dif_val > dif_prev:
+            macd_trend = "金叉向上 ↑"
+        elif dif_val < dea_val:
+            macd_trend = "死叉向下 ↓"
+        else:
+            macd_trend = "粘合 →"
+        macd_ok = True
+    else:
+        dif_val = dea_val = macd_bar_val = None
+        macd_trend = "数据不足"
+        macd_ok = False
 
-    technical_data = f"""
-【{code} 技术数据】
-- 最新价：{current_price:.2f}（今日涨跌 {pct_chg:+.2f}%）
-- 今日振幅：{amplitude:.1f}%
-- 量比(5日均量)：{vol_today/vol_ma5:.2f}x
-- MA5/MA10/MA20：{ma5:.2f} / {ma10:.2f} / {ma20:.2f}
-- 近20日最高：{recent_high:.2f}（当前回撤 {drawdown:.1f}%）
-- 近5日收盘：{recent_closes}
-"""
+    # ========== RSI(14) ==========
+    if len(close) >= 14:
+        delta = close.diff()
+        gain = delta.clip(lower=0)
+        loss = (-delta).clip(lower=0)
+        avg_gain = gain.rolling(14).mean()
+        avg_loss = loss.rolling(14).mean()
+        rs = avg_gain / avg_loss.replace(0, 1e-9)
+        rsi = 100 - (100 / (1 + rs))
+        rsi_val = rsi.iloc[-1]
+        if rsi_val < 30:
+            rsi_status = "超卖（反弹动能积蓄）"
+        elif rsi_val > 70:
+            rsi_status = "超买（追高风险）"
+        else:
+            rsi_status = "中性"
+    else:
+        rsi_val = None
+        rsi_status = "数据不足"
 
-    # ---- 构造精简 prompt（max_tokens 800，比原来 2000 快一半）----
-    prompt = f"""你是A股短线分析师。请简洁分析 {code}：
+    # ========== 布林带(20,2) ==========
+    if len(close) >= 20:
+        bb_mid = close.rolling(20).mean().iloc[-1]
+        bb_std = close.rolling(20).std().iloc[-1]
+        bb_upper = bb_mid + 2 * bb_std
+        bb_lower = bb_mid - 2 * bb_std
+        bb_width = (bb_upper - bb_lower) / bb_mid * 100 if bb_mid > 0 else 0
+        if bb_upper != bb_lower:
+            bb_position = (current_price - bb_lower) / (bb_upper - bb_lower) * 100
+        else:
+            bb_position = 50
+        if bb_position < 20:
+            bb_status = f"下轨附近（超跌反弹机会）"
+        elif bb_position > 80:
+            bb_status = f"上轨附近（追高风险）"
+        else:
+            bb_status = f"中轨附近"
+    else:
+        bb_upper = bb_mid = bb_lower = bb_position = bb_width = None
+        bb_status = "数据不足"
 
-{technical_data}
+    # ========== OBV 趋势 ==========
+    if len(close) >= 10:
+        close_diff_sign = (close.diff() > 0).astype(int) - (close.diff() < 0).astype(int)
+        obv = (volume * close_diff_sign).cumsum()
+        obv_now = obv.iloc[-1]
+        obv_5d_ago = obv.iloc[-6] if len(obv) >= 6 else obv.iloc[0]
+        if obv_now > obv_5d_ago:
+            obv_trend = "上升（资金流入）↑"
+        else:
+            obv_trend = "下降（资金流出）↓"
+    else:
+        obv_trend = "数据不足"
+
+    # ========== MFI(14) 资金流量指标 ==========
+    if len(close) >= 15:
+        tp = (high + low + close) / 3
+        rmf = tp * volume
+        pos_flow = rmf.where(tp > tp.shift(1), 0)
+        neg_flow = rmf.where(tp < tp.shift(1), 0)
+        pos_sum = pos_flow.rolling(14).sum()
+        neg_sum = neg_flow.rolling(14).sum()
+        # avoid div by zero
+        neg_sum_safe = neg_sum.replace(0, 1e-9)
+        mfi = 100 - (100 / (1 + pos_sum / neg_sum_safe))
+        mfi_val = mfi.iloc[-1]
+        if mfi_val < 20:
+            mfi_status = "超卖（资金流入）"
+        elif mfi_val > 80:
+            mfi_status = "超买（资金流出）"
+        else:
+            mfi_status = "中性"
+    else:
+        mfi_val = None
+        mfi_status = "数据不足"
+
+    # ========== 连板回调专属指标 ==========
+    # 找涨停日（A股10%涨跌幅，用9.5%容差）
+    pct_chg_series = close.pct_change()
+    limit_up_mask = pct_chg_series > 0.095
+    limit_up_indices = close.index[limit_up_mask].tolist()
+
+    if limit_up_indices:
+        last_lu_idx = limit_up_indices[-1]
+        last_lu_close = close.loc[last_lu_idx]
+        last_lu_low = low.loc[last_lu_idx] if last_lu_idx in low.index else None
+        last_lu_vol = volume.loc[last_lu_idx] if last_lu_idx in volume.index else None
+
+        # 距最后涨停天数
+        pos_now = close.index.get_loc(close.index[-1])
+        pos_lu = close.index.get_loc(last_lu_idx)
+        days_since_limit = pos_now - pos_lu
+
+        # 回调幅度（从涨停日收盘算）
+        pullback_pct = (last_lu_close - current_price) / last_lu_close * 100
+
+        # 缩量程度：近3日均量 / 涨停日量
+        if last_lu_vol and last_lu_vol > 0:
+            recent_avg_vol = volume.iloc[-3:].mean()
+            vol_shrink_ratio = recent_avg_vol / last_lu_vol * 100
+        else:
+            vol_shrink_ratio = None
+
+        # 是否跌破涨停日最低
+        if last_lu_low is not None:
+            broke_low = current_price < last_lu_low
+        else:
+            broke_low = None
+
+        # 连板识别：涨停日前是否有连续涨停
+        consecutive_lu = 1
+        for i in range(len(limit_up_indices) - 2, -1, -1):
+            prev_pos = close.index.get_loc(limit_up_indices[i])
+            curr_pos = close.index.get_loc(limit_up_indices[i + 1])
+            if curr_pos - prev_pos == 1:
+                consecutive_lu += 1
+            else:
+                break
+    else:
+        days_since_limit = None
+        pullback_pct = None
+        vol_shrink_ratio = None
+        last_lu_low = None
+        broke_low = None
+        consecutive_lu = 0
+
+    # ========== 构造结构化 technical_data ==========
+    lines = []
+    lines.append(f"【{code} 技术数据】")
+    lines.append("")
+    lines.append("## 基础指标")
+    lines.append(f"- 最新价：{current_price:.2f}（今日 {pct_chg:+.2f}%）| 振幅 {amplitude:.1f}%")
+    lines.append(f"- 均线：MA5={ma5:.2f}  MA10={ma10:.2f}  MA20={ma20:.2f}" + (f"  MA60={ma60:.2f}" if ma60 else ""))
+    lines.append(f"- 量比：今日/5日均量={vol_today/vol_ma5:.2f}x | 20日高={recent_high_20:.2f}  回撤={drawdown_20:.1f}%")
+    lines.append("")
+    lines.append("## 技术指标")
+    if macd_ok:
+        lines.append(f"- MACD(12,26,9)：DIF={dif_val:.3f}  DEA={dea_val:.3f}  柱={macd_bar_val:+.3f}  → {macd_trend}")
+    else:
+        lines.append(f"- MACD：{macd_trend}")
+    lines.append(f"- RSI(14)：{rsi_val:.1f} → {rsi_status}" if rsi_val is not None else f"- RSI(14)：{rsi_status}")
+    if bb_upper is not None:
+        lines.append(f"- 布林(20,2)：上轨={bb_upper:.2f}  中轨={bb_mid:.2f}  下轨={bb_lower:.2f}  带宽={bb_width:.1f}%")
+        lines.append(f"  价格位置：{bb_position:.0f}% → {bb_status}")
+    else:
+        lines.append(f"- 布林(20,2)：{bb_status}")
+    lines.append(f"- OBV趋势：{obv_trend}")
+    lines.append(f"- MFI(14)：{mfi_val:.1f} → {mfi_status}" if mfi_val is not None else f"- MFI(14)：{mfi_status}")
+    lines.append("")
+    lines.append("## 回调数据")
+    if days_since_limit is not None:
+        lu_date = str(last_lu_idx)[:10] if hasattr(last_lu_idx, 'strftime') else str(last_lu_idx)[:10]
+        lines.append(f"- 最近涨停日：{lu_date}（{consecutive_lu}连板）")
+        lines.append(f"- 距涨停日：{days_since_limit} 天" + (" ← 黄金窗口(3-5天)" if 3 <= days_since_limit <= 5 else (" ← 时间偏长，警惕走弱" if days_since_limit > 7 else "")))
+        lines.append(f"- 回调幅度：{pullback_pct:.1f}%（从涨停日收盘价算）")
+        if vol_shrink_ratio is not None:
+            tag = " ← 缩量充分" if vol_shrink_ratio < 50 else (" ← 缩量不足" if vol_shrink_ratio >= 80 else "")
+            lines.append(f"- 缩量程度：近3日均量/涨停日量 = {vol_shrink_ratio:.0f}%{tag}")
+        if last_lu_low is not None:
+            if broke_low:
+                lines.append(f"- 涨停日最低={last_lu_low:.2f} | ⚠️ 已跌破！（强退出信号）")
+            else:
+                lines.append(f"- 涨停日最低={last_lu_low:.2f} | 未跌破（防线有效）")
+    else:
+        lines.append("- 近期无涨停日数据")
+    technical_data = "\n".join(lines)
+
+    # ========== System Prompt ==========
+    system_prompt = """你是专精于A股连板回调策略的量化分析师。你严格遵循"量价形时"四维分析框架：
+
+【量】缩量挖坑（回调量<涨停量50%为佳），放量填坑（反弹需放量确认）
+【价】首板不破涨停最低价（多板以首板收盘价为防线），MA支撑体系层层验证
+【形】缩量黄金坑、长下影弹簧线、缩倍阴、三阴不破阳、天外飞仙、金凤凰
+【时】3-5天为黄金回调窗口，超过7天不恢复=明显走弱
+
+经典战法库：
+- 缩倍阴：中低位首板后，回调不破涨停低点，缩量至<50%，3日内放量阳线突破阴线高点=入场
+- 三阴不破阳：涨停后3根缩量阴线，收盘逐日下降但不破涨停最低价，放量阳线反包=入场
+- 天外飞仙：3连板后放量阴线，缩量整理不破该阴线低点，再涨停突破=入场
+- 金凤凰：回调始终在涨停价上方，持续缩量，下一涨停确认调整结束=入场
+
+你的分析务实直接，给具体价格位而非模糊描述。每个判断都有明确的技术依据。
+仓位建议根据市场情绪档位动态调整（冰点空仓/低迷1-2成/启动2-3成/发酵3-5成/高潮减仓）。"""
+
+    # ========== User Prompt ==========
+    prompt = f"""{technical_data}
+
 {market_context}
 
-请用以下格式（每项2-3句话，不要展开）：
+请按以下"量价形时"框架逐项分析，每项给出具体判断：
 
-## 一、技术面
-- 支撑/压力位（给具体价格）
-- 量价状态
+## 一、量（Volume）
+- 回调缩量评估（充分/不足/异常放量）+ 缩量比
+- OBV/MFI 资金流向判断
+- 量价配合状态（底背离=看涨 / 同步下跌=观望 / 放量止跌=积极）
 
-## 二、反弹判断
-- 回调阶段（初期/中期/末期）
-- 反弹概率（低/中/高）+ 一句话理由
+## 二、价（Price）
+- 关键支撑位（给具体价格）：涨停日最低/MA5/MA10/MA20
+- 关键压力位（给具体价格）：近期高点/均线压制位
+- 是否跌破防线？跌破后的严重程度评估
 
-## 三、风险
-- 主要风险（一句话）
+## 三、形（Pattern）
+- 当前K线形态描述
+- 匹配哪种经典战法？（缩倍阴/三阴不破阳/天外飞仙/金凤凰/无匹配）
+- 形态完成度评估（%）
 
-## 四、明日锚点
-- 高开可关注价 / 低开应放弃价
-- 建议入场区间
+## 四、时（Time）
+- 回调阶段判断（初期/中期/末期）
+- 时间窗口评估（黄金窗口内/偏长/超时）+ 是否还有效
 
-## 五、综合
-- 是否参与 + 仓位建议 + 止盈止损位"""
+## 五、综合判断
+- 反弹概率：低(≤30%) / 中(30-60%) / 高(≥60%)
+- 明日锚点：高开 >X.XX 可关注 / 低开 <X.XX 应放弃
+- 建议入场区间：X.XX - X.XX
+- 止损体系：紧止损 X.XX / 主止损 X.XX / 硬止损 X.XX
+- 止盈目标：TP1 X.XX (1.5R) / TP2 X.XX (2R)
+- 仓位建议：X成仓（对应情绪档位）
+- 风险报酬比：≥1:2 才值得参与
 
+## 六、风险
+- 主要风险（1-2条具体描述）
+- 一票否决条件（出现什么情况绝对不能参与）
+
+最终结论：【参与 / 观望 / 放弃】"""
+
+    # ========== 调用 DeepSeek API ==========
     try:
         api_key = os.environ.get("DEEPSEEK_API_KEY", "")
         api_url = screener.DEEPSEEK_API_URL
@@ -925,13 +1145,13 @@ def fast_ai_analysis(code, stock_df, market_context=""):
             json={
                 "model": "deepseek-chat",
                 "messages": [
-                    {"role": "system", "content": "你是务实直接的A股短线分析师，回答简洁不模棱两可。"},
+                    {"role": "system", "content": system_prompt},
                     {"role": "user", "content": prompt},
                 ],
-                "temperature": 0.3,
-                "max_tokens": 800,
+                "temperature": 0.4,
+                "max_tokens": 1500,
             },
-            timeout=25,
+            timeout=30,
         )
         data = resp.json()
         if "choices" in data and len(data["choices"]) > 0:
