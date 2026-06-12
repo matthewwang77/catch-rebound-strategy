@@ -731,7 +731,7 @@ def load_all_recent_data(codes, lookback_days=30):
 
 # ==================== 云端数据加载（Streamlit Cloud 无本地CSV时使用）====================
 @st.cache_data(ttl=3600, show_spinner=False)
-def cloud_load_data(version="v5.2"):
+def cloud_load_data(version="v5.3"):
     """云端模式：快照优先 → yfinance 兜底，0-100% 进度条
     version参数用于强制缓存刷新，每次升级改版本号即可"""
     _ = version  # unused but changes cache key
@@ -741,25 +741,30 @@ def cloud_load_data(version="v5.2"):
     progress_bar = st.progress(0, text="▸ 0% 云端加载...")
     today_str = china_now().strftime('%Y-%m-%d')
 
-    # ====== 尝试从快照加载 ======
+    # ====== 快照优先加载（已修复数据格式）======
     if os.path.exists(snapshot_path):
-        progress_bar.progress(10, text="▸ 10% 读取数据快照...")
-        df = pd.read_csv(snapshot_path, compression='gzip')
-        for code, group in df.groupby('code'):
-            group = group.sort_values('date')
-            stock_df = pd.DataFrame({
-                'Close': group['close'].values, 'Open': group['open'].values,
-                'High': group['high'].values, 'Low': group['low'].values,
-                'Volume': group['volume'].values,
-            }).dropna()
-            if len(stock_df) >= 10:
-                all_data[code] = stock_df
-        progress_bar.progress(20, text=f"▸ 20% 快照: {len(all_data)} 只")
-    else:
-        progress_bar.progress(5, text="▸ 5% 无快照，直接下载活跃股票...")
+        progress_bar.progress(5, text="▸ 5% 读取数据快照...")
+        try:
+            df = pd.read_csv(snapshot_path, compression='gzip')
+            loaded = 0
+            for code, group in df.groupby('code'):
+                group = group.sort_values('date').tail(30)
+                stock_df = pd.DataFrame({
+                    'Close': pd.to_numeric(group['close'], errors='coerce'),
+                    'Open': pd.to_numeric(group['open'], errors='coerce'),
+                    'High': pd.to_numeric(group['high'], errors='coerce'),
+                    'Low': pd.to_numeric(group['low'], errors='coerce'),
+                    'Volume': pd.to_numeric(group['volume'], errors='coerce'),
+                }).dropna()
+                if len(stock_df) >= 10:
+                    all_data[code] = stock_df
+                    loaded += 1
+            progress_bar.progress(15, text=f"▸ 15% 快照加载: {loaded} 只")
+        except Exception as e:
+            progress_bar.progress(5, text=f"▸ 5% 快照读取失败: {str(e)[:50]}")
 
-    # ====== 如果没有快照数据，下载全A股活跃列表 ======
-    if len(all_data) == 0:
+    # ====== 如果快照数据不够，直接 yfinance 下载 ======
+    if len(all_data) < 1000:
         # 生成全A股代码列表
         codes = []
         for i in range(600000, 606000): codes.append(f"{i}.SS")
@@ -1597,7 +1602,7 @@ def main():
             st.warning("⚠️ 无法检测")
 
         st.divider()
-        st.caption("NEON VAULT · v5.2 · snapshot")
+        st.caption("NEON VAULT · v5.3 · fixed")
 
     # ---- 大盘概览 ----
     st.header("◆ 大盘概况")
