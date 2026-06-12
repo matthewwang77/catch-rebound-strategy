@@ -1,16 +1,30 @@
 {
   "permissions": {
     "allow": [
-      "Bash(launchctl list *)",
-      "Bash(launchctl load *)",
-      "Bash(launchctl unload *)",
-      "mcp__filesystem__search_files",
-      "mcp__filesystem__list_allowed_directories",
-      "mcp__filesystem__read_text_file",
-      "mcp__filesystem__read_file",
-      "mcp__filesystem__directory_tree",
-      "mcp__filesystem__list_directory",
-      "mcp__filesystem__get_file_info"
+      "Bash(*)",
+      "mcp__filesystem__*",
+      "mcp__playwright__*",
+      "mcp__sequential-thinking__*",
+      "Skill(*)",
+      "Bash(mkdir -p ~/.claude/skills/frontend-design)",
+      "Bash(cp \"/Users/mattsmacair/Desktop/Coding/量化模型/抓反弹策略/frontend-design/SKILL.md\" ~/.claude/skills/frontend-design/SKILL.md)",
+      "WebFetch(domain:raw.githubusercontent.com)"
+    ],
+    "defaultMode": "bypassPermissions"
+  },
+  "skipDangerousModePermissionPrompt": true,
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.tool_input.file_path // .tool_response.filePath' | { read -r f; case \"$f\" in *.py) python3 -c \"import py_compile; py_compile.compile('$f', doraise=True)\" && echo \"  OK  $f\" || echo \"  FAIL  $f\" ;; esac; } 2>/dev/null || true",
+            "statusMessage": "Checking syntax..."
+          }
+        ]
+      }
     ]
   }
 }

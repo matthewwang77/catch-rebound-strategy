@@ -1,0 +1,25 @@
+{
+  "best_params": {
+    "pullback_ratio_min": 0.12,
+    "pullback_ratio_max": 0.4,
+    "volume_shrink_ratio": 0.67,
+    "take_profit": 0.051,
+    "stop_loss": -0.112,
+    "hold_days": 10,
+    "min_entity_board_ratio": 0.55,
+    "min_consecutive_limit_up": 3,
+    "require_oversold": false,
+    "require_low_close": false,
+    "volume_shrink_ratio_min": 0.05
+  },
+  "stage1_score": 0.8226,
+  "stage2_score": 0.8219,
+  "stage3_score": 0.8449,
+  "stage3_metrics": {
+    "win_rate": 0.6319,
+    "avg_return": 0.0261,
+    "sharpe": 9.78,
+    "signal_count": 182
+  },
+  "period": "20250101_20260430"
+}

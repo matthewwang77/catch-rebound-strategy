@@ -1623,34 +1623,9 @@ def main():
     # 获取当前页面
     page = st.session_state.get('nav_page', '◆ 选股')
 
-    # ---- v5 检查点刷新逻辑 ----
-    CHECKPOINTS = [(10,0), (11,30), (14,0), (15,0), (15,30)]
-
-    def get_checkpoint_key():
-        """返回当前已过的最新检查点标识，如 '15:00'"""
-        now = china_now()
-        latest = None
-        for h, m in CHECKPOINTS:
-            cp = now.replace(hour=h, minute=m, second=0, microsecond=0)
-            if now >= cp:
-                latest = f"{h:02d}:{m:02d}"
-        return latest
-
     # ---- 选股逻辑（无论哪个页面，触发后都执行） ----
     if 'trigger_scan' in st.session_state:
         force_refresh = st.session_state.get('force_refresh', False)
-
-        # 检查点自动刷新或手动强制刷新：清缓存
-        if force_refresh:
-            st.cache_data.clear()
-            st.session_state['last_checkpoint'] = get_checkpoint_key()
-        else:
-            current_cp = get_checkpoint_key()
-            last_cp = st.session_state.get('last_checkpoint', '')
-            if current_cp and current_cp != last_cp:
-                force_refresh = True
-                st.session_state['last_checkpoint'] = current_cp
-                st.cache_data.clear()
 
         # v5: 强制刷新时自动增量更新今日数据
         if force_refresh and hasattr(screener, 'update_today_data'):

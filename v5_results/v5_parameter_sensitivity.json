@@ -1,0 +1,58 @@
+[
+  {
+    "parameter": "stop_loss",
+    "base_value": -0.112,
+    "base_sharpe": 9.78,
+    "up_sharpe": 10.92,
+    "down_sharpe": 7.64,
+    "sensitivity": 1.6400000000000001
+  },
+  {
+    "parameter": "volume_shrink_ratio",
+    "base_value": 0.67,
+    "base_sharpe": 9.78,
+    "up_sharpe": 8.03,
+    "down_sharpe": 8.53,
+    "sensitivity": 1.5
+  },
+  {
+    "parameter": "pullback_ratio_min",
+    "base_value": 0.12,
+    "base_sharpe": 9.78,
+    "up_sharpe": 8.58,
+    "down_sharpe": 8.57,
+    "sensitivity": 1.2049999999999992
+  },
+  {
+    "parameter": "take_profit",
+    "base_value": 0.051,
+    "base_sharpe": 9.78,
+    "up_sharpe": 9.64,
+    "down_sharpe": 9.48,
+    "sensitivity": 0.21999999999999886
+  },
+  {
+    "parameter": "min_entity_board_ratio",
+    "base_value": 0.55,
+    "base_sharpe": 9.78,
+    "up_sharpe": 9.57,
+    "down_sharpe": 9.77,
+    "sensitivity": 0.10999999999999943
+  },
+  {
+    "parameter": "hold_days",
+    "base_value": 10,
+    "base_sharpe": 9.78,
+    "up_sharpe": 9.88,
+    "down_sharpe": 9.68,
+    "sensitivity": 0.10000000000000053
+  },
+  {
+    "parameter": "pullback_ratio_max",
+    "base_value": 0.4,
+    "base_sharpe": 9.78,
+    "up_sharpe": 9.78,
+    "down_sharpe": 9.78,
+    "sensitivity": 0.0
+  }
+]

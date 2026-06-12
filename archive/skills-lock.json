@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "skills": {
+    "developing-with-streamlit": {
+      "source": "streamlit/agent-skills",
+      "sourceType": "github",
+      "skillPath": "developing-with-streamlit/SKILL.md",
+      "computedHash": "9f8006c37398b5c6a27043bdfe3a25d4aafdfb53413618c88d2c978932f9d08e"
+    },
+    "schedule-it": {
+      "source": "membranedev/application-skills",
+      "sourceType": "github",
+      "skillPath": "skills/schedule-it/SKILL.md",
+      "computedHash": "faf7c3ec1cd6c3f6601f728f43f961e4407272709631d3f4db7e059c53e955e9"
+    }
+  }
+}
