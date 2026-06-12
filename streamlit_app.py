@@ -731,7 +731,7 @@ def load_all_recent_data(codes, lookback_days=30):
 
 # ==================== 云端数据加载（Streamlit Cloud 无本地CSV时使用）====================
 @st.cache_data(ttl=3600, show_spinner=False)
-def cloud_load_data(version="v5.5"):
+def cloud_load_data(version="v5"):
     """云端模式：yfinance 直接下载，0-100% 进度条"""
     _ = version
     all_data = {}
@@ -1573,7 +1573,7 @@ def main():
             st.warning("⚠️ 无法检测")
 
         st.divider()
-        st.caption("NEON VAULT · v5.5 · fixed")
+        st.caption("NEON VAULT · v5 · fixed")
 
     # ---- 大盘概览 ----
     st.header("◆ 大盘概况")
