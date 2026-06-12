@@ -1,5 +1,5 @@
 {
-  "scan_time": "2026-06-12 18:49",
+  "scan_time": "2026-06-12 20:04",
   "scan_date": "20260612",
   "market": {
     "上证": {
@@ -13,41 +13,13 @@
   },
   "modes": {
     "strict": {
-      "count": 12,
+      "count": 3,
       "candidates": [
-        {
-          "code": "000722.SZ",
-          "price": 15.07,
-          "pullback_pct": 19.1,
-          "limit_days": 3,
-          "entity_ratio": 67.0
-        },
-        {
-          "code": "000925.SZ",
-          "price": 8.03,
-          "pullback_pct": 16.3,
-          "limit_days": 3,
-          "entity_ratio": 67.0
-        },
         {
           "code": "002081.SZ",
           "price": 5.03,
           "pullback_pct": 13.7,
           "limit_days": 5,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "000720.SZ",
-          "price": 4.14,
-          "pullback_pct": 17.2,
-          "limit_days": 3,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "600152.SS",
-          "price": 10.5,
-          "pullback_pct": 20.1,
-          "limit_days": 3,
           "entity_ratio": 100.0
         },
         {
@@ -58,59 +30,17 @@
           "entity_ratio": 100.0
         },
         {
-          "code": "603318.SS",
-          "price": 9.16,
-          "pullback_pct": 28.5,
-          "limit_days": 5,
-          "entity_ratio": 60.0
-        },
-        {
           "code": "000518.SZ",
           "price": 3.14,
           "pullback_pct": 13.4,
           "limit_days": 4,
           "entity_ratio": 100.0
-        },
-        {
-          "code": "600743.SS",
-          "price": 2.25,
-          "pullback_pct": 19.6,
-          "limit_days": 6,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "600032.SS",
-          "price": 8.62,
-          "pullback_pct": 16.1,
-          "limit_days": 3,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "600736.SS",
-          "price": 7.94,
-          "pullback_pct": 13.5,
-          "limit_days": 3,
-          "entity_ratio": 67.0
-        },
-        {
-          "code": "002805.SZ",
-          "price": 21.24,
-          "pullback_pct": 13.3,
-          "limit_days": 3,
-          "entity_ratio": 100.0
         }
       ]
     },
     "loose": {
-      "count": 51,
+      "count": 17,
       "candidates": [
-        {
-          "code": "603636.SS",
-          "price": 8.73,
-          "pullback_pct": 13.1,
-          "limit_days": 2,
-          "entity_ratio": 50.0
-        },
         {
           "code": "002971.SZ",
           "price": 58.03,
@@ -119,46 +49,11 @@
           "entity_ratio": 100.0
         },
         {
-          "code": "000788.SZ",
-          "price": 5.2,
-          "pullback_pct": 26.0,
-          "limit_days": 2,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "600103.SS",
-          "price": 3.5,
-          "pullback_pct": 21.6,
-          "limit_days": 2,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "000722.SZ",
-          "price": 15.07,
-          "pullback_pct": 11.1,
-          "limit_days": 3,
-          "entity_ratio": 67.0
-        },
-        {
-          "code": "003042.SZ",
-          "price": 13.9,
-          "pullback_pct": 21.4,
-          "limit_days": 2,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "603315.SS",
-          "price": 16.25,
-          "pullback_pct": 10.9,
-          "limit_days": 2,
-          "entity_ratio": 100.0
-        },
-        {
           "code": "000925.SZ",
           "price": 8.03,
-          "pullback_pct": 16.3,
-          "limit_days": 3,
-          "entity_ratio": 67.0
+          "pullback_pct": 28.5,
+          "limit_days": 2,
+          "entity_ratio": 100.0
         },
         {
           "code": "002081.SZ",
@@ -175,39 +70,11 @@
           "entity_ratio": 100.0
         },
         {
-          "code": "002361.SZ",
-          "price": 15.74,
-          "pullback_pct": 18.5,
-          "limit_days": 2,
-          "entity_ratio": 100.0
-        },
-        {
           "code": "600234.SS",
           "price": 24.39,
-          "pullback_pct": 19.1,
+          "pullback_pct": 10.9,
           "limit_days": 2,
           "entity_ratio": 100.0
-        },
-        {
-          "code": "000927.SZ",
-          "price": 2.51,
-          "pullback_pct": 19.2,
-          "limit_days": 2,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "000720.SZ",
-          "price": 4.14,
-          "pullback_pct": 17.2,
-          "limit_days": 3,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "300385.SZ",
-          "price": 14.48,
-          "pullback_pct": 19.6,
-          "limit_days": 2,
-          "entity_ratio": 50.0
         },
         {
           "code": "600488.SS",
@@ -217,38 +84,10 @@
           "entity_ratio": 100.0
         },
         {
-          "code": "000008.SZ",
-          "price": 2.45,
-          "pullback_pct": 20.2,
-          "limit_days": 2,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "000593.SZ",
-          "price": 20.61,
-          "pullback_pct": 14.0,
-          "limit_days": 2,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "600996.SS",
-          "price": 8.86,
-          "pullback_pct": 14.9,
-          "limit_days": 2,
-          "entity_ratio": 50.0
-        },
-        {
           "code": "600078.SS",
           "price": 12.85,
           "pullback_pct": 13.8,
           "limit_days": 2,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "600152.SS",
-          "price": 10.5,
-          "pullback_pct": 20.1,
-          "limit_days": 3,
           "entity_ratio": 100.0
         },
         {
@@ -266,34 +105,6 @@
           "entity_ratio": 100.0
         },
         {
-          "code": "002192.SZ",
-          "price": 89.74,
-          "pullback_pct": 23.5,
-          "limit_days": 2,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "603318.SS",
-          "price": 9.16,
-          "pullback_pct": 28.5,
-          "limit_days": 5,
-          "entity_ratio": 60.0
-        },
-        {
-          "code": "002201.SZ",
-          "price": 10.93,
-          "pullback_pct": 28.3,
-          "limit_days": 2,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "605099.SS",
-          "price": 35.02,
-          "pullback_pct": 20.1,
-          "limit_days": 2,
-          "entity_ratio": 100.0
-        },
-        {
           "code": "000518.SZ",
           "price": 3.14,
           "pullback_pct": 13.4,
@@ -301,23 +112,9 @@
           "entity_ratio": 100.0
         },
         {
-          "code": "600743.SS",
-          "price": 2.25,
-          "pullback_pct": 19.6,
-          "limit_days": 6,
-          "entity_ratio": 100.0
-        },
-        {
           "code": "605218.SS",
           "price": 17.02,
           "pullback_pct": 20.5,
-          "limit_days": 2,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "000062.SZ",
-          "price": 28.77,
-          "pullback_pct": 11.0,
           "limit_days": 2,
           "entity_ratio": 100.0
         },
@@ -329,51 +126,9 @@
           "entity_ratio": 100.0
         },
         {
-          "code": "001316.SZ",
-          "price": 37.9,
-          "pullback_pct": 8.6,
-          "limit_days": 2,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "002468.SZ",
-          "price": 14.08,
-          "pullback_pct": 22.3,
-          "limit_days": 2,
-          "entity_ratio": 50.0
-        },
-        {
           "code": "000037.SZ",
           "price": 11.25,
           "pullback_pct": 8.8,
-          "limit_days": 2,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "600698.SS",
-          "price": 6.91,
-          "pullback_pct": 12.7,
-          "limit_days": 2,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "001400.SZ",
-          "price": 109.02,
-          "pullback_pct": 18.3,
-          "limit_days": 2,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "600032.SS",
-          "price": 8.62,
-          "pullback_pct": 16.1,
-          "limit_days": 3,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "301189.SZ",
-          "price": 64.78,
-          "pullback_pct": 10.2,
           "limit_days": 2,
           "entity_ratio": 100.0
         },
@@ -392,34 +147,6 @@
           "entity_ratio": 67.0
         },
         {
-          "code": "600736.SS",
-          "price": 7.94,
-          "pullback_pct": 13.5,
-          "limit_days": 3,
-          "entity_ratio": 67.0
-        },
-        {
-          "code": "002989.SZ",
-          "price": 26.77,
-          "pullback_pct": 11.9,
-          "limit_days": 2,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "605162.SS",
-          "price": 9.18,
-          "pullback_pct": 9.5,
-          "limit_days": 3,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "601606.SS",
-          "price": 32.01,
-          "pullback_pct": 22.9,
-          "limit_days": 2,
-          "entity_ratio": 100.0
-        },
-        {
           "code": "002374.SZ",
           "price": 3.21,
           "pullback_pct": 11.0,
@@ -430,34 +157,6 @@
           "code": "001257.SZ",
           "price": 27.74,
           "pullback_pct": 11.2,
-          "limit_days": 2,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "603687.SS",
-          "price": 18.38,
-          "pullback_pct": 9.8,
-          "limit_days": 2,
-          "entity_ratio": 50.0
-        },
-        {
-          "code": "002342.SZ",
-          "price": 10.17,
-          "pullback_pct": 25.2,
-          "limit_days": 2,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "002805.SZ",
-          "price": 21.24,
-          "pullback_pct": 13.3,
-          "limit_days": 3,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "002842.SZ",
-          "price": 39.69,
-          "pullback_pct": 11.7,
           "limit_days": 2,
           "entity_ratio": 100.0
         }
