@@ -1589,7 +1589,7 @@ def main():
             st.warning("⚠️ 无法检测")
 
         st.divider()
-        st.caption("NEON VAULT · DEEPSEEK AI")
+        st.caption("NEON VAULT · v5.1 · 60d")
 
     # ---- 大盘概览 ----
     st.header("◆ 大盘概况")
