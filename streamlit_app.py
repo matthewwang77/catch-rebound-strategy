@@ -731,40 +731,15 @@ def load_all_recent_data(codes, lookback_days=30):
 
 # ==================== 云端数据加载（Streamlit Cloud 无本地CSV时使用）====================
 @st.cache_data(ttl=3600, show_spinner=False)
-def cloud_load_data(version="v5.3"):
-    """云端模式：快照优先 → yfinance 兜底，0-100% 进度条
-    version参数用于强制缓存刷新，每次升级改版本号即可"""
-    _ = version  # unused but changes cache key
-    snapshot_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "stock_snapshot.csv.gz")
+def cloud_load_data(version="v5.4"):
+    """云端模式：yfinance 直接下载，0-100% 进度条"""
+    _ = version
     all_data = {}
-
     progress_bar = st.progress(0, text="▸ 0% 云端加载...")
     today_str = china_now().strftime('%Y-%m-%d')
 
-    # ====== 快照优先加载（已修复数据格式）======
-    if os.path.exists(snapshot_path):
-        progress_bar.progress(5, text="▸ 5% 读取数据快照...")
-        try:
-            df = pd.read_csv(snapshot_path, compression='gzip')
-            loaded = 0
-            for code, group in df.groupby('code'):
-                group = group.sort_values('date').tail(30)
-                stock_df = pd.DataFrame({
-                    'Close': pd.to_numeric(group['close'], errors='coerce'),
-                    'Open': pd.to_numeric(group['open'], errors='coerce'),
-                    'High': pd.to_numeric(group['high'], errors='coerce'),
-                    'Low': pd.to_numeric(group['low'], errors='coerce'),
-                    'Volume': pd.to_numeric(group['volume'], errors='coerce'),
-                }).dropna()
-                if len(stock_df) >= 10:
-                    all_data[code] = stock_df
-                    loaded += 1
-            progress_bar.progress(15, text=f"▸ 15% 快照加载: {loaded} 只")
-        except Exception as e:
-            progress_bar.progress(5, text=f"▸ 5% 快照读取失败: {str(e)[:50]}")
-
-    # ====== 如果快照数据不够，直接 yfinance 下载 ======
-    if len(all_data) < 1000:
+    # ====== 直接 yfinance 下载全量数据 ======
+    if len(all_data) == 0:
         # 生成全A股代码列表
         codes = []
         for i in range(600000, 606000): codes.append(f"{i}.SS")
@@ -782,7 +757,7 @@ def cloud_load_data(version="v5.3"):
             pct = 5 + int(40 * batch_num / total_batches)
             progress_bar.progress(pct, text=f"▸ {pct}% 下载活跃股票 {batch_num}/{total_batches} 批 ({downloaded}只)...")
             try:
-                hist = yf.download(tickers=batch, period="60d", progress=False)
+                hist = yf.download(tickers=batch, period="30d", progress=False)
                 if hist is None or hist.empty:
                     continue
                 try:
@@ -1591,18 +1566,14 @@ def main():
                 else: data_age = f"{int(age_seconds/86400)}天前"
                 st.success(f"✅ {len(csv_files)}只 | 更新于 {data_age}")
             elif has_snapshot:
-                snap_mtime = os.path.getmtime(snapshot_path)
-                snap_age = _time.time() - snap_mtime
-                if snap_age < 86400: snap_str = f"{int(snap_age/3600)}小时前"
-                else: snap_str = f"{int(snap_age/86400)}天前"
-                st.success(f"✅ 云端快照模式 ({snap_str})")
+                st.success("✅ 云端模式 (yfinance)")
             else:
                 st.warning("⚠️ 无本地数据")
         except:
             st.warning("⚠️ 无法检测")
 
         st.divider()
-        st.caption("NEON VAULT · v5.3 · fixed")
+        st.caption("NEON VAULT · v5.4 · fixed")
 
     # ---- 大盘概览 ----
     st.header("◆ 大盘概况")
