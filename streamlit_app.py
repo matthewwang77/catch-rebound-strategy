@@ -1640,14 +1640,16 @@ def main():
     if 'trigger_scan' in st.session_state:
         force_refresh = st.session_state.get('force_refresh', False)
 
-        # 检查点自动刷新：过了新检查点就强制刷新一次
-        if not force_refresh:
+        # 检查点自动刷新或手动强制刷新：清缓存
+        if force_refresh:
+            st.cache_data.clear()
+            st.session_state['last_checkpoint'] = get_checkpoint_key()
+        else:
             current_cp = get_checkpoint_key()
             last_cp = st.session_state.get('last_checkpoint', '')
             if current_cp and current_cp != last_cp:
                 force_refresh = True
                 st.session_state['last_checkpoint'] = current_cp
-                # 清除旧缓存，触发 cloud_load_data 重新下载
                 st.cache_data.clear()
 
         # v5: 强制刷新时自动增量更新今日数据
