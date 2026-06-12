@@ -731,7 +731,7 @@ def load_all_recent_data(codes, lookback_days=30):
 
 # ==================== 云端数据加载（Streamlit Cloud 无本地CSV时使用）====================
 @st.cache_data(ttl=3600, show_spinner=False)
-def cloud_load_data(version="v5.4"):
+def cloud_load_data(version="v5.5"):
     """云端模式：yfinance 直接下载，0-100% 进度条"""
     _ = version
     all_data = {}
@@ -995,15 +995,15 @@ def save_signals(all_candidates):
     today = china_now().strftime('%Y%m%d')
 
     # 批量获取名称/板块
-    codes = [c['code'] for c in all_candidates]
+    codes = [c.get('代码', c.get('code', '')) for c in all_candidates]
     name_info = name_lookup.batch_lookup(codes, max_fetch=10)
 
     new_rows = []
     for c in all_candidates:
-        info = name_info.get(c['code'], {})
+        info = name_info.get(c.get('代码', c.get('code', '')), {})
         new_rows.append({
             'signal_date': today,
-            'code': c['code'],
+            'code': c.get('代码', c.get('code', '')),
             'name': info.get('name', '') or '',
             'sector': info.get('sector_cn', '') or info.get('sector', '') or info.get('industry', '') or '',
             'mode': c.get('mode', ''),
@@ -1412,7 +1412,7 @@ def show_screening_results(results, all_stats):
                              f"最终: {stats['final']}")
                 continue
 
-            candidate_codes = [c['code'] for c in candidates]
+            candidate_codes = [c.get('代码', c.get('code', '')) for c in candidates]
             name_info = name_lookup.batch_lookup(candidate_codes, max_fetch=5)
 
             for code_data in candidates:
@@ -1573,7 +1573,7 @@ def main():
             st.warning("⚠️ 无法检测")
 
         st.divider()
-        st.caption("NEON VAULT · v5.4 · fixed")
+        st.caption("NEON VAULT · v5.5 · fixed")
 
     # ---- 大盘概览 ----
     st.header("◆ 大盘概况")
