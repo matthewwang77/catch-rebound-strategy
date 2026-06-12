@@ -3,7 +3,7 @@ A股连板回调策略 - Streamlit UI  |  NEON VAULT Edition
 一键运行：streamlit run streamlit_app.py
 
 功能：
-  - 同时展示 strict/normal/loose 三种模式选股结果
+  - 同时展示 strict/loose 两种模式选股结果（v5 参数）
   - 大盘指数实时概览
   - 每只候选股票一键 AI 深度分析
 """
@@ -448,11 +448,11 @@ def _load_module(filepath, module_name):
 
 @st.cache_resource
 def load_modules():
-    """加载选股new.py 和 AI.py（缓存，避免重复加载）"""
+    """加载选股new_v5.py（缓存，避免重复加载）"""
     base = os.path.dirname(os.path.abspath(__file__))
 
-    screener = _load_module(os.path.join(base, "选股new.py"), "screener")
-    ai_analyzer = _load_module(os.path.join(base, "AI.py"), "ai_analyzer")
+    screener = _load_module(os.path.join(base, "选股new_v5.py"), "screener")
+    ai_analyzer = None  # AI分析已集成在screener中
 
     return screener, ai_analyzer
 
@@ -552,49 +552,25 @@ def get_market_data():
 
 
 # ==================== 极速数据加载（CSV 缓存 + 今日注入 + 过期更新）====================
-def load_all_recent_data(codes, lookback_days=30):
-    """三步加载，保证实时性：
 
-    1. 从本地 CSV 读历史数据（~5 秒）
-    2. yfinance 拉最近 2 天（含今天）→ 注入每只股票（~30-60 秒）
-    3. 如果 CSV 过期则全量更新 + 回写（~2-3 分钟，仅首次）
-
-    每次运行都有今天的数据，CSV 新鲜时总计 ~40-70 秒。
-    """
+@st.cache_data(ttl=1800)
+def _load_csv_cache(codes_tuple, lookback_days, today_str):
+    """纯数据加载，被 st.cache_data 缓存。30 分钟内秒开。"""
+    codes = list(codes_tuple)
     DATA_DIR = screener.DATA_DIR
     all_data = {}
     failed = []
 
-    today_int = int(china_now().strftime('%Y%m%d'))
-    today_str = china_now().strftime('%Y-%m-%d')
-    progress_bar = st.progress(0, text="◈ 读取本地缓存...")
-    total = len(codes)
-
-    # ====== 第一步：从 CSV 读取历史数据 ======
-    stale_count = 0
-    has_today_count = 0  # 统计 CSV 已有今日数据的股票数
-    for i, code in enumerate(codes):
-        if (i + 1) % 1500 == 0:
-            progress_bar.progress(0.2 * i / total, text=f"◈ 读取缓存 {i}/{total}...")
-
+    for code in codes:
         csv_path = os.path.join(DATA_DIR, f"{code}.csv")
         if not os.path.exists(csv_path) or os.path.getsize(csv_path) < 100:
             failed.append(code)
             continue
-
         try:
             df = pd.read_csv(csv_path)
             if len(df) == 0:
                 failed.append(code)
                 continue
-
-            latest_date_str = str(df['date'].iloc[-1])[:10]
-            latest_date_int = int(latest_date_str.replace('-', ''))
-            if today_int - latest_date_int > 2:
-                stale_count += 1
-            if latest_date_str == today_str:
-                has_today_count += 1
-
             df = df.tail(lookback_days * 2).copy()
             stock_df = pd.DataFrame({
                 'Close': df['close'].values,
@@ -603,41 +579,74 @@ def load_all_recent_data(codes, lookback_days=30):
                 'Low': df['low'].values,
                 'Volume': df['volume'].values,
             }).dropna()
-
             if len(stock_df) >= 10:
                 all_data[code] = stock_df
         except Exception:
             failed.append(code)
+    return all_data, failed
+
+
+def load_all_recent_data(codes, lookback_days=30):
+    """三步加载 + 0-100% 进度条"""
+
+    DATA_DIR = screener.DATA_DIR
+    today_str = china_now().strftime('%Y-%m-%d')
+    today_int = int(china_now().strftime('%Y%m%d'))
+    total = len(codes)
+    progress_bar = st.progress(0, text="▸ 0% 读取本地缓存...")
+    BATCH_SIZE = 200
+
+    # ====== 第一阶段: 0% → 25% 读CSV缓存 ======
+    all_data, failed = _load_csv_cache(tuple(codes), lookback_days, today_str)
+    progress_bar.progress(15, text=f"▸ 15% 缓存读取完成: {len(all_data)} 只")
+
+    # ====== 第二阶段: 15% → 25% 检查数据新鲜度 ======
+    stale_count = 0
+    has_today_count = 0
+    check_total = len(all_data)
+    for i, code in enumerate(all_data):
+        if (i + 1) % 1000 == 0:
+            progress_bar.progress(15 + int(10 * (i + 1) / check_total),
+                                  text=f"▸ {15 + int(10*(i+1)/check_total)}% 检查数据新鲜度 {i+1}/{check_total}...")
+        csv_path = os.path.join(DATA_DIR, f"{code}.csv")
+        try:
+            df = pd.read_csv(csv_path)
+            latest_date_str = str(df['date'].iloc[-1])[:10]
+            if today_int - int(latest_date_str.replace('-', '')) > 2:
+                stale_count += 1
+            if latest_date_str == today_str:
+                has_today_count += 1
+        except Exception:
+            pass
 
     today_coverage = has_today_count / len(all_data) if all_data else 0
     force_refresh = st.session_state.get('force_refresh', False)
-    progress_bar.progress(0.25, text=f"◈ 缓存: {len(all_data)} 只 ({stale_count} 只过期, 今日覆盖 {today_coverage:.0%})")
+    if force_refresh:
+        st.session_state['force_refresh'] = False
 
-    # ====== 第二步：今日数据注入（强制刷新时必跑，正常时已有今日数据则跳过）======
+    progress_bar.progress(25, text=f"▸ 25% 数据检查: {len(all_data)}只 | 今日覆盖{today_coverage:.0%} | {stale_count}只过期")
+
+    # ====== 第三阶段: 25% → 70% 今日数据注入 ======
     skip_injection = (not force_refresh) and (today_coverage > 0.95)
     injected = 0
 
-    if force_refresh:
-        st.session_state['force_refresh'] = False  # 用完即清
-
     if skip_injection:
-        progress_bar.progress(0.40, text=f"◈ 今日数据已齐全（{today_coverage:.0%}），跳过注入 ⚡")
+        progress_bar.progress(70, text=f"▸ 70% 今日数据已齐全({today_coverage:.0%}) ⚡跳过注入")
     else:
-        progress_bar.progress(0.28, text=f"◈ 今日覆盖率 {today_coverage:.0%}，拉取最新数据...")
-        BATCH_SIZE = 200
+        progress_bar.progress(28, text=f"▸ 28% 今日覆盖率{today_coverage:.0%}，拉取最新数据...")
         batches = [codes[i:i + BATCH_SIZE] for i in range(0, len(codes), BATCH_SIZE)]
 
         for i, batch in enumerate(batches):
-            progress_bar.progress(0.28 + 0.12 * (i + 1) / len(batches),
-                                  text=f"◈ 今日注入 {i+1}/{len(batches)} 批...")
+            pct = 28 + int(40 * (i + 1) / len(batches))
+            progress_bar.progress(pct, text=f"▸ {pct}% 今日注入 {i+1}/{len(batches)} 批 ({injected}只)...")
             try:
                 hist = yf.download(tickers=batch, period="3d", progress=False)
                 if hist is None or hist.empty:
                     continue
                 try:
                     codes_in_batch = set(hist.columns.get_level_values(1))
-                except Exception as e:
-                    print(f"    批次 MultiIndex 解析失败: {e}")
+                except Exception:
+                    continue
 
                 for code in batch:
                     if code not in codes_in_batch:
@@ -647,14 +656,11 @@ def load_all_recent_data(codes, lookback_days=30):
                         recent = recent[recent['Close'].notna() & (recent['Close'] > 0)]
                         if len(recent) == 0:
                             continue
-
                         if code in all_data:
                             df = all_data[code]
                             new_rows = pd.DataFrame({
-                                'Close': recent['Close'].values,
-                                'Open': recent['Open'].values,
-                                'High': recent['High'].values,
-                                'Low': recent['Low'].values,
+                                'Close': recent['Close'].values, 'Open': recent['Open'].values,
+                                'High': recent['High'].values, 'Low': recent['Low'].values,
                                 'Volume': recent['Volume'].values,
                             })
                             all_data[code] = pd.concat([df, new_rows], ignore_index=True).tail(60)
@@ -665,20 +671,17 @@ def load_all_recent_data(codes, lookback_days=30):
                         pass
             except Exception:
                 pass
+        progress_bar.progress(70, text=f"▸ 70% 今日注入完成: {injected} 只")
 
-        progress_bar.progress(0.40, text=f"◈ 今日数据注入: {injected} 只")
-
-    # ====== 第三步：如果 CSV 过期，全量更新 + 回写 ======
+    # ====== 第四阶段: 70% → 99% 全量刷新（仅过期>30%时触发）======
     if stale_count > len(codes) * 0.3:
-        progress_bar.progress(0.42, text=f"◈ {stale_count} 只过期，全量更新...")
-
+        progress_bar.progress(72, text=f"▸ 72% {stale_count}只过期，全量更新中...")
         batches = [codes[i:i + BATCH_SIZE] for i in range(0, len(codes), BATCH_SIZE)]
         updated = 0
-        fresh_all_data = {}
 
         for i, batch in enumerate(batches):
-            progress_bar.progress(0.42 + 0.54 * (i + 1) / len(batches),
-                                  text=f"◈ 全量更新 {i+1}/{len(batches)} 批...")
+            pct = 72 + int(26 * (i + 1) / len(batches))
+            progress_bar.progress(pct, text=f"▸ {pct}% 全量更新 {i+1}/{len(batches)} 批 ({updated}只)...")
             try:
                 hist = yf.download(tickers=batch, period="30d", progress=False)
                 codes_in_batch = set()
@@ -687,51 +690,41 @@ def load_all_recent_data(codes, lookback_days=30):
                         codes_in_batch = set(hist.columns.get_level_values(1))
                     except Exception:
                         pass
-
                 for code in batch:
-                    stock_data = None
-                    if code in codes_in_batch:
-                        try:
-                            stock_data = hist.xs(code, level=1, axis=1)
-                            if stock_data['Close'].dropna().empty:
-                                stock_data = None
-                        except Exception:
-                            stock_data = None
-
-                    if stock_data is not None and not stock_data.empty:
-                        fresh_all_data[code] = stock_data
-                        # 回写 CSV
-                        try:
-                            csv_path = os.path.join(DATA_DIR, f"{code}.csv")
-                            df_old = pd.read_csv(csv_path)
-                            new_rows = [
-                                {'date': (idx.strftime('%Y-%m-%d') if hasattr(idx, 'strftime') else str(idx)[:10]),
-                                 'open': row['Open'], 'high': row['High'],
-                                 'low': row['Low'], 'close': row['Close'],
-                                 'volume': int(row['Volume'])}
-                                for idx, row in stock_data.iterrows() if row['Close'] > 0
-                            ]
-                            if new_rows:
-                                df_new = pd.DataFrame(new_rows)
-                                df_combined = pd.concat([df_old, df_new])
-                                df_combined['date'] = pd.to_datetime(df_combined['date'])
-                                df_combined = df_combined.drop_duplicates(subset=['date'], keep='last')
-                                df_combined = df_combined.sort_values('date')
-                                df_combined.to_csv(csv_path, index=False)
-                                updated += 1
-                        except Exception:
-                            pass
+                    if code not in codes_in_batch:
+                        continue
+                    try:
+                        stock_data = hist.xs(code, level=1, axis=1)
+                        if stock_data['Close'].dropna().empty:
+                            continue
+                        csv_path = os.path.join(DATA_DIR, f"{code}.csv")
+                        df_old = pd.read_csv(csv_path)
+                        new_rows = [
+                            {'date': (idx.strftime('%Y-%m-%d') if hasattr(idx, 'strftime') else str(idx)[:10]),
+                             'open': row['Open'], 'high': row['High'],
+                             'low': row['Low'], 'close': row['Close'], 'volume': int(row['Volume'])}
+                            for idx, row in stock_data.iterrows() if row['Close'] > 0
+                        ]
+                        if new_rows:
+                            df_new = pd.DataFrame(new_rows)
+                            df_combined = pd.concat([df_old, df_new])
+                            df_combined['date'] = pd.to_datetime(df_combined['date'])
+                            df_combined = df_combined.drop_duplicates(subset=['date'], keep='last')
+                            df_combined = df_combined.sort_values('date')
+                            df_combined.to_csv(csv_path, index=False)
+                            updated += 1
+                    except Exception:
+                        pass
             except Exception:
                 pass
-
-        for code, stock_data in fresh_all_data.items():
-            all_data[code] = stock_data
-
-        progress_bar.progress(0.96, text=f"◈ CSV 更新: {updated} 只")
+        progress_bar.progress(98, text=f"▸ 98% CSV更新完成: {updated}只")
         if updated > 0:
             st.toast(f"◆ {updated} 只股票CSV已刷新，下次秒开", icon="✅")
+    else:
+        progress_bar.progress(98, text=f"▸ 98% CSV无需全量更新(过期{stale_count}只≤30%)")
 
-    progress_bar.progress(1.0, text=f"◈ 加载完成: {len(all_data)} 只 (今日注入 {injected})")
+    # ====== 完成 ======
+    progress_bar.progress(100, text=f"▸ 100% 加载完成: {len(all_data)} 只 (注入{injected}只)")
     progress_bar.empty()
     return all_data, failed
 
@@ -895,8 +888,8 @@ def fast_ai_analysis(code, stock_df, market_context=""):
 
 # ==================== 多模式筛选 ====================
 def screen_all_modes(all_data):
-    """用 strict/normal/loose 三种参数分别筛选，返回 {mode: [候选列表]}"""
-    modes = ["strict", "normal", "loose"]
+    """用 strict/loose 两种参数分别筛选，返回 {mode: [候选列表]}"""
+    modes = ["strict", "loose"]
     results = {}
     all_stats = {}
 
@@ -1232,10 +1225,10 @@ def perform_manual_analysis(codes, signal_date_str):
                 st.warning(f"◆ {code} 数据获取失败，跳过")
                 continue
 
-        # 检查系统是否会选中（用三种模式分别测试）
+        # 检查系统是否会选中（用两种模式分别测试）
         system_picked = False
         system_mode = ""
-        for mode in ["strict", "normal", "loose"]:
+        for mode in ["strict", "loose"]:
             params = screener.SCREEN_MODES[mode].copy()
             original = screener.PARAMS.copy()
             screener.PARAMS.update(params)
@@ -1368,11 +1361,10 @@ def show_screening_results(results, all_stats):
 
     tabs = st.tabs([
         f"◆ STRICT 严格 ({len(results['strict'])}只)",
-        f"◈ NORMAL 正常 ({len(results['normal'])}只)",
         f"◇ LOOSE 宽松 ({len(results['loose'])}只)",
     ])
 
-    for tab_idx, mode in enumerate(["strict", "normal", "loose"]):
+    for tab_idx, mode in enumerate(["strict", "loose"]):
         with tabs[tab_idx]:
             candidates = results[mode]
             stats = all_stats[mode]
@@ -1457,7 +1449,7 @@ def show_screening_results(results, all_stats):
     st.divider()
     if any(len(v) > 0 for v in results.values()):
         all_candidates = []
-        for mode in ["strict", "normal", "loose"]:
+        for mode in ["strict", "loose"]:
             for c in results[mode]:
                 all_candidates.append({**c, 'mode': mode})
         df_export = pd.DataFrame(all_candidates)
@@ -1518,10 +1510,33 @@ def main():
                  help="切换选股和复盘界面")
         st.divider()
 
-        st.markdown("**◆ 三种模式**")
-        st.markdown("- **STRICT** 严格 — 历史回测最优参数，信号少但精准")
-        st.markdown("- **NORMAL** 正常 — 放宽实体板/阳线要求，日常推荐")
-        st.markdown("- **LOOSE** 宽松 — 几乎只保留连板+回调条件，弱势市场用")
+        st.markdown("**◆ 两种模式（v5 优化参数）**")
+        st.markdown("- **STRICT** 严格 — 需3连板，~5信号/月，胜率70%，Sharpe 1.71")
+        st.markdown("- **LOOSE** 宽松 — 需2连板，~18信号/月，胜率61%，Sharpe 1.54（STRICT超集）")
+
+        st.divider()
+
+        # 数据新鲜度
+        st.markdown("**◆ 数据状态**")
+        data_age = "未知"
+        try:
+            import time as _time
+            DATA_DIR = screener.DATA_DIR
+            csv_files = [f for f in os.listdir(DATA_DIR) if f.endswith('.csv') and os.path.getsize(os.path.join(DATA_DIR, f)) > 100]
+            if csv_files:
+                newest = max(os.path.getmtime(os.path.join(DATA_DIR, f)) for f in csv_files)
+                age_seconds = _time.time() - newest
+                if age_seconds < 3600:
+                    data_age = f"{int(age_seconds/60)}分钟前"
+                elif age_seconds < 86400:
+                    data_age = f"{int(age_seconds/3600)}小时前"
+                else:
+                    data_age = f"{int(age_seconds/86400)}天前"
+                st.success(f"✅ {len(csv_files)}只 | 更新于 {data_age}")
+            else:
+                st.warning("⚠️ 无本地数据")
+        except:
+            st.warning("⚠️ 无法检测")
 
         st.divider()
         st.caption("NEON VAULT · DEEPSEEK AI")
@@ -1554,6 +1569,14 @@ def main():
     # ---- 选股逻辑（无论哪个页面，触发后都执行） ----
     if 'trigger_scan' in st.session_state:
         force_refresh = st.session_state.get('force_refresh', False)
+
+        # v5: 强制刷新时自动增量更新今日数据
+        if force_refresh and hasattr(screener, 'update_today_data'):
+            with st.spinner("正在更新今日数据..."):
+                try:
+                    screener.update_today_data()
+                except Exception:
+                    pass
 
         if not force_refresh and 'cached_results' in st.session_state and 'cached_all_stats' in st.session_state:
             all_data = st.session_state.get('all_data', {})
