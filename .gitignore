@@ -28,5 +28,9 @@ candidates_*.csv
 .DS_Store
 Thumbs.db
 
+# Claude Code
+.agents/
+.playwright-mcp/
+
 # Environment
 .env

@@ -1,11 +1,8 @@
 """
-每日自动选股 + 微信推送
+每日自动选股
 用法: python auto_daily.py
 
-首次使用:
-  1. 注册 Server酱: https://sct.ftqq.com/
-  2. 获取 SendKey，填到下面的 SENDKEY
-  3. 设置定时运行（见文件末尾说明）
+首次使用: 设置定时运行（见文件末尾说明）
 """
 import yfinance as yf
 import pandas as pd
@@ -13,12 +10,6 @@ from datetime import datetime
 import os
 import sys
 import importlib.util
-import requests
-
-# ==================== 配置 ====================
-# Server酱 SendKey（注册 https://sct.ftqq.com/ 获取，通过环境变量设置）
-#   export SENDKEY="你的key"
-SENDKEY = os.environ.get("SENDKEY", "")
 
 # 选股模式
 MODES = ["strict", "loose"]
@@ -31,7 +22,7 @@ def _load_module(filepath, module_name):
     spec.loader.exec_module(module)
     return module
 
-BASE = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))  # project root
+BASE = os.path.dirname(os.path.abspath(__file__))  # project root
 screener = _load_module(os.path.join(BASE, "选股new_v5.py"), "screener")
 
 
@@ -206,32 +197,6 @@ def format_message(results):
     return "\n".join(lines)
 
 
-# ==================== 微信推送 ====================
-def send_wechat(title, content):
-    """通过 Server酱 推送到微信"""
-    if not SENDKEY:
-        print("\n⚠️ 未设置 SENDKEY，跳过微信推送")
-        print("  注册 https://sct.ftqq.com/ 获取 SendKey")
-        return False
-
-    try:
-        url = f"https://sctapi.ftqq.com/{SENDKEY}.send"
-        resp = requests.post(url, data={
-            "title": title,
-            "desp": content,
-        }, timeout=15)
-        result = resp.json()
-        if result.get("code") == 0:
-            print("✅ 微信推送成功")
-            return True
-        else:
-            print(f"❌ 推送失败: {result}")
-            return False
-    except Exception as e:
-        print(f"❌ 推送异常: {e}")
-        return False
-
-
 # ==================== JSON 结果保存 ====================
 def save_results_json(results):
     """保存结构化 JSON 结果，供 Streamlit 自动加载"""
@@ -342,11 +307,6 @@ def main():
     msg = format_message(results)
     print("\n" + msg)
 
-    # 推送微信
-    total = sum(len(v) for v in results.values())
-    emoji = "🔔" if total > 0 else "💤"
-    send_wechat(f"{emoji} 选股结果 {datetime.now().strftime('%m/%d')}", msg)
-
     # 保存文本日志
     result_dir = os.path.join(BASE, "auto_logs")
     os.makedirs(result_dir, exist_ok=True)
@@ -379,7 +339,7 @@ if __name__ == "__main__":
 #       <key>ProgramArguments</key>
 #       <array>
 #           <string>/Users/mattsmacair/micromamba/bin/python3</string>
-#           <string>/Users/mattsmacair/Desktop/Coding/量化模型/抓反弹策略/archive/tools/auto_daily.py</string>
+#           <string>/Users/mattsmacair/Desktop/Coding/量化模型/抓反弹策略/auto_daily.py</string>
 #       </array>
 #       <key>StartCalendarInterval</key>
 #       <array>
@@ -390,8 +350,6 @@ if __name__ == "__main__":
 #       </array>
 #       <key>EnvironmentVariables</key>
 #       <dict>
-#           <key>SENDKEY</key>
-#           <string>你的SendKey</string>
 #           <key>DEEPSEEK_API_KEY</key>
 #           <string>你的DeepSeekKey</string>
 #       </dict>
@@ -407,7 +365,7 @@ if __name__ == "__main__":
 #
 # 或者用 crontab:
 #   1. crontab -e
-#   2. 添加: 0 10 * * 1-5 cd /path/to/抓反弹策略 && python3 archive/tools/auto_daily.py
-#           30 11 * * 1-5 cd /path/to/抓反弹策略 && python3 archive/tools/auto_daily.py
-#           0 14 * * 1-5 cd /path/to/抓反弹策略 && python3 archive/tools/auto_daily.py
-#           0 15 * * 1-5 cd /path/to/抓反弹策略 && python3 archive/tools/auto_daily.py
+#   2. 添加: 0 10 * * 1-5 cd /path/to/抓反弹策略 && python3 auto_daily.py
+#           30 11 * * 1-5 cd /path/to/抓反弹策略 && python3 auto_daily.py
+#           0 14 * * 1-5 cd /path/to/抓反弹策略 && python3 auto_daily.py
+#           0 15 * * 1-5 cd /path/to/抓反弹策略 && python3 auto_daily.py

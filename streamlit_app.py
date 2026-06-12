@@ -510,8 +510,8 @@ def get_market_data():
                     continue
 
                 current = float(current)
-                high_5d = float(df['High'].max()) if has_history else current
-                low_5d = float(df['Low'].min()) if has_history else current
+                high_5d = float(df['High'].tail(5).max()) if has_history else current
+                low_5d = float(df['Low'].tail(5).min()) if has_history else current
 
                 if has_history:
                     prev = float(df['Close'].iloc[-2])
@@ -1139,7 +1139,12 @@ def show_signal_review():
             })
 
         df_show = pd.DataFrame(rows)
-        st.dataframe(df_show, use_container_width=True, hide_index=True)
+        st.dataframe(
+            df_show, use_container_width=True, hide_index=True,
+            column_config={
+                "回调": st.column_config.TextColumn(width="small"),
+            },
+        )
 
         # 模式胜率对比
         st.subheader("◆ 各模式胜率对比")
@@ -1443,7 +1448,7 @@ def show_screening_results(results, all_stats):
                 info = name_info.get(code, {})
                 stock_name = info.get('name', '') or ''
                 with st.container():
-                    col1, col2, col3, col4, col5, col6 = st.columns([1.8, 1.2, 0.9, 0.9, 0.9, 1.5])
+                    col1, col2, col3, col4, col5, col6 = st.columns([1.8, 1.2, 1.1, 0.9, 0.9, 1.3])
 
                     with col1:
                         name_line = f"**`{code}`**"
@@ -1679,21 +1684,6 @@ def main():
             else:
                 st.caption(f"最近扫描: {scan_time} | 市场已收盘")
 
-            # 显示大盘数据（来自扫描结果）
-            market = scan_data.get("market", {})
-            if market:
-                cols_mkt = st.columns(len(market))
-                mkt_items = list(market.items())
-                for i, (name, data) in enumerate(mkt_items):
-                    with cols_mkt[i]:
-                        pct_val = data.get("pct", 0)
-                        st.metric(
-                            label=name,
-                            value=f"{data.get('price', 0):.0f}",
-                            delta=f"{pct_val:+.2f}%" if pct_val else "—",
-                        )
-                st.divider()
-
             # 两种模式 Tab 展示
             modes = scan_data.get("modes", {})
             tab_labels = [
@@ -1718,7 +1708,7 @@ def main():
                         info = name_info.get(code, {})
                         stock_name = info.get("name", "") or ""
                         with st.container():
-                            col1, col2, col3, col4, col5, col6 = st.columns([1.8, 1.2, 0.9, 0.9, 0.9, 1.5])
+                            col1, col2, col3, col4, col5, col6 = st.columns([1.8, 1.2, 1.1, 0.9, 0.9, 1.3])
                             with col1:
                                 name_line = f"**`{code}`**"
                                 if stock_name:

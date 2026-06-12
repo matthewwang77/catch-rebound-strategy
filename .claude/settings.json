@@ -10,9 +10,11 @@
       "Bash(cp \"/Users/mattsmacair/Desktop/Coding/量化模型/抓反弹策略/frontend-design/SKILL.md\" ~/.claude/skills/frontend-design/SKILL.md)",
       "WebFetch(domain:raw.githubusercontent.com)"
     ],
-    "defaultMode": "bypassPermissions"
+    "defaultMode": "bypassPermissions",
+    "additionalDirectories": [
+      "/Users/mattsmacair/Library/LaunchAgents"
+    ]
   },
-  "skipDangerousModePermissionPrompt": true,
   "hooks": {
     "PostToolUse": [
       {
@@ -26,5 +28,6 @@
         ]
       }
     ]
-  }
+  },
+  "skipDangerousModePermissionPrompt": true
 }
