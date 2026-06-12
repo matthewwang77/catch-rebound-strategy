@@ -732,34 +732,84 @@ def load_all_recent_data(codes, lookback_days=30):
 # ==================== 云端数据加载（Streamlit Cloud 无本地CSV时使用）====================
 @st.cache_data(ttl=3600, show_spinner=False)
 def cloud_load_data():
-    """云端模式：从 stock_snapshot.csv.gz 加载预打包的30天数据，秒级完成。"""
+    """云端模式：快照优先 → yfinance 兜底，0-100% 进度条"""
     snapshot_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "stock_snapshot.csv.gz")
-
-    if not os.path.exists(snapshot_path):
-        st.warning("◆ 未找到 stock_snapshot.csv.gz，云端暂无数据。")
-        return {}
-
-    df = pd.read_csv(snapshot_path, compression='gzip')
-
     all_data = {}
-    for code, group in df.groupby('code'):
-        group = group.sort_values('date')
-        stock_df = pd.DataFrame({
-            'Close': group['close'].values,
-            'Open': group['open'].values,
-            'High': group['high'].values,
-            'Low': group['low'].values,
-            'Volume': group['volume'].values,
-        }).dropna()
-        if len(stock_df) >= 10:
-            all_data[code] = stock_df
 
-    # 今日数据注入：从 yfinance 拉最新交易日数据合并到快照
+    progress_bar = st.progress(0, text="▸ 0% 云端加载...")
+    today_str = china_now().strftime('%Y-%m-%d')
+
+    # ====== 尝试从快照加载 ======
+    if os.path.exists(snapshot_path):
+        progress_bar.progress(10, text="▸ 10% 读取数据快照...")
+        df = pd.read_csv(snapshot_path, compression='gzip')
+        for code, group in df.groupby('code'):
+            group = group.sort_values('date')
+            stock_df = pd.DataFrame({
+                'Close': group['close'].values, 'Open': group['open'].values,
+                'High': group['high'].values, 'Low': group['low'].values,
+                'Volume': group['volume'].values,
+            }).dropna()
+            if len(stock_df) >= 10:
+                all_data[code] = stock_df
+        progress_bar.progress(20, text=f"▸ 20% 快照: {len(all_data)} 只")
+    else:
+        progress_bar.progress(5, text="▸ 5% 无快照，直接下载活跃股票...")
+
+    # ====== 如果没有快照数据，下载全A股活跃列表 ======
+    if len(all_data) == 0:
+        # 生成全A股代码列表
+        codes = []
+        for i in range(600000, 606000): codes.append(f"{i}.SS")
+        for i in range(1, 5000): codes.append(f"{i:06d}.SZ")
+        for i in range(300000, 302000): codes.append(f"{i}.SZ")
+        for i in range(688000, 690000): codes.append(f"{i}.SS")
+
+        BATCH = 300
+        total_batches = len(codes) // BATCH + 1
+        downloaded = 0
+
+        for i in range(0, len(codes), BATCH):
+            batch = codes[i:i+BATCH]
+            batch_num = i // BATCH + 1
+            pct = 5 + int(40 * batch_num / total_batches)
+            progress_bar.progress(pct, text=f"▸ {pct}% 下载活跃股票 {batch_num}/{total_batches} 批 ({downloaded}只)...")
+            try:
+                hist = yf.download(tickers=batch, period="5d", progress=False)
+                if hist is None or hist.empty:
+                    continue
+                try:
+                    batch_codes = set(hist.columns.get_level_values(1))
+                except Exception:
+                    continue
+                for code in batch:
+                    if code not in batch_codes:
+                        continue
+                    try:
+                        recent = hist.xs(code, level=1, axis=1)
+                        recent = recent[recent['Close'].notna() & (recent['Close'] > 0)]
+                        if len(recent) < 10:
+                            continue
+                        stock_df = recent[['Open', 'High', 'Low', 'Close', 'Volume']].copy()
+                        all_data[code] = stock_df
+                        downloaded += 1
+                    except Exception:
+                        pass
+            except Exception:
+                pass
+        progress_bar.progress(45, text=f"▸ 45% 下载完成: {len(all_data)} 只")
+
+    # ====== 今日数据注入 ======
     codes = list(all_data.keys())
     BATCH = 300
+    total_batches = len(codes) // BATCH + 1
     injected = 0
+
     for i in range(0, len(codes), BATCH):
         batch = codes[i:i+BATCH]
+        batch_num = i // BATCH + 1
+        pct = 45 + int(50 * batch_num / total_batches)
+        progress_bar.progress(pct, text=f"▸ {pct}% 注入今日数据 {batch_num}/{total_batches} 批 ({injected}只)...")
         try:
             hist = yf.download(tickers=batch, period="3d", progress=False)
             if hist is None or hist.empty:
@@ -777,10 +827,8 @@ def cloud_load_data():
                     if len(recent) == 0:
                         continue
                     new_rows = pd.DataFrame({
-                        'Close': recent['Close'].values,
-                        'Open': recent['Open'].values,
-                        'High': recent['High'].values,
-                        'Low': recent['Low'].values,
+                        'Close': recent['Close'].values, 'Open': recent['Open'].values,
+                        'High': recent['High'].values, 'Low': recent['Low'].values,
                         'Volume': recent['Volume'].values,
                     })
                     if code in all_data:
@@ -791,6 +839,8 @@ def cloud_load_data():
         except Exception:
             pass
 
+    progress_bar.progress(100, text=f"▸ 100% 云端加载完成: {len(all_data)} 只 (注入{injected}只)")
+    progress_bar.empty()
     return all_data
 
 
