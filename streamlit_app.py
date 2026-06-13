@@ -2158,8 +2158,15 @@ def main():
                                if k.startswith("analyze_") and st.session_state[k]]
             # 构建 code → candidate info 的快速查找表
             candidate_info = {}
-            for m_name, m_candidates in modes.items():
-                for c in (m_candidates or []):
+            for m_name, m_data in modes.items():
+                if not isinstance(m_data, dict):
+                    continue
+                m_candidates = m_data.get('candidates', m_data.get('候选', []))
+                if not isinstance(m_candidates, list):
+                    continue
+                for c in m_candidates:
+                    if not isinstance(c, dict):
+                        continue
                     c_code = c.get('code', c.get('代码', ''))
                     if c_code:
                         candidate_info[c_code] = {
