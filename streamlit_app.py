@@ -1447,7 +1447,7 @@ def save_signals(all_candidates):
             'signal_date': c.get('signal_date', china_now().strftime('%Y%m%d')),
             'code': c.get('代码', c.get('code', '')),
             'name': info.get('name', '') or '',
-            'sector': info.get('sector_cn', '') or info.get('sector', '') or info.get('industry', '') or '',
+            'sector': '',
             'mode': c.get('mode', ''),
             'entry_price': c.get('price', c.get('最新价', 0)),
             'pullback_pct': c.get('pullback_pct', c.get('回调比', 0)),

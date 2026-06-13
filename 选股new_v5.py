@@ -256,13 +256,22 @@ def generate_all_codes():
 
 def download_one_stock(code):
     cache_file = os.path.join(DATA_DIR, f"{code}.csv")
+    # 检查已知无效代码，避免重复下载
+    invalid_file = os.path.join(BASE_DIR, "invalid_codes.txt")
+    if os.path.exists(invalid_file):
+        with open(invalid_file) as f:
+            invalid_codes = set(line.strip() for line in f)
+        if code in invalid_codes:
+            return False, "已知无效"
     if os.path.exists(cache_file) and os.path.getsize(cache_file) > 100:
         return True, "已有缓存"
     try:
         ticker = yf.Ticker(code)
         df = ticker.history(start="2020-01-01", end=datetime.now().strftime('%Y-%m-%d'))
         if df is None or len(df) == 0:
-            pd.DataFrame().to_csv(cache_file, index=False)
+            # 不写空壳文件，记入无效代码列表
+            with open(invalid_file, "a") as f:
+                f.write(f"{code}\n")
             return False, "无数据"
         df = df.reset_index()
         df['Date'] = pd.to_datetime(df['Date']).dt.strftime('%Y-%m-%d')
@@ -328,9 +337,16 @@ def download_all_data_fast():
         print("✅ 数据已基本齐全，跳过全量下载。用 --update-today 做增量更新。")
         return
 
-    # 过滤掉已有缓存的
+    # 过滤掉已有缓存的和已知无效的
+    invalid_file = os.path.join(BASE_DIR, "invalid_codes.txt")
+    invalid_set = set()
+    if os.path.exists(invalid_file):
+        with open(invalid_file) as f:
+            invalid_set = set(line.strip() for line in f)
     need_download = []
     for code in all_codes:
+        if code in invalid_set:
+            continue
         cache_file = os.path.join(DATA_DIR, f"{code}.csv")
         if not os.path.exists(cache_file) or os.path.getsize(cache_file) <= 100:
             need_download.append(code)
