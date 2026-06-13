@@ -2373,44 +2373,58 @@ def main():
         auto_verify_memory()
 
         # === 绩效总览 ===
-        perf = compute_performance()
-        if perf:
-            return_color = '#00FF88' if perf['total_return'] >= 0 else '#FF5050'
-            st.markdown(f"""
-            <div style="display:flex;align-items:baseline;gap:36px;padding:4px 0 10px 0;flex-wrap:wrap">
-              <div>
-                <div style="font-family:'JetBrains Mono',monospace;font-size:0.5rem;color:#555577;letter-spacing:0.08em;margin-bottom:4px">累计收益</div>
-                <div style="font-family:'JetBrains Mono',monospace;font-size:1.3rem;color:{return_color};font-weight:bold">{perf['total_return']:+.1f}%</div>
-              </div>
-              <div>
-                <div style="font-family:'JetBrains Mono',monospace;font-size:0.5rem;color:#555577;letter-spacing:0.08em;margin-bottom:4px">胜率</div>
-                <div style="font-family:'JetBrains Mono',monospace;font-size:1.3rem;color:#D0D0E8;font-weight:bold">{perf['win_rate']:.0%}</div>
-              </div>
-              <div>
-                <div style="font-family:'JetBrains Mono',monospace;font-size:0.5rem;color:#555577;letter-spacing:0.08em;margin-bottom:4px">盈亏比</div>
-                <div style="font-family:'JetBrains Mono',monospace;font-size:1.3rem;color:#D0D0E8;font-weight:bold">{perf['profit_factor']:.2f}</div>
-              </div>
-              <div>
-                <div style="font-family:'JetBrains Mono',monospace;font-size:0.5rem;color:#555577;letter-spacing:0.08em;margin-bottom:4px">最大回撤</div>
-                <div style="font-family:'JetBrains Mono',monospace;font-size:1.3rem;color:#FF6B6B;font-weight:bold">-{perf['max_drawdown']:.1f}%</div>
-              </div>
-            </div>
-            <div style="font-family:'JetBrains Mono',monospace;font-size:0.48rem;color:#444466;margin-bottom:12px">
-              {perf['wins']}胜 / {perf['losses']}负 &nbsp;·&nbsp; 均盈+{perf['avg_win']:.1f}% / 均亏-{perf['avg_loss']:.1f}% &nbsp;·&nbsp; 总{perf['total_trades']}笔
-            </div>
-            """, unsafe_allow_html=True)
+        perf_strict = compute_performance(mode_filter='strict', days_window=30)
+        perf_loose = compute_performance(mode_filter='loose', days_window=30)
 
-            # 收益曲线
-            if perf['cum_returns'] and len(perf['cum_returns']) > 1:
-                chart_df = pd.DataFrame({'累计收益%': perf['cum_returns']})
-                st.line_chart(chart_df, height=160, use_container_width=True)
-        else:
-            st.markdown("""
-            <div style="padding:40px 0;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:#444466">
-              ◆ 暂无绩效数据<br>
-              <span style="font-size:0.5rem;color:#333355">信号需 ≥3天 才能验证收益</span>
-            </div>
-            """, unsafe_allow_html=True)
+        col_s, col_l = st.columns(2)
+
+        for col, perf, mode_label, accent_color in [
+            (col_s, perf_strict, "STRICT", "#00F0FF"),
+            (col_l, perf_loose, "LOOSE", "#9B6FFF"),
+        ]:
+            with col:
+                if perf:
+                    ret_color = "#00FF88" if perf['total_return'] >= 0 else "#FF5050"
+                    st.markdown(f"""
+                    <div style="padding:4px 0 10px 0">
+                      <div style="font-family:'JetBrains Mono',monospace;font-size:0.5rem;color:{accent_color};letter-spacing:0.08em;margin-bottom:6px">◆ {mode_label} (近30天)</div>
+                      <div style="display:flex;flex-wrap:wrap;gap:12px 20px">
+                        <div>
+                          <div style="font-family:'JetBrains Mono',monospace;font-size:0.45rem;color:#555577">累计收益</div>
+                          <div style="font-family:'JetBrains Mono',monospace;font-size:1.1rem;color:{ret_color};font-weight:bold">{perf['total_return']:+.1f}%</div>
+                        </div>
+                        <div>
+                          <div style="font-family:'JetBrains Mono',monospace;font-size:0.45rem;color:#555577">胜率</div>
+                          <div style="font-family:'JetBrains Mono',monospace;font-size:1.1rem;color:#D0D0E8;font-weight:bold">{perf['win_rate']:.0%}</div>
+                        </div>
+                        <div>
+                          <div style="font-family:'JetBrains Mono',monospace;font-size:0.45rem;color:#555577">盈亏比</div>
+                          <div style="font-family:'JetBrains Mono',monospace;font-size:1.1rem;color:#D0D0E8;font-weight:bold">{perf['profit_factor']:.2f}</div>
+                        </div>
+                        <div>
+                          <div style="font-family:'JetBrains Mono',monospace;font-size:0.45rem;color:#555577">最大回撤</div>
+                          <div style="font-family:'JetBrains Mono',monospace;font-size:1.1rem;color:#FF6B6B;font-weight:bold">-{perf['max_drawdown']:.1f}%</div>
+                        </div>
+                      </div>
+                      <div style="font-family:'JetBrains Mono',monospace;font-size:0.42rem;color:#444466;margin-top:4px">
+                        {perf['wins']}胜/{perf['losses']}负 · 均盈+{perf['avg_win']:.1f}% · 均亏-{perf['avg_loss']:.1f}% · 共{perf['total_trades']}笔
+                      </div>
+                    </div>
+                    """, unsafe_allow_html=True)
+
+                    # 收益曲线
+                    if perf['cum_returns'] and len(perf['cum_returns']) >= 3:
+                        chart_df = pd.DataFrame({'累计收益%': perf['cum_returns']})
+                        st.line_chart(chart_df, height=140, use_container_width=True)
+                    else:
+                        st.caption(f"数据不足（{len(perf.get('cum_returns',[]))}笔），继续积累")
+                else:
+                    st.markdown(f"""
+                    <div style="padding:30px 0;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.55rem;color:{accent_color};opacity:0.5">
+                      ◆ {mode_label}<br>
+                      <span style="font-size:0.45rem;color:#333355">暂无数据，等待信号积累</span>
+                    </div>
+                    """, unsafe_allow_html=True)
 
         st.divider()
 
@@ -2465,9 +2479,26 @@ def main():
                     ret3_color = "#444466"
 
                 analysis_full = rec.get('analysis', '')
-                analysis_preview = analysis_full[:120]
                 sentiment = rec.get('sentiment', '')
                 position = rec.get('position', '')
+                opinion = rec.get('opinion', '')
+
+                # 构建结论摘要
+                summary_parts = []
+                if opinion:
+                    if "参与" in opinion:
+                        opinion_color = "#00FF88"
+                    elif "放弃" in opinion:
+                        opinion_color = "#FF5050"
+                    else:
+                        opinion_color = "#D0D0E8"
+                    summary_parts.append(f'<span style="color:{opinion_color}">{opinion}</span>')
+                if sentiment:
+                    summary_parts.append(f'<span style="color:#9B6FFF">{sentiment}</span>')
+                if position:
+                    summary_parts.append(f'<span style="color:#8888AA">{position}</span>')
+
+                summary_html = ' <span style="color:#555577">·</span> '.join(summary_parts) if summary_parts else '<span style="color:#444466">无摘要</span>'
 
                 st.markdown(f"""
                 <div style="border-left:2px solid {border_color};padding:8px 14px;margin-bottom:6px;background:rgba(10,11,20,0.5)">
@@ -2486,8 +2517,8 @@ def main():
                     {f'<span>情绪: {sentiment}</span>' if sentiment else ''}
                     {f'<span>仓位: {position}</span>' if position else ''}
                   </div>
-                  <div style="margin-top:4px;font-family:'JetBrains Mono',monospace;font-size:0.5rem;color:#666688;line-height:1.5">
-                    <span style="color:#00F0FF">◆</span> {analysis_preview}{'...' if len(analysis_full) > 120 else ''}
+                  <div style="margin-top:4px;font-family:'JetBrains Mono',monospace;font-size:0.5rem;line-height:1.5">
+                    <span style="color:#00F0FF">◆</span> {summary_html}
                   </div>
                 </div>
                 """, unsafe_allow_html=True)
