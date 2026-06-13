@@ -1528,8 +1528,10 @@ def check_return_v5(code, signal_date, entry_price, hold_days, take_profit, stop
         if not mask.any():
             return None
         entry_idx = mask.argmax()
-        if entry_idx + hold_days >= len(df_sorted):
-            return None
+        # 如果完整持有期数据不足，用现有数据做截断模拟
+        if entry_idx + 1 >= len(df_sorted):
+            return None  # 连1个交易日的向前数据都没有
+        effective_hold = min(hold_days, len(df_sorted) - 1 - entry_idx)
 
         exit_idx_limit = min(entry_idx + hold_days, len(df_sorted) - 1)
         for i in range(entry_idx + 1, exit_idx_limit + 1):
@@ -1573,12 +1575,14 @@ def check_return_v5(code, signal_date, entry_price, hold_days, take_profit, stop
                     return {'return_pct': round(net * 100, 2),
                             'exit_day': i - entry_idx, 'exit_reason': '止损'}
 
-        # 到期退出
+        # 到期退出（或截断退出：数据不足以跑满持有期）
         final_price = df_sorted.iloc[exit_idx_limit]['close']
         final_return = final_price / entry_price - 1 if entry_price > 0 else 0
         net_final = screener.apply_trading_costs(final_return, is_sell=True)
+        is_truncated = effective_hold < hold_days
         return {'return_pct': round(net_final * 100, 2),
-                'exit_day': hold_days, 'exit_reason': '到期'}
+                'exit_day': effective_hold,
+                'exit_reason': '到期(截断)' if is_truncated else '到期'}
     except Exception:
         return None
 
