@@ -16,6 +16,7 @@ import time
 import os
 import sys
 import importlib.util
+import threading
 
 # ==================== 页面配置 ====================
 st.set_page_config(
@@ -1996,6 +1997,68 @@ def load_latest_results():
         return None
 
 
+# ==================== 异步分析队列 ====================
+def _analysis_worker():
+    """后台线程：逐条消费分析队列，调用 DeepSeek API"""
+    while True:
+        if not st.session_state.analysis_queue:
+            break
+        code = st.session_state.analysis_queue.pop(0)
+        st.session_state.analysis_current = code
+        try:
+            # 获取股票数据
+            stock_df = None
+            csv_path = os.path.join(screener.DATA_DIR, f"{code}.csv")
+            if os.path.exists(csv_path):
+                stock_df = pd.read_csv(csv_path, index_col=0, parse_dates=True)
+            else:
+                try:
+                    stock_df = yf.Ticker(code).history(period="3mo")
+                except Exception:
+                    stock_df = None
+
+            market_ctx = screener.get_market_context()
+            memory_context = get_stock_memory_context(code)
+            result = fast_ai_analysis(code, stock_df, market_ctx, memory_context)
+            st.session_state.analysis_results[code] = result
+
+            # 自动存档
+            if result:
+                try:
+                    today_str = china_now().strftime('%Y%m%d')
+                    save_ai_analysis_record(
+                        code=code,
+                        date_str=today_str,
+                        mode="",
+                        entry_price=0,
+                        pullback_pct=0,
+                        limit_days=0,
+                        analysis_text=result,
+                    )
+                except Exception:
+                    pass
+        except Exception as e:
+            st.session_state.analysis_errors[code] = str(e)
+            st.session_state.analysis_results[code] = None
+    st.session_state.analysis_running = False
+    st.session_state.analysis_current = None
+
+
+def start_analysis_queue(codes):
+    """将 codes 加入队列并启动后台线程"""
+    for code in codes:
+        if code not in st.session_state.analysis_queue:
+            st.session_state.analysis_queue.append(code)
+    st.session_state.analysis_running = True
+    # 清除旧结果
+    for code in codes:
+        st.session_state.analysis_results.pop(code, None)
+        st.session_state.analysis_errors.pop(code, None)
+
+    thread = threading.Thread(target=_analysis_worker, daemon=True)
+    thread.start()
+
+
 # ==================== 主界面 ====================
 def main():
     # 注入设计系统 CSS
@@ -2146,6 +2209,56 @@ def main():
                 st.metric(label=name, value="—")
     st.divider()
 
+    # 分析队列初始化
+    if "analysis_queue" not in st.session_state:
+        st.session_state.analysis_queue = []
+    if "analysis_results" not in st.session_state:
+        st.session_state.analysis_results = {}
+    if "analysis_running" not in st.session_state:
+        st.session_state.analysis_running = False
+    if "analysis_current" not in st.session_state:
+        st.session_state.analysis_current = None
+    if "analysis_errors" not in st.session_state:
+        st.session_state.analysis_errors = {}
+
+    # === 全局分析进度条（所有页面可见） ===
+    if st.session_state.analysis_running:
+        current = st.session_state.analysis_current or "..."
+        queue_len = len(st.session_state.analysis_queue)
+        # Count completed results
+        done_count = len([k for k in st.session_state.analysis_results if st.session_state.analysis_results[k] is not None])
+        dots = "·" * ((done_count % 4) + 1)
+        st.markdown(f"""
+        <div style="padding:6px 0;font-family:'JetBrains Mono',monospace;font-size:0.5rem;color:#00F0FF;
+                    border-bottom:1px solid rgba(0,240,255,0.08);margin-bottom:8px;display:flex;align-items:center;gap:8px">
+          <span>◆ 分析中: {current} · 队列剩余 {queue_len} 只</span>
+          <span style="color:#555577">{dots}</span>
+        </div>
+        """, unsafe_allow_html=True)
+
+        # JS 自动轮询
+        st.markdown("""
+        <script>
+        (function() {
+            if (window._analysisPollTimer) return;
+            window._analysisPollTimer = setInterval(() => {
+                window.parent.postMessage({type: 'streamlit:rerun'}, '*');
+            }, 2500);
+        })();
+        </script>
+        """, unsafe_allow_html=True)
+
+    # 清除轮询（分析完成时）
+    if not st.session_state.analysis_running and not st.session_state.analysis_queue:
+        st.markdown("""
+        <script>
+        if (window._analysisPollTimer) {
+            clearInterval(window._analysisPollTimer);
+            window._analysisPollTimer = null;
+        }
+        </script>
+        """, unsafe_allow_html=True)
+
     # 获取当前页面
     page = st.session_state.get('nav_page', '◆ 选股')
 
@@ -2207,86 +2320,27 @@ def main():
 
             # 模式信息已移至 📖 介绍页面
 
-            # === 统一 AI 分析处理（在候选渲染之前集中处理所有待处理请求）===
-            ai_placeholder = st.empty()
+            # 检测待分析的股票 → 加入异步队列
             codes_to_analyze = [k.replace("analyze_", "") for k in st.session_state
                                if k.startswith("analyze_") and st.session_state[k]]
-            # 构建 code → candidate info 的快速查找表
-            candidate_info = {}
-            for m_name, m_data in modes.items():
-                if not isinstance(m_data, dict):
-                    continue
-                m_candidates = m_data.get('candidates', m_data.get('候选', []))
-                if not isinstance(m_candidates, list):
-                    continue
-                for c in m_candidates:
-                    if not isinstance(c, dict):
-                        continue
-                    c_code = c.get('code', c.get('代码', ''))
-                    if c_code:
-                        candidate_info[c_code] = {
-                            'mode': m_name,
-                            'price': c.get('price', c.get('最新价', 0)),
-                            'pullback_pct': c.get('pullback_pct', c.get('回调比', 0)),
-                            'limit_days': c.get('limit_days', c.get('连板数', 0)),
-                        }
-            for code in codes_to_analyze:
-                ai_placeholder.markdown(
-                    f"<div style='padding:14px 20px;background:rgba(0,240,255,0.05);"
-                    f"border:1px solid rgba(0,240,255,0.2);border-radius:10px;"
-                    f"font-family:\"JetBrains Mono\",monospace;font-size:0.72rem;color:#00F0FF;"
-                    f"box-shadow:0 0 20px rgba(0,240,255,0.06)'>"
-                    f"<span style='display:inline-block;animation:pulse-dot-anim 1.2s ease-in-out infinite;"
-                    f"width:10px;height:10px;border-radius:50%;background:#00F0FF;"
-                    f"margin-right:10px;box-shadow:0 0 8px #00F0FF'></span>"
-                    f"◆ 正在对 <b>{code}</b> 进行AI深度分析（约8-15秒）...</div>",
-                    unsafe_allow_html=True
-                )
-                try:
-                    stock_df = None
-                    csv_path = os.path.join(screener.DATA_DIR, f"{code}.csv")
-                    if os.path.exists(csv_path):
-                        df = pd.read_csv(csv_path).tail(60)
-                        stock_df = pd.DataFrame({
-                            "Close": df["close"].values,
-                            "Open": df["open"].values,
-                            "High": df["high"].values,
-                            "Low": df["low"].values,
-                            "Volume": df["volume"].values,
-                        }).dropna()
-                    if stock_df is None or len(stock_df) < 10:
-                        try:
-                            ticker = yf.Ticker(code)
-                            df_yf = ticker.history(period="3mo")
-                            if df_yf is not None and len(df_yf) >= 10:
-                                stock_df = df_yf[['Open','High','Low','Close','Volume']].dropna()
-                        except Exception:
-                            pass
-                    market_ctx = screener.get_market_context()
-                    # 获取 AI 历史记忆上下文
-                    memory_context = get_stock_memory_context(code)
-                    analysis = fast_ai_analysis(code, stock_df, market_ctx, memory_context=memory_context)
-                    if analysis:
-                        st.session_state[f"analysis_result_{code}"] = analysis
-                        # 自动存档到 AI 记忆
-                        try:
-                            cinfo = candidate_info.get(code, {})
-                            save_ai_analysis_record(
-                                code=code,
-                                date_str=china_now().strftime('%Y%m%d'),
-                                mode=cinfo.get('mode', ''),
-                                entry_price=cinfo.get('price', 0),
-                                pullback_pct=cinfo.get('pullback_pct', 0),
-                                limit_days=int(cinfo.get('limit_days', 0)),
-                                analysis_text=analysis,
-                            )
-                        except Exception:
-                            pass  # 存档失败不影响主流程
+
+            if codes_to_analyze:
+                # 清理标记
+                for code in codes_to_analyze:
                     st.session_state[f"analyze_{code}"] = False
-                except Exception:
-                    st.session_state[f"analyze_{code}"] = False
-                ai_placeholder.empty()
+                # 加入队列（后台线程处理）
+                start_analysis_queue(codes_to_analyze)
                 st.rerun()
+
+            # 展示已完成的分析结果（从队列结果转移到展示用的 session_state）
+            for code in list(st.session_state.analysis_results.keys()):
+                result = st.session_state.analysis_results[code]
+                if result:
+                    st.session_state[f"analysis_result_{code}"] = result
+                del st.session_state.analysis_results[code]
+            for code in list(st.session_state.analysis_errors.keys()):
+                st.session_state[f"analysis_result_{code}"] = f"❌ 分析失败: {st.session_state.analysis_errors[code]}"
+                del st.session_state.analysis_errors[code]
 
             tab_labels = [
                 f"STRICT 严格 ({modes.get('strict', {}).get('count', 0)}只)",
@@ -2528,8 +2582,14 @@ def main():
                 with st.expander(f"📖 完整分析", expanded=False):
                     st.markdown(analysis_full)
                     if st.button(f"🔄 重新分析(带入记忆)", key=f"reanalyze_{code}_{rec['date']}"):
-                        st.session_state[f"analyze_{code}"] = True
-                        st.session_state["nav_page"] = "◆ 选股"  # 切换到选股页执行分析
+                        if code not in st.session_state.analysis_queue:
+                            st.session_state.analysis_queue.append(code)
+                        if not st.session_state.analysis_running:
+                            st.session_state.analysis_running = True
+                            thread = threading.Thread(target=_analysis_worker, daemon=True)
+                            thread.start()
+                        st.toast(f"◆ {code} 已加入分析队列", icon="◆")
+                        time.sleep(0.3)
                         st.rerun()
         else:
             st.markdown("""
