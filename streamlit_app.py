@@ -430,6 +430,152 @@ def inject_design_system():
       h1 { font-size: 1.6rem !important; }
       [data-testid="stMetricValue"] { font-size: 1.3rem !important; }
     }
+
+    /* === NAV CARDS (sidebar) === */
+    .nav-card-row {
+      display: flex;
+      gap: 8px;
+      width: 100%;
+    }
+    .nav-card {
+      flex: 1;
+      padding: 14px 10px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      background: rgba(10,11,20,0.8);
+      text-align: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: #6666AA;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      user-select: none;
+    }
+    .nav-card:hover {
+      background: rgba(0,240,255,0.04);
+      border-color: rgba(0,240,255,0.25);
+      color: #00F0FF;
+      transform: translateY(-1px);
+    }
+    .nav-card.active {
+      background: rgba(0,240,255,0.08);
+      border-color: rgba(0,240,255,0.55);
+      color: #00F0FF;
+      box-shadow: 0 0 14px rgba(0,240,255,0.1), inset 0 0 12px rgba(0,240,255,0.03);
+      transform: scale(1.02);
+    }
+    .nav-card .card-icon {
+      font-size: 1.1rem;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .nav-card .card-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.06em;
+      opacity: 0.7;
+    }
+
+    /* === MODE PILLS === */
+    .mode-pills-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin: 8px 0 12px 0;
+    }
+    .mode-pills-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.55rem;
+      color: #5555AA;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .mode-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem;
+      padding: 4px 12px;
+      border-radius: 14px;
+      cursor: help;
+      transition: all 0.2s;
+    }
+    .mode-pill.strict {
+      background: rgba(255,51,102,0.08);
+      border: 1px solid rgba(255,51,102,0.22);
+      color: #FF3366;
+    }
+    .mode-pill.strict:hover {
+      background: rgba(255,51,102,0.14);
+      border-color: rgba(255,51,102,0.4);
+      box-shadow: 0 0 8px rgba(255,51,102,0.1);
+    }
+    .mode-pill.loose {
+      background: rgba(0,255,136,0.06);
+      border: 1px solid rgba(0,255,136,0.18);
+      color: #00FF88;
+    }
+    .mode-pill.loose:hover {
+      background: rgba(0,255,136,0.12);
+      border-color: rgba(0,255,136,0.35);
+      box-shadow: 0 0 8px rgba(0,255,136,0.08);
+    }
+
+    /* === NEON STATUS BAR === */
+    .neon-status-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      margin: 10px 0 14px 0;
+    }
+    .neon-status-bar.closed {
+      background: rgba(0,240,255,0.025);
+      border: 1px solid rgba(0,240,255,0.2);
+    }
+    .neon-status-bar.trading {
+      background: rgba(255,184,0,0.025);
+      border: 1px solid rgba(255,184,0,0.22);
+    }
+    .neon-status-bar .status-icon { font-size: 1rem; }
+    .neon-status-bar .status-text { font-size: 0.7rem; }
+    .neon-status-bar.closed .status-text { color: #00F0FF; }
+    .neon-status-bar.trading .status-text { color: #FFB800; }
+    .neon-status-bar .status-spacer { flex: 1; }
+    .neon-status-bar .status-label { font-size: 0.55rem; color: #6666AA; }
+    .neon-status-bar .status-time { font-size: 0.65rem; color: #9999CC; }
+    .pulse-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .pulse-dot.cyan {
+      background: #00F0FF;
+      box-shadow: 0 0 6px #00F0FF;
+    }
+    .pulse-dot.amber {
+      background: #FFB800;
+      box-shadow: 0 0 6px #FFB800;
+    }
+
+    /* === AI ANALYSIS EXPANDER === */
+    .ai-summary-strip {
+      display: flex;
+      gap: 10px;
+      padding: 10px 16px;
+      border-bottom: 1px solid rgba(0,240,255,0.06);
+      flex-wrap: wrap;
+    }
+    .ai-summary-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem;
+      padding: 5px 10px;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+    .ai-summary-badge.sentiment { background: rgba(0,240,255,0.08); color: #00F0FF; }
+    .ai-summary-badge.position { background: rgba(0,255,136,0.08); color: #00FF88; }
+    .ai-summary-badge.opinion  { background: rgba(123,47,255,0.08); color: #7B2FFF; }
+
     </style>
     """
 
@@ -1688,19 +1834,7 @@ def show_screening_results(results, all_stats):
                         if st.button(f"◆ AI分析", key=btn_key, use_container_width=True):
                             st.session_state[f'analyze_{code}'] = True
 
-                    if st.session_state.get(f'analyze_{code}'):
-                        st.write(f"◆ 正在对 {code} 进行AI深度分析（约8-15秒）...")
-                        try:
-                            stock_df = st.session_state.get('all_data', {}).get(code)
-                            market_ctx = screener.get_market_context()
-                            analysis = fast_ai_analysis(code, stock_df, market_ctx)
-                            if analysis:
-                                st.session_state[f'analysis_result_{code}'] = analysis
-                                st.session_state[f'analyze_{code}'] = False
-                        except Exception as e:
-                            st.error(f"分析失败: {e}")
-                            st.session_state[f'analyze_{code}'] = False
-
+                    # AI 分析结果（统一入口在处理，此处仅显示）
                     if st.session_state.get(f'analysis_result_{code}'):
                         with st.expander(f"◆ {code} AI分析报告", expanded=True):
                             st.markdown(st.session_state[f'analysis_result_{code}'])
@@ -1803,14 +1937,27 @@ def main():
     with st.sidebar:
         st.markdown("### ◆ 控制面板")
 
-        # 页面导航
-        st.radio("◆ 导航", ["◆ 选股", "◆ 复盘"], key="nav_page",
-                 help="切换选股和复盘界面")
-        st.divider()
-
-        st.markdown("**◆ 两种模式（v5 优化参数）**")
-        st.markdown("- **STRICT** 严格 — 需3连板，~5信号/月，胜率70%，Sharpe 1.71")
-        st.markdown("- **LOOSE** 宽松 — 需2连板，~18信号/月，胜率61%，Sharpe 1.54（STRICT超集）")
+        # 导航卡片（大卡片式切换）
+        current_page = st.session_state.get("nav_page", "◆ 选股")
+        col_a, col_b = st.columns(2)
+        with col_a:
+            if st.button(
+                "📊 选股",
+                key="nav_stock",
+                use_container_width=True,
+                type="primary" if current_page == "◆ 选股" else "secondary",
+            ):
+                st.session_state["nav_page"] = "◆ 选股"
+                st.rerun()
+        with col_b:
+            if st.button(
+                "📋 复盘",
+                key="nav_review",
+                use_container_width=True,
+                type="primary" if current_page == "◆ 复盘" else "secondary",
+            ):
+                st.session_state["nav_page"] = "◆ 复盘"
+                st.rerun()
 
         st.divider()
 
@@ -1878,8 +2025,14 @@ def main():
 
     # ============ 选股页面 ============
     if page == '◆ 选股':
-        # 加载预计算选股结果
-        scan_data = load_latest_results()
+        # 加载预计算选股结果（缓存到 session_state，切换 tab 不丢失）
+        if "cached_scan_data" not in st.session_state:
+            st.session_state["cached_scan_data"] = load_latest_results()
+        scan_data = st.session_state["cached_scan_data"]
+        fresh = load_latest_results()
+        if fresh and fresh.get("scan_time") != scan_data.get("scan_time"):
+            st.session_state["cached_scan_data"] = fresh
+            scan_data = fresh
 
         # 判断当前时段
         now = china_now()
@@ -1895,17 +2048,90 @@ def main():
         else:
             st.header("◆ 选股结果")
 
-            # 扫描时间
+            # Neon 状态栏
             scan_time = scan_data.get("scan_time", "未知")
-            if is_post_close:
-                st.success(f"✅ 今日最终结果（收盘后）| 扫描时间: {scan_time}")
-            elif is_trading:
-                st.info(f"🔄 盘中结果（每5分钟自动刷新）| 最近扫描: {scan_time}")
-            else:
-                st.caption(f"最近扫描: {scan_time} | 市场已收盘")
-
-            # 两种模式 Tab 展示
             modes = scan_data.get("modes", {})
+            if is_post_close:
+                status_class = "closed"
+                status_icon = "✅"
+                status_text = "今日最终结果（收盘后）"
+            elif is_trading:
+                status_class = "trading"
+                status_icon = "🔄"
+                status_text = "盘中实时结果（每5分钟刷新）"
+            else:
+                status_class = ""
+                status_icon = "⏸"
+                status_text = "市场已收盘"
+            pulse_html = (
+                '<span class="pulse-dot cyan"></span>' if is_post_close
+                else '<span class="pulse-dot amber"></span>' if is_trading
+                else ""
+            )
+            st.markdown(f"""
+            <div class="neon-status-bar {status_class}">
+              <span class="status-icon">{status_icon}</span>
+              <span class="status-text">{status_text}</span>
+              <span class="status-spacer"></span>
+              <span class="status-label">扫描时间</span>
+              <span class="status-time">{scan_time}</span>
+              {pulse_html}
+            </div>
+            """, unsafe_allow_html=True)
+
+            # 筛选模式胶囊标签
+            total_strict = modes.get('strict', {}).get('count', 0)
+            total_loose = modes.get('loose', {}).get('count', 0)
+            st.markdown(f"""
+            <div class="mode-pills-row">
+              <span class="mode-pills-label">筛选模式</span>
+              <span class="mode-pill strict" title="3连板 | 胜率70% | Sharpe 1.71 → 震荡市首选">🔴 STRICT · {total_strict}只</span>
+              <span class="mode-pill loose" title="2连板 | 胜率60% | Sharpe 1.29 → 牛市/强趋势 · STRICT超集">🟢 LOOSE · {total_loose}只</span>
+            </div>
+            """, unsafe_allow_html=True)
+
+            # === 统一 AI 分析处理（在候选渲染之前集中处理所有待处理请求）===
+            ai_placeholder = st.empty()
+            codes_to_analyze = [k.replace("analyze_", "") for k in st.session_state
+                               if k.startswith("analyze_") and st.session_state[k]]
+            for code in codes_to_analyze:
+                ai_placeholder.markdown(
+                    f"<div style='padding:12px 16px;background:rgba(0,240,255,0.04);"
+                    f"border:1px solid rgba(0,240,255,0.12);border-radius:8px;"
+                    f"font-family:monospace;font-size:0.7rem;color:#00F0FF'>"
+                    f"◆ 正在对 <b>{code}</b> 进行AI深度分析（约8-15秒）...</div>",
+                    unsafe_allow_html=True
+                )
+                try:
+                    stock_df = None
+                    csv_path = os.path.join(screener.DATA_DIR, f"{code}.csv")
+                    if os.path.exists(csv_path):
+                        df = pd.read_csv(csv_path).tail(60)
+                        stock_df = pd.DataFrame({
+                            "Close": df["close"].values,
+                            "Open": df["open"].values,
+                            "High": df["high"].values,
+                            "Low": df["low"].values,
+                            "Volume": df["volume"].values,
+                        }).dropna()
+                    if stock_df is None or len(stock_df) < 10:
+                        try:
+                            ticker = yf.Ticker(code)
+                            df_yf = ticker.history(period="3mo")
+                            if df_yf is not None and len(df_yf) >= 10:
+                                stock_df = df_yf[['Open','High','Low','Close','Volume']].dropna()
+                        except Exception:
+                            pass
+                    market_ctx = screener.get_market_context()
+                    analysis = fast_ai_analysis(code, stock_df, market_ctx)
+                    if analysis:
+                        st.session_state[f"analysis_result_{code}"] = analysis
+                    st.session_state[f"analyze_{code}"] = False
+                except Exception:
+                    st.session_state[f"analyze_{code}"] = False
+                ai_placeholder.empty()
+                st.rerun()
+
             tab_labels = [
                 f"STRICT 严格 ({modes.get('strict', {}).get('count', 0)}只)",
                 f"LOOSE 宽松 ({modes.get('loose', {}).get('count', 0)}只)",
@@ -1947,43 +2173,25 @@ def main():
                                 if st.button(f"◆ AI分析", key=btn_key, use_container_width=True):
                                     st.session_state[f"analyze_{code}"] = True
 
-                            # AI 分析
-                            if st.session_state.get(f"analyze_{code}"):
-                                st.write(f"◆ 正在对 {code} 进行AI深度分析（约8-15秒）...")
-                                try:
-                                    stock_df = None
-                                    # 优先从本地 CSV 加载（快速）
-                                    csv_path = os.path.join(screener.DATA_DIR, f"{code}.csv")
-                                    if os.path.exists(csv_path):
-                                        df = pd.read_csv(csv_path).tail(60)
-                                        stock_df = pd.DataFrame({
-                                            "Close": df["close"].values,
-                                            "Open": df["open"].values,
-                                            "High": df["high"].values,
-                                            "Low": df["low"].values,
-                                            "Volume": df["volume"].values,
-                                        }).dropna()
-                                    # 云端模式：从 yfinance 获取近期数据
-                                    if stock_df is None or len(stock_df) < 10:
-                                        try:
-                                            ticker = yf.Ticker(code)
-                                            df_yf = ticker.history(period="3mo")
-                                            if df_yf is not None and len(df_yf) >= 10:
-                                                stock_df = df_yf[['Open', 'High', 'Low', 'Close', 'Volume']].dropna()
-                                        except Exception:
-                                            pass
-                                    market_ctx = screener.get_market_context()
-                                    analysis = fast_ai_analysis(code, stock_df, market_ctx)
-                                    if analysis:
-                                        st.session_state[f"analysis_result_{code}"] = analysis
-                                        st.session_state[f"analyze_{code}"] = False
-                                except Exception as e:
-                                    st.error(f"分析失败: {e}")
-                                    st.session_state[f"analyze_{code}"] = False
-
+                            # AI 分析结果（统一入口已处理，此处仅显示）
                             if st.session_state.get(f"analysis_result_{code}"):
+                                result_text = st.session_state[f"analysis_result_{code}"]
                                 with st.expander(f"◆ {code} AI分析报告", expanded=True):
-                                    st.markdown(st.session_state[f"analysis_result_{code}"])
+                                    # 提取摘要
+                                    import re
+                                    sentiment_match = re.search(r'情绪档位[：:]\s*(.+?)(?:\n|$)', result_text)
+                                    position_match = re.search(r'仓位[建议]*[：:]\s*(.+?)(?:\n|$)', result_text)
+                                    sentiment = sentiment_match.group(1).strip() if sentiment_match else "—"
+                                    position = position_match.group(1).strip() if position_match else "—"
+                                    st.markdown(f"""
+                                    <div class="ai-summary-strip">
+                                      <span class="ai-summary-badge sentiment">🎯 情绪档位: {sentiment}</span>
+                                      <span class="ai-summary-badge position">💰 仓位建议: {position}</span>
+                                    </div>
+                                    """, unsafe_allow_html=True)
+                                    st.markdown(result_text)
+                                    with st.expander("📋 复制全文"):
+                                        st.code(result_text, language=None)
 
                             st.divider()
 
