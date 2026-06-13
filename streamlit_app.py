@@ -1582,7 +1582,6 @@ def show_signal_review():
 
     # 刷新按钮
     if st.button("◆ 刷新复盘数据", key="refresh_review"):
-        st.cache_data.clear()
         st.rerun()
 
 
@@ -1963,14 +1962,24 @@ def main():
     else:
         market_status = "🔴 已收盘"
 
-    st.markdown(
-        f"<p style='font-family:\"JetBrains Mono\",monospace;font-size:0.7rem;color:#6666AA;"
-        f"margin:0;padding:0;line-height:1;'>"
-        f"◈ {now.strftime('%Y-%m-%d %H:%M')}  |  {market_status}"
-        + (" |  定时扫描: 10:00 / 11:30 / 14:00 / 15:00" if weekday < 5 else "")
-        + "</p>",
-        unsafe_allow_html=True
-    )
+    # 时间戳 Neon 胶囊条
+    date_str = now.strftime('%m-%d')
+    time_str = now.strftime('%H:%M')
+    scan_info = " | 定时扫描: 10:00 / 11:30 / 14:00 / 15:00" if weekday < 5 else ""
+    st.markdown(f"""
+    <div style="display:flex;gap:8px;align-items:center;margin:4px 0 6px 0;flex-wrap:wrap">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:0.58rem;padding:3px 10px;border-radius:10px;
+                   background:rgba(0,240,255,0.06);border:1px solid rgba(0,240,255,0.12);color:#00F0FF">
+        📅 {date_str}</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:0.58rem;padding:3px 10px;border-radius:10px;
+                   background:rgba(123,47,255,0.06);border:1px solid rgba(123,47,255,0.12);color:#9B6FFF">
+        🕐 {time_str}</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:0.58rem;padding:3px 10px;border-radius:10px;
+                   background:rgba(0,240,255,0.04);border:1px solid rgba(0,240,255,0.08);color:#8888BB">
+        {market_status}</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:0.52rem;color:#555577">{scan_info}</span>
+    </div>
+    """, unsafe_allow_html=True)
 
     st.divider()
 
@@ -1978,32 +1987,25 @@ def main():
     with st.sidebar:
         st.markdown("### ◆ 控制面板")
 
-        # 导航卡片（三卡片切换）
+        # 导航卡片（纵向堆叠）
         current_page = st.session_state.get("nav_page", "◆ 选股")
         nav_pages = [
             ("nav_stock", "📊 选股", "◆ 选股"),
             ("nav_review", "📋 复盘", "◆ 复盘"),
             ("nav_intro", "📖 介绍", "◆ 介绍"),
         ]
-        cols = st.columns(3)
-        for idx, (key, label, page_val) in enumerate(nav_pages):
-            with cols[idx]:
-                is_active = current_page == page_val
-                if is_active:
-                    st.markdown(f"""
-                    <div class="nav-card active">
-                      <span style="font-size:1.3rem;display:block">{label[:2]}</span>
-                      <span style="font-size:0.6rem;opacity:0.7;letter-spacing:0.06em">{label[2:].strip()}</span>
-                    </div>
-                    """, unsafe_allow_html=True)
-                else:
-                    if st.button(
-                        label,
-                        key=key,
-                        use_container_width=True,
-                    ):
-                        st.session_state["nav_page"] = page_val
-                        st.rerun()
+        for key, label, page_val in nav_pages:
+            is_active = current_page == page_val
+            if is_active:
+                st.markdown(f"""
+                <div class="nav-card active">
+                  <span style="font-size:1.1rem">{label}</span>
+                </div>
+                """, unsafe_allow_html=True)
+            else:
+                if st.button(label, key=key, use_container_width=True):
+                    st.session_state["nav_page"] = page_val
+                    st.rerun()
 
         st.divider()
 
@@ -2141,16 +2143,7 @@ def main():
             </div>
             """, unsafe_allow_html=True)
 
-            # 筛选模式胶囊标签
-            total_strict = modes.get('strict', {}).get('count', 0)
-            total_loose = modes.get('loose', {}).get('count', 0)
-            st.markdown(f"""
-            <div class="mode-pills-row">
-              <span class="mode-pills-label">筛选模式</span>
-              <span class="mode-pill strict" title="3连板 | 胜率70% | Sharpe 1.71 → 震荡市首选">🔴 STRICT · {total_strict}只</span>
-              <span class="mode-pill loose" title="2连板 | 胜率60% | Sharpe 1.29 → 牛市/强趋势 · STRICT超集">🟢 LOOSE · {total_loose}只</span>
-            </div>
-            """, unsafe_allow_html=True)
+            # 模式信息已移至 📖 介绍页面
 
             # === 统一 AI 分析处理（在候选渲染之前集中处理所有待处理请求）===
             ai_placeholder = st.empty()
