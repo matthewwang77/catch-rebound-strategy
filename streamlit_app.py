@@ -431,48 +431,42 @@ def inject_design_system():
       [data-testid="stMetricValue"] { font-size: 1.3rem !important; }
     }
 
-    /* === NAV CARDS (sidebar) === */
-    .nav-card-row {
-      display: flex;
-      gap: 8px;
-      width: 100%;
-    }
+    /* === NAV CARDS (sidebar) — 大卡片 === */
     .nav-card {
-      flex: 1;
-      padding: 14px 10px;
-      border-radius: 10px;
-      border: 1px solid transparent;
-      background: rgba(10,11,20,0.8);
+      padding: 20px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(0,240,255,0.08);
+      background: rgba(10,11,20,0.9);
       text-align: center;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
-      color: #6666AA;
+      font-size: 0.85rem;
+      color: #555588;
       cursor: pointer;
       transition: all 0.25s ease;
       user-select: none;
+      margin-bottom: 6px;
     }
     .nav-card:hover {
-      background: rgba(0,240,255,0.04);
-      border-color: rgba(0,240,255,0.25);
+      background: rgba(0,240,255,0.05);
+      border-color: rgba(0,240,255,0.3);
       color: #00F0FF;
-      transform: translateY(-1px);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(0,240,255,0.06);
     }
     .nav-card.active {
-      background: rgba(0,240,255,0.08);
-      border-color: rgba(0,240,255,0.55);
+      background: rgba(0,240,255,0.1);
+      border-color: rgba(0,240,255,0.6);
       color: #00F0FF;
-      box-shadow: 0 0 14px rgba(0,240,255,0.1), inset 0 0 12px rgba(0,240,255,0.03);
-      transform: scale(1.02);
+      box-shadow: 0 0 20px rgba(0,240,255,0.12), inset 0 0 20px rgba(0,240,255,0.04);
     }
     .nav-card .card-icon {
-      font-size: 1.1rem;
+      font-size: 1.5rem;
       display: block;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
     .nav-card .card-label {
-      font-size: 0.6rem;
-      letter-spacing: 0.06em;
-      opacity: 0.7;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
     }
 
     /* === MODE PILLS === */
@@ -561,20 +555,59 @@ def inject_design_system():
     .ai-summary-strip {
       display: flex;
       gap: 10px;
-      padding: 10px 16px;
-      border-bottom: 1px solid rgba(0,240,255,0.06);
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(0,240,255,0.08);
       flex-wrap: wrap;
+      background: rgba(0,240,255,0.015);
+      border-radius: 8px 8px 0 0;
     }
     .ai-summary-badge {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.6rem;
-      padding: 5px 10px;
+      font-size: 0.62rem;
+      padding: 6px 12px;
       border-radius: 6px;
       white-space: nowrap;
+      letter-spacing: 0.04em;
     }
-    .ai-summary-badge.sentiment { background: rgba(0,240,255,0.08); color: #00F0FF; }
-    .ai-summary-badge.position { background: rgba(0,255,136,0.08); color: #00FF88; }
-    .ai-summary-badge.opinion  { background: rgba(123,47,255,0.08); color: #7B2FFF; }
+    .ai-summary-badge.sentiment {
+      background: rgba(0,240,255,0.08);
+      border: 1px solid rgba(0,240,255,0.15);
+      color: #00F0FF;
+    }
+    .ai-summary-badge.position {
+      background: rgba(0,255,136,0.08);
+      border: 1px solid rgba(0,255,136,0.15);
+      color: #00FF88;
+    }
+    .ai-summary-badge.opinion {
+      background: rgba(123,47,255,0.08);
+      border: 1px solid rgba(123,47,255,0.15);
+      color: #7B2FFF;
+    }
+
+    /* === SIDEBAR DATA STATUS === */
+    .sidebar-data-status {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem;
+      color: #7777AA;
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: rgba(0,240,255,0.02);
+      border: 1px solid rgba(0,240,255,0.06);
+      line-height: 1.8;
+    }
+    .sidebar-data-status .stat-label {
+      color: #555588;
+      font-size: 0.55rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .sidebar-data-status .stat-value {
+      color: #9999CC;
+    }
+    .sidebar-data-status .stat-highlight {
+      color: #00F0FF;
+    }
 
     </style>
     """
@@ -1283,6 +1316,8 @@ def fast_ai_analysis(code, stock_df, market_context=""):
     # ========== 调用 DeepSeek API ==========
     try:
         api_key = os.environ.get("DEEPSEEK_API_KEY", "")
+        if not api_key:
+            return "## ⚠️ API Key 未配置\n\n请在环境变量中设置 `DEEPSEEK_API_KEY`。\n\n**设置方法**：\n```bash\nexport DEEPSEEK_API_KEY=\"sk-xxxxxxxx\"\n```\n\n或在 `~/.claude/settings.json` 中添加 `env` 配置。"
         api_url = screener.DEEPSEEK_API_URL
 
         resp = requests.post(
@@ -1299,12 +1334,18 @@ def fast_ai_analysis(code, stock_df, market_context=""):
             },
             timeout=30,
         )
+        if resp.status_code != 200:
+            return f"## ⚠️ API 请求失败 (HTTP {resp.status_code})\n\nDeepSeek API 返回了错误状态码。请检查 API Key 是否有效。\n\n错误详情：`{resp.text[:200]}`"
         data = resp.json()
         if "choices" in data and len(data["choices"]) > 0:
             return data["choices"][0]["message"]["content"]
-        return f"API异常：{data}"
+        return f"## ⚠️ API 返回异常\n\nDeepSeek 返回了非预期格式的响应：\n```\n{str(data)[:300]}\n```"
+    except requests.exceptions.Timeout:
+        return "## ⚠️ API 请求超时\n\nDeepSeek API 在 30 秒内未响应。请稍后重试。"
+    except requests.exceptions.ConnectionError:
+        return "## ⚠️ 网络连接失败\n\n无法连接到 DeepSeek API。请检查网络连接。"
     except Exception as e:
-        return f"AI调用失败：{e}"
+        return f"## ⚠️ AI 分析异常\n\n```\n{type(e).__name__}: {e}\n```\n\n请稍后重试或联系开发者。"
 
 
 # ==================== 多模式筛选 ====================
@@ -1937,27 +1978,32 @@ def main():
     with st.sidebar:
         st.markdown("### ◆ 控制面板")
 
-        # 导航卡片（大卡片式切换）
+        # 导航卡片（三卡片切换）
         current_page = st.session_state.get("nav_page", "◆ 选股")
-        col_a, col_b = st.columns(2)
-        with col_a:
-            if st.button(
-                "📊 选股",
-                key="nav_stock",
-                use_container_width=True,
-                type="primary" if current_page == "◆ 选股" else "secondary",
-            ):
-                st.session_state["nav_page"] = "◆ 选股"
-                st.rerun()
-        with col_b:
-            if st.button(
-                "📋 复盘",
-                key="nav_review",
-                use_container_width=True,
-                type="primary" if current_page == "◆ 复盘" else "secondary",
-            ):
-                st.session_state["nav_page"] = "◆ 复盘"
-                st.rerun()
+        nav_pages = [
+            ("nav_stock", "📊 选股", "◆ 选股"),
+            ("nav_review", "📋 复盘", "◆ 复盘"),
+            ("nav_intro", "📖 介绍", "◆ 介绍"),
+        ]
+        cols = st.columns(3)
+        for idx, (key, label, page_val) in enumerate(nav_pages):
+            with cols[idx]:
+                is_active = current_page == page_val
+                if is_active:
+                    st.markdown(f"""
+                    <div class="nav-card active">
+                      <span style="font-size:1.3rem;display:block">{label[:2]}</span>
+                      <span style="font-size:0.6rem;opacity:0.7;letter-spacing:0.06em">{label[2:].strip()}</span>
+                    </div>
+                    """, unsafe_allow_html=True)
+                else:
+                    if st.button(
+                        label,
+                        key=key,
+                        use_container_width=True,
+                    ):
+                        st.session_state["nav_page"] = page_val
+                        st.rerun()
 
         st.divider()
 
@@ -1978,11 +2024,24 @@ def main():
                 if age_seconds < 3600: data_age = f"{int(age_seconds/60)}分钟前"
                 elif age_seconds < 86400: data_age = f"{int(age_seconds/3600)}小时前"
                 else: data_age = f"{int(age_seconds/86400)}天前"
-                st.success(f"✅ 本地模式 · {len(csv_files)}只 | {data_age}")
+                data_status_html = f"""
+                <div class="sidebar-data-status">
+                  <span class="stat-label">模式</span> <span class="stat-highlight">💾 本地</span><br>
+                  <span class="stat-label">股票</span> <span class="stat-value">{len(csv_files)} 只</span><br>
+                  <span class="stat-label">更新</span> <span class="stat-value">{data_age}</span>
+                </div>"""
             elif has_snapshot:
-                st.success("☁️ 云端模式（快照 + yfinance）")
+                data_status_html = """
+                <div class="sidebar-data-status">
+                  <span class="stat-label">模式</span> <span class="stat-highlight">☁️ 云端</span><br>
+                  <span class="stat-label">数据</span> <span class="stat-value">快照 + yfinance</span>
+                </div>"""
             else:
-                st.warning("⚠️ 无数据")
+                data_status_html = """
+                <div class="sidebar-data-status" style="border-color:rgba(255,51,102,0.2);background:rgba(255,51,102,0.03)">
+                  <span class="stat-label">状态</span> <span style="color:#FF3366">⚠️ 无数据</span>
+                </div>"""
+            st.markdown(data_status_html, unsafe_allow_html=True)
             # 显示最近扫描时间
             json_path = os.path.join(base_dir, "latest_scan_results.json")
             if os.path.exists(json_path):
@@ -1991,7 +2050,10 @@ def main():
                         scan_info = json.load(f)
                     scan_time = scan_info.get("scan_time", "")
                     if scan_time:
-                        st.caption(f"上次扫描: {scan_time}")
+                        st.markdown(f"""
+                        <div style="font-family:monospace;font-size:0.55rem;color:#555588;margin-top:6px;text-align:right">
+                          最近扫描 <span style="color:#7777AA">{scan_time}</span>
+                        </div>""", unsafe_allow_html=True)
                 except Exception:
                     pass
         except:
@@ -2096,9 +2158,13 @@ def main():
                                if k.startswith("analyze_") and st.session_state[k]]
             for code in codes_to_analyze:
                 ai_placeholder.markdown(
-                    f"<div style='padding:12px 16px;background:rgba(0,240,255,0.04);"
-                    f"border:1px solid rgba(0,240,255,0.12);border-radius:8px;"
-                    f"font-family:monospace;font-size:0.7rem;color:#00F0FF'>"
+                    f"<div style='padding:14px 20px;background:rgba(0,240,255,0.05);"
+                    f"border:1px solid rgba(0,240,255,0.2);border-radius:10px;"
+                    f"font-family:\"JetBrains Mono\",monospace;font-size:0.72rem;color:#00F0FF;"
+                    f"box-shadow:0 0 20px rgba(0,240,255,0.06)'>"
+                    f"<span style='display:inline-block;animation:pulse-dot-anim 1.2s ease-in-out infinite;"
+                    f"width:10px;height:10px;border-radius:50%;background:#00F0FF;"
+                    f"margin-right:10px;box-shadow:0 0 8px #00F0FF'></span>"
                     f"◆ 正在对 <b>{code}</b> 进行AI深度分析（约8-15秒）...</div>",
                     unsafe_allow_html=True
                 )
@@ -2219,6 +2285,91 @@ def main():
         st.divider()
         st.header("◆ 手动选股复盘")
         show_manual_review()
+
+    elif page == '◆ 介绍':
+        st.header("◆ 策略介绍")
+
+        # 两种模式说明
+        st.subheader("◆ 筛选模式")
+        col_s, col_l = st.columns(2)
+        with col_s:
+            st.markdown("""
+            <div style="background:rgba(255,51,102,0.04);border:1px solid rgba(255,51,102,0.2);border-radius:12px;padding:20px;height:100%">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:1rem;color:#FF3366;margin-bottom:12px">🔴 STRICT 严格</div>
+              <table style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:#9999BB;width:100%;line-height:2">
+                <tr><td style="color:#6666AA">连板要求</td><td style="color:#FF3366">≥3 连板</td></tr>
+                <tr><td style="color:#6666AA">实体板比例</td><td>≥55%</td></tr>
+                <tr><td style="color:#6666AA">回调幅度</td><td>12% ~ 40%</td></tr>
+                <tr><td style="color:#6666AA">缩量要求</td><td>≤67%</td></tr>
+                <tr><td style="color:#6666AA">胜率</td><td style="color:#00FF88">69.6%</td></tr>
+                <tr><td style="color:#6666AA">Sharpe</td><td style="color:#00F0FF">1.71</td></tr>
+                <tr><td style="color:#6666AA">适用</td><td>震荡市 / 方向不明</td></tr>
+              </table>
+            </div>""", unsafe_allow_html=True)
+        with col_l:
+            st.markdown("""
+            <div style="background:rgba(0,255,136,0.04);border:1px solid rgba(0,255,136,0.2);border-radius:12px;padding:20px;height:100%">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:1rem;color:#00FF88;margin-bottom:12px">🟢 LOOSE 宽松</div>
+              <table style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:#9999BB;width:100%;line-height:2">
+                <tr><td style="color:#6666AA">连板要求</td><td style="color:#00FF88">≥2 连板</td></tr>
+                <tr><td style="color:#6666AA">实体板比例</td><td>≥30%</td></tr>
+                <tr><td style="color:#6666AA">回调幅度</td><td>8% ~ 40%</td></tr>
+                <tr><td style="color:#6666AA">缩量要求</td><td>≤67%</td></tr>
+                <tr><td style="color:#6666AA">胜率</td><td style="color:#00FF88">60.1%</td></tr>
+                <tr><td style="color:#6666AA">Sharpe</td><td style="color:#00F0FF">1.29</td></tr>
+                <tr><td style="color:#6666AA">适用</td><td>牛市 / 强趋势</td></tr>
+              </table>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:0.55rem;color:#00FF88;margin-top:8px;padding:4px 8px;background:rgba(0,255,136,0.06);border-radius:4px">↳ STRICT 的超集（回调/缩量参数一致）</div>
+            </div>""", unsafe_allow_html=True)
+
+        st.divider()
+
+        # 交易成本
+        st.subheader("◆ 交易成本（A股）")
+        st.markdown("""
+        <div style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:#7777AA;line-height:2">
+          <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid rgba(0,240,255,0.06)">
+            <span>印花税（卖出）</span><span style="color:#FF3366">0.05%</span></div>
+          <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid rgba(0,240,255,0.06)">
+            <span>佣金（双向）</span><span style="color:#FFB800">0.025%</span></div>
+          <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid rgba(0,240,255,0.06)">
+            <span>过户费</span><span style="color:#FFB800">0.001%</span></div>
+          <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid rgba(0,240,255,0.06)">
+            <span>滑点估算</span><span style="color:#FFB800">0.1%</span></div>
+          <div style="display:flex;justify-content:space-between;padding:6px 0;margin-top:4px;background:rgba(0,240,255,0.03);border-radius:4px;padding:6px 8px">
+            <span style="color:#00F0FF">合计往返</span><span style="color:#00F0FF">≈0.30%</span></div>
+        </div>""", unsafe_allow_html=True)
+
+        st.divider()
+
+        # v5 优化说明
+        st.subheader("◆ v5 优化引擎")
+        st.markdown("""
+        <div style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:#7777AA;line-height:2">
+          <p><span style="color:#00F0FF">三阶段漏斗</span> — 粗筛(~80k组合) → 精筛(前50聚类) → 超精细(局部搜索)</p>
+          <p><span style="color:#00F0FF">多周期验证</span> — 跨3个时间段交叉验证，避免过拟合</p>
+          <p><span style="color:#00F0FF">Bootstrap</span> — 1000次重采样，95%置信区间</p>
+          <p><span style="color:#00F0FF">Walk-Forward</span> — 滚动窗口前向分析，验证时间稳定性</p>
+          <p style="margin-top:8px;padding:8px;background:rgba(255,184,0,0.04);border:1px solid rgba(255,184,0,0.12);border-radius:6px;color:#FFB800">
+            ⚠️ <code>require_oversold</code> 和 <code>require_low_close</code> 永久关闭——辛普森悖论：单因子有效但多因子组合中逆转。
+          </p>
+          <p style="margin-top:4px;color:#555577;font-size:0.55rem">
+            参考：华安证券研报 — 32,615个首板样本分析
+          </p>
+        </div>""", unsafe_allow_html=True)
+
+        st.divider()
+
+        # 数据来源
+        st.subheader("◆ 数据与调度")
+        st.markdown("""
+        <div style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:#7777AA;line-height:2">
+          <p><span style="color:#6666AA">数据源</span> yfinance (Yahoo Finance)</p>
+          <p><span style="color:#6666AA">缓存</span> ~5,200 只A股 / CSV 格式</p>
+          <p><span style="color:#6666AA">定时扫描</span> 交易日 10:00 / 11:30 / 14:00 / 15:00</p>
+          <p><span style="color:#6666AA">自动推送</span> scan → JSON → git push → Streamlit Cloud</p>
+          <p><span style="color:#6666AA">AI 分析</span> DeepSeek API · 量价形时四维框架</p>
+        </div>""", unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()
