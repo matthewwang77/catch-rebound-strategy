@@ -2385,6 +2385,7 @@ def main():
             with col:
                 if perf:
                     ret_color = "#00FF88" if perf['total_return'] >= 0 else "#FF5050"
+                    pf_display = "无损" if perf['profit_factor'] >= 999 else f"{perf['profit_factor']:.2f}"
                     st.markdown(f"""
                     <div style="padding:4px 0 10px 0">
                       <div style="font-family:'JetBrains Mono',monospace;font-size:0.5rem;color:{accent_color};letter-spacing:0.08em;margin-bottom:6px">◆ {mode_label} (近30天)</div>
@@ -2399,7 +2400,7 @@ def main():
                         </div>
                         <div>
                           <div style="font-family:'JetBrains Mono',monospace;font-size:0.45rem;color:#555577">盈亏比</div>
-                          <div style="font-family:'JetBrains Mono',monospace;font-size:1.1rem;color:#D0D0E8;font-weight:bold">{perf['profit_factor']:.2f}</div>
+                          <div style="font-family:'JetBrains Mono',monospace;font-size:1.1rem;color:#D0D0E8;font-weight:bold">{pf_display}</div>
                         </div>
                         <div>
                           <div style="font-family:'JetBrains Mono',monospace;font-size:0.45rem;color:#555577">最大回撤</div>
