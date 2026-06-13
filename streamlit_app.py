@@ -1653,12 +1653,25 @@ def save_ai_analysis_record(code, date_str, mode, entry_price, pullback_pct, lim
     position = ""
     opinion = ""
     try:
-        sm = _re.search(r'情绪档位[：:]\s*(.+?)(?:\n|$)', analysis_text)
-        if sm: sentiment = sm.group(1).strip()
-        pm = _re.search(r'仓位[建议]*[：:]\s*(.+?)(?:\n|$)', analysis_text)
-        if pm: position = pm.group(1).strip()
-        om = _re.search(r'最终结论[：:]\s*(.+?)(?:\n|$)', analysis_text)
-        if om: opinion = om.group(1).strip()
+        # 优先从仓位行同时提取仓位和情绪：仓位建议：0成仓（冰点/观望）
+        m = _re.search(r'仓位建议[：:]\s*(.+?)（(.+?)）', analysis_text)
+        if m:
+            position = m.group(1).strip().rstrip('*')   # "0成仓"
+            sentiment = m.group(2).strip().rstrip('*')  # "冰点/观望"
+        else:
+            # 备用：独立提取（无括号格式）
+            pm = _re.search(r'仓位[建议]*[：:]\s*(.+?)(?:\n|$|\*\*)', analysis_text)
+            if pm:
+                position = pm.group(1).strip().rstrip('*')
+        # 情绪备用提取
+        if not sentiment:
+            sm = _re.search(r'情绪档位[：:]\s*(.+?)(?:\n|$|\*\*)', analysis_text)
+            if sm:
+                sentiment = sm.group(1).strip().rstrip('*')
+        # 最终结论
+        om = _re.search(r'最终结论[：:]\s*(.+?)(?:\n|$|\*\*)', analysis_text)
+        if om:
+            opinion = om.group(1).strip().rstrip('*')
     except Exception:
         pass
     memory[code].append({
@@ -1717,6 +1730,31 @@ def auto_verify_memory():
                 rec["verified"] = True
                 if ret3 is not None:
                     rec["verdict"] = "correct" if ret3 > 0 else "wrong"
+                changed = True
+            except Exception:
+                pass
+    # 回溯修复：对 sentiment 为空的旧记录重新提取
+    for code, records in memory.items():
+        for rec in records:
+            if rec.get("sentiment"):
+                continue  # 已正确提取（sentiment非空）
+            try:
+                analysis_text = rec.get("analysis", "")
+                if not analysis_text:
+                    continue
+                import re as _re2
+                m = _re2.search(r'仓位建议[：:]\s*(.+?)（(.+?)）', analysis_text)
+                if m:
+                    rec["position"] = m.group(1).strip().rstrip('*')
+                    rec["sentiment"] = m.group(2).strip().rstrip('*')
+                if not rec.get("sentiment"):
+                    sm = _re2.search(r'情绪档位[：:]\s*(.+?)(?:\n|$|\*\*)', analysis_text)
+                    if sm:
+                        rec["sentiment"] = sm.group(1).strip().rstrip('*')
+                if not rec.get("opinion"):
+                    om = _re2.search(r'最终结论[：:]\s*(.+?)(?:\n|$|\*\*)', analysis_text)
+                    if om:
+                        rec["opinion"] = om.group(1).strip().rstrip('*')
                 changed = True
             except Exception:
                 pass
