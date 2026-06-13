@@ -1656,22 +1656,22 @@ def save_ai_analysis_record(code, date_str, mode, entry_price, pullback_pct, lim
         # 优先从仓位行同时提取仓位和情绪：仓位建议：0成仓（冰点/观望）
         m = _re.search(r'仓位建议[：:]\s*(.+?)（(.+?)）', analysis_text)
         if m:
-            position = m.group(1).strip().rstrip('*')   # "0成仓"
-            sentiment = m.group(2).strip().rstrip('*')  # "冰点/观望"
+            position = m.group(1).strip().strip('*')   # "0成仓"
+            sentiment = m.group(2).strip().strip('*')  # "冰点/观望"
         else:
             # 备用：独立提取（无括号格式）
             pm = _re.search(r'仓位[建议]*[：:]\s*(.+?)(?:\n|$|\*\*)', analysis_text)
             if pm:
-                position = pm.group(1).strip().rstrip('*')
+                position = pm.group(1).strip().strip('*')
         # 情绪备用提取
         if not sentiment:
             sm = _re.search(r'情绪档位[：:]\s*(.+?)(?:\n|$|\*\*)', analysis_text)
             if sm:
-                sentiment = sm.group(1).strip().rstrip('*')
+                sentiment = sm.group(1).strip().strip('*')
         # 最终结论
         om = _re.search(r'最终结论[：:]\s*(.+?)(?:\n|$|\*\*)', analysis_text)
         if om:
-            opinion = om.group(1).strip().rstrip('*')
+            opinion = om.group(1).strip().strip('*')
     except Exception:
         pass
     memory[code].append({
@@ -1745,16 +1745,16 @@ def auto_verify_memory():
                 import re as _re2
                 m = _re2.search(r'仓位建议[：:]\s*(.+?)（(.+?)）', analysis_text)
                 if m:
-                    rec["position"] = m.group(1).strip().rstrip('*')
-                    rec["sentiment"] = m.group(2).strip().rstrip('*')
+                    rec["position"] = m.group(1).strip().strip('*')
+                    rec["sentiment"] = m.group(2).strip().strip('*')
                 if not rec.get("sentiment"):
                     sm = _re2.search(r'情绪档位[：:]\s*(.+?)(?:\n|$|\*\*)', analysis_text)
                     if sm:
-                        rec["sentiment"] = sm.group(1).strip().rstrip('*')
+                        rec["sentiment"] = sm.group(1).strip().strip('*')
                 if not rec.get("opinion"):
                     om = _re2.search(r'最终结论[：:]\s*(.+?)(?:\n|$|\*\*)', analysis_text)
                     if om:
-                        rec["opinion"] = om.group(1).strip().rstrip('*')
+                        rec["opinion"] = om.group(1).strip().strip('*')
                 changed = True
             except Exception:
                 pass
