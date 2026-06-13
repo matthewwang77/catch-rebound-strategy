@@ -2049,14 +2049,16 @@ def start_analysis_queue(codes):
     for code in codes:
         if code not in st.session_state.analysis_queue:
             st.session_state.analysis_queue.append(code)
-    st.session_state.analysis_running = True
     # 清除旧结果
     for code in codes:
         st.session_state.analysis_results.pop(code, None)
         st.session_state.analysis_errors.pop(code, None)
 
-    thread = threading.Thread(target=_analysis_worker, daemon=True)
-    thread.start()
+    # 只在没有运行中的worker时才启动新线程
+    if not st.session_state.analysis_running:
+        st.session_state.analysis_running = True
+        thread = threading.Thread(target=_analysis_worker, daemon=True)
+        thread.start()
 
 
 # ==================== 主界面 ====================
@@ -2584,7 +2586,6 @@ def main():
                     if st.button(f"🔄 重新分析(带入记忆)", key=f"reanalyze_{code}_{rec['date']}"):
                         start_analysis_queue([code])
                         st.toast(f"◆ {code} 已加入分析队列", icon="◆")
-                        time.sleep(0.3)
                         st.rerun()
         else:
             st.markdown("""
