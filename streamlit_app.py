@@ -1456,12 +1456,34 @@ def save_signals(all_candidates):
 
     df_new = pd.DataFrame(new_rows)
 
-    # 读取已有记录，去重
+    # 读取已有记录，去重 — 同一(code, entry_price)在20天窗口内不重复
     if os.path.exists(SIGNAL_FILE):
         df_old = pd.read_csv(SIGNAL_FILE)
-        # 同一天同一只股票不重复
-        existing = set(zip(df_old['signal_date'].astype(str), df_old['code']))
-        df_new = df_new[~df_new.apply(lambda r: (r['signal_date'], r['code']) in existing, axis=1)]
+        df_old['signal_date'] = df_old['signal_date'].astype(str)
+
+        keep_rows = []
+        for _, row in df_new.iterrows():
+            sig_date = str(row['signal_date'])
+            code = row['code']
+            entry_price = round(float(row['entry_price']), 2)
+
+            try:
+                sig_dt = datetime.strptime(sig_date, '%Y%m%d')
+                cutoff_dt = sig_dt - timedelta(days=20)
+                cutoff_str = cutoff_dt.strftime('%Y%m%d')
+            except ValueError:
+                keep_rows.append(True)
+                continue
+
+            in_window = df_old[
+                (df_old['code'] == code) &
+                (df_old['entry_price'].round(2) == entry_price) &
+                (df_old['signal_date'] >= cutoff_str) &
+                (df_old['signal_date'] <= sig_date)
+            ]
+            keep_rows.append(len(in_window) == 0)
+
+        df_new = df_new[keep_rows]
         if len(df_new) == 0:
             return
         df_combined = pd.concat([df_old, df_new], ignore_index=True)
@@ -2433,7 +2455,10 @@ def main():
                     file_name=f"candidates_all_{china_now().strftime('%Y%m%d')}.csv",
                     mime="text/csv",
                 )
-                save_signals(all_candidates)
+                current_scan_time = scan_data.get("scan_time", "")
+                if st.session_state.get("_saved_scan_time") != current_scan_time:
+                    save_signals(all_candidates)
+                    st.session_state["_saved_scan_time"] = current_scan_time
 
     # ============ 复盘页面 ============
     elif page == '◆ 复盘':

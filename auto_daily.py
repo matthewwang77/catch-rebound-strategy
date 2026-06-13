@@ -76,11 +76,15 @@ def run_all_modes():
             if len(df) == 0:
                 continue
             df = df.tail(60).copy()
+            # 保留日期作为索引（_screen_single_stock 需要 DatetimeIndex 生成 trade_date）
+            if 'date' in df.columns:
+                df['date'] = pd.to_datetime(df['date'])
+                df = df.set_index('date')
             stock_df = pd.DataFrame({
                 'Close': df['close'].values, 'Open': df['open'].values,
                 'High': df['high'].values, 'Low': df['low'].values,
                 'Volume': df['volume'].values,
-            }).dropna()
+            }, index=df.index).dropna()
             if len(stock_df) >= 10:
                 all_data[code] = stock_df
         except Exception as e:
@@ -110,12 +114,9 @@ def run_all_modes():
                     if len(recent) == 0:
                         continue
                     if code in all_data:
-                        new_rows = pd.DataFrame({
-                            'Close': recent['Close'].values, 'Open': recent['Open'].values,
-                            'High': recent['High'].values, 'Low': recent['Low'].values,
-                            'Volume': recent['Volume'].values,
-                        })
-                        all_data[code] = pd.concat([all_data[code], new_rows], ignore_index=True).tail(60)
+                        # 保留 DatetimeIndex，确保 _screen_single_stock 能生成正确的 trade_date
+                        new_rows = recent[['Open', 'High', 'Low', 'Close', 'Volume']].copy()
+                        all_data[code] = pd.concat([all_data[code], new_rows]).tail(60)
                     else:
                         all_data[code] = recent[['Open', 'High', 'Low', 'Close', 'Volume']].copy()
                     injected += 1
@@ -237,6 +238,7 @@ def save_results_json(results):
                 {
                     "code": c.get("code", c.get("代码", "")),
                     "price": c.get("price", c.get("最新价", 0)),
+                    "signal_date": c.get("signal_date", ""),
                     "pullback_pct": c.get("pullback_pct", c.get("回调比", 0)),
                     "limit_days": c.get("limit_days", c.get("连板数", 0)),
                     "entity_ratio": c.get("entity_ratio", 0),

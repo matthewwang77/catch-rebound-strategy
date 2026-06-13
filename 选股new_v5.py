@@ -1982,7 +1982,9 @@ def _screen_single_stock(code, stock_df, stats, candidates, mode="normal"):
     try:
         recent['trade_date'] = close.index.strftime('%Y%m%d')
     except AttributeError:
-        recent['trade_date'] = [f'D{i}' for i in range(len(recent))]
+        # 降级：用今天日期往前推算（假设日线数据）
+        today = pd.Timestamp.now()
+        recent['trade_date'] = [(today - pd.Timedelta(days=len(recent)-1-i)).strftime('%Y%m%d') for i in range(len(recent))]
     limit_series_list = identify_limit_up_series(recent.dropna(subset=['pct_chg']).reset_index(drop=True), code)
     found_signal = False
     for series in limit_series_list:
