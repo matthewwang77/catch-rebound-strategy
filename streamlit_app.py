@@ -2582,12 +2582,7 @@ def main():
                 with st.expander(f"📖 完整分析", expanded=False):
                     st.markdown(analysis_full)
                     if st.button(f"🔄 重新分析(带入记忆)", key=f"reanalyze_{code}_{rec['date']}"):
-                        if code not in st.session_state.analysis_queue:
-                            st.session_state.analysis_queue.append(code)
-                        if not st.session_state.analysis_running:
-                            st.session_state.analysis_running = True
-                            thread = threading.Thread(target=_analysis_worker, daemon=True)
-                            thread.start()
+                        start_analysis_queue([code])
                         st.toast(f"◆ {code} 已加入分析队列", icon="◆")
                         time.sleep(0.3)
                         st.rerun()
