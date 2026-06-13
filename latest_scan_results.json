@@ -1,5 +1,5 @@
 {
-  "scan_time": "2026-06-14 00:26",
+  "scan_time": "2026-06-14 00:43",
   "scan_date": "20260614",
   "market": {},
   "modes": {
@@ -9,7 +9,7 @@
         {
           "code": "002081.SZ",
           "price": 5.16,
-          "signal_date": "D49",
+          "signal_date": "20260529",
           "pullback_pct": 13.7,
           "limit_days": 5,
           "entity_ratio": 100.0
@@ -17,7 +17,7 @@
         {
           "code": "002208.SZ",
           "price": 15.57,
-          "signal_date": "D57",
+          "signal_date": "20260610",
           "pullback_pct": 15.5,
           "limit_days": 3,
           "entity_ratio": 100.0
@@ -25,7 +25,7 @@
         {
           "code": "000518.SZ",
           "price": 3.17,
-          "signal_date": "D52",
+          "signal_date": "20260603",
           "pullback_pct": 13.4,
           "limit_days": 4,
           "entity_ratio": 100.0
@@ -38,7 +38,7 @@
         {
           "code": "002971.SZ",
           "price": 58.03,
-          "signal_date": "D53",
+          "signal_date": "20260604",
           "pullback_pct": 9.3,
           "limit_days": 2,
           "entity_ratio": 100.0
@@ -46,7 +46,7 @@
         {
           "code": "000925.SZ",
           "price": 8.23,
-          "signal_date": "D53",
+          "signal_date": "20260604",
           "pullback_pct": 28.5,
           "limit_days": 2,
           "entity_ratio": 100.0
@@ -54,7 +54,7 @@
         {
           "code": "002081.SZ",
           "price": 5.16,
-          "signal_date": "D49",
+          "signal_date": "20260529",
           "pullback_pct": 13.7,
           "limit_days": 5,
           "entity_ratio": 100.0
@@ -62,7 +62,7 @@
         {
           "code": "600488.SS",
           "price": 4.79,
-          "signal_date": "D49",
+          "signal_date": "20260529",
           "pullback_pct": 23.7,
           "limit_days": 2,
           "entity_ratio": 100.0
@@ -70,7 +70,7 @@
         {
           "code": "600078.SS",
           "price": 13.3,
-          "signal_date": "D53",
+          "signal_date": "20260604",
           "pullback_pct": 13.8,
           "limit_days": 2,
           "entity_ratio": 100.0
@@ -78,7 +78,7 @@
         {
           "code": "601678.SS",
           "price": 5.89,
-          "signal_date": "D57",
+          "signal_date": "20260610",
           "pullback_pct": 10.9,
           "limit_days": 2,
           "entity_ratio": 50.0
@@ -86,7 +86,7 @@
         {
           "code": "002208.SZ",
           "price": 15.57,
-          "signal_date": "D57",
+          "signal_date": "20260610",
           "pullback_pct": 15.5,
           "limit_days": 3,
           "entity_ratio": 100.0
@@ -94,7 +94,7 @@
         {
           "code": "000518.SZ",
           "price": 3.17,
-          "signal_date": "D52",
+          "signal_date": "20260603",
           "pullback_pct": 13.4,
           "limit_days": 4,
           "entity_ratio": 100.0
@@ -102,7 +102,7 @@
         {
           "code": "003041.SZ",
           "price": 45.6,
-          "signal_date": "D50",
+          "signal_date": "20260601",
           "pullback_pct": 9.5,
           "limit_days": 2,
           "entity_ratio": 100.0
@@ -110,7 +110,7 @@
         {
           "code": "000037.SZ",
           "price": 11.25,
-          "signal_date": "D56",
+          "signal_date": "20260609",
           "pullback_pct": 10.0,
           "limit_days": 2,
           "entity_ratio": 100.0
@@ -118,7 +118,7 @@
         {
           "code": "002931.SZ",
           "price": 64.6,
-          "signal_date": "D54",
+          "signal_date": "20260605",
           "pullback_pct": 9.7,
           "limit_days": 2,
           "entity_ratio": 100.0
@@ -126,7 +126,7 @@
         {
           "code": "000402.SZ",
           "price": 2.8,
-          "signal_date": "D49",
+          "signal_date": "20260529",
           "pullback_pct": 11.5,
           "limit_days": 3,
           "entity_ratio": 67.0
@@ -134,7 +134,7 @@
         {
           "code": "002374.SZ",
           "price": 3.18,
-          "signal_date": "D55",
+          "signal_date": "20260608",
           "pullback_pct": 11.0,
           "limit_days": 2,
           "entity_ratio": 100.0
