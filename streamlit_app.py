@@ -609,6 +609,14 @@ def inject_design_system():
       color: #00F0FF;
     }
 
+    /* === 复盘页面: 记忆卡片 hover === */
+    .memory-card-hover {
+      transition: background 0.2s;
+    }
+    .memory-card-hover:hover {
+      background: rgba(0,240,255,0.02);
+    }
+
     </style>
     """
 
@@ -1029,8 +1037,8 @@ def cloud_load_data(version="v5"):
 
 
 # ==================== 快速 AI 分析（跳过板块信息，用已下载数据）====================
-def fast_ai_analysis(code, stock_df, market_context=""):
-    """v2: 四维框架（量价形时）+ 经典战法匹配 + DeepSeek API"""
+def fast_ai_analysis(code, stock_df, market_context="", memory_context=None):
+    """v2: 四维框架（量价形时）+ 经典战法匹配 + DeepSeek API。memory_context 为历史分析上下文。"""
     import requests
 
     # ---- 列名兼容（CSV 小写 / yfinance 首字母大写）----
@@ -1320,13 +1328,18 @@ def fast_ai_analysis(code, stock_df, market_context=""):
             return "## ⚠️ API Key 未配置\n\n请在环境变量中设置 `DEEPSEEK_API_KEY`。\n\n**设置方法**：\n```bash\nexport DEEPSEEK_API_KEY=\"sk-xxxxxxxx\"\n```\n\n或在 `~/.claude/settings.json` 中添加 `env` 配置。"
         api_url = screener.DEEPSEEK_API_URL
 
+        # 注入 AI 记忆上下文
+        full_system = system_prompt
+        if memory_context:
+            full_system += f"\n\n{memory_context}\n\n请结合以上历史分析记录和实际验证结果，对本次信号做连续性分析。如果历史判断正确/错误，请说明原因并调整本次判断。"
+
         resp = requests.post(
             api_url,
             headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
             json={
                 "model": "deepseek-chat",
                 "messages": [
-                    {"role": "system", "content": system_prompt},
+                    {"role": "system", "content": full_system},
                     {"role": "user", "content": prompt},
                 ],
                 "temperature": 0.4,
@@ -1607,218 +1620,212 @@ def check_return(code, signal_date, entry_price, hold_days):
         return None
 
 
-# ==================== 手动选股复盘 ====================
-MANUAL_PICKS_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "manual_picks.csv")
+# ==================== AI 记忆系统 ====================
+AI_MEMORY_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ai_memory.json")
 
+def load_ai_memory():
+    """加载 AI 记忆文件。返回 dict {code: [records]}。不存在则返回 {}。"""
+    if not os.path.exists(AI_MEMORY_FILE):
+        return {}
+    try:
+        with open(AI_MEMORY_FILE, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return {}
 
-def save_manual_picks(results):
-    """保存手动选股结果到 manual_picks.csv（去重）"""
-    if not results:
+def save_ai_memory(memory):
+    """保存 AI 记忆到文件"""
+    with open(AI_MEMORY_FILE, "w", encoding="utf-8") as f:
+        json.dump(memory, f, ensure_ascii=False, indent=2)
+
+def save_ai_analysis_record(code, date_str, mode, entry_price, pullback_pct, limit_days, analysis_text):
+    """保存单条 AI 分析记录。按 (code, date) 去重。"""
+    memory = load_ai_memory()
+    if code not in memory:
+        memory[code] = []
+    # 去重：同一天同一只股票不重复
+    for rec in memory[code]:
+        if rec.get("date") == date_str:
+            return  # 已存在，跳过
+    # 正则提取 AI 回复中的关键字段
+    import re as _re
+    sentiment = ""
+    position = ""
+    opinion = ""
+    try:
+        sm = _re.search(r'情绪档位[：:]\s*(.+?)(?:\n|$)', analysis_text)
+        if sm: sentiment = sm.group(1).strip()
+        pm = _re.search(r'仓位[建议]*[：:]\s*(.+?)(?:\n|$)', analysis_text)
+        if pm: position = pm.group(1).strip()
+        om = _re.search(r'最终结论[：:]\s*(.+?)(?:\n|$)', analysis_text)
+        if om: opinion = om.group(1).strip()
+    except Exception:
+        pass
+    memory[code].append({
+        "date": date_str,
+        "mode": mode,
+        "entry_price": entry_price,
+        "pullback_pct": pullback_pct,
+        "limit_days": limit_days,
+        "analysis": analysis_text,
+        "sentiment": sentiment,
+        "position": position,
+        "opinion": opinion,
+        "verified": False,
+        "return_3d": None,
+        "return_5d": None,
+        "return_7d": None,
+        "verdict": None,
+    })
+    save_ai_memory(memory)
+
+def auto_verify_memory():
+    """自动验证：对 verified=False 且 ≥3天前的记录，计算实际收益并回写 verdict"""
+    memory = load_ai_memory()
+    if not memory:
         return
-    df_new = pd.DataFrame(results)
-    if os.path.exists(MANUAL_PICKS_FILE) and os.path.getsize(MANUAL_PICKS_FILE) > 10:
-        df_old = pd.read_csv(MANUAL_PICKS_FILE)
-        existing = set(zip(df_old['date'].astype(str), df_old['code']))
-        df_new = df_new[~df_new.apply(lambda r: (str(r['date']), r['code']) in existing, axis=1)]
-        if len(df_new) == 0:
-            return
-        df_combined = pd.concat([df_old, df_new], ignore_index=True)
-    else:
-        df_combined = df_new
-    df_combined.to_csv(MANUAL_PICKS_FILE, index=False, encoding='utf-8-sig')
-
-
-def display_manual_results(results, picked_date_str):
-    """展示手动选股分析结果"""
-    total = len(results)
-    matched = sum(1 for r in results if r.get('system_picked'))
-
-    st.subheader("◆ 分析结果")
-
-    col1, col2, col3 = st.columns(3)
-    with col1:
-        st.metric("手动输入", total)
-    with col2:
-        st.metric("系统也选中", matched)
-    with col3:
-        st.metric("匹配率", f"{matched/total:.0%}" if total > 0 else "—")
-
-    # 详细表格
-    rows = []
-    for r in results:
-        rows.append({
-            '代码': r['code'],
-            '名称': r.get('name', '') or '',
-            '板块': r.get('sector', '') or '',
-            '系统选中': '◆' if r.get('system_picked') else '◇',
-            '系统模式': r.get('system_mode', '') or '—',
-        })
-    st.dataframe(pd.DataFrame(rows), use_container_width=True, hide_index=True)
-
-    # 逐只AI分析报告
-    for r in results:
-        analysis_text = r.get('ai_analysis', '')
-        if analysis_text:
-            with st.expander(f"◆ {r['code']} {r.get('name', '')} — AI分析报告"):
-                st.markdown(analysis_text)
-
-    # 保存
-    save_manual_picks(results)
-    st.success(f"◆ 已保存 {len(results)} 条手动选股记录")
-
-
-def perform_manual_analysis(codes, signal_date_str):
-    """对手动输入的股票列表执行AI分析"""
-    progress = st.progress(0, text="◈ 准备分析...")
-
-    all_data = st.session_state.get('all_data', {})
-    results = []
-
-    for i, code in enumerate(codes):
-        progress.progress((i + 1) / len(codes), text=f"◈ 正在分析 {code} ({i+1}/{len(codes)})...")
-
-        # 获取股票数据
-        if code in all_data:
-            stock_df = all_data[code]
-        else:
-            try:
-                ticker = yf.Ticker(code)
-                stock_df = ticker.history(period="30d")
-                if stock_df is None or len(stock_df) < 5:
-                    st.warning(f"◆ {code} 数据不足，跳过")
-                    continue
-            except Exception:
-                st.warning(f"◆ {code} 数据获取失败，跳过")
+    today_int = int(china_now().strftime('%Y%m%d'))
+    changed = False
+    for code, records in memory.items():
+        for rec in records:
+            if rec.get("verified"):
                 continue
-
-        # 检查系统是否会选中（用两种模式分别测试）
-        system_picked = False
-        system_mode = ""
-        for mode in ["strict", "loose"]:
-            params = screener.SCREEN_MODES[mode].copy()
-            original = screener.PARAMS.copy()
-            screener.PARAMS.update(params)
-            test_candidates = []
-            test_stats = {'total': 1, 'has_data': 0, 'has_limit_up': 0, 'consecutive_ok': 0,
-                          'entity_ratio_ok': 0, 'pullback_days_ok': 0, 'pullback_range_ok': 0,
-                          'ma_ok': 0, 'volume_shrink_ok': 0, 'yang_ok': 0, 'volume_expand_ok': 0, 'final': 0}
             try:
-                screener._screen_single_stock(code, stock_df, test_stats, test_candidates, mode)
-                if len(test_candidates) > 0:
-                    system_picked = True
-                    system_mode = mode
-                    screener.PARAMS.update(original)
-                    break
+                sdate = str(rec["date"])
+                if len(sdate) < 8:
+                    continue
+                if today_int - int(sdate) < 3:
+                    continue  # 还没到验证时间
+                entry_price = rec.get("entry_price", 0)
+                # 如果 entry_price 为 0，尝试从 signal_tracker 获取
+                if entry_price == 0 and os.path.exists(SIGNAL_FILE):
+                    try:
+                        df_sig = pd.read_csv(SIGNAL_FILE)
+                        match = df_sig[(df_sig['code'] == code) & (df_sig['signal_date'].astype(str) == sdate)]
+                        if len(match) > 0:
+                            entry_price = match.iloc[0]['entry_price']
+                    except Exception:
+                        pass
+                if entry_price <= 0:
+                    continue
+                ret3 = check_return(code, sdate, entry_price, 3)
+                ret5 = check_return(code, sdate, entry_price, 5)
+                ret7 = check_return(code, sdate, entry_price, 7)
+                rec["return_3d"] = round(ret3, 2) if ret3 is not None else None
+                rec["return_5d"] = round(ret5, 2) if ret5 is not None else None
+                rec["return_7d"] = round(ret7, 2) if ret7 is not None else None
+                rec["verified"] = True
+                if ret3 is not None:
+                    rec["verdict"] = "correct" if ret3 > 0 else "wrong"
+                changed = True
             except Exception:
                 pass
-            finally:
-                screener.PARAMS.update(original)
+    if changed:
+        save_ai_memory(memory)
 
-        # AI分析
-        analysis = None
-        try:
-            market_ctx = screener.get_market_context()
-            analysis = fast_ai_analysis(code, stock_df, market_ctx)
-        except Exception:
-            pass
+def get_stock_memory_context(code):
+    """获取某只股票的历史分析上下文，用于注入 AI prompt。返回格式化文本或 None。"""
+    memory = load_ai_memory()
+    if code not in memory or not memory[code]:
+        return None
+    records = memory[code]
+    lines = ["[历史分析记录]"]
+    for rec in records[-5:]:  # 最多取最近5条
+        sdate = rec.get("date", "未知")
+        if len(sdate) >= 8:
+            sdate = f"{sdate[:4]}-{sdate[4:6]}-{sdate[6:]}"
+        sentiment = rec.get("sentiment", "")
+        position = rec.get("position", "")
+        opinion = rec.get("opinion", "")
+        verdict = rec.get("verdict", "")
+        ret3 = rec.get("return_3d")
+        # 构建摘要
+        summary_parts = [f"情绪:{sentiment}", f"仓位:{position}"]
+        if opinion:
+            summary_parts.append(f"结论:{opinion}")
+        if verdict == "correct":
+            summary_parts.append(f"3日后实际收益 +{ret3}% (✅预测正确)")
+        elif verdict == "wrong":
+            ret_str = f"{ret3}%" if ret3 is not None else "?"
+            summary_parts.append(f"3日后实际收益 {ret_str} (◈预测偏差)")
+        else:
+            summary_parts.append("(⏳待验证)")
+        lines.append(f"- {sdate}: {' | '.join(summary_parts)}")
+    return "\n".join(lines)
 
-        # 获取名称/板块
-        info = name_lookup.lookup_code(code)
+def compute_performance():
+    """从 signal_tracker.csv 计算全局绩效指标。返回 dict 或 None。"""
+    if not os.path.exists(SIGNAL_FILE):
+        return None
+    try:
+        df = pd.read_csv(SIGNAL_FILE)
+        if len(df) == 0:
+            return None
+        today_int = int(china_now().strftime('%Y%m%d'))
 
-        results.append({
-            'date': signal_date_str,
-            'code': code,
-            'name': info.get('name', '') or '',
-            'sector': info.get('sector_cn', '') or info.get('sector', '') or info.get('industry', '') or '',
-            'system_picked': system_picked,
-            'system_mode': system_mode,
-            'ai_analysis': analysis or '',
-        })
+        # 计算每条已验证信号的收益
+        returns = []
+        wins = 0
+        losses = 0
+        for _, row in df.iterrows():
+            sdate = str(row['signal_date'])
+            if len(sdate) < 8:
+                continue
+            if today_int - int(sdate) < 3:
+                continue  # 未到验证时间
+            ret = check_return(row['code'], sdate, row['entry_price'], 3)
+            if ret is not None:
+                returns.append({
+                    'date': sdate,
+                    'code': row['code'],
+                    'mode': row.get('mode', ''),
+                    'return_3d': ret,
+                })
+                if ret > 0:
+                    wins += 1
+                else:
+                    losses += 1
 
-    progress.empty()
+        if not returns:
+            return None
 
-    if results:
-        display_manual_results(results, signal_date_str)
-    else:
-        st.warning("◆ 没有成功分析任何股票")
+        total_trades = wins + losses
+        win_rate = wins / total_trades if total_trades > 0 else 0
+        avg_win = sum(r['return_3d'] for r in returns if r['return_3d'] > 0) / wins if wins > 0 else 0
+        avg_loss = abs(sum(r['return_3d'] for r in returns if r['return_3d'] <= 0) / losses) if losses > 0 else 0
+        profit_factor = (avg_win * wins) / (avg_loss * losses) if (avg_loss * losses) > 0 else float('inf')
 
+        # 累计收益序列（用于计算最大回撤和曲线图）
+        cum_returns = []
+        running = 0.0
+        peak = 0.0
+        max_dd = 0.0
+        for r in returns:
+            running += r['return_3d']
+            cum_returns.append(running)
+            if running > peak:
+                peak = running
+            dd = (peak - running) / abs(peak) * 100 if peak != 0 else 0
+            if dd > max_dd:
+                max_dd = dd
 
-def show_manual_review():
-    """手动选股复盘界面"""
-    st.subheader("◆ 输入你想复盘的股票")
+        total_return = cum_returns[-1] if cum_returns else 0
 
-    col1, col2 = st.columns([3, 1])
-    with col1:
-        manual_input = st.text_area(
-            "输入股票代码（每行一个，如 600000.SS / 000001.SZ / 300750.SZ）",
-            height=120,
-            placeholder="600000.SS\n000001.SZ\n300750.SZ",
-            key="manual_stock_input"
-        )
-    with col2:
-        review_date = st.date_input("复盘日期", value=china_now(), key="manual_review_date")
-        if st.button("◆ 开始分析", type="primary", use_container_width=True, key="manual_analyze_btn"):
-            if manual_input.strip():
-                st.session_state['trigger_manual_analysis'] = True
-                st.session_state['manual_codes'] = [c.strip() for c in manual_input.split('\n') if c.strip()]
-                st.session_state['manual_date'] = review_date.strftime('%Y%m%d')
-            else:
-                st.warning("◆ 请输入至少一只股票代码")
-
-    # 触发分析
-    if st.session_state.get('trigger_manual_analysis') and st.session_state.get('manual_codes'):
-        codes = st.session_state['manual_codes']
-        signal_date = st.session_state['manual_date']
-        st.divider()
-        perform_manual_analysis(codes, signal_date)
-        st.session_state['trigger_manual_analysis'] = False  # 重置
-
-    # 历史手动选股回顾
-    if os.path.exists(MANUAL_PICKS_FILE) and os.path.getsize(MANUAL_PICKS_FILE) > 10:
-        st.divider()
-        st.subheader("◆ 历史手动选股回顾")
-        try:
-            df_hist = pd.read_csv(MANUAL_PICKS_FILE)
-            if len(df_hist) > 0:
-                st.caption(f"共 {len(df_hist)} 条手动选股记录")
-
-                # 计算收益（仅对 ≥3 天前的记录）
-                today_int = int(china_now().strftime('%Y%m%d'))
-                hist_rows = []
-                for _, row in df_hist.tail(30).iterrows():
-                    sdate = str(row['date'])
-                    if len(sdate) >= 8 and today_int - int(sdate) >= 3:
-                        ret3 = check_return(row['code'], sdate, 0, 3)  # 手动的没有 entry_price，用 0 跳过
-                        # 尝试用当前收盘价
-                        try:
-                            ticker = yf.Ticker(row['code'])
-                            hist_df = ticker.history(
-                                start=f"{sdate[:4]}-{sdate[4:6]}-{sdate[6:]}",
-                                end=f"{int(sdate[:4])+1}-{sdate[4:6]}-{sdate[6:]}",
-                            )
-                            if hist_df is not None and len(hist_df) >= 2:
-                                entry_p = hist_df['Close'].iloc[0]
-                                ret = check_return(row['code'], sdate, entry_p, 3)
-                            else:
-                                ret = None
-                        except Exception:
-                            ret = None
-                        ret_str = f"{ret:+.1f}%" if ret is not None else "—"
-                    else:
-                        ret_str = "◆"
-
-                    hist_rows.append({
-                        '日期': f"{sdate[:4]}-{sdate[4:6]}-{sdate[6:]}" if len(sdate) >= 8 else sdate,
-                        '代码': row['code'],
-                        '名称': row.get('name', '') or '',
-                            '系统选中': '◆' if row.get('system_picked') else '◇',
-                        '3日收益': ret_str,
-                    })
-
-                if hist_rows:
-                    st.dataframe(pd.DataFrame(hist_rows), use_container_width=True, hide_index=True)
-        except Exception as e:
-            st.caption(f"读取历史记录失败: {e}")
+        return {
+            'total_return': total_return,
+            'total_trades': total_trades,
+            'wins': wins,
+            'losses': losses,
+            'win_rate': win_rate,
+            'avg_win': avg_win,
+            'avg_loss': avg_loss,
+            'profit_factor': profit_factor,
+            'max_drawdown': max_dd,
+            'cum_returns': cum_returns,
+            'returns': returns,
+        }
+    except Exception:
+        return None
 
 
 # ==================== 选股结果展示 ====================
@@ -2149,6 +2156,18 @@ def main():
             ai_placeholder = st.empty()
             codes_to_analyze = [k.replace("analyze_", "") for k in st.session_state
                                if k.startswith("analyze_") and st.session_state[k]]
+            # 构建 code → candidate info 的快速查找表
+            candidate_info = {}
+            for m_name, m_candidates in modes.items():
+                for c in (m_candidates or []):
+                    c_code = c.get('code', c.get('代码', ''))
+                    if c_code:
+                        candidate_info[c_code] = {
+                            'mode': m_name,
+                            'price': c.get('price', c.get('最新价', 0)),
+                            'pullback_pct': c.get('pullback_pct', c.get('回调比', 0)),
+                            'limit_days': c.get('limit_days', c.get('连板数', 0)),
+                        }
             for code in codes_to_analyze:
                 ai_placeholder.markdown(
                     f"<div style='padding:14px 20px;background:rgba(0,240,255,0.05);"
@@ -2182,9 +2201,25 @@ def main():
                         except Exception:
                             pass
                     market_ctx = screener.get_market_context()
-                    analysis = fast_ai_analysis(code, stock_df, market_ctx)
+                    # 获取 AI 历史记忆上下文
+                    memory_context = get_stock_memory_context(code)
+                    analysis = fast_ai_analysis(code, stock_df, market_ctx, memory_context=memory_context)
                     if analysis:
                         st.session_state[f"analysis_result_{code}"] = analysis
+                        # 自动存档到 AI 记忆
+                        try:
+                            cinfo = candidate_info.get(code, {})
+                            save_ai_analysis_record(
+                                code=code,
+                                date_str=china_now().strftime('%Y%m%d'),
+                                mode=cinfo.get('mode', ''),
+                                entry_price=cinfo.get('price', 0),
+                                pullback_pct=cinfo.get('pullback_pct', 0),
+                                limit_days=int(cinfo.get('limit_days', 0)),
+                                analysis_text=analysis,
+                            )
+                        except Exception:
+                            pass  # 存档失败不影响主流程
                     st.session_state[f"analyze_{code}"] = False
                 except Exception:
                     st.session_state[f"analyze_{code}"] = False
@@ -2272,12 +2307,143 @@ def main():
 
     # ============ 复盘页面 ============
     elif page == '◆ 复盘':
-        st.header("◆ 信号复盘")
-        show_signal_review()
+        # 自动验证 AI 记忆
+        auto_verify_memory()
+
+        # === 绩效总览 ===
+        perf = compute_performance()
+        if perf:
+            return_color = '#00FF88' if perf['total_return'] >= 0 else '#FF5050'
+            st.markdown(f"""
+            <div style="display:flex;align-items:baseline;gap:36px;padding:4px 0 10px 0;flex-wrap:wrap">
+              <div>
+                <div style="font-family:'JetBrains Mono',monospace;font-size:0.5rem;color:#555577;letter-spacing:0.08em;margin-bottom:4px">累计收益</div>
+                <div style="font-family:'JetBrains Mono',monospace;font-size:1.3rem;color:{return_color};font-weight:bold">{perf['total_return']:+.1f}%</div>
+              </div>
+              <div>
+                <div style="font-family:'JetBrains Mono',monospace;font-size:0.5rem;color:#555577;letter-spacing:0.08em;margin-bottom:4px">胜率</div>
+                <div style="font-family:'JetBrains Mono',monospace;font-size:1.3rem;color:#D0D0E8;font-weight:bold">{perf['win_rate']:.0%}</div>
+              </div>
+              <div>
+                <div style="font-family:'JetBrains Mono',monospace;font-size:0.5rem;color:#555577;letter-spacing:0.08em;margin-bottom:4px">盈亏比</div>
+                <div style="font-family:'JetBrains Mono',monospace;font-size:1.3rem;color:#D0D0E8;font-weight:bold">{perf['profit_factor']:.2f}</div>
+              </div>
+              <div>
+                <div style="font-family:'JetBrains Mono',monospace;font-size:0.5rem;color:#555577;letter-spacing:0.08em;margin-bottom:4px">最大回撤</div>
+                <div style="font-family:'JetBrains Mono',monospace;font-size:1.3rem;color:#FF6B6B;font-weight:bold">-{perf['max_drawdown']:.1f}%</div>
+              </div>
+            </div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:0.48rem;color:#444466;margin-bottom:12px">
+              {perf['wins']}胜 / {perf['losses']}负 &nbsp;·&nbsp; 均盈+{perf['avg_win']:.1f}% / 均亏-{perf['avg_loss']:.1f}% &nbsp;·&nbsp; 总{perf['total_trades']}笔
+            </div>
+            """, unsafe_allow_html=True)
+
+            # 收益曲线
+            if perf['cum_returns'] and len(perf['cum_returns']) > 1:
+                chart_df = pd.DataFrame({'累计收益%': perf['cum_returns']})
+                st.line_chart(chart_df, height=160, use_container_width=True)
+        else:
+            st.markdown("""
+            <div style="padding:40px 0;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:#444466">
+              ◆ 暂无绩效数据<br>
+              <span style="font-size:0.5rem;color:#333355">信号需 ≥3天 才能验证收益</span>
+            </div>
+            """, unsafe_allow_html=True)
 
         st.divider()
-        st.header("◆ 手动选股复盘")
-        show_manual_review()
+
+        # === AI 记忆浏览器 ===
+        memory = load_ai_memory()
+        if memory:
+            # 展平所有记录并排序
+            all_records = []
+            for code, records in memory.items():
+                for rec in records:
+                    all_records.append({**rec, 'code': code})
+            all_records.sort(key=lambda r: r.get('date', ''), reverse=True)
+
+            # 筛选器
+            verdict_filter = st.selectbox(
+                "验证状态", ["全部", "✅ 正确", "◈ 偏差", "⏳ 待验"],
+                key="mem_filter", label_visibility="collapsed"
+            )
+            filtered = all_records
+            if verdict_filter == "✅ 正确":
+                filtered = [r for r in filtered if r.get('verdict') == 'correct']
+            elif verdict_filter == "◈ 偏差":
+                filtered = [r for r in filtered if r.get('verdict') == 'wrong']
+            elif verdict_filter == "⏳ 待验":
+                filtered = [r for r in filtered if r.get('verdict') is None]
+
+            st.caption(f"◆ {len(filtered)} 条分析记录")
+
+            # 渲染记忆卡片
+            for rec in filtered[:30]:
+                code = rec['code']
+                verdict = rec.get('verdict')
+                if verdict == 'correct':
+                    border_color = "rgba(0,255,136,0.3)"
+                    badge_html = '<span style="font-size:0.48rem;color:#00FF88;background:rgba(0,255,136,0.06);padding:1px 6px;border-radius:3px">✅</span>'
+                elif verdict == 'wrong':
+                    border_color = "rgba(255,80,80,0.25)"
+                    badge_html = '<span style="font-size:0.48rem;color:#FF6B6B;background:rgba(255,80,80,0.05);padding:1px 6px;border-radius:3px">◈</span>'
+                else:
+                    border_color = "rgba(123,47,255,0.25)"
+                    badge_html = '<span style="font-size:0.48rem;color:#9B6FFF;background:rgba(123,47,255,0.05);padding:1px 6px;border-radius:3px">⏳</span>'
+
+                sdate = rec.get('date', '')
+                sdate_display = f"{sdate[4:6]}-{sdate[6:]}" if len(sdate) >= 8 else sdate
+
+                ret3_val = rec.get('return_3d')
+                if ret3_val is not None:
+                    ret3_str = f"{ret3_val:+.1f}%"
+                    ret3_color = "#00FF88" if ret3_val > 0 else ("#FF5050" if ret3_val < 0 else "#444466")
+                else:
+                    ret3_str = "待验"
+                    ret3_color = "#444466"
+
+                analysis_full = rec.get('analysis', '')
+                analysis_preview = analysis_full[:120]
+                sentiment = rec.get('sentiment', '')
+                position = rec.get('position', '')
+
+                st.markdown(f"""
+                <div style="border-left:2px solid {border_color};padding:8px 14px;margin-bottom:6px;background:rgba(10,11,20,0.5)">
+                  <div style="display:flex;align-items:center;justify-content:space-between">
+                    <div style="display:flex;align-items:center;gap:10px">
+                      <span style="font-family:'JetBrains Mono',monospace;color:#D0D0E8;font-size:0.72rem">{code}</span>
+                      {badge_html}
+                      <span style="font-family:'JetBrains Mono',monospace;color:#555577;font-size:0.5rem">{rec.get('mode', '')}</span>
+                    </div>
+                    <span style="font-family:'JetBrains Mono',monospace;color:#444466;font-size:0.5rem">{sdate_display}</span>
+                  </div>
+                  <div style="display:flex;gap:14px;margin-top:4px;font-family:'JetBrains Mono',monospace;font-size:0.5rem;color:#555577;flex-wrap:wrap">
+                    <span>¥{rec.get('entry_price', 0):.2f}</span>
+                    <span>回调 {rec.get('pullback_pct', 0):.1f}%</span>
+                    <span>3D <span style="color:{ret3_color}">{ret3_str}</span></span>
+                    {f'<span>情绪: {sentiment}</span>' if sentiment else ''}
+                    {f'<span>仓位: {position}</span>' if position else ''}
+                  </div>
+                  <div style="margin-top:4px;font-family:'JetBrains Mono',monospace;font-size:0.5rem;color:#666688;line-height:1.5">
+                    <span style="color:#00F0FF">◆</span> {analysis_preview}{'...' if len(analysis_full) > 120 else ''}
+                  </div>
+                </div>
+                """, unsafe_allow_html=True)
+
+                # 可展开完整分析 + 重新分析按钮
+                with st.expander(f"📖 完整分析", expanded=False):
+                    st.markdown(analysis_full)
+                    if st.button(f"🔄 重新分析(带入记忆)", key=f"reanalyze_{code}_{rec['date']}"):
+                        st.session_state[f"analyze_{code}"] = True
+                        st.session_state["nav_page"] = "◆ 选股"  # 切换到选股页执行分析
+                        st.rerun()
+        else:
+            st.markdown("""
+            <div style="padding:30px 0;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:#444466">
+              ◆ AI 记忆为空<br>
+              <span style="font-size:0.5rem;color:#333355">在选股页对候选股票使用 AI 分析后，记录会出现在这里</span>
+            </div>
+            """, unsafe_allow_html=True)
 
     elif page == '◆ 介绍':
         st.header("◆ 策略介绍")
