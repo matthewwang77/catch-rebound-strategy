@@ -1436,8 +1436,6 @@ def save_signals(all_candidates):
     if not all_candidates:
         return
 
-    today = china_now().strftime('%Y%m%d')
-
     # 批量获取名称/板块
     codes = [c.get('代码', c.get('code', '')) for c in all_candidates]
     name_info = name_lookup.batch_lookup(codes, max_fetch=10)
@@ -1446,7 +1444,7 @@ def save_signals(all_candidates):
     for c in all_candidates:
         info = name_info.get(c.get('代码', c.get('code', '')), {})
         new_rows.append({
-            'signal_date': today,
+            'signal_date': c.get('signal_date', china_now().strftime('%Y%m%d')),
             'code': c.get('代码', c.get('code', '')),
             'name': info.get('name', '') or '',
             'sector': info.get('sector_cn', '') or info.get('sector', '') or info.get('industry', '') or '',
@@ -1473,132 +1471,6 @@ def save_signals(all_candidates):
     df_combined.to_csv(SIGNAL_FILE, index=False, encoding='utf-8-sig')
 
 
-def show_signal_review():
-    """信号复盘面板：查看历史信号的实际表现"""
-    if not os.path.exists(SIGNAL_FILE):
-        st.info("◆ 暂无历史信号。选股后会自动记录。")
-        return
-
-    df = pd.read_csv(SIGNAL_FILE)
-    if len(df) == 0:
-        st.info("◆ 暂无历史信号。")
-        return
-
-    # ---- 统计卡片 ----
-    total = len(df)
-    dates = sorted(df['signal_date'].astype(str).unique())
-    # 安全格式化日期
-    first_date = str(dates[0])
-    last_date = str(dates[-1])
-    first_str = f"{first_date[:4]}-{first_date[4:6]}-{first_date[6:]}" if len(first_date) >= 8 else first_date
-    last_str = f"{last_date[:4]}-{last_date[4:6]}-{last_date[6:]}" if len(last_date) >= 8 else last_date
-    st.caption(f"◆ 共 {total} 条信号，{len(dates)} 个交易日（{first_str} ~ {last_str}）")
-
-    col1, col2, col3, col4 = st.columns(4)
-
-    # 查找有足够天数来复盘（≥3 天前）
-    today_int = int(china_now().strftime('%Y%m%d'))
-    reviewable = df[df['signal_date'].apply(lambda d: today_int - int(str(d)) >= 3)]
-
-    with col1:
-        st.metric("总信号", total)
-    with col2:
-        st.metric("可复盘(≥3天)", len(reviewable))
-    with col3:
-        if len(reviewable) > 0:
-            # 尝试计算 3 日收益
-            gains = []
-            for _, row in reviewable.iterrows():
-                ret = check_return(row['code'], row['signal_date'], row['entry_price'], 3)
-                if ret is not None:
-                    gains.append(ret)
-            if gains:
-                win_rate = sum(1 for g in gains if g > 0) / len(gains)
-                st.metric("3日胜率", f"{win_rate:.0%}")
-            else:
-                st.metric("3日胜率", "—")
-        else:
-            st.metric("3日胜率", "—")
-    with col4:
-        if len(reviewable) > 0 and gains:
-            st.metric("3日均收益", f"{sum(gains)/len(gains):+.2f}%")
-        else:
-            st.metric("3日均收益", "—")
-
-    # ---- 详细表格 ----
-    if len(reviewable) > 0:
-        st.subheader("◆ 最近信号详情")
-
-        rows = []
-        for _, row in reviewable.tail(30).iterrows():
-            code = row['code']
-            sdate = str(row['signal_date'])
-            price = row['entry_price']
-            ret3 = check_return(code, sdate, price, 3)
-            ret5 = check_return(code, sdate, price, 5)
-            ret7 = check_return(code, sdate, price, 7)
-
-            d3 = f"{ret3:+.1f}%" if ret3 is not None else "—"
-            d5 = f"{ret5:+.1f}%" if ret5 is not None else "—"
-            d7 = f"{ret7:+.1f}%" if ret7 is not None else "—"
-
-            # 颜色标记
-            d3_icon = "◆" if (ret3 or 0) > 0 else ("◈" if (ret3 or 0) < 0 else "◇")
-            d5_icon = "◆" if (ret5 or 0) > 0 else ("◈" if (ret5 or 0) < 0 else "◇")
-
-            stock_name = row.get('name', '') or ''
-            rows.append({
-                '日期': f"{sdate[:4]}-{sdate[4:6]}-{sdate[6:]}",
-                '代码': code,
-                '名称': stock_name,
-                '模式': row.get('mode', ''),
-                '入场价': f"{price:.2f}",
-                '回调': f"{row['pullback_pct']:.1f}%",
-                '3日': f"{d3_icon} {d3}",
-                '5日': f"{d5_icon} {d5}",
-                '7日': d7,
-            })
-
-        df_show = pd.DataFrame(rows)
-        st.dataframe(
-            df_show, use_container_width=True, hide_index=True,
-            column_config={
-                "回调": st.column_config.TextColumn(width="small"),
-            },
-        )
-
-        # 模式胜率对比
-        st.subheader("◆ 各模式胜率对比")
-        mode_stats = []
-        for mode in reviewable['mode'].unique():
-            if pd.isna(mode) or not mode:
-                continue
-            sub = reviewable[reviewable['mode'] == mode]
-            gains = []
-            for _, row in sub.iterrows():
-                ret = check_return(row['code'], str(row['signal_date']), row['entry_price'], 3)
-                if ret is not None:
-                    gains.append(ret)
-            if gains:
-                mode_stats.append({
-                    '模式': mode,
-                    '信号数': len(sub),
-                    '3日胜率': f"{sum(1 for g in gains if g>0)/len(gains):.0%}",
-                    '3日均收益': f"{sum(gains)/len(gains):+.2f}%",
-                    '最佳': f"{max(gains):+.1f}%",
-                    '最差': f"{min(gains):+.1f}%",
-                })
-        if mode_stats:
-            st.dataframe(pd.DataFrame(mode_stats), use_container_width=True, hide_index=True)
-
-    else:
-        st.info("◆ 最近3天内的信号需要再等等才能复盘。")
-
-    # 刷新按钮
-    if st.button("◆ 刷新复盘数据", key="refresh_review"):
-        st.rerun()
-
-
 @st.cache_data(ttl=600, show_spinner=False)
 def check_return(code, signal_date, entry_price, hold_days):
     """检查信号持有 N 天后的实际收益"""
@@ -1617,6 +1489,96 @@ def check_return(code, signal_date, entry_price, hold_days):
         if exit_price <= 0 or entry_price <= 0:
             return None
         return (exit_price / entry_price - 1) * 100
+    except Exception:
+        return None
+
+
+@st.cache_data(ttl=300, show_spinner=False)
+def check_return_v5(code, signal_date, entry_price, hold_days, take_profit, stop_loss):
+    """yfinance版 simulate_hold_return()。
+
+    拉取OHLCV数据，从signal_date后逐日迭代，应用止损/止盈/到期退出
+    逻辑和交易成本，与回测引擎完全一致。
+
+    Returns: {'return_pct': float, 'exit_day': int, 'exit_reason': str}
+             exit_reason: '止损' / '止盈' / '到期'
+             None: 数据不足或出错
+    """
+    try:
+        start_dt = datetime.strptime(str(signal_date), '%Y%m%d')
+        fetch_start = start_dt - pd.Timedelta(days=3)
+        fetch_end = start_dt + pd.Timedelta(days=hold_days + 5)
+
+        ticker = yf.Ticker(code)
+        df = ticker.history(start=fetch_start.strftime('%Y-%m-%d'),
+                           end=fetch_end.strftime('%Y-%m-%d'))
+        if df is None or len(df) < 2:
+            return None
+
+        # 展平MultiIndex列
+        if isinstance(df.columns, pd.MultiIndex):
+            df.columns = df.columns.get_level_values(0)
+        df = df.rename(columns={'Open': 'open', 'High': 'high',
+                                'Low': 'low', 'Close': 'close',
+                                'Volume': 'volume'})
+        df_sorted = df.sort_index()
+
+        # 找到signal_date之后的第一个bar（入场bar）
+        mask = df_sorted.index >= pd.Timestamp(start_dt)
+        if not mask.any():
+            return None
+        entry_idx = mask.argmax()
+        if entry_idx + hold_days >= len(df_sorted):
+            return None
+
+        exit_idx_limit = min(entry_idx + hold_days, len(df_sorted) - 1)
+        for i in range(entry_idx + 1, exit_idx_limit + 1):
+            row = df_sorted.iloc[i]
+            high, low, open_price = row['high'], row['low'], row['open']
+            if entry_price <= 0:
+                continue
+
+            # 开盘检查
+            open_return = open_price / entry_price - 1
+            net_open = screener.apply_trading_costs(open_return, is_sell=True)
+            if net_open <= stop_loss:
+                return {'return_pct': round(net_open * 100, 2),
+                        'exit_day': i - entry_idx, 'exit_reason': '止损'}
+            if net_open >= take_profit:
+                return {'return_pct': round(net_open * 100, 2),
+                        'exit_day': i - entry_idx, 'exit_reason': '止盈'}
+
+            # 盘中距离优先检查（与回测完全一致）
+            stop_level = entry_price * (1 + stop_loss)
+            profit_level = entry_price * (1 + take_profit)
+            dist_to_stop = open_price - stop_level
+            dist_to_profit = profit_level - open_price
+
+            if dist_to_stop <= dist_to_profit:
+                if low / entry_price - 1 <= stop_loss:
+                    net = screener.apply_trading_costs(stop_loss, is_sell=True)
+                    return {'return_pct': round(net * 100, 2),
+                            'exit_day': i - entry_idx, 'exit_reason': '止损'}
+                if high / entry_price - 1 >= take_profit:
+                    net = screener.apply_trading_costs(take_profit, is_sell=True)
+                    return {'return_pct': round(net * 100, 2),
+                            'exit_day': i - entry_idx, 'exit_reason': '止盈'}
+            else:
+                if high / entry_price - 1 >= take_profit:
+                    net = screener.apply_trading_costs(take_profit, is_sell=True)
+                    return {'return_pct': round(net * 100, 2),
+                            'exit_day': i - entry_idx, 'exit_reason': '止盈'}
+                if low / entry_price - 1 <= stop_loss:
+                    net = screener.apply_trading_costs(stop_loss, is_sell=True)
+                    return {'return_pct': round(net * 100, 2),
+                            'exit_day': i - entry_idx, 'exit_reason': '止损'}
+
+        # 到期退出
+        final_price = df_sorted.iloc[exit_idx_limit]['close']
+        final_return = final_price / entry_price - 1 if entry_price > 0 else 0
+        net_final = screener.apply_trading_costs(final_return, is_sell=True)
+        return {'return_pct': round(net_final * 100, 2),
+                'exit_day': hold_days, 'exit_reason': '到期'}
     except Exception:
         return None
 
@@ -1722,15 +1684,20 @@ def auto_verify_memory():
                         pass
                 if entry_price <= 0:
                     continue
-                ret3 = check_return(code, sdate, entry_price, 3)
-                ret5 = check_return(code, sdate, entry_price, 5)
-                ret7 = check_return(code, sdate, entry_price, 7)
-                rec["return_3d"] = round(ret3, 2) if ret3 is not None else None
-                rec["return_5d"] = round(ret5, 2) if ret5 is not None else None
-                rec["return_7d"] = round(ret7, 2) if ret7 is not None else None
+                # 使用 check_return_v5 验证（loose 模式默认参数）
+                loose_params = screener.SCREEN_MODES['loose']
+                ret3 = check_return_v5(code, sdate, entry_price, 3,
+                                       loose_params['take_profit'], loose_params['stop_loss'])
+                ret5 = check_return_v5(code, sdate, entry_price, 5,
+                                       loose_params['take_profit'], loose_params['stop_loss'])
+                ret7 = check_return_v5(code, sdate, entry_price, 7,
+                                       loose_params['take_profit'], loose_params['stop_loss'])
+                rec["return_3d"] = round(ret3['return_pct'], 2) if ret3 is not None else None
+                rec["return_5d"] = round(ret5['return_pct'], 2) if ret5 is not None else None
+                rec["return_7d"] = round(ret7['return_pct'], 2) if ret7 is not None else None
                 rec["verified"] = True
                 if ret3 is not None:
-                    rec["verdict"] = "correct" if ret3 > 0 else "wrong"
+                    rec["verdict"] = "correct" if ret3['return_pct'] > 0 else "wrong"
                 changed = True
             except Exception:
                 pass
@@ -1794,9 +1761,11 @@ def get_stock_memory_context(code):
 
 def compute_performance(mode_filter=None, days_window=30):
     """从 signal_tracker.csv 计算绩效指标。
+
     - mode_filter: 'strict' / 'loose' / None(全部)
     - days_window: 只看最近N天的信号（自然日）
-    - 使用复合收益计算
+    - 使用模式专属的止盈/止损/持仓参数（从 SCREEN_MODES）
+    - 使用 check_return_v5() 模拟真实持仓退出
     """
     if not os.path.exists(SIGNAL_FILE):
         return None
@@ -1820,6 +1789,15 @@ def compute_performance(mode_filter=None, days_window=30):
         if len(df) == 0:
             return None
 
+        # 获取模式专属的出场参数
+        mode_params = screener.SCREEN_MODES.get(
+            mode_filter,
+            screener.SCREEN_MODES['loose']  # 默认用 loose 参数
+        )
+        hold_days = mode_params.get('hold_days', 7)
+        take_profit = mode_params.get('take_profit', 0.05)
+        stop_loss = mode_params.get('stop_loss', -0.10)
+
         # 计算每条已验证信号的收益
         returns = []
         wins = 0
@@ -1828,17 +1806,25 @@ def compute_performance(mode_filter=None, days_window=30):
             sdate = str(row['signal_date'])
             if today_int - int(sdate) < 3:
                 continue  # 未到验证时间
-            ret = check_return(row['code'], sdate, row['entry_price'], 3)
-            if ret is not None:
+            entry_price = row['entry_price']
+            if entry_price <= 0:
+                continue
+            result = check_return_v5(
+                row['code'], sdate, entry_price,
+                hold_days, take_profit, stop_loss
+            )
+            if result is not None:
                 returns.append({
                     'date': sdate,
                     'code': row['code'],
                     'mode': row.get('mode', ''),
-                    'return_3d': ret,
+                    'return_pct': result['return_pct'],
+                    'exit_day': result['exit_day'],
+                    'exit_reason': result['exit_reason'],
                 })
-                if ret > 0:
+                if result['return_pct'] > 0:
                     wins += 1
-                elif ret < 0:
+                elif result['return_pct'] < 0:
                     losses += 1
                 # ret == 0 不计入胜负
 
@@ -1847,25 +1833,43 @@ def compute_performance(mode_filter=None, days_window=30):
 
         total_trades = wins + losses
         win_rate = wins / total_trades if total_trades > 0 else 0
-        avg_win = sum(r['return_3d'] for r in returns if r['return_3d'] > 0) / wins if wins > 0 else 0
-        avg_loss = abs(sum(r['return_3d'] for r in returns if r['return_3d'] < 0) / losses) if losses > 0 else 0
+        avg_win = sum(r['return_pct'] for r in returns if r['return_pct'] > 0) / wins if wins > 0 else 0
+        avg_loss = abs(sum(r['return_pct'] for r in returns if r['return_pct'] < 0) / losses) if losses > 0 else 0
         profit_factor = (avg_win * wins) / (avg_loss * losses) if (avg_loss * losses) > 0 else float('inf')
         if profit_factor == float('inf'):
-            profit_factor = 999.99  # 无损情况避免HTML渲染为"inf"
+            profit_factor = 999.99
 
-        # 复合收益曲线（关键修复：compound returns）
+        # 按日期排序（关键！确保权益曲线按时间顺序）
+        returns.sort(key=lambda r: r['date'])
+
+        # 复合收益曲线
         equity = 1.0
         cum_returns = []
+        dates_for_chart = []
         peak = 1.0
         max_dd = 0.0
         for r in returns:
-            equity *= (1 + r['return_3d'] / 100)
+            equity *= (1 + r['return_pct'] / 100)
             cum_returns.append(round((equity - 1) * 100, 2))
+            d = r['date']
+            dates_for_chart.append(f"{d[:4]}-{d[4:6]}-{d[6:]}" if len(d) >= 8 else d)
             peak = max(peak, equity)
             dd = (peak - equity) / peak * 100
             max_dd = max(max_dd, dd)
 
         total_return = round((equity - 1) * 100, 2)
+
+        # 构建带日期索引的DataFrame（图表用）
+        chart_df = pd.DataFrame(
+            {'累计收益%': cum_returns},
+            index=pd.Index(dates_for_chart, name='日期')
+        )
+
+        # 退出方式统计
+        exit_reasons = {}
+        for r in returns:
+            reason = r.get('exit_reason', '未知')
+            exit_reasons[reason] = exit_reasons.get(reason, 0) + 1
 
         return {
             'total_return': total_return,
@@ -1878,7 +1882,10 @@ def compute_performance(mode_filter=None, days_window=30):
             'profit_factor': profit_factor,
             'max_drawdown': round(max_dd, 2),
             'cum_returns': cum_returns,
+            'chart_df': chart_df,
             'returns': returns,
+            'exit_reasons': exit_reasons,
+            'hold_days': hold_days,
         }
     except Exception:
         return None
@@ -2471,8 +2478,15 @@ def main():
 
                     # 收益曲线
                     if perf['cum_returns'] and len(perf['cum_returns']) >= 3:
-                        chart_df = pd.DataFrame({'累计收益%': perf['cum_returns']})
+                        chart_df = perf.get('chart_df',
+                            pd.DataFrame({'累计收益%': perf['cum_returns']})
+                        )
                         st.line_chart(chart_df, height=140, use_container_width=True)
+                        # 退出统计
+                        exit_info = perf.get('exit_reasons', {})
+                        if exit_info:
+                            parts = [f"{k}{v}次" for k, v in sorted(exit_info.items())]
+                            st.caption(f"持有{perf.get('hold_days','?')}天 · {' · '.join(parts)}")
                     else:
                         st.caption(f"数据不足（{len(perf.get('cum_returns',[]))}笔），继续积累")
                 else:
@@ -2580,13 +2594,25 @@ def main():
                 </div>
                 """, unsafe_allow_html=True)
 
-                # 可展开完整分析 + 重新分析按钮
+                # 可展开完整分析 + 重新分析 + 删除按钮
                 with st.expander(f"📖 完整分析", expanded=False):
                     st.markdown(analysis_full)
-                    if st.button(f"🔄 重新分析(带入记忆)", key=f"reanalyze_{code}_{rec['date']}"):
-                        start_analysis_queue([code])
-                        st.toast(f"◆ {code} 已加入分析队列", icon="◆")
-                        st.rerun()
+                    col_re, col_del = st.columns([3, 1])
+                    with col_re:
+                        if st.button(f"🔄 重新分析(带入记忆)", key=f"reanalyze_{code}_{rec['date']}"):
+                            start_analysis_queue([code])
+                            st.toast(f"◆ {code} 已加入分析队列", icon="◆")
+                            st.rerun()
+                    with col_del:
+                        if st.button(f"🗑 删除", key=f"delete_mem_{code}_{rec['date']}", type="secondary"):
+                            memory = load_ai_memory()
+                            if code in memory:
+                                memory[code] = [r for r in memory[code] if r.get("date") != rec["date"]]
+                                if not memory[code]:
+                                    del memory[code]
+                                save_ai_memory(memory)
+                            st.toast(f"◆ {code} 记忆已删除", icon="🗑")
+                            st.rerun()
         else:
             st.markdown("""
             <div style="padding:30px 0;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:#444466">
