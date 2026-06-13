@@ -11,7 +11,7 @@ import streamlit as st
 import yfinance as yf
 import pandas as pd
 import json
-from datetime import datetime
+from datetime import datetime, timedelta
 import time
 import os
 import sys
@@ -1766,7 +1766,8 @@ def compute_performance(mode_filter=None, days_window=30):
         if len(df) == 0:
             return None
         today_int = int(china_now().strftime('%Y%m%d'))
-        cutoff = today_int - days_window
+        cutoff_date = china_now() - timedelta(days=days_window)
+        cutoff = int(cutoff_date.strftime('%Y%m%d'))
 
         # 过滤模式
         if mode_filter:
@@ -1810,6 +1811,8 @@ def compute_performance(mode_filter=None, days_window=30):
         avg_win = sum(r['return_3d'] for r in returns if r['return_3d'] > 0) / wins if wins > 0 else 0
         avg_loss = abs(sum(r['return_3d'] for r in returns if r['return_3d'] < 0) / losses) if losses > 0 else 0
         profit_factor = (avg_win * wins) / (avg_loss * losses) if (avg_loss * losses) > 0 else float('inf')
+        if profit_factor == float('inf'):
+            profit_factor = 999.99  # 无损情况避免HTML渲染为"inf"
 
         # 复合收益曲线（关键修复：compound returns）
         equity = 1.0
