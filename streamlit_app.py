@@ -512,6 +512,16 @@ def inject_design_system():
       border-color: rgba(0,255,136,0.35);
       box-shadow: 0 0 8px rgba(0,255,136,0.08);
     }
+    .mode-pill.bear {
+      background: rgba(255,165,0,0.08);
+      border: 1px solid rgba(255,165,0,0.25);
+      color: #FFA500;
+    }
+    .mode-pill.bear:hover {
+      background: rgba(255,165,0,0.14);
+      border-color: rgba(255,165,0,0.45);
+      box-shadow: 0 0 8px rgba(255,165,0,0.1);
+    }
 
     /* === NEON STATUS BAR === */
     .neon-status-bar {
@@ -1364,8 +1374,8 @@ def fast_ai_analysis(code, stock_df, market_context="", memory_context=None):
 
 # ==================== 多模式筛选 ====================
 def screen_all_modes(all_data):
-    """用 strict/loose 两种参数分别筛选，返回 {mode: [候选列表]}"""
-    modes = ["strict", "loose"]
+    """用 strict/loose/bear 三种参数分别筛选，返回 {mode: [候选列表]}"""
+    modes = ["strict", "loose", "bear"]
     results = {}
     all_stats = {}
 
@@ -1925,9 +1935,10 @@ def show_screening_results(results, all_stats):
     tabs = st.tabs([
         f"◆ STRICT 严格 ({len(results['strict'])}只)",
         f"◇ LOOSE 宽松 ({len(results['loose'])}只)",
+        f"🐻 BEAR 熊市 ({len(results['bear'])}只)",
     ])
 
-    for tab_idx, mode in enumerate(["strict", "loose"]):
+    for tab_idx, mode in enumerate(["strict", "loose", "bear"]):
         with tabs[tab_idx]:
             candidates = results[mode]
             stats = all_stats[mode]
@@ -2000,7 +2011,7 @@ def show_screening_results(results, all_stats):
     st.divider()
     if any(len(v) > 0 for v in results.values()):
         all_candidates = []
-        for mode in ["strict", "loose"]:
+        for mode in ["strict", "loose", "bear"]:
             for c in results[mode]:
                 all_candidates.append({**c, 'mode': mode})
         df_export = pd.DataFrame(all_candidates)
@@ -2245,7 +2256,27 @@ def main():
                 st.metric(label=name, value="—")
     st.divider()
 
-    # 分析队列初始化
+    # v6: 市场状态检测
+    try:
+        regime = screener.detect_market_regime()
+        is_bear = regime['regime'] == 'bear'
+        regime_color = "#FFA500" if is_bear else "#00FF88"
+        regime_icon = "🐻" if is_bear else "🐂"
+        regime_bg = "rgba(255,165,0,0.06)" if is_bear else "rgba(0,255,136,0.04)"
+        regime_border = "rgba(255,165,0,0.2)" if is_bear else "rgba(0,255,136,0.12)"
+        st.markdown(f"""
+        <div style="display:flex;align-items:center;gap:10px;padding:8px 16px;margin:8px 0;border-radius:8px;
+                    background:{regime_bg};border:1px solid {regime_border};
+                    font-family:'JetBrains Mono',monospace;font-size:0.55rem;color:#8888AA">
+          <span style="font-size:1rem">{regime_icon}</span>
+          <span style="color:{regime_color}">{regime['sentiment_label']}</span>
+          <span>| 5日趋势 <span style="color:{regime_color}">{regime['avg_trend']:+.1f}%</span></span>
+          <span>| 推荐模式 <span style="color:{regime_color}">{regime['recommended_mode'].upper()}</span></span>
+          {f'<span style="color:#FFA500">| ⚠️ 熊市环境 — 已启用浅回调+极度缩量策略</span>' if is_bear else ''}
+        </div>
+        """, unsafe_allow_html=True)
+    except Exception:
+        pass
     if "analysis_queue" not in st.session_state:
         st.session_state.analysis_queue = []
     if "analysis_results" not in st.session_state:

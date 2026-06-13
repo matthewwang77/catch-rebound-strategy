@@ -1,0 +1,31 @@
+{
+  "period": "20250701_20260430",
+  "period_label": "Period C: 震荡回调",
+  "best_params": {
+    "pullback_ratio_min": 0.01,
+    "pullback_ratio_max": 0.32,
+    "volume_shrink_ratio": 0.84,
+    "take_profit": 0.052,
+    "stop_loss": -0.144,
+    "hold_days": 11,
+    "min_entity_board_ratio": 0.35,
+    "min_consecutive_limit_up": 3,
+    "require_oversold": false,
+    "require_low_close": false,
+    "volume_shrink_ratio_min": 0.1
+  },
+  "stage1_score": 0.8414,
+  "stage2_score": 0.8535,
+  "stage3_score": 0.8514,
+  "stage3_metrics": {
+    "win_rate": 0.6609,
+    "avg_return": 0.0255,
+    "sharpe": 7.98,
+    "sortino": 5.0,
+    "max_drawdown": 0.0,
+    "signal_count": 230,
+    "profit_factor": 1.92
+  },
+  "total_time_minutes": 57.7,
+  "enhanced_grid": true
+}

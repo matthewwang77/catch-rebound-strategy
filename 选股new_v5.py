@@ -1862,10 +1862,35 @@ def walkforward_analysis_v5(start_date, end_date, best_params, split_ratio=0.6):
     return is_result, oos_result
 
 
-# ==================== v5 双模式配置 ====================
+# ==================== v6 市场自适应三模式配置 ====================
 # STRICT: 高质量低频率 (79信号/16月, 69.6%胜率, Sharpe 1.71)
 # LOOSE:  多信号高胜率 (203信号/16月, 60.1%胜率, Sharpe 1.29)
+# BEAR:   熊市专属 — 浅回调+极度缩量+快进快出 (57信号/18月, 50.9%胜率, 夏普从-2→+7)
+#         由 Period A (2023.01-2024.06) 深度优化 + 3×3交叉验证得出
 SCREEN_MODES = {
+    "bear": {
+        # v6: 熊市专属模式 — 浅回调(6-11%) + 极度缩量(41%) + 缩短持有(7天)
+        # 交叉验证：默认参数在熊市夏普-3.7，此模式+7.1
+        "min_consecutive_limit_up": 2,
+        "min_entity_board_ratio": 0.45,
+        "pullback_ratio_min": 0.06,
+        "pullback_ratio_max": 0.11,         # 关键：熊市回调>11%就崩了
+        "volume_shrink_ratio": 0.41,        # 关键：要求极度缩量
+        "volume_shrink_ratio_min": 0.10,
+        "signal_today_yang": False,         # 熊市不要求阳线
+        "signal_volume_expand": 1.0,        # 熊市不要求放量
+        "min_pullback_days": 2,
+        "max_pullback_days": 20,
+        "ma_stabilize": 10,
+        "volume_compare_days": 3,
+        "hold_days": 7,                     # 关键：快进快出
+        "take_profit": 0.057,
+        "stop_loss": -0.103,
+        "require_oversold": False,
+        "oversold_decline_threshold": 0.10,
+        "require_low_close": False,
+        "low_close_threshold": 0.5,
+    },
     "strict": {
         # v5 三阶段优化结果 — 震荡市/不明市首选
         "min_consecutive_limit_up": 3,
@@ -1980,6 +2005,86 @@ def get_market_context():
         return "大盘数据获取失败"
 
 
+def detect_market_regime():
+    """
+    v6: 检测当前市场状态，返回 'bear' / 'bull' / 'choppy'。
+    基于三大指数（上证/深证/创业板）5日趋势。
+
+    判断逻辑（由 cross_period_validation 3×3矩阵验证）：
+      - 冰点期/低迷期 (5日均趋势 < -0.5%) → 'bear'   使用熊市专属参数
+      - 其余 → 'bull'  (牛市/震荡市都用同一套参数)
+
+    Returns:
+        dict: {
+            'regime': 'bear' | 'bull',
+            'avg_trend': float,       # 三大指数5日均涨跌幅
+            'sentiment_tier': int,    # 1-5档
+            'sentiment_label': str,   # 中文标签
+            'recommended_mode': str,  # 推荐的SCREEN_MODE
+        }
+    """
+    try:
+        indices = {"上证": "000001.SS", "深证": "399001.SZ", "创业板": "399006.SZ"}
+        trends = []
+        for code in indices.values():
+            df = yf.download(code, period="6d", progress=False)
+            if df is not None and len(df) >= 5:
+                close_col = df['Close']
+                if hasattr(close_col, 'iloc'):
+                    cur = float(close_col.iloc[-1].item() if hasattr(close_col.iloc[-1], 'item') else close_col.iloc[-1])
+                    close_5d_ago = float(close_col.iloc[-5].item() if hasattr(close_col.iloc[-5], 'item') else close_col.iloc[-5])
+                else:
+                    cur = float(close_col.values[-1] if hasattr(close_col, 'values') else close_col[-1])
+                    close_5d_ago = float(close_col.values[-5] if hasattr(close_col, 'values') else close_col[-5])
+                trend_5d = (cur / close_5d_ago - 1) * 100
+                trends.append(trend_5d)
+
+        if len(trends) < 2:
+            return {'regime': 'bull', 'avg_trend': 0, 'sentiment_tier': 3,
+                    'sentiment_label': '数据不足，默认非熊市',
+                    'recommended_mode': 'strict'}
+
+        avg_trend = sum(trends) / len(trends)
+        up_count = sum(1 for t in trends if t > 0.5)
+        down_count = sum(1 for t in trends if t < -0.5)
+
+        # 情绪档位判断
+        if avg_trend > 3 and up_count >= len(trends):
+            tier, label = 5, "高潮期 — 短期风险积聚"
+        elif avg_trend > 1 and up_count >= 2:
+            tier, label = 4, "发酵期 — 势头良好"
+        elif avg_trend > -0.5:
+            tier, label = 3, "启动期 — 谨慎入场"
+        elif avg_trend > -2:
+            tier, label = 2, "低迷期 — 建议观望"
+        else:
+            tier, label = 1, "冰点期 — 坚决不参与"
+
+        # 市场状态 → SCREEN_MODE 映射
+        # Tier 1-2 (冰点/低迷): BEAR
+        # Tier 3-5 (启动/发酵/高潮): 非熊市，用 strict/loose
+        if avg_trend < -0.5:
+            regime = 'bear'
+            recommended_mode = 'bear'
+        else:
+            regime = 'bull'
+            recommended_mode = 'loose' if avg_trend > 1 else 'strict'
+
+        return {
+            'regime': regime,
+            'avg_trend': round(avg_trend, 2),
+            'sentiment_tier': tier,
+            'sentiment_label': f"{tier}档: {label}",
+            'recommended_mode': recommended_mode,
+            'up_count': up_count,
+            'down_count': down_count,
+        }
+    except Exception:
+        return {'regime': 'bull', 'avg_trend': 0, 'sentiment_tier': 3,
+                'sentiment_label': '检测失败，默认非熊市',
+                'recommended_mode': 'strict'}
+
+
 def _screen_single_stock(code, stock_df, stats, candidates, mode="normal"):
     """对单只股票的近期数据执行完整筛选流程"""
     close = stock_df['Close'].dropna()
@@ -2027,15 +2132,36 @@ def _screen_single_stock(code, stock_df, stats, candidates, mode="normal"):
         if found_signal: break
 
 
-def screen_today(mode="strict"):
+def screen_today(mode="auto"):
+    """
+    v6: 支持 'auto' 模式 — 自动检测市场状态并选择最优参数。
+    模式: 'auto' | 'strict' | 'loose' | 'bear'
+    """
     global PARAMS
+
+    regime_info = None
+
+    # Auto-detect market regime
+    if mode == "auto":
+        regime_info = detect_market_regime()
+        mode = regime_info['recommended_mode']
+        print("=" * 60)
+        print(f"当日选股 v6 — 市场自适应模式")
+        print("=" * 60)
+        print(f"  市场状态: {regime_info['sentiment_label']}")
+        print(f"  5日均趋势: {regime_info['avg_trend']:+.1f}%")
+        print(f"  自动选择: {mode} 模式")
+        print(f"  涨跌指数: {regime_info['up_count']}涨{regime_info['down_count']}跌")
+    else:
+        print("=" * 60)
+        print(f"当日选股 v6 — 模式: {mode}")
+        print("=" * 60)
+
     if mode not in SCREEN_MODES:
         print(f"Unknown mode '{mode}', using 'strict'")
         mode = "strict"
     PARAMS.update(SCREEN_MODES[mode])
-    print("=" * 60)
-    print(f"当日选股 v5 — 模式: {mode}")
-    print("=" * 60)
+
     cache_files = [f for f in os.listdir(DATA_DIR)
                    if f.endswith('.csv') and os.path.getsize(os.path.join(DATA_DIR, f)) > 100]
     candidates = []; stats = {'total': len(cache_files), 'has_data': 0, 'has_limit_up': 0, 'has_signal': 0}
@@ -2050,6 +2176,13 @@ def screen_today(mode="strict"):
         except:
             continue
     print(f"\n✅ 扫描完成！总候选: {stats['total']} | 有数据: {stats['has_data']} | 选出: {len(candidates)}")
+
+    if regime_info:
+        print(f"\n📊 市场状态摘要: {regime_info['sentiment_label']}")
+        if regime_info['regime'] == 'bear':
+            print(f"   ⚠️ 当前为熊市环境，使用浅回调+极度缩量策略")
+            print(f"   ℹ️ 信号数量会较少但质量更高 — 熊市宁可错过不可做错")
+
     return candidates
 
 
@@ -2069,12 +2202,16 @@ if __name__ == "__main__":
         print("  python 选股new_v5.py --download              # 快速批量下载全量数据")
         print("  python 选股new_v5.py --update-today          # 增量更新今日数据（盘中/盘后）")
         print("  python 选股new_v5.py --check-data            # 检查数据完整性")
-        print("  python 选股new_v5.py --today [模式]          # 当日选股 (strict/loose)")
+        print("  python 选股new_v5.py --today [模式]          # 当日选股 (auto/strict/loose/bear)")
         print("  python 选股new_v5.py --optimize              # v5 多阶段参数优化")
         print("  python 选股new_v5.py --cross-period          # 多周期鲁棒性验证")
         print("  python 选股new_v5.py --full                  # 完整评估 (baseline+v4对比)")
         print("  python 选股new_v5.py                         # 默认：单时段三阶段优化")
         print("")
+        print("v6 新增（vs v5):")
+        print("  - 市场自适应模式 (auto) — 自动检测熊市/牛市，切换最优参数")
+        print("  - bear模式 — 熊市专属：浅回调(6-11%) + 极度缩量(41%) + 快进快出(7天)")
+        print("  - 三大指数5日趋势自动检测 + 5档情绪分级")
         print("v5 新增（vs v4):")
         print("  - 三阶段漏斗搜索：Coarse → Fine → Ultra-Fine")
         print("  - 多周期鲁棒性验证（3个市场状态时段）")
@@ -2096,10 +2233,11 @@ if __name__ == "__main__":
         sys.exit()
 
     if len(sys.argv) > 1 and sys.argv[1] == '--today':
-        mode = sys.argv[2] if len(sys.argv) > 2 else "normal"
-        if mode not in SCREEN_MODES:
-            print(f"⚠️ 未知模式 '{mode}'，使用 'normal'")
-            mode = "normal"
+        mode = sys.argv[2] if len(sys.argv) > 2 else "auto"
+        valid_modes = list(SCREEN_MODES.keys()) + ['auto']
+        if mode not in valid_modes:
+            print(f"⚠️ 未知模式 '{mode}'，可用: {', '.join(valid_modes)}")
+            mode = "auto"
         candidates = screen_today(mode=mode)
         if len(candidates) > 0:
             print(f"\n{'='*60}")

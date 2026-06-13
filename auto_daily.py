@@ -1,7 +1,8 @@
 """
-每日自动选股
+每日自动选股 v6
 用法: python auto_daily.py
 
+v6新增: 市场自适应 — 自动检测熊市/牛市，切换最优参数
 首次使用: 设置定时运行（见文件末尾说明）
 """
 import yfinance as yf
@@ -11,8 +12,8 @@ import os
 import sys
 import importlib.util
 
-# 选股模式
-MODES = ["strict", "loose"]
+# 选股模式（v6: 加入 bear，自动检测市场切换）
+MODES = ["strict", "loose", "bear"]
 
 # ==================== 加载模块 ====================
 def _load_module(filepath, module_name):
@@ -57,7 +58,18 @@ def get_market_summary():
 
 # ==================== 执行选股 ====================
 def run_all_modes():
-    """运行三种模式选股，返回 dict"""
+    """运行三种模式选股，返回 dict。v6: 检测市场状态并标注。"""
+    # v6: 检测市场状态
+    regime_info = None
+    try:
+        regime_info = screener.detect_market_regime()
+        print(f"市场状态: {regime_info['sentiment_label']} | "
+              f"5日趋势: {regime_info['avg_trend']:+.1f}% | "
+              f"推荐模式: {regime_info['recommended_mode']}")
+        if regime_info['regime'] == 'bear':
+            print("⚠️ 熊市环境 — 启用浅回调+极度缩量策略")
+    except Exception as e:
+        print(f"⚠️ 市场检测失败: {e}，继续全模式扫描")
     DATA_DIR = screener.DATA_DIR
     cache_files = [f for f in os.listdir(DATA_DIR)
                    if f.endswith('.csv') and os.path.getsize(os.path.join(DATA_DIR, f)) > 100]
@@ -165,14 +177,24 @@ def format_message(results):
     today = datetime.now().strftime('%Y-%m-%d %H:%M')
     market = get_market_summary()
 
+    # v6: 添加市场状态
+    regime_note = ""
+    try:
+        regime_info = screener.detect_market_regime()
+        regime_note = f"\n  市场状态: {regime_info['sentiment_label']} | 推荐模式: {regime_info['recommended_mode']}"
+        if regime_info['regime'] == 'bear':
+            regime_note += "\n  ⚠️ 熊市环境 — 熊市信号请谨慎参与"
+    except Exception:
+        pass
+
     total = sum(len(v) for v in results.values())
-    mode_names = {"strict": "🔴严格", "loose": "🟢宽松"}
+    mode_names = {"strict": "🔴严格", "loose": "🟢宽松", "bear": "🐻熊市"}
 
     lines = [
-        f"📈 A股连板回调 · {today}",
+        f"📈 A股连板回调 v6 · {today}",
         "",
         "━━ 📊 大盘 ━━",
-        market,
+        market + regime_note,
         "",
         f"━━ 📋 选股结果（共 {total} 只）━━",
     ]
@@ -200,7 +222,7 @@ def format_message(results):
 
 # ==================== JSON 结果保存 ====================
 def save_results_json(results):
-    """保存结构化 JSON 结果，供 Streamlit 自动加载"""
+    """保存结构化 JSON 结果，供 Streamlit 自动加载。v6: 包含市场状态。"""
     import json
 
     now = datetime.now()
@@ -225,10 +247,23 @@ def save_results_json(results):
     except Exception:
         pass
 
+    # v6: 市场状态检测
+    regime = {}
+    try:
+        regime = screener.detect_market_regime()
+    except Exception:
+        regime = {'regime': 'unknown', 'sentiment_label': '检测失败'}
+
     output = {
         "scan_time": now.strftime("%Y-%m-%d %H:%M"),
         "scan_date": now.strftime("%Y%m%d"),
         "market": market,
+        "regime": {
+            "status": regime.get('regime', 'unknown'),
+            "label": regime.get('sentiment_label', ''),
+            "avg_trend": regime.get('avg_trend', 0),
+            "recommended_mode": regime.get('recommended_mode', 'strict'),
+        },
         "modes": {},
     }
     for mode, candidates in results.items():
