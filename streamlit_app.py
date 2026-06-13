@@ -1520,7 +1520,7 @@ def show_signal_review():
             st.metric("3日胜率", "—")
     with col4:
         if len(reviewable) > 0 and gains:
-            st.metric("3日均收益", f"{sum(gains)/len(gains):+.2%}")
+            st.metric("3日均收益", f"{sum(gains)/len(gains):+.2f}%")
         else:
             st.metric("3日均收益", "—")
 
@@ -1583,9 +1583,9 @@ def show_signal_review():
                     '模式': mode,
                     '信号数': len(sub),
                     '3日胜率': f"{sum(1 for g in gains if g>0)/len(gains):.0%}",
-                    '3日均收益': f"{sum(gains)/len(gains):+.2%}",
-                    '最佳': f"{max(gains):+.1%}",
-                    '最差': f"{min(gains):+.1%}",
+                    '3日均收益': f"{sum(gains)/len(gains):+.2f}%",
+                    '最佳': f"{max(gains):+.1f}%",
+                    '最差': f"{min(gains):+.1f}%",
                 })
         if mode_stats:
             st.dataframe(pd.DataFrame(mode_stats), use_container_width=True, hide_index=True)
@@ -1753,8 +1753,12 @@ def get_stock_memory_context(code):
         lines.append(f"- {sdate}: {' | '.join(summary_parts)}")
     return "\n".join(lines)
 
-def compute_performance():
-    """从 signal_tracker.csv 计算全局绩效指标。返回 dict 或 None。"""
+def compute_performance(mode_filter=None, days_window=30):
+    """从 signal_tracker.csv 计算绩效指标。
+    - mode_filter: 'strict' / 'loose' / None(全部)
+    - days_window: 只看最近N天的信号（自然日）
+    - 使用复合收益计算
+    """
     if not os.path.exists(SIGNAL_FILE):
         return None
     try:
@@ -1762,6 +1766,19 @@ def compute_performance():
         if len(df) == 0:
             return None
         today_int = int(china_now().strftime('%Y%m%d'))
+        cutoff = today_int - days_window
+
+        # 过滤模式
+        if mode_filter:
+            df = df[df['mode'] == mode_filter]
+        if len(df) == 0:
+            return None
+
+        # 过滤时间窗口
+        df = df[df['signal_date'].astype(str).str.len() >= 8]
+        df = df[df['signal_date'].astype(int) >= cutoff]
+        if len(df) == 0:
+            return None
 
         # 计算每条已验证信号的收益
         returns = []
@@ -1769,8 +1786,6 @@ def compute_performance():
         losses = 0
         for _, row in df.iterrows():
             sdate = str(row['signal_date'])
-            if len(sdate) < 8:
-                continue
             if today_int - int(sdate) < 3:
                 continue  # 未到验证时间
             ret = check_return(row['code'], sdate, row['entry_price'], 3)
@@ -1783,8 +1798,9 @@ def compute_performance():
                 })
                 if ret > 0:
                     wins += 1
-                else:
+                elif ret < 0:
                     losses += 1
+                # ret == 0 不计入胜负
 
         if not returns:
             return None
@@ -1792,24 +1808,22 @@ def compute_performance():
         total_trades = wins + losses
         win_rate = wins / total_trades if total_trades > 0 else 0
         avg_win = sum(r['return_3d'] for r in returns if r['return_3d'] > 0) / wins if wins > 0 else 0
-        avg_loss = abs(sum(r['return_3d'] for r in returns if r['return_3d'] <= 0) / losses) if losses > 0 else 0
+        avg_loss = abs(sum(r['return_3d'] for r in returns if r['return_3d'] < 0) / losses) if losses > 0 else 0
         profit_factor = (avg_win * wins) / (avg_loss * losses) if (avg_loss * losses) > 0 else float('inf')
 
-        # 累计收益序列（用于计算最大回撤和曲线图）
+        # 复合收益曲线（关键修复：compound returns）
+        equity = 1.0
         cum_returns = []
-        running = 0.0
-        peak = 0.0
+        peak = 1.0
         max_dd = 0.0
         for r in returns:
-            running += r['return_3d']
-            cum_returns.append(running)
-            if running > peak:
-                peak = running
-            dd = (peak - running) / abs(peak) * 100 if peak != 0 else 0
-            if dd > max_dd:
-                max_dd = dd
+            equity *= (1 + r['return_3d'] / 100)
+            cum_returns.append(round((equity - 1) * 100, 2))
+            peak = max(peak, equity)
+            dd = (peak - equity) / peak * 100
+            max_dd = max(max_dd, dd)
 
-        total_return = cum_returns[-1] if cum_returns else 0
+        total_return = round((equity - 1) * 100, 2)
 
         return {
             'total_return': total_return,
@@ -1820,7 +1834,7 @@ def compute_performance():
             'avg_win': avg_win,
             'avg_loss': avg_loss,
             'profit_factor': profit_factor,
-            'max_drawdown': max_dd,
+            'max_drawdown': round(max_dd, 2),
             'cum_returns': cum_returns,
             'returns': returns,
         }
