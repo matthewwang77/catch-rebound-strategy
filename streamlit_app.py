@@ -1804,8 +1804,9 @@ def compute_performance(mode_filter=None, days_window=30):
         losses = 0
         for _, row in df.iterrows():
             sdate = str(row['signal_date'])
-            if today_int - int(sdate) < 3:
-                continue  # 未到验证时间
+            # 信号需要足够的向前数据：hold_days个交易日 ≈ hold_days+4个自然日
+            if today_int - int(sdate) < hold_days + 4:
+                continue  # 持有期尚未结束
             entry_price = row['entry_price']
             if entry_price <= 0:
                 continue
@@ -2490,10 +2491,12 @@ def main():
                     else:
                         st.caption(f"数据不足（{len(perf.get('cum_returns',[]))}笔），继续积累")
                 else:
+                    mode_key = 'strict' if mode_label == 'STRICT' else 'loose'
+                    hd = screener.SCREEN_MODES[mode_key]['hold_days']
                     st.markdown(f"""
                     <div style="padding:30px 0;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.55rem;color:{accent_color};opacity:0.5">
                       ◆ {mode_label}<br>
-                      <span style="font-size:0.45rem;color:#333355">暂无数据，等待信号积累</span>
+                      <span style="font-size:0.45rem;color:#333355">持有{hd}天，信号需≥{hd+4}天后验证</span>
                     </div>
                     """, unsafe_allow_html=True)
 
