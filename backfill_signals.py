@@ -223,10 +223,11 @@ def main():
                 if not signal_date:
                     signal_date = scan_date
 
-                key = (code, signal_date, round(float(price), 2))
+                key = (code, scan_date, round(float(price), 2))
                 if key not in all_signals:
                     all_signals[key] = {
-                        "signal_date": signal_date,
+                        "date": scan_date,           # ✅ 扫描日 = 入场日期
+                        "signal_date": signal_date,  # 形态完成日（参考）
                         "code": code,
                         "name": "",
                         "sector": "",
@@ -245,7 +246,7 @@ def main():
     # ---- Step 2: 写 signal_tracker.csv ----
     df_signals = pd.DataFrame(signals_list)
     # 确保列顺序
-    cols = ["signal_date", "code", "mode", "entry_price", "pullback_pct", "limit_days", "name", "sector"]
+    cols = ["date", "signal_date", "code", "mode", "entry_price", "pullback_pct", "limit_days", "name", "sector"]
     df_signals = df_signals[cols]
     df_signals.to_csv(tracker_path, index=False, encoding="utf-8-sig")
     print(f"✅ signal_tracker.csv — {len(df_signals)} 行")
@@ -265,7 +266,8 @@ def main():
 
     for key, sig in all_signals.items():
         code = sig["code"]
-        signal_date = sig["signal_date"]
+        entry_date = sig["date"]          # ✅ 扫描日 = 入场日期
+        signal_date = sig.get("signal_date", "")
         entry_price = sig["entry_price"]
         mode = sig["mode"]
 
@@ -282,7 +284,7 @@ def main():
         existing_dates = set()
         if code in memory:
             existing_dates = {r.get("date") for r in memory[code]}
-        if signal_date in existing_dates:
+        if entry_date in existing_dates:
             continue
 
         # 只对有 stock_data 本地文件的信号计算
@@ -290,50 +292,65 @@ def main():
         if not os.path.exists(csv_path):
             continue
 
-        ret3 = check_return_v5_local(
-            code, signal_date, entry_price, 3,
-            params["take_profit"], params["stop_loss"], data_dir,
-        )
-        ret5 = check_return_v5_local(
-            code, signal_date, entry_price, 5,
-            params["take_profit"], params["stop_loss"], data_dir,
-        )
+        # ✅ 只用扫描日 + 7日持有期算收益
         ret7 = check_return_v5_local(
-            code, signal_date, entry_price, 7,
+            code, entry_date, entry_price, 7,
             params["take_profit"], params["stop_loss"], data_dir,
         )
 
-        ret3_val = ret3["return_pct"] if ret3 else None
-        if ret3_val is not None and ret3_val > 0:
-            verdict = "correct"
-        elif ret3_val is not None and ret3_val < 0:
-            verdict = "wrong"
+        r7_val = ret7["return_pct"] if ret7 else None
+
+        # ✅ 裁决逻辑：对比AI结论 vs 实际走势
+        opinion = sig.get("opinion", "")
+        if r7_val is not None and r7_val > 0:
+            if '参与' in str(opinion):
+                verdict = 'correct'
+            elif '放弃' in str(opinion):
+                verdict = 'missed'
+            elif '观望' in str(opinion):
+                verdict = 'noted_up'
+            else:
+                verdict = 'correct'  # fallback: 涨了就是好
+        elif r7_val is not None and r7_val < 0:
+            if '参与' in str(opinion):
+                verdict = 'wrong'
+            elif '放弃' in str(opinion):
+                verdict = 'avoided'
+            elif '观望' in str(opinion):
+                verdict = 'noted_down'
+            else:
+                verdict = 'wrong'
         else:
             verdict = None
 
         record = {
-            "date": signal_date,
+            "date": entry_date,
+            "signal_date": signal_date,
             "mode": mode,
             "entry_price": entry_price,
             "pullback_pct": sig["pullback_pct"],
             "limit_days": sig["limit_days"],
             "analysis": (
                 f"[历史回填记录 — 未执行AI分析]\n"
-                f"- 信号日: {signal_date}\n"
+                f"- 扫描日: {entry_date}\n"
+                f"- 形态完成日: {signal_date}\n"
                 f"- 入场价: {entry_price:.2f}\n"
                 f"- 模式: {mode}\n"
-                f"- 3日收益: {ret3_val if ret3_val is not None else 'N/A'}%\n"
-                f"- 5日收益: {ret5['return_pct'] if ret5 else 'N/A'}%\n"
-                f"- 7日收益: {ret7['return_pct'] if ret7 else 'N/A'}%\n"
+                f"- 7日收益: {r7_val if r7_val is not None else 'N/A'}%\n"
             ),
             "sentiment": "历史回填",
             "position": "历史回填",
             "opinion": "历史回填",
-            "verified": ret3_val is not None,
-            "return_3d": round(ret3_val, 2) if ret3_val is not None else None,
-            "return_5d": round(ret5["return_pct"], 2) if ret5 else None,
-            "return_7d": round(ret7["return_pct"], 2) if ret7 else None,
+            "verified": r7_val is not None,
+            "return_7d": round(r7_val, 2) if r7_val is not None else None,
+            "exit_reason": ret7.get("exit_reason", "") if ret7 else "",
+            "exit_day": ret7.get("exit_day", 0) if ret7 else 0,
             "verdict": verdict,
+            "review_analysis": None,
+            "what_happened": None,
+            "why_wrong": None,
+            "missed_signal": None,
+            "lesson": None,
         }
 
         if code not in memory:
@@ -341,9 +358,9 @@ def main():
         memory[code].append(record)
         backfill_count += 1
 
-        exit_info = ret3["exit_reason"] if ret3 else "N/A"
-        ret_info = f"{ret3_val:+.1f}%" if ret3_val is not None else "N/A"
-        print(f"  [{backfill_count}] {code} {signal_date} {mode} → 3d:{ret_info} {exit_info}")
+        exit_info = ret7["exit_reason"] if ret7 else "N/A"
+        ret_info = f"{r7_val:+.1f}%" if r7_val is not None else "N/A"
+        print(f"  [{backfill_count}] {code} {entry_date} {mode} → 7d:{ret_info} {exit_info} | verdict={verdict}")
 
     with open(memory_path, "w", encoding="utf-8") as f:
         json.dump(memory, f, ensure_ascii=False, indent=2)

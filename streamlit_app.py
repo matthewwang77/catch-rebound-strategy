@@ -975,6 +975,187 @@ def inject_design_system():
       50% { opacity: 0.6; }
     }
 
+    /* ═══════════════════════════════════════════════════════════
+       v6.1 复盘系统升级 — 绩效面板v2 + SVG曲线 + 记忆卡片v4
+       ═══════════════════════════════════════════════════════════ */
+
+    /* ── 绩效面板 v2 (不对称B布局) ── */
+    .perf-panel-v2 {
+      display: flex;
+      gap: 16px;
+      align-items: stretch;
+      margin-bottom: 16px;
+    }
+    .perf-hero {
+      flex: 2;
+      background: linear-gradient(135deg, rgba(0,255,136,0.06), rgba(0,255,136,0.01));
+      border: 1px solid rgba(0,255,136,0.18);
+      border-radius: 10px;
+      padding: 24px 28px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+    .perf-hero:hover {
+      border-color: rgba(0,255,136,0.35);
+      box-shadow: 0 0 24px rgba(0,255,136,0.08);
+    }
+    .perf-hero-label {
+      font-family: 'Orbitron', monospace;
+      font-size: 0.72rem;
+      color: #555;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+    .perf-hero-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 2.8rem;
+      font-weight: 900;
+      text-shadow: 0 0 20px rgba(0,255,136,0.2);
+      margin: 6px 0;
+    }
+    .perf-hero-sub {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      padding: 4px 14px;
+      border-radius: 14px;
+      display: inline-block;
+      margin: 0 auto;
+      width: fit-content;
+    }
+    .perf-side {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .perf-side-item {
+      flex: 1;
+      background: rgba(13,13,30,0.85);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 8px;
+      padding: 14px 16px;
+      text-align: center;
+      transition: all 0.2s ease;
+    }
+    .perf-side-item:hover {
+      border-color: rgba(255,255,255,0.12);
+    }
+    .perf-side-label {
+      font-family: 'Orbitron', monospace;
+      font-size: 0.65rem;
+      color: #555;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+    .perf-side-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+    .perf-detail-row {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #888;
+      text-align: center;
+      padding-top: 12px;
+      margin-top: 8px;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+
+    /* ── SVG 收益曲线 ── */
+    .chart-container {
+      background: linear-gradient(135deg, rgba(0,255,136,0.04), rgba(0,240,255,0.02));
+      border: 1px solid rgba(0,255,136,0.08);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 12px 0;
+    }
+    .chart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+    }
+
+    /* ── 记忆卡片 v4 (D+宽松版) ── */
+    .memory-card-v4 {
+      background: rgba(13,13,30,0.9);
+      border-radius: 0 8px 8px 0;
+      padding: 18px 22px;
+      margin-bottom: 14px;
+      border-top: 1px solid rgba(255,255,255,0.04);
+      border-right: 1px solid rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      transition: all 0.2s ease;
+    }
+    .memory-card-v4:hover {
+      background: rgba(13,13,30,0.97);
+      transform: translateX(2px);
+    }
+    .memory-card-v4.vc-correct    { border-left: 3px solid #00ff88; }
+    .memory-card-v4.vc-wrong      { border-left: 3px solid #ff3366; }
+    .memory-card-v4.vc-missed     { border-left: 3px solid #ffb800; }
+    .memory-card-v4.vc-avoided    { border-left: 3px solid #00cc66; }
+    .memory-card-v4.vc-noted_up   { border-left: 3px solid #7b2fff; }
+    .memory-card-v4.vc-noted_down { border-left: 3px solid #7b2fff; }
+    .memory-card-v4.vc-pending    { border-left: 3px solid #444466; }
+
+    .mem-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .mem-code { font-family: 'JetBrains Mono', monospace; color: #00ff88; font-size: 0.9rem; font-weight: 700; }
+    .mem-name { font-family: 'JetBrains Mono', monospace; color: #CCC; font-size: 0.8rem; }
+    .mem-date { font-family: 'JetBrains Mono', monospace; color: #666; font-size: 0.72rem; }
+    .mem-opinion { font-size: 0.8rem; font-weight: 600; }
+
+    .mem-verdict-badge {
+      font-family: 'Orbitron', monospace;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    .mem-verdict-badge.correct    { color: #00ff88; background: rgba(0,255,136,0.1);  border: 1px solid rgba(0,255,136,0.2); }
+    .mem-verdict-badge.wrong      { color: #ff3366; background: rgba(255,51,102,0.1);  border: 1px solid rgba(255,51,102,0.2); }
+    .mem-verdict-badge.missed     { color: #ffb800; background: rgba(255,184,0,0.1);   border: 1px solid rgba(255,184,0,0.25); }
+    .mem-verdict-badge.avoided    { color: #00cc66; background: rgba(0,204,102,0.1);   border: 1px solid rgba(0,204,102,0.2); }
+    .mem-verdict-badge.noted_up   { color: #7b2fff; background: rgba(123,47,255,0.1);  border: 1px solid rgba(123,47,255,0.2); }
+    .mem-verdict-badge.noted_down { color: #7b2fff; background: rgba(123,47,255,0.1);  border: 1px solid rgba(123,47,255,0.2); }
+    .mem-verdict-badge.pending    { color: #666;    background: rgba(100,100,100,0.05); border: 1px solid rgba(100,100,100,0.15); }
+
+    .mem-metrics-row {
+      display: flex;
+      gap: 20px;
+      font-size: 0.78rem;
+      color: #888;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+    .mem-review-row {
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding-top: 12px;
+      font-size: 0.78rem;
+      color: #888;
+      line-height: 1.6;
+    }
+    .mem-review-label { font-weight: 600; }
+    .mem-review-label.missed { color: #ffb800; }
+    .mem-review-label.lesson { color: #00ff88; }
+    .mem-review-label.wrong  { color: #ff3366; }
+
     </style>
     """
 
@@ -1600,12 +1781,18 @@ def save_ai_analysis_record(code, date_str, mode, entry_price, pullback_pct, lim
     save_ai_memory(memory)
 
 def get_stock_memory_context(code):
-    """获取某只股票的历史分析上下文，用于注入 AI prompt。返回格式化文本或 None。"""
+    """获取某只股票的历史分析上下文，用于注入 AI prompt。含自我反思。
+
+    当历史记录中有 verdict=missed 或 wrong 时，注入反思提示帮助 AI 学习。
+    返回格式化文本或 None。
+    """
     memory = load_ai_memory()
     if code not in memory or not memory[code]:
         return None
     records = memory[code]
-    lines = ["[历史分析记录]"]
+    lines = ["[历史分析记录 · 含反思]"]
+    has_mistakes = False
+
     for rec in records[-5:]:  # 最多取最近5条
         sdate = rec.get("date", "未知")
         if len(sdate) >= 8:
@@ -1614,27 +1801,129 @@ def get_stock_memory_context(code):
         position = rec.get("position", "")
         opinion = rec.get("opinion", "")
         verdict = rec.get("verdict", "")
-        ret3 = rec.get("return_3d")
+        ret7 = rec.get("return_7d")
+        lesson = rec.get("lesson", "")
+        why_wrong = rec.get("why_wrong", "")
+        missed_signal = rec.get("missed_signal", "")
+
         # 构建摘要
         summary_parts = [f"情绪:{sentiment}", f"仓位:{position}"]
         if opinion:
             summary_parts.append(f"结论:{opinion}")
+
         if verdict == "correct":
-            summary_parts.append(f"3日后实际收益 +{ret3}% (✅预测正确)")
+            summary_parts.append(f"7日后 +{ret7}% ✅准确预判")
         elif verdict == "wrong":
-            ret_str = f"{ret3}%" if ret3 is not None else "?"
-            summary_parts.append(f"3日后实际收益 {ret_str} (◈预测偏差)")
+            has_mistakes = True
+            summary_parts.append(f"7日后 {ret7}% ❌判断失误")
+        elif verdict == "missed":
+            has_mistakes = True
+            summary_parts.append(f"7日后 +{ret7}% 🔶错失机会")
+        elif verdict == "avoided":
+            summary_parts.append(f"7日后 {ret7}% 🛡正确规避")
         else:
             summary_parts.append("(⏳待验证)")
+
         lines.append(f"- {sdate}: {' | '.join(summary_parts)}")
+
+        # 追加反思教训
+        if lesson and verdict in ('missed', 'wrong'):
+            lines.append(f"  ⚠️ 教训：{lesson}")
+        if missed_signal and verdict in ('missed', 'wrong'):
+            lines.append(f"  🔍 遗漏信号：{missed_signal}")
+
+    # 如果有错误记录，追加全局反思提示
+    if has_mistakes:
+        lines.append("\n⚠️ 注意：你之前对该股有判断失误。请反思之前的遗漏信号，本次分析更加谨慎。")
+
     return "\n".join(lines)
+
+def _build_svg_chart(cum_returns, returns_list, line_color="#00ff88"):
+    """构建 SVG 双图收益曲线：上=累计曲线+填充，下=逐笔柱状。"""
+    if not cum_returns or len(cum_returns) < 2:
+        return ""
+
+    n = len(cum_returns)
+    w, h_top, h_bar = 400, 80, 36
+    total_h = h_top + h_bar + 8
+    pad_l, pad_r = 4, 4
+
+    # 累计曲线数据
+    mn = min(cum_returns)
+    mx = max(cum_returns)
+    rng = max(mx - mn, 1)
+
+    def x_pos(i):
+        return pad_l + (w - pad_l - pad_r) * i / (n - 1)
+
+    def y_pos(val, h):
+        return h * (1 - (val - mn) / rng) * 0.85 + h * 0.075
+
+    # 曲线路径
+    path_parts = []
+    for i, v in enumerate(cum_returns):
+        cmd = "M" if i == 0 else "L"
+        path_parts.append(f"{cmd}{x_pos(i):.1f},{y_pos(v,h_top):.1f}")
+
+    line_path = " ".join(path_parts)
+
+    # 填充区域
+    area_path = f"{line_path} L{x_pos(n-1):.1f},{h_top} L{x_pos(0):.1f},{h_top} Z"
+
+    # 网格线
+    grid_y = [h_top * 0.25, h_top * 0.5, h_top * 0.75]
+    grid_lines = ""
+    for gy in grid_y:
+        grid_lines += f'<line x1="{pad_l}" y1="{gy:.0f}" x2="{w-pad_r}" y2="{gy:.0f}" stroke="rgba(255,255,255,0.04)" stroke-dasharray="4,4"/>'
+
+    # 逐笔柱状
+    bars = ""
+    bar_w = max(6, (w - pad_l - pad_r) / n * 0.7)
+    gap = (w - pad_l - pad_r) / n
+    for i, r in enumerate(returns_list):
+        rp = r.get('return_pct', r) if isinstance(r, dict) else r
+        bx = pad_l + gap * i + (gap - bar_w) / 2
+        bh = abs(rp) / max(abs(v) for v in cum_returns) * h_bar * 0.8 if cum_returns else 5
+        bh = max(3, min(bh, h_bar - 4))
+        color = "rgba(0,255,136,0.55)" if rp > 0 else "rgba(255,51,102,0.4)"
+        by = (h_bar - bh) / 2 if rp > 0 else h_bar / 2
+        bars += f'<rect x="{bx:.1f}" y="{by:.1f}" width="{bar_w:.1f}" height="{bh:.1f}" rx="2" fill="{color}"/>'
+
+    return f"""
+    <div class="chart-container">
+      <div class="chart-header">
+        <span style="color:#666;text-transform:uppercase;letter-spacing:1px">收益曲线</span>
+        <span style="color:{line_color};font-weight:700">{cum_returns[-1]:+.1f}%</span>
+      </div>
+      <svg viewBox="0 0 {w} {total_h}" style="width:100%;height:auto;display:block">
+        <defs>
+          <linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="{line_color}" stop-opacity="0.18"/>
+            <stop offset="100%" stop-color="{line_color}" stop-opacity="0"/>
+          </linearGradient>
+          <filter id="lineGlow">
+            <feGaussianBlur stdDeviation="1.5" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <!-- 累计曲线区域 -->
+        {grid_lines}
+        <path d="{area_path}" fill="url(#chartFill)"/>
+        <path d="{line_path}" fill="none" stroke="{line_color}" stroke-width="1.8" filter="url(#lineGlow)"/>
+        <!-- 分隔线 -->
+        <line x1="0" y1="{h_top}" x2="{w}" y2="{h_top}" stroke="rgba(255,255,255,0.05)"/>
+        <!-- 逐笔柱状区域 -->
+        {bars}
+      </svg>
+    </div>"""
+
 
 def compute_performance(mode_filter=None, days_window=30):
     """从 ai_memory.json 预计算数据中读取绩效指标（不再调用 yfinance）。
 
     - mode_filter: 'strict' / 'loose' / None(全部)
     - days_window: 只看最近N天的记录（自然日）
-    - 使用 ai_memory.json 中预计算的 return_3d/return_5d/return_7d
+    - 使用 ai_memory.json 中预计算的 return_7d
     """
     memory = load_ai_memory()
     if not memory:
@@ -1658,23 +1947,22 @@ def compute_performance(mode_filter=None, days_window=30):
                 mode = r.get('mode', '')
                 if mode_filter and mode != mode_filter:
                     continue
-                # 使用预计算的 3d 收益
-                r3 = r.get('return_3d')
-                if r3 is None:
-                    # 如果距今不足3天，跳过
-                    if today_int - int(date) < 3:
+                # 使用预计算的 7d 收益
+                r7 = r.get('return_7d')
+                if r7 is None:
+                    if today_int - int(date) < 7:
                         continue
-                    continue  # 超过3天但无数据，跳过
+                    continue  # 超过7天但无数据，跳过
                 returns.append({
                     'date': date,
                     'code': code,
                     'mode': mode,
-                    'return_pct': r3,
-                    'exit_reason': r.get('exit_reason_3d', ''),
+                    'return_pct': r7,
+                    'exit_reason': r.get('exit_reason', ''),
                 })
-                if r3 > 0:
+                if r7 > 0:
                     wins += 1
-                elif r3 < 0:
+                elif r7 < 0:
                     losses += 1
 
         if not returns:
@@ -1729,7 +2017,7 @@ def compute_performance(mode_filter=None, days_window=30):
             'chart_df': chart_df,
             'returns': returns,
             'exit_reasons': exit_reasons,
-            'hold_days': 3,  # 使用 3d 收益
+            'hold_days': 7,  # 使用 7d 收益
         }
     except Exception:
         return None
@@ -1922,28 +2210,6 @@ def main():
             else:
                 st.metric(label=name, value="—")
     st.divider()
-
-    # v6: 市场状态检测
-    try:
-        regime = screener.detect_market_regime()
-        is_bear = regime['regime'] == 'bear'
-        regime_color = "#FFA500" if is_bear else "#00FF88"
-        regime_icon = "🐻" if is_bear else "🐂"
-        regime_bg = "rgba(255,165,0,0.06)" if is_bear else "rgba(0,255,136,0.04)"
-        regime_border = "rgba(255,165,0,0.2)" if is_bear else "rgba(0,255,136,0.12)"
-        st.markdown(f"""
-        <div style="display:flex;align-items:center;gap:10px;padding:8px 16px;margin:8px 0;border-radius:8px;
-                    background:{regime_bg};border:1px solid {regime_border};
-                    font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:#8888AA">
-          <span style="font-size:1rem">{regime_icon}</span>
-          <span style="color:{regime_color}">{regime.get("label", "—")}</span>
-          <span>| 5日趋势 <span style="color:{regime_color}">{regime['avg_trend']:+.1f}%</span></span>
-          <span>| 推荐模式 <span style="color:{regime_color}">{regime['recommended_mode'].upper()}</span></span>
-          {f'<span style="color:#FFA500">| ⚠️ 熊市环境 — 已启用浅回调+极度缩量策略</span>' if is_bear else ''}
-        </div>
-        """, unsafe_allow_html=True)
-    except Exception:
-        pass
 
     # 获取当前页面
     page = st.session_state.get('nav_page', '◆ 选股')
@@ -2150,43 +2416,48 @@ def main():
         if perf:
             ret_color = "#00FF88" if perf['total_return'] >= 0 else "#FF5050"
             pf_display = "无损" if perf['profit_factor'] >= 999 else f"{perf['profit_factor']:.2f}"
+            win_label = f"+{perf['wins']}笔盈利" if perf['wins'] > 0 else ""
+
+            # ── 绩效面板 v2: B不对称布局 ──
             st.markdown(f"""
-            <div class="perf-panel">
-              <div class="section-label">◆ 绩效总览 (近30天)</div>
-              <div class="perf-grid">
-                <div class="perf-card">
-                  <div class="perf-label">累计收益</div>
-                  <div class="perf-value" style="color:{ret_color}">{perf['total_return']:+.1f}%</div>
+            <div class="section-label">◆ 绩效总览 (近30天 · 7日持有)</div>
+            <div class="perf-panel-v2">
+              <div class="perf-hero">
+                <div class="perf-hero-label">累计收益</div>
+                <div class="perf-hero-value" style="color:{ret_color}">{perf['total_return']:+.1f}%</div>
+                {f'<div class="perf-hero-sub" style="color:#00ff88;background:rgba(0,255,136,0.08);border:1px solid rgba(0,255,136,0.15)">{win_label}</div>' if win_label else ''}
+              </div>
+              <div class="perf-side">
+                <div class="perf-side-item">
+                  <div class="perf-side-label">胜率</div>
+                  <div class="perf-side-value" style="color:#00f0ff">{perf['win_rate']:.0%}</div>
                 </div>
-                <div class="perf-card">
-                  <div class="perf-label">胜率</div>
-                  <div class="perf-value" style="color:#D0D0E8">{perf['win_rate']:.0%}</div>
+                <div class="perf-side-item">
+                  <div class="perf-side-label">盈亏比</div>
+                  <div class="perf-side-value" style="color:#ffd700">{pf_display}</div>
                 </div>
-                <div class="perf-card">
-                  <div class="perf-label">盈亏比</div>
-                  <div class="perf-value" style="color:#FFD700">{pf_display}</div>
-                </div>
-                <div class="perf-card">
-                  <div class="perf-label">最大回撤</div>
-                  <div class="perf-value" style="color:#FF6B6B">-{perf['max_drawdown']:.1f}%</div>
+                <div class="perf-side-item">
+                  <div class="perf-side-label">最大回撤</div>
+                  <div class="perf-side-value" style="color:#ff3366">-{perf['max_drawdown']:.1f}%</div>
                 </div>
               </div>
-              <div class="perf-detail">
-                {perf['wins']}胜/{perf['losses']}负 · 均盈+{perf['avg_win']:.1f}% · 均亏-{perf['avg_loss']:.1f}% · 共{perf['total_trades']}笔
-              </div>
+            </div>
+            <div class="perf-detail-row">
+              {perf['wins']}胜/{perf['losses']}负 · 均盈+{perf['avg_win']:.1f}% · 均亏-{perf['avg_loss']:.1f}% · 共{perf['total_trades']}笔
             </div>
             """, unsafe_allow_html=True)
 
-            # 收益曲线
+            # ── SVG 双图收益曲线 ──
             if perf['cum_returns'] and len(perf['cum_returns']) >= 3:
-                chart_df = perf.get('chart_df',
-                    pd.DataFrame({'累计收益%': perf['cum_returns']})
-                )
-                st.line_chart(chart_df, height=140, use_container_width=True)
+                returns_list = perf['returns']
+                cum_vals = perf['cum_returns']
+                # 生成SVG
+                svg_html = _build_svg_chart(cum_vals, returns_list, ret_color)
+                st.markdown(svg_html, unsafe_allow_html=True)
                 exit_info = perf.get('exit_reasons', {})
                 if exit_info:
                     parts = [f"{k}{v}次" for k, v in sorted(exit_info.items())]
-                    st.caption(f"持有{perf.get('hold_days','?')}天 · {' · '.join(parts)}")
+                    st.caption(f"◆ 7日持有 · {' · '.join(parts)}")
             else:
                 st.caption(f"数据不足（{len(perf.get('cum_returns',[]))}笔），继续积累")
         else:
@@ -2214,102 +2485,131 @@ def main():
 
             # 筛选器
             verdict_filter = st.selectbox(
-                "验证状态", ["全部", "✅ 正确", "◈ 偏差", "⏳ 待验"],
+                "验证状态", ["全部", "✅ 准确预判", "❌ 判断失误", "🔶 错失机会", "🛡 正确规避", "📝 观望", "⏳ 待验证"],
                 key="mem_filter", label_visibility="collapsed"
             )
             filtered = all_records
-            if verdict_filter == "✅ 正确":
+            if verdict_filter == "✅ 准确预判":
                 filtered = [r for r in filtered if r.get('verdict') == 'correct']
-            elif verdict_filter == "◈ 偏差":
+            elif verdict_filter == "❌ 判断失误":
                 filtered = [r for r in filtered if r.get('verdict') == 'wrong']
-            elif verdict_filter == "⏳ 待验":
+            elif verdict_filter == "🔶 错失机会":
+                filtered = [r for r in filtered if r.get('verdict') == 'missed']
+            elif verdict_filter == "🛡 正确规避":
+                filtered = [r for r in filtered if r.get('verdict') == 'avoided']
+            elif verdict_filter == "📝 观望":
+                filtered = [r for r in filtered if r.get('verdict') in ('noted_up', 'noted_down')]
+            elif verdict_filter == "⏳ 待验证":
                 filtered = [r for r in filtered if r.get('verdict') is None]
 
             st.caption(f"◆ {len(filtered)} 条分析记录")
 
-            # 渲染记忆卡片 (v3)
+            # 渲染记忆卡片 (v4 D+宽松版)
             for rec in filtered[:30]:
                 code = rec['code']
                 verdict = rec.get('verdict')
-                if verdict == 'correct':
-                    vclass = 'correct'
-                    vlabel = '✅ 正确'
-                elif verdict == 'wrong':
-                    vclass = 'wrong'
-                    vlabel = '◈ 偏差'
-                else:
-                    vclass = 'pending'
-                    vlabel = '⏳ 待验'
+                # 裁决类型 → CSS class + 标签
+                verdict_map = {
+                    'correct':    ('vc-correct',    'correct',    '✅ 准确预判'),
+                    'wrong':      ('vc-wrong',      'wrong',      '❌ 判断失误'),
+                    'missed':     ('vc-missed',     'missed',     '🔶 错失机会'),
+                    'avoided':    ('vc-avoided',    'avoided',    '🛡 正确规避'),
+                    'noted_up':   ('vc-noted_up',   'noted_up',   '📝 偏保守'),
+                    'noted_down': ('vc-noted_down', 'noted_down', '📝 偏准确'),
+                }
+                vc_class, vb_class, vlabel = verdict_map.get(verdict, ('vc-pending', 'pending', '⏳ 待验证'))
 
                 sdate = rec.get('date', '')
-                sdate_display = f"{sdate[4:6]}-{sdate[6:]}" if len(sdate) >= 8 else sdate
+                sdate_display = f"{sdate[:4]}-{sdate[4:6]}-{sdate[6:]}" if len(sdate) >= 8 else sdate
 
-                ret3_val = rec.get('return_3d')
-                ret5_val = rec.get('return_5d')
                 ret7_val = rec.get('return_7d')
+                exit_reason = rec.get('exit_reason', '')
+                exit_day = rec.get('exit_day', 0)
 
                 analysis_full = rec.get('analysis', '')
+                opinion = rec.get('opinion', '')
                 sentiment = rec.get('sentiment', '')
                 position = rec.get('position', '')
-                opinion = rec.get('opinion', '')
 
-                # 结论摘要
-                summary_parts = []
-                if opinion:
-                    if "参与" in opinion:
-                        op_class = "positive"
-                    elif "放弃" in opinion:
-                        op_class = "negative"
-                    else:
-                        op_class = ""
-                    summary_parts.append(f'<span class="memory-ret-badge {op_class}">{opinion}</span>')
-                if sentiment:
-                    summary_parts.append(f'<span style="color:#9B6FFF">{sentiment}</span>')
-                if position:
-                    summary_parts.append(f'<span style="color:#8888AA">{position}</span>')
-                summary_html = ' · '.join(summary_parts) if summary_parts else '<span style="color:#666">无摘要</span>'
+                # 回顾字段
+                what_happened = rec.get('what_happened', '')
+                why_wrong = rec.get('why_wrong', '')
+                missed_signal = rec.get('missed_signal', '')
+                lesson = rec.get('lesson', '')
 
-                # 收益标签
-                ret_badges = []
-                for label, val in [("3d", ret3_val), ("5d", ret5_val), ("7d", ret7_val)]:
-                    if val is not None:
-                        pos = "positive" if val > 0 else ("negative" if val < 0 else "")
-                        ret_badges.append(
-                            f'<span class="memory-ret-badge {pos}">{label} {val:+.1f}%</span>'
-                        )
-                    else:
-                        ret_badges.append(
-                            f'<span class="memory-ret-badge" style="color:#666">{label} N/A</span>'
-                        )
+                # 股票中文名
+                name_info = stock_names.get(code, {})
+                stock_name = name_info.get('name', '') if isinstance(name_info, dict) else str(name_info) if name_info else ''
+
+                # 收益显示
+                if ret7_val is not None:
+                    ret_color_7d = "#00ff88" if ret7_val > 0 else ("#ff3366" if ret7_val < 0 else "#888")
+                    ret_display = f'<span style="color:{ret_color_7d};font-weight:600">7d {ret7_val:+.1f}%</span>'
+                    exit_display = f'<span style="color:#888">{exit_reason} Day{exit_day}</span>' if exit_reason else ''
+                else:
+                    ret_display = '<span style="color:#666">⏳ 待验证</span>'
+                    exit_display = ''
+
+                # AI结论颜色
+                if '参与' in str(opinion):
+                    op_color = '#00ff88'
+                elif '放弃' in str(opinion):
+                    op_color = '#ff3366'
+                else:
+                    op_color = '#ffb800'
+
+                # 构建回顾行
+                review_html = ''
+                if verdict and verdict != 'pending':
+                    review_parts = []
+                    if lesson:
+                        review_parts.append(f'<span class="mem-review-label lesson">💡 教训：</span><span style="color:#aaa">{lesson}</span>')
+                    elif what_happened:
+                        review_parts.append(f'<span style="color:#888">📖 {what_happened[:120]}{"..." if len(what_happened)>120 else ""}</span>')
+                    if missed_signal:
+                        review_parts.append(f'<span class="mem-review-label missed">🔍 遗漏信号：</span><span style="color:#aaa">{missed_signal[:100]}</span>')
+                    if review_parts:
+                        review_html = '<br>'.join(review_parts)
 
                 st.markdown(f"""
-                <div class="memory-card-v3 verdict-{vclass}">
-                  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
-                    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
-                      <span style="font-family:'JetBrains Mono',monospace;color:#00ff88;font-size:0.85rem;font-weight:600">{code}</span>
-                      <span style="font-family:'JetBrains Mono',monospace;color:#CCC;font-size:0.78rem">{stock_names.get(code, {}).get('name', '') if isinstance(stock_names.get(code, {}), dict) else stock_names.get(code, '')}</span>
-                      <span class="memory-verdict-badge {vclass}">{vlabel}</span>
+                <div class="memory-card-v4 {vc_class}">
+                  <div class="mem-header-row">
+                    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+                      <span class="mem-code">◆ {code}</span>
+                      <span class="mem-name">{stock_name}</span>
+                      <span class="mem-date">{sdate_display}</span>
+                      <span class="mem-verdict-badge {vb_class}">{vlabel}</span>
                       <span style="font-family:'JetBrains Mono',monospace;color:#666;font-size:0.75rem">{rec.get('mode', '').upper()}</span>
-                      <span style="font-family:'JetBrains Mono',monospace;color:#888;font-size:0.75rem">{sdate_display}</span>
                     </div>
+                    <span class="mem-opinion" style="color:{op_color}">◆ {opinion}</span>
                   </div>
-                  <div class="memory-meta-row">
+                  <div class="mem-metrics-row">
                     <span>入场 ¥{rec.get('entry_price', 0):.2f}</span>
-                    <span>· 回调 {rec.get('pullback_pct', 0):.1f}%</span>
-                    <span>· 连板 {rec.get('limit_days', 0)}天</span>
+                    <span>回调 {rec.get('pullback_pct', 0):.1f}%</span>
+                    <span>连板 {rec.get('limit_days', 0)}天</span>
+                    {ret_display}
+                    {exit_display}
                   </div>
-                  <div class="memory-returns-row">
-                    {''.join(ret_badges)}
-                  </div>
-                  <div class="memory-meta-row">
-                    ◆ {summary_html}
-                  </div>
+                  {f'<div class="mem-review-row">{review_html}</div>' if review_html else ''}
                 </div>
                 """, unsafe_allow_html=True)
 
                 # 可展开完整分析
-                with st.expander(f"📖 完整分析", expanded=False):
-                    st.markdown(analysis_full)
+                with st.expander(f"📖 {code} 完整分析", expanded=False):
+                    if analysis_full:
+                        st.markdown(analysis_full)
+                    # 展示结构化回顾字段
+                    if what_happened or why_wrong or missed_signal or lesson:
+                        st.divider()
+                        st.caption("◆ 7日回顾分析")
+                        if what_happened:
+                            st.caption(f"📖 走势回顾：{what_happened}")
+                        if why_wrong:
+                            st.caption(f"🔍 判断复盘：{why_wrong}")
+                        if missed_signal:
+                            st.caption(f"⚠️ 遗漏信号：{missed_signal}")
+                        if lesson:
+                            st.caption(f"💡 教训：{lesson}")
                     col_del, _ = st.columns([1, 3])
                     with col_del:
                         if st.button(f"🗑 删除记录", key=f"delete_mem_{code}_{rec['date']}", type="secondary"):

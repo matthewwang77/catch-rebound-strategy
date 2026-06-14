@@ -255,16 +255,18 @@ def _run_ai_analysis(code, stock_df, candidate, market_context, mode):
     """对单只候选股调用 DeepSeek API 进行量价形时分析，存入 ai_memory.json。"""
     import requests
 
-    date_str = str(candidate.get('signal_date', datetime.now().strftime('%Y%m%d')))
+    # ✅ 用扫描日（今天）作记录日期，signal_date 保留为参考
+    scan_date_str = datetime.now().strftime('%Y%m%d')
+    signal_date_str = str(candidate.get('signal_date', ''))
     entry_price = float(candidate.get('price', 0))
     pullback_pct = float(candidate.get('pullback_pct', 0))
     limit_days = int(candidate.get('limit_days', 0))
 
-    # 去重检查（只跳过有真实分析内容的记录，不跳过历史回填占位符）
+    # 去重检查：同日同代码不重复（用扫描日）
     memory = _load_ai_memory()
     if code in memory:
         for rec in memory[code]:
-            if rec.get("date") == date_str and rec.get("sentiment") != "历史回填":
+            if rec.get("date") == scan_date_str and rec.get("sentiment") != "历史回填":
                 return  # 已有同日真实分析记录
 
     # 列名兼容
@@ -464,7 +466,8 @@ def _run_ai_analysis(code, stock_df, candidate, market_context, mode):
     if code not in memory:
         memory[code] = []
     memory[code].append({
-        "date": date_str,
+        "date": scan_date_str,
+        "signal_date": signal_date_str,
         "mode": mode,
         "entry_price": entry_price,
         "pullback_pct": pullback_pct,
@@ -474,8 +477,15 @@ def _run_ai_analysis(code, stock_df, candidate, market_context, mode):
         "position": position,
         "opinion": opinion,
         "verified": False,
-        "return_3d": None, "return_5d": None, "return_7d": None,
+        "return_7d": None,
+        "exit_reason": None,
+        "exit_day": None,
         "verdict": None,
+        "review_analysis": None,
+        "what_happened": None,
+        "why_wrong": None,
+        "missed_signal": None,
+        "lesson": None,
     })
     _save_ai_memory(memory)
 
@@ -636,29 +646,200 @@ def git_push_results():
         print(f"⚠️ Git push 失败: {e}（不影响选股结果）")
 
 
+# ==================== 裁决逻辑 ====================
+
+def _compute_verdict(opinion, return_7d):
+    """根据AI结论和实际7日收益计算裁决。
+
+    裁决矩阵:
+      AI【参与】+ 涨 → correct    AI【参与】+ 跌 → wrong
+      AI【放弃】+ 涨 → missed     AI【放弃】+ 跌 → avoided
+      AI【观望】+ 涨 → noted_up   AI【观望】+ 跌 → noted_down
+    """
+    if return_7d is None:
+        return None
+    is_up = return_7d > 0
+    is_down = return_7d < 0
+    opinion_str = str(opinion)
+
+    if '参与' in opinion_str:
+        return 'correct' if is_up else ('wrong' if is_down else None)
+    elif '放弃' in opinion_str:
+        return 'missed' if is_up else ('avoided' if is_down else None)
+    elif '观望' in opinion_str:
+        return 'noted_up' if is_up else ('noted_down' if is_down else None)
+    return None
+
+
+# ==================== AI 7日回顾分析 ====================
+
+def _run_ai_review(code, record, ret7, take_profit, stop_loss, entry_price, mode):
+    """调用 DeepSeek API 进行7日全路径回顾分析，产出5字段结构化复盘。"""
+    import requests
+
+    # 读取该股票的CSV数据，提取7日OHLCV
+    csv_path = os.path.join(screener.DATA_DIR, f"{code}.csv")
+    if not os.path.exists(csv_path):
+        return
+
+    try:
+        df = pd.read_csv(csv_path)
+        df['date'] = pd.to_datetime(df['date'])
+        df = df.set_index('date').sort_index()
+
+        entry_date = record.get('date', '')
+        start_dt = pd.Timestamp(datetime.strptime(str(entry_date), '%Y%m%d'))
+        mask = df.index > start_dt
+        if not mask.any():
+            return
+
+        # 取最近7个交易日（到验证日为止）
+        end_idx = mask.argmax() + min(10, len(df) - mask.argmax())
+        recent = df.iloc[mask.argmax():end_idx]
+        if len(recent) < 3:
+            return
+
+        # 构建7日走势数据
+        ohlcv_lines = []
+        for idx, row in recent.iterrows():
+            ohlcv_lines.append(
+                f"{idx.strftime('%m-%d')} | O:{float(row['open']):.2f} H:{float(row['high']):.2f} "
+                f"L:{float(row['low']):.2f} C:{float(row['close']):.2f} V:{int(row['volume']):,}"
+            )
+        ohlcv_text = '\n'.join(ohlcv_lines[:12])  # 最多12行
+
+    except Exception as e:
+        print(f"  ⚠️ {code} 读取CSV失败: {e}")
+        return
+
+    return_pct = ret7.get('return_pct', 0) if ret7 else 0
+    exit_reason = ret7.get('exit_reason', '?') if ret7 else '?'
+    exit_day = ret7.get('exit_day', 0) if ret7 else 0
+
+    review_prompt = f"""你是A股连板回调策略的复盘专家。以下是你7天前对【{code}】的分析，现在7天过去了，请做全路径回顾。
+
+【7日前AI原始分析】
+{record.get('analysis', '(无)')}
+
+【入场信息】
+- 入场日：{entry_date} | 入场价：¥{entry_price:.2f}
+- 模式：{mode} | 止盈：+{take_profit*100:.0f}% | 止损：{stop_loss*100:.0f}%
+
+【7日实际走势（逐日OHLCV）】
+{ohlcv_text}
+
+【客观结果】
+- 7日收益：{return_pct:+.2f}% | 退出原因：{exit_reason} | 退出日：第{exit_day}天
+
+请按以下5个字段输出回顾（每字段2-4句话，简洁有力）：
+
+1. what_happened：这7天实际走势简述（涨跌节奏、关键转折日、触发了什么）
+2. why_wrong：上次分析哪里判断错了/对了（复盘预测偏差的根源）
+3. missed_signal：遗漏了什么关键信号（哪些量/价/形/时的信号被忽略了）
+4. lesson：下次遇到类似情况该怎么做（可操作的教训）
+5. verdict：从以下选一个 — 准确预判 / 判断失误 / 错失机会 / 正确规避 / 偏保守 / 偏准确
+
+输出格式：
+【走势回顾】<内容>
+【判断复盘】<内容>
+【遗漏信号】<内容>
+【教训】<内容>
+【裁决】<选一个>"""
+
+    try:
+        api_key = os.environ.get("DEEPSEEK_API_KEY", "")
+        if not api_key:
+            return
+        api_url = screener.DEEPSEEK_API_URL
+
+        resp = requests.post(
+            api_url,
+            headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
+            json={
+                "model": "deepseek-chat",
+                "messages": [
+                    {"role": "system", "content": "你是A股量化复盘专家。输出简洁、结构化、有具体数据支撑。每个字段2-4句话。"},
+                    {"role": "user", "content": review_prompt},
+                ],
+                "temperature": 0.4,
+                "max_tokens": 1000,
+            },
+            timeout=30,
+        )
+
+        if resp.status_code != 200:
+            print(f"  ⚠️ {code} AI回顾 HTTP {resp.status_code}")
+            return
+
+        data = resp.json()
+        if "choices" not in data or len(data["choices"]) == 0:
+            return
+
+        review_text = data["choices"][0]["message"]["content"]
+        record['review_analysis'] = review_text
+
+        # 解析5字段
+        import re as _re
+        patterns = {
+            'what_happened': r'【走势回顾】\s*(.+?)(?=【判断复盘】|$)',
+            'why_wrong': r'【判断复盘】\s*(.+?)(?=【遗漏信号】|$)',
+            'missed_signal': r'【遗漏信号】\s*(.+?)(?=【教训】|$)',
+            'lesson': r'【教训】\s*(.+?)(?=【裁决】|$)',
+            'verdict_raw': r'【裁决】\s*(.+?)$',
+        }
+        for key, pat in patterns.items():
+            m = _re.search(pat, review_text, _re.DOTALL)
+            if m:
+                val = m.group(1).strip()
+                if key == 'verdict_raw':
+                    # 映射裁决文本到 verdict 枚举
+                    v = val
+                    if '错失机会' in v:
+                        record['verdict'] = 'missed'
+                    elif '判断失误' in v:
+                        record['verdict'] = 'wrong'
+                    elif '准确预判' in v:
+                        record['verdict'] = 'correct'
+                    elif '正确规避' in v:
+                        record['verdict'] = 'avoided'
+                    elif '偏保守' in v:
+                        record['verdict'] = 'noted_up'
+                    elif '偏准确' in v:
+                        record['verdict'] = 'noted_down'
+                else:
+                    record[key] = val
+
+        print(f"  ✅ {code} AI回顾完成 → {record.get('verdict', '?')}")
+
+    except Exception as e:
+        print(f"  ⚠️ {code} AI回顾异常: {e}")
+
+
 # ==================== 后台维护 ====================
 
 def _auto_maintenance():
-    """每次运行时自动维护：验证旧记录 + 补全中文名。"""
+    """每次运行时自动维护：7日收益验证 + AI回顾分析 + 补全中文名。"""
     from datetime import datetime as _dt
+    import requests
     today_str = _dt.now().strftime('%Y%m%d')
 
     memory = _load_ai_memory()
     verify_count = 0
+    review_count = 0
     name_count = 0
 
-    # --- 1. 收益验证：对 ≥3 天且未验证的记录计算实际收益 ---
+    # --- 1. 7日收益验证 + AI回顾分析 ---
     for code, records in memory.items():
         for r in records:
             date = r.get('date', '')
-            # 跳过不足3天的记录
-            if date > today_str:
-                try:
-                    days_ago = (_dt.now() - _dt.strptime(date, '%Y%m%d')).days
-                    if days_ago < 3:
-                        continue
-                except ValueError:
-                    continue
+            try:
+                days_ago = (_dt.now() - _dt.strptime(date, '%Y%m%d')).days
+            except (ValueError, TypeError):
+                continue
+
+            # 只做7日回顾（≥7天后才触发）
+            if days_ago < 7:
+                continue
             if r.get('verified'):
                 continue
             if r.get('sentiment') == '历史回填':
@@ -673,30 +854,29 @@ def _auto_maintenance():
             tp = mp.get('take_profit', 0.05)
             sl = mp.get('stop_loss', -0.10)
 
-            # 本地 CSV 计算收益
+            # 本地 CSV 计算7日收益
             from backfill_signals import check_return_v5_local
-            ret3 = check_return_v5_local(code, date, entry_price, 3, tp, sl, screener.DATA_DIR)
-            ret5 = check_return_v5_local(code, date, entry_price, 5, tp, sl, screener.DATA_DIR)
             ret7 = check_return_v5_local(code, date, entry_price, 7, tp, sl, screener.DATA_DIR)
 
-            r3 = ret3['return_pct'] if ret3 else None
-            if r3 is not None and r3 > 0:
-                verdict = "correct"
-            elif r3 is not None and r3 < 0:
-                verdict = "wrong"
-            else:
-                verdict = None
-
-            r['return_3d'] = round(r3, 2) if r3 is not None else None
-            r['return_5d'] = round(ret5['return_pct'], 2) if ret5 else None
-            r['return_7d'] = round(ret7['return_pct'], 2) if ret7 else None
-            r['verdict'] = verdict
+            r7 = ret7['return_pct'] if ret7 else None
+            r['return_7d'] = round(r7, 2) if r7 is not None else None
+            r['exit_reason'] = ret7.get('exit_reason', '') if ret7 else ''
+            r['exit_day'] = ret7.get('exit_day', 0) if ret7 else 0
+            r['verdict'] = _compute_verdict(r.get('opinion', ''), r7)
             r['verified'] = True
             verify_count += 1
 
-    if verify_count > 0:
+            # --- AI 7日全路径回顾分析 ---
+            if r7 is not None:
+                try:
+                    _run_ai_review(code, r, ret7, tp, sl, entry_price, mode)
+                    review_count += 1
+                except Exception as e:
+                    print(f"  ⚠️ {code} AI回顾失败: {e}")
+
+    if verify_count > 0 or review_count > 0:
         _save_ai_memory(memory)
-        print(f"🔍 收益验证: {verify_count} 条新记录")
+        print(f"🔍 收益验证: {verify_count} 条 | 🤖 AI回顾: {review_count} 条")
 
     # --- 2. 补全中文名 ---
     import csv as _csv
