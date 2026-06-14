@@ -2740,21 +2740,9 @@ def main():
             if not candidates:
                 st.info("◆ 当前无符合条件股票")
             else:
-                # 首次加载：自动入队 AI 分析
-                if "auto_queued" not in st.session_state:
-                    codes = [c["code"] for c in candidates]
-                    start_analysis_queue(codes)
-                    st.session_state["auto_queued"] = True
-
-                # 转移已完成的分析结果
-                for code in list(st.session_state.analysis_results.keys()):
-                    result = st.session_state.analysis_results[code]
-                    if result:
-                        st.session_state[f"analysis_result_{code}"] = result
-                    del st.session_state.analysis_results[code]
-                for code in list(st.session_state.analysis_errors.keys()):
-                    st.session_state[f"analysis_result_{code}"] = f"❌ 分析失败: {st.session_state.analysis_errors[code]}"
-                    del st.session_state.analysis_errors[code]
+                # ── 从 ai_memory.json 加载预计算的分析结果（auto_daily.py 产出）──
+                ai_memory = load_ai_memory()
+                _transferred = set()  # 避免重复展示
 
                 # 名称查找
                 codes = [c["code"] for c in candidates]
@@ -2764,36 +2752,52 @@ def main():
                 candidate_cards = []
                 for c in candidates:
                     code = c["code"]
+                    signal_date = str(c.get("signal_date", ""))
                     info = name_info.get(code, {})
                     stock_name = info.get("name", "") or ""
 
-                    # 分析状态
-                    in_queue = code in st.session_state.analysis_queue
-                    is_current = st.session_state.analysis_current == code
-                    has_result = bool(st.session_state.get(f"analysis_result_{code}"))
+                    # ── 优先从 ai_memory.json 读取预计算分析 ──
+                    ai_strip = None
+                    if code in ai_memory:
+                        # 取最近的非回填记录（按日期倒序）
+                        records = sorted(ai_memory[code], key=lambda r: str(r.get("date", "")), reverse=True)
+                        for rec in records:
+                            sentiment = rec.get("sentiment", "")
+                            if sentiment == "历史回填":
+                                continue
+                            opinion = rec.get("opinion", "")
+                            position = rec.get("position", "")
+                            ai_strip = (
+                                f'<div class="ai-inline-strip">'
+                                f'<span class="ai-badge opinion">◆ {opinion}</span>'
+                                f'<span class="ai-badge sentiment">🎯 {sentiment}</span>'
+                                f'<span class="ai-badge position">💰 {position}</span>'
+                                f'</div>'
+                            )
+                            break
+                        if ai_strip is None:
+                            ai_strip = '<span class="status-badge pending">📋 待AI分析</span>'
 
-                    if is_current:
-                        ai_strip = '<span class="status-badge analyzing">🔄 AI分析中…</span>'
-                    elif in_queue:
-                        ai_strip = '<span class="status-badge queued">⏳ 排队</span>'
-                    elif has_result:
-                        result_text = st.session_state.get(f"analysis_result_{code}", "")
-                        # 快速解析情绪/仓位/结论
-                        sent_match = re.search(r'情绪档位[：:]\s*(.+?)(?:\n|$)', result_text)
-                        pos_match = re.search(r'仓位[建议]*[：:]\s*(.+?)(?:\n|$)', result_text)
-                        op_match = re.search(r'最终结论[：:]\s*(.+?)(?:\n|$)', result_text)
-                        sentiment = sent_match.group(1).strip() if sent_match else "—"
-                        position = pos_match.group(1).strip() if pos_match else "—"
-                        opinion = op_match.group(1).strip() if op_match else "—"
-                        ai_strip = (
-                            f'<div class="ai-inline-strip">'
-                            f'<span class="ai-badge opinion">◆ {opinion}</span>'
-                            f'<span class="ai-badge sentiment">🎯 {sentiment}</span>'
-                            f'<span class="ai-badge position">💰 {position}</span>'
-                            f'</div>'
-                        )
-                    else:
-                        ai_strip = '<span class="status-badge pending">⏳ 排队</span>'
+                    # ── 回退：检查 worker 实时分析结果 ──
+                    if ai_strip is None:
+                        has_result = bool(st.session_state.get(f"analysis_result_{code}"))
+                        if has_result:
+                            result_text = st.session_state.get(f"analysis_result_{code}", "")
+                            sent_match = re.search(r'情绪档位[：:]\s*(.+?)(?:\n|$)', result_text)
+                            pos_match = re.search(r'仓位[建议]*[：:]\s*(.+?)(?:\n|$)', result_text)
+                            op_match = re.search(r'最终结论[：:]\s*(.+?)(?:\n|$)', result_text)
+                            sentiment = sent_match.group(1).strip() if sent_match else "—"
+                            position = pos_match.group(1).strip() if pos_match else "—"
+                            opinion = op_match.group(1).strip() if op_match else "—"
+                            ai_strip = (
+                                f'<div class="ai-inline-strip">'
+                                f'<span class="ai-badge opinion">◆ {opinion}</span>'
+                                f'<span class="ai-badge sentiment">🎯 {sentiment}</span>'
+                                f'<span class="ai-badge position">💰 {position}</span>'
+                                f'</div>'
+                            )
+                        else:
+                            ai_strip = '<span class="status-badge pending">📋 待AI分析</span>'
 
                     card_html = f"""
                     <div class="candidate-card">
@@ -2832,11 +2836,24 @@ def main():
                 # ── 展开完整 AI 分析 ──
                 for c in candidates:
                     code = c["code"]
-                    has_result = bool(st.session_state.get(f"analysis_result_{code}"))
-                    if has_result:
-                        result_text = st.session_state[f"analysis_result_{code}"]
+                    analysis_text = None
+
+                    # 优先从 ai_memory 获取完整分析（取最近的非回填记录）
+                    if code in ai_memory:
+                        records = sorted(ai_memory[code], key=lambda r: str(r.get("date", "")), reverse=True)
+                        for rec in records:
+                            txt = rec.get("analysis", "")
+                            if txt and "历史回填记录" not in txt and rec.get("sentiment") != "历史回填":
+                                analysis_text = txt
+                                break
+
+                    # 回退到 worker 实时结果
+                    if not analysis_text:
+                        analysis_text = st.session_state.get(f"analysis_result_{code}")
+
+                    if analysis_text:
                         with st.expander(f"📖 {code} 完整AI分析", expanded=False):
-                            st.markdown(result_text)
+                            st.markdown(analysis_text)
 
             # ── AI 分析进度条 ──
             if st.session_state.analysis_running:

@@ -260,12 +260,12 @@ def _run_ai_analysis(code, stock_df, candidate, market_context, mode):
     pullback_pct = float(candidate.get('pullback_pct', 0))
     limit_days = int(candidate.get('limit_days', 0))
 
-    # 去重检查
+    # 去重检查（只跳过有真实分析内容的记录，不跳过历史回填占位符）
     memory = _load_ai_memory()
     if code in memory:
         for rec in memory[code]:
-            if rec.get("date") == date_str:
-                return  # 已有同日记录
+            if rec.get("date") == date_str and rec.get("sentiment") != "历史回填":
+                return  # 已有同日真实分析记录
 
     # 列名兼容
     if 'close' in stock_df.columns and 'Close' not in stock_df.columns:
