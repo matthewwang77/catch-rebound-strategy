@@ -371,7 +371,7 @@ def _run_ai_analysis(code, stock_df, candidate, market_context, mode):
 - 布林(20,2)：上轨={bb_upper:.2f} 中轨={bb_mid:.2f} 下轨={bb_lower:.2f}
 - OBV趋势：{obv_trend}{limit_up_data}"""
 
-    system_prompt = """你是专精于A股连板回调策略的量化分析师。严格遵循"量价形时"四维分析框架：
+    system_prompt = """你是专精于A股连板回调策略的量化分析师。严格遵循"量价形时"四维分析框架，整体控制在400字以内，结论必须明确。
 【量】缩量挖坑（回调量<涨停量50%为佳），放量填坑（反弹需放量确认）
 【价】首板不破涨停最低价，MA支撑体系层层验证
 【形】缩量黄金坑、长下影弹簧线、缩倍阴、三阴不破阳、天外飞仙、金凤凰
@@ -409,7 +409,7 @@ def _run_ai_analysis(code, stock_df, candidate, market_context, mode):
                             {"role": "user", "content": prompt},
                         ],
                         "temperature": 0.4,
-                        "max_tokens": 800,
+                        "max_tokens": 2000,
                     },
                     timeout=25,
                 )
