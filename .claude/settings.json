@@ -12,7 +12,8 @@
     ],
     "defaultMode": "bypassPermissions",
     "additionalDirectories": [
-      "/Users/mattsmacair/Library/LaunchAgents"
+      "/Users/mattsmacair/Library/LaunchAgents",
+      "/Users/mattsmacair"
     ]
   },
   "hooks": {

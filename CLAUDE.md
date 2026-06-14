@@ -115,21 +115,39 @@ Three-tier lookup: `stock_names_cn.csv` (Chinese names) → `name_cache.csv` (yf
 | Mode | Limit-ups | Win Rate | Sharpe | Use Case |
 |------|-----------|----------|--------|----------|
 | BEAR | ≥2 | 50.9% | 7.06 | 熊市/冰点/低迷 — 浅回调(6-11%)+极度缩量(41%)+快进快出(7天) |
-| STRICT | ≥3 | 69.6% | 1.71 | 震荡市/不明 |
-| LOOSE | ≥2 | 60.1% | 1.29 | 牛市/强趋势 |
+| STRICT | ≥3 | 66.4% | 9.53 (IS) | 震荡市/启动期 — 高质量低频率 |
+| LOOSE | ≥2 | 49.9% | 4.46 (IS) | 牛市/发酵/高潮 — 最泛化最稳健 🏆 |
 
-**v6 关键发现**: BEAR 模式与 STRICT/LOOSE 有根本性差异 — `pullback_ratio_max` 从 0.40 砍到 0.11。在熊市中，默认参数（STRICT/LOOSE）夏普 -3.7，BEAR 模式提升至 +7.1。牛市/震荡可共用 STRICT/LOOSE。
+**v6 关键发现**: BEAR 模式与 STRICT/LOOSE 有根本性差异 — `pullback_ratio_max` 从 0.40 砍到 0.11。在熊市中，默认参数（STRICT/LOOSE）夏普 -3.7，BEAR 模式提升至 +7.1。
+
+**2026-06-14 过拟合诊断**: BULL 模式（原 Tier 5 强牛专属）IS Sharpe 19.56 → OOS 1.22，严重过拟合，已移除。
+LOOSE 在牛市中 OOS Sharpe 7.29，是真正可复现的收益。LOOSE 是唯一 OOS > IS 且 Walk-forward OOS 优于 IS 的模式。
 
 ### Market regime detection (`detect_market_regime()`)
 
 基于三大指数（上证/深证/创业板）5日趋势自动分档：
-- 1档 冰点期 (< -2%) → BEAR
-- 2档 低迷期 (-2% ~ -0.5%) → BEAR
+- 1档 冰点期 (< -2%) → BEAR (强制互斥)
+- 2档 低迷期 (-2% ~ -0.5%) → BEAR (强制互斥)
 - 3档 启动期 (-0.5% ~ +1%) → STRICT
 - 4档 发酵期 (+1% ~ +3%) → LOOSE
 - 5档 高潮期 (> +3%) → LOOSE
 
 `screen_today()` 默认 `mode='auto'` 自动检测并切换。`auto_daily.py` 和 `streamlit_app.py` 均已集成。
+
+### 过拟合诊断结论 (2026-06-14)
+
+完整的 3×4 交叉验证 + Bootstrap + Walk-forward + 参数敏感性诊断（见 `run_overfitting_diagnostics.py` 和 `v5_results/v6_overfitting_diagnostics.json`）：
+
+| 模式 | IS Sharpe | OOS Sharpe | Walk-forward | 参数稳健性 | 风险 |
+|------|:---------:|:----------:|:------------:|:--------:|:----:|
+| BEAR | 7.06 | 6.51 | — | 6/7关键 | 🟡 50 |
+| STRICT | 9.53 | 1.24 | ✅ OOS > IS | 5/7关键 | 🔴 65 |
+| LOOSE | 4.46 | 3.96 | ✅ OOS > IS | 2/7关键 | 🟢 25 |
+| ~~BULL~~ | ~~19.56~~ | ~~1.22~~ | — | ~~6/7~~ | 🔴 已移除 |
+
+**核心教训**: 三阶段漏斗优化（~200k组合）在单一周期上能找到极高分，但泛化能力差。LOOSE 用最简单的参数（最少优化）换来了最好的泛化。**过多的参数优化自由度 = 过拟合风险。**
+
+**⚠️ 已知 Bug**: `permutation_test()` 只 shuffle 收益率序列，不改变均值/方差，导致 p 值恒为 ~0.9-1.0，检验无效。需修复为随机入场日期或 bootstrap 分布比较。
 
 ### Data files
 

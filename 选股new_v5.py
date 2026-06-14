@@ -1862,13 +1862,15 @@ def walkforward_analysis_v5(start_date, end_date, best_params, split_ratio=0.6):
     return is_result, oos_result
 
 
-# ==================== v6 市场自适应四模式配置 ====================
-# BEAR:   熊市专属 — 浅回调+极度缩量+快进快出 (57信号/18月, 50.9%胜率)
-#         Period A (2023.01-2024.06) 深度优化 + 3×3交叉验证
-# BULL:   强牛市专属 — 中回调+极致缩量+长持有 (180信号/12月, 90.6%胜率)
-#         Period B (2024.07-2025.06) 完整三阶段优化
-# STRICT: 高质量低频率 (79信号/16月, 69.6%胜率, Sharpe 1.71)
-# LOOSE:  多信号高胜率 (203信号/16月, 60.1%胜率, Sharpe 1.29)
+# ==================== v6 市场自适应三模式配置 ====================
+# 2026-06-14 过拟合诊断结果:
+#   BEAR:   熊市专属 — 浅回调+极度缩量+快进快出 (57信号/18月, 50.9%胜率)
+#           OOS交叉验证 Sharpe 6.51, 最稳健的专用模式
+#   STRICT: 高质量信号 — 震荡市/启动期 (110信号/18月, 66.4%胜率)
+#           Walk-forward时间稳健, 但熊市会崩 (Period A Sharpe -3.27)
+#   LOOSE:  🏆 最泛化的模式 — OOS交叉验证 Sharpe 3.96, Walk-forward OOS > IS
+#           在牛市(Period B) Sharpe 7.29, 是真正可复现的收益
+#           Tier 4-5 (发酵/高潮) 使用LOOSE替代原BULL (BULL IS 19.56→OOS 1.22 严重过拟合)
 SCREEN_MODES = {
     "bear": {
         # v6: 熊市专属模式 — 浅回调(6-11%) + 极度缩量(41%) + 缩短持有(7天)
@@ -1888,29 +1890,6 @@ SCREEN_MODES = {
         "hold_days": 7,                     # 关键：快进快出
         "take_profit": 0.057,
         "stop_loss": -0.103,
-        "require_oversold": False,
-        "oversold_decline_threshold": 0.10,
-        "require_low_close": False,
-        "low_close_threshold": 0.5,
-    },
-    "bull": {
-        # v6: 强牛市专属 — 中回调(11-21%) + 极致缩量(34%) + 长持有(12天) + 快止盈(3.7%)
-        # Period B 完整三阶段优化: S1(79%WR)→S2(88%WR)→S3(91%WR)
-        "min_consecutive_limit_up": 2,
-        "min_entity_board_ratio": 0.25,
-        "pullback_ratio_min": 0.11,
-        "pullback_ratio_max": 0.21,         # 牛市回调空间适中
-        "volume_shrink_ratio": 0.34,        # 关键：极致缩量要求
-        "volume_shrink_ratio_min": 0.10,
-        "signal_today_yang": True,
-        "signal_volume_expand": 1.2,
-        "min_pullback_days": 2,
-        "max_pullback_days": 20,
-        "ma_stabilize": 10,
-        "volume_compare_days": 3,
-        "hold_days": 12,                    # 关键：牛市拿久一点
-        "take_profit": 0.037,               # 关键：见好就收，快止盈
-        "stop_loss": -0.108,
         "require_oversold": False,
         "oversold_decline_threshold": 0.10,
         "require_low_close": False,
@@ -2032,20 +2011,22 @@ def get_market_context():
 
 def detect_market_regime():
     """
-    v6: 检测当前市场状态，返回 'bear' / 'bull' / 'choppy'。
+    v6: 检测当前市场状态，返回 'bear' / 'neutral'。
     基于三大指数（上证/深证/创业板）5日趋势。
 
-    判断逻辑（由 cross_period_validation 3×3矩阵验证）：
-      - 冰点期/低迷期 (5日均趋势 < -0.5%) → 'bear'   使用熊市专属参数
-      - 其余 → 'bull'  (牛市/震荡市都用同一套参数)
+    判断逻辑（2026-06-14 过拟合诊断后更新）：
+      - Tier 1-2 (冰点/低迷, avg_trend < -0.5%) → 'bear'   BEAR模式
+      - Tier 3   (启动, -0.5%~+1%)            → 'neutral' STRICT模式
+      - Tier 4-5 (发酵/高潮, > +1%)            → 'neutral' LOOSE模式
+      BULL模式已移除: IS Sharpe 19.56 → OOS 1.22 (严重过拟合)
 
     Returns:
         dict: {
-            'regime': 'bear' | 'bull',
+            'regime': 'bear' | 'neutral',
             'avg_trend': float,       # 三大指数5日均涨跌幅
             'sentiment_tier': int,    # 1-5档
             'sentiment_label': str,   # 中文标签
-            'recommended_mode': str,  # 推荐的SCREEN_MODE
+            'recommended_mode': str,  # 推荐的SCREEN_MODE (bear/strict/loose)
         }
     """
     try:
@@ -2065,7 +2046,7 @@ def detect_market_regime():
                 trends.append(trend_5d)
 
         if len(trends) < 2:
-            return {'regime': 'bull', 'avg_trend': 0, 'sentiment_tier': 3,
+            return {'regime': 'neutral', 'avg_trend': 0, 'sentiment_tier': 3,
                     'sentiment_label': '数据不足，默认非熊市',
                     'recommended_mode': 'strict'}
 
@@ -2085,22 +2066,18 @@ def detect_market_regime():
         else:
             tier, label = 1, "冰点期 — 坚决不参与"
 
-        # 市场状态 → SCREEN_MODE 映射 (v6: 4模式)
-        # Tier 1-2 (冰点/低迷): BEAR — 熊市专属参数
+        # 市场状态 → SCREEN_MODE 映射 (v6: 3模式, 2026-06-14更新)
+        # Tier 1-2 (冰点/低迷): BEAR — 强制互斥，熊市专属参数
         # Tier 3   (启动):       STRICT — 震荡市，高质量低频率
-        # Tier 4   (发酵):       LOOSE — 牛市前中期，多信号
-        # Tier 5   (高潮):       BULL — 强牛市，极致缩量+长持有
+        # Tier 4-5 (发酵/高潮):  LOOSE — 最泛化模式，牛市也用LOOSE
         if avg_trend < -0.5:
             regime = 'bear'
             recommended_mode = 'bear'
-        elif avg_trend > 3 and up_count >= len(trends):
-            regime = 'bull'
-            recommended_mode = 'bull'
         elif avg_trend > 1:
-            regime = 'bull'
+            regime = 'neutral'
             recommended_mode = 'loose'
         else:
-            regime = 'bull'
+            regime = 'neutral'
             recommended_mode = 'strict'
 
         return {
@@ -2113,7 +2090,7 @@ def detect_market_regime():
             'down_count': down_count,
         }
     except Exception:
-        return {'regime': 'bull', 'avg_trend': 0, 'sentiment_tier': 3,
+        return {'regime': 'neutral', 'avg_trend': 0, 'sentiment_tier': 3,
                 'sentiment_label': '检测失败，默认非熊市',
                 'recommended_mode': 'strict'}
 
@@ -2242,9 +2219,10 @@ if __name__ == "__main__":
         print("  python 选股new_v5.py                         # 默认：单时段三阶段优化")
         print("")
         print("v6 新增（vs v5):")
-        print("  - 市场自适应模式 (auto) — 自动检测熊市/牛市，切换最优参数")
-        print("  - bear模式 — 熊市专属：浅回调(6-11%) + 极度缩量(41%) + 快进快出(7天)")
+        print("  - 市场自适应模式 (auto) — 自动检测市场状态，切换最优参数")
+        print("  - 三模式: BEAR(熊市) / STRICT(震荡启动) / LOOSE(发酵高潮)")
         print("  - 三大指数5日趋势自动检测 + 5档情绪分级")
+        print("  - 2026-06-14 过拟合诊断：移除BULL模式(IS Sharpe 19.56→OOS 1.22)")
         print("v5 新增（vs v4):")
         print("  - 三阶段漏斗搜索：Coarse → Fine → Ultra-Fine")
         print("  - 多周期鲁棒性验证（3个市场状态时段）")

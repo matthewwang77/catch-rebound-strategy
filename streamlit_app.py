@@ -522,16 +522,6 @@ def inject_design_system():
       border-color: rgba(255,165,0,0.45);
       box-shadow: 0 0 8px rgba(255,165,0,0.1);
     }
-    .mode-pill.bull {
-      background: rgba(255,215,0,0.08);
-      border: 1px solid rgba(255,215,0,0.25);
-      color: #FFD700;
-    }
-    .mode-pill.bull:hover {
-      background: rgba(255,215,0,0.14);
-      border-color: rgba(255,215,0,0.45);
-      box-shadow: 0 0 8px rgba(255,215,0,0.1);
-    }
 
     /* === NEON STATUS BAR === */
     .neon-status-bar {
@@ -636,6 +626,173 @@ def inject_design_system():
     }
     .memory-card-hover:hover {
       background: rgba(0,240,255,0.02);
+    }
+
+
+    /* === TACTICAL TERMINAL ENHANCEMENTS (v6 Unified) === */
+
+    .market-status-card {
+      background: linear-gradient(135deg, rgba(0,255,136,0.03) 0%, rgba(0,15,10,0.6) 100%);
+      border: 1px solid rgba(0,255,136,0.1);
+      border-radius: 6px;
+      padding: 12px 16px;
+      margin-bottom: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .market-index-row {
+      font-family: 'JetBrains Mono', monospace;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .market-sentiment { flex-shrink: 0; }
+    .sentiment-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.5rem;
+      color: #00ff88;
+      background: rgba(0,255,136,0.06);
+      border: 1px solid rgba(0,255,136,0.2);
+      border-radius: 3px;
+      padding: 3px 10px;
+    }
+
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      color: #00ff88;
+      letter-spacing: 0.06em;
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(0,255,136,0.08);
+    }
+
+    .status-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.45rem;
+      padding: 2px 8px;
+      border-radius: 3px;
+      white-space: nowrap;
+    }
+    .status-badge.analyzing {
+      color: #00e5ff;
+      background: rgba(0,229,255,0.06);
+      border: 1px solid rgba(0,229,255,0.2);
+      animation: pulse-glow 1.5s ease-in-out infinite;
+    }
+    .status-badge.queued {
+      color: #666;
+      background: rgba(100,100,100,0.05);
+      border: 1px solid rgba(100,100,100,0.15);
+    }
+    .status-badge.done {
+      color: #ffd700;
+      background: rgba(255,215,0,0.05);
+      border: 1px solid rgba(255,215,0,0.2);
+    }
+    .status-badge.pending {
+      color: #888;
+      background: transparent;
+      border: 1px dashed rgba(100,100,100,0.2);
+    }
+
+    .analysis-progress-bar {
+      background: rgba(0,255,136,0.02);
+      border: 1px solid rgba(0,255,136,0.08);
+      border-radius: 6px;
+      padding: 12px 16px;
+      margin: 10px 0 16px 0;
+    }
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.5rem;
+      color: #00ff88;
+      margin-bottom: 6px;
+    }
+    .progress-track {
+      height: 3px;
+      background: rgba(0,255,136,0.06);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #00ff88, #00e5ff);
+      border-radius: 2px;
+      transition: width 0.5s ease;
+      animation: pulse-glow 2s ease-in-out infinite;
+    }
+    .progress-footer {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.42rem;
+      color: #555;
+      margin-top: 4px;
+    }
+
+    .perf-panel {
+      background: rgba(0,15,10,0.4);
+      border: 1px solid rgba(0,255,136,0.06);
+      border-radius: 6px;
+      padding: 14px 18px;
+      margin-bottom: 12px;
+    }
+    .perf-grid {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin: 10px 0;
+    }
+    .perf-card { min-width: 80px; }
+    .perf-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.42rem;
+      color: #555;
+      margin-bottom: 2px;
+    }
+    .perf-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+    .perf-detail {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.42rem;
+      color: #444;
+      margin-top: 4px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(0,255,136,0.04);
+    }
+
+    .intro-section {
+      font-family: 'JetBrains Mono', monospace;
+      color: #aaa;
+      font-size: 0.55rem;
+      line-height: 1.7;
+    }
+    .intro-section h3 {
+      color: #00ff88;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.06em;
+      margin-bottom: 8px;
+    }
+    .intro-section h4 {
+      color: #00e5ff;
+      font-size: 0.6rem;
+      letter-spacing: 0.04em;
+      margin-top: 16px;
+      margin-bottom: 6px;
+    }
+    .intro-section ul { list-style: none; padding-left: 0; }
+    .intro-section li { padding: 3px 0; }
+    .intro-section li::before { content: "◆ "; color: #00ff88; }
+
+    @keyframes pulse-glow {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
     }
 
     </style>
@@ -1385,7 +1542,7 @@ def fast_ai_analysis(code, stock_df, market_context="", memory_context=None):
 # ==================== 多模式筛选 ====================
 def screen_all_modes(all_data):
     """用 strict/loose/bear 三种参数分别筛选，返回 {mode: [候选列表]}"""
-    modes = ["strict", "loose", "bear", "bull"]
+    modes = ["strict", "loose", "bear"]
     results = {}
     all_stats = {}
 
@@ -1939,101 +2096,6 @@ def compute_performance(mode_filter=None, days_window=30):
 
 
 # ==================== 选股结果展示 ====================
-def show_screening_results(results, all_stats):
-    st.header("◆ 选股结果")
-
-    tabs = st.tabs([
-        f"◆ STRICT 严格 ({len(results['strict'])}只)",
-        f"◇ LOOSE 宽松 ({len(results['loose'])}只)",
-        f"🐻 BEAR 熊市 ({len(results['bear'])}只)",
-        f"🐂 BULL 强牛 ({len(results['bull'])}只)",
-    ])
-
-    for tab_idx, mode in enumerate(["strict", "loose", "bear", "bull"]):
-        with tabs[tab_idx]:
-            candidates = results[mode]
-            stats = all_stats[mode]
-
-            if not candidates:
-                st.info(f"◆ 当前模式无符合条件的股票")
-                with st.expander("◆ 筛选漏斗"):
-                    st.write(f"总扫描: {stats['total']} → 有涨停: {stats['has_limit_up']} → "
-                             f"连板达标: {stats['consecutive_ok']} → 实体板达标: {stats['entity_ratio_ok']} → "
-                             f"回调天数: {stats['pullback_days_ok']} → 回调幅度: {stats['pullback_range_ok']} → "
-                             f"均线: {stats['ma_ok']} → 量能: {stats['volume_shrink_ok']} → "
-                             f"阳线: {stats['yang_ok']} → 放量: {stats['volume_expand_ok']} → "
-                             f"最终: {stats['final']}")
-                continue
-
-            candidate_codes = [c.get('代码', c.get('code', '')) for c in candidates]
-            name_info = name_lookup.batch_lookup(candidate_codes, max_fetch=5)
-
-            for code_data in candidates:
-                code = code_data['code']
-                info = name_info.get(code, {})
-                stock_name = info.get('name', '') or ''
-                with st.container():
-                    col1, col2, col3, col4, col5, col6 = st.columns([1.8, 1.2, 1.1, 0.9, 0.9, 1.3])
-
-                    with col1:
-                        name_line = f"**`{code}`**"
-                        if stock_name:
-                            name_line += f"  {stock_name}"
-                        st.markdown(name_line)
-                    with col2:
-                        st.metric("价格", f"{code_data['price']:.2f}")
-                    with col3:
-                        st.metric("回调", f"{code_data['pullback_pct']:.1f}%")
-                    with col4:
-                        st.metric("连板", f"{code_data['limit_days']}天")
-                    with col5:
-                        st.metric("实体板", f"{code_data['entity_ratio']:.0f}%")
-                    with col6:
-                        btn_key = f"ai_{mode}_{code}"
-                        if st.button(f"◆ AI分析", key=btn_key, use_container_width=True):
-                            st.session_state[f'analyze_{code}'] = True
-
-                    # AI 分析结果（统一入口在处理，此处仅显示）
-                    if st.session_state.get(f'analysis_result_{code}'):
-                        with st.expander(f"◆ {code} AI分析报告", expanded=True):
-                            st.markdown(st.session_state[f'analysis_result_{code}'])
-
-                    st.divider()
-
-            with st.expander("◆ 筛选漏斗详情"):
-                stages = [
-                    ("总扫描", stats['total']),
-                    ("有涨停", stats['has_limit_up']),
-                    ("连板数达标", stats['consecutive_ok']),
-                    ("实体板达标", stats['entity_ratio_ok']),
-                    ("回调天数", stats['pullback_days_ok']),
-                    ("回调幅度", stats['pullback_range_ok']),
-                    ("均线达标", stats['ma_ok']),
-                    ("量能达标", stats['volume_shrink_ok']),
-                    ("阳线达标", stats['yang_ok']),
-                    ("放量达标", stats['volume_expand_ok']),
-                    ("◆ 最终候选", stats['final']),
-                ]
-                cols_funnel = st.columns(len(stages))
-                for i, (label, val) in enumerate(stages):
-                    with cols_funnel[i]:
-                        st.metric(label, val)
-
-    st.divider()
-    if any(len(v) > 0 for v in results.values()):
-        all_candidates = []
-        for mode in ["strict", "loose", "bear", "bull"]:
-            for c in results[mode]:
-                all_candidates.append({**c, 'mode': mode})
-        df_export = pd.DataFrame(all_candidates)
-        st.download_button(
-            label="◆ 导出 CSV",
-            data=df_export.to_csv(index=False, encoding='utf-8-sig'),
-            file_name=f"candidates_all_{china_now().strftime('%Y%m%d')}.csv",
-            mime="text/csv",
-        )
-        save_signals(all_candidates)
-
 
 # ==================== 自动加载结果 ====================
 def load_latest_results():
@@ -2280,7 +2342,7 @@ def main():
                     background:{regime_bg};border:1px solid {regime_border};
                     font-family:'JetBrains Mono',monospace;font-size:0.55rem;color:#8888AA">
           <span style="font-size:1rem">{regime_icon}</span>
-          <span style="color:{regime_color}">{regime['sentiment_label']}</span>
+          <span style="color:{regime_color}">{regime.get("label", "—")}</span>
           <span>| 5日趋势 <span style="color:{regime_color}">{regime['avg_trend']:+.1f}%</span></span>
           <span>| 推荐模式 <span style="color:{regime_color}">{regime['recommended_mode'].upper()}</span></span>
           {f'<span style="color:#FFA500">| ⚠️ 熊市环境 — 已启用浅回调+极度缩量策略</span>' if is_bear else ''}
@@ -2340,16 +2402,17 @@ def main():
     # 获取当前页面
     page = st.session_state.get('nav_page', '◆ 选股')
 
-    # ============ 选股页面 ============
+    # ============ 选股页面 (v6 Unified Auto) ============
     if page == '◆ 选股':
-        # 加载预计算选股结果（缓存到 session_state，切换 tab 不丢失）
+        # 加载预计算选股结果
         if "cached_scan_data" not in st.session_state:
             st.session_state["cached_scan_data"] = load_latest_results()
         scan_data = st.session_state["cached_scan_data"]
         fresh = load_latest_results()
-        if fresh and fresh.get("scan_time") != scan_data.get("scan_time"):
+        if fresh and fresh.get("scan_time") != (scan_data or {}).get("scan_time"):
             st.session_state["cached_scan_data"] = fresh
             scan_data = fresh
+            st.session_state.pop("auto_queued", None)  # reset so new candidates get auto-queued
 
         # 判断当前时段
         now = china_now()
@@ -2359,147 +2422,152 @@ def main():
         is_post_close = (wd < 5 and h >= 15)
 
         if scan_data is None:
-            # 还没有任何扫描结果
             st.info("◆ 等待首次定时扫描… 结果将在 10:00 / 11:30 / 14:00 / 15:00 自动出现")
-            st.caption("💡 也可以手动运行: `python archive/tools/auto_daily.py`")
+            st.caption("💡 也可以手动运行: `python auto_daily.py`")
         else:
-            st.header("◆ 选股结果")
-
-            # Neon 状态栏
-            scan_time = scan_data.get("scan_time", "未知")
+            # ── 市场状态卡片 ──
+            regime = scan_data.get("regime", {})
+            market = scan_data.get("market", {})
+            rec_mode = regime.get("recommended_mode", "strict")
             modes = scan_data.get("modes", {})
-            if is_post_close:
-                status_class = "closed"
-                status_icon = "✅"
-                status_text = "今日最终结果（收盘后）"
-            elif is_trading:
-                status_class = "trading"
-                status_icon = "🔄"
-                status_text = "盘中实时结果（每5分钟刷新）"
-            else:
-                status_class = ""
-                status_icon = "⏸"
-                status_text = "市场已收盘"
-            pulse_html = (
-                '<span class="pulse-dot cyan"></span>' if is_post_close
-                else '<span class="pulse-dot amber"></span>' if is_trading
-                else ""
-            )
+
+            # Build compact market status line
+            index_parts = []
+            for name, data in market.items():
+                pct = data.get("pct", 0)
+                color = "#00ff88" if pct >= 0 else "#ff5050"
+                sign = "+" if pct >= 0 else ""
+                index_parts.append(
+                    f'<span style="color:#777;font-size:0.5rem;">{name}</span> '
+                    f'<span style="color:{color};font-size:0.55rem;">{data["price"]:.0f} {sign}{pct:.2f}%</span>'
+                )
+
+            sentiment_label = regime.get("label", "—")
             st.markdown(f"""
-            <div class="neon-status-bar {status_class}">
-              <span class="status-icon">{status_icon}</span>
-              <span class="status-text">{status_text}</span>
-              <span class="status-spacer"></span>
-              <span class="status-label">扫描时间</span>
-              <span class="status-time">{scan_time}</span>
-              {pulse_html}
+            <div class="market-status-card">
+              <div class="market-index-row">
+                {" · ".join(index_parts) if index_parts else "—"}
+              </div>
+              <div class="market-sentiment">
+                <span class="sentiment-tag">{sentiment_label}</span>
+              </div>
             </div>
             """, unsafe_allow_html=True)
 
-            # 模式信息已移至 📖 介绍页面
+            # ── 选股结果 ──
+            candidates = modes.get(rec_mode, {}).get("candidates", [])
+            st.markdown(f'<div class="section-label">◆ 选股结果 · {len(candidates)}只候选</div>',
+                        unsafe_allow_html=True)
 
-            # 检测待分析的股票 → 加入异步队列
-            codes_to_analyze = [k.replace("analyze_", "") for k in st.session_state
-                               if k.startswith("analyze_") and st.session_state[k]]
-
-            if codes_to_analyze:
-                # 清理标记
-                for code in codes_to_analyze:
-                    st.session_state[f"analyze_{code}"] = False
-                # 加入队列（后台线程处理）
-                start_analysis_queue(codes_to_analyze)
-                st.rerun()
-
-            # 展示已完成的分析结果（从队列结果转移到展示用的 session_state）
-            for code in list(st.session_state.analysis_results.keys()):
-                result = st.session_state.analysis_results[code]
-                if result:
-                    st.session_state[f"analysis_result_{code}"] = result
-                del st.session_state.analysis_results[code]
-            for code in list(st.session_state.analysis_errors.keys()):
-                st.session_state[f"analysis_result_{code}"] = f"❌ 分析失败: {st.session_state.analysis_errors[code]}"
-                del st.session_state.analysis_errors[code]
-
-            tab_labels = [
-                f"STRICT 严格 ({modes.get('strict', {}).get('count', 0)}只)",
-                f"LOOSE 宽松 ({modes.get('loose', {}).get('count', 0)}只)",
-            ]
-            tabs = st.tabs(tab_labels)
-
-            for tab_idx, mode in enumerate(["strict", "loose"]):
-                with tabs[tab_idx]:
-                    mode_data = modes.get(mode, {})
-                    candidates = mode_data.get("candidates", [])
-                    if not candidates:
-                        st.info(f"当前 {mode.upper()} 模式无符合条件的股票")
-                        continue
-
+            if not candidates:
+                st.info("◆ 当前无符合条件股票")
+            else:
+                # 首次加载：自动入队 AI 分析
+                if "auto_queued" not in st.session_state:
                     codes = [c["code"] for c in candidates]
-                    name_info = name_lookup.batch_lookup(codes, max_fetch=5)
+                    start_analysis_queue(codes)
+                    st.session_state["auto_queued"] = True
 
-                    for c in candidates:
-                        code = c["code"]
-                        info = name_info.get(code, {})
-                        stock_name = info.get("name", "") or ""
-                        with st.container():
-                            col1, col2, col3, col4, col5, col6 = st.columns([1.8, 1.2, 1.1, 0.9, 0.9, 1.3])
-                            with col1:
-                                name_line = f"**`{code}`**"
-                                if stock_name:
-                                    name_line += f"  {stock_name}"
-                                st.markdown(name_line)
-                            with col2:
-                                st.metric("价格", f"{c['price']:.2f}")
-                            with col3:
-                                st.metric("回调", f"{c['pullback_pct']:.1f}%")
-                            with col4:
-                                st.metric("连板", f"{c['limit_days']}天")
-                            with col5:
-                                st.metric("实体板", f"{c.get('entity_ratio', 0):.0f}%")
-                            with col6:
-                                btn_key = f"ai_{mode}_{code}"
-                                if st.button(f"◆ AI分析", key=btn_key, use_container_width=True):
-                                    st.session_state[f"analyze_{code}"] = True
+                # 转移已完成的分析结果
+                for code in list(st.session_state.analysis_results.keys()):
+                    result = st.session_state.analysis_results[code]
+                    if result:
+                        st.session_state[f"analysis_result_{code}"] = result
+                    del st.session_state.analysis_results[code]
+                for code in list(st.session_state.analysis_errors.keys()):
+                    st.session_state[f"analysis_result_{code}"] = f"❌ 分析失败: {st.session_state.analysis_errors[code]}"
+                    del st.session_state.analysis_errors[code]
 
-                            # AI 分析结果（统一入口已处理，此处仅显示）
-                            if st.session_state.get(f"analysis_result_{code}"):
-                                result_text = st.session_state[f"analysis_result_{code}"]
-                                with st.expander(f"◆ {code} AI分析报告", expanded=True):
-                                    # 提取摘要
-                                    import re
-                                    sentiment_match = re.search(r'情绪档位[：:]\s*(.+?)(?:\n|$)', result_text)
-                                    position_match = re.search(r'仓位[建议]*[：:]\s*(.+?)(?:\n|$)', result_text)
-                                    sentiment = sentiment_match.group(1).strip() if sentiment_match else "—"
-                                    position = position_match.group(1).strip() if position_match else "—"
-                                    st.markdown(f"""
-                                    <div class="ai-summary-strip">
-                                      <span class="ai-summary-badge sentiment">🎯 情绪档位: {sentiment}</span>
-                                      <span class="ai-summary-badge position">💰 仓位建议: {position}</span>
-                                    </div>
-                                    """, unsafe_allow_html=True)
-                                    st.markdown(result_text)
-                                    with st.expander("📋 复制全文"):
-                                        st.code(result_text, language=None)
+                # 名称查找
+                codes = [c["code"] for c in candidates]
+                name_info = name_lookup.batch_lookup(codes, max_fetch=5)
 
-                            st.divider()
+                for c in candidates:
+                    code = c["code"]
+                    info = name_info.get(code, {})
+                    stock_name = info.get("name", "") or ""
 
-            # 导出 CSV
-            all_candidates = []
-            for mode in ["strict", "loose"]:
-                for c in modes.get(mode, {}).get("candidates", []):
-                    all_candidates.append({**c, "mode": mode})
-            if all_candidates:
+                    # 分析状态
+                    in_queue = code in st.session_state.analysis_queue
+                    is_current = st.session_state.analysis_current == code
+                    has_result = bool(st.session_state.get(f"analysis_result_{code}"))
+
+                    if is_current:
+                        status_html = '<span class="status-badge analyzing">🔄 分析中</span>'
+                    elif in_queue:
+                        status_html = '<span class="status-badge queued">⏳ 排队</span>'
+                    elif has_result:
+                        result_text = st.session_state.get(f"analysis_result_{code}", "")
+                        # Quick parse for sentiment/position
+                        import re
+                        sent_match = re.search(r'情绪档位[：:]\s*(.+?)(?:\n|$)', result_text)
+                        pos_match = re.search(r'仓位[建议]*[：:]\s*(.+?)(?:\n|$)', result_text)
+                        sentiment = sent_match.group(1).strip() if sent_match else "—"
+                        position = pos_match.group(1).strip() if pos_match else "—"
+                        status_html = f'<span class="status-badge done">🎯 {sentiment} · 💰 {position}</span>'
+                    else:
+                        status_html = '<span class="status-badge pending">⏳ 排队</span>'
+
+                    with st.container():
+                        col1, col2, col3, col4, col5, col6 = st.columns([1.6, 1.1, 1.0, 0.8, 0.8, 1.9])
+                        with col1:
+                            name_line = f"**`{code}`**"
+                            if stock_name:
+                                name_line += f"  {stock_name}"
+                            st.markdown(name_line)
+                        with col2:
+                            st.metric("价格", f"{c['price']:.2f}")
+                        with col3:
+                            st.metric("回调", f"{c['pullback_pct']:.1f}%")
+                        with col4:
+                            st.metric("连板", f"{c['limit_days']}天")
+                        with col5:
+                            st.metric("实体板", f"{c.get('entity_ratio', 0):.0f}%")
+                        with col6:
+                            st.markdown(status_html, unsafe_allow_html=True)
+
+                        # 展开完整 AI 分析
+                        if has_result:
+                            result_text = st.session_state[f"analysis_result_{code}"]
+                            with st.expander(f"◆ {code} AI分析", expanded=False):
+                                st.markdown(result_text)
+
+                        st.divider()
+
+            # ── AI 分析进度条 ──
+            if st.session_state.analysis_running:
+                queue_len = len(st.session_state.analysis_queue)
+                total = len(candidates) if candidates else 1
+                done = max(0, total - queue_len)
+                pct = min(100, done / total * 100) if total > 0 else 0
+                current = st.session_state.analysis_current or "—"
+                est_min = max(0, int(queue_len * 0.25))
+                st.markdown(f"""
+                <div class="analysis-progress-bar">
+                  <div class="progress-header">
+                    <span>🤖 AI分析进度</span>
+                    <span>{done} / {total}</span>
+                  </div>
+                  <div class="progress-track">
+                    <div class="progress-fill" style="width:{pct:.0f}%"></div>
+                  </div>
+                  <div class="progress-footer">当前: {current} · 预计剩余 {est_min}分钟</div>
+                </div>
+                """, unsafe_allow_html=True)
+
+            # ── CSV 导出 ──
+            if candidates:
                 st.divider()
-                df_export = pd.DataFrame(all_candidates)
+                df_export = pd.DataFrame(candidates)
                 st.download_button(
                     label="◆ 导出 CSV",
                     data=df_export.to_csv(index=False, encoding="utf-8-sig"),
-                    file_name=f"candidates_all_{china_now().strftime('%Y%m%d')}.csv",
+                    file_name=f"candidates_{china_now().strftime('%Y%m%d')}.csv",
                     mime="text/csv",
                 )
                 current_scan_time = scan_data.get("scan_time", "")
                 if st.session_state.get("_saved_scan_time") != current_scan_time:
-                    save_signals(all_candidates)
+                    save_signals(candidates)
                     st.session_state["_saved_scan_time"] = current_scan_time
 
     # ============ 复盘页面 ============
@@ -2507,69 +2575,58 @@ def main():
         # 自动验证 AI 记忆
         auto_verify_memory()
 
-        # === 绩效总览 ===
-        perf_strict = compute_performance(mode_filter='strict', days_window=30)
-        perf_loose = compute_performance(mode_filter='loose', days_window=30)
+        # === 绩效总览 (v6 Unified) ===
+        perf = compute_performance(mode_filter=None, days_window=30)
 
-        col_s, col_l = st.columns(2)
+        if perf:
+            ret_color = "#00FF88" if perf['total_return'] >= 0 else "#FF5050"
+            pf_display = "无损" if perf['profit_factor'] >= 999 else f"{perf['profit_factor']:.2f}"
+            st.markdown(f"""
+            <div class="perf-panel">
+              <div class="section-label">◆ 绩效总览 (近30天)</div>
+              <div class="perf-grid">
+                <div class="perf-card">
+                  <div class="perf-label">累计收益</div>
+                  <div class="perf-value" style="color:{ret_color}">{perf['total_return']:+.1f}%</div>
+                </div>
+                <div class="perf-card">
+                  <div class="perf-label">胜率</div>
+                  <div class="perf-value" style="color:#D0D0E8">{perf['win_rate']:.0%}</div>
+                </div>
+                <div class="perf-card">
+                  <div class="perf-label">盈亏比</div>
+                  <div class="perf-value" style="color:#FFD700">{pf_display}</div>
+                </div>
+                <div class="perf-card">
+                  <div class="perf-label">最大回撤</div>
+                  <div class="perf-value" style="color:#FF6B6B">-{perf['max_drawdown']:.1f}%</div>
+                </div>
+              </div>
+              <div class="perf-detail">
+                {perf['wins']}胜/{perf['losses']}负 · 均盈+{perf['avg_win']:.1f}% · 均亏-{perf['avg_loss']:.1f}% · 共{perf['total_trades']}笔
+              </div>
+            </div>
+            """, unsafe_allow_html=True)
 
-        for col, perf, mode_label, accent_color in [
-            (col_s, perf_strict, "STRICT", "#00F0FF"),
-            (col_l, perf_loose, "LOOSE", "#9B6FFF"),
-        ]:
-            with col:
-                if perf:
-                    ret_color = "#00FF88" if perf['total_return'] >= 0 else "#FF5050"
-                    pf_display = "无损" if perf['profit_factor'] >= 999 else f"{perf['profit_factor']:.2f}"
-                    st.markdown(f"""
-                    <div style="padding:4px 0 10px 0">
-                      <div style="font-family:'JetBrains Mono',monospace;font-size:0.5rem;color:{accent_color};letter-spacing:0.08em;margin-bottom:6px">◆ {mode_label} (近30天)</div>
-                      <div style="display:flex;flex-wrap:wrap;gap:12px 20px">
-                        <div>
-                          <div style="font-family:'JetBrains Mono',monospace;font-size:0.45rem;color:#555577">累计收益</div>
-                          <div style="font-family:'JetBrains Mono',monospace;font-size:1.1rem;color:{ret_color};font-weight:bold">{perf['total_return']:+.1f}%</div>
-                        </div>
-                        <div>
-                          <div style="font-family:'JetBrains Mono',monospace;font-size:0.45rem;color:#555577">胜率</div>
-                          <div style="font-family:'JetBrains Mono',monospace;font-size:1.1rem;color:#D0D0E8;font-weight:bold">{perf['win_rate']:.0%}</div>
-                        </div>
-                        <div>
-                          <div style="font-family:'JetBrains Mono',monospace;font-size:0.45rem;color:#555577">盈亏比</div>
-                          <div style="font-family:'JetBrains Mono',monospace;font-size:1.1rem;color:#D0D0E8;font-weight:bold">{pf_display}</div>
-                        </div>
-                        <div>
-                          <div style="font-family:'JetBrains Mono',monospace;font-size:0.45rem;color:#555577">最大回撤</div>
-                          <div style="font-family:'JetBrains Mono',monospace;font-size:1.1rem;color:#FF6B6B;font-weight:bold">-{perf['max_drawdown']:.1f}%</div>
-                        </div>
-                      </div>
-                      <div style="font-family:'JetBrains Mono',monospace;font-size:0.42rem;color:#444466;margin-top:4px">
-                        {perf['wins']}胜/{perf['losses']}负 · 均盈+{perf['avg_win']:.1f}% · 均亏-{perf['avg_loss']:.1f}% · 共{perf['total_trades']}笔
-                      </div>
-                    </div>
-                    """, unsafe_allow_html=True)
-
-                    # 收益曲线
-                    if perf['cum_returns'] and len(perf['cum_returns']) >= 3:
-                        chart_df = perf.get('chart_df',
-                            pd.DataFrame({'累计收益%': perf['cum_returns']})
-                        )
-                        st.line_chart(chart_df, height=140, use_container_width=True)
-                        # 退出统计
-                        exit_info = perf.get('exit_reasons', {})
-                        if exit_info:
-                            parts = [f"{k}{v}次" for k, v in sorted(exit_info.items())]
-                            st.caption(f"持有{perf.get('hold_days','?')}天 · {' · '.join(parts)}")
-                    else:
-                        st.caption(f"数据不足（{len(perf.get('cum_returns',[]))}笔），继续积累")
-                else:
-                    mode_key = 'strict' if mode_label == 'STRICT' else 'loose'
-                    hd = screener.SCREEN_MODES[mode_key]['hold_days']
-                    st.markdown(f"""
-                    <div style="padding:30px 0;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.55rem;color:{accent_color};opacity:0.5">
-                      ◆ {mode_label}<br>
-                      <span style="font-size:0.45rem;color:#333355">持有{hd}天，信号需≥{hd+4}天后验证</span>
-                    </div>
-                    """, unsafe_allow_html=True)
+            # 收益曲线
+            if perf['cum_returns'] and len(perf['cum_returns']) >= 3:
+                chart_df = perf.get('chart_df',
+                    pd.DataFrame({'累计收益%': perf['cum_returns']})
+                )
+                st.line_chart(chart_df, height=140, use_container_width=True)
+                exit_info = perf.get('exit_reasons', {})
+                if exit_info:
+                    parts = [f"{k}{v}次" for k, v in sorted(exit_info.items())]
+                    st.caption(f"持有{perf.get('hold_days','?')}天 · {' · '.join(parts)}")
+            else:
+                st.caption(f"数据不足（{len(perf.get('cum_returns',[]))}笔），继续积累")
+        else:
+            st.markdown("""
+            <div class="perf-panel" style="text-align:center;opacity:0.5">
+              <div class="section-label">◆ 绩效总览</div>
+              <p style="color:#555;font-size:0.55rem;">暂无信号数据，信号需要持有期+4天后验证</p>
+            </div>
+            """, unsafe_allow_html=True)
 
         st.divider()
 
@@ -2696,89 +2753,29 @@ def main():
             """, unsafe_allow_html=True)
 
     elif page == '◆ 介绍':
-        st.header("◆ 策略介绍")
-
-        # 两种模式说明
-        st.subheader("◆ 筛选模式")
-        col_s, col_l = st.columns(2)
-        with col_s:
-            st.markdown("""
-            <div style="background:rgba(255,51,102,0.04);border:1px solid rgba(255,51,102,0.2);border-radius:12px;padding:20px;height:100%">
-              <div style="font-family:'JetBrains Mono',monospace;font-size:1rem;color:#FF3366;margin-bottom:12px">🔴 STRICT 严格</div>
-              <table style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:#9999BB;width:100%;line-height:2">
-                <tr><td style="color:#6666AA">连板要求</td><td style="color:#FF3366">≥3 连板</td></tr>
-                <tr><td style="color:#6666AA">实体板比例</td><td>≥55%</td></tr>
-                <tr><td style="color:#6666AA">回调幅度</td><td>12% ~ 40%</td></tr>
-                <tr><td style="color:#6666AA">缩量要求</td><td>≤67%</td></tr>
-                <tr><td style="color:#6666AA">胜率</td><td style="color:#00FF88">69.6%</td></tr>
-                <tr><td style="color:#6666AA">Sharpe</td><td style="color:#00F0FF">1.71</td></tr>
-                <tr><td style="color:#6666AA">适用</td><td>震荡市 / 方向不明</td></tr>
-              </table>
-            </div>""", unsafe_allow_html=True)
-        with col_l:
-            st.markdown("""
-            <div style="background:rgba(0,255,136,0.04);border:1px solid rgba(0,255,136,0.2);border-radius:12px;padding:20px;height:100%">
-              <div style="font-family:'JetBrains Mono',monospace;font-size:1rem;color:#00FF88;margin-bottom:12px">🟢 LOOSE 宽松</div>
-              <table style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:#9999BB;width:100%;line-height:2">
-                <tr><td style="color:#6666AA">连板要求</td><td style="color:#00FF88">≥2 连板</td></tr>
-                <tr><td style="color:#6666AA">实体板比例</td><td>≥30%</td></tr>
-                <tr><td style="color:#6666AA">回调幅度</td><td>8% ~ 40%</td></tr>
-                <tr><td style="color:#6666AA">缩量要求</td><td>≤67%</td></tr>
-                <tr><td style="color:#6666AA">胜率</td><td style="color:#00FF88">60.1%</td></tr>
-                <tr><td style="color:#6666AA">Sharpe</td><td style="color:#00F0FF">1.29</td></tr>
-                <tr><td style="color:#6666AA">适用</td><td>牛市 / 强趋势</td></tr>
-              </table>
-              <div style="font-family:'JetBrains Mono',monospace;font-size:0.55rem;color:#00FF88;margin-top:8px;padding:4px 8px;background:rgba(0,255,136,0.06);border-radius:4px">↳ STRICT 的超集（回调/缩量参数一致）</div>
-            </div>""", unsafe_allow_html=True)
-
-        st.divider()
-
-        # 交易成本
-        st.subheader("◆ 交易成本（A股）")
+        st.header("◆ NEON VAULT · 战术终端")
         st.markdown("""
-        <div style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:#7777AA;line-height:2">
-          <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid rgba(0,240,255,0.06)">
-            <span>印花税（卖出）</span><span style="color:#FF3366">0.05%</span></div>
-          <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid rgba(0,240,255,0.06)">
-            <span>佣金（双向）</span><span style="color:#FFB800">0.025%</span></div>
-          <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid rgba(0,240,255,0.06)">
-            <span>过户费</span><span style="color:#FFB800">0.001%</span></div>
-          <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid rgba(0,240,255,0.06)">
-            <span>滑点估算</span><span style="color:#FFB800">0.1%</span></div>
-          <div style="display:flex;justify-content:space-between;padding:6px 0;margin-top:4px;background:rgba(0,240,255,0.03);border-radius:4px;padding:6px 8px">
-            <span style="color:#00F0FF">合计往返</span><span style="color:#00F0FF">≈0.30%</span></div>
-        </div>""", unsafe_allow_html=True)
+        <div class="intro-section">
+          <h3>A股连板回调策略 v6</h3>
+          <p>识别连续涨停后缩量回调的股票，在回调企稳时介入，博取反弹收益。</p>
+          <p>基于「量价形时」四维分析框架，由 DeepSeek 提供深度 AI 诊断。</p>
 
-        st.divider()
+          <h4>◆ 核心特色</h4>
+          <ul>
+            <li><strong>市场自适应</strong> — 三大指数5日趋势自动检测，熊市/震荡/牛市切换最优参数</li>
+            <li><strong>全自动 AI 分析</strong> — 所有候选股票自动深度诊断，无需手动触发</li>
+            <li><strong>AI 记忆闭环</strong> — 每笔分析存档，3天后自动验证收益，历史上下文注入未来分析</li>
+            <li><strong>三阶段参数优化</strong> — ~200k组合 × 多周期交叉验证 × Bootstrap统计检验</li>
+            <li><strong>全自动日频扫描</strong> — 每交易日4次定时扫描 + git自动推送</li>
+          </ul>
 
-        # v5 优化说明
-        st.subheader("◆ v5 优化引擎")
-        st.markdown("""
-        <div style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:#7777AA;line-height:2">
-          <p><span style="color:#00F0FF">三阶段漏斗</span> — 粗筛(~80k组合) → 精筛(前50聚类) → 超精细(局部搜索)</p>
-          <p><span style="color:#00F0FF">多周期验证</span> — 跨3个时间段交叉验证，避免过拟合</p>
-          <p><span style="color:#00F0FF">Bootstrap</span> — 1000次重采样，95%置信区间</p>
-          <p><span style="color:#00F0FF">Walk-Forward</span> — 滚动窗口前向分析，验证时间稳定性</p>
-          <p style="margin-top:8px;padding:8px;background:rgba(255,184,0,0.04);border:1px solid rgba(255,184,0,0.12);border-radius:6px;color:#FFB800">
-            ⚠️ <code>require_oversold</code> 和 <code>require_low_close</code> 永久关闭——辛普森悖论：单因子有效但多因子组合中逆转。
-          </p>
-          <p style="margin-top:4px;color:#555577;font-size:0.55rem">
-            参考：华安证券研报 — 32,615个首板样本分析
-          </p>
-        </div>""", unsafe_allow_html=True)
+          <h4>◆ 数据来源</h4>
+          <p>yfinance (Yahoo Finance) · ~5,200只A股 · 本地CSV缓存</p>
 
-        st.divider()
-
-        # 数据来源
-        st.subheader("◆ 数据与调度")
-        st.markdown("""
-        <div style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:#7777AA;line-height:2">
-          <p><span style="color:#6666AA">数据源</span> yfinance (Yahoo Finance)</p>
-          <p><span style="color:#6666AA">缓存</span> ~5,200 只A股 / CSV 格式</p>
-          <p><span style="color:#6666AA">定时扫描</span> 交易日 10:00 / 11:30 / 14:00 / 15:00</p>
-          <p><span style="color:#6666AA">自动推送</span> scan → JSON → git push → Streamlit Cloud</p>
-          <p><span style="color:#6666AA">AI 分析</span> DeepSeek API · 量价形时四维框架</p>
-        </div>""", unsafe_allow_html=True)
+          <h4>◆ 扫描时间</h4>
+          <p>每个交易日 10:00 / 11:30 / 14:00 / 15:00</p>
+        </div>
+        """, unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()
