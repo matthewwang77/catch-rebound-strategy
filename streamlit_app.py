@@ -100,7 +100,7 @@ def inject_design_system():
 
     h1 {
       font-weight: 900 !important;
-      font-size: 2.4rem !important;
+      font-size: 2.2rem !important;
       text-align: center;
       background: linear-gradient(135deg, #00F0FF 0%, #00E5FF 25%, #7B2FFF 60%, #C44AFF 100%);
       -webkit-background-clip: text;
@@ -114,7 +114,7 @@ def inject_design_system():
 
     h2 {
       font-weight: 700 !important;
-      font-size: 1.15rem !important;
+      font-size: 1.25rem !important;
       color: #00F0FF !important;
       border-left: 3px solid #00F0FF;
       padding-left: 12px !important;
@@ -122,7 +122,7 @@ def inject_design_system():
 
     h3 {
       font-weight: 600 !important;
-      font-size: 0.9rem !important;
+      font-size: 0.95rem !important;
       color: #B0B0D0 !important;
     }
 
@@ -134,7 +134,7 @@ def inject_design_system():
 
     [data-testid="stCaption"] {
       font-family: 'JetBrains Mono', 'SF Mono', monospace !important;
-      font-size: 0.7rem !important;
+      font-size: 0.8rem !important;
       color: #6666AA !important;
     }
 
@@ -148,15 +148,15 @@ def inject_design_system():
     [data-testid="stSidebar"] h3 {
       font-family: 'Orbitron', sans-serif !important;
       color: #00F0FF !important;
-      font-size: 0.85rem !important;
+      font-size: 0.9rem !important;
       letter-spacing: 0.1em !important;
     }
 
-    [data-testid="stSidebar"] p { font-size: 0.7rem; color: #7777AA; line-height: 1.7; }
+    [data-testid="stSidebar"] p { font-size: 0.8rem; color: #7777AA; line-height: 1.7; }
 
     [data-testid="stSidebar"] [data-testid="stRadio"] label {
       font-family: 'JetBrains Mono', monospace !important;
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       color: #7777AA;
       padding: 10px 14px !important;
       border-radius: 6px;
@@ -218,7 +218,7 @@ def inject_design_system():
 
     [data-testid="stMetric"] label {
       font-family: 'Orbitron', sans-serif !important;
-      font-size: 0.6rem !important;
+      font-size: 0.75rem !important;
       font-weight: 700 !important;
       color: #6666AA !important;
       letter-spacing: 0.1em !important;
@@ -242,7 +242,7 @@ def inject_design_system():
     .stButton > button {
       font-family: 'Orbitron', sans-serif !important;
       font-weight: 600 !important;
-      font-size: 0.7rem !important;
+      font-size: 0.78rem !important;
       letter-spacing: 0.08em !important;
       text-transform: uppercase;
       border-radius: 8px !important;
@@ -296,7 +296,7 @@ def inject_design_system():
     }
     [data-baseweb="tab"] {
       font-family: 'Orbitron', sans-serif !important;
-      font-size: 0.65rem !important;
+      font-size: 0.75rem !important;
       font-weight: 600 !important;
       letter-spacing: 0.06em !important;
       text-transform: uppercase;
@@ -323,7 +323,7 @@ def inject_design_system():
     }
     [data-testid="stExpander"]:hover { border-color: rgba(0,240,255,0.2); }
     [data-testid="stExpander"] summary {
-      font-size: 0.72rem !important;
+      font-size: 0.8rem !important;
       font-weight: 600;
       color: #00F0FF !important;
       padding: 10px 16px !important;
@@ -346,7 +346,7 @@ def inject_design_system():
     }
     [data-testid="stDataFrame"] thead th {
       font-family: 'Orbitron', sans-serif !important;
-      font-size: 0.6rem !important;
+      font-size: 0.75rem !important;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -357,7 +357,7 @@ def inject_design_system():
     }
     [data-testid="stDataFrame"] tbody td {
       font-family: 'JetBrains Mono', monospace !important;
-      font-size: 0.72rem;
+      font-size: 0.8rem;
       color: #D0D0E8;
       padding: 10px 16px;
       border-bottom: 1px solid rgba(255,255,255,0.02);
@@ -467,7 +467,7 @@ def inject_design_system():
       margin-bottom: 6px;
     }
     .nav-card .card-label {
-      font-size: 0.7rem;
+      font-size: 0.8rem;
       letter-spacing: 0.08em;
     }
 
@@ -480,14 +480,14 @@ def inject_design_system():
     }
     .mode-pills-label {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.55rem;
+      font-size: 0.75rem;
       color: #5555AA;
       text-transform: uppercase;
       letter-spacing: 0.1em;
     }
     .mode-pill {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.6rem;
+      font-size: 0.75rem;
       padding: 4px 12px;
       border-radius: 14px;
       cursor: help;
@@ -543,12 +543,12 @@ def inject_design_system():
       border: 1px solid rgba(255,184,0,0.22);
     }
     .neon-status-bar .status-icon { font-size: 1rem; }
-    .neon-status-bar .status-text { font-size: 0.7rem; }
+    .neon-status-bar .status-text { font-size: 0.8rem; }
     .neon-status-bar.closed .status-text { color: #00F0FF; }
     .neon-status-bar.trading .status-text { color: #FFB800; }
     .neon-status-bar .status-spacer { flex: 1; }
-    .neon-status-bar .status-label { font-size: 0.55rem; color: #6666AA; }
-    .neon-status-bar .status-time { font-size: 0.65rem; color: #9999CC; }
+    .neon-status-bar .status-label { font-size: 0.75rem; color: #6666AA; }
+    .neon-status-bar .status-time { font-size: 0.78rem; color: #9999CC; }
     .pulse-dot {
       width: 8px; height: 8px;
       border-radius: 50%;
@@ -575,7 +575,7 @@ def inject_design_system():
     }
     .ai-summary-badge {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.62rem;
+      font-size: 0.78rem;
       padding: 6px 12px;
       border-radius: 6px;
       white-space: nowrap;
@@ -600,7 +600,7 @@ def inject_design_system():
     /* === SIDEBAR DATA STATUS === */
     .sidebar-data-status {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.62rem;
+      font-size: 0.8rem;
       color: #7777AA;
       padding: 10px 12px;
       border-radius: 8px;
@@ -610,7 +610,7 @@ def inject_design_system():
     }
     .sidebar-data-status .stat-label {
       color: #555588;
-      font-size: 0.55rem;
+      font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
     }
@@ -634,34 +634,36 @@ def inject_design_system():
 
     .market-status-card {
       background: linear-gradient(135deg, rgba(0,255,136,0.03) 0%, rgba(0,15,10,0.6) 100%);
-      border: 1px solid rgba(0,255,136,0.1);
-      border-radius: 6px;
-      padding: 12px 16px;
-      margin-bottom: 14px;
+      border: 1px solid rgba(0,255,136,0.15);
+      border-radius: 8px;
+      padding: 18px 24px;
+      margin-bottom: 16px;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
     .market-index-row {
       font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
       display: flex;
       gap: 16px;
       flex-wrap: wrap;
+      color: #e0e0e0;
     }
     .market-sentiment { flex-shrink: 0; }
     .sentiment-tag {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.5rem;
+      font-size: 0.78rem;
       color: #00ff88;
       background: rgba(0,255,136,0.06);
       border: 1px solid rgba(0,255,136,0.2);
-      border-radius: 3px;
-      padding: 3px 10px;
+      border-radius: 4px;
+      padding: 4px 14px;
     }
 
     .section-label {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
+      font-size: 0.8rem;
       color: #00ff88;
       letter-spacing: 0.06em;
       margin-bottom: 10px;
@@ -671,9 +673,9 @@ def inject_design_system():
 
     .status-badge {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.45rem;
-      padding: 2px 8px;
-      border-radius: 3px;
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 4px;
       white-space: nowrap;
     }
     .status-badge.analyzing {
@@ -698,46 +700,147 @@ def inject_design_system():
       border: 1px dashed rgba(100,100,100,0.2);
     }
 
+    /* ── 候选卡片 v3 ── */
+    .candidate-card {
+      background: linear-gradient(135deg, rgba(13,13,30,0.95), rgba(8,8,20,0.9));
+      border: 1px solid rgba(0,255,136,0.12);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 10px;
+      transition: all 0.2s ease;
+      animation: fadeUp 0.4s ease both;
+    }
+    .candidate-card:nth-child(1) { animation-delay: 0s; }
+    .candidate-card:nth-child(2) { animation-delay: 0.05s; }
+    .candidate-card:nth-child(3) { animation-delay: 0.1s; }
+    .candidate-card:nth-child(4) { animation-delay: 0.15s; }
+    .candidate-card:nth-child(5) { animation-delay: 0.2s; }
+    .candidate-card:hover {
+      border-color: rgba(0,255,136,0.35);
+      box-shadow: 0 0 20px rgba(0,255,136,0.06);
+      transform: translateY(-1px);
+    }
+    .candidate-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .candidate-code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #00ff88;
+    }
+    .candidate-name {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      color: #aaa;
+    }
+    .candidate-mode {
+      margin-left: auto;
+      font-family: 'Orbitron', monospace;
+      font-size: 0.75rem;
+      padding: 3px 10px;
+      border-radius: 4px;
+      background: rgba(0,255,136,0.08);
+      color: #00ff88;
+      letter-spacing: 0.5px;
+    }
+    .candidate-metrics {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+    .mini-metric {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .mini-label {
+      font-family: 'Orbitron', monospace;
+      font-size: 0.75rem;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .mini-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #e0e0e0;
+    }
+    .candidate-ai {
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding-top: 10px;
+    }
+    .ai-inline-strip {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .ai-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      padding: 4px 12px;
+      border-radius: 6px;
+    }
+    .ai-badge.opinion {
+      color: #ffd700;
+      background: rgba(255,215,0,0.08);
+      border: 1px solid rgba(255,215,0,0.2);
+    }
+    .ai-badge.sentiment {
+      color: #00f0ff;
+      background: rgba(0,240,255,0.08);
+      border: 1px solid rgba(0,240,255,0.2);
+    }
+    .ai-badge.position {
+      color: #ff6b35;
+      background: rgba(255,107,53,0.08);
+      border: 1px solid rgba(255,107,53,0.2);
+    }
+
     .analysis-progress-bar {
       background: rgba(0,255,136,0.02);
-      border: 1px solid rgba(0,255,136,0.08);
-      border-radius: 6px;
-      padding: 12px 16px;
+      border: 1px solid rgba(0,255,136,0.1);
+      border-radius: 8px;
+      padding: 14px 18px;
       margin: 10px 0 16px 0;
     }
     .progress-header {
       display: flex;
       justify-content: space-between;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.5rem;
+      font-size: 0.78rem;
       color: #00ff88;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
     .progress-track {
-      height: 3px;
+      height: 6px;
       background: rgba(0,255,136,0.06);
-      border-radius: 2px;
+      border-radius: 3px;
       overflow: hidden;
     }
     .progress-fill {
       height: 100%;
       background: linear-gradient(90deg, #00ff88, #00e5ff);
-      border-radius: 2px;
+      border-radius: 3px;
       transition: width 0.5s ease;
       animation: pulse-glow 2s ease-in-out infinite;
     }
     .progress-footer {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.42rem;
-      color: #555;
-      margin-top: 4px;
+      font-size: 0.75rem;
+      color: #888;
+      margin-top: 6px;
     }
 
     .perf-panel {
       background: rgba(0,15,10,0.4);
-      border: 1px solid rgba(0,255,136,0.06);
-      border-radius: 6px;
-      padding: 14px 18px;
+      border: 1px solid rgba(0,255,136,0.08);
+      border-radius: 8px;
+      padding: 16px 20px;
       margin-bottom: 12px;
     }
     .perf-grid {
@@ -746,43 +849,119 @@ def inject_design_system():
       flex-wrap: wrap;
       margin: 10px 0;
     }
-    .perf-card { min-width: 80px; }
+    .perf-card { min-width: 100px; text-align: center; }
     .perf-label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.42rem;
-      color: #555;
-      margin-bottom: 2px;
+      font-family: 'Orbitron', monospace;
+      font-size: 0.78rem;
+      color: #666;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
     .perf-value {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 1.1rem;
-      font-weight: bold;
+      font-size: 1.6rem;
+      font-weight: 700;
     }
     .perf-detail {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.42rem;
-      color: #444;
-      margin-top: 4px;
+      font-size: 0.78rem;
+      color: #888;
+      margin-top: 8px;
       padding-top: 8px;
-      border-top: 1px solid rgba(0,255,136,0.04);
+      border-top: 1px solid rgba(0,255,136,0.06);
+    }
+
+    /* ── AI 记忆卡片 (复盘页) ── */
+    .memory-card-v3 {
+      background: rgba(13,13,30,0.85);
+      border-left: 3px solid var(--green);
+      border-radius: 0 8px 8px 0;
+      padding: 14px 18px;
+      margin-bottom: 8px;
+      border-top: 1px solid rgba(255,255,255,0.04);
+      border-right: 1px solid rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      transition: all 0.2s ease;
+    }
+    .memory-card-v3:hover {
+      background: rgba(13,13,30,0.95);
+      transform: translateX(2px);
+    }
+    .memory-card-v3.verdict-correct {
+      border-left-color: #00ff88;
+    }
+    .memory-card-v3.verdict-wrong {
+      border-left-color: #ff3366;
+    }
+    .memory-card-v3.verdict-pending {
+      border-left-color: #7b2fff;
+    }
+    .memory-verdict-badge {
+      font-family: 'Orbitron', monospace;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    .memory-verdict-badge.correct {
+      color: #00ff88;
+      background: rgba(0,255,136,0.08);
+      border: 1px solid rgba(0,255,136,0.2);
+    }
+    .memory-verdict-badge.wrong {
+      color: #ff3366;
+      background: rgba(255,51,102,0.08);
+      border: 1px solid rgba(255,51,102,0.2);
+    }
+    .memory-verdict-badge.pending {
+      color: #7b2fff;
+      background: rgba(123,47,255,0.08);
+      border: 1px solid rgba(123,47,255,0.2);
+    }
+    .memory-meta-row {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: #888;
+      margin: 8px 0;
+    }
+    .memory-returns-row {
+      display: flex;
+      gap: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+    }
+    .memory-ret-badge {
+      padding: 2px 8px;
+      border-radius: 3px;
+      font-weight: 600;
+    }
+    .memory-ret-badge.positive {
+      color: #00ff88;
+      background: rgba(0,255,136,0.06);
+    }
+    .memory-ret-badge.negative {
+      color: #ff3366;
+      background: rgba(255,51,102,0.06);
     }
 
     .intro-section {
       font-family: 'JetBrains Mono', monospace;
       color: #aaa;
-      font-size: 0.55rem;
+      font-size: 0.8rem;
       line-height: 1.7;
     }
     .intro-section h3 {
       color: #00ff88;
       font-family: 'Orbitron', sans-serif;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       letter-spacing: 0.06em;
       margin-bottom: 8px;
     }
     .intro-section h4 {
       color: #00e5ff;
-      font-size: 0.6rem;
+      font-size: 0.8rem;
       letter-spacing: 0.04em;
       margin-top: 16px;
       margin-bottom: 6px;
@@ -2170,6 +2349,10 @@ def _analysis_worker():
         except Exception as e:
             st.session_state.analysis_errors[code] = str(e)
             st.session_state.analysis_results[code] = None
+            # 单只失败不中断，继续处理队列
+        # 限流延迟
+        if st.session_state.analysis_queue:
+            time.sleep(1.0)
     st.session_state.analysis_running = False
     st.session_state.analysis_current = None
 
@@ -2226,16 +2409,16 @@ def main():
     scan_info = " | 定时扫描: 10:00 / 11:30 / 14:00 / 15:00" if weekday < 5 else ""
     st.markdown(f"""
     <div style="display:flex;gap:8px;align-items:center;margin:4px 0 6px 0;flex-wrap:wrap">
-      <span style="font-family:'JetBrains Mono',monospace;font-size:0.58rem;padding:3px 10px;border-radius:10px;
+      <span style="font-family:'JetBrains Mono',monospace;font-size:0.78rem;padding:4px 12px;border-radius:10px;
                    background:rgba(0,240,255,0.06);border:1px solid rgba(0,240,255,0.12);color:#00F0FF">
         📅 {date_str}</span>
-      <span style="font-family:'JetBrains Mono',monospace;font-size:0.58rem;padding:3px 10px;border-radius:10px;
+      <span style="font-family:'JetBrains Mono',monospace;font-size:0.78rem;padding:4px 12px;border-radius:10px;
                    background:rgba(123,47,255,0.06);border:1px solid rgba(123,47,255,0.12);color:#9B6FFF">
         🕐 {time_str}</span>
-      <span style="font-family:'JetBrains Mono',monospace;font-size:0.58rem;padding:3px 10px;border-radius:10px;
+      <span style="font-family:'JetBrains Mono',monospace;font-size:0.78rem;padding:4px 12px;border-radius:10px;
                    background:rgba(0,240,255,0.04);border:1px solid rgba(0,240,255,0.08);color:#8888BB">
         {market_status}</span>
-      <span style="font-family:'JetBrains Mono',monospace;font-size:0.52rem;color:#555577">{scan_info}</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:#777">{scan_info}</span>
     </div>
     """, unsafe_allow_html=True)
 
@@ -2311,7 +2494,7 @@ def main():
                     scan_time = scan_info.get("scan_time", "")
                     if scan_time:
                         st.markdown(f"""
-                        <div style="font-family:monospace;font-size:0.55rem;color:#555588;margin-top:6px;text-align:right">
+                        <div style="font-family:monospace;font-size:0.78rem;color:#555588;margin-top:6px;text-align:right">
                           最近扫描 <span style="color:#7777AA">{scan_time}</span>
                         </div>""", unsafe_allow_html=True)
                 except Exception:
@@ -2353,7 +2536,7 @@ def main():
         st.markdown(f"""
         <div style="display:flex;align-items:center;gap:10px;padding:8px 16px;margin:8px 0;border-radius:8px;
                     background:{regime_bg};border:1px solid {regime_border};
-                    font-family:'JetBrains Mono',monospace;font-size:0.55rem;color:#8888AA">
+                    font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:#8888AA">
           <span style="font-size:1rem">{regime_icon}</span>
           <span style="color:{regime_color}">{regime.get("label", "—")}</span>
           <span>| 5日趋势 <span style="color:{regime_color}">{regime['avg_trend']:+.1f}%</span></span>
@@ -2382,10 +2565,10 @@ def main():
         done_count = len([k for k in st.session_state.analysis_results if st.session_state.analysis_results[k] is not None])
         dots = "·" * ((done_count % 4) + 1)
         st.markdown(f"""
-        <div style="padding:6px 0;font-family:'JetBrains Mono',monospace;font-size:0.5rem;color:#00F0FF;
+        <div style="padding:8px 0;font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:#00F0FF;
                     border-bottom:1px solid rgba(0,240,255,0.08);margin-bottom:8px;display:flex;align-items:center;gap:8px">
           <span>◆ 分析中: {current} · 队列剩余 {queue_len} 只</span>
-          <span style="color:#555577">{dots}</span>
+          <span style="color:#777">{dots}</span>
         </div>
         """, unsafe_allow_html=True)
 
@@ -2451,8 +2634,8 @@ def main():
                 color = "#00ff88" if pct >= 0 else "#ff5050"
                 sign = "+" if pct >= 0 else ""
                 index_parts.append(
-                    f'<span style="color:#777;font-size:0.5rem;">{name}</span> '
-                    f'<span style="color:{color};font-size:0.55rem;">{data["price"]:.0f} {sign}{pct:.2f}%</span>'
+                    f'<span style="color:#888;font-size:0.75rem;">{name}</span> '
+                    f'<span style="color:{color};font-size:0.85rem;">{data["price"]:.0f} {sign}{pct:.2f}%</span>'
                 )
 
             sentiment_label = regime.get("label", "—")
@@ -2495,6 +2678,8 @@ def main():
                 codes = [c["code"] for c in candidates]
                 name_info = name_lookup.batch_lookup(codes, max_fetch=5)
 
+                # ── 构建候选卡片 HTML ──
+                candidate_cards = []
                 for c in candidates:
                     code = c["code"]
                     info = name_info.get(code, {})
@@ -2506,45 +2691,70 @@ def main():
                     has_result = bool(st.session_state.get(f"analysis_result_{code}"))
 
                     if is_current:
-                        status_html = '<span class="status-badge analyzing">🔄 分析中</span>'
+                        ai_strip = '<span class="status-badge analyzing">🔄 AI分析中…</span>'
                     elif in_queue:
-                        status_html = '<span class="status-badge queued">⏳ 排队</span>'
+                        ai_strip = '<span class="status-badge queued">⏳ 排队</span>'
                     elif has_result:
                         result_text = st.session_state.get(f"analysis_result_{code}", "")
-                        # Quick parse for sentiment/position
+                        # 快速解析情绪/仓位/结论
                         sent_match = re.search(r'情绪档位[：:]\s*(.+?)(?:\n|$)', result_text)
                         pos_match = re.search(r'仓位[建议]*[：:]\s*(.+?)(?:\n|$)', result_text)
+                        op_match = re.search(r'最终结论[：:]\s*(.+?)(?:\n|$)', result_text)
                         sentiment = sent_match.group(1).strip() if sent_match else "—"
                         position = pos_match.group(1).strip() if pos_match else "—"
-                        status_html = f'<span class="status-badge done">🎯 {sentiment} · 💰 {position}</span>'
+                        opinion = op_match.group(1).strip() if op_match else "—"
+                        ai_strip = (
+                            f'<div class="ai-inline-strip">'
+                            f'<span class="ai-badge opinion">◆ {opinion}</span>'
+                            f'<span class="ai-badge sentiment">🎯 {sentiment}</span>'
+                            f'<span class="ai-badge position">💰 {position}</span>'
+                            f'</div>'
+                        )
                     else:
-                        status_html = '<span class="status-badge pending">⏳ 排队</span>'
+                        ai_strip = '<span class="status-badge pending">⏳ 排队</span>'
 
-                    with st.container():
-                        col1, col2, col3, col4, col5, col6 = st.columns([1.6, 1.1, 1.0, 0.8, 0.8, 1.9])
-                        with col1:
-                            name_line = f"**`{code}`**"
-                            if stock_name:
-                                name_line += f"  {stock_name}"
-                            st.markdown(name_line)
-                        with col2:
-                            st.metric("价格", f"{c['price']:.2f}")
-                        with col3:
-                            st.metric("回调", f"{c['pullback_pct']:.1f}%")
-                        with col4:
-                            st.metric("连板", f"{c['limit_days']}天")
-                        with col5:
-                            st.metric("实体板", f"{c.get('entity_ratio', 0):.0f}%")
-                        with col6:
-                            st.markdown(status_html, unsafe_allow_html=True)
+                    card_html = f"""
+                    <div class="candidate-card">
+                      <div class="candidate-header">
+                        <span class="candidate-code">◆ {code}</span>
+                        <span class="candidate-name">{stock_name}</span>
+                        <span class="candidate-mode">{rec_mode.upper()}</span>
+                      </div>
+                      <div class="candidate-metrics">
+                        <div class="mini-metric">
+                          <span class="mini-label">价格</span>
+                          <span class="mini-value">¥{c['price']:.2f}</span>
+                        </div>
+                        <div class="mini-metric">
+                          <span class="mini-label">回调</span>
+                          <span class="mini-value">{c['pullback_pct']:.1f}%</span>
+                        </div>
+                        <div class="mini-metric">
+                          <span class="mini-label">连板</span>
+                          <span class="mini-value">{c['limit_days']}天</span>
+                        </div>
+                        <div class="mini-metric">
+                          <span class="mini-label">实体比</span>
+                          <span class="mini-value">{c.get('entity_ratio', 0):.0f}%</span>
+                        </div>
+                      </div>
+                      <div class="candidate-ai">
+                        {ai_strip}
+                      </div>
+                    </div>
+                    """
+                    candidate_cards.append(card_html)
 
-                        # 展开完整 AI 分析
-                        if has_result:
-                            result_text = st.session_state[f"analysis_result_{code}"]
-                            with st.expander(f"◆ {code} AI分析", expanded=False):
-                                st.markdown(result_text)
+                st.markdown("\n".join(candidate_cards), unsafe_allow_html=True)
 
-                        st.divider()
+                # ── 展开完整 AI 分析 ──
+                for c in candidates:
+                    code = c["code"]
+                    has_result = bool(st.session_state.get(f"analysis_result_{code}"))
+                    if has_result:
+                        result_text = st.session_state[f"analysis_result_{code}"]
+                        with st.expander(f"📖 {code} 完整AI分析", expanded=False):
+                            st.markdown(result_text)
 
             # ── AI 分析进度条 ──
             if st.session_state.analysis_running:
@@ -2638,7 +2848,7 @@ def main():
             st.markdown("""
             <div class="perf-panel" style="text-align:center;opacity:0.5">
               <div class="section-label">◆ 绩效总览</div>
-              <p style="color:#555;font-size:0.55rem;">暂无信号数据，信号需要持有期+4天后验证</p>
+              <p style="color:#555;font-size:0.78rem;">暂无信号数据，信号需要持有期+4天后验证</p>
             </div>
             """, unsafe_allow_html=True)
 
@@ -2669,72 +2879,81 @@ def main():
 
             st.caption(f"◆ {len(filtered)} 条分析记录")
 
-            # 渲染记忆卡片
+            # 渲染记忆卡片 (v3)
             for rec in filtered[:30]:
                 code = rec['code']
                 verdict = rec.get('verdict')
                 if verdict == 'correct':
-                    border_color = "rgba(0,255,136,0.3)"
-                    badge_html = '<span style="font-size:0.48rem;color:#00FF88;background:rgba(0,255,136,0.06);padding:1px 6px;border-radius:3px">✅</span>'
+                    vclass = 'correct'
+                    vlabel = '✅ 正确'
                 elif verdict == 'wrong':
-                    border_color = "rgba(255,80,80,0.25)"
-                    badge_html = '<span style="font-size:0.48rem;color:#FF6B6B;background:rgba(255,80,80,0.05);padding:1px 6px;border-radius:3px">◈</span>'
+                    vclass = 'wrong'
+                    vlabel = '◈ 偏差'
                 else:
-                    border_color = "rgba(123,47,255,0.25)"
-                    badge_html = '<span style="font-size:0.48rem;color:#9B6FFF;background:rgba(123,47,255,0.05);padding:1px 6px;border-radius:3px">⏳</span>'
+                    vclass = 'pending'
+                    vlabel = '⏳ 待验'
 
                 sdate = rec.get('date', '')
                 sdate_display = f"{sdate[4:6]}-{sdate[6:]}" if len(sdate) >= 8 else sdate
 
                 ret3_val = rec.get('return_3d')
-                if ret3_val is not None:
-                    ret3_str = f"{ret3_val:+.1f}%"
-                    ret3_color = "#00FF88" if ret3_val > 0 else ("#FF5050" if ret3_val < 0 else "#444466")
-                else:
-                    ret3_str = "待验"
-                    ret3_color = "#444466"
+                ret5_val = rec.get('return_5d')
+                ret7_val = rec.get('return_7d')
 
                 analysis_full = rec.get('analysis', '')
                 sentiment = rec.get('sentiment', '')
                 position = rec.get('position', '')
                 opinion = rec.get('opinion', '')
 
-                # 构建结论摘要
+                # 结论摘要
                 summary_parts = []
                 if opinion:
                     if "参与" in opinion:
-                        opinion_color = "#00FF88"
+                        op_class = "positive"
                     elif "放弃" in opinion:
-                        opinion_color = "#FF5050"
+                        op_class = "negative"
                     else:
-                        opinion_color = "#D0D0E8"
-                    summary_parts.append(f'<span style="color:{opinion_color}">{opinion}</span>')
+                        op_class = ""
+                    summary_parts.append(f'<span class="memory-ret-badge {op_class}">{opinion}</span>')
                 if sentiment:
                     summary_parts.append(f'<span style="color:#9B6FFF">{sentiment}</span>')
                 if position:
                     summary_parts.append(f'<span style="color:#8888AA">{position}</span>')
+                summary_html = ' · '.join(summary_parts) if summary_parts else '<span style="color:#666">无摘要</span>'
 
-                summary_html = ' <span style="color:#555577">·</span> '.join(summary_parts) if summary_parts else '<span style="color:#444466">无摘要</span>'
+                # 收益标签
+                ret_badges = []
+                for label, val in [("3d", ret3_val), ("5d", ret5_val), ("7d", ret7_val)]:
+                    if val is not None:
+                        pos = "positive" if val > 0 else ("negative" if val < 0 else "")
+                        ret_badges.append(
+                            f'<span class="memory-ret-badge {pos}">{label} {val:+.1f}%</span>'
+                        )
+                    else:
+                        ret_badges.append(
+                            f'<span class="memory-ret-badge" style="color:#666">{label} N/A</span>'
+                        )
 
                 st.markdown(f"""
-                <div style="border-left:2px solid {border_color};padding:8px 14px;margin-bottom:6px;background:rgba(10,11,20,0.5)">
-                  <div style="display:flex;align-items:center;justify-content:space-between">
-                    <div style="display:flex;align-items:center;gap:10px">
-                      <span style="font-family:'JetBrains Mono',monospace;color:#D0D0E8;font-size:0.72rem">{code}</span>
-                      {badge_html}
-                      <span style="font-family:'JetBrains Mono',monospace;color:#555577;font-size:0.5rem">{rec.get('mode', '')}</span>
+                <div class="memory-card-v3 verdict-{vclass}">
+                  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
+                    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+                      <span style="font-family:'JetBrains Mono',monospace;color:#00ff88;font-size:0.85rem;font-weight:600">{code}</span>
+                      <span class="memory-verdict-badge {vclass}">{vlabel}</span>
+                      <span style="font-family:'JetBrains Mono',monospace;color:#666;font-size:0.75rem">{rec.get('mode', '').upper()}</span>
+                      <span style="font-family:'JetBrains Mono',monospace;color:#888;font-size:0.75rem">{sdate_display}</span>
                     </div>
-                    <span style="font-family:'JetBrains Mono',monospace;color:#444466;font-size:0.5rem">{sdate_display}</span>
                   </div>
-                  <div style="display:flex;gap:14px;margin-top:4px;font-family:'JetBrains Mono',monospace;font-size:0.5rem;color:#555577;flex-wrap:wrap">
-                    <span>¥{rec.get('entry_price', 0):.2f}</span>
-                    <span>回调 {rec.get('pullback_pct', 0):.1f}%</span>
-                    <span>3D <span style="color:{ret3_color}">{ret3_str}</span></span>
-                    {f'<span>情绪: {sentiment}</span>' if sentiment else ''}
-                    {f'<span>仓位: {position}</span>' if position else ''}
+                  <div class="memory-meta-row">
+                    <span>入场 ¥{rec.get('entry_price', 0):.2f}</span>
+                    <span>· 回调 {rec.get('pullback_pct', 0):.1f}%</span>
+                    <span>· 连板 {rec.get('limit_days', 0)}天</span>
                   </div>
-                  <div style="margin-top:4px;font-family:'JetBrains Mono',monospace;font-size:0.5rem;line-height:1.5">
-                    <span style="color:#00F0FF">◆</span> {summary_html}
+                  <div class="memory-returns-row">
+                    {''.join(ret_badges)}
+                  </div>
+                  <div class="memory-meta-row">
+                    ◆ {summary_html}
                   </div>
                 </div>
                 """, unsafe_allow_html=True)
@@ -2760,9 +2979,9 @@ def main():
                             st.rerun()
         else:
             st.markdown("""
-            <div style="padding:30px 0;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:#444466">
+            <div style="padding:30px 0;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:#444466">
               ◆ AI 记忆为空<br>
-              <span style="font-size:0.5rem;color:#333355">在选股页对候选股票使用 AI 分析后，记录会出现在这里</span>
+              <span style="font-size:0.78rem;color:#333355">在选股页对候选股票使用 AI 分析后，记录会出现在这里</span>
             </div>
             """, unsafe_allow_html=True)
 

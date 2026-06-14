@@ -8,9 +8,10 @@ v6新增: 市场自适应 — 自动检测熊市/牛市，切换最优参数
 import yfinance as yf
 import pandas as pd
 import json
-from datetime import datetime
+from datetime import datetime, timedelta
 import os
 import sys
+import time as _time
 import importlib.util
 
 # ==================== 加载模块 ====================
@@ -382,20 +383,39 @@ def _run_ai_analysis(code, stock_df, candidate, market_context, mode):
             return
         api_url = screener.DEEPSEEK_API_URL
 
-        resp = requests.post(
-            api_url,
-            headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
-            json={
-                "model": "deepseek-chat",
-                "messages": [
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": prompt},
-                ],
-                "temperature": 0.4,
-                "max_tokens": 800,
-            },
-            timeout=25,
-        )
+        # 带重试的 API 调用
+        max_retries = 2
+        last_error = None
+        for attempt in range(max_retries):
+            try:
+                resp = requests.post(
+                    api_url,
+                    headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
+                    json={
+                        "model": "deepseek-chat",
+                        "messages": [
+                            {"role": "system", "content": system_prompt},
+                            {"role": "user", "content": prompt},
+                        ],
+                        "temperature": 0.4,
+                        "max_tokens": 800,
+                    },
+                    timeout=25,
+                )
+                break  # 成功则跳出重试循环
+            except requests.exceptions.Timeout:
+                last_error = "超时"
+                if attempt < max_retries - 1:
+                    _time.sleep(3)
+            except requests.exceptions.ConnectionError:
+                last_error = "连接错误"
+                if attempt < max_retries - 1:
+                    _time.sleep(3)
+        else:
+            # 全部重试失败
+            print(f"  ⚠️ {code} AI API 异常: {last_error}（重试{max_retries}次后放弃）")
+            return
+
         if resp.status_code != 200:
             print(f"  ⚠️ {code} AI API 错误: HTTP {resp.status_code}")
             return
@@ -447,7 +467,6 @@ def _run_ai_analysis(code, stock_df, candidate, market_context, mode):
         "verdict": None,
     })
     _save_ai_memory(memory)
-    print(f"  🤖 {code} AI 分析完成 → 记忆已保存")
 
 
 # ==================== 格式化消息 ====================
@@ -626,7 +645,7 @@ def main():
     # 保存信号到跟踪文件（供复盘页面使用）
     _save_signals(results)
 
-    # AI 分析（仅对推荐模式的候选）
+    # AI 分析（对每个候选逐只分析，单只失败不中断）
     try:
         market_context = screener.get_market_context()
     except Exception:
@@ -635,15 +654,26 @@ def main():
         if not candidates:
             continue
         print(f"\n🤖 AI 分析开始: {mode} 模式 {len(candidates)} 只候选")
+        ai_ok, ai_fail = 0, 0
         for i, c in enumerate(candidates):
             code = c.get('code', '')
             stock_df = all_data.get(code)
             if stock_df is None or len(stock_df) < 5:
-                print(f"  ⚠️ {code} 数据不足，跳过 AI")
+                print(f"  ⚠️ [{i+1}/{len(candidates)}] {code} 数据不足，跳过 AI")
+                ai_fail += 1
                 continue
-            print(f"  [{i+1}/{len(candidates)}] {code} ...")
-            _run_ai_analysis(code, stock_df, c, market_context, mode)
-        print(f"✅ AI 分析完成: {mode}")
+            print(f"  🤖 [{i+1}/{len(candidates)}] {code} AI分析中 ...", end=" ", flush=True)
+            try:
+                _run_ai_analysis(code, stock_df, c, market_context, mode)
+                ai_ok += 1
+                print("✅")
+            except Exception as e:
+                ai_fail += 1
+                print(f"❌ {e}")
+            # 限流延迟（最后一支不加）
+            if i < len(candidates) - 1:
+                _time.sleep(1.5)
+        print(f"✅ AI 分析完成: {mode} — 成功 {ai_ok}/{len(candidates)}, 失败 {ai_fail}")
 
     # 格式化消息
     msg = format_message(results)
