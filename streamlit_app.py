@@ -2311,27 +2311,35 @@ def load_latest_results():
 
 
 # ==================== 异步分析队列 ====================
+# 解决方案：queue.Queue 和 results dict 存在 st.session_state 中（初始化一次，rerun 不丢失），
+# worker 线程拿到的是这些对象的直接引用（不经过 st.session_state），从而绕过线程隔离。
 import queue as _queue
 
-# 线程安全的模块级全局变量（绕过 st.session_state 的线程隔离问题）
-_worker_queue = _queue.Queue()
-_worker_results = {}   # {code: result_text}
-_worker_errors = {}    # {code: error_msg}
-_worker_current = None
-_worker_running = False
-_worker_lock = threading.Lock()
+
+def _ensure_worker_objects():
+    """确保 worker 通信对象在 st.session_state 中初始化（仅首次）"""
+    if "_wq" not in st.session_state:
+        st.session_state._wq = _queue.Queue()
+    if "_wr" not in st.session_state:
+        st.session_state._wr = {}   # {code: result_text}
+    if "_we" not in st.session_state:
+        st.session_state._we = {}   # {code: error_msg}
+    if "_wcurrent" not in st.session_state:
+        st.session_state._wcurrent = None
+    if "_wlock" not in st.session_state:
+        st.session_state._wlock = threading.Lock()
 
 
-def _analysis_worker():
-    """后台线程：逐条消费分析队列，调用 DeepSeek API（使用 queue.Queue 通信）"""
-    global _worker_current, _worker_running
+def _analysis_worker(q, results, errors, current_holder, lock):
+    """后台线程：逐条消费分析队列，调用 DeepSeek API。
+    参数是 st.session_state 中持久对象的直接引用，不经过 st.session_state 代理。"""
     while True:
         try:
-            code = _worker_queue.get(timeout=0.5)
+            code = q.get(timeout=0.5)
         except _queue.Empty:
             break
 
-        _worker_current = code
+        current_holder[0] = code
 
         try:
             # 获取股票数据（优先本地 CSV）
@@ -2357,8 +2365,8 @@ def _analysis_worker():
             memory_context = get_stock_memory_context(code)
             result = fast_ai_analysis(code, stock_df, market_ctx, memory_context)
 
-            with _worker_lock:
-                _worker_results[code] = result
+            with lock:
+                results[code] = result
 
             # 自动存档到 ai_memory.json
             if result:
@@ -2372,62 +2380,78 @@ def _analysis_worker():
                 except Exception:
                     pass
         except Exception as e:
-            with _worker_lock:
-                _worker_errors[code] = str(e)
-                _worker_results[code] = None
+            with lock:
+                errors[code] = str(e)
+                results[code] = None
 
         # 限流延迟
-        if not _worker_queue.empty():
+        if not q.empty():
             time.sleep(1.0)
 
-    _worker_running = False
-    _worker_current = None
+    current_holder[0] = None
 
 
 def start_analysis_queue(codes):
     """将 codes 加入队列并启动后台线程"""
-    global _worker_running
+    _ensure_worker_objects()
+    q = st.session_state._wq
+    results = st.session_state._wr
+    errors = st.session_state._we
+    lock = st.session_state._wlock
 
     # 清除旧结果
-    with _worker_lock:
+    with lock:
         for code in codes:
-            _worker_results.pop(code, None)
-            _worker_errors.pop(code, None)
+            results.pop(code, None)
+            errors.pop(code, None)
     for code in codes:
         st.session_state.pop(f"analysis_result_{code}", None)
 
     # 入队（去重）
-    existing = set(_worker_queue.queue)
+    existing = set(q.queue)
     for code in codes:
         if code not in existing:
-            _worker_queue.put(code)
+            q.put(code)
 
     # 同步到 st.session_state 供 UI 显示
-    st.session_state.analysis_queue = list(_worker_queue.queue)
+    st.session_state.analysis_queue = list(q.queue)
     st.session_state.analysis_running = True
 
     # 启动 worker（仅当没有运行中的 worker）
-    if not _worker_running:
-        _worker_running = True
-        thread = threading.Thread(target=_analysis_worker, daemon=True)
+    if not st.session_state.get("_worker_started"):
+        st.session_state._worker_started = True
+        # 使用单元素列表来持有 current，这样 worker 可以修改它
+        current_holder = [None]
+        st.session_state._wcurrent_ref = current_holder
+        thread = threading.Thread(
+            target=_analysis_worker,
+            args=(q, results, errors, current_holder, lock),
+            daemon=True,
+        )
         thread.start()
 
 
 def _sync_worker_to_session():
-    """主线程调用：将 worker 结果从全局变量同步到 st.session_state"""
-    global _worker_current, _worker_running
+    """主线程调用：将 worker 结果同步到 st.session_state（读的是 worker 直接写入的 dict）"""
+    if "_wr" not in st.session_state:
+        return
+    results = st.session_state._wr
+    errors = st.session_state._we
+    lock = st.session_state._wlock
+    q = st.session_state._wq
+    current_holder = st.session_state.get("_wcurrent_ref", [None])
 
-    with _worker_lock:
-        for code, result in _worker_results.items():
+    with lock:
+        for code, result in list(results.items()):
             st.session_state.analysis_results[code] = result
-        for code, error in _worker_errors.items():
+        for code, error in list(errors.items()):
             st.session_state.analysis_errors[code] = error
-        _worker_results.clear()
-        _worker_errors.clear()
+        results.clear()
+        errors.clear()
 
-    st.session_state.analysis_current = _worker_current
-    st.session_state.analysis_running = _worker_running or not _worker_queue.empty()
-    st.session_state.analysis_queue = list(_worker_queue.queue)
+    st.session_state.analysis_current = current_holder[0]
+    st.session_state.analysis_queue = list(q.queue)
+    st.session_state.analysis_running = current_holder[0] is not None or not q.empty()
 
 
 # ==================== 主界面 ====================
