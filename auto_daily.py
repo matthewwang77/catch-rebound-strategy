@@ -12,9 +12,6 @@ import os
 import sys
 import importlib.util
 
-# v6 unified: detect_market_regime() picks the single best mode
-MODES = ["auto"]
-
 # ==================== 加载模块 ====================
 def _load_module(filepath, module_name):
     spec = importlib.util.spec_from_file_location(module_name, filepath)
@@ -57,8 +54,8 @@ def get_market_summary():
 
 
 # ==================== 执行选股 ====================
-def run_all_modes():
-    """v6 unified: 检测市场状态，只跑推荐模式。返回 dict。"""
+def run_auto_mode():
+    """只跑推荐模式（v6 unified: 检测市场状态，自动切换参数）。返回 dict。"""
     # 检测市场状态
     regime_info = None
     recommended_mode = "strict"  # fallback
@@ -142,7 +139,12 @@ def run_all_modes():
     # 只跑推荐模式
     results = {}
     original = screener.PARAMS.copy()
-    screener.PARAMS.update(screener.SCREEN_MODES[recommended_mode])
+    mode_params = screener.SCREEN_MODES.get(recommended_mode)
+    if mode_params is None:
+        print(f"⚠️ 未知模式 '{recommended_mode}'，回退到 STRICT")
+        recommended_mode = "strict"
+        mode_params = screener.SCREEN_MODES["strict"]
+    screener.PARAMS.update(mode_params)
 
     candidates = []
     stats = {
@@ -326,7 +328,7 @@ def main():
     print("=" * 50)
 
     # 选股
-    results = run_all_modes()
+    results = run_auto_mode()
 
     # 保存 JSON（供 Streamlit 读取）
     save_results_json(results)
