@@ -271,6 +271,17 @@ def _run_ai_analysis(code, stock_df, candidate, market_context, mode):
     if 'close' in stock_df.columns and 'Close' not in stock_df.columns:
         stock_df = stock_df.rename(columns={'open': 'Open', 'high': 'High', 'low': 'Low', 'close': 'Close', 'volume': 'Volume'})
 
+    # 安全标量转换（处理 .iloc[-1] 返回 Series 的情况）
+    def _s(v):
+        try:
+            return float(v)
+        except (TypeError, ValueError):
+            if hasattr(v, 'iloc'):
+                return float(v.iloc[0])
+            if hasattr(v, 'values'):
+                return float(v.values[0])
+            raise
+
     close = stock_df['Close'].dropna()
     high = stock_df['High'].dropna()
     low = stock_df['Low'].dropna()
@@ -281,15 +292,15 @@ def _run_ai_analysis(code, stock_df, candidate, market_context, mode):
         return
 
     # 基础指标
-    current_price = float(close.iloc[-1])
-    pct_chg = (current_price / float(close.iloc[-2]) - 1) * 100 if len(close) >= 2 else 0
-    ma5 = float(close.rolling(5).mean().iloc[-1])
-    ma10 = float(close.rolling(10).mean().iloc[-1])
-    ma20 = float(close.rolling(20).mean().iloc[-1]) if len(close) >= 20 else ma10
-    vol_today = float(volume.iloc[-1])
-    vol_ma5 = float(volume.rolling(5).mean().iloc[-1])
-    recent_high_20 = float(high.tail(20).max())
-    recent_low_20 = float(low.tail(20).min())
+    current_price = _s(close.iloc[-1])
+    pct_chg = (current_price / _s(close.iloc[-2]) - 1) * 100 if len(close) >= 2 else 0
+    ma5 = _s(close.rolling(5).mean().iloc[-1])
+    ma10 = _s(close.rolling(10).mean().iloc[-1])
+    ma20 = _s(close.rolling(20).mean().iloc[-1]) if len(close) >= 20 else ma10
+    vol_today = _s(volume.iloc[-1])
+    vol_ma5 = _s(volume.rolling(5).mean().iloc[-1])
+    recent_high_20 = _s(high.tail(20).max())
+    recent_low_20 = _s(low.tail(20).min())
 
     # MACD
     ema12 = close.ewm(span=12, adjust=False).mean()
@@ -297,9 +308,9 @@ def _run_ai_analysis(code, stock_df, candidate, market_context, mode):
     dif = ema12 - ema26
     dea = dif.ewm(span=9, adjust=False).mean()
     macd_bar = 2 * (dif - dea)
-    dif_val = float(dif.iloc[-1])
-    dea_val = float(dea.iloc[-1])
-    macd_bar_val = float(macd_bar.iloc[-1])
+    dif_val = _s(dif.iloc[-1])
+    dea_val = _s(dea.iloc[-1])
+    macd_bar_val = _s(macd_bar.iloc[-1])
     if dif_val > dea_val:
         macd_trend = "金叉向上"
     elif dif_val < dea_val:
@@ -315,19 +326,19 @@ def _run_ai_analysis(code, stock_df, candidate, market_context, mode):
     avg_loss = loss.rolling(14).mean()
     rs = avg_gain / avg_loss.replace(0, 1e-9)
     rsi = 100 - (100 / (1 + rs))
-    rsi_val = float(rsi.iloc[-1])
+    rsi_val = _s(rsi.iloc[-1])
 
     # 布林带(20,2)
-    bb_mid = float(close.rolling(20).mean().iloc[-1])
-    bb_std = float(close.rolling(20).std().iloc[-1])
+    bb_mid = _s(close.rolling(20).mean().iloc[-1])
+    bb_std = _s(close.rolling(20).std().iloc[-1])
     bb_upper = bb_mid + 2 * bb_std
     bb_lower = bb_mid - 2 * bb_std
 
     # OBV
     close_diff_sign = (close.diff() > 0).astype(int) - (close.diff() < 0).astype(int)
     obv = (volume * close_diff_sign).cumsum()
-    obv_now = float(obv.iloc[-1])
-    obv_5d_ago = float(obv.iloc[-6]) if len(obv) >= 6 else float(obv.iloc[0])
+    obv_now = _s(obv.iloc[-1])
+    obv_5d_ago = _s(obv.iloc[-6]) if len(obv) >= 6 else _s(obv.iloc[0])
     obv_trend = "上升（资金流入）" if obv_now > obv_5d_ago else "下降（资金流出）"
 
     # 涨停检测
@@ -337,9 +348,9 @@ def _run_ai_analysis(code, stock_df, candidate, market_context, mode):
     if limit_up_mask.any():
         lu_indices = close.index[limit_up_mask].tolist()
         last_lu_idx = lu_indices[-1]
-        last_lu_close = float(close.loc[last_lu_idx])
+        last_lu_close = _s(close.loc[last_lu_idx])
         days_since = len(close) - close.index.get_loc(last_lu_idx) - 1
-        vol_shrink = float(volume.iloc[-3:].mean() / float(volume.loc[last_lu_idx]) * 100) if last_lu_idx in volume.index else 100
+        vol_shrink = _s(volume.iloc[-3:].mean() / _s(volume.loc[last_lu_idx]) * 100) if last_lu_idx in volume.index else 100
         lu_date = str(last_lu_idx)[:10]
         limit_up_data = f"""
 ## 回调数据
