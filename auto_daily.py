@@ -636,6 +636,90 @@ def git_push_results():
         print(f"⚠️ Git push 失败: {e}（不影响选股结果）")
 
 
+# ==================== 后台维护 ====================
+
+def _auto_maintenance():
+    """每次运行时自动维护：验证旧记录 + 补全中文名。"""
+    from datetime import datetime as _dt
+    today_str = _dt.now().strftime('%Y%m%d')
+
+    memory = _load_ai_memory()
+    verify_count = 0
+    name_count = 0
+
+    # --- 1. 收益验证：对 ≥3 天且未验证的记录计算实际收益 ---
+    for code, records in memory.items():
+        for r in records:
+            date = r.get('date', '')
+            # 跳过不足3天的记录
+            if date > today_str:
+                try:
+                    days_ago = (_dt.now() - _dt.strptime(date, '%Y%m%d')).days
+                    if days_ago < 3:
+                        continue
+                except ValueError:
+                    continue
+            if r.get('verified'):
+                continue
+            if r.get('sentiment') == '历史回填':
+                continue
+
+            entry_price = r.get('entry_price', 0)
+            if entry_price <= 0:
+                continue
+
+            mode = r.get('mode', 'strict')
+            mp = screener.SCREEN_MODES.get(mode, screener.SCREEN_MODES.get('strict', {}))
+            tp = mp.get('take_profit', 0.05)
+            sl = mp.get('stop_loss', -0.10)
+
+            # 本地 CSV 计算收益
+            from backfill_signals import check_return_v5_local
+            ret3 = check_return_v5_local(code, date, entry_price, 3, tp, sl, screener.DATA_DIR)
+            ret5 = check_return_v5_local(code, date, entry_price, 5, tp, sl, screener.DATA_DIR)
+            ret7 = check_return_v5_local(code, date, entry_price, 7, tp, sl, screener.DATA_DIR)
+
+            r3 = ret3['return_pct'] if ret3 else None
+            if r3 is not None and r3 > 0:
+                verdict = "correct"
+            elif r3 is not None and r3 < 0:
+                verdict = "wrong"
+            else:
+                verdict = None
+
+            r['return_3d'] = round(r3, 2) if r3 is not None else None
+            r['return_5d'] = round(ret5['return_pct'], 2) if ret5 else None
+            r['return_7d'] = round(ret7['return_pct'], 2) if ret7 else None
+            r['verdict'] = verdict
+            r['verified'] = True
+            verify_count += 1
+
+    if verify_count > 0:
+        _save_ai_memory(memory)
+        print(f"🔍 收益验证: {verify_count} 条新记录")
+
+    # --- 2. 补全中文名 ---
+    import csv as _csv
+    import name_lookup as _nl
+    tracker_path = os.path.join(BASE, "signal_tracker.csv")
+    if os.path.exists(tracker_path):
+        df = pd.read_csv(tracker_path)
+        # 找出所有 name 为空的 code
+        empty_name_codes = df[df['name'].isna() | (df['name'] == '')]['code'].unique().tolist()
+        if empty_name_codes:
+            names_raw = _nl.batch_lookup(empty_name_codes, max_fetch=len(empty_name_codes))
+            names = {}
+            for c, val in names_raw.items():
+                if isinstance(val, dict):
+                    names[c] = val.get('name', '')
+                else:
+                    names[c] = str(val) if val else ''
+            df['name'] = df['code'].map(names).fillna('')
+            df.to_csv(tracker_path, index=False, encoding='utf-8-sig')
+            name_count = len([n for n in names.values() if n])
+            print(f"📛 中文名补全: {name_count} 只")
+
+
 def main():
     # 周末跳过（A股周一至周五交易）
     now = datetime.now()
@@ -646,6 +730,12 @@ def main():
     print("=" * 50)
     print(f"🚀 自动选股启动: {now.strftime('%Y-%m-%d %H:%M:%S')}")
     print("=" * 50)
+
+    # 后台维护：验证旧记录 + 补全中文名
+    try:
+        _auto_maintenance()
+    except Exception as e:
+        print(f"⚠️ 后台维护失败: {e}（不影响选股）")
 
     # 选股
     results, all_data = run_auto_mode()

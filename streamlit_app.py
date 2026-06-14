@@ -1393,335 +1393,8 @@ def cloud_load_data(version="v5"):
     progress_bar.empty()
     return all_data
 
-
-# ==================== 快速 AI 分析（跳过板块信息，用已下载数据）====================
-def fast_ai_analysis(code, stock_df, market_context="", memory_context=None):
-    """v2: 四维框架（量价形时）+ 经典战法匹配 + DeepSeek API。memory_context 为历史分析上下文。"""
-    import requests
-
-    # ---- 数据有效性检查 ----
-    if stock_df is None or stock_df.empty:
-        return f"## ⚠️ 无数据\n\n无法获取 {code} 的行情数据（本地缓存缺失 + yfinance 不可用）。请在工作日交易时段重试。"
-
-    # ---- 列名兼容（CSV 小写 / yfinance 首字母大写）----
-    if 'close' in stock_df.columns and 'Close' not in stock_df.columns:
-        stock_df = stock_df.rename(columns={'open': 'Open', 'high': 'High', 'low': 'Low', 'close': 'Close', 'volume': 'Volume'})
-
-    # ---- 数据提取 ----
-    close = stock_df['Close'].dropna()
-    high = stock_df['High'].dropna()
-    low = stock_df['Low'].dropna()
-    volume = stock_df['Volume'].dropna()
-    open_price = stock_df['Open'].dropna()
-
-    if len(close) < 5:
-        return None
-
-    # ========== 基础指标 ==========
-    current_price = close.iloc[-1]
-    prev_close = close.iloc[-2] if len(close) >= 2 else current_price
-    pct_chg = (current_price / prev_close - 1) * 100
-    amplitude = (high.iloc[-1] / low.iloc[-1] - 1) * 100
-
-    ma5 = close.rolling(5).mean().iloc[-1]
-    ma10 = close.rolling(10).mean().iloc[-1]
-    ma20 = close.rolling(20).mean().iloc[-1] if len(close) >= 20 else ma10
-    ma60 = close.rolling(60).mean().iloc[-1] if len(close) >= 60 else None
-
-    vol_today = volume.iloc[-1]
-    vol_ma5 = volume.rolling(5).mean().iloc[-1]
-    vol_ma20 = volume.rolling(20).mean().iloc[-1] if len(volume) >= 20 else vol_ma5
-    recent_high_20 = high.tail(20).max()
-    recent_low_20 = low.tail(20).min()
-    drawdown_20 = (recent_high_20 - current_price) / recent_high_20 * 100
-
-    # ========== MACD (12,26,9) ==========
-    if len(close) >= 26:
-        ema12 = close.ewm(span=12, adjust=False).mean()
-        ema26 = close.ewm(span=26, adjust=False).mean()
-        dif = ema12 - ema26
-        dea = dif.ewm(span=9, adjust=False).mean()
-        macd_bar = 2 * (dif - dea)
-        dif_val = dif.iloc[-1]
-        dea_val = dea.iloc[-1]
-        macd_bar_val = macd_bar.iloc[-1]
-        dif_prev = dif.iloc[-3] if len(dif) >= 3 else dif.iloc[-1]
-        if dif_val > dea_val and dif_val > dif_prev:
-            macd_trend = "金叉向上 ↑"
-        elif dif_val < dea_val:
-            macd_trend = "死叉向下 ↓"
-        else:
-            macd_trend = "粘合 →"
-        macd_ok = True
-    else:
-        dif_val = dea_val = macd_bar_val = None
-        macd_trend = "数据不足"
-        macd_ok = False
-
-    # ========== RSI(14) ==========
-    if len(close) >= 14:
-        delta = close.diff()
-        gain = delta.clip(lower=0)
-        loss = (-delta).clip(lower=0)
-        avg_gain = gain.rolling(14).mean()
-        avg_loss = loss.rolling(14).mean()
-        rs = avg_gain / avg_loss.replace(0, 1e-9)
-        rsi = 100 - (100 / (1 + rs))
-        rsi_val = rsi.iloc[-1]
-        if rsi_val < 30:
-            rsi_status = "超卖（反弹动能积蓄）"
-        elif rsi_val > 70:
-            rsi_status = "超买（追高风险）"
-        else:
-            rsi_status = "中性"
-    else:
-        rsi_val = None
-        rsi_status = "数据不足"
-
-    # ========== 布林带(20,2) ==========
-    if len(close) >= 20:
-        bb_mid = close.rolling(20).mean().iloc[-1]
-        bb_std = close.rolling(20).std().iloc[-1]
-        bb_upper = bb_mid + 2 * bb_std
-        bb_lower = bb_mid - 2 * bb_std
-        bb_width = (bb_upper - bb_lower) / bb_mid * 100 if bb_mid > 0 else 0
-        if bb_upper != bb_lower:
-            bb_position = (current_price - bb_lower) / (bb_upper - bb_lower) * 100
-        else:
-            bb_position = 50
-        if bb_position < 20:
-            bb_status = f"下轨附近（超跌反弹机会）"
-        elif bb_position > 80:
-            bb_status = f"上轨附近（追高风险）"
-        else:
-            bb_status = f"中轨附近"
-    else:
-        bb_upper = bb_mid = bb_lower = bb_position = bb_width = None
-        bb_status = "数据不足"
-
-    # ========== OBV 趋势 ==========
-    if len(close) >= 10:
-        close_diff_sign = (close.diff() > 0).astype(int) - (close.diff() < 0).astype(int)
-        obv = (volume * close_diff_sign).cumsum()
-        obv_now = obv.iloc[-1]
-        obv_5d_ago = obv.iloc[-6] if len(obv) >= 6 else obv.iloc[0]
-        if obv_now > obv_5d_ago:
-            obv_trend = "上升（资金流入）↑"
-        else:
-            obv_trend = "下降（资金流出）↓"
-    else:
-        obv_trend = "数据不足"
-
-    # ========== MFI(14) 资金流量指标 ==========
-    if len(close) >= 15:
-        tp = (high + low + close) / 3
-        rmf = tp * volume
-        pos_flow = rmf.where(tp > tp.shift(1), 0)
-        neg_flow = rmf.where(tp < tp.shift(1), 0)
-        pos_sum = pos_flow.rolling(14).sum()
-        neg_sum = neg_flow.rolling(14).sum()
-        # avoid div by zero
-        neg_sum_safe = neg_sum.replace(0, 1e-9)
-        mfi = 100 - (100 / (1 + pos_sum / neg_sum_safe))
-        mfi_val = mfi.iloc[-1]
-        if mfi_val < 20:
-            mfi_status = "超卖（资金流入）"
-        elif mfi_val > 80:
-            mfi_status = "超买（资金流出）"
-        else:
-            mfi_status = "中性"
-    else:
-        mfi_val = None
-        mfi_status = "数据不足"
-
-    # ========== 连板回调专属指标 ==========
-    # 找涨停日（A股10%涨跌幅，用9.5%容差）
-    pct_chg_series = close.pct_change()
-    limit_up_mask = pct_chg_series > 0.095
-    limit_up_indices = close.index[limit_up_mask].tolist()
-
-    if limit_up_indices:
-        last_lu_idx = limit_up_indices[-1]
-        last_lu_close = close.loc[last_lu_idx]
-        last_lu_low = low.loc[last_lu_idx] if last_lu_idx in low.index else None
-        last_lu_vol = volume.loc[last_lu_idx] if last_lu_idx in volume.index else None
-
-        # 距最后涨停天数
-        pos_now = close.index.get_loc(close.index[-1])
-        pos_lu = close.index.get_loc(last_lu_idx)
-        days_since_limit = pos_now - pos_lu
-
-        # 回调幅度（从涨停日收盘算）
-        pullback_pct = (last_lu_close - current_price) / last_lu_close * 100
-
-        # 缩量程度：近3日均量 / 涨停日量
-        if last_lu_vol and last_lu_vol > 0:
-            recent_avg_vol = volume.iloc[-3:].mean()
-            vol_shrink_ratio = recent_avg_vol / last_lu_vol * 100
-        else:
-            vol_shrink_ratio = None
-
-        # 是否跌破涨停日最低
-        if last_lu_low is not None:
-            broke_low = current_price < last_lu_low
-        else:
-            broke_low = None
-
-        # 连板识别：涨停日前是否有连续涨停
-        consecutive_lu = 1
-        for i in range(len(limit_up_indices) - 2, -1, -1):
-            prev_pos = close.index.get_loc(limit_up_indices[i])
-            curr_pos = close.index.get_loc(limit_up_indices[i + 1])
-            if curr_pos - prev_pos == 1:
-                consecutive_lu += 1
-            else:
-                break
-    else:
-        days_since_limit = None
-        pullback_pct = None
-        vol_shrink_ratio = None
-        last_lu_low = None
-        broke_low = None
-        consecutive_lu = 0
-
-    # ========== 构造结构化 technical_data ==========
-    lines = []
-    lines.append(f"【{code} 技术数据】")
-    lines.append("")
-    lines.append("## 基础指标")
-    lines.append(f"- 最新价：{current_price:.2f}（今日 {pct_chg:+.2f}%）| 振幅 {amplitude:.1f}%")
-    lines.append(f"- 均线：MA5={ma5:.2f}  MA10={ma10:.2f}  MA20={ma20:.2f}" + (f"  MA60={ma60:.2f}" if ma60 else ""))
-    lines.append(f"- 量比：今日/5日均量={vol_today/vol_ma5:.2f}x | 20日高={recent_high_20:.2f}  回撤={drawdown_20:.1f}%")
-    lines.append("")
-    lines.append("## 技术指标")
-    if macd_ok:
-        lines.append(f"- MACD(12,26,9)：DIF={dif_val:.3f}  DEA={dea_val:.3f}  柱={macd_bar_val:+.3f}  → {macd_trend}")
-    else:
-        lines.append(f"- MACD：{macd_trend}")
-    lines.append(f"- RSI(14)：{rsi_val:.1f} → {rsi_status}" if rsi_val is not None else f"- RSI(14)：{rsi_status}")
-    if bb_upper is not None:
-        lines.append(f"- 布林(20,2)：上轨={bb_upper:.2f}  中轨={bb_mid:.2f}  下轨={bb_lower:.2f}  带宽={bb_width:.1f}%")
-        lines.append(f"  价格位置：{bb_position:.0f}% → {bb_status}")
-    else:
-        lines.append(f"- 布林(20,2)：{bb_status}")
-    lines.append(f"- OBV趋势：{obv_trend}")
-    lines.append(f"- MFI(14)：{mfi_val:.1f} → {mfi_status}" if mfi_val is not None else f"- MFI(14)：{mfi_status}")
-    lines.append("")
-    lines.append("## 回调数据")
-    if days_since_limit is not None:
-        lu_date = str(last_lu_idx)[:10] if hasattr(last_lu_idx, 'strftime') else str(last_lu_idx)[:10]
-        lines.append(f"- 最近涨停日：{lu_date}（{consecutive_lu}连板）")
-        lines.append(f"- 距涨停日：{days_since_limit} 天" + (" ← 黄金窗口(3-5天)" if 3 <= days_since_limit <= 5 else (" ← 时间偏长，警惕走弱" if days_since_limit > 7 else "")))
-        lines.append(f"- 回调幅度：{pullback_pct:.1f}%（从涨停日收盘价算）")
-        if vol_shrink_ratio is not None:
-            tag = " ← 缩量充分" if vol_shrink_ratio < 50 else (" ← 缩量不足" if vol_shrink_ratio >= 80 else "")
-            lines.append(f"- 缩量程度：近3日均量/涨停日量 = {vol_shrink_ratio:.0f}%{tag}")
-        if last_lu_low is not None:
-            if broke_low:
-                lines.append(f"- 涨停日最低={last_lu_low:.2f} | ⚠️ 已跌破！（强退出信号）")
-            else:
-                lines.append(f"- 涨停日最低={last_lu_low:.2f} | 未跌破（防线有效）")
-    else:
-        lines.append("- 近期无涨停日数据")
-    technical_data = "\n".join(lines)
-
-    # ========== System Prompt ==========
-    system_prompt = """你是专精于A股连板回调策略的量化分析师。你严格遵循"量价形时"四维分析框架：
-
-【量】缩量挖坑（回调量<涨停量50%为佳），放量填坑（反弹需放量确认）
-【价】首板不破涨停最低价（多板以首板收盘价为防线），MA支撑体系层层验证
-【形】缩量黄金坑、长下影弹簧线、缩倍阴、三阴不破阳、天外飞仙、金凤凰
-【时】3-5天为黄金回调窗口，超过7天不恢复=明显走弱
-
-经典战法库：
-- 缩倍阴：中低位首板后，回调不破涨停低点，缩量至<50%，3日内放量阳线突破阴线高点=入场
-- 三阴不破阳：涨停后3根缩量阴线，收盘逐日下降但不破涨停最低价，放量阳线反包=入场
-- 天外飞仙：3连板后放量阴线，缩量整理不破该阴线低点，再涨停突破=入场
-- 金凤凰：回调始终在涨停价上方，持续缩量，下一涨停确认调整结束=入场
-
-你的分析务实直接，给具体价格位而非模糊描述。每个判断都有明确的技术依据。
-仓位建议根据市场情绪档位动态调整（冰点空仓/低迷1-2成/启动2-3成/发酵3-5成/高潮减仓）。"""
-
-    # ========== User Prompt ==========
-    prompt = f"""{technical_data}
-
-{market_context}
-
-请按以下"量价形时"框架逐项分析，每项给出具体判断：
-
-## 一、量（Volume）
-- 回调缩量评估（充分/不足/异常放量）+ 缩量比
-- OBV/MFI 资金流向判断
-- 量价配合状态（底背离=看涨 / 同步下跌=观望 / 放量止跌=积极）
-
-## 二、价（Price）
-- 关键支撑位（给具体价格）：涨停日最低/MA5/MA10/MA20
-- 关键压力位（给具体价格）：近期高点/均线压制位
-- 是否跌破防线？跌破后的严重程度评估
-
-## 三、形（Pattern）
-- 当前K线形态描述
-- 匹配哪种经典战法？（缩倍阴/三阴不破阳/天外飞仙/金凤凰/无匹配）
-- 形态完成度评估（%）
-
-## 四、时（Time）
-- 回调阶段判断（初期/中期/末期）
-- 时间窗口评估（黄金窗口内/偏长/超时）+ 是否还有效
-
-## 五、综合判断
-- 反弹概率：低(≤30%) / 中(30-60%) / 高(≥60%)
-- 明日锚点：高开 >X.XX 可关注 / 低开 <X.XX 应放弃
-- 建议入场区间：X.XX - X.XX
-- 止损体系：紧止损 X.XX / 主止损 X.XX / 硬止损 X.XX
-- 止盈目标：TP1 X.XX (1.5R) / TP2 X.XX (2R)
-- 仓位建议：X成仓（对应情绪档位）
-- 风险报酬比：≥1:2 才值得参与
-
-## 六、风险
-- 主要风险（1-2条具体描述）
-- 一票否决条件（出现什么情况绝对不能参与）
-
-最终结论：【参与 / 观望 / 放弃】"""
-
-    # ========== 调用 DeepSeek API ==========
-    try:
-        api_key = os.environ.get("DEEPSEEK_API_KEY", "")
-        if not api_key:
-            return "## ⚠️ API Key 未配置\n\n请在环境变量中设置 `DEEPSEEK_API_KEY`。\n\n**设置方法**：\n```bash\nexport DEEPSEEK_API_KEY=\"sk-xxxxxxxx\"\n```\n\n或在 `~/.claude/settings.json` 中添加 `env` 配置。"
-        api_url = screener.DEEPSEEK_API_URL
-
-        # 注入 AI 记忆上下文
-        full_system = system_prompt
-        if memory_context:
-            full_system += f"\n\n{memory_context}\n\n请结合以上历史分析记录和实际验证结果，对本次信号做连续性分析。如果历史判断正确/错误，请说明原因并调整本次判断。"
-
-        resp = requests.post(
-            api_url,
-            headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
-            json={
-                "model": "deepseek-chat",
-                "messages": [
-                    {"role": "system", "content": full_system},
-                    {"role": "user", "content": prompt},
-                ],
-                "temperature": 0.4,
-                "max_tokens": 1500,
-            },
-            timeout=30,
-        )
-        if resp.status_code != 200:
-            return f"## ⚠️ API 请求失败 (HTTP {resp.status_code})\n\nDeepSeek API 返回了错误状态码。请检查 API Key 是否有效。\n\n错误详情：`{resp.text[:200]}`"
-        data = resp.json()
-        if "choices" in data and len(data["choices"]) > 0:
-            return data["choices"][0]["message"]["content"]
-        return f"## ⚠️ API 返回异常\n\nDeepSeek 返回了非预期格式的响应：\n```\n{str(data)[:300]}\n```"
-    except requests.exceptions.Timeout:
-        return "## ⚠️ API 请求超时\n\nDeepSeek API 在 30 秒内未响应。请稍后重试。"
-    except requests.exceptions.ConnectionError:
-        return "## ⚠️ 网络连接失败\n\n无法连接到 DeepSeek API。请检查网络连接。"
-    except Exception as e:
-        return f"## ⚠️ AI 分析异常\n\n```\n{type(e).__name__}: {e}\n```\n\n请稍后重试或联系开发者。"
-
+# fast_ai_analysis 已移除 — AI 分析在 auto_daily.py 后台完成
+# check_return / check_return_v5 已移除 — 收益验证在 auto_daily.py 后台完成
 
 # ==================== 多模式筛选 ====================
 def screen_all_modes(all_data):
@@ -1854,122 +1527,6 @@ def save_signals(all_candidates):
     df_combined.to_csv(SIGNAL_FILE, index=False, encoding='utf-8-sig')
 
 
-@st.cache_data(ttl=600, show_spinner=False)
-def check_return(code, signal_date, entry_price, hold_days):
-    """检查信号持有 N 天后的实际收益"""
-    try:
-        start_dt = datetime.strptime(str(signal_date), '%Y%m%d')
-        end_dt = start_dt + pd.Timedelta(days=hold_days + 5)  # 多拉几天
-
-        ticker = yf.Ticker(code)
-        df = ticker.history(start=start_dt.strftime('%Y-%m-%d'),
-                           end=end_dt.strftime('%Y-%m-%d'))
-        if df is None or len(df) < hold_days + 1:
-            return None
-
-        # 取第 hold_days 天的收盘价（跳过信号日）
-        exit_price = df['Close'].iloc[min(hold_days, len(df) - 1)]
-        if exit_price <= 0 or entry_price <= 0:
-            return None
-        return (exit_price / entry_price - 1) * 100
-    except Exception:
-        return None
-
-
-@st.cache_data(ttl=300, show_spinner=False)
-def check_return_v5(code, signal_date, entry_price, hold_days, take_profit, stop_loss):
-    """yfinance版 simulate_hold_return()。
-
-    拉取OHLCV数据，从signal_date后逐日迭代，应用止损/止盈/到期退出
-    逻辑和交易成本，与回测引擎完全一致。
-
-    Returns: {'return_pct': float, 'exit_day': int, 'exit_reason': str}
-             exit_reason: '止损' / '止盈' / '到期'
-             None: 数据不足或出错
-    """
-    try:
-        start_dt = datetime.strptime(str(signal_date), '%Y%m%d')
-        fetch_start = start_dt - pd.Timedelta(days=3)
-        fetch_end = start_dt + pd.Timedelta(days=hold_days + 5)
-
-        ticker = yf.Ticker(code)
-        df = ticker.history(start=fetch_start.strftime('%Y-%m-%d'),
-                           end=fetch_end.strftime('%Y-%m-%d'))
-        if df is None or len(df) < 2:
-            return None
-
-        # 展平MultiIndex列
-        if isinstance(df.columns, pd.MultiIndex):
-            df.columns = df.columns.get_level_values(0)
-        df = df.rename(columns={'Open': 'open', 'High': 'high',
-                                'Low': 'low', 'Close': 'close',
-                                'Volume': 'volume'})
-        df_sorted = df.sort_index()
-
-        # 找到signal_date之后的第一个bar（入场bar）
-        mask = df_sorted.index >= pd.Timestamp(start_dt)
-        if not mask.any():
-            return None
-        entry_idx = mask.argmax()
-        # 如果完整持有期数据不足，用现有数据做截断模拟
-        if entry_idx + 1 >= len(df_sorted):
-            return None  # 连1个交易日的向前数据都没有
-        effective_hold = min(hold_days, len(df_sorted) - 1 - entry_idx)
-
-        exit_idx_limit = min(entry_idx + hold_days, len(df_sorted) - 1)
-        for i in range(entry_idx + 1, exit_idx_limit + 1):
-            row = df_sorted.iloc[i]
-            high, low, open_price = row['high'], row['low'], row['open']
-            if entry_price <= 0:
-                continue
-
-            # 开盘检查
-            open_return = open_price / entry_price - 1
-            net_open = screener.apply_trading_costs(open_return, is_sell=True)
-            if net_open <= stop_loss:
-                return {'return_pct': round(net_open * 100, 2),
-                        'exit_day': i - entry_idx, 'exit_reason': '止损'}
-            if net_open >= take_profit:
-                return {'return_pct': round(net_open * 100, 2),
-                        'exit_day': i - entry_idx, 'exit_reason': '止盈'}
-
-            # 盘中距离优先检查（与回测完全一致）
-            stop_level = entry_price * (1 + stop_loss)
-            profit_level = entry_price * (1 + take_profit)
-            dist_to_stop = open_price - stop_level
-            dist_to_profit = profit_level - open_price
-
-            if dist_to_stop <= dist_to_profit:
-                if low / entry_price - 1 <= stop_loss:
-                    net = screener.apply_trading_costs(stop_loss, is_sell=True)
-                    return {'return_pct': round(net * 100, 2),
-                            'exit_day': i - entry_idx, 'exit_reason': '止损'}
-                if high / entry_price - 1 >= take_profit:
-                    net = screener.apply_trading_costs(take_profit, is_sell=True)
-                    return {'return_pct': round(net * 100, 2),
-                            'exit_day': i - entry_idx, 'exit_reason': '止盈'}
-            else:
-                if high / entry_price - 1 >= take_profit:
-                    net = screener.apply_trading_costs(take_profit, is_sell=True)
-                    return {'return_pct': round(net * 100, 2),
-                            'exit_day': i - entry_idx, 'exit_reason': '止盈'}
-                if low / entry_price - 1 <= stop_loss:
-                    net = screener.apply_trading_costs(stop_loss, is_sell=True)
-                    return {'return_pct': round(net * 100, 2),
-                            'exit_day': i - entry_idx, 'exit_reason': '止损'}
-
-        # 到期退出（或截断退出：数据不足以跑满持有期）
-        final_price = df_sorted.iloc[exit_idx_limit]['close']
-        final_return = final_price / entry_price - 1 if entry_price > 0 else 0
-        net_final = screener.apply_trading_costs(final_return, is_sell=True)
-        is_truncated = effective_hold < hold_days
-        return {'return_pct': round(net_final * 100, 2),
-                'exit_day': effective_hold,
-                'exit_reason': '到期(截断)' if is_truncated else '到期'}
-    except Exception:
-        return None
-
-
 # ==================== AI 记忆系统 ====================
 AI_MEMORY_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ai_memory.json")
 
@@ -2042,80 +1599,6 @@ def save_ai_analysis_record(code, date_str, mode, entry_price, pullback_pct, lim
     })
     save_ai_memory(memory)
 
-def auto_verify_memory():
-    """自动验证：对 verified=False 且 ≥3天前的记录，计算实际收益并回写 verdict"""
-    memory = load_ai_memory()
-    if not memory:
-        return
-    today_int = int(china_now().strftime('%Y%m%d'))
-    changed = False
-    for code, records in memory.items():
-        for rec in records:
-            if rec.get("verified"):
-                continue
-            try:
-                sdate = str(rec["date"])
-                if len(sdate) < 8:
-                    continue
-                if today_int - int(sdate) < 3:
-                    continue  # 还没到验证时间
-                entry_price = rec.get("entry_price", 0)
-                # 如果 entry_price 为 0，尝试从 signal_tracker 获取
-                if entry_price == 0 and os.path.exists(SIGNAL_FILE):
-                    try:
-                        df_sig = pd.read_csv(SIGNAL_FILE)
-                        match = df_sig[(df_sig['code'] == code) & (df_sig['signal_date'].astype(str) == sdate)]
-                        if len(match) > 0:
-                            entry_price = match.iloc[0]['entry_price']
-                    except Exception:
-                        pass
-                if entry_price <= 0:
-                    continue
-                # 使用 check_return_v5 验证（loose 模式默认参数）
-                loose_params = screener.SCREEN_MODES['loose']
-                ret3 = check_return_v5(code, sdate, entry_price, 3,
-                                       loose_params['take_profit'], loose_params['stop_loss'])
-                ret5 = check_return_v5(code, sdate, entry_price, 5,
-                                       loose_params['take_profit'], loose_params['stop_loss'])
-                ret7 = check_return_v5(code, sdate, entry_price, 7,
-                                       loose_params['take_profit'], loose_params['stop_loss'])
-                rec["return_3d"] = round(ret3['return_pct'], 2) if ret3 is not None else None
-                rec["return_5d"] = round(ret5['return_pct'], 2) if ret5 is not None else None
-                rec["return_7d"] = round(ret7['return_pct'], 2) if ret7 is not None else None
-                rec["verified"] = True
-                if ret3 is not None:
-                    rec["verdict"] = "correct" if ret3['return_pct'] > 0 else "wrong"
-                changed = True
-            except Exception:
-                pass
-    # 回溯修复：对 sentiment 为空的旧记录重新提取
-    for code, records in memory.items():
-        for rec in records:
-            if rec.get("sentiment"):
-                continue  # 已正确提取（sentiment非空）
-            try:
-                analysis_text = rec.get("analysis", "")
-                if not analysis_text:
-                    continue
-                import re as _re2
-                m = _re2.search(r'仓位建议[：:]\s*(.+?)（(.+?)）', analysis_text)
-                if m:
-                    rec["position"] = m.group(1).strip().strip('*')
-                    rec["sentiment"] = m.group(2).strip().strip('*')
-                if not rec.get("sentiment"):
-                    sm = _re2.search(r'情绪档位[：:]\s*(.+?)(?:\n|$|\*\*)', analysis_text)
-                    if sm:
-                        rec["sentiment"] = sm.group(1).strip().strip('*')
-                if not rec.get("opinion"):
-                    om = _re2.search(r'最终结论[：:]\s*(.+?)(?:\n|$|\*\*)', analysis_text)
-                    if om:
-                        rec["opinion"] = om.group(1).strip().strip('*')
-                changed = True
-            except Exception:
-                pass
-    if changed:
-        save_ai_memory(memory)
-
 def get_stock_memory_context(code):
     """获取某只股票的历史分析上下文，用于注入 AI prompt。返回格式化文本或 None。"""
     memory = load_ai_memory()
@@ -2147,74 +1630,52 @@ def get_stock_memory_context(code):
     return "\n".join(lines)
 
 def compute_performance(mode_filter=None, days_window=30):
-    """从 signal_tracker.csv 计算绩效指标。
+    """从 ai_memory.json 预计算数据中读取绩效指标（不再调用 yfinance）。
 
     - mode_filter: 'strict' / 'loose' / None(全部)
-    - days_window: 只看最近N天的信号（自然日）
-    - 使用模式专属的止盈/止损/持仓参数（从 SCREEN_MODES）
-    - 使用 check_return_v5() 模拟真实持仓退出
+    - days_window: 只看最近N天的记录（自然日）
+    - 使用 ai_memory.json 中预计算的 return_3d/return_5d/return_7d
     """
-    if not os.path.exists(SIGNAL_FILE):
+    memory = load_ai_memory()
+    if not memory:
         return None
     try:
-        df = pd.read_csv(SIGNAL_FILE)
-        if len(df) == 0:
-            return None
         today_int = int(china_now().strftime('%Y%m%d'))
         cutoff_date = china_now() - timedelta(days=days_window)
         cutoff = int(cutoff_date.strftime('%Y%m%d'))
 
-        # 过滤模式
-        if mode_filter:
-            df = df[df['mode'] == mode_filter]
-        if len(df) == 0:
-            return None
-
-        # 过滤时间窗口
-        df = df[df['signal_date'].astype(str).str.len() >= 8]
-        df = df[df['signal_date'].astype(int) >= cutoff]
-        if len(df) == 0:
-            return None
-
-        # 获取模式专属的出场参数
-        mode_params = screener.SCREEN_MODES.get(
-            mode_filter,
-            screener.SCREEN_MODES['loose']  # 默认用 loose 参数
-        )
-        hold_days = mode_params.get('hold_days', 7)
-        take_profit = mode_params.get('take_profit', 0.05)
-        stop_loss = mode_params.get('stop_loss', -0.10)
-
-        # 计算每条已验证信号的收益
+        # 展平所有已验证的记录
         returns = []
         wins = 0
         losses = 0
-        for _, row in df.iterrows():
-            sdate = str(row['signal_date'])
-            # 信号需要足够的向前数据：hold_days个交易日 ≈ hold_days+4个自然日
-            if today_int - int(sdate) < hold_days + 4:
-                continue  # 持有期尚未结束
-            entry_price = row['entry_price']
-            if entry_price <= 0:
-                continue
-            result = check_return_v5(
-                row['code'], sdate, entry_price,
-                hold_days, take_profit, stop_loss
-            )
-            if result is not None:
+        for code, records in memory.items():
+            for r in records:
+                date = str(r.get('date', ''))
+                if len(date) < 8:
+                    continue
+                if int(date) < cutoff:
+                    continue
+                mode = r.get('mode', '')
+                if mode_filter and mode != mode_filter:
+                    continue
+                # 使用预计算的 3d 收益
+                r3 = r.get('return_3d')
+                if r3 is None:
+                    # 如果距今不足3天，跳过
+                    if today_int - int(date) < 3:
+                        continue
+                    continue  # 超过3天但无数据，跳过
                 returns.append({
-                    'date': sdate,
-                    'code': row['code'],
-                    'mode': row.get('mode', ''),
-                    'return_pct': result['return_pct'],
-                    'exit_day': result['exit_day'],
-                    'exit_reason': result['exit_reason'],
+                    'date': date,
+                    'code': code,
+                    'mode': mode,
+                    'return_pct': r3,
+                    'exit_reason': r.get('exit_reason_3d', ''),
                 })
-                if result['return_pct'] > 0:
+                if r3 > 0:
                     wins += 1
-                elif result['return_pct'] < 0:
+                elif r3 < 0:
                     losses += 1
-                # ret == 0 不计入胜负
 
         if not returns:
             return None
@@ -2223,11 +1684,8 @@ def compute_performance(mode_filter=None, days_window=30):
         win_rate = wins / total_trades if total_trades > 0 else 0
         avg_win = sum(r['return_pct'] for r in returns if r['return_pct'] > 0) / wins if wins > 0 else 0
         avg_loss = abs(sum(r['return_pct'] for r in returns if r['return_pct'] < 0) / losses) if losses > 0 else 0
-        profit_factor = (avg_win * wins) / (avg_loss * losses) if (avg_loss * losses) > 0 else float('inf')
-        if profit_factor == float('inf'):
-            profit_factor = 999.99
+        profit_factor = (avg_win * wins) / (avg_loss * losses) if (avg_loss * losses) > 0 else 999.99
 
-        # 按日期排序（关键！确保权益曲线按时间顺序）
         returns.sort(key=lambda r: r['date'])
 
         # 复合收益曲线
@@ -2246,18 +1704,16 @@ def compute_performance(mode_filter=None, days_window=30):
             max_dd = max(max_dd, dd)
 
         total_return = round((equity - 1) * 100, 2)
-
-        # 构建带日期索引的DataFrame（图表用）
         chart_df = pd.DataFrame(
             {'累计收益%': cum_returns},
             index=pd.Index(dates_for_chart, name='日期')
         )
 
-        # 退出方式统计
         exit_reasons = {}
         for r in returns:
-            reason = r.get('exit_reason', '未知')
-            exit_reasons[reason] = exit_reasons.get(reason, 0) + 1
+            reason = r.get('exit_reason', '')
+            if reason:
+                exit_reasons[reason] = exit_reasons.get(reason, 0) + 1
 
         return {
             'total_return': total_return,
@@ -2273,7 +1729,7 @@ def compute_performance(mode_filter=None, days_window=30):
             'chart_df': chart_df,
             'returns': returns,
             'exit_reasons': exit_reasons,
-            'hold_days': hold_days,
+            'hold_days': 3,  # 使用 3d 收益
         }
     except Exception:
         return None
@@ -2315,143 +1771,6 @@ def load_latest_results():
 # worker 线程拿到的是这些对象的直接引用（不经过 st.session_state），从而绕过线程隔离。
 import queue as _queue
 
-
-def _ensure_worker_objects():
-    """确保 worker 通信对象在 st.session_state 中初始化（仅首次）"""
-    if "_wq" not in st.session_state:
-        st.session_state._wq = _queue.Queue()
-    if "_wr" not in st.session_state:
-        st.session_state._wr = {}   # {code: result_text}
-    if "_we" not in st.session_state:
-        st.session_state._we = {}   # {code: error_msg}
-    if "_wcurrent" not in st.session_state:
-        st.session_state._wcurrent = None
-    if "_wlock" not in st.session_state:
-        st.session_state._wlock = threading.Lock()
-
-
-def _analysis_worker(q, results, errors, current_holder, lock):
-    """后台线程：逐条消费分析队列，调用 DeepSeek API。
-    参数是 st.session_state 中持久对象的直接引用，不经过 st.session_state 代理。"""
-    while True:
-        try:
-            code = q.get(timeout=0.5)
-        except _queue.Empty:
-            break
-
-        current_holder[0] = code
-
-        try:
-            # 获取股票数据（优先本地 CSV）
-            stock_df = None
-            csv_path = os.path.join(screener.DATA_DIR, f"{code}.csv")
-            if os.path.exists(csv_path):
-                try:
-                    stock_df = pd.read_csv(csv_path, index_col=0, parse_dates=True)
-                except Exception:
-                    stock_df = None
-
-            # 无本地数据时尝试 yfinance（带 10s 超时，防止周末 hang）
-            if stock_df is None or stock_df.empty:
-                import concurrent.futures as _cf
-                try:
-                    with _cf.ThreadPoolExecutor(max_workers=1) as _exec:
-                        _fut = _exec.submit(yf.Ticker(code).history, period="3mo")
-                        stock_df = _fut.result(timeout=10)
-                except (_cf.TimeoutError, Exception):
-                    stock_df = None
-
-            market_ctx = screener.get_market_context()
-            memory_context = get_stock_memory_context(code)
-            result = fast_ai_analysis(code, stock_df, market_ctx, memory_context)
-
-            with lock:
-                results[code] = result
-
-            # 自动存档到 ai_memory.json
-            if result:
-                try:
-                    today_str = china_now().strftime('%Y%m%d')
-                    save_ai_analysis_record(
-                        code=code, date_str=today_str, mode="",
-                        entry_price=0, pullback_pct=0, limit_days=0,
-                        analysis_text=result,
-                    )
-                except Exception:
-                    pass
-        except Exception as e:
-            with lock:
-                errors[code] = str(e)
-                results[code] = None
-
-        # 限流延迟
-        if not q.empty():
-            time.sleep(1.0)
-
-    current_holder[0] = None
-
-
-def start_analysis_queue(codes):
-    """将 codes 加入队列并启动后台线程"""
-    _ensure_worker_objects()
-    q = st.session_state._wq
-    results = st.session_state._wr
-    errors = st.session_state._we
-    lock = st.session_state._wlock
-
-    # 清除旧结果
-    with lock:
-        for code in codes:
-            results.pop(code, None)
-            errors.pop(code, None)
-    for code in codes:
-        st.session_state.pop(f"analysis_result_{code}", None)
-
-    # 入队（去重）
-    existing = set(q.queue)
-    for code in codes:
-        if code not in existing:
-            q.put(code)
-
-    # 同步到 st.session_state 供 UI 显示
-    st.session_state.analysis_queue = list(q.queue)
-    st.session_state.analysis_running = True
-
-    # 启动 worker（仅当没有运行中的 worker）
-    if not st.session_state.get("_worker_started"):
-        st.session_state._worker_started = True
-        # 使用单元素列表来持有 current，这样 worker 可以修改它
-        current_holder = [None]
-        st.session_state._wcurrent_ref = current_holder
-        thread = threading.Thread(
-            target=_analysis_worker,
-            args=(q, results, errors, current_holder, lock),
-            daemon=True,
-        )
-        thread.start()
-
-
-def _sync_worker_to_session():
-    """主线程调用：将 worker 结果同步到 st.session_state（读的是 worker 直接写入的 dict）"""
-    if "_wr" not in st.session_state:
-        return
-    results = st.session_state._wr
-    errors = st.session_state._we
-    lock = st.session_state._wlock
-    q = st.session_state._wq
-    current_holder = st.session_state.get("_wcurrent_ref", [None])
-
-    with lock:
-        for code, result in list(results.items()):
-            st.session_state.analysis_results[code] = result
-        for code, error in list(errors.items()):
-            st.session_state.analysis_errors[code] = error
-        results.clear()
-        errors.clear()
-
-    st.session_state.analysis_current = current_holder[0]
-    st.session_state.analysis_queue = list(q.queue)
-    st.session_state.analysis_running = current_holder[0] is not None or not q.empty()
 
 
 # ==================== 主界面 ====================
@@ -2625,57 +1944,6 @@ def main():
         """, unsafe_allow_html=True)
     except Exception:
         pass
-    if "analysis_queue" not in st.session_state:
-        st.session_state.analysis_queue = []
-    if "analysis_results" not in st.session_state:
-        st.session_state.analysis_results = {}
-    if "analysis_running" not in st.session_state:
-        st.session_state.analysis_running = False
-    if "analysis_current" not in st.session_state:
-        st.session_state.analysis_current = None
-    if "analysis_errors" not in st.session_state:
-        st.session_state.analysis_errors = {}
-
-    # 同步 worker 线程结果到 st.session_state（绕过线程隔离）
-    _sync_worker_to_session()
-
-    # === 全局分析进度条（所有页面可见） ===
-    if st.session_state.analysis_running:
-        current = st.session_state.analysis_current or "..."
-        queue_len = len(st.session_state.analysis_queue)
-        # Count completed results
-        done_count = len([k for k in st.session_state.analysis_results if st.session_state.analysis_results[k] is not None])
-        dots = "·" * ((done_count % 4) + 1)
-        st.markdown(f"""
-        <div style="padding:8px 0;font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:#00F0FF;
-                    border-bottom:1px solid rgba(0,240,255,0.08);margin-bottom:8px;display:flex;align-items:center;gap:8px">
-          <span>◆ 分析中: {current} · 队列剩余 {queue_len} 只</span>
-          <span style="color:#777">{dots}</span>
-        </div>
-        """, unsafe_allow_html=True)
-
-        # JS 自动轮询
-        st.markdown("""
-        <script>
-        (function() {
-            if (window._analysisPollTimer) return;
-            window._analysisPollTimer = setInterval(() => {
-                window.parent.postMessage({type: 'streamlit:rerun'}, '*');
-            }, 2500);
-        })();
-        </script>
-        """, unsafe_allow_html=True)
-
-    # 清除轮询（分析完成时）
-    if not st.session_state.analysis_running and not st.session_state.analysis_queue:
-        st.markdown("""
-        <script>
-        if (window._analysisPollTimer) {
-            clearInterval(window._analysisPollTimer);
-            window._analysisPollTimer = null;
-        }
-        </script>
-        """, unsafe_allow_html=True)
 
     # 获取当前页面
     page = st.session_state.get('nav_page', '◆ 选股')
@@ -2855,26 +2123,6 @@ def main():
                         with st.expander(f"📖 {code} 完整AI分析", expanded=False):
                             st.markdown(analysis_text)
 
-            # ── AI 分析进度条 ──
-            if st.session_state.analysis_running:
-                queue_len = len(st.session_state.analysis_queue)
-                total = len(candidates) if candidates else 1
-                done = max(0, total - queue_len)
-                pct = min(100, done / total * 100) if total > 0 else 0
-                current = st.session_state.analysis_current or "—"
-                est_min = max(0, int(queue_len * 0.25))
-                st.markdown(f"""
-                <div class="analysis-progress-bar">
-                  <div class="progress-header">
-                    <span>🤖 AI分析进度</span>
-                    <span>{done} / {total}</span>
-                  </div>
-                  <div class="progress-track">
-                    <div class="progress-fill" style="width:{pct:.0f}%"></div>
-                  </div>
-                  <div class="progress-footer">当前: {current} · 预计剩余 {est_min}分钟</div>
-                </div>
-                """, unsafe_allow_html=True)
 
             # ── CSV 导出 ──
             if candidates:
@@ -2895,8 +2143,6 @@ def main():
 
     # ============ 复盘页面 ============
     elif page == '◆ 复盘':
-        # 自动验证 AI 记忆
-        auto_verify_memory()
 
         # === 绩效总览 (v6 Unified) ===
         perf = compute_performance(mode_filter=None, days_window=30)
@@ -2956,6 +2202,9 @@ def main():
         # === AI 记忆浏览器 ===
         memory = load_ai_memory()
         if memory:
+            # 批量获取中文名
+            all_codes_in_memory = list(memory.keys())
+            stock_names = name_lookup.batch_lookup(all_codes_in_memory, max_fetch=len(all_codes_in_memory))
             # 展平所有记录并排序
             all_records = []
             for code, records in memory.items():
@@ -3038,6 +2287,7 @@ def main():
                   <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
                     <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
                       <span style="font-family:'JetBrains Mono',monospace;color:#00ff88;font-size:0.85rem;font-weight:600">{code}</span>
+                      <span style="font-family:'JetBrains Mono',monospace;color:#CCC;font-size:0.78rem">{stock_names.get(code, {}).get('name', '') if isinstance(stock_names.get(code, {}), dict) else stock_names.get(code, '')}</span>
                       <span class="memory-verdict-badge {vclass}">{vlabel}</span>
                       <span style="font-family:'JetBrains Mono',monospace;color:#666;font-size:0.75rem">{rec.get('mode', '').upper()}</span>
                       <span style="font-family:'JetBrains Mono',monospace;color:#888;font-size:0.75rem">{sdate_display}</span>
@@ -3057,24 +2307,19 @@ def main():
                 </div>
                 """, unsafe_allow_html=True)
 
-                # 可展开完整分析 + 重新分析 + 删除按钮
+                # 可展开完整分析
                 with st.expander(f"📖 完整分析", expanded=False):
                     st.markdown(analysis_full)
-                    col_re, col_del = st.columns([3, 1])
-                    with col_re:
-                        if st.button(f"🔄 重新分析(带入记忆)", key=f"reanalyze_{code}_{rec['date']}"):
-                            start_analysis_queue([code])
-                            st.toast(f"◆ {code} 已加入分析队列", icon="◆")
-                            st.rerun()
+                    col_del, _ = st.columns([1, 3])
                     with col_del:
-                        if st.button(f"🗑 删除", key=f"delete_mem_{code}_{rec['date']}", type="secondary"):
+                        if st.button(f"🗑 删除记录", key=f"delete_mem_{code}_{rec['date']}", type="secondary"):
                             memory = load_ai_memory()
                             if code in memory:
                                 memory[code] = [r for r in memory[code] if r.get("date") != rec["date"]]
                                 if not memory[code]:
                                     del memory[code]
                                 save_ai_memory(memory)
-                            st.toast(f"◆ {code} 记忆已删除", icon="🗑")
+                            st.toast(f"已删除 {code} 记录", icon="🗑")
                             st.rerun()
         else:
             st.markdown("""
