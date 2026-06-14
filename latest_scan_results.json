@@ -1,11 +1,20 @@
 {
   "scan_time": "2026-06-14 15:20",
   "scan_date": "20260614",
-  "market": {},
+  "market": {
+    "上证": {
+      "price": 4031.51,
+      "pct": 1.12
+    },
+    "深证": {
+      "price": 14963.41,
+      "pct": 0.75
+    }
+  },
   "regime": {
-    "status": "bull",
-    "label": "数据不足，默认非熊市",
-    "avg_trend": 0,
+    "status": "neutral",
+    "label": "3档: 启动期 — 谨慎入场",
+    "avg_trend": 0.94,
     "recommended_mode": "strict"
   },
   "modes": {
@@ -171,19 +180,6 @@
           "price": 45.6,
           "signal_date": "20260601",
           "pullback_pct": 9.5,
-          "limit_days": 2,
-          "entity_ratio": 100.0
-        }
-      ]
-    },
-    "bull": {
-      "count": 1,
-      "candidates": [
-        {
-          "code": "600078.SS",
-          "price": 13.3,
-          "signal_date": "20260604",
-          "pullback_pct": 13.8,
           "limit_days": 2,
           "entity_ratio": 100.0
         }
