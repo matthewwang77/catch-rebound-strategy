@@ -1954,7 +1954,7 @@ def get_market_context():
         parts = []
         trends = []
         for name, code in indices.items():
-            df = yf.download(code, period="6d", progress=False)
+            df = yf.download(code, period="10d", progress=False)
             if df is not None and len(df) >= 2:
                 close_col = df['Close']
                 if hasattr(close_col, 'iloc'):
@@ -2033,7 +2033,7 @@ def detect_market_regime():
         indices = {"上证": "000001.SS", "深证": "399001.SZ", "创业板": "399006.SZ"}
         trends = []
         for code in indices.values():
-            df = yf.download(code, period="6d", progress=False)
+            df = yf.download(code, period="10d", progress=False)
             if df is not None and len(df) >= 5:
                 close_col = df['Close']
                 if hasattr(close_col, 'iloc'):

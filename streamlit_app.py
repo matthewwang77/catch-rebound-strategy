@@ -2111,6 +2111,17 @@ def load_latest_results():
         # 验证基本结构
         if "modes" not in data:
             return None
+        # 防御性过滤：只保留 SCREEN_MODES 中存在的模式（移除旧版 bull 等）
+        valid_modes = set(screener.SCREEN_MODES.keys())
+        data["modes"] = {k: v for k, v in data["modes"].items() if k in valid_modes}
+        if not data["modes"]:
+            return None
+        # 规范化旧版 regime.status (旧版可能是 "bull")
+        regime = data.get("regime", {})
+        if regime.get("status") not in ("bear", "neutral"):
+            regime["status"] = "neutral"
+            if regime.get("recommended_mode") not in valid_modes:
+                regime["recommended_mode"] = "strict"
         return data
     except Exception:
         return None
