@@ -1,7 +1,13 @@
 {
-  "scan_time": "2026-06-14 00:43",
+  "scan_time": "2026-06-14 15:20",
   "scan_date": "20260614",
   "market": {},
+  "regime": {
+    "status": "bull",
+    "label": "数据不足，默认非熊市",
+    "avg_trend": 0,
+    "recommended_mode": "strict"
+  },
   "modes": {
     "strict": {
       "count": 3,
@@ -136,6 +142,48 @@
           "price": 3.18,
           "signal_date": "20260608",
           "pullback_pct": 11.0,
+          "limit_days": 2,
+          "entity_ratio": 100.0
+        }
+      ]
+    },
+    "bear": {
+      "count": 3,
+      "candidates": [
+        {
+          "code": "000720.SZ",
+          "price": 4.25,
+          "signal_date": "20260529",
+          "pullback_pct": 7.2,
+          "limit_days": 2,
+          "entity_ratio": 100.0
+        },
+        {
+          "code": "000567.SZ",
+          "price": 5.76,
+          "signal_date": "20260529",
+          "pullback_pct": 6.4,
+          "limit_days": 2,
+          "entity_ratio": 100.0
+        },
+        {
+          "code": "003041.SZ",
+          "price": 45.6,
+          "signal_date": "20260601",
+          "pullback_pct": 9.5,
+          "limit_days": 2,
+          "entity_ratio": 100.0
+        }
+      ]
+    },
+    "bull": {
+      "count": 1,
+      "candidates": [
+        {
+          "code": "600078.SS",
+          "price": 13.3,
+          "signal_date": "20260604",
+          "pullback_pct": 13.8,
           "limit_days": 2,
           "entity_ratio": 100.0
         }
