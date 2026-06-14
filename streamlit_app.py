@@ -17,6 +17,7 @@ import os
 import sys
 import importlib.util
 import threading
+import re
 
 # ==================== 页面配置 ====================
 st.set_page_config(
@@ -2171,6 +2172,7 @@ def start_analysis_queue(codes):
     for code in codes:
         st.session_state.analysis_results.pop(code, None)
         st.session_state.analysis_errors.pop(code, None)
+        st.session_state.pop(f"analysis_result_{code}", None)
 
     # 只在没有运行中的worker时才启动新线程
     if not st.session_state.analysis_running:
@@ -2405,10 +2407,10 @@ def main():
     # ============ 选股页面 (v6 Unified Auto) ============
     if page == '◆ 选股':
         # 加载预计算选股结果
-        if "cached_scan_data" not in st.session_state:
-            st.session_state["cached_scan_data"] = load_latest_results()
-        scan_data = st.session_state["cached_scan_data"]
         fresh = load_latest_results()
+        if "cached_scan_data" not in st.session_state:
+            st.session_state["cached_scan_data"] = fresh
+        scan_data = st.session_state["cached_scan_data"]
         if fresh and fresh.get("scan_time") != (scan_data or {}).get("scan_time"):
             st.session_state["cached_scan_data"] = fresh
             scan_data = fresh
@@ -2499,7 +2501,6 @@ def main():
                     elif has_result:
                         result_text = st.session_state.get(f"analysis_result_{code}", "")
                         # Quick parse for sentiment/position
-                        import re
                         sent_match = re.search(r'情绪档位[：:]\s*(.+?)(?:\n|$)', result_text)
                         pos_match = re.search(r'仓位[建议]*[：:]\s*(.+?)(?:\n|$)', result_text)
                         sentiment = sent_match.group(1).strip() if sent_match else "—"
@@ -2567,6 +2568,8 @@ def main():
                 )
                 current_scan_time = scan_data.get("scan_time", "")
                 if st.session_state.get("_saved_scan_time") != current_scan_time:
+                    for c in candidates:
+                        c.setdefault('mode', rec_mode)
                     save_signals(candidates)
                     st.session_state["_saved_scan_time"] = current_scan_time
 
