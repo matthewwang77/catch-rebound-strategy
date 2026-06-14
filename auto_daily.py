@@ -12,8 +12,8 @@ import os
 import sys
 import importlib.util
 
-# 选股模式（v6: 四模式，覆盖全部市场状态）
-MODES = ["strict", "loose", "bear", "bull"]
+# v6 unified: detect_market_regime() picks the single best mode
+MODES = ["auto"]
 
 # ==================== 加载模块 ====================
 def _load_module(filepath, module_name):
@@ -58,18 +58,21 @@ def get_market_summary():
 
 # ==================== 执行选股 ====================
 def run_all_modes():
-    """运行三种模式选股，返回 dict。v6: 检测市场状态并标注。"""
-    # v6: 检测市场状态
+    """v6 unified: 检测市场状态，只跑推荐模式。返回 dict。"""
+    # 检测市场状态
     regime_info = None
+    recommended_mode = "strict"  # fallback
     try:
         regime_info = screener.detect_market_regime()
+        recommended_mode = regime_info['recommended_mode']
         print(f"市场状态: {regime_info['sentiment_label']} | "
               f"5日趋势: {regime_info['avg_trend']:+.1f}% | "
-              f"推荐模式: {regime_info['recommended_mode']}")
+              f"推荐模式: {recommended_mode}")
         if regime_info['regime'] == 'bear':
             print("⚠️ 熊市环境 — 启用浅回调+极度缩量策略")
     except Exception as e:
-        print(f"⚠️ 市场检测失败: {e}，继续全模式扫描")
+        print(f"⚠️ 市场检测失败: {e}，使用 STRICT 模式")
+
     DATA_DIR = screener.DATA_DIR
     cache_files = [f for f in os.listdir(DATA_DIR)
                    if f.endswith('.csv') and os.path.getsize(os.path.join(DATA_DIR, f)) > 100]
@@ -88,7 +91,6 @@ def run_all_modes():
             if len(df) == 0:
                 continue
             df = df.tail(60).copy()
-            # 保留日期作为索引（_screen_single_stock 需要 DatetimeIndex 生成 trade_date）
             if 'date' in df.columns:
                 df['date'] = pd.to_datetime(df['date'])
                 df = df.set_index('date')
@@ -126,7 +128,6 @@ def run_all_modes():
                     if len(recent) == 0:
                         continue
                     if code in all_data:
-                        # 保留 DatetimeIndex，确保 _screen_single_stock 能生成正确的 trade_date
                         new_rows = recent[['Open', 'High', 'Low', 'Close', 'Volume']].copy()
                         all_data[code] = pd.concat([all_data[code], new_rows]).tail(60)
                     else:
@@ -138,36 +139,27 @@ def run_all_modes():
             print(f"  ⚠️ 批次 {i+1}/{len(batches)} 下载失败: {e}")
     print(f"今日注入: {injected} 只")
 
-    # 三种模式筛选
+    # 只跑推荐模式
     results = {}
-    for mode in MODES:
-        original = screener.PARAMS.copy()
-        screener.PARAMS.update(screener.SCREEN_MODES[mode])
+    original = screener.PARAMS.copy()
+    screener.PARAMS.update(screener.SCREEN_MODES[recommended_mode])
 
-        candidates = []
-        stats = {
-            'total': len(all_data),
-            'has_data': 0,
-            'has_limit_up': 0,
-            'consecutive_ok': 0,
-            'entity_ratio_ok': 0,
-            'pullback_days_ok': 0,
-            'pullback_range_ok': 0,
-            'ma_ok': 0,
-            'volume_shrink_ok': 0,
-            'yang_ok': 0,
-            'volume_expand_ok': 0,
-            'final': 0,
-        }
-        for code, stock_data in all_data.items():
-            try:
-                screener._screen_single_stock(code, stock_data, stats, candidates, mode)
-            except Exception as e:
-                print(f"  ⚠️ {code} 筛选失败: {e}")
+    candidates = []
+    stats = {
+        'total': len(all_data), 'has_data': 0, 'has_limit_up': 0,
+        'consecutive_ok': 0, 'entity_ratio_ok': 0, 'pullback_days_ok': 0,
+        'pullback_range_ok': 0, 'ma_ok': 0, 'volume_shrink_ok': 0,
+        'yang_ok': 0, 'volume_expand_ok': 0, 'final': 0,
+    }
+    for code, stock_data in all_data.items():
+        try:
+            screener._screen_single_stock(code, stock_data, stats, candidates, recommended_mode)
+        except Exception as e:
+            print(f"  ⚠️ {code} 筛选失败: {e}")
 
-        screener.PARAMS.update(original)
-        results[mode] = candidates
-        print(f"{mode}: {len(candidates)} 只候选")
+    screener.PARAMS.update(original)
+    results[recommended_mode] = candidates
+    print(f"{recommended_mode}: {len(candidates)} 只候选")
 
     return results
 
@@ -188,7 +180,7 @@ def format_message(results):
         pass
 
     total = sum(len(v) for v in results.values())
-    mode_names = {"strict": "🔴严格", "loose": "🟢宽松", "bear": "🐻熊市", "bull": "🐂强牛"}
+    mode_names = {"strict": "🔴严格", "loose": "🟢宽松", "bear": "🐻熊市"}
 
     lines = [
         f"📈 A股连板回调 v6 · {today}",
@@ -199,9 +191,8 @@ def format_message(results):
         f"━━ 📋 选股结果（共 {total} 只）━━",
     ]
 
-    for mode in MODES:
+    for mode, cands in results.items():
         name = mode_names.get(mode, mode)
-        cands = results[mode]
         if cands:
             lines.append(f"\n{name} ({len(cands)}只):")
             for c in cands:
