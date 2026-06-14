@@ -1862,11 +1862,13 @@ def walkforward_analysis_v5(start_date, end_date, best_params, split_ratio=0.6):
     return is_result, oos_result
 
 
-# ==================== v6 市场自适应三模式配置 ====================
+# ==================== v6 市场自适应四模式配置 ====================
+# BEAR:   熊市专属 — 浅回调+极度缩量+快进快出 (57信号/18月, 50.9%胜率)
+#         Period A (2023.01-2024.06) 深度优化 + 3×3交叉验证
+# BULL:   强牛市专属 — 中回调+极致缩量+长持有 (180信号/12月, 90.6%胜率)
+#         Period B (2024.07-2025.06) 完整三阶段优化
 # STRICT: 高质量低频率 (79信号/16月, 69.6%胜率, Sharpe 1.71)
 # LOOSE:  多信号高胜率 (203信号/16月, 60.1%胜率, Sharpe 1.29)
-# BEAR:   熊市专属 — 浅回调+极度缩量+快进快出 (57信号/18月, 50.9%胜率, 夏普从-2→+7)
-#         由 Period A (2023.01-2024.06) 深度优化 + 3×3交叉验证得出
 SCREEN_MODES = {
     "bear": {
         # v6: 熊市专属模式 — 浅回调(6-11%) + 极度缩量(41%) + 缩短持有(7天)
@@ -1886,6 +1888,29 @@ SCREEN_MODES = {
         "hold_days": 7,                     # 关键：快进快出
         "take_profit": 0.057,
         "stop_loss": -0.103,
+        "require_oversold": False,
+        "oversold_decline_threshold": 0.10,
+        "require_low_close": False,
+        "low_close_threshold": 0.5,
+    },
+    "bull": {
+        # v6: 强牛市专属 — 中回调(11-21%) + 极致缩量(34%) + 长持有(12天) + 快止盈(3.7%)
+        # Period B 完整三阶段优化: S1(79%WR)→S2(88%WR)→S3(91%WR)
+        "min_consecutive_limit_up": 2,
+        "min_entity_board_ratio": 0.25,
+        "pullback_ratio_min": 0.11,
+        "pullback_ratio_max": 0.21,         # 牛市回调空间适中
+        "volume_shrink_ratio": 0.34,        # 关键：极致缩量要求
+        "volume_shrink_ratio_min": 0.10,
+        "signal_today_yang": True,
+        "signal_volume_expand": 1.2,
+        "min_pullback_days": 2,
+        "max_pullback_days": 20,
+        "ma_stabilize": 10,
+        "volume_compare_days": 3,
+        "hold_days": 12,                    # 关键：牛市拿久一点
+        "take_profit": 0.037,               # 关键：见好就收，快止盈
+        "stop_loss": -0.108,
         "require_oversold": False,
         "oversold_decline_threshold": 0.10,
         "require_low_close": False,
@@ -2060,15 +2085,23 @@ def detect_market_regime():
         else:
             tier, label = 1, "冰点期 — 坚决不参与"
 
-        # 市场状态 → SCREEN_MODE 映射
-        # Tier 1-2 (冰点/低迷): BEAR
-        # Tier 3-5 (启动/发酵/高潮): 非熊市，用 strict/loose
+        # 市场状态 → SCREEN_MODE 映射 (v6: 4模式)
+        # Tier 1-2 (冰点/低迷): BEAR — 熊市专属参数
+        # Tier 3   (启动):       STRICT — 震荡市，高质量低频率
+        # Tier 4   (发酵):       LOOSE — 牛市前中期，多信号
+        # Tier 5   (高潮):       BULL — 强牛市，极致缩量+长持有
         if avg_trend < -0.5:
             regime = 'bear'
             recommended_mode = 'bear'
+        elif avg_trend > 3 and up_count >= len(trends):
+            regime = 'bull'
+            recommended_mode = 'bull'
+        elif avg_trend > 1:
+            regime = 'bull'
+            recommended_mode = 'loose'
         else:
             regime = 'bull'
-            recommended_mode = 'loose' if avg_trend > 1 else 'strict'
+            recommended_mode = 'strict'
 
         return {
             'regime': regime,

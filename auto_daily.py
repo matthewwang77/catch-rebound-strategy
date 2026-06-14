@@ -12,8 +12,8 @@ import os
 import sys
 import importlib.util
 
-# 选股模式（v6: 加入 bear，自动检测市场切换）
-MODES = ["strict", "loose", "bear"]
+# 选股模式（v6: 四模式，覆盖全部市场状态）
+MODES = ["strict", "loose", "bear", "bull"]
 
 # ==================== 加载模块 ====================
 def _load_module(filepath, module_name):
@@ -188,7 +188,7 @@ def format_message(results):
         pass
 
     total = sum(len(v) for v in results.values())
-    mode_names = {"strict": "🔴严格", "loose": "🟢宽松", "bear": "🐻熊市"}
+    mode_names = {"strict": "🔴严格", "loose": "🟢宽松", "bear": "🐻熊市", "bull": "🐂强牛"}
 
     lines = [
         f"📈 A股连板回调 v6 · {today}",

@@ -522,6 +522,16 @@ def inject_design_system():
       border-color: rgba(255,165,0,0.45);
       box-shadow: 0 0 8px rgba(255,165,0,0.1);
     }
+    .mode-pill.bull {
+      background: rgba(255,215,0,0.08);
+      border: 1px solid rgba(255,215,0,0.25);
+      color: #FFD700;
+    }
+    .mode-pill.bull:hover {
+      background: rgba(255,215,0,0.14);
+      border-color: rgba(255,215,0,0.45);
+      box-shadow: 0 0 8px rgba(255,215,0,0.1);
+    }
 
     /* === NEON STATUS BAR === */
     .neon-status-bar {
@@ -1375,7 +1385,7 @@ def fast_ai_analysis(code, stock_df, market_context="", memory_context=None):
 # ==================== 多模式筛选 ====================
 def screen_all_modes(all_data):
     """用 strict/loose/bear 三种参数分别筛选，返回 {mode: [候选列表]}"""
-    modes = ["strict", "loose", "bear"]
+    modes = ["strict", "loose", "bear", "bull"]
     results = {}
     all_stats = {}
 
@@ -1936,9 +1946,10 @@ def show_screening_results(results, all_stats):
         f"◆ STRICT 严格 ({len(results['strict'])}只)",
         f"◇ LOOSE 宽松 ({len(results['loose'])}只)",
         f"🐻 BEAR 熊市 ({len(results['bear'])}只)",
+        f"🐂 BULL 强牛 ({len(results['bull'])}只)",
     ])
 
-    for tab_idx, mode in enumerate(["strict", "loose", "bear"]):
+    for tab_idx, mode in enumerate(["strict", "loose", "bear", "bull"]):
         with tabs[tab_idx]:
             candidates = results[mode]
             stats = all_stats[mode]
@@ -2011,7 +2022,7 @@ def show_screening_results(results, all_stats):
     st.divider()
     if any(len(v) > 0 for v in results.values()):
         all_candidates = []
-        for mode in ["strict", "loose", "bear"]:
+        for mode in ["strict", "loose", "bear", "bull"]:
             for c in results[mode]:
                 all_candidates.append({**c, 'mode': mode})
         df_export = pd.DataFrame(all_candidates)

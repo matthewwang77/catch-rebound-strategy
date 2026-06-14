@@ -2,25 +2,28 @@
   "period": "20240701_20250630",
   "period_label": "Period B: 牛市大涨",
   "best_params": {
-    "pullback_ratio_min": 0.15,
-    "pullback_ratio_max": 0.22,
-    "volume_shrink_ratio": 0.4,
-    "take_profit": 0.06,
-    "stop_loss": -0.12,
-    "hold_days": 10,
-    "min_entity_board_ratio": 0.2,
+    "pullback_ratio_min": 0.11,
+    "pullback_ratio_max": 0.21,
+    "volume_shrink_ratio": 0.34,
+    "take_profit": 0.037,
+    "stop_loss": -0.108,
+    "hold_days": 12,
+    "min_entity_board_ratio": 0.25,
     "min_consecutive_limit_up": 2,
     "require_oversold": false,
     "require_low_close": false,
     "volume_shrink_ratio_min": 0.1
   },
   "stage1_score": 0.9273,
+  "stage2_score": 0.9541826484018265,
+  "stage3_score": 0.9669444444444444,
   "stage3_metrics": {
-    "win_rate": 0.7922,
-    "avg_return": 0.038,
-    "sharpe": 12.13,
-    "signal_count": 154
+    "win_rate": 0.9056,
+    "avg_return": 0.0304,
+    "sharpe": 19.56,
+    "signal_count": 180
   },
+  "total_time_minutes": 123.0,
   "enhanced_grid": true,
-  "note": "Stage 1 only (Stage 2+3 skipped due to time constraints)"
+  "full_3_stage": true
 }
