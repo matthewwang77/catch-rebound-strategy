@@ -1399,6 +1399,10 @@ def fast_ai_analysis(code, stock_df, market_context="", memory_context=None):
     """v2: 四维框架（量价形时）+ 经典战法匹配 + DeepSeek API。memory_context 为历史分析上下文。"""
     import requests
 
+    # ---- 数据有效性检查 ----
+    if stock_df is None or stock_df.empty:
+        return f"## ⚠️ 无数据\n\n无法获取 {code} 的行情数据（本地缓存缺失 + yfinance 不可用）。请在工作日交易时段重试。"
+
     # ---- 列名兼容（CSV 小写 / yfinance 首字母大写）----
     if 'close' in stock_df.columns and 'Close' not in stock_df.columns:
         stock_df = stock_df.rename(columns={'open': 'Open', 'high': 'High', 'low': 'Low', 'close': 'Close', 'volume': 'Volume'})
@@ -2307,72 +2311,123 @@ def load_latest_results():
 
 
 # ==================== 异步分析队列 ====================
+import queue as _queue
+
+# 线程安全的模块级全局变量（绕过 st.session_state 的线程隔离问题）
+_worker_queue = _queue.Queue()
+_worker_results = {}   # {code: result_text}
+_worker_errors = {}    # {code: error_msg}
+_worker_current = None
+_worker_running = False
+_worker_lock = threading.Lock()
+
+
 def _analysis_worker():
-    """后台线程：逐条消费分析队列，调用 DeepSeek API"""
+    """后台线程：逐条消费分析队列，调用 DeepSeek API（使用 queue.Queue 通信）"""
+    global _worker_current, _worker_running
     while True:
-        if not st.session_state.analysis_queue:
-            break
-        code = st.session_state.analysis_queue.pop(0)
-        st.session_state.analysis_current = code
         try:
-            # 获取股票数据
+            code = _worker_queue.get(timeout=0.5)
+        except _queue.Empty:
+            break
+
+        _worker_current = code
+
+        try:
+            # 获取股票数据（优先本地 CSV）
             stock_df = None
             csv_path = os.path.join(screener.DATA_DIR, f"{code}.csv")
             if os.path.exists(csv_path):
-                stock_df = pd.read_csv(csv_path, index_col=0, parse_dates=True)
-            else:
                 try:
-                    stock_df = yf.Ticker(code).history(period="3mo")
+                    stock_df = pd.read_csv(csv_path, index_col=0, parse_dates=True)
                 except Exception:
+                    stock_df = None
+
+            # 无本地数据时尝试 yfinance（带 10s 超时，防止周末 hang）
+            if stock_df is None or stock_df.empty:
+                import concurrent.futures as _cf
+                try:
+                    with _cf.ThreadPoolExecutor(max_workers=1) as _exec:
+                        _fut = _exec.submit(yf.Ticker(code).history, period="3mo")
+                        stock_df = _fut.result(timeout=10)
+                except (_cf.TimeoutError, Exception):
                     stock_df = None
 
             market_ctx = screener.get_market_context()
             memory_context = get_stock_memory_context(code)
             result = fast_ai_analysis(code, stock_df, market_ctx, memory_context)
-            st.session_state.analysis_results[code] = result
 
-            # 自动存档
+            with _worker_lock:
+                _worker_results[code] = result
+
+            # 自动存档到 ai_memory.json
             if result:
                 try:
                     today_str = china_now().strftime('%Y%m%d')
                     save_ai_analysis_record(
-                        code=code,
-                        date_str=today_str,
-                        mode="",
-                        entry_price=0,
-                        pullback_pct=0,
-                        limit_days=0,
+                        code=code, date_str=today_str, mode="",
+                        entry_price=0, pullback_pct=0, limit_days=0,
                         analysis_text=result,
                     )
                 except Exception:
                     pass
         except Exception as e:
-            st.session_state.analysis_errors[code] = str(e)
-            st.session_state.analysis_results[code] = None
-            # 单只失败不中断，继续处理队列
+            with _worker_lock:
+                _worker_errors[code] = str(e)
+                _worker_results[code] = None
+
         # 限流延迟
-        if st.session_state.analysis_queue:
+        if not _worker_queue.empty():
             time.sleep(1.0)
-    st.session_state.analysis_running = False
-    st.session_state.analysis_current = None
+
+    _worker_running = False
+    _worker_current = None
 
 
 def start_analysis_queue(codes):
     """将 codes 加入队列并启动后台线程"""
-    for code in codes:
-        if code not in st.session_state.analysis_queue:
-            st.session_state.analysis_queue.append(code)
+    global _worker_running
+
     # 清除旧结果
+    with _worker_lock:
+        for code in codes:
+            _worker_results.pop(code, None)
+            _worker_errors.pop(code, None)
     for code in codes:
-        st.session_state.analysis_results.pop(code, None)
-        st.session_state.analysis_errors.pop(code, None)
         st.session_state.pop(f"analysis_result_{code}", None)
 
-    # 只在没有运行中的worker时才启动新线程
-    if not st.session_state.analysis_running:
-        st.session_state.analysis_running = True
+    # 入队（去重）
+    existing = set(_worker_queue.queue)
+    for code in codes:
+        if code not in existing:
+            _worker_queue.put(code)
+
+    # 同步到 st.session_state 供 UI 显示
+    st.session_state.analysis_queue = list(_worker_queue.queue)
+    st.session_state.analysis_running = True
+
+    # 启动 worker（仅当没有运行中的 worker）
+    if not _worker_running:
+        _worker_running = True
         thread = threading.Thread(target=_analysis_worker, daemon=True)
         thread.start()
+
+
+def _sync_worker_to_session():
+    """主线程调用：将 worker 结果从全局变量同步到 st.session_state"""
+    global _worker_current, _worker_running
+
+    with _worker_lock:
+        for code, result in _worker_results.items():
+            st.session_state.analysis_results[code] = result
+        for code, error in _worker_errors.items():
+            st.session_state.analysis_errors[code] = error
+        _worker_results.clear()
+        _worker_errors.clear()
+
+    st.session_state.analysis_current = _worker_current
+    st.session_state.analysis_running = _worker_running or not _worker_queue.empty()
+    st.session_state.analysis_queue = list(_worker_queue.queue)
 
 
 # ==================== 主界面 ====================
@@ -2556,6 +2611,9 @@ def main():
         st.session_state.analysis_current = None
     if "analysis_errors" not in st.session_state:
         st.session_state.analysis_errors = {}
+
+    # 同步 worker 线程结果到 st.session_state（绕过线程隔离）
+    _sync_worker_to_session()
 
     # === 全局分析进度条（所有页面可见） ===
     if st.session_state.analysis_running:
