@@ -1,0 +1,17 @@
+{
+  "scan_time": "2026-06-05 15:00",
+  "scan_date": "20260605",
+  "market": {},
+  "regime": {
+    "status": "neutral",
+    "label": "3档: 启动期 — 谨慎入场",
+    "avg_trend": -0.45,
+    "recommended_mode": "strict"
+  },
+  "modes": {
+    "strict": {
+      "count": 0,
+      "candidates": []
+    }
+  }
+}

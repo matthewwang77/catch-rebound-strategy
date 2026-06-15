@@ -1,0 +1,17 @@
+{
+  "scan_time": "2026-06-03 15:00",
+  "scan_date": "20260603",
+  "market": {},
+  "regime": {
+    "status": "bear",
+    "label": "2档: 低迷期 — 建议观望",
+    "avg_trend": -0.67,
+    "recommended_mode": "bear"
+  },
+  "modes": {
+    "bear": {
+      "count": 0,
+      "candidates": []
+    }
+  }
+}

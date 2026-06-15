@@ -1,11 +1,11 @@
 {
-  "scan_time": "2026-06-15 15:00",
-  "scan_date": "20260615",
+  "scan_time": "2026-05-11 15:00",
+  "scan_date": "20260511",
   "market": {},
   "regime": {
     "status": "neutral",
-    "label": "4档: 发酵期 — 势头良好",
-    "avg_trend": 1.94,
+    "label": "5档: 高潮期 — 短期风险积聚",
+    "avg_trend": 3.99,
     "recommended_mode": "loose"
   },
   "modes": {

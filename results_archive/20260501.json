@@ -1,0 +1,26 @@
+{
+  "scan_time": "2026-05-01 15:00",
+  "scan_date": "20260501",
+  "market": {},
+  "regime": {
+    "status": "neutral",
+    "label": "3档: 启动期 — 谨慎入场",
+    "avg_trend": 0.96,
+    "recommended_mode": "strict"
+  },
+  "modes": {
+    "strict": {
+      "count": 1,
+      "candidates": [
+        {
+          "code": "600032.SS",
+          "price": 9.87,
+          "signal_date": "20260413",
+          "pullback_pct": 24.8,
+          "limit_days": 3,
+          "entity_ratio": 100.0
+        }
+      ]
+    }
+  }
+}

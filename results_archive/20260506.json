@@ -1,0 +1,26 @@
+{
+  "scan_time": "2026-05-06 15:00",
+  "scan_date": "20260506",
+  "market": {},
+  "regime": {
+    "status": "neutral",
+    "label": "4档: 发酵期 — 势头良好",
+    "avg_trend": 2.45,
+    "recommended_mode": "loose"
+  },
+  "modes": {
+    "loose": {
+      "count": 1,
+      "candidates": [
+        {
+          "code": "600683.SS",
+          "price": 14.97,
+          "signal_date": "20260415",
+          "pullback_pct": 6.5,
+          "limit_days": 3,
+          "entity_ratio": 100.0
+        }
+      ]
+    }
+  }
+}

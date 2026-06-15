@@ -1,166 +1,17 @@
 {
-  "scan_time": "2026-06-12 20:04",
+  "scan_time": "2026-06-12 15:00",
   "scan_date": "20260612",
-  "market": {
-    "上证": {
-      "price": 4031.51,
-      "pct": 1.12
-    },
-    "深证": {
-      "price": 14963.41,
-      "pct": 0.75
-    }
+  "market": {},
+  "regime": {
+    "status": "neutral",
+    "label": "4档: 发酵期 — 势头良好",
+    "avg_trend": 1.39,
+    "recommended_mode": "loose"
   },
   "modes": {
-    "strict": {
-      "count": 3,
-      "candidates": [
-        {
-          "code": "002081.SZ",
-          "price": 5.03,
-          "pullback_pct": 13.7,
-          "limit_days": 5,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "002208.SZ",
-          "price": 15.46,
-          "pullback_pct": 15.5,
-          "limit_days": 3,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "000518.SZ",
-          "price": 3.14,
-          "pullback_pct": 13.4,
-          "limit_days": 4,
-          "entity_ratio": 100.0
-        }
-      ]
-    },
     "loose": {
-      "count": 17,
-      "candidates": [
-        {
-          "code": "002971.SZ",
-          "price": 58.03,
-          "pullback_pct": 9.3,
-          "limit_days": 2,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "000925.SZ",
-          "price": 8.03,
-          "pullback_pct": 28.5,
-          "limit_days": 2,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "002081.SZ",
-          "price": 5.03,
-          "pullback_pct": 13.7,
-          "limit_days": 5,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "002787.SZ",
-          "price": 25.14,
-          "pullback_pct": 10.7,
-          "limit_days": 2,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "600234.SS",
-          "price": 24.39,
-          "pullback_pct": 10.9,
-          "limit_days": 2,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "600488.SS",
-          "price": 4.76,
-          "pullback_pct": 23.7,
-          "limit_days": 2,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "600078.SS",
-          "price": 12.85,
-          "pullback_pct": 13.8,
-          "limit_days": 2,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "601678.SS",
-          "price": 5.87,
-          "pullback_pct": 10.9,
-          "limit_days": 2,
-          "entity_ratio": 50.0
-        },
-        {
-          "code": "002208.SZ",
-          "price": 15.46,
-          "pullback_pct": 15.5,
-          "limit_days": 3,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "000518.SZ",
-          "price": 3.14,
-          "pullback_pct": 13.4,
-          "limit_days": 4,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "605218.SS",
-          "price": 17.02,
-          "pullback_pct": 20.5,
-          "limit_days": 2,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "003041.SZ",
-          "price": 45.2,
-          "pullback_pct": 9.5,
-          "limit_days": 2,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "000037.SZ",
-          "price": 11.25,
-          "pullback_pct": 8.8,
-          "limit_days": 2,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "002931.SZ",
-          "price": 64.51,
-          "pullback_pct": 9.7,
-          "limit_days": 2,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "000402.SZ",
-          "price": 2.76,
-          "pullback_pct": 11.5,
-          "limit_days": 3,
-          "entity_ratio": 67.0
-        },
-        {
-          "code": "002374.SZ",
-          "price": 3.21,
-          "pullback_pct": 11.0,
-          "limit_days": 2,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "001257.SZ",
-          "price": 27.74,
-          "pullback_pct": 11.2,
-          "limit_days": 2,
-          "entity_ratio": 100.0
-        }
-      ]
+      "count": 0,
+      "candidates": []
     }
   }
 }

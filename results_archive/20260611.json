@@ -1,0 +1,17 @@
+{
+  "scan_time": "2026-06-11 15:00",
+  "scan_date": "20260611",
+  "market": {},
+  "regime": {
+    "status": "bear",
+    "label": "1档: 冰点期 — 坚决不参与",
+    "avg_trend": -2.02,
+    "recommended_mode": "bear"
+  },
+  "modes": {
+    "bear": {
+      "count": 0,
+      "candidates": []
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "scan_time": "2026-05-28 15:00",
+  "scan_date": "20260528",
+  "market": {},
+  "regime": {
+    "status": "neutral",
+    "label": "3档: 启动期 — 谨慎入场",
+    "avg_trend": 0.67,
+    "recommended_mode": "strict"
+  },
+  "modes": {
+    "strict": {
+      "count": 1,
+      "candidates": [
+        {
+          "code": "001299.SZ",
+          "price": 13.02,
+          "signal_date": "20260512",
+          "pullback_pct": 16.2,
+          "limit_days": 3,
+          "entity_ratio": 100.0
+        }
+      ]
+    }
+  }
+}

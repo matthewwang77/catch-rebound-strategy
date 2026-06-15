@@ -1,0 +1,26 @@
+{
+  "scan_time": "2026-05-15 15:00",
+  "scan_date": "20260515",
+  "market": {},
+  "regime": {
+    "status": "bear",
+    "label": "1档: 冰点期 — 坚决不参与",
+    "avg_trend": -2.12,
+    "recommended_mode": "bear"
+  },
+  "modes": {
+    "bear": {
+      "count": 1,
+      "candidates": [
+        {
+          "code": "002124.SZ",
+          "price": 2.97,
+          "signal_date": "20260511",
+          "pullback_pct": 9.6,
+          "limit_days": 3,
+          "entity_ratio": 100.0
+        }
+      ]
+    }
+  }
+}

@@ -268,11 +268,27 @@ def _load_ai_memory():
     except (FileNotFoundError, json.JSONDecodeError):
         return {}
 
+def _to_py(obj):
+    """递归转换 numpy 类型为 Python 原生类型"""
+    if isinstance(obj, (np.bool_,)):
+        return bool(obj)
+    if isinstance(obj, (np.integer,)):
+        return int(obj)
+    if isinstance(obj, (np.floating,)):
+        return float(obj)
+    if isinstance(obj, np.ndarray):
+        return obj.tolist()
+    if isinstance(obj, dict):
+        return {k: _to_py(v) for k, v in obj.items()}
+    if isinstance(obj, (list, tuple)):
+        return [_to_py(v) for v in obj]
+    return obj
+
 def _save_ai_memory(memory):
     path = os.path.join(BASE, 'ai_memory.json')
     tmp = path + '.tmp'
     with open(tmp, 'w', encoding='utf-8') as f:
-        json.dump(memory, f, ensure_ascii=False, indent=2)
+        json.dump(_to_py(memory), f, ensure_ascii=False, indent=2)
     os.replace(tmp, path)
 
 
