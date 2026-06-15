@@ -397,63 +397,64 @@ def simulate_day(target_date_str, all_data, v7_params, screener, index_data):
     mode = regime_info['recommended_mode']
     params = v7_params[mode]
 
-    # 2. 备份并设置 PARAMS
+    # 2. 备份并设置 PARAMS (try/finally 防泄漏)
     original_params = screener.PARAMS.copy()
-    screener.PARAMS.update(params)
+    try:
+        screener.PARAMS.update(params)
 
-    # 3. 预过滤：只有近期出现过涨停的股票才扫描
-    target_dt = pd.Timestamp(target_date_str)
-    cutoff_dt = target_dt - pd.Timedelta(days=30)
+        # 3. 预过滤：只有近期出现过涨停的股票才扫描
+        target_dt = pd.Timestamp(target_date_str)
+        cutoff_dt = target_dt - pd.Timedelta(days=30)
 
-    hot_codes = []
-    for code, df in all_data.items():
-        try:
-            recent = df[(df['date'] >= cutoff_dt) & (df['date'] <= target_dt)]
-            if len(recent) < 15:
-                continue
-            if len(recent) >= 2:
-                pct_chg = recent['close'].pct_change() * 100
-                if (pct_chg >= 9.5).any():
-                    hot_codes.append(code)
-        except Exception:
-            continue
-
-    print(f"  [{target_date_str}] 预过滤: {len(hot_codes)} 只近期有涨停 (模式={mode})")
-
-    # 4. 逐股截断 + 筛选
-    candidates = []
-    stats = {
-        'total': len(hot_codes), 'has_data': 0, 'has_limit_up': 0,
-        'consecutive_ok': 0, 'entity_ratio_ok': 0, 'pullback_days_ok': 0,
-        'pullback_range_ok': 0, 'ma_ok': 0, 'volume_shrink_ok': 0,
-        'yang_ok': 0, 'volume_expand_ok': 0, 'final': 0,
-    }
-
-    for code in hot_codes:
-        try:
-            df = all_data[code]
-            truncated = truncate_df_to_date(df, target_date_str)
-            if len(truncated) < 15:
+        hot_codes = []
+        for code, df in all_data.items():
+            try:
+                recent = df[(df['date'] >= cutoff_dt) & (df['date'] <= target_dt)]
+                if len(recent) < 15:
+                    continue
+                if len(recent) >= 2:
+                    pct_chg = recent['close'].pct_change() * 100
+                    if (pct_chg >= 9.5).any():
+                        hot_codes.append(code)
+            except Exception:
                 continue
 
-            # 转换为 _screen_single_stock 期望的格式 (Close/Open/High/Low/Volume)
-            stock_df = pd.DataFrame({
-                'Close': truncated['close'].values,
-                'Open': truncated['open'].values,
-                'High': truncated['high'].values,
-                'Low': truncated['low'].values,
-                'Volume': truncated['volume'].values,
-            }, index=truncated['date'].values)
+        print(f"  [{target_date_str}] 预过滤: {len(hot_codes)} 只近期有涨停 (模式={mode})")
 
-            if len(stock_df.dropna()) < 10:
+        # 4. 逐股截断 + 筛选
+        candidates = []
+        stats = {
+            'total': len(hot_codes), 'has_data': 0, 'has_limit_up': 0,
+            'consecutive_ok': 0, 'entity_ratio_ok': 0, 'pullback_days_ok': 0,
+            'pullback_range_ok': 0, 'ma_ok': 0, 'volume_shrink_ok': 0,
+            'yang_ok': 0, 'volume_expand_ok': 0, 'final': 0,
+        }
+
+        for code in hot_codes:
+            try:
+                df = all_data[code]
+                truncated = truncate_df_to_date(df, target_date_str)
+                if len(truncated) < 15:
+                    continue
+
+                # 转换为 _screen_single_stock 期望的格式 (Close/Open/High/Low/Volume)
+                stock_df = pd.DataFrame({
+                    'Close': truncated['close'].values,
+                    'Open': truncated['open'].values,
+                    'High': truncated['high'].values,
+                    'Low': truncated['low'].values,
+                    'Volume': truncated['volume'].values,
+                }, index=truncated['date'].values)
+
+                if len(stock_df.dropna()) < 10:
+                    continue
+
+                screener._screen_single_stock(code, stock_df, stats, candidates, mode)
+            except Exception:
                 continue
-
-            screener._screen_single_stock(code, stock_df, stats, candidates, mode)
-        except Exception:
-            continue
-
-    # 5. 恢复 PARAMS
-    screener.PARAMS.update(original_params)
+    finally:
+        # 5. 恢复 PARAMS（即使异常也恢复）
+        screener.PARAMS.update(original_params)
 
     print(f"  [{target_date_str}] 选出: {len(candidates)} 只")
 
@@ -757,7 +758,7 @@ def run_ai_analysis_historical(code, stock_df, candidate, market_context, mode,
     position = ""
     opinion = ""
     try:
-        m = re.search(r'仓位建议[：:]\s*(.+?)（(.+?)）', analysis_text)
+        m = re.search(r'仓位建议[：:]\s*(.+?)[（(](.+?)[）)]', analysis_text)
         if m:
             position = m.group(1).strip().strip('*')
             sentiment = m.group(2).strip().strip('*')
@@ -824,9 +825,19 @@ def main():
         print(f"❌ 数据不足：仅 {len(all_data)} 只股票")
         sys.exit(1)
 
-    # ── 交易日列表 ──
-    trading_days = pd.bdate_range('2026-05-01', '2026-06-15')
-    print(f"\n📅 交易日: {len(trading_days)} 天 ({trading_days[0].date()} ~ {trading_days[-1].date()})")
+    # ── 交易日列表: 从实际数据推断（排除中国节假日）──
+    print("\n📅 推断交易日...")
+    # 从股票数据中收集所有实际存在的交易日期
+    all_dates = set()
+    for code, df in list(all_data.items())[:500]:  # 采样500只足够
+        dates_in_range = df[(df['date'] >= '2026-04-01') & (df['date'] <= '2026-06-15')]['date']
+        all_dates.update(d.strftime('%Y-%m-%d') for d in dates_in_range)
+    trading_days_list = sorted(d for d in all_dates if '2026-05-01' <= d <= '2026-06-15')
+    trading_days = pd.DatetimeIndex([pd.Timestamp(d) for d in trading_days_list])
+    print(f"📅 实际交易日: {len(trading_days)} 天 ({trading_days[0].date()} ~ {trading_days[-1].date()})")
+    if len(trading_days) < 10:
+        print(f"❌ 交易日太少: {len(trading_days)}")
+        sys.exit(1)
 
     # ── 预下载全时段指数数据（避免每天重复下载）──
     print("\n📊 预下载指数数据...")
@@ -861,8 +872,16 @@ def main():
         print(f"📅 [{day_idx+1}/{len(trading_days)}] {day_str}")
         print(f"{'─'*50}")
 
-        # 筛选
-        result = simulate_day(day_str, all_data, v7_params, screener, index_data)
+        # 筛选（try/except 保护: 一天挂了不影响后续）
+        try:
+            result = simulate_day(day_str, all_data, v7_params, screener, index_data)
+        except Exception as e:
+            print(f"  ❌ simulate_day 异常: {e}")
+            traceback.print_exc()
+            result = {
+                'date': day_str, 'mode': 'strict', 'regime_info': {},
+                'candidates': []
+            }
         all_results[day_str] = result
 
         if not result['candidates']:
