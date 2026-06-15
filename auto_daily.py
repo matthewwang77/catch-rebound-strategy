@@ -373,12 +373,17 @@ def _run_ai_analysis(code, stock_df, candidate, market_context, mode):
 - 布林(20,2)：上轨={bb_upper:.2f} 中轨={bb_mid:.2f} 下轨={bb_lower:.2f}
 - OBV趋势：{obv_trend}{limit_up_data}"""
 
-    system_prompt = """你是专精于A股连板回调策略的量化分析师。严格遵循"量价形时"四维分析框架，整体控制在400字以内，结论必须明确。
-【量】缩量挖坑（回调量<涨停量50%为佳），放量填坑（反弹需放量确认）
-【价】首板不破涨停最低价，MA支撑体系层层验证
-【形】缩量黄金坑、长下影弹簧线、缩倍阴、三阴不破阳、天外飞仙、金凤凰
-【时】3-5天为黄金回调窗口，超过7天不恢复=明显走弱
-最终给出【参与/观望/放弃】结论 + 仓位建议（对应情绪档位：冰点空仓/低迷1-2成/启动2-3成/发酵3-5成/高潮减仓）。"""
+    system_prompt = """你是A股连板回调策略量化分析师。严格遵循"量价形时"框架，控制在250字以内，必须包含最终结论。
+
+格式要求（每项1-2句话）：
+- 量：缩量程度+资金流向
+- 价：均线支撑+关键位
+- 形：匹配形态
+- 时：回调天数+窗口评估
+- 仓位建议：X成仓（情绪档位）
+- 最终结论：【参与 / 观望 / 放弃】
+
+⚠️ 最终结论和仓位建议必须出现，缺一不可。"""
 
     prompt = f"""{technical_data}
 
@@ -411,7 +416,7 @@ def _run_ai_analysis(code, stock_df, candidate, market_context, mode):
                             {"role": "user", "content": prompt},
                         ],
                         "temperature": 0.4,
-                        "max_tokens": 2000,
+                        "max_tokens": 3000,
                     },
                     timeout=25,
                 )
@@ -455,6 +460,10 @@ def _run_ai_analysis(code, stock_df, candidate, market_context, mode):
             sm = _re.search(r'情绪档位[：:]\s*(.+?)(?:\n|$)', analysis_text)
             if sm:
                 sentiment = sm.group(1).strip().strip('*')
+        # 清理 sentiment 前缀
+        for prefix in ['情绪档位：', '情绪档位:', '情绪档位']:
+            if sentiment.startswith(prefix):
+                sentiment = sentiment[len(prefix):].strip()
         om = _re.search(r'最终结论[：:]\s*(.+?)(?:\n|$)', analysis_text)
         if om:
             opinion = om.group(1).strip().strip('*')
