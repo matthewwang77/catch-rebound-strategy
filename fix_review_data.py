@@ -82,7 +82,7 @@ def dedup_signal_tracker():
     df['date'] = df['date'].astype(str)
     df['signal_date'] = df['signal_date'].astype(str)
     df = df.sort_values('date').drop_duplicates(subset=['code', 'signal_date'], keep='first')
-    df.to_csv(tracker_path, index=False, encoding='utf-8-sig')
+    df.to_csv(tracker_path, index=False, encoding='utf-8')
     return original_len - len(df)
 
 

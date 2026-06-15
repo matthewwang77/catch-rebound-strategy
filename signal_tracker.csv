@@ -1,4 +1,4 @@
-﻿date,signal_date,code,mode,entry_price,pullback_pct,limit_days,name,sector
+date,signal_date,code,mode,entry_price,pullback_pct,limit_days,name,sector
 20260501,20260413,600032.SS,strict,9.87,24.8,3,,
 20260506,20260415,600683.SS,loose,14.97,6.5,3,,
 20260514,20260508,000720.SZ,strict,5.83,12.9,3,,
