@@ -1937,6 +1937,7 @@ def compute_performance(mode_filter=None, days_window=30):
         wins = 0
         losses = 0
         neutral = 0
+        mode_hold_days = {}
         for code, records in memory.items():
             for r in records:
                 date = str(r.get('date', ''))
@@ -1947,6 +1948,9 @@ def compute_performance(mode_filter=None, days_window=30):
                 mode = r.get('mode', '')
                 if mode_filter and mode != mode_filter:
                     continue
+                # 收集各模式的实际持有天数
+                if mode and mode not in mode_hold_days:
+                    mode_hold_days[mode] = screener.SCREEN_MODES.get(mode, {}).get('hold_days', 7)
                 # 使用预计算的 7d 收益
                 r7 = r.get('return_7d')
                 if r7 is None:
@@ -2020,7 +2024,7 @@ def compute_performance(mode_filter=None, days_window=30):
             'chart_df': chart_df,
             'returns': returns,
             'exit_reasons': exit_reasons,
-            'hold_days': 7,  # 使用 7d 收益
+            'mode_hold_days': mode_hold_days,
         }
     except Exception:
         return None
@@ -2442,8 +2446,9 @@ def main():
             win_label = f"+{perf['wins']}笔盈利" if perf['wins'] > 0 else ""
 
             # ── 绩效面板 v2: B不对称布局 ──
+            hold_info = ' · '.join(f"{m.upper()}{d}日" for m, d in sorted(perf.get('mode_hold_days', {}).items())) if perf.get('mode_hold_days') else "持有"
             st.markdown(f"""
-            <div class="section-label">◆ 绩效总览 (近30天 · 7日持有)</div>
+            <div class="section-label">◆ 绩效总览 (近30天 · {hold_info})</div>
             <div class="perf-panel-v2">
               <div class="perf-hero">
                 <div class="perf-hero-label">累计收益</div>
@@ -2480,7 +2485,8 @@ def main():
                 exit_info = perf.get('exit_reasons', {})
                 if exit_info:
                     parts = [f"{k}{v}次" for k, v in sorted(exit_info.items())]
-                    st.caption(f"◆ 7日持有 · {' · '.join(parts)}")
+                    hold_str = ' · '.join(f"{m.upper()}{d}日" for m, d in sorted(perf.get('mode_hold_days', {}).items())) if perf.get('mode_hold_days') else "持有"
+                    st.caption(f"◆ {hold_str} · {' · '.join(parts)}")
             else:
                 st.caption(f"数据不足（{len(perf.get('cum_returns',[]))}笔），继续积累")
         else:

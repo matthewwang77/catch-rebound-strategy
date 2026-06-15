@@ -891,7 +891,7 @@ def _auto_maintenance():
 
             # 本地 CSV 计算7日收益
             from backfill_signals import check_return_v5_local
-            ret7 = check_return_v5_local(code, date, entry_price, 7, tp, sl, screener.DATA_DIR)
+            ret7 = check_return_v5_local(code, date, entry_price, mp.get('hold_days', 7), tp, sl, screener.DATA_DIR)
 
             r7 = ret7.get('return_pct') if ret7 else None
             r['return_7d'] = round(r7, 2) if r7 is not None else None

@@ -487,17 +487,13 @@ def save_signal_to_tracker(day_str, candidate, mode):
     entry_price = candidate['price']
     signal_date_str = day_str.replace('-', '')
 
-    # 去重: 20天内同 code + entry_price
-    cutoff = pd.Timestamp(day_str) - timedelta(days=20)
+    # 去重: 同 (code, signal_date) 不重复
+    cand_sig_date = str(candidate.get('signal_date', ''))
     for row in existing:
         if len(row) >= 3 and row[2] == code:
-            try:
-                row_date = pd.Timestamp(row[0])
-                row_price = float(row[4])
-                if row_date >= cutoff and abs(row_price - entry_price) < 0.01:
-                    return  # 重复
-            except (ValueError, IndexError):
-                pass
+            row_sig_date = row[1] if len(row) > 1 else ''
+            if row_sig_date == cand_sig_date:
+                return  # 重复
 
     new_row = [
         signal_date_str,
@@ -579,7 +575,7 @@ def run_ai_analysis_historical(code, stock_df, candidate, market_context, mode,
     # 去重
     if code in ai_memory:
         for rec in ai_memory[code]:
-            if rec.get("date") == scan_date_str:
+            if rec.get("signal_date") == signal_date_str:
                 return None
 
     # 列名兼容
@@ -964,7 +960,7 @@ def main():
                     code=code,
                     signal_date=rec.get('signal_date', rec['date']),
                     entry_price=rec.get('entry_price', 0),
-                    hold_days=7,
+                    hold_days=params.get('hold_days', 7),
                     take_profit=params['take_profit'],
                     stop_loss=params['stop_loss'],
                     data_dir=os.path.join(BASE, 'stock_data'),
