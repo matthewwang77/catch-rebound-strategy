@@ -16,39 +16,39 @@
   },
   "params": {
     "A": {
-      "pullback_ratio_min": 0.06,
+      "pullback_ratio_min": 0.01,
       "pullback_ratio_max": 0.11,
-      "volume_shrink_ratio": 0.41,
-      "take_profit": 0.057,
-      "stop_loss": -0.103,
-      "hold_days": 7,
-      "min_entity_board_ratio": 0.45,
-      "min_consecutive_limit_up": 2,
+      "volume_shrink_ratio": 0.55,
+      "take_profit": 0.096,
+      "stop_loss": -0.092,
+      "hold_days": 3,
+      "min_entity_board_ratio": 0.15,
+      "min_consecutive_limit_up": 3,
       "require_oversold": false,
       "require_low_close": false,
-      "volume_shrink_ratio_min": 0.1
+      "volume_shrink_ratio_min": 0.05
     },
     "B": {
-      "pullback_ratio_min": 0.15,
-      "pullback_ratio_max": 0.22,
-      "volume_shrink_ratio": 0.4,
-      "take_profit": 0.06,
-      "stop_loss": -0.12,
-      "hold_days": 10,
-      "min_entity_board_ratio": 0.2,
-      "min_consecutive_limit_up": 2,
+      "pullback_ratio_min": 0.01,
+      "pullback_ratio_max": 0.09,
+      "volume_shrink_ratio": 0.55,
+      "take_profit": 0.042,
+      "stop_loss": -0.173,
+      "hold_days": 12,
+      "min_entity_board_ratio": 0.35,
+      "min_consecutive_limit_up": 3,
       "require_oversold": false,
       "require_low_close": false,
-      "volume_shrink_ratio_min": 0.1
+      "volume_shrink_ratio_min": 0.05
     },
     "C": {
-      "pullback_ratio_min": 0.01,
-      "pullback_ratio_max": 0.32,
-      "volume_shrink_ratio": 0.84,
-      "take_profit": 0.052,
-      "stop_loss": -0.144,
-      "hold_days": 11,
-      "min_entity_board_ratio": 0.35,
+      "pullback_ratio_min": 0.02,
+      "pullback_ratio_max": 0.27,
+      "volume_shrink_ratio": 0.36,
+      "take_profit": 0.054,
+      "stop_loss": -0.09,
+      "hold_days": 12,
+      "min_entity_board_ratio": 0.1,
       "min_consecutive_limit_up": 3,
       "require_oversold": false,
       "require_low_close": false,
@@ -58,112 +58,240 @@
   "full_matrix": {
     "params_A": {
       "test_A": {
-        "win_rate": 0.5088,
-        "avg_return": 0.024,
-        "sharpe": 7.06,
-        "sortino": 5.0,
-        "signal_count": 57,
-        "score": 0.7258,
-        "total_return": 1.3655,
-        "profit_factor": 3.48,
-        "max_dd": 0.0
+        "win_rate": 0.6346,
+        "avg_return": 0.0268,
+        "sharpe": 2.01,
+        "sortino": 1.58,
+        "signal_count": 52,
+        "score": 0.6342,
+        "total_return": 1.3922,
+        "profit_factor": 2.28,
+        "max_dd": -25.84
       },
       "test_B": {
-        "win_rate": 0.6018,
-        "avg_return": 0.0245,
-        "sharpe": 7.97,
+        "win_rate": 0.5984,
+        "avg_return": 0.0184,
+        "sharpe": 2.51,
         "sortino": 5.0,
-        "signal_count": 221,
-        "score": 0.8241,
-        "total_return": 5.4174,
-        "profit_factor": 2.45,
-        "max_dd": 0.0
+        "signal_count": 244,
+        "score": 0.741,
+        "total_return": 4.4807,
+        "profit_factor": 2.02,
+        "max_dd": -36.52
       },
       "test_C": {
-        "win_rate": 0.4079,
-        "avg_return": 0.0142,
-        "sharpe": 5.06,
-        "sortino": 5.0,
-        "signal_count": 76,
-        "score": 0.6379,
-        "total_return": 1.0768,
-        "profit_factor": 3.88,
-        "max_dd": 0.0
+        "win_rate": 0.5652,
+        "avg_return": 0.0099,
+        "sharpe": 1.67,
+        "sortino": 1.37,
+        "signal_count": 69,
+        "score": 0.4763,
+        "total_return": 0.684,
+        "profit_factor": 1.54,
+        "max_dd": -22.05
       }
     },
     "params_B": {
       "test_A": {
-        "win_rate": 0.2,
-        "avg_return": -0.0135,
-        "sharpe": -3.67,
-        "sortino": -11.3,
-        "signal_count": 45,
-        "score": 0.1,
-        "total_return": -0.607,
-        "profit_factor": 1.85,
-        "max_dd": 0.0
+        "win_rate": 0.7742,
+        "avg_return": 0.0115,
+        "sharpe": 0.91,
+        "sortino": 0.33,
+        "signal_count": 31,
+        "score": 0.4508,
+        "total_return": 0.357,
+        "profit_factor": 1.56,
+        "max_dd": -34.01
       },
       "test_B": {
-        "win_rate": 0.7922,
-        "avg_return": 0.038,
-        "sharpe": 12.13,
+        "win_rate": 0.931,
+        "avg_return": 0.03,
+        "sharpe": 3.67,
         "sortino": 5.0,
-        "signal_count": 154,
-        "score": 0.9273,
-        "total_return": 5.851,
-        "profit_factor": 1.37,
-        "max_dd": 0.0
+        "signal_count": 174,
+        "score": 0.9759,
+        "total_return": 5.2261,
+        "profit_factor": 4.41,
+        "max_dd": -32.02
       },
       "test_C": {
-        "win_rate": 0.4603,
-        "avg_return": 0.0273,
-        "sharpe": 14.57,
-        "sortino": 3.0,
-        "signal_count": 63,
-        "score": 0.6952,
-        "total_return": 1.7207,
-        "profit_factor": 99.0,
-        "max_dd": 0.0
+        "win_rate": 0.7209,
+        "avg_return": 0.005,
+        "sharpe": 0.61,
+        "sortino": 0.34,
+        "signal_count": 43,
+        "score": 0.3717,
+        "total_return": 0.2157,
+        "profit_factor": 1.21,
+        "max_dd": -32.38
       }
     },
     "params_C": {
       "test_A": {
-        "win_rate": 0.5126,
-        "avg_return": -0.0052,
-        "sharpe": -1.06,
-        "sortino": -5.58,
-        "signal_count": 199,
-        "score": 0.2794,
-        "total_return": -1.0435,
-        "profit_factor": 0.8,
-        "max_dd": 0.0
+        "win_rate": 0.4255,
+        "avg_return": -0.0159,
+        "sharpe": -2.13,
+        "sortino": -2.09,
+        "signal_count": 94,
+        "score": 0.2116,
+        "total_return": -1.4966,
+        "profit_factor": 0.55,
+        "max_dd": -86.55
       },
       "test_B": {
-        "win_rate": 0.742,
-        "avg_return": 0.0207,
-        "sharpe": 5.13,
+        "win_rate": 0.8199,
+        "avg_return": 0.0295,
+        "sharpe": 4.5,
         "sortino": 5.0,
-        "signal_count": 593,
-        "score": 0.8477,
-        "total_return": 12.2744,
-        "profit_factor": 0.77,
-        "max_dd": 0.0
+        "signal_count": 211,
+        "score": 0.9339,
+        "total_return": 6.2341,
+        "profit_factor": 3.48,
+        "max_dd": -38.29
       },
       "test_C": {
-        "win_rate": 0.6609,
-        "avg_return": 0.0255,
-        "sharpe": 7.98,
-        "sortino": 5.0,
-        "signal_count": 230,
-        "score": 0.8514,
-        "total_return": 5.8669,
-        "profit_factor": 1.92,
-        "max_dd": 0.0
+        "win_rate": 0.7209,
+        "avg_return": 0.0209,
+        "sharpe": 4.62,
+        "sortino": 4.86,
+        "signal_count": 129,
+        "score": 0.8251,
+        "total_return": 2.7007,
+        "profit_factor": 2.4,
+        "max_dd": -20.28
       }
     }
   },
   "analysis": {
     "conclusion": "market_adaptive",
-    "adaptive_sharpe_mean": 11.25,
-    "unified_sharpe_mean": 7.68,
-    "adaptive_better": 
+    "adaptive_sharpe_mean": 3.71,
+    "unified_sharpe_mean": 1.73,
+    "adaptive_better": true
+  },
+  "recommendation": {
+    "conclusion": "market_adaptive",
+    "adaptive_params_map": {
+      "A": "A",
+      "B": "C",
+      "C": "C"
+    },
+    "matrix": {
+      "A": {
+        "tested_with_A_params": {
+          "win_rate": 0.6346,
+          "sharpe": 2.01,
+          "avg_return": 0.0268,
+          "signal_count": 52
+        },
+        "tested_with_B_params": {
+          "win_rate": 0.7742,
+          "sharpe": 0.91,
+          "avg_return": 0.0115,
+          "signal_count": 31
+        },
+        "tested_with_C_params": {
+          "win_rate": 0.4255,
+          "sharpe": -2.13,
+          "avg_return": -0.0159,
+          "signal_count": 94
+        }
+      },
+      "B": {
+        "tested_with_A_params": {
+          "win_rate": 0.5984,
+          "sharpe": 2.51,
+          "avg_return": 0.0184,
+          "signal_count": 244
+        },
+        "tested_with_B_params": {
+          "win_rate": 0.931,
+          "sharpe": 3.67,
+          "avg_return": 0.03,
+          "signal_count": 174
+        },
+        "tested_with_C_params": {
+          "win_rate": 0.8199,
+          "sharpe": 4.5,
+          "avg_return": 0.0295,
+          "signal_count": 211
+        }
+      },
+      "C": {
+        "tested_with_A_params": {
+          "win_rate": 0.5652,
+          "sharpe": 1.67,
+          "avg_return": 0.0099,
+          "signal_count": 69
+        },
+        "tested_with_B_params": {
+          "win_rate": 0.7209,
+          "sharpe": 0.61,
+          "avg_return": 0.005,
+          "signal_count": 43
+        },
+        "tested_with_C_params": {
+          "win_rate": 0.7209,
+          "sharpe": 4.62,
+          "avg_return": 0.0209,
+          "signal_count": 129
+        }
+      }
+    },
+    "recommended_modes": {
+      "A": {
+        "period": "20230101_20240630",
+        "label": "震荡下行（熊市）",
+        "use_params_from": "A",
+        "params": {
+          "pullback_ratio_min": 0.01,
+          "pullback_ratio_max": 0.11,
+          "volume_shrink_ratio": 0.55,
+          "take_profit": 0.096,
+          "stop_loss": -0.092,
+          "hold_days": 3,
+          "min_entity_board_ratio": 0.15,
+          "min_consecutive_limit_up": 3,
+          "require_oversold": false,
+          "require_low_close": false,
+          "volume_shrink_ratio_min": 0.05
+        }
+      },
+      "B": {
+        "period": "20240701_20250630",
+        "label": "牛市大涨",
+        "use_params_from": "C",
+        "params": {
+          "pullback_ratio_min": 0.02,
+          "pullback_ratio_max": 0.27,
+          "volume_shrink_ratio": 0.36,
+          "take_profit": 0.054,
+          "stop_loss": -0.09,
+          "hold_days": 12,
+          "min_entity_board_ratio": 0.1,
+          "min_consecutive_limit_up": 3,
+          "require_oversold": false,
+          "require_low_close": false,
+          "volume_shrink_ratio_min": 0.1
+        }
+      },
+      "C": {
+        "period": "20250701_20260430",
+        "label": "震荡回调",
+        "use_params_from": "C",
+        "params": {
+          "pullback_ratio_min": 0.02,
+          "pullback_ratio_max": 0.27,
+          "volume_shrink_ratio": 0.36,
+          "take_profit": 0.054,
+          "stop_loss": -0.09,
+          "hold_days": 12,
+          "min_entity_board_ratio": 0.1,
+          "min_consecutive_limit_up": 3,
+          "require_oversold": false,
+          "require_low_close": false,
+          "volume_shrink_ratio_min": 0.1
+        }
+      }
+    }
+  }
+}

@@ -306,15 +306,32 @@ def main():
         'recommendation': recommendation,
     }
 
-    # 保存
+    # 保存（处理numpy类型）
+    def _to_py(obj):
+        """递归转换numpy类型为Python原生类型"""
+        import numpy as np
+        if isinstance(obj, (np.bool_,)):
+            return bool(obj)
+        if isinstance(obj, (np.integer,)):
+            return int(obj)
+        if isinstance(obj, (np.floating,)):
+            return float(obj)
+        if isinstance(obj, np.ndarray):
+            return obj.tolist()
+        if isinstance(obj, dict):
+            return {k: _to_py(v) for k, v in obj.items()}
+        if isinstance(obj, (list, tuple)):
+            return [_to_py(v) for v in obj]
+        return obj
+
     matrix_path = os.path.join(OUTPUT_DIR, 'v5_cross_validation_matrix.json')
     with open(matrix_path, 'w', encoding='utf-8') as f:
-        json.dump(output, f, indent=2, ensure_ascii=False)
+        json.dump(_to_py(output), f, indent=2, ensure_ascii=False)
     print(f"\n✅ 交叉验证矩阵已保存至 {matrix_path}")
 
     report_path = os.path.join(OUTPUT_DIR, 'v5_regime_adaptation_report.json')
     with open(report_path, 'w', encoding='utf-8') as f:
-        json.dump(recommendation, f, indent=2, ensure_ascii=False)
+        json.dump(_to_py(recommendation), f, indent=2, ensure_ascii=False)
     print(f"✅ 市场自适应报告已保存至 {report_path}")
 
     # ── Step 6: 输出可复制的模式配置 ──

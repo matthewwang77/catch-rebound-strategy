@@ -1,0 +1,126 @@
+{
+  "conclusion": "market_adaptive",
+  "adaptive_params_map": {
+    "A": "A",
+    "B": "C",
+    "C": "C"
+  },
+  "matrix": {
+    "A": {
+      "tested_with_A_params": {
+        "win_rate": 0.6346,
+        "sharpe": 2.01,
+        "avg_return": 0.0268,
+        "signal_count": 52
+      },
+      "tested_with_B_params": {
+        "win_rate": 0.7742,
+        "sharpe": 0.91,
+        "avg_return": 0.0115,
+        "signal_count": 31
+      },
+      "tested_with_C_params": {
+        "win_rate": 0.4255,
+        "sharpe": -2.13,
+        "avg_return": -0.0159,
+        "signal_count": 94
+      }
+    },
+    "B": {
+      "tested_with_A_params": {
+        "win_rate": 0.5984,
+        "sharpe": 2.51,
+        "avg_return": 0.0184,
+        "signal_count": 244
+      },
+      "tested_with_B_params": {
+        "win_rate": 0.931,
+        "sharpe": 3.67,
+        "avg_return": 0.03,
+        "signal_count": 174
+      },
+      "tested_with_C_params": {
+        "win_rate": 0.8199,
+        "sharpe": 4.5,
+        "avg_return": 0.0295,
+        "signal_count": 211
+      }
+    },
+    "C": {
+      "tested_with_A_params": {
+        "win_rate": 0.5652,
+        "sharpe": 1.67,
+        "avg_return": 0.0099,
+        "signal_count": 69
+      },
+      "tested_with_B_params": {
+        "win_rate": 0.7209,
+        "sharpe": 0.61,
+        "avg_return": 0.005,
+        "signal_count": 43
+      },
+      "tested_with_C_params": {
+        "win_rate": 0.7209,
+        "sharpe": 4.62,
+        "avg_return": 0.0209,
+        "signal_count": 129
+      }
+    }
+  },
+  "recommended_modes": {
+    "A": {
+      "period": "20230101_20240630",
+      "label": "震荡下行（熊市）",
+      "use_params_from": "A",
+      "params": {
+        "pullback_ratio_min": 0.01,
+        "pullback_ratio_max": 0.11,
+        "volume_shrink_ratio": 0.55,
+        "take_profit": 0.096,
+        "stop_loss": -0.092,
+        "hold_days": 3,
+        "min_entity_board_ratio": 0.15,
+        "min_consecutive_limit_up": 3,
+        "require_oversold": false,
+        "require_low_close": false,
+        "volume_shrink_ratio_min": 0.05
+      }
+    },
+    "B": {
+      "period": "20240701_20250630",
+      "label": "牛市大涨",
+      "use_params_from": "C",
+      "params": {
+        "pullback_ratio_min": 0.02,
+        "pullback_ratio_max": 0.27,
+        "volume_shrink_ratio": 0.36,
+        "take_profit": 0.054,
+        "stop_loss": -0.09,
+        "hold_days": 12,
+        "min_entity_board_ratio": 0.1,
+        "min_consecutive_limit_up": 3,
+        "require_oversold": false,
+        "require_low_close": false,
+        "volume_shrink_ratio_min": 0.1
+      }
+    },
+    "C": {
+      "period": "20250701_20260430",
+      "label": "震荡回调",
+      "use_params_from": "C",
+      "params": {
+        "pullback_ratio_min": 0.02,
+        "pullback_ratio_max": 0.27,
+        "volume_shrink_ratio": 0.36,
+        "take_profit": 0.054,
+        "stop_loss": -0.09,
+        "hold_days": 12,
+        "min_entity_board_ratio": 0.1,
+        "min_consecutive_limit_up": 3,
+        "require_oversold": false,
+        "require_low_close": false,
+        "volume_shrink_ratio_min": 0.1
+      }
+    }
+  }
+}

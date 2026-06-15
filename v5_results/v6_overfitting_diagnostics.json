@@ -1,107 +1,81 @@
 {
-  "diagnostic_time": "2026-06-14 15:13:33",
+  "diagnostic_time": "2026-06-15 21:36:24",
   "cross_validation_matrix": {
     "BEAR": {
       "A_熊市震荡": {
-        "win_rate": 0.5088,
-        "avg_return": 0.024,
-        "sharpe": 7.06,
-        "signal_count": 57,
-        "score": 0.7257784994560557,
+        "win_rate": 0.6346,
+        "avg_return": 0.0268,
+        "sharpe": 2.01,
+        "signal_count": 52,
+        "score": 0.6341645349796837,
         "is_in_sample": true
       },
       "B_牛市大涨": {
-        "win_rate": 0.6018,
-        "avg_return": 0.0245,
-        "sharpe": 7.97,
-        "signal_count": 221,
-        "score": 0.8240539098054852,
+        "win_rate": 0.5984,
+        "avg_return": 0.0184,
+        "sharpe": 2.51,
+        "signal_count": 244,
+        "score": 0.7410459604558243,
         "is_in_sample": false
       },
       "C_震荡回调": {
-        "win_rate": 0.4079,
-        "avg_return": 0.0142,
-        "sharpe": 5.06,
-        "signal_count": 76,
-        "score": 0.6378826758567606,
-        "is_in_sample": false
-      }
-    },
-    "BULL": {
-      "A_熊市震荡": {
-        "win_rate": 0.2941,
-        "avg_return": -0.0105,
-        "sharpe": -3.33,
-        "signal_count": 51,
-        "score": 0.13694117647058823,
-        "is_in_sample": false
-      },
-      "B_牛市大涨": {
-        "win_rate": 0.9056,
-        "avg_return": 0.0304,
-        "sharpe": 19.56,
-        "signal_count": 180,
-        "score": 0.9669444444444444,
-        "is_in_sample": true
-      },
-      "C_震荡回调": {
-        "win_rate": 0.5625,
-        "avg_return": 0.0131,
-        "sharpe": 5.77,
-        "signal_count": 80,
-        "score": 0.6873073928327541,
+        "win_rate": 0.5652,
+        "avg_return": 0.0099,
+        "sharpe": 1.67,
+        "signal_count": 69,
+        "score": 0.47626788026606015,
         "is_in_sample": false
       }
     },
     "STRICT": {
       "A_熊市震荡": {
-        "win_rate": 0.3692,
-        "avg_return": -0.0137,
-        "sharpe": -3.27,
-        "signal_count": 65,
-        "score": 0.17256410256410257,
+        "win_rate": 0.4255,
+        "avg_return": -0.0159,
+        "sharpe": -2.13,
+        "signal_count": 94,
+        "score": 0.21160283687943263,
         "is_in_sample": false
       },
       "B_牛市大涨": {
-        "win_rate": 0.7339,
-        "avg_return": 0.0208,
-        "sharpe": 5.74,
-        "signal_count": 218,
-        "score": 0.8453784000802942,
+        "win_rate": 0.8199,
+        "avg_return": 0.0295,
+        "sharpe": 4.5,
+        "signal_count": 211,
+        "score": 0.9339381197684362,
         "is_in_sample": false
       },
       "C_震荡回调": {
-        "win_rate": 0.6636,
-        "avg_return": 0.027,
-        "sharpe": 9.53,
-        "signal_count": 110,
-        "score": 0.8358102383426954,
+        "win_rate": 0.7209,
+        "avg_return": 0.0209,
+        "sharpe": 4.62,
+        "signal_count": 129,
+        "score": 0.825106206498008,
         "is_in_sample": true
       }
     },
     "LOOSE": {
       "A_熊市震荡": {
-        "win_rate": 0.4107,
-        "avg_return": 0.0022,
-        "sharpe": 0.63,
-        "signal_count": 375,
-        "score": 0.35549787411847106,
+        "win_rate": 0.7742,
+        "avg_return": 0.0115,
+        "sharpe": 0.91,
+        "signal_count": 31,
+        "score": 0.45081597948216373,
         "is_in_sample": false
       },
       "B_牛市大涨": {
-        "win_rate": 0.669,
-        "avg_return": 0.0222,
-        "sharpe": 7.29,
-        "signal_count": 1453,
-        "score": 0.8323690561541498,
+        "win_rate": 0.931,
+        "avg_return": 0.03,
+        "sharpe": 3.67,
+        "signal_count": 174,
+        "score": 0.9758620689655171,
         "is_in_sample": false
       },
       "C_震荡回调": {
-        "win_rate": 0.4988,
-        "avg_return": 0.0133,
-        "sharpe": 4.46,
-        "signal_count": 421,
-        "score": 0.7131870067644775,
+        "win_rate": 0.7209,
+        "avg_return": 0.005,
+        "sharpe": 0.61,
+        "signal_count": 43,
+        "score": 0.3717279397035787,
         "is_in_sample": true
       }
     }
@@ -109,330 +83,225 @@
   "bootstrap": {
     "BEAR": {
       "sharpe": {
-        "mean": 7.342159625761049,
-        "lower": 2.7158316301161496,
-        "upper": 12.99944910352965,
-        "std": 2.561959517341676
+        "mean": 6.0508212981613525,
+        "lower": 1.3714060895515354,
+        "upper": 11.380460953664265,
+        "std": 2.4741324765577275
       },
       "win_rate": {
-        "mean": 0.5109298245614035,
-        "lower": 0.38596491228070173,
-        "upper": 0.631578947368421,
-        "std": 0.06617052455197041
+        "mean": 0.6368461538461538,
+        "lower": 0.5,
+        "upper": 0.7692307692307693,
+        "std": 0.06726521736719224
       },
       "avg_return": {
-        "mean": 0.023992799756486324,
-        "lower": 0.009929048537736372,
-        "upper": 0.03733943848101028,
-        "std": 0.007023251980940526
-      }
-    },
-    "BULL": {
-      "sharpe": {
-        "mean": 20.845091609195396,
-        "lower": 12.913568688977133,
-        "upper": 34.31833543782706,
-        "std": 5.589563116634729
-      },
-      "win_rate": {
-        "mean": 0.9056055555555557,
-        "lower": 0.8611111111111112,
-        "upper": 0.9444444444444444,
-        "std": 0.021376922337931984
-      },
-      "avg_return": {
-        "mean": 0.030374338208272476,
-        "lower": 0.02642960812627905,
-        "upper": 0.03346504217782194,
-        "std": 0.0018153707867786689
+        "mean": 0.026900687537003393,
+        "lower": 0.006300547027106355,
+        "upper": 0.046837112779085206,
+        "std": 0.01012941333674141
       }
     },
     "STRICT": {
       "sharpe": {
-        "mean": 9.864517380106209,
-        "lower": 5.5992465549274195,
-        "upper": 15.688368637168459,
-        "std": 2.577149920194434
+        "mean": 6.646976848387126,
+        "lower": 3.354668828036637,
+        "upper": 10.514721027741816,
+        "std": 1.835506732611397
       },
       "win_rate": {
-        "mean": 0.6640681818181817,
-        "lower": 0.5727272727272728,
-        "upper": 0.7454545454545455,
-        "std": 0.0442123386446561
+        "mean": 0.7205658914728681,
+        "lower": 0.6356589147286822,
+        "upper": 0.7984496124031008,
+        "std": 0.040202443509751974
       },
       "avg_return": {
-        "mean": 0.02699440690884191,
-        "lower": 0.018441907136810758,
-        "upper": 0.035009122188384416,
-        "std": 0.00423334327977233
+        "mean": 0.020920186796211087,
+        "lower": 0.011689058120500636,
+        "upper": 0.02980435395117674,
+        "std": 0.004570586026645383
       }
     },
     "LOOSE": {
       "sharpe": {
-        "mean": 4.523900892935033,
-        "lower": 2.6955818628486647,
-        "upper": 6.54768490116833,
-        "std": 0.9708038967364178
+        "mean": 1.723347353757,
+        "lower": -3.1070418780989724,
+        "upper": 7.9934071575412196,
+        "std": 2.8885693216430983
       },
       "win_rate": {
-        "mean": 0.49895486935866984,
-        "lower": 0.4489311163895487,
-        "upper": 0.5463182897862233,
-        "std": 0.02442059378438588
+        "mean": 0.721813953488372,
+        "lower": 0.5813953488372093,
+        "upper": 0.8604651162790697,
+        "std": 0.06957553451252936
       },
       "avg_return": {
-        "mean": 0.01333083293310199,
-        "lower": 0.008572651895460135,
-        "upper": 0.017972879363846887,
-        "std": 0.0023728355557037697
+        "mean": 0.005206272136123456,
+        "lower": -0.014441652911581617,
+        "upper": 0.022490118261206078,
+        "std": 0.009539981862183715
       }
     }
   },
   "permutation": {
     "BEAR": {
-      "true_sharpe": 7.057881779044962,
-      "p_value": 0.9905,
-      "perm_mean": 7.057881779044961,
-      "perm_std": 1.4190022764522377e-15,
-      "n_signals": 57,
-      "conclusion": "不显著 (p=0.99)"
-    },
-    "BULL": {
-      "true_sharpe": 19.564125177404808,
-      "p_value": 0.894,
-      "perm_mean": 19.564125177404808,
-      "perm_std": 1.7816779402039392e-15,
-      "n_signals": 180,
-      "conclusion": "不显著 (p=0.89)"
+      "true_sharpe": 5.872768976225092,
+      "p_value": 0.0075,
+      "perm_mean": 0.08189268227450844,
+      "perm_std": 2.30185528912399,
+      "n_signals": 52,
+      "conclusion": "极显著 (p<0.01)"
     },
     "STRICT": {
-      "true_sharpe": 9.529551627639723,
-      "p_value": 0.9295,
-      "perm_mean": 9.529551627639725,
-      "perm_std": 1.8318881763934674e-15,
-      "n_signals": 110,
-      "conclusion": "不显著 (p=0.93)"
+      "true_sharpe": 6.500125285945998,
+      "p_value": 0.0,
+      "perm_mean": 0.07182467063620171,
+      "perm_std": 1.454310975883309,
+      "n_signals": 129,
+      "conclusion": "极显著 (p<0.01)"
     },
     "LOOSE": {
-      "true_sharpe": 4.459189481483896,
-      "p_value": 0.996,
-      "perm_mean": 4.459189481483896,
-      "perm_std": 3.269413596617092e-16,
-      "n_signals": 421,
-      "conclusion": "不显著 (p=1.00)"
+      "true_sharpe": 1.283936770053998,
+      "p_value": 0.3315,
+      "perm_mean": 0.38029462017251064,
+      "perm_std": 2.7001756595944744,
+      "n_signals": 43,
+      "conclusion": "不显著 (p=0.33)"
     }
   },
   "walkforward": {
     "BEAR": null,
-    "BULL": null,
-    "STRICT": {
-      "is": {
-        "sharpe": 4.55,
-        "win_rate": 0.5965,
-        "avg_return": 0.0157,
-        "signal_count": 57
-      },
-      "oos": {
-        "sharpe": 17.84,
-        "win_rate": 0.6486,
-        "avg_return": 0.0349,
-        "signal_count": 37
-      },
-      "sharpe_decay": 13.29,
-      "wr_decay": 0.052099999999999924,
-      "verdict": "🟢 时间稳健"
-    },
-    "LOOSE": {
-      "is": {
-        "sharpe": 3.46,
-        "win_rate": 0.4642,
-        "avg_return": 0.0101,
-        "signal_count": 265
-      },
-      "oos": {
-        "sharpe": 4.32,
-        "win_rate": 0.5573,
-        "avg_return": 0.0141,
-        "signal_count": 131
-      },
-      "sharpe_decay": 0.8600000000000003,
-      "wr_decay": 0.09310000000000002,
-      "verdict": "🟢 时间稳健"
-    }
+    "STRICT": null,
+    "LOOSE": null
   },
   "sensitivity": {
     "BEAR": [
       {
-        "parameter": "pullback_ratio_min",
-        "base_value": 0.06,
-        "sensitivity": 1.75,
-        "importance": "🔴关键"
-      },
-      {
         "parameter": "volume_shrink_ratio",
-        "base_value": 0.41,
-        "sensitivity": 1.6199999999999992,
-        "importance": "🔴关键"
-      },
-      {
-        "parameter": "hold_days",
-        "base_value": 7,
-        "sensitivity": 0.815,
-        "importance": "🔴关键"
-      },
-      {
-        "parameter": "stop_loss",
-        "base_value": -0.103,
-        "sensitivity": 0.7200000000000002,
+        "base_value": 0.55,
+        "sensitivity": 0.44000000000000006,
         "importance": "🔴关键"
       },
       {
         "parameter": "take_profit",
-        "base_value": 0.057,
-        "sensitivity": 0.6649999999999996,
+        "base_value": 0.096,
+        "sensitivity": 0.36499999999999977,
         "importance": "🔴关键"
       },
       {
         "parameter": "pullback_ratio_max",
         "base_value": 0.11,
-        "sensitivity": 0.4249999999999998,
+        "sensitivity": 0.32999999999999974,
         "importance": "🔴关键"
       },
       {
-        "parameter": "min_entity_board_ratio",
-        "base_value": 0.45,
+        "parameter": "stop_loss",
+        "base_value": -0.092,
+        "sensitivity": 0.1499999999999998,
+        "importance": "🟡中等"
+      },
+      {
+        "parameter": "hold_days",
+        "base_value": 3,
+        "sensitivity": 0.1449999999999999,
+        "importance": "🟡中等"
+      },
+      {
+        "parameter": "pullback_ratio_min",
+        "base_value": 0.01,
         "sensitivity": 0.0,
         "importance": "🟢稳健"
-      }
-    ],
-    "BULL": [
-      {
-        "parameter": "volume_shrink_ratio",
-        "base_value": 0.34,
-        "sensitivity": 15.025000000000002,
-        "importance": "🔴关键"
-      },
-      {
-        "parameter": "pullback_ratio_min",
-        "base_value": 0.11,
-        "sensitivity": 3.5200000000000005,
-        "importance": "🔴关键"
-      },
-      {
-        "parameter": "take_profit",
-        "base_value": 0.037,
-        "sensitivity": 1.2949999999999982,
-        "importance": "🔴关键"
-      },
-      {
-        "parameter": "hold_days",
-        "base_value": 12,
-        "sensitivity": 1.2750000000000021,
-        "importance": "🔴关键"
-      },
-      {
-        "parameter": "stop_loss",
-        "base_value": -0.108,
-        "sensitivity": 0.8550000000000004,
-        "importance": "🔴关键"
-      },
-      {
-        "parameter": "pullback_ratio_max",
-        "base_value": 0.21,
-        "sensitivity": 0.6850000000000005,
-        "importance": "🔴关键"
       },
       {
         "parameter": "min_entity_board_ratio",
-        "base_value": 0.25,
+        "base_value": 0.15,
         "sensitivity": 0.0,
         "importance": "🟢稳健"
       }
     ],
     "STRICT": [
       {
-        "parameter": "pullback_ratio_min",
-        "base_value": 0.12,
-        "sensitivity": 1.6249999999999996,
-        "importance": "🔴关键"
-      },
-      {
-        "parameter": "stop_loss",
-        "base_value": -0.112,
-        "sensitivity": 1.4450000000000003,
-        "importance": "🔴关键"
-      },
-      {
         "parameter": "volume_shrink_ratio",
-        "base_value": 0.67,
-        "sensitivity": 1.0799999999999992,
+        "base_value": 0.36,
+        "sensitivity": 0.5,
         "importance": "🔴关键"
       },
       {
-        "parameter": "hold_days",
-        "base_value": 10,
-        "sensitivity": 0.47999999999999954,
+        "parameter": "pullback_ratio_max",
+        "base_value": 0.27,
+        "sensitivity": 0.3900000000000001,
         "importance": "🔴关键"
       },
       {
         "parameter": "take_profit",
-        "base_value": 0.051,
-        "sensitivity": 0.45500000000000007,
+        "base_value": 0.054,
+        "sensitivity": 0.33000000000000007,
         "importance": "🔴关键"
       },
       {
-        "parameter": "min_entity_board_ratio",
-        "base_value": 0.55,
-        "sensitivity": 0.07000000000000028,
+        "parameter": "stop_loss",
+        "base_value": -0.09,
+        "sensitivity": 0.09499999999999975,
         "importance": "🟡中等"
       },
       {
-        "parameter": "pullback_ratio_max",
-        "base_value": 0.4,
+        "parameter": "hold_days",
+        "base_value": 12,
+        "sensitivity": 0.06000000000000005,
+        "importance": "🟡中等"
+      },
+      {
+        "parameter": "pullback_ratio_min",
+        "base_value": 0.02,
+        "sensitivity": 0.0,
+        "importance": "🟢稳健"
+      },
+      {
+        "parameter": "min_entity_board_ratio",
+        "base_value": 0.1,
         "sensitivity": 0.0,
         "importance": "🟢稳健"
       }
     ],
     "LOOSE": [
       {
-        "parameter": "stop_loss",
-        "base_value": -0.1,
-        "sensitivity": 0.5149999999999997,
+        "parameter": "pullback_ratio_max",
+        "base_value": 0.09,
+        "sensitivity": 0.73,
+        "importance": "🔴关键"
+      },
+      {
+        "parameter": "take_profit",
+        "base_value": 0.042,
+        "sensitivity": 0.445,
         "importance": "🔴关键"
       },
       {
         "parameter": "volume_shrink_ratio",
-        "base_value": 0.67,
-        "sensitivity": 0.345,
+        "base_value": 0.55,
+        "sensitivity": 0.42000000000000004,
         "importance": "🔴关键"
       },
       {
         "parameter": "hold_days",
-        "base_value": 7,
-        "sensitivity": 0.125,
-        "importance": "🟡中等"
+        "base_value": 12,
+        "sensitivity": 0.33000000000000007,
+        "importance": "🔴关键"
       },
       {
-        "parameter": "take_profit",
-        "base_value": 0.05,
-        "sensitivity": 0.1200000000000001,
-        "importance": "🟡中等"
-      },
-      {
-        "parameter": "pullback_ratio_min",
-        "base_value": 0.08,
-        "sensitivity": 0.10999999999999988,
-        "importance": "🟡中等"
-      },
-      {
-        "parameter": "min_entity_board_ratio",
-        "base_value": 0.3,
-        "sensitivity": 0.009999999999999787,
+        "parameter": "stop_loss",
+        "base_value": -0.173,
+        "sensitivity": 0.03999999999999998,
         "importance": "🟢稳健"
       },
       {
-        "parameter": "pullback_ratio_max",
-        "base_value": 0.4,
+        "parameter": "pullback_ratio_min",
+        "base_value": 0.01,
+        "sensitivity": 0.0,
+        "importance": "🟢稳健"
+      },
+      {
+        "parameter": "min_entity_board_ratio",
+        "base_value": 0.35,
         "sensitivity": 0.0,
         "importance": "🟢稳健"
       }
@@ -440,194 +309,121 @@
   },
   "final_report": {
     "BEAR": {
+      "risk_score": 10,
+      "risk_label": "🟢 10分",
+      "reasons": [
+        "3个高敏感参数"
+      ],
+      "cv_summary": "p=0.007",
+      "permutation": {
+        "true_sharpe": 5.872768976225092,
+        "p_value": 0.0075,
+        "perm_mean": 0.08189268227450844,
+        "perm_std": 2.30185528912399,
+        "n_signals": 52,
+        "conclusion": "极显著 (p<0.01)"
+      },
+      "bootstrap": {
+        "sharpe": {
+          "mean": 6.0508212981613525,
+          "lower": 1.3714060895515354,
+          "upper": 11.380460953664265,
+          "std": 2.4741324765577275
+        },
+        "win_rate": {
+          "mean": 0.6368461538461538,
+          "lower": 0.5,
+          "upper": 0.7692307692307693,
+          "std": 0.06726521736719224
+        },
+        "avg_return": {
+          "mean": 0.026900687537003393,
+          "lower": 0.006300547027106355,
+          "upper": 0.046837112779085206,
+          "std": 0.01012941333674141
+        }
+      },
+      "walkforward": null,
+      "sensitivity_summary": "3关键"
+    },
+    "STRICT": {
+      "risk_score": 40,
+      "risk_label": "🟡 40分",
+      "reasons": [
+        "交叉验证 Sharpe 严重衰减 (-3.4)",
+        "3个高敏感参数"
+      ],
+      "cv_summary": "p=0.000",
+      "permutation": {
+        "true_sharpe": 6.500125285945998,
+        "p_value": 0.0,
+        "perm_mean": 0.07182467063620171,
+        "perm_std": 1.454310975883309,
+        "n_signals": 129,
+        "conclusion": "极显著 (p<0.01)"
+      },
+      "bootstrap": {
+        "sharpe": {
+          "mean": 6.646976848387126,
+          "lower": 3.354668828036637,
+          "upper": 10.514721027741816,
+          "std": 1.835506732611397
+        },
+        "win_rate": {
+          "mean": 0.7205658914728681,
+          "lower": 0.6356589147286822,
+          "upper": 0.7984496124031008,
+          "std": 0.040202443509751974
+        },
+        "avg_return": {
+          "mean": 0.020920186796211087,
+          "lower": 0.011689058120500636,
+          "upper": 0.02980435395117674,
+          "std": 0.004570586026645383
+        }
+      },
+      "walkforward": null,
+      "sensitivity_summary": "3关键"
+    },
+    "LOOSE": {
       "risk_score": 50,
       "risk_label": "🔴 50分",
       "reasons": [
-        "交叉验证 Sharpe 轻微衰减 (-0.5)",
-        "Permutation p=0.99（不显著）",
-        "6个高敏感参数"
+        "Permutation p=0.33（不显著）",
+        "Bootstrap Sharpe 下限为负 (-3.1)",
+        "4个高敏感参数"
       ],
-      "cv_summary": "p=0.991",
+      "cv_summary": "p=0.332",
       "permutation": {
-        "true_sharpe": 7.057881779044962,
-        "p_value": 0.9905,
-        "perm_mean": 7.057881779044961,
-        "perm_std": 1.4190022764522377e-15,
-        "n_signals": 57,
-        "conclusion": "不显著 (p=0.99)"
+        "true_sharpe": 1.283936770053998,
+        "p_value": 0.3315,
+        "perm_mean": 0.38029462017251064,
+        "perm_std": 2.7001756595944744,
+        "n_signals": 43,
+        "conclusion": "不显著 (p=0.33)"
       },
       "bootstrap": {
         "sharpe": {
-          "mean": 7.342159625761049,
-          "lower": 2.7158316301161496,
-          "upper": 12.99944910352965,
-          "std": 2.561959517341676
+          "mean": 1.723347353757,
+          "lower": -3.1070418780989724,
+          "upper": 7.9934071575412196,
+          "std": 2.8885693216430983
         },
         "win_rate": {
-          "mean": 0.5109298245614035,
-          "lower": 0.38596491228070173,
-          "upper": 0.631578947368421,
-          "std": 0.06617052455197041
+          "mean": 0.721813953488372,
+          "lower": 0.5813953488372093,
+          "upper": 0.8604651162790697,
+          "std": 0.06957553451252936
         },
         "avg_return": {
-          "mean": 0.023992799756486324,
-          "lower": 0.009929048537736372,
-          "upper": 0.03733943848101028,
-          "std": 0.007023251980940526
+          "mean": 0.005206272136123456,
+          "lower": -0.014441652911581617,
+          "upper": 0.022490118261206078,
+          "std": 0.009539981862183715
         }
       },
       "walkforward": null,
-      "sensitivity_summary": "6关键"
-    },
-    "BULL": {
-      "risk_score": 65,
-      "risk_label": "🔴 65分",
-      "reasons": [
-        "交叉验证 Sharpe 严重衰减 (-18.3)",
-        "Permutation p=0.89（不显著）",
-        "6个高敏感参数"
-      ],
-      "cv_summary": "p=0.894",
-      "permutation": {
-        "true_sharpe": 19.564125177404808,
-        "p_value": 0.894,
-        "perm_mean": 19.564125177404808,
-        "perm_std": 1.7816779402039392e-15,
-        "n_signals": 180,
-        "conclusion": "不显著 (p=0.89)"
-      },
-      "bootstrap": {
-        "sharpe": {
-          "mean": 20.845091609195396,
-          "lower": 12.913568688977133,
-          "upper": 34.31833543782706,
-          "std": 5.589563116634729
-        },
-        "win_rate": {
-          "mean": 0.9056055555555557,
-          "lower": 0.8611111111111112,
-          "upper": 0.9444444444444444,
-          "std": 0.021376922337931984
-        },
-        "avg_return": {
-          "mean": 0.030374338208272476,
-          "lower": 0.02642960812627905,
-          "upper": 0.03346504217782194,
-          "std": 0.0018153707867786689
-        }
-      },
-      "walkforward": null,
-      "sensitivity_summary": "6关键"
-    },
-    "STRICT": {
-      "risk_score": 65,
-      "risk_label": "🔴 65分",
-      "reasons": [
-        "交叉验证 Sharpe 严重衰减 (-8.3)",
-        "Permutation p=0.93（不显著）",
-        "5个高敏感参数"
-      ],
-      "cv_summary": "p=0.929",
-      "permutation": {
-        "true_sharpe": 9.529551627639723,
-        "p_value": 0.9295,
-        "perm_mean": 9.529551627639725,
-        "perm_std": 1.8318881763934674e-15,
-        "n_signals": 110,
-        "conclusion": "不显著 (p=0.93)"
-      },
-      "bootstrap": {
-        "sharpe": {
-          "mean": 9.864517380106209,
-          "lower": 5.5992465549274195,
-          "upper": 15.688368637168459,
-          "std": 2.577149920194434
-        },
-        "win_rate": {
-          "mean": 0.6640681818181817,
-          "lower": 0.5727272727272728,
-          "upper": 0.7454545454545455,
-          "std": 0.0442123386446561
-        },
-        "avg_return": {
-          "mean": 0.02699440690884191,
-          "lower": 0.018441907136810758,
-          "upper": 0.035009122188384416,
-          "std": 0.00423334327977233
-        }
-      },
-      "walkforward": {
-        "is": {
-          "sharpe": 4.55,
-          "win_rate": 0.5965,
-          "avg_return": 0.0157,
-          "signal_count": 57
-        },
-        "oos": {
-          "sharpe": 17.84,
-          "win_rate": 0.6486,
-          "avg_return": 0.0349,
-          "signal_count": 37
-        },
-        "sharpe_decay": 13.29,
-        "wr_decay": 0.052099999999999924,
-        "verdict": "🟢 时间稳健"
-      },
-      "sensitivity_summary": "5关键"
-    },
-    "LOOSE": {
-      "risk_score": 25,
-      "risk_label": "🟡 25分",
-      "reasons": [
-        "Permutation p=1.00（不显著）"
-      ],
-      "cv_summary": "p=0.996",
-      "permutation": {
-        "true_sharpe": 4.459189481483896,
-        "p_value": 0.996,
-        "perm_mean": 4.459189481483896,
-        "perm_std": 3.269413596617092e-16,
-        "n_signals": 421,
-        "conclusion": "不显著 (p=1.00)"
-      },
-      "bootstrap": {
-        "sharpe": {
-          "mean": 4.523900892935033,
-          "lower": 2.6955818628486647,
-          "upper": 6.54768490116833,
-          "std": 0.9708038967364178
-        },
-        "win_rate": {
-          "mean": 0.49895486935866984,
-          "lower": 0.4489311163895487,
-          "upper": 0.5463182897862233,
-          "std": 0.02442059378438588
-        },
-        "avg_return": {
-          "mean": 0.01333083293310199,
-          "lower": 0.008572651895460135,
-          "upper": 0.017972879363846887,
-          "std": 0.0023728355557037697
-        }
-      },
-      "walkforward": {
-        "is": {
-          "sharpe": 3.46,
-          "win_rate": 0.4642,
-          "avg_return": 0.0101,
-          "signal_count": 265
-        },
-        "oos": {
-          "sharpe": 4.32,
-          "win_rate": 0.5573,
-          "avg_return": 0.0141,
-          "signal_count": 131
-        },
-        "sharpe_decay": 0.8600000000000003,
-        "wr_decay": 0.09310000000000002,
-        "verdict": "🟢 时间稳健"
-      },
-      "sensitivity_summary": "2关键"
+      "sensitivity_summary": "4关键"
     }
   }
 }
