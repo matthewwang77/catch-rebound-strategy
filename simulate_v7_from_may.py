@@ -948,12 +948,13 @@ def main():
                 continue
 
             days_ago = (pd.Timestamp.now() - rec_date).days
-            if days_ago < 7:
-                continue
-
-            # 计算7日收益
+            # 提前获取模式参数（用于持有期门控）
             mode = rec.get('mode', 'strict')
             params = v7_params.get(mode, v7_params['strict'])
+            if days_ago < params.get('hold_days', 7):
+                continue
+
+            # 计算收益
 
             try:
                 ret = backfill.check_return_v5_local(

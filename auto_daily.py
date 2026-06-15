@@ -872,8 +872,12 @@ def _auto_maintenance():
             except (ValueError, TypeError):
                 continue
 
-            # 只做7日回顾（≥7天后才触发）
-            if days_ago < 7:
+            # 提前获取模式配置（用于持有期门控）
+            mode = r.get('mode', 'strict')
+            mp = screener.SCREEN_MODES.get(mode, screener.SCREEN_MODES.get('strict', {}))
+
+            # 只做回顾（≥持有期天数后才触发）
+            if days_ago < mp.get('hold_days', 7):
                 continue
             if r.get('verified'):
                 continue
@@ -883,9 +887,6 @@ def _auto_maintenance():
             entry_price = r.get('entry_price', 0)
             if entry_price <= 0:
                 continue
-
-            mode = r.get('mode', 'strict')
-            mp = screener.SCREEN_MODES.get(mode, screener.SCREEN_MODES.get('strict', {}))
             tp = mp.get('take_profit', 0.05)
             sl = mp.get('stop_loss', -0.10)
 

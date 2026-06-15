@@ -282,6 +282,7 @@ def main():
             mode_params_cache[mode] = {
                 "take_profit": mp.get("take_profit", 0.05),
                 "stop_loss": mp.get("stop_loss", -0.10),
+                "hold_days": mp.get("hold_days", 7),
             }
         params = mode_params_cache[mode]
 
@@ -297,9 +298,9 @@ def main():
         if not os.path.exists(csv_path):
             continue
 
-        # ✅ 只用扫描日 + 7日持有期算收益
+        # 用模式专属持有期算收益
         ret7 = check_return_v5_local(
-            code, entry_date, entry_price, 7,
+            code, entry_date, entry_price, params["hold_days"],
             params["take_profit"], params["stop_loss"], data_dir,
         )
 

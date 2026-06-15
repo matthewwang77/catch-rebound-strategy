@@ -112,7 +112,7 @@ def recompute_returns(memory):
                 r['exit_reason'] = ret.get('exit_reason', '')
                 r['exit_day'] = ret.get('exit_day', 0)
 
-                opinion = r.get('opinion', '')
+                opinion = r.get('opinion') or ''
                 if any(kw in opinion for kw in ['参与', '买入']):
                     r['verdict'] = 'correct' if r7 > 0 else 'wrong'
                 elif any(kw in opinion for kw in ['放弃', '规避']):
