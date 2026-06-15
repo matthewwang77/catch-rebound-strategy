@@ -2333,7 +2333,6 @@ def main():
                 name_info = name_lookup.batch_lookup(codes, max_fetch=min(len(codes), 10))
 
                 # ── 构建候选卡片 HTML ──
-                candidate_cards = []
                 for c in candidates:
                     code = c["code"]
                     signal_date = str(c.get("signal_date", ""))
@@ -2342,6 +2341,7 @@ def main():
 
                     # ── 优先从 ai_memory.json 读取预计算分析 ──
                     ai_strip = None
+                    analysis_text = None  # 完整AI分析文本（用于下方expander）
                     if code in ai_memory:
                         # 取最近的非回填记录（按日期倒序）
                         records = sorted(ai_memory[code], key=lambda r: str(r.get("date", "")), reverse=True)
@@ -2352,6 +2352,10 @@ def main():
                             opinion = rec.get("opinion", "")
                             position = rec.get("position", "")
                             ai_strip = _format_ai_badges(opinion, sentiment, position)
+                            # 同时获取完整分析文本
+                            txt = rec.get("analysis", "")
+                            if txt and "历史回填记录" not in txt:
+                                analysis_text = txt
                             break
                         if ai_strip is None:
                             ai_strip = '<span class="status-badge pending">📋 待AI分析</span>'
@@ -2368,6 +2372,7 @@ def main():
                             position = pos_match.group(1).strip() if pos_match else "—"
                             opinion = op_match.group(1).strip() if op_match else "—"
                             ai_strip = _format_ai_badges(opinion, sentiment, position)
+                            analysis_text = result_text
                         else:
                             ai_strip = '<span class="status-badge pending">📋 待AI分析</span>'
 
@@ -2401,30 +2406,11 @@ def main():
                       </div>
                     </div>
                     """
-                    candidate_cards.append(card_html)
+                    st.markdown(card_html, unsafe_allow_html=True)
 
-                st.markdown("\n".join(candidate_cards), unsafe_allow_html=True)
-
-                # ── 展开完整 AI 分析 ──
-                for c in candidates:
-                    code = c["code"]
-                    analysis_text = None
-
-                    # 优先从 ai_memory 获取完整分析（取最近的非回填记录）
-                    if code in ai_memory:
-                        records = sorted(ai_memory[code], key=lambda r: str(r.get("date", "")), reverse=True)
-                        for rec in records:
-                            txt = rec.get("analysis", "")
-                            if txt and "历史回填记录" not in txt and rec.get("sentiment") != "历史回填":
-                                analysis_text = txt
-                                break
-
-                    # 回退到 worker 实时结果
-                    if not analysis_text:
-                        analysis_text = st.session_state.get(f"analysis_result_{code}")
-
+                    # ── 完整 AI 分析 expander（紧跟在卡片下方）──
                     if analysis_text:
-                        with st.expander(f"📖 {code} 完整AI分析", expanded=False):
+                        with st.expander(f"📖 {code} {stock_name} 完整AI分析", expanded=False):
                             st.markdown(analysis_text)
 
 
