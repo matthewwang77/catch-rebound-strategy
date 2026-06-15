@@ -1,0 +1,9 @@
+{"type":"server-started","port":57315,"host":"127.0.0.1","url_host":"localhost","url":"http://localhost:57315","screen_dir":"/Users/mattsmacair/Desktop/Coding/量化模型/抓反弹策略/.superpowers/brainstorm/59238-1781331512/content","state_dir":"/Users/mattsmacair/Desktop/Coding/量化模型/抓反弹策略/.superpowers/brainstorm/59238-1781331512/state"}
+{"type":"screen-added","file":"/Users/mattsmacair/Desktop/Coding/量化模型/抓反弹策略/.superpowers/brainstorm/59238-1781331512/content/overview.html"}
+{"source":"user-event","type":"click","text":"📈 收益曲线 & 资金曲线\n        累计 P&L 折线图、回撤阴影区、hover 看每日明细。复盘最核心的可视化。","choice":"equity_curve","id":null,"timestamp":1781331568840}
+{"source":"user-event","type":"click","text":"📈 收益曲线 & 资金曲线\n        累计 P&L 折线图、回撤阴影区、hover 看每日明细。复盘最核心的可视化。","choice":"equity_curve","id":null,"timestamp":1781331569977}
+{"type":"screen-added","file":"/Users/mattsmacair/Desktop/Coding/量化模型/抓反弹策略/.superpowers/brainstorm/59238-1781331512/content/design-v1.html"}
+{"type":"screen-added","file":"/Users/mattsmacair/Desktop/Coding/量化模型/抓反弹策略/.superpowers/brainstorm/59238-1781331512/content/design-v2.html"}
+{"type":"screen-added","file":"/Users/mattsmacair/Desktop/Coding/量化模型/抓反弹策略/.superpowers/brainstorm/59238-1781331512/content/workflow.html"}
+{"type":"screen-added","file":"/Users/mattsmacair/Desktop/Coding/量化模型/抓反弹策略/.superpowers/brainstorm/59238-1781331512/content/waiting.html"}
+{"type":"server-stopped","reason":"idle timeout"}

@@ -1,0 +1,51 @@
+<h2>两种模式展示方案</h2>
+<p class="subtitle">STRICT（严格）和 LOOSE（宽松）从侧边栏移到选股页面，用什么形式？</p>
+
+<div class="options">
+  <div class="option" data-choice="stat-cards" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>双指标卡并排</h3>
+      <p>两张统计卡片横向排列，每张包含模式名 + 标签（连板数/胜率/Sharpe）+ 小字说明。红色/绿色区分，带微弱发光边框</p>
+    </div>
+  </div>
+  <div class="option" data-choice="badge-pills" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>胶囊标签行</h3>
+      <p>在"选股结果"标题旁一行小胶囊：<code>[🔴 STRICT 3连板 70%]</code> <code>[🟢 LOOSE 2连板 60%]</code>，hover 展开详情。不占空间，轻量优雅</p>
+    </div>
+  </div>
+  <div class="option" data-choice="expandable" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>可折叠信息条</h3>
+      <p>一条横向暗色信息栏，折叠时显示"◆ 筛选模式: STRICT + LOOSE"，展开后显示完整对比表。适合不想信息过载的场景</p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Mockup 预览（方案 A：双指标卡）</h3>
+  <div class="mockup">
+    <div class="mockup-header">选股页面顶部</div>
+    <div class="mockup-body">
+      <div style="display:flex;gap:12px;max-width:600px">
+        <div style="flex:1;background:rgba(255,51,102,0.06);border:1px solid rgba(255,51,102,0.25);border-radius:10px;padding:14px 18px">
+          <div style="font-family:monospace;font-size:0.8rem;color:#FF3366;margin-bottom:6px">◆ STRICT 严格</div>
+          <div style="display:flex;gap:18px;font-family:monospace;font-size:0.65rem;color:#9999BB">
+            <span>3连板</span><span>胜率 70%</span><span>Sharpe 1.71</span>
+          </div>
+          <div style="font-family:monospace;font-size:0.55rem;color:#555577;margin-top:4px">震荡市/不明市首选</div>
+        </div>
+        <div style="flex:1;background:rgba(0,255,136,0.04);border:1px solid rgba(0,255,136,0.2);border-radius:10px;padding:14px 18px">
+          <div style="font-family:monospace;font-size:0.8rem;color:#00FF88;margin-bottom:6px">◆ LOOSE 宽松</div>
+          <div style="display:flex;gap:18px;font-family:monospace;font-size:0.65rem;color:#9999BB">
+            <span>2连板</span><span>胜率 60%</span><span>Sharpe 1.29</span>
+          </div>
+          <div style="font-family:monospace;font-size:0.55rem;color:#555577;margin-top:4px">牛市/强趋势 · STRICT超集</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,135 @@
+<h2>选股页面 — 最终设计</h2>
+<p class="subtitle">单一视图 · 全自动AI分析 · 不显示模式标签</p>
+
+<div class="mockup">
+  <div class="mockup-header">📱 选股页面（完整流程）</div>
+  <div class="mockup-body" style="background:#0a0e14; color:#ccc; font-family:monospace; font-size:11px; padding:12px; border-radius:4px; line-height:1.6;">
+
+    <!-- 市场状态卡片 -->
+    <div style="background:linear-gradient(135deg, #0d1a15 0%, #111822 100%); padding:14px 16px; border-radius:6px; margin-bottom:12px; border:1px solid #1a2a1f;">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <div>
+          <span style="color:#00ff88; font-size:14px;">◆ 上证 3,256</span>
+          <span style="color:#0f0; margin-left:8px;">+1.2%</span>
+          <span style="color:#666; margin-left:12px;">◆ 深证 10,890</span>
+          <span style="color:#0f0; margin-left:8px;">+2.1%</span>
+          <span style="color:#666; margin-left:12px;">◆ 创业板 2,341</span>
+          <span style="color:#0f0; margin-left:8px;">+2.3%</span>
+        </div>
+        <div style="text-align:right;">
+          <span style="color:#00ff88;">发酵期</span>
+          <span style="color:#666; font-size:10px; margin-left:4px;">信号活跃</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 结果区 -->
+    <div style="color:#fff; font-size:13px; margin-bottom:8px;">📋 选股结果 · 23只候选</div>
+
+    <div style="background:#111822; padding:8px 12px; border-radius:4px; border:1px solid #1a1f2e; margin-bottom:6px;">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <div>
+          <span style="color:#00ff88;">000001.SZ</span>
+          <span style="color:#aaa; margin-left:8px;">平安银行</span>
+          <span style="color:#666; margin-left:8px; font-size:10px;">¥12.50 · 回调-8.2% · 3连板 · 实体73%</span>
+        </div>
+        <span style="color:#00ff88; font-size:10px;">🔄 分析中...</span>
+      </div>
+    </div>
+
+    <div style="background:#111822; padding:8px 12px; border-radius:4px; border:1px solid #1a1f2e; margin-bottom:6px;">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <div>
+          <span style="color:#00ff88;">000002.SZ</span>
+          <span style="color:#aaa; margin-left:8px;">万科A</span>
+          <span style="color:#666; margin-left:8px; font-size:10px;">¥8.92 · 回调-15.1% · 4连板 · 实体62%</span>
+        </div>
+        <div style="text-align:right;">
+          <span style="color:#FFD700; font-size:10px;">🟢 乐观 · 仓位3成</span>
+          <span style="color:#666; margin-left:6px; font-size:9px;">▼展开</span>
+        </div>
+      </div>
+      <div style="background:#0a0e14; padding:6px 8px; margin-top:6px; border-radius:3px; font-size:10px; color:#999; border-left:2px solid #FFD700;">
+        AI: 该股连板后缩量回调至MA10支撑位，RSI(14)=42接近超卖。量价关系健康，缩量幅度68%。但需注意板块轮动风险。整体看反弹概率较大，建议轻仓试错。
+      </div>
+    </div>
+
+    <div style="background:#111822; padding:8px 12px; border-radius:4px; border:1px solid #1a1f2e; margin-bottom:6px;">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <div>
+          <span style="color:#00ff88;">000003.SZ</span>
+          <span style="color:#aaa; margin-left:8px;">金地集团</span>
+          <span style="color:#666; margin-left:8px; font-size:10px;">¥5.67 · 回调-18.3% · 2连板 · 实体48%</span>
+        </div>
+        <span style="color:#888; font-size:10px;">⏳ 排队中...</span>
+      </div>
+    </div>
+
+    <div style="color:#666; text-align:center; padding:12px;">
+      ... 还有 20 只
+    </div>
+
+    <!-- 进度条 -->
+    <div style="background:#0d1a15; padding:10px 14px; border-radius:4px; border:1px solid #1a2a1f;">
+      <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+        <span style="color:#00ff88; font-size:10px;">🤖 AI分析进度</span>
+        <span style="color:#888; font-size:10px;">2 / 23</span>
+      </div>
+      <div style="background:#1a1f2e; height:3px; border-radius:2px;">
+        <div style="background:#00ff88; width:9%; height:3px; border-radius:2px;"></div>
+      </div>
+      <span style="color:#666; font-size:9px;">当前: 000001.SZ · 预计剩余 5分钟</span>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top:16px;"></div>
+
+<div class="split">
+  <div class="mockup">
+    <div class="mockup-header">📊 复盘页面</div>
+    <div class="mockup-body" style="background:#0a0e14; color:#ccc; font-family:monospace; font-size:11px; padding:12px; border-radius:4px;">
+      <div style="color:#fff; font-size:13px; margin-bottom:8px;">📈 绩效总览</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:8px; margin-bottom:10px;">
+        <div style="background:#111822; padding:10px; border-radius:4px; text-align:center; border:1px solid #1a1f2e;">
+          <div style="color:#00ff88; font-size:18px;">+126%</div>
+          <div style="color:#666; font-size:10px;">累计收益</div>
+        </div>
+        <div style="background:#111822; padding:10px; border-radius:4px; text-align:center; border:1px solid #1a1f2e;">
+          <div style="color:#fff; font-size:18px;">62.3%</div>
+          <div style="color:#666; font-size:10px;">胜率</div>
+        </div>
+        <div style="background:#111822; padding:10px; border-radius:4px; text-align:center; border:1px solid #1a1f2e;">
+          <div style="color:#FFD700; font-size:18px;">2.8</div>
+          <div style="color:#666; font-size:10px;">盈亏比</div>
+        </div>
+        <div style="background:#111822; padding:10px; border-radius:4px; text-align:center; border:1px solid #1a1f2e;">
+          <div style="color:#FF3366; font-size:18px;">-18%</div>
+          <div style="color:#666; font-size:10px;">最大回撤</div>
+        </div>
+      </div>
+      <div style="color:#666; font-size:10px; margin-bottom:8px;">信号总数: 341 | 胜: 213 | 负: 128 | 到期: 180 | 止盈: 115 | 止损: 46</div>
+      <div style="color:#fff; font-size:11px;">📝 退出原因</div>
+      <div style="color:#888; font-size:10px;">到期 52.8% | 止盈 33.7% | 止损 13.5%</div>
+      <div style="color:#fff; font-size:13px; margin-top:10px; margin-bottom:8px;">🧠 AI记忆浏览器</div>
+      <div style="color:#666; font-size:10px;">[正确] 000001 3日+5.2% | [偏差] 000002 3日-2.1% | [待验证] 000003 ...</div>
+    </div>
+  </div>
+
+  <div class="mockup">
+    <div class="mockup-header">ℹ️ 介绍页面</div>
+    <div class="mockup-body" style="background:#0a0e14; color:#ccc; font-family:monospace; font-size:11px; padding:12px; border-radius:4px;">
+      <div style="color:#fff; font-size:13px; margin-bottom:8px;">A股连板回调策略 v6</div>
+      <div style="color:#888; font-size:10px; line-height:1.5;">
+        策略核心：识别连续涨停后缩量回调的股票，在回调企稳时介入，<br>
+        博取反弹收益。基于"量价形时"四维分析框架。<br><br>
+        v6 特色：<br>
+        <span style="color:#00ff88;">◆</span> 市场自适应 — 自动检测熊市/震荡/牛市，切换最优参数<br>
+        <span style="color:#00ff88;">◆</span> 三阶段参数优化 — ~200k组合 × 多周期交叉验证<br>
+        <span style="color:#00ff88;">◆</span> AI 深度分析 — DeepSeek 量价形时四维诊断<br>
+        <span style="color:#00ff88;">◆</span> AI 记忆闭环 — 历史分析存档 + 自动验证 + 上下文注入<br>
+        <span style="color:#00ff88;">◆</span> 全自动日频扫描 — 定时4次/交易日 + git推送
+      </div>
+    </div>
+  </div>
+</div>

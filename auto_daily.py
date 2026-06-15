@@ -13,6 +13,7 @@ import os
 import sys
 import time as _time
 import importlib.util
+import concurrent.futures
 
 # ==================== 加载模块 ====================
 def _load_module(filepath, module_name):
@@ -26,13 +27,37 @@ BASE = os.path.dirname(os.path.abspath(__file__))  # project root
 screener = _load_module(os.path.join(BASE, "选股new_v5.py"), "screener")
 
 
+# ==================== yf.download 超时保护 ====================
+def _download_with_timeout(tickers, period="5d", timeout=30, **kwargs):
+    """yf.download with timeout protection."""
+    import traceback as _traceback
+    # Remove progress from kwargs to avoid duplicate keyword arg
+    kwargs.pop('progress', None)
+    ex = concurrent.futures.ThreadPoolExecutor(max_workers=1)
+    try:
+        future = ex.submit(yf.download, tickers, period=period, progress=False, **kwargs)
+        try:
+            return future.result(timeout=timeout)
+        except concurrent.futures.TimeoutError:
+            ticker_str = tickers if isinstance(tickers, str) else ','.join(tickers[:3])
+            print(f"  ⚠️ yfinance 下载超时 ({timeout}s): {ticker_str}")
+            return None
+        except Exception as e:
+            ticker_str = tickers if isinstance(tickers, str) else ','.join(tickers[:3])
+            print(f"  ⚠️ yfinance 下载失败: {e}")
+            _traceback.print_exc()
+            return None
+    finally:
+        ex.shutdown(wait=False)  # 不等待后台线程，避免阻塞 pipeline
+
+
 # ==================== 获取大盘数据 ====================
 def get_market_summary():
     indices = {"上证": "000001.SS", "深证": "399001.SZ", "创业板": "399006.SZ"}
     lines = []
     for name, code in indices.items():
         try:
-            df = yf.download(code, period="5d", progress=False)
+            df = _download_with_timeout(code, period="5d", timeout=30)
             if df is not None and len(df) >= 2:
                 close_col = df['Close']
                 if hasattr(close_col, 'iloc'):
@@ -87,6 +112,7 @@ def run_auto_mode():
             continue
         try:
             df = pd.read_csv(csv_path)
+            df.columns = df.columns.str.lower()
             if len(df) == 0:
                 continue
             df = df.tail(60).copy()
@@ -111,7 +137,7 @@ def run_auto_mode():
     injected = 0
     for i, batch in enumerate(batches):
         try:
-            hist = yf.download(tickers=batch, period="3d", progress=False)
+            hist = _download_with_timeout(tickers=batch, period="3d", timeout=30)
             if hist is None or hist.empty:
                 continue
             try:
@@ -328,7 +354,7 @@ def _run_ai_analysis(code, stock_df, candidate, market_context, mode):
     avg_loss = loss.rolling(14).mean()
     rs = avg_gain / avg_loss.replace(0, 1e-9)
     rsi = 100 - (100 / (1 + rs))
-    rsi_val = _s(rsi.iloc[-1])
+    rsi_val = _s(rsi.iloc[-1]) if not pd.isna(rsi.iloc[-1]) else 50.0
 
     # 布林带(20,2)
     bb_mid = _s(close.rolling(20).mean().iloc[-1])
@@ -365,7 +391,7 @@ def _run_ai_analysis(code, stock_df, candidate, market_context, mode):
 
 ## 基础指标
 - 最新价：{current_price:.2f}（今日 {pct_chg:+.2f}%）| 均线：MA5={ma5:.2f} MA10={ma10:.2f} MA20={ma20:.2f}
-- 量比：今日/5日均量={vol_today/vol_ma5:.2f}x | 20日高={recent_high_20:.2f}
+- 量比：今日/5日均量={f"{vol_today/vol_ma5:.2f}x" if vol_ma5 > 0 else "N/A"} | 20日高={recent_high_20:.2f}
 
 ## 技术指标
 - MACD(12,26,9)：DIF={dif_val:.3f} DEA={dea_val:.3f} 柱={macd_bar_val:+.3f} → {macd_trend}
@@ -535,7 +561,7 @@ def format_message(results):
                     f"  {c['code']} | {c['price']:.2f}元 | "
                     f"回调{c['pullback_pct']:.1f}% | "
                     f"{c['limit_days']}连板 | "
-                    f"实体{c['entity_ratio']:.0f}%"
+                    f"实体{c.get('entity_ratio', 0):.0f}%"
                 )
         else:
             lines.append(f"\n{name}: 无候选")
@@ -557,7 +583,7 @@ def save_results_json(results):
     try:
         indices = {"上证": "000001.SS", "深证": "399001.SZ", "创业板": "399006.SZ"}
         for name, code in indices.items():
-            df = yf.download(code, period="5d", progress=False)
+            df = _download_with_timeout(code, period="5d", timeout=30)
             if df is not None and len(df) >= 2:
                 close_col = df['Close']
                 if hasattr(close_col, 'iloc'):
@@ -645,7 +671,7 @@ def git_push_results():
         # 如果有变更才 push
         if b"nothing to commit" not in result.stdout and b"nothing to commit" not in result.stderr:
             subprocess.run(
-                ["git", "push", "origin", "master"],
+                ["git", "push", "origin", subprocess.run(["git", "rev-parse", "--abbrev-ref", "HEAD"], capture_output=True).stdout.decode().strip() or "master"],
                 cwd=cwd, capture_output=True, timeout=30,
             )
             print("✅ Git push 完成，Streamlit Cloud 将自动更新")
@@ -790,11 +816,11 @@ def _run_ai_review(code, record, ret7, take_profit, stop_loss, entry_price, mode
         # 解析5字段
         import re as _re
         patterns = {
-            'what_happened': r'【走势回顾】\s*(.+?)(?=【判断复盘】|$)',
-            'why_wrong': r'【判断复盘】\s*(.+?)(?=【遗漏信号】|$)',
-            'missed_signal': r'【遗漏信号】\s*(.+?)(?=【教训】|$)',
-            'lesson': r'【教训】\s*(.+?)(?=【裁决】|$)',
-            'verdict_raw': r'【裁决】\s*(.+?)$',
+            'what_happened': r'【走势回顾】\s*(.*?)(?=【判断复盘】|$)',
+            'why_wrong': r'【判断复盘】\s*(.*?)(?=【遗漏信号】|$)',
+            'missed_signal': r'【遗漏信号】\s*(.*?)(?=【教训】|$)',
+            'lesson': r'【教训】\s*(.*?)(?=【裁决】|$)',
+            'verdict_raw': r'【裁决】\s*(.*?)$',
         }
         for key, pat in patterns.items():
             m = _re.search(pat, review_text, _re.DOTALL)
@@ -867,7 +893,7 @@ def _auto_maintenance():
             from backfill_signals import check_return_v5_local
             ret7 = check_return_v5_local(code, date, entry_price, 7, tp, sl, screener.DATA_DIR)
 
-            r7 = ret7['return_pct'] if ret7 else None
+            r7 = ret7.get('return_pct') if ret7 else None
             r['return_7d'] = round(r7, 2) if r7 is not None else None
             r['exit_reason'] = ret7.get('exit_reason', '') if ret7 else ''
             r['exit_day'] = ret7.get('exit_day', 0) if ret7 else 0
@@ -903,7 +929,9 @@ def _auto_maintenance():
                     names[c] = val.get('name', '')
                 else:
                     names[c] = str(val) if val else ''
-            df['name'] = df['code'].map(names).fillna('')
+            # C5修复: 只更新空名称，不覆盖已有名称
+            mask = df['name'].isna() | (df['name'] == '')
+            df.loc[mask, 'name'] = df.loc[mask, 'code'].map(names).fillna('')
             df.to_csv(tracker_path, index=False, encoding='utf-8-sig')
             name_count = len([n for n in names.values() if n])
             print(f"📛 中文名补全: {name_count} 只")

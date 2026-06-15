@@ -45,7 +45,7 @@ def load_best_params(period_name):
     if not os.path.exists(path):
         print(f"⚠️ 参数文件不存在: {path}")
         return None
-    with open(path) as f:
+    with open(path, encoding='utf-8') as f:
         data = json.load(f)
     return data['best_params']
 
@@ -78,7 +78,7 @@ def evaluate_params(events, params, label=""):
     if signals_df is None:
         return {'win_rate': None, 'avg_return': None, 'sharpe': None,
                 'signal_count': 0, 'score': None, 'total_return': None,
-                'profit_factor': None, 'max_dd': None}
+                'profit_factor': None, 'max_dd': None, 'sortino': None}
     return {
         'win_rate': round(float(signals_df['return'].gt(0).mean()), 4),
         'avg_return': round(float(signals_df['return'].mean()), 4),
@@ -88,7 +88,7 @@ def evaluate_params(events, params, label=""):
         'score': round(float(score), 4),
         'total_return': round(float(signals_df['return'].sum()), 4),
         'profit_factor': round(float(metrics.get('profit_factor', 0)), 2),
-        'max_dd': round(float(metrics.get('max_dd', 0)), 2),
+        'max_dd': round(float(metrics.get('max_drawdown', 0)), 2),
     }
 
 
@@ -148,12 +148,17 @@ def main():
     print("📊 分析结果")
     print("=" * 70)
 
+    # H6修复: 辅助函数，None 值显示为 "N/A"
+    def _fmt(val, fmt_spec):
+        if val is None: return "N/A"
+        return format(val, fmt_spec)
+
     # 4a. 对角线（原地表现）
     print("\n🏠 原地表现（对角线上，参数在自己时段的表现）：")
     for p_name in ['A', 'B', 'C']:
         r = matrix[p_name][p_name]
         print(f"  {p_name}参数在{p_name}时段: "
-              f"胜率{r['win_rate']:.1%} | 夏普{r['sharpe']:.1f} | 信号{r['signal_count']}")
+              f"胜率{_fmt(r['win_rate'], '.1%')} | 夏普{_fmt(r['sharpe'], '.1f')} | 信号{r['signal_count']}")
 
     # 4b. 参数敏感度：A参数在ABC的表现差异
     print("\n📐 参数集敏感度（同一个参数集在不同时段的变异系数）：")
@@ -171,7 +176,7 @@ def main():
                          key=lambda p: matrix[p][test_p]['sharpe']
                          if matrix[p][test_p]['sharpe'] is not None else -999)
         r = matrix[best_param][test_p]
-        print(f"  {test_p}时段: 最佳参数={best_param} (夏普{r['sharpe']:.1f}, 胜率{r['win_rate']:.1%})")
+        print(f"  {test_p}时段: 最佳参数={best_param} (夏普{_fmt(r['sharpe'], '.1f')}, 胜率{_fmt(r['win_rate'], '.1%')})")
 
     # 4d. 关键问题：A参数能救熊市吗？
     print("\n" + "─" * 70)
@@ -181,8 +186,8 @@ def main():
     b_in_a = matrix['B']['A']
     c_in_a = matrix['C']['A']
 
-    print(f"  默认参数(B)在熊市: 夏普{b_in_a['sharpe']:.1f}, 胜率{b_in_a['win_rate']:.1%}")
-    print(f"  熊市参数(A)在熊市: 夏普{a_in_a['sharpe']:.1f}, 胜率{a_in_a['win_rate']:.1%}")
+    print(f"  默认参数(B)在熊市: 夏普{_fmt(b_in_a['sharpe'], '.1f')}, 胜率{_fmt(b_in_a['win_rate'], '.1%')}")
+    print(f"  熊市参数(A)在熊市: 夏普{_fmt(a_in_a['sharpe'], '.1f')}, 胜率{_fmt(a_in_a['win_rate'], '.1%')}")
 
     if a_in_a['sharpe'] is not None and a_in_a['sharpe'] > 0:
         improvement = a_in_a['sharpe'] - (b_in_a['sharpe'] if b_in_a['sharpe'] is not None else 0)
@@ -203,8 +208,8 @@ def main():
     print("─" * 70)
     b_in_b = matrix['B']['B']
     a_in_b = matrix['A']['B']
-    print(f"  牛市参数(B)在牛市: 夏普{b_in_b['sharpe']:.1f}, 胜率{b_in_b['win_rate']:.1%}, 信号{b_in_b['signal_count']}")
-    print(f"  熊市参数(A)在牛市: 夏普{a_in_b['sharpe']:.1f}, 胜率{a_in_b['win_rate']:.1%}, 信号{a_in_b['signal_count']}")
+    print(f"  牛市参数(B)在牛市: 夏普{_fmt(b_in_b['sharpe'], '.1f')}, 胜率{_fmt(b_in_b['win_rate'], '.1%')}, 信号{b_in_b['signal_count']}")
+    print(f"  熊市参数(A)在牛市: 夏普{_fmt(a_in_b['sharpe'], '.1f')}, 胜率{_fmt(a_in_b['win_rate'], '.1%')}, 信号{a_in_b['signal_count']}")
 
     # 4f. 统一参数 vs 自适应参数
     print("\n" + "─" * 70)
@@ -220,10 +225,10 @@ def main():
     # 自适应参数（每个时段用自己的最佳参数）
     adaptive = {
         'A': matrix['A']['A']['sharpe'] if matrix['A']['A']['sharpe'] is not None else -99,
-        'B': max(matrix[p]['B']['sharpe'] for p in ['A', 'B', 'C']
-                 if matrix[p]['B']['sharpe'] is not None),
-        'C': max(matrix[p]['C']['sharpe'] for p in ['A', 'B', 'C']
-                 if matrix[p]['C']['sharpe'] is not None),
+        'B': max((matrix[p]['B']['sharpe'] for p in ['A', 'B', 'C']
+                 if matrix[p]['B']['sharpe'] is not None), default=-999),
+        'C': max((matrix[p]['C']['sharpe'] for p in ['A', 'B', 'C']
+                 if matrix[p]['C']['sharpe'] is not None), default=-999),
     }
     adaptive_params = {
         'A': 'A',
@@ -303,12 +308,12 @@ def main():
 
     # 保存
     matrix_path = os.path.join(OUTPUT_DIR, 'v5_cross_validation_matrix.json')
-    with open(matrix_path, 'w') as f:
+    with open(matrix_path, 'w', encoding='utf-8') as f:
         json.dump(output, f, indent=2, ensure_ascii=False)
     print(f"\n✅ 交叉验证矩阵已保存至 {matrix_path}")
 
     report_path = os.path.join(OUTPUT_DIR, 'v5_regime_adaptation_report.json')
-    with open(report_path, 'w') as f:
+    with open(report_path, 'w', encoding='utf-8') as f:
         json.dump(recommendation, f, indent=2, ensure_ascii=False)
     print(f"✅ 市场自适应报告已保存至 {report_path}")
 
@@ -319,7 +324,7 @@ def main():
     for p_name in ['A', 'B', 'C']:
         params = all_params[adaptive_params[p_name]]
         _, _, label = PERIODS[p_name]
-        mode_name = {'A': 'bear', 'B': 'bull', 'C': 'choppy'}[p_name]
+        mode_name = {'A': 'bear', 'B': 'loose', 'C': 'strict'}[p_name]
         print(f"""
     # {label}
     "{mode_name}": {{

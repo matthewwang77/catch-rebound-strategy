@@ -1,0 +1,8 @@
+﻿parameter,base_value,base_sharpe,up_sharpe,down_sharpe,sensitivity
+stop_loss,-0.112,9.78,10.92,7.64,1.6400000000000001
+volume_shrink_ratio,0.67,9.78,8.03,8.53,1.5
+pullback_ratio_min,0.12,9.78,8.58,8.57,1.2049999999999992
+take_profit,0.051,9.78,9.64,9.48,0.21999999999999886
+min_entity_board_ratio,0.55,9.78,9.57,9.77,0.10999999999999943
+hold_days,10.0,9.78,9.88,9.68,0.10000000000000053
+pullback_ratio_max,0.4,9.78,9.78,9.78,0.0

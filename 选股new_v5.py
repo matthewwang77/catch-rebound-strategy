@@ -47,7 +47,7 @@ PARAMS = {
     "signal_volume_expand": 1.2,
     "hold_days": 7,
     "take_profit": 0.05,
-    "stop_loss": -0.07,
+    "stop_loss": -0.10,  # 毛收益阈值（H5修复：与毛收益比较，非净收益）
     "require_oversold": False,
     "oversold_decline_threshold": 0.10,
     "oversold_lookback_days": 20,
@@ -64,7 +64,7 @@ COMMISSION = {
 }
 
 # v5: 扩展未来数据窗口以支持更长的持仓天数
-FUTURE_DATA_DAYS = 15  # 预提取15天未来数据，支持 hold_days 最高到12
+FUTURE_DATA_DAYS = 25  # 预提取25天未来数据，支持 max_pullback_days=20 + hold_days=12
 
 
 def apply_trading_costs(gross_return, is_sell=False):
@@ -138,7 +138,8 @@ def calculate_v4_metrics(signals_df: pd.DataFrame, initial_capital: float = 1000
     if years > 0 and initial_capital > 0:
         final_capital = initial_capital * (1 + m.total_return_geo)
         m.cagr = ((final_capital / initial_capital) ** (1 / years) - 1) * 100
-    m.profit_factor = abs(m.avg_win / m.avg_loss) if m.avg_loss != 0 else 99
+    profit_factor = wins.sum() / abs(losses.sum()) if len(losses) > 0 and losses.sum() != 0 else 99
+    m.profit_factor = profit_factor
     m.expectancy = (m.win_rate * m.avg_win) + ((1 - m.win_rate) * m.avg_loss)
     current_wins = current_losses = 0
     for ret in df['return']:
@@ -152,7 +153,7 @@ def calculate_v4_metrics(signals_df: pd.DataFrame, initial_capital: float = 1000
         m.avg_hold_days = df['hold_days_actual'].mean()
     if 'exit_reason' in df.columns:
         m.exit_distribution = df['exit_reason'].value_counts().to_dict()
-    df_sorted = df.sort_values('trigger_date') if 'trigger_date' in df.columns else df
+    df_sorted = df.sort_values('trigger_date').copy() if 'trigger_date' in df.columns else df.copy()
     equity = [initial_capital]
     for ret in df_sorted['return']:
         equity.append(equity[-1] * (1 + ret))
@@ -257,7 +258,7 @@ def generate_all_codes():
 def download_one_stock(code):
     cache_file = os.path.join(DATA_DIR, f"{code}.csv")
     # 检查已知无效代码，避免重复下载
-    invalid_file = os.path.join(BASE_DIR, "invalid_codes.txt")
+    invalid_file = os.path.join(BASE, "invalid_codes.txt")
     if os.path.exists(invalid_file):
         with open(invalid_file) as f:
             invalid_codes = set(line.strip() for line in f)
@@ -294,7 +295,7 @@ def load_from_cache(code):
         df['pct_chg'] = df['close'].pct_change() * 100
         df = df.dropna(subset=['pct_chg'])
         return df.sort_values('trade_date').reset_index(drop=True)
-    except:
+    except Exception:
         return None
 
 
@@ -338,7 +339,7 @@ def download_all_data_fast():
         return
 
     # 过滤掉已有缓存的和已知无效的
-    invalid_file = os.path.join(BASE_DIR, "invalid_codes.txt")
+    invalid_file = os.path.join(BASE, "invalid_codes.txt")
     invalid_set = set()
     if os.path.exists(invalid_file):
         with open(invalid_file) as f:
@@ -364,7 +365,7 @@ def download_all_data_fast():
     for i in range(0, len(need_download), batch_size):
         batch = need_download[i:i + batch_size]
         try:
-            df = yf.download(tickers=batch, period="2y", progress=False, auto_adjust=True)
+            df = yf.download(tickers=batch, period="5y", progress=False, auto_adjust=True)
             if df is not None and len(df) > 0:
                 for code in batch:
                     try:
@@ -386,19 +387,13 @@ def download_all_data_fast():
                             else:
                                 fail += 1
                         else:
-                            pd.DataFrame().to_csv(os.path.join(DATA_DIR, f"{code}.csv"), index=False)
                             fail += 1
-                    except:
-                        pd.DataFrame().to_csv(os.path.join(DATA_DIR, f"{code}.csv"), index=False)
+                    except Exception:
                         fail += 1
             else:
-                for code in batch:
-                    pd.DataFrame().to_csv(os.path.join(DATA_DIR, f"{code}.csv"), index=False)
                 fail += len(batch)
         except Exception as e:
             print(f"  批量下载出错: {str(e)[:80]}")
-            for code in batch:
-                pd.DataFrame().to_csv(os.path.join(DATA_DIR, f"{code}.csv"), index=False)
             fail += len(batch)
 
         pct = min(100, (i + batch_size) / len(need_download) * 100)
@@ -439,7 +434,7 @@ def update_today_data():
             df = pd.read_csv(cache_file)
             if len(df) == 0 or df['date'].iloc[-1] != today_str:
                 need_update.append(code)
-        except:
+        except Exception:
             need_update.append(code)
 
     if not need_update:
@@ -489,7 +484,7 @@ def update_today_data():
                                 updated += 1  # 已有今日数据
                         else:
                             failed += 1
-                    except:
+                    except Exception:
                         failed += 1
         except Exception as e:
             print(f"  批量更新出错: {str(e)[:80]}")
@@ -529,7 +524,7 @@ def check_data_completeness():
             else:
                 missing += 1
                 missing_codes.append(code)
-        except:
+        except Exception:
             missing += 1
             missing_codes.append(code)
 
@@ -550,7 +545,7 @@ def identify_limit_up_series(df_stock, code=""):
     limit_threshold = get_limit_threshold(code) if code else 9.5
     df = df_stock.copy()
     df['is_limit_up'] = df['pct_chg'] >= limit_threshold
-    df['is_one_word'] = (df['open'] == df['high']) & (df['low'] == df['close']) & df['is_limit_up']
+    df['is_one_word'] = (np.isclose(df['open'], df['high'])) & np.isclose(df['low'], df['close']) & df['is_limit_up']
     limit_series = []; current_series = []
     for idx, row in df.iterrows():
         if row['is_limit_up']:
@@ -627,11 +622,12 @@ def simulate_hold_return(df_stock, entry_idx, entry_price, apply_costs=True):
         open_price = df_stock.iloc[i]['open']
         if entry_price <= 0: continue
         open_return = open_price / entry_price - 1
-        net_open_return = apply_trading_costs(open_return, is_sell=True) if apply_costs else open_return
-        if net_open_return <= PARAMS['stop_loss']:
-            return net_open_return, i - entry_idx, '止损'
-        if net_open_return >= PARAMS['take_profit']:
-            return net_open_return, i - entry_idx, '止盈'
+        # H5修复: 用毛收益 open_return 与毛阈值 PARAMS['stop_loss']/['take_profit'] 比较
+        # 仅在返回时扣除交易成本
+        if open_return <= PARAMS['stop_loss']:
+            return (apply_trading_costs(open_return, is_sell=True) if apply_costs else open_return), i - entry_idx, '止损'
+        if open_return >= PARAMS['take_profit']:
+            return (apply_trading_costs(open_return, is_sell=True) if apply_costs else open_return), i - entry_idx, '止盈'
         stop_level = entry_price * (1 + PARAMS['stop_loss'])
         profit_level = entry_price * (1 + PARAMS['take_profit'])
         dist_to_stop = open_price - stop_level
@@ -689,7 +685,7 @@ def run_backtest(start_date, end_date, quiet=False):
         if len(df_stock) < PARAMS['lookback_days'] + 10: continue
         limit_threshold = get_limit_threshold(code)
         df_stock['is_limit_up'] = df_stock['pct_chg'] >= limit_threshold
-        df_stock['is_one_word'] = (df_stock['open'] == df_stock['high']) & (df_stock['low'] == df_stock['close']) & df_stock['is_limit_up']
+        df_stock['is_one_word'] = (np.isclose(df_stock['open'], df_stock['high'])) & np.isclose(df_stock['low'], df_stock['close']) & df_stock['is_limit_up']
         limit_up_indices = df_stock[df_stock['is_limit_up']].index.tolist()
         if not limit_up_indices: continue
         groups = []; current_group = [limit_up_indices[0]]
@@ -715,7 +711,8 @@ def run_backtest(start_date, end_date, quiet=False):
                         if pre_decline > -PARAMS['oversold_decline_threshold']: continue
             last_limit_idx = group[-1]
             highest_price = max(df_stock.iloc[i]['high'] for i in group)
-            for check_idx in range(last_limit_idx + PARAMS['min_pullback_days'] + 1, min(last_limit_idx + 15, len(df_stock))):
+            max_search = PARAMS.get('max_pullback_days', 20) + 1
+            for check_idx in range(last_limit_idx + PARAMS.get('min_pullback_days', 2) + 1, min(last_limit_idx + max_search, len(df_stock))):
                 current_price = df_stock.iloc[check_idx]['close']
                 pullback_ratio = (highest_price - current_price) / highest_price
                 if pullback_ratio < PARAMS['pullback_ratio_min'] or pullback_ratio > PARAMS['pullback_ratio_max']:
@@ -794,7 +791,7 @@ def extract_all_events(hot_codes, start_date, end_date, min_series_len=1):
 
         limit_threshold = get_limit_threshold(code)
         df_stock['is_limit_up'] = df_stock['pct_chg'] >= limit_threshold
-        df_stock['is_one_word'] = (df_stock['open'] == df_stock['high']) & (df_stock['low'] == df_stock['close']) & df_stock['is_limit_up']
+        df_stock['is_one_word'] = (np.isclose(df_stock['open'], df_stock['high'])) & np.isclose(df_stock['low'], df_stock['close']) & df_stock['is_limit_up']
 
         limit_up_indices = df_stock[df_stock['is_limit_up']].index.tolist()
         if not limit_up_indices: continue
@@ -831,7 +828,7 @@ def extract_all_events(hot_codes, start_date, end_date, min_series_len=1):
                     oversold_decline = pre_limit_price / pre_price - 1
 
             # 对连板结束后每一天提取回调事件
-            for check_idx in range(last_limit_idx + 2, min(last_limit_idx + 15, len(df_stock))):
+            for check_idx in range(last_limit_idx + 2, min(last_limit_idx + 22, len(df_stock))):  # 22 = max_pullback_days(20) + 2
                 current_price = df_stock.iloc[check_idx]['close']
                 pullback_ratio = (highest_price - current_price) / highest_price
 
@@ -848,7 +845,7 @@ def extract_all_events(hot_codes, start_date, end_date, min_series_len=1):
 
                 row = df_stock.iloc[check_idx]
                 high_low_range = row['high'] - row['low']
-                close_position = (row['close'] - row['low']) / high_low_range if high_low_range > 0 else 0.5
+                close_position = (row['close'] - row['low']) / high_low_range if high_low_range > 0 else 0.0
 
                 # v5: 扩展未来数据窗口
                 future_data = []
@@ -908,6 +905,8 @@ def evaluate_params_on_events(all_events, params_dict, min_signals=30):
     stop_loss = params_dict['stop_loss']
     req_oversold = params_dict.get('require_oversold', False)
     req_low_close = params_dict.get('require_low_close', False)
+    req_today_yang = params_dict.get('signal_today_yang', True)
+    req_volume_expand = params_dict.get('signal_volume_expand', 0)
 
     for evt in all_events:
         # ---- 快速过滤（整数/浮点比较，无函数调用）----
@@ -921,27 +920,36 @@ def evaluate_params_on_events(all_events, params_dict, min_signals=30):
         if vol_ratio < vol_shrink_min: continue
 
         if evt['trigger_price'] < evt['ma']: continue
-        if not evt['is_yang']: continue
+        # signal_today_yang 检查: 遵循参数设置（bear 模式为 False 时跳过阳线要求）
+        if req_today_yang and not evt['is_yang']: continue
+        # signal_volume_expand 检查: 信号日成交量必须相对前一日放量
+        if req_volume_expand > 0 and evt.get('vol_expand_ratio', 1) < req_volume_expand: continue
 
         if req_oversold:
-            if evt['oversold_decline'] > -0.10: continue
+            oversold_threshold = params_dict.get('oversold_decline_threshold', 0.10)
+            if evt['oversold_decline'] > -oversold_threshold: continue
         if req_low_close:
-            if evt['close_position'] >= 0.5: continue
+            low_close_threshold = params_dict.get('low_close_threshold', 0.5)
+            if evt['close_position'] >= low_close_threshold: continue
 
         # ---- 模拟持仓 ----
         entry_price = evt['trigger_price']
         ret = 0; exit_reason = '到期'; days_held = hold_days
 
-        for fwd_idx, bar in enumerate(evt['future_data']):
-            if fwd_idx >= hold_days: break
+        # C1修复: 用有界循环替代 for-enumerate + break，确保 for-else 可达
+        max_fwd = min(hold_days, len(evt['future_data']))
+        for fwd_idx in range(max_fwd):
+            bar = evt['future_data'][fwd_idx]
 
             open_ret = bar['open'] / entry_price - 1
-            net_open = apply_trading_costs(open_ret, is_sell=True)
 
-            if net_open <= stop_loss:
-                ret = net_open; exit_reason = '止损'; days_held = fwd_idx + 1; break
-            if net_open >= take_profit:
-                ret = net_open; exit_reason = '止盈'; days_held = fwd_idx + 1; break
+            # H5修复: 用毛收益 open_ret 与毛阈值比较，仅在返回时扣除成本
+            if open_ret <= stop_loss:
+                ret = apply_trading_costs(open_ret, is_sell=True)
+                exit_reason = '止损'; days_held = fwd_idx + 1; break
+            if open_ret >= take_profit:
+                ret = apply_trading_costs(open_ret, is_sell=True)
+                exit_reason = '止盈'; days_held = fwd_idx + 1; break
 
             stop_level = entry_price * (1 + stop_loss)
             profit_level = entry_price * (1 + take_profit)
@@ -963,7 +971,7 @@ def evaluate_params_on_events(all_events, params_dict, min_signals=30):
                     ret = apply_trading_costs(stop_loss, is_sell=True)
                     exit_reason = '止损'; days_held = fwd_idx + 1; break
         else:
-            # 循环完整执行完（未触发止盈止损）
+            # 循环完整执行完（未触发止盈止损）→ 按收盘价退出
             if len(evt['future_data']) >= hold_days:
                 gross_ret = evt['future_data'][hold_days - 1]['close'] / entry_price - 1
                 ret = apply_trading_costs(gross_ret, is_sell=True)
@@ -972,8 +980,8 @@ def evaluate_params_on_events(all_events, params_dict, min_signals=30):
                 ret = apply_trading_costs(gross_ret, is_sell=True)
 
         signals.append({
-            'date': evt['date'], 'code': evt['code'],
-            'return': ret, 'exit_reason': exit_reason, 'hold_days': days_held,
+            'trigger_date': evt['date'], 'code': evt['code'],
+            'return': ret, 'exit_reason': exit_reason, 'hold_days_actual': days_held,
         })
 
     if len(signals) < min_signals:
@@ -986,17 +994,36 @@ def evaluate_params_on_events(all_events, params_dict, min_signals=30):
     total_return = (1 + df['return']).prod() - 1
     avg_win = df[df['return'] > 0]['return'].mean() if win_rate > 0 else 0
     avg_loss = df[df['return'] <= 0]['return'].mean() if win_rate < 1 else 0
-    profit_factor = abs(avg_win / avg_loss) if avg_loss != 0 else 99
+    # M6修复: 利润因子改用标准公式 sum(wins) / abs(sum(losses))
+    total_wins = df[df['return'] > 0]['return'].sum() if win_rate > 0 else 0
+    total_losses = abs(df[df['return'] <= 0]['return'].sum()) if win_rate < 1 else 0
+    profit_factor = total_wins / total_losses if total_losses > 0 else 99
 
-    # Sharpe / Sortino
-    daily_returns = df['return'].values
+    # H3修复: 构建每日权益曲线，从真正的每日收益计算年化夏普
+    # 原实现 `daily_returns = df['return'].values` 是逐笔交易收益，
+    # 用 √252 年化是错误的（除非每天恰好1笔交易）
+    df_sorted_for_sharpe = df.sort_values('trigger_date')
+    if 'trigger_date' in df_sorted_for_sharpe.columns and len(df_sorted_for_sharpe) >= 2:
+        df_sorted_for_sharpe['date_parsed'] = pd.to_datetime(
+            df_sorted_for_sharpe['trigger_date'].astype(str), format='%Y%m%d')
+        daily_pnl = df_sorted_for_sharpe.groupby('date_parsed')['return'].sum()
+        if len(daily_pnl) >= 2:
+            date_range = pd.date_range(daily_pnl.index.min(), daily_pnl.index.max(), freq='B')
+            daily_pnl = daily_pnl.reindex(date_range, fill_value=0)
+            true_daily_returns = daily_pnl.values
+        else:
+            true_daily_returns = df['return'].values  # fallback
+    else:
+        true_daily_returns = df['return'].values  # fallback
+
+    # Sharpe / Sortino (使用真正的每日收益)
     sharpe = 0; sortino = 0
-    if len(daily_returns) >= 2 and daily_returns.std() > 0:
-        sharpe = (daily_returns.mean() * 252) / (daily_returns.std() * np.sqrt(252))
-        downside = daily_returns[daily_returns < 0]
+    if len(true_daily_returns) >= 2 and true_daily_returns.std() > 0:
+        sharpe = (true_daily_returns.mean() * 252) / (true_daily_returns.std() * np.sqrt(252))
+        downside = true_daily_returns[true_daily_returns < 0]
         if len(downside) > 0 and downside.std() > 0:
-            sortino = min((daily_returns.mean() * 252) / (downside.std() * np.sqrt(252)), 5)
-        elif daily_returns.mean() > 0:
+            sortino = min((true_daily_returns.mean() * 252) / (downside.std() * np.sqrt(252)), 5)
+        elif true_daily_returns.mean() > 0:
             sortino = 3.0
 
     # Drawdown (simplified)
@@ -1185,8 +1212,8 @@ def cluster_top_params(results_df, top_n=50, n_clusters=5):
             # 扩展 20% 范围
             margin = (p_max - p_min) * 0.2 if p_max > p_min else abs(p_min) * 0.05 + 0.01
             search_ranges[p] = {
-                'min': max(p_min - margin, cluster_df[p].min() * 0.5 if p_min > 0 else p_min + margin * 2),
-                'max': p_max + margin if p_max > p_min else p_max + margin * 2,
+                'min': p_min - abs(margin),
+                'max': p_max + abs(margin),
             }
 
         cluster_ranges.append({
@@ -1654,40 +1681,48 @@ def bootstrap_confidence(signals_df, n_bootstrap=1000, ci_level=0.95):
 
 def permutation_test(signals_df, n_permutations=1000):
     """
-    置换检验：随机打乱收益序列，检验真实 Sharpe 是否显著高于随机。
+    Bootstrap检验：通过带放回重抽样+中心化构建H0分布（Sharpe=0），
+    检验真实Sharpe是否显著大于零。
     H0: 策略收益 = 随机（Sharpe ≤ 0）
+
+    H2修复: 原实现用 np.random.shuffle 打乱收益序列，但 shuffle 不改变
+    均值/方差，导致每次 perm_sharpe == true_sharpe，p值恒为~1.0。
+    现改为 Bootstrap + 中心化（减去原始均值）强制 H0。
     """
     print(f"\n{'─'*70}")
-    print(f"  置换检验 (n={n_permutations})")
+    print(f"  Bootstrap检验 (n={n_permutations})")
     print(f"{'─'*70}")
 
     returns = signals_df['return'].values
     n = len(returns)
+    ret_mean = returns.mean()
+    ret_std = returns.std()
 
-    # 真实 Sharpe
-    if returns.std() > 0:
-        true_sharpe = (returns.mean() * 252) / (returns.std() * np.sqrt(252))
+    # 真实 Sharpe（年化，假设252交易日）
+    if ret_std > 0:
+        true_sharpe = (ret_mean * 252) / (ret_std * np.sqrt(252))
     else:
         true_sharpe = 0
 
-    # 置换分布
-    perm_sharpes = []
+    # Bootstrap: 带放回抽样 + 中心化（强制 H0: Sharpe=0）
+    boot_sharpes = []
     np.random.seed(42)
     for _ in range(n_permutations):
-        shuffled = returns.copy()
-        np.random.shuffle(shuffled)
-        if shuffled.std() > 0:
-            perm_sharpes.append((shuffled.mean() * 252) / (shuffled.std() * np.sqrt(252)))
+        sample = np.random.choice(returns, size=n, replace=True)
+        # 中心化：减去原始均值，强制H0成立
+        sample_centered = sample - ret_mean
+        if sample_centered.std() > 0:
+            boot_sharpes.append((sample_centered.mean() * 252) / (sample_centered.std() * np.sqrt(252)))
         else:
-            perm_sharpes.append(0)
+            boot_sharpes.append(0)
 
-    perm_sharpes = np.array(perm_sharpes)
-    p_value = (perm_sharpes >= true_sharpe).mean()
+    boot_sharpes = np.array(boot_sharpes)
+    p_value = (boot_sharpes >= true_sharpe).mean()
 
     print(f"  真实 Sharpe: {true_sharpe:.4f}")
-    print(f"  置换均值:    {perm_sharpes.mean():.4f}")
-    print(f"  置换 std:    {perm_sharpes.std():.4f}")
-    print(f"  p-value:     {p_value:.4f}")
+    print(f"  Bootstrap均值: {boot_sharpes.mean():.4f}")
+    print(f"  Bootstrap std:  {boot_sharpes.std():.4f}")
+    print(f"  p-value:        {p_value:.4f}")
 
     if p_value < 0.01:
         print(f"  ✅ 结论: 策略收益极显著优于随机 (p<0.01)")
@@ -1698,7 +1733,7 @@ def permutation_test(signals_df, n_permutations=1000):
     else:
         print(f"  ❌ 结论: 策略收益不显著优于随机 (p={p_value:.2f})")
 
-    return {'true_sharpe': true_sharpe, 'p_value': p_value, 'perm_mean': perm_sharpes.mean()}
+    return {'true_sharpe': true_sharpe, 'p_value': p_value, 'perm_mean': boot_sharpes.mean()}
 
 
 def parameter_sensitivity(best_params, all_events, start_date, end_date):
@@ -1813,7 +1848,6 @@ def walkforward_analysis_v5(start_date, end_date, best_params, split_ratio=0.6):
     print(f"\n  样本内 (IS): {is_start} ~ {is_end}")
     print(f"  样本外 (OOS): {oos_start} ~ {oos_end}")
 
-    global PARAMS
     original_params = PARAMS.copy()
 
     # IS 回测
@@ -2147,7 +2181,6 @@ def screen_today(mode="auto"):
     v6: 支持 'auto' 模式 — 自动检测市场状态并选择最优参数。
     模式: 'auto' | 'strict' | 'loose' | 'bear'
     """
-    global PARAMS
 
     regime_info = None
 
@@ -2183,7 +2216,7 @@ def screen_today(mode="auto"):
             df = ticker.history(period="3mo")
             if df is None or len(df) < 15: continue
             _screen_single_stock(code, df, stats, candidates, mode)
-        except:
+        except Exception:
             continue
     print(f"\n✅ 扫描完成！总候选: {stats['total']} | 有数据: {stats['has_data']} | 选出: {len(candidates)}")
 
@@ -2255,8 +2288,8 @@ if __name__ == "__main__":
             print(f"📋 选股结果 ({mode}模式)")
             print(f"{'='*60}")
             for c in candidates:
-                print(f"  {c['代码']}  |  {c['最新价']:.2f}  |  信号日{c['信号日']}  |  回调{c['回调比']:.1%}")
-            print(f"\nCANDIDATE_CODES = {[c['代码'] for c in candidates]}")
+                print(f"  {c['code']}  |  {c['price']:.2f}  |  信号日{c['signal_date']}  |  回调{c['pullback_pct']:.1f}%")
+            print(f"\nCANDIDATE_CODES = {[c['code'] for c in candidates]}")
         sys.exit()
 
     if len(sys.argv) > 1 and sys.argv[1] == '--cross-period':

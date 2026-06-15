@@ -1,0 +1,137 @@
+<h2>收益曲线 — 霓虹风格</h2>
+<p class="subtitle">自定义SVG迷你曲线，嵌入绩效面板。你喜欢哪个风格？</p>
+
+<div class="cards" data-multiselect>
+
+<div class="card" data-choice="glow-line" onclick="toggleSelect(this)">
+  <div class="card-image">
+    <div class="mockup">
+      <div class="mockup-header">A · 发光折线 — 绿色霓虹+渐变填充</div>
+      <div class="mockup-body" style="background:#050508;padding:20px;font-family:monospace">
+        <div style="background:linear-gradient(135deg, rgba(0,255,136,0.06), rgba(0,255,136,0.01));border:1px solid rgba(0,255,136,0.12);border-radius:8px;padding:16px">
+          <div style="display:flex;justify-content:space-between;margin-bottom:10px">
+            <span style="color:#666;font-size:0.68rem;text-transform:uppercase;letter-spacing:1px">收益曲线 (30日)</span>
+            <span style="color:#00ff88;font-size:0.8rem;font-weight:700">+58.3%</span>
+          </div>
+          <svg viewBox="0 0 400 100" style="width:100%;height:auto">
+            <defs>
+              <linearGradient id="glowGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#00ff88" stop-opacity="0.2"/>
+                <stop offset="100%" stop-color="#00ff88" stop-opacity="0.01"/>
+              </linearGradient>
+            </defs>
+            <!-- Grid lines -->
+            <line x1="0" y1="25" x2="400" y2="25" stroke="rgba(255,255,255,0.03)" stroke-dasharray="4,4"/>
+            <line x1="0" y1="50" x2="400" y2="50" stroke="rgba(255,255,255,0.06)"/>
+            <line x1="0" y1="75" x2="400" y2="75" stroke="rgba(255,255,255,0.03)" stroke-dasharray="4,4"/>
+            <!-- Area fill -->
+            <path d="M0,65 Q30,60 60,55 Q90,48 120,52 Q150,58 180,40 Q210,28 240,30 Q270,22 300,18 Q330,12 360,8 Q380,5 400,2 L400,100 L0,100 Z" fill="url(#glowGrad)"/>
+            <!-- Glow line -->
+            <path d="M0,65 Q30,60 60,55 Q90,48 120,52 Q150,58 180,40 Q210,28 240,30 Q270,22 300,18 Q330,12 360,8 Q380,5 400,2" fill="none" stroke="#00ff88" stroke-width="1.8" filter="url(#glow)"/>
+            <defs>
+              <filter id="glow">
+                <feGaussianBlur stdDeviation="2" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body"><h3>发光折线 (A)</h3><p>绿色霓虹线 + 渐变填充 + 暗网格背景。最"赛博终端"</p></div>
+</div>
+
+<div class="card" data-choice="stepped-bars" onclick="toggleSelect(this)">
+  <div class="card-image">
+    <div class="mockup">
+      <div class="mockup-header">B · 迷你柱状 — 盈亏分色 + 简洁</div>
+      <div class="mockup-body" style="background:#050508;padding:20px;font-family:monospace">
+        <div style="background:linear-gradient(135deg, rgba(0,255,136,0.06), rgba(0,255,136,0.01));border:1px solid rgba(0,255,136,0.12);border-radius:8px;padding:16px">
+          <div style="display:flex;justify-content:space-between;margin-bottom:10px">
+            <span style="color:#666;font-size:0.68rem;text-transform:uppercase;letter-spacing:1px">逐笔收益</span>
+            <span style="color:#00ff88;font-size:0.8rem;font-weight:700">12胜 / 6负</span>
+          </div>
+          <svg viewBox="0 0 400 60" style="width:100%;height:auto">
+            <line x1="0" y1="30" x2="400" y2="30" stroke="rgba(255,255,255,0.06)"/>
+            <!-- Bars: green=win, red=loss -->
+            <rect x="10" y="20" width="14" height="20" fill="rgba(0,255,136,0.6)" rx="2">
+              <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
+            </rect>
+            <rect x="28" y="28" width="14" height="8" fill="rgba(255,51,102,0.5)" rx="2"/>
+            <rect x="46" y="22" width="14" height="16" fill="rgba(0,255,136,0.6)" rx="2"/>
+            <rect x="64" y="26" width="14" height="12" fill="rgba(0,255,136,0.6)" rx="2"/>
+            <rect x="82" y="30" width="14" height="6" fill="rgba(255,51,102,0.5)" rx="2"/>
+            <rect x="100" y="18" width="14" height="24" fill="rgba(0,255,136,0.6)" rx="2"/>
+            <rect x="118" y="24" width="14" height="14" fill="rgba(0,255,136,0.6)" rx="2"/>
+            <rect x="136" y="32" width="14" height="4" fill="rgba(255,51,102,0.5)" rx="2"/>
+            <rect x="154" y="16" width="14" height="28" fill="rgba(0,255,136,0.6)" rx="2"/>
+            <rect x="172" y="26" width="14" height="12" fill="rgba(0,255,136,0.6)" rx="2"/>
+            <rect x="190" y="34" width="14" height="8" fill="rgba(255,51,102,0.5)" rx="2"/>
+            <rect x="208" y="28" width="14" height="10" fill="rgba(0,255,136,0.6)" rx="2"/>
+            <rect x="226" y="30" width="14" height="6" fill="rgba(255,51,102,0.5)" rx="2"/>
+            <rect x="244" y="20" width="14" height="18" fill="rgba(0,255,136,0.6)" rx="2"/>
+            <rect x="262" y="22" width="14" height="16" fill="rgba(0,255,136,0.6)" rx="2"/>
+            <rect x="280" y="36" width="14" height="4" fill="rgba(255,51,102,0.5)" rx="2"/>
+            <rect x="298" y="14" width="14" height="32" fill="rgba(0,255,136,0.6)" rx="2"/>
+            <rect x="316" y="24" width="14" height="14" fill="rgba(0,255,136,0.6)" rx="2"/>
+            <rect x="334" y="30" width="14" height="8" fill="rgba(0,255,136,0.6)" rx="2"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body"><h3>迷你柱状 (B)</h3><p>每笔交易一根棒，绿涨红跌。直观看到盈亏分布的节奏感</p></div>
+</div>
+
+<div class="card" data-choice="both" onclick="toggleSelect(this)">
+  <div class="card-image">
+    <div class="mockup">
+      <div class="mockup-header">C · 双图组合 — 上面累计曲线 + 下面逐笔柱状</div>
+      <div class="mockup-body" style="background:#050508;padding:20px;font-family:monospace">
+        <div style="background:linear-gradient(135deg, rgba(0,255,136,0.06), rgba(0,255,136,0.01));border:1px solid rgba(0,255,136,0.12);border-radius:8px;padding:16px">
+          <div style="display:flex;justify-content:space-between;margin-bottom:8px">
+            <span style="color:#666;font-size:0.68rem;text-transform:uppercase;letter-spacing:1px">累计收益 +58.3%</span>
+            <span style="color:#888;font-size:0.65rem">DD -8.5%</span>
+          </div>
+          <svg viewBox="0 0 400 70" style="width:100%;height:auto">
+            <defs>
+              <linearGradient id="bothGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#00ff88" stop-opacity="0.15"/>
+                <stop offset="100%" stop-color="#00ff88" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <line x1="0" y1="35" x2="400" y2="35" stroke="rgba(255,255,255,0.04)"/>
+            <path d="M0,50 Q30,47 60,43 Q90,35 120,38 Q150,45 180,30 Q210,20 240,22 Q270,15 300,12 Q330,8 360,5 Q380,3 400,2 L400,70 L0,70 Z" fill="url(#bothGrad)"/>
+            <path d="M0,50 Q30,47 60,43 Q90,35 120,38 Q150,45 180,30 Q210,20 240,22 Q270,15 300,12 Q330,8 360,5 Q380,3 400,2" fill="none" stroke="#00ff88" stroke-width="1.6"/>
+          </svg>
+          <!-- Bottom bars -->
+          <svg viewBox="0 0 400 30" style="width:100%;height:auto;margin-top:4px">
+            <rect x="10" y="6" width="14" height="18" rx="2" fill="rgba(0,255,136,0.5)"/>
+            <rect x="28" y="14" width="14" height="10" rx="2" fill="rgba(255,51,102,0.4)"/>
+            <rect x="46" y="8" width="14" height="16" rx="2" fill="rgba(0,255,136,0.5)"/>
+            <rect x="64" y="10" width="14" height="14" rx="2" fill="rgba(0,255,136,0.5)"/>
+            <rect x="82" y="16" width="14" height="8" rx="2" fill="rgba(255,51,102,0.4)"/>
+            <rect x="100" y="4" width="14" height="22" rx="2" fill="rgba(0,255,136,0.5)"/>
+            <rect x="118" y="10" width="14" height="14" rx="2" fill="rgba(0,255,136,0.5)"/>
+            <rect x="136" y="18" width="14" height="6" rx="2" fill="rgba(255,51,102,0.4)"/>
+            <rect x="154" y="2" width="14" height="26" rx="2" fill="rgba(0,255,136,0.5)"/>
+            <rect x="172" y="10" width="14" height="14" rx="2" fill="rgba(0,255,136,0.5)"/>
+            <rect x="190" y="20" width="14" height="8" rx="2" fill="rgba(255,51,102,0.4)"/>
+            <rect x="208" y="8" width="14" height="16" rx="2" fill="rgba(0,255,136,0.5)"/>
+            <rect x="226" y="16" width="14" height="8" rx="2" fill="rgba(255,51,102,0.4)"/>
+            <rect x="244" y="6" width="14" height="20" rx="2" fill="rgba(0,255,136,0.5)"/>
+            <rect x="262" y="8" width="14" height="16" rx="2" fill="rgba(0,255,136,0.5)"/>
+            <rect x="280" y="22" width="14" height="6" rx="2" fill="rgba(255,51,102,0.4)"/>
+            <rect x="298" y="0" width="14" height="30" rx="2" fill="rgba(0,255,136,0.5)"/>
+            <rect x="316" y="8" width="14" height="16" rx="2" fill="rgba(0,255,136,0.5)"/>
+            <rect x="334" y="12" width="14" height="12" rx="2" fill="rgba(0,255,136,0.5)"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body"><h3>双图组合 (C)</h3><p>上：累计收益曲线。下：逐笔盈亏柱状。信息最全</p></div>
+</div>
+
+</div>

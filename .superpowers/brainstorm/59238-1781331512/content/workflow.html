@@ -1,0 +1,105 @@
+<h2>复盘系统 · 完整工作流</h2>
+<p class="subtitle">从选股到AI分析到记忆积累的闭环</p>
+
+<div class="section">
+  <h3>第一步：每日自动选股（已有，不变）</h3>
+  <div class="mockup">
+    <div class="mockup-body" style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:#9999BB;line-height:2.2">
+      auto_daily.py 每天4次自动运行<br>
+      → 扫描 ~5200 只A股<br>
+      → 用 STRICT/LOOSE 两种参数筛选符合条件的回调股票<br>
+      → 结果存入 <span style="color:#00F0FF">latest_scan_results.json</span><br>
+      → Git push → Streamlit Cloud 自动更新网站<br>
+      <br>
+      <span style="color:#555577">同时：每条选中的股票写入 <span style="color:#9B6FFF">signal_tracker.csv</span>（日期/代码/入场价/模式/回调幅度）</span>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>第二步：用户在网站上看到候选 + 点AI分析（已有，增强）</h3>
+  <div class="mockup">
+    <div class="mockup-body" style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:#9999BB;line-height:2.2">
+      选股页面展示 STRICT 3只 / LOOSE 8只 候选<br>
+      用户点某只股票的 <span style="color:#00F0FF">◆ AI分析</span> 按钮<br>
+      → DeepSeek 分析量价形时四维<br>
+      → 返回分析报告（情绪档位/仓位建议/综合判断）<br>
+      → 分析结果显示在股票卡片下方<br>
+      <br>
+      <span style="color:#00FF88;font-weight:bold">🆕 新增：分析结果同时存入 ai_memory.json</span><br>
+      <span style="color:#555577">{ 代码: "002081.SZ", 日期: "20260613", 分析全文: "...", 情绪: "启动期", 仓位: "3成" }</span>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>第三步：时间流逝 → 实际收益可验证（已有，增强）</h3>
+  <div class="mockup">
+    <div class="mockup-body" style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:#9999BB;line-height:2.2">
+      3天/5天/7天后 → signal_tracker.csv 里的信号可以计算实际收益<br>
+      check_return() 函数拉 yfinance 数据算出实际涨跌幅<br>
+      <br>
+      <span style="color:#00FF88;font-weight:bold">🆕 新增：验证结果自动回写到 ai_memory.json</span><br>
+      <span style="color:#555577">AI说"短线反弹可期" → 3天后实际涨了 +5.2% → 标记 ✅预测正确</span><br>
+      <span style="color:#555577">AI说"短线反弹可期" → 3天后实际跌了 -2.1% → 标记 ◈预测偏差</span>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>第四步：复盘页面（🆕 这次重点做的）</h3>
+  <div class="mockup">
+    <div class="mockup-header">◆ 复盘 页面两大功能</div>
+    <div class="mockup-body" style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:#9999BB;line-height:2.2">
+      <div style="color:#00F0FF;margin-bottom:4px">A. 绩效总览（靠 signal_tracker.csv）</div>
+      累计收益 / 胜率 / 盈亏比 / 最大回撤 + 收益曲线图<br>
+      → 回答：这个策略整体赚不赚钱？什么时候表现好/差？<br>
+      <br>
+      <div style="color:#00F0FF;margin-bottom:4px">B. AI 记忆浏览器（靠 ai_memory.json）</div>
+      按股票列出所有历史 AI 分析记录，每条标注验证结果<br>
+      → 回答：AI 对哪只股票判断准？哪只判断歪了？<br>
+      → 可以点"重新分析"，自动把历史分析+验证结果发给 DeepSeek<br>
+      → AI 会看到自己上次说了什么、实际发生了什么，做连续性判断
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>第五步：闭环 — 再次分析时 AI 有记忆（🆕 核心价值）</h3>
+  <div class="mockup">
+    <div class="mockup-body" style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:#9999BB;line-height:2.2">
+      同一只股票再次出现信号 → 用户点 AI 分析<br>
+      → 系统从 ai_memory.json 找到该股票的所有历史分析 + 验证结果<br>
+      → 自动注入 DeepSeek prompt：<br>
+      <br>
+      <div style="background:rgba(0,240,255,0.03);padding:12px;border-radius:6px;border:1px solid rgba(0,240,255,0.08)">
+        <span style="color:#555577">[系统注入] 该股票历史分析记录：</span><br>
+        <span style="color:#00FF88">2026-06-10：AI判断"短线反弹可期"，建议3成仓位。3日后实际收益 +5.2% ✅</span><br>
+        <span style="color:#FF5050">2026-06-01：AI判断"观望等待"。3日后实际收益 -1.8% ◈</span><br>
+        <span style="color:#555577">---</span><br>
+        请结合以上历史判断和实际走势，对当前信号做连续性分析...
+      </div>
+      <br>
+      → DeepSeek 看到自己的"战绩"，能做更准确的判断<br>
+      → 比如："上次我在类似回调幅度时建议3成仓位，结果正确。这次情况类似，建议维持3成..."
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>数据文件关系</h3>
+  <table style="width:100%;font-family:monospace;font-size:0.7rem;color:#9999BB;border-collapse:collapse">
+    <tr style="border-bottom:1px solid rgba(0,240,255,0.06)">
+      <td style="padding:8px;color:#00F0FF">signal_tracker.csv</td>
+      <td style="padding:8px">已有。每条信号：日期/代码/入场价/模式/回调幅度。用于计算收益、做绩效统计</td>
+    </tr>
+    <tr style="border-bottom:1px solid rgba(0,240,255,0.06)">
+      <td style="padding:8px;color:#00F0FF">ai_memory.json 🆕</td>
+      <td style="padding:8px">新增。按股票+日期存储每次AI分析全文、情绪、仓位、验证结果。复盘页面的数据源</td>
+    </tr>
+    <tr>
+      <td style="padding:8px;color:#00F0FF">latest_scan_results.json</td>
+      <td style="padding:8px">已有。每日选股结果。选股页面的数据源，不变</td>
+    </tr>
+  </table>
+</div>

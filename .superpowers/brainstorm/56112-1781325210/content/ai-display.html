@@ -1,0 +1,79 @@
+<h2>AI 分析展示优化</h2>
+<p class="subtitle">分析内容很好，不改。只优化"怎么呈现"</p>
+
+<div class="options" data-multiselect>
+  <div class="option" data-choice="summary-strip" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>顶部快速摘要条</h3>
+      <p>expander 折叠时在标题行展示一行摘要：情绪档位 + 仓位建议 + 一句话结论。不展开也能看到核心信息</p>
+    </div>
+  </div>
+  <div class="option" data-choice="tab-sections" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>分析内部分 Tab</h3>
+      <p>expander 内部用 <code>st.tabs(["量","价","形","时","综合建议"])</code> 把长文拆成四个维度 + 建议，不会一下看到全部文字</p>
+    </div>
+  </div>
+  <div class="option" data-choice="copy-button" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>一键复制 + 导出</h3>
+      <p>expander 右上角加复制按钮（复制全文到剪贴板）+ 导出为 txt。方便分享到微信/飞书</p>
+    </div>
+  </div>
+  <div class="option" data-choice="neon-expander" onclick="toggleSelect(this)">
+    <div class="letter">D</div>
+    <div class="content">
+      <h3>Neon 样式展开器</h3>
+      <p>把 expander 样式改成霓虹边框 + 暗色代码块背景 + cyan 标题，融入整体视觉系统。不改结构，只改外观</p>
+    </div>
+  </div>
+  <div class="option" data-choice="default-collapsed" onclick="toggleSelect(this)">
+    <div class="letter">E</div>
+    <div class="content">
+      <h3>默认折叠 + 摘要可见</h3>
+      <p>默认不展开，但标题行显示 "情绪/仓位/结论" 摘要。想看详情再点开。避免页面过长</p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Mockup 预览（A + B + D 组合）</h3>
+  <div class="mockup">
+    <div class="mockup-header">◆ 002081.SZ AI分析报告</div>
+    <div class="mockup-body">
+      <div style="background:rgba(13,13,30,0.9);border:1px solid rgba(0,240,255,0.15);border-radius:10px;padding:16px;max-width:650px">
+        <!-- Summary strip -->
+        <div style="display:flex;gap:12px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid rgba(0,240,255,0.08)">
+          <div style="background:rgba(0,240,255,0.08);border-radius:6px;padding:6px 12px;font-family:monospace;font-size:0.6rem;color:#00F0FF">
+            情绪: 🟢 启动期</div>
+          <div style="background:rgba(0,255,136,0.08);border-radius:6px;padding:6px 12px;font-family:monospace;font-size:0.6rem;color:#00FF88">
+            仓位: 3成</div>
+          <div style="background:rgba(123,47,255,0.08);border-radius:6px;padding:6px 12px;font-family:monospace;font-size:0.6rem;color:#7B2FFF">
+            观点: 短线反弹可期</div>
+        </div>
+        <!-- Tab bar -->
+        <div style="display:flex;gap:2px;margin-bottom:12px">
+          <span style="background:rgba(0,240,255,0.12);color:#00F0FF;padding:4px 12px;border-radius:4px;font-family:monospace;font-size:0.6rem">量</span>
+          <span style="color:#7777AA;padding:4px 12px;font-family:monospace;font-size:0.6rem">价</span>
+          <span style="color:#7777AA;padding:4px 12px;font-family:monospace;font-size:0.6rem">形</span>
+          <span style="color:#7777AA;padding:4px 12px;font-family:monospace;font-size:0.6rem">时</span>
+          <span style="color:#7777AA;padding:4px 12px;font-family:monospace;font-size:0.6rem">🎯 建议</span>
+          <span style="flex:1"></span>
+          <span style="color:#6666AA;padding:4px 8px;font-family:monospace;font-size:0.55rem;border:1px solid rgba(0,240,255,0.15);border-radius:4px;cursor:pointer">📋 复制</span>
+        </div>
+        <!-- Content -->
+        <div style="font-family:monospace;font-size:0.6rem;color:#9999BB;line-height:1.7;background:rgba(0,0,0,0.3);border-radius:6px;padding:14px">
+          <span style="color:#00F0FF">## 量 · 成交量分析</span><br>
+          回调期间成交量持续萎缩，今日放量至前3日均量的1.4倍...<br><br>
+          <span style="color:#7777AA">---</span><br>
+          <span style="color:#00F0FF">## 价 · 价格位置</span><br>
+          当前价格位于MA10上方，距MA20仅2.3%...<br><br>
+          <span style="color:#7777AA">...</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

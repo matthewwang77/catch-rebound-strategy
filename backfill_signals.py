@@ -108,18 +108,19 @@ def check_return_v5_local(code, signal_date, entry_price, hold_days, take_profit
             if entry_price <= 0:
                 continue
 
-            # 开盘检查
+            # 开盘检查（H5修复：用毛收益与毛阈值比较）
             open_return = open_price / entry_price - 1
-            net_open = screener.apply_trading_costs(open_return, is_sell=True)
-            if net_open <= stop_loss:
+            if open_return <= stop_loss:
+                net = screener.apply_trading_costs(open_return, is_sell=True)
                 return {
-                    "return_pct": round(net_open * 100, 2),
+                    "return_pct": round(net * 100, 2),
                     "exit_day": i - entry_idx,
                     "exit_reason": "止损",
                 }
-            if net_open >= take_profit:
+            if open_return >= take_profit:
+                net = screener.apply_trading_costs(open_return, is_sell=True)
                 return {
-                    "return_pct": round(net_open * 100, 2),
+                    "return_pct": round(net * 100, 2),
                     "exit_day": i - entry_idx,
                     "exit_reason": "止盈",
                 }
@@ -172,7 +173,9 @@ def check_return_v5_local(code, signal_date, entry_price, hold_days, take_profit
             "exit_reason": "到期(截断)" if is_truncated else "到期",
         }
 
-    except Exception:
+    except Exception as e:
+        import sys
+        print(f"  ⚠️ check_return_v5_local 异常: {e}", file=sys.stderr)
         return None
 
 
@@ -195,7 +198,7 @@ def main():
             continue
 
         fpath = os.path.join(archive_dir, fname)
-        with open(fpath) as f:
+        with open(fpath, encoding='utf-8') as f:
             data = json.load(f)
 
         scan_date = data.get("scan_date", "")
@@ -223,7 +226,7 @@ def main():
                 if not signal_date:
                     signal_date = scan_date
 
-                key = (code, scan_date, round(float(price), 2))
+                key = (code, scan_date, round(float(price), 2), sig.get('mode', 'unknown'))
                 if key not in all_signals:
                     all_signals[key] = {
                         "date": scan_date,           # ✅ 扫描日 = 入场日期
@@ -248,7 +251,9 @@ def main():
     # 确保列顺序
     cols = ["date", "signal_date", "code", "mode", "entry_price", "pullback_pct", "limit_days", "name", "sector"]
     df_signals = df_signals[cols]
-    df_signals.to_csv(tracker_path, index=False, encoding="utf-8-sig")
+    tmp_path = tracker_path + ".tmp"
+    df_signals.to_csv(tmp_path, index=False, encoding="utf-8-sig")
+    os.replace(tmp_path, tracker_path)
     print(f"✅ signal_tracker.csv — {len(df_signals)} 行")
 
     # ---- Step 3: 计算实际收益 + 填充 ai_memory.json ----
@@ -256,7 +261,7 @@ def main():
     memory = {}
     if os.path.exists(memory_path):
         try:
-            with open(memory_path) as f:
+            with open(memory_path, encoding='utf-8') as f:
                 memory = json.load(f)
         except Exception:
             memory = {}
@@ -300,9 +305,12 @@ def main():
 
         r7_val = ret7["return_pct"] if ret7 else None
 
-        # ✅ 裁决逻辑：对比AI结论 vs 实际走势
+        # 裁决逻辑：对比AI结论 vs 实际走势
+        # C9修复: 无opinion时不猜测，设为None（与auto_daily._compute_verdict一致）
         opinion = sig.get("opinion", "")
-        if r7_val is not None and r7_val > 0:
+        if not opinion:
+            verdict = None
+        elif r7_val is not None and r7_val > 0:
             if '参与' in str(opinion):
                 verdict = 'correct'
             elif '放弃' in str(opinion):
@@ -362,8 +370,10 @@ def main():
         ret_info = f"{r7_val:+.1f}%" if r7_val is not None else "N/A"
         print(f"  [{backfill_count}] {code} {entry_date} {mode} → 7d:{ret_info} {exit_info} | verdict={verdict}")
 
-    with open(memory_path, "w", encoding="utf-8") as f:
+    tmp_memory_path = memory_path + ".tmp"
+    with open(tmp_memory_path, "w", encoding="utf-8") as f:
         json.dump(memory, f, ensure_ascii=False, indent=2)
+    os.replace(tmp_memory_path, memory_path)
 
     total_records = sum(len(v) for v in memory.values())
     print(f"\n✅ ai_memory.json — {len(memory)} 只股票, {total_records} 条记录")

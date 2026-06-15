@@ -1,0 +1,169 @@
+{
+  "experiment": "3x3 Cross-Validation Matrix",
+  "periods": {
+    "A": {
+      "range": "20230101_20240630",
+      "label": "震荡下行（熊市）"
+    },
+    "B": {
+      "range": "20240701_20250630",
+      "label": "牛市大涨"
+    },
+    "C": {
+      "range": "20250701_20260430",
+      "label": "震荡回调"
+    }
+  },
+  "params": {
+    "A": {
+      "pullback_ratio_min": 0.06,
+      "pullback_ratio_max": 0.11,
+      "volume_shrink_ratio": 0.41,
+      "take_profit": 0.057,
+      "stop_loss": -0.103,
+      "hold_days": 7,
+      "min_entity_board_ratio": 0.45,
+      "min_consecutive_limit_up": 2,
+      "require_oversold": false,
+      "require_low_close": false,
+      "volume_shrink_ratio_min": 0.1
+    },
+    "B": {
+      "pullback_ratio_min": 0.15,
+      "pullback_ratio_max": 0.22,
+      "volume_shrink_ratio": 0.4,
+      "take_profit": 0.06,
+      "stop_loss": -0.12,
+      "hold_days": 10,
+      "min_entity_board_ratio": 0.2,
+      "min_consecutive_limit_up": 2,
+      "require_oversold": false,
+      "require_low_close": false,
+      "volume_shrink_ratio_min": 0.1
+    },
+    "C": {
+      "pullback_ratio_min": 0.01,
+      "pullback_ratio_max": 0.32,
+      "volume_shrink_ratio": 0.84,
+      "take_profit": 0.052,
+      "stop_loss": -0.144,
+      "hold_days": 11,
+      "min_entity_board_ratio": 0.35,
+      "min_consecutive_limit_up": 3,
+      "require_oversold": false,
+      "require_low_close": false,
+      "volume_shrink_ratio_min": 0.1
+    }
+  },
+  "full_matrix": {
+    "params_A": {
+      "test_A": {
+        "win_rate": 0.5088,
+        "avg_return": 0.024,
+        "sharpe": 7.06,
+        "sortino": 5.0,
+        "signal_count": 57,
+        "score": 0.7258,
+        "total_return": 1.3655,
+        "profit_factor": 3.48,
+        "max_dd": 0.0
+      },
+      "test_B": {
+        "win_rate": 0.6018,
+        "avg_return": 0.0245,
+        "sharpe": 7.97,
+        "sortino": 5.0,
+        "signal_count": 221,
+        "score": 0.8241,
+        "total_return": 5.4174,
+        "profit_factor": 2.45,
+        "max_dd": 0.0
+      },
+      "test_C": {
+        "win_rate": 0.4079,
+        "avg_return": 0.0142,
+        "sharpe": 5.06,
+        "sortino": 5.0,
+        "signal_count": 76,
+        "score": 0.6379,
+        "total_return": 1.0768,
+        "profit_factor": 3.88,
+        "max_dd": 0.0
+      }
+    },
+    "params_B": {
+      "test_A": {
+        "win_rate": 0.2,
+        "avg_return": -0.0135,
+        "sharpe": -3.67,
+        "sortino": -11.3,
+        "signal_count": 45,
+        "score": 0.1,
+        "total_return": -0.607,
+        "profit_factor": 1.85,
+        "max_dd": 0.0
+      },
+      "test_B": {
+        "win_rate": 0.7922,
+        "avg_return": 0.038,
+        "sharpe": 12.13,
+        "sortino": 5.0,
+        "signal_count": 154,
+        "score": 0.9273,
+        "total_return": 5.851,
+        "profit_factor": 1.37,
+        "max_dd": 0.0
+      },
+      "test_C": {
+        "win_rate": 0.4603,
+        "avg_return": 0.0273,
+        "sharpe": 14.57,
+        "sortino": 3.0,
+        "signal_count": 63,
+        "score": 0.6952,
+        "total_return": 1.7207,
+        "profit_factor": 99.0,
+        "max_dd": 0.0
+      }
+    },
+    "params_C": {
+      "test_A": {
+        "win_rate": 0.5126,
+        "avg_return": -0.0052,
+        "sharpe": -1.06,
+        "sortino": -5.58,
+        "signal_count": 199,
+        "score": 0.2794,
+        "total_return": -1.0435,
+        "profit_factor": 0.8,
+        "max_dd": 0.0
+      },
+      "test_B": {
+        "win_rate": 0.742,
+        "avg_return": 0.0207,
+        "sharpe": 5.13,
+        "sortino": 5.0,
+        "signal_count": 593,
+        "score": 0.8477,
+        "total_return": 12.2744,
+        "profit_factor": 0.77,
+        "max_dd": 0.0
+      },
+      "test_C": {
+        "win_rate": 0.6609,
+        "avg_return": 0.0255,
+        "sharpe": 7.98,
+        "sortino": 5.0,
+        "signal_count": 230,
+        "score": 0.8514,
+        "total_return": 5.8669,
+        "profit_factor": 1.92,
+        "max_dd": 0.0
+      }
+    }
+  },
+  "analysis": {
+    "conclusion": "market_adaptive",
+    "adaptive_sharpe_mean": 11.25,
+    "unified_sharpe_mean": 7.68,
+    "adaptive_better": 

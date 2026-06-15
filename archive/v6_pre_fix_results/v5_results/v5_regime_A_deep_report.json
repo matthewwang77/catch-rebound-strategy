@@ -1,0 +1,85 @@
+{
+  "experiment": "Period A Deep Optimization",
+  "period": "20230101_20240630",
+  "period_label": "Period A: 震荡下行 (2023.01 - 2024.06)",
+  "grid_enhancement": {
+    "stage1": "95k combos (vs default 61k)",
+    "stage2": "80k max, 3 hotspots, n_steps 4-8 (vs 50k/2 hotspots/n_steps 3-5)",
+    "stage3": "50k max, top-10, wider margins (vs 30k/top-5/narrow)"
+  },
+  "best_params": {
+    "pullback_ratio_min": 0.06,
+    "pullback_ratio_max": 0.11,
+    "volume_shrink_ratio": 0.41,
+    "take_profit": 0.057,
+    "stop_loss": -0.103,
+    "hold_days": 7,
+    "min_entity_board_ratio": 0.45,
+    "min_consecutive_limit_up": 2,
+    "require_oversold": false,
+    "require_low_close": false,
+    "volume_shrink_ratio_min": 0.1
+  },
+  "stage_metrics": {
+    "stage1": {
+      "score": 0.7463,
+      "min_consecutive_limit_up": 2,
+      "min_entity_board_ratio": 0.6,
+      "pullback_ratio_min": 0.08,
+      "pullback_ratio_max": 0.1,
+      "volume_shrink_ratio": 0.45,
+      "volume_shrink_ratio_min": 0.1,
+      "take_profit": 0.07,
+      "stop_loss": -0.12,
+      "hold_days": 10,
+      "require_oversold": false,
+      "require_low_close": false,
+      "win_rate": 0.5,
+      "avg_return": 0.0301,
+      "total_return": 1.4148,
+      "signal_count": 32,
+      "profit_factor": 3.63,
+      "sharpe": 7.27,
+      "sortino": 5.0,
+      "max_drawdown": -12.2
+    },
+    "stage2": {
+      "score": 0.7785,
+      "pullback_ratio_min": 0.09,
+      "pullback_ratio_max": 0.111,
+      "volume_shrink_ratio": 0.431,
+      "take_profit": 0.057,
+      "stop_loss": -0.088,
+      "hold_days": 8,
+      "min_entity_board_ratio": 0.55,
+      "min_consecutive_limit_up": 2,
+      "require_oversold": false,
+      "require_low_close": false,
+      "volume_shrink_ratio_min": 0.1,
+      "win_rate": 0.5882,
+      "avg_return": 0.033,
+      "total_return": 1.873,
+      "signal_count": 34,
+      "profit_factor": 3.6,
+      "sharpe": 9.53,
+      "sortino": 5.0,
+      "max_drawdown": -12.71
+    },
+    "stage3": {
+      "win_rate": 0.5088,
+      "avg_return": 0.024,
+      "sharpe": 7.06,
+      "sortino": 5.0,
+      "max_drawdown": 0.0,
+      "signal_count": 57,
+      "profit_factor": 3.48
+    }
+  },
+  "comparison_to_default": {
+    "default_periodA_sharpe": -2.08,
+    "default_periodA_win_rate": 0.421,
+    "default_periodA_avg_return": -0.025,
+    "note": "Compare enhanced params performance to these baselines"
+  },
+  "total_time_minutes": 29.0
+}

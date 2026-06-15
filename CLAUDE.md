@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-A股连板回调策略 (A-share consecutive limit-up pullback strategy). Identifies stocks that had multiple consecutive limit-up days, experienced a pullback, and are poised for a rebound. Current production version is **v6**, backed by a three-stage funnel parameter optimization (~80k combinations), multi-period cross-validation, Bootstrap statistical tests, market-regime-adaptive parameter switching, AI memory system, and async analysis queue.
+A股连板回调策略 (A-share consecutive limit-up pullback strategy). Identifies stocks that had multiple consecutive limit-up days, experienced a pullback, and are poised for a rebound. Current production version is **v6**, backed by a three-stage funnel parameter optimization (~200k combinations), multi-period cross-validation, Bootstrap statistical tests, market-regime-adaptive parameter switching, AI memory closed-loop system, and fully automated daily pipeline (screening + AI analysis + git push).
 
 ## Commands
 
@@ -33,6 +33,19 @@ streamlit run streamlit_app.py         # Launch the NEON VAULT trading dashboard
 ```
 
 No test suite exists for this project. Validate changes by running `python 选股new_v5.py --today strict` and `python 选股new_v5.py --optimize`. The `.claude/settings.json` PostToolUse hook automatically runs `py_compile` on `.py` files after every Edit/Write, catching syntax errors immediately.
+
+### Standalone analysis scripts (run once / ad-hoc)
+
+| Script | Purpose |
+|--------|---------|
+| `backfill_signals.py` | One-shot: backfill historical signals from `results_archive/` → `signal_tracker.csv` + `ai_memory.json` |
+| `run_overfitting_diagnostics.py` | Run full overfitting diagnosis (3×4 cross-validation, bootstrap, permutation, walk-forward, sensitivity) |
+| `run_cross_validation.py` | Multi-period cross-validation run |
+| `run_deep_optimization.py` | Deep parameter optimization (three-stage funnel, all periods) |
+| `run_periodA_deep_optimization.py` | Deep optimization on Period A only |
+| `run_periodB_stage23.py` | Stage 2+3 optimization on Period B |
+
+These are standalone scripts that import `选股new_v5` as a module via `importlib`. They produce outputs in `v5_results/`.
 
 ## Environment Variables
 
@@ -87,24 +100,29 @@ Dark-themed "NEON VAULT" Streamlit dashboard with two pages: 选股 (screening) 
 - `screen_all_modes()` — Runs both strict/loose screening on loaded data. Pre-filters stocks without recent limit-ups before detailed screening.
 - `show_screening_results()` — Renders candidate cards with AI analysis expanders.
 
-**AI Analysis (line 1040):**
-- `fast_ai_analysis()` — DeepSeek API integration using the "量价形时" (volume-price-pattern-timing) four-dimension framework. Computes MACD(12,26,9), RSI(14), Bollinger Bands(20,2), OBV trend, and MFI(14) indicators locally before sending to DeepSeek. Includes 情绪档位 (sentiment tier) for position sizing advice. 800 max_tokens, 25s timeout. Accepts optional `memory_context` injected from AI memory system.
+**AI Analysis (auto_daily.py line 380, streamlit_app.py line 2277):**
+- `fast_ai_analysis()` in `auto_daily.py` — DeepSeek API integration using the "量价形时" (volume-price-pattern-timing) four-dimension framework. Computes MACD(12,26,9), RSI(14), Bollinger Bands(20,2), OBV trend, and MFI(14) indicators locally before sending to DeepSeek. Includes 情绪档位 (sentiment tier) for position sizing advice. 3000 max_tokens, 25s timeout, 3 retries. Results are saved to `ai_memory.json`.
+- Streamlit **reads precomputed results from `ai_memory.json`** — no live API calls or worker threads. The `auto_daily.py` pipeline runs AI analysis for all candidates, and the Streamlit UI displays cached results.
 
 **AI Memory System (line 1612):**
-- `ai_memory.json` — Persistent store of historical AI analyses, keyed by stock code.
+- `ai_memory.json` — Persistent store of historical AI analyses, keyed by stock code. Each record includes: date, sentiment, position advice, opinion, entry price, pullback%, limit days, mode, precomputed returns (3d/5d/7d), exit reason, verdict, and structured review fields.
 - `save_ai_analysis_record()` — Archives each analysis with date, sentiment, position advice, opinion. Regex-extracts structured fields (仓位建议, 情绪档位, 最终结论) from free-text AI response. Deduplicates by (code, date).
-- `auto_verify_memory()` — After ≥3 days, backfills actual returns (3d/5d/7d) via `check_return_v5()` and sets verdict to "correct" (positive) or "wrong" (negative). Also performs retroactive fix-up on old records missing sentiment extraction.
-- `get_stock_memory_context()` — Builds a formatted history block for the most recent 5 records, injected into future AI prompts as `[历史分析记录]`.
+- `auto_verify_memory()` — After ≥7 days, backfills actual returns (3d/5d/7d) via `check_return_v5()` and sets verdict. Also performs retroactive fix-up on old records missing sentiment extraction.
+- `get_stock_memory_context()` — Builds a formatted history block for the most recent 5 records, injected into future AI prompts as `[历史分析记录]`. When history contains wrong/missed verdicts, injects reflection prompts to help AI learn from past mistakes.
+- **Verdict matrix (裁决矩阵)**: 6 verdict types — `correct` (AI was right, made money), `wrong` (AI was wrong, lost money), `missed` (good stock AI missed), `avoided` (correctly avoided a loser), `noted_up`/`noted_down` (neutral observation). Verdict badges are color-coded in the UI (green=correct, red=wrong, amber=missed, purple=noted).
+- **7-day structured review**: Each record can include `what_happened` (走势回顾), `why_wrong` (判断复盘), `missed_signal` (遗漏信号), and `lesson` (教训) fields for post-mortem analysis.
 
-**Async Analysis Queue (line 2034):**
-- `_analysis_worker()` — Background daemon thread that consumes a FIFO `analysis_queue` from `st.session_state`. Calls `fast_ai_analysis()` with market context and memory context, stores results in `analysis_results`, auto-saves to AI memory.
-- `start_analysis_queue(codes)` — Enqueues codes and starts a new worker thread only if none is already running (prevents duplicate threads). JS polling reads `analysis_current` and `analysis_progress` from session state for the progress bar UI.
+**Precomputed AI Results (streamlit_app.py line 2277):**
+- Streamlit reads AI analysis directly from `ai_memory.json` (produced by `auto_daily.py`). No live API calls, no worker threads. This decouples AI computation from UI rendering — analysis runs in the daily pipeline, UI displays cached results instantly.
+- Fallback: if `ai_memory.json` lacks a record, checks `st.session_state` for any live analysis result (legacy compatibility).
 
-**Review page (复盘) (line 1497 & 1788):**
+**Review page (复盘) (line 1497 & 1921):**
 - `check_return_v5()` — Simulates exit with take-profit/stop-loss for a given holding period. Returns dict with `return_pct`, `exit_reason`, `exit_date`, `hold_days_actual`.
-- `compute_performance()` — Computes aggregate performance metrics from `signal_tracker.csv` using mode-specific TP/SL params from `SCREEN_MODES`. Supports mode filter and lookback window.
+- `compute_performance()` — Computes aggregate performance from `ai_memory.json` precomputed returns (7d). Supports mode filter and lookback window. No longer calls yfinance live.
 - `save_signals()` — Appends candidate signals to `signal_tracker.csv`.
 - Dynamically imports `选股new_v5` as `screener` module via `_load_module()`.
+- **Verdict matrix cards**: Memory records displayed as styled cards with color-coded verdict badges (绿=correct, 红=wrong, 琥珀=missed, 绿=avoided, 紫=noted). 7-day structured review fields expandable in detail view.
+- **AI memory delete**: Individual records can be deleted from the UI with confirmation.
 
 ### Stock name lookup: `name_lookup.py` (245 lines)
 
@@ -164,6 +182,11 @@ LOOSE 在牛市中 OOS Sharpe 7.29，是真正可复现的收益。LOOSE 是唯�
 - `auto_logs/` — daily automated scan output text files
 - `requirements.txt` — minimal deps (streamlit, yfinance, pandas, numpy, requests)
 - `TASK1_算法改进.md` — pending algorithm improvement task based on HuaAn research. ⚠️ References `选股new.py` (legacy name) — apply to `选股new_v5.py`. Simpson's paradox warning included.
+- `DESIGN.md` — NEON VAULT v3 design system spec: color palette, typography (Orbitron + JetBrains Mono), component styles, layout principles, animation rules, dos/don'ts. Authoritative reference for all UI changes.
+- `docs/superpowers/specs/` — 6 design specs (bugfix, UI polish, review page, market regime, unified auto UI, review fix)
+- `docs/superpowers/plans/` — 2 implementation plans (NEON VAULT UI polish, unified auto UI)
+- `.gitignore` — Excludes `stock_data/`, `candidates_*.csv`, `.agents/`, `.playwright-mcp/`, `.env`
+- `skills-lock.json` — Tracks installed skill sources and content hashes for reproducibility
 
 ### Key design decisions
 
@@ -172,17 +195,20 @@ LOOSE 在牛市中 OOS Sharpe 7.29，是真正可复现的收益。LOOSE 是唯�
 - **Pre-extraction pattern for optimization** — `extract_all_events()` scans all stocks once to find limit-up series, then `evaluate_params_on_events()` replays different parameter sets against these events. This avoids re-downloading data for each parameter combination.
 - **`require_oversold` and `require_low_close` are permanently False** — Both filters were eliminated during grid search (Simpson's paradox: they looked good in isolation but degraded multi-factor performance). The parameters remain in the dict for future experimentation but are never activated in production modes. TASK1_算法改进.md proposes re-adding them — verify with full backtest before activating.
 - **Automated git-push pipeline** — `auto_daily.py` commits and pushes `latest_scan_results.json` + `results_archive/` to GitHub, which triggers Streamlit Cloud to redeploy with fresh results. This decouples data freshness from app load time.
-- **AI memory closed loop** — Every AI analysis is archived, auto-verified against actual returns after 3+ days, and injected as context for future analyses of the same stock. This creates a self-improving feedback loop.
+- **AI memory closed loop** — Every AI analysis is archived, auto-verified against actual returns after 7+ days, and injected as context for future analyses of the same stock. This creates a self-improving feedback loop.
 - **Syntax check hook** — `.claude/settings.json` has a PostToolUse hook that runs `py_compile` on `.py` files after every Edit/Write. No need to manually syntax-check — the hook catches errors immediately.
-- **Async analysis pattern** — AI analysis runs in a background daemon thread with JS polling for progress. `start_analysis_queue()` checks for existing worker before spawning, preventing duplicate threads.
+- **AI analysis runs in auto_daily.py, not Streamlit** — All AI analysis is precomputed by `auto_daily.py` and stored in `ai_memory.json`. Streamlit reads cached results directly. This avoids API costs on every page load, eliminates timeout issues, and decouples computation from rendering.
 
 ### Project-level skills
 
-`.claude/skills/` contains symlinked agent skills (10 total):
+`.claude/skills/` contains project skills (11 total):
 - `developing-with-streamlit` — Streamlit-specific development guidance
 - `schedule-it` — Scheduling/task automation patterns
-- `ckm-banner-design`, `ckm-brand`, `ckm-design`, `ckm-design-system`, `ckm-slides`, `ckm-ui-styling` — Design system / branding skills
-- `make-interfaces-feel-better`, `ui-ux-pro-max` — UI/UX improvement skills
+- `ckm-banner-design`, `ckm-brand`, `ckm-design`, `ckm-design-system`, `ckm-slides`, `ckm-ui-styling` — Design system / branding skills (symlinked)
+- `make-interfaces-feel-better`, `ui-ux-pro-max` — UI/UX improvement skills (symlinked)
+- `web-design` — Web design skill (full cloned repo, not a symlink)
+
+Skill source hashes are tracked in `skills-lock.json`.
 
 `.superpowers/` — Superpowers development methodology artifacts (brainstorm sessions, etc.).
 

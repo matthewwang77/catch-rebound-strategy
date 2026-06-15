@@ -1,0 +1,80 @@
+<h2>复盘页面 · 重新设计</h2>
+<p class="subtitle">当前状态 vs 行业最佳实践</p>
+
+<div class="section">
+  <h3>当前复盘页面状态</h3>
+  <div class="mockup">
+    <div class="mockup-header">现有功能</div>
+    <div class="mockup-body" style="font-family:monospace;font-size:0.75rem;color:#9999BB;line-height:2">
+      <div style="color:#00F0FF">◆ 信号复盘</div>
+      <div style="padding-left:16px">
+        📊 统计卡片：总信号 / 可复盘(≥3天) / 3日胜率 / 3日均收益<br>
+        📋 信号详情表：日期 | 代码 | 名称 | 模式 | 入场价 | 回调 | 3日/5日/7日收益<br>
+        📊 模式胜率对比表：strict vs loose<br>
+        🔄 刷新按钮
+      </div>
+      <div style="color:#00F0FF;margin-top:12px">◆ 手动选股复盘</div>
+      <div style="padding-left:16px">
+        ✏️ 手动输入股票代码<br>
+        🤖 AI 分析 + 系统匹配检查<br>
+        📋 历史手动选股记录
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>行业复盘面板常见模块</h3>
+  <p class="subtitle">来自专业交易复盘工具/量化平台的研究总结</p>
+
+  <div class="options" data-multiselect>
+    <div class="option" data-choice="equity_curve">
+      <div class="content">
+        <h3>📈 收益曲线 & 资金曲线</h3>
+        <p>累计 P&L 折线图、回撤阴影区、hover 看每日明细。复盘最核心的可视化。</p>
+      </div>
+    </div>
+    <div class="option" data-choice="dashboard">
+      <div class="content">
+        <h3>📊 Hero 仪表盘</h3>
+        <p>顶部大数字卡片：总收益、胜率、盈亏比、Profit Factor、最大回撤、Sharpe — 一眼看全局</p>
+      </div>
+    </div>
+    <div class="option" data-choice="calendar_heatmap">
+      <div class="content">
+        <h3>🗓️ P&L 日历热力图</h3>
+        <p>按日期颜色深浅展示每日盈亏，快速发现赚钱/亏钱日聚集模式</p>
+      </div>
+    </div>
+    <div class="option" data-choice="streaks">
+      <div class="content">
+        <h3>🔥 连胜/连败追踪</h3>
+        <p>当前连胜、最大连胜、最大连败 — 心理层面很重要</p>
+      </div>
+    </div>
+    <div class="option" data-choice="breakdown">
+      <div class="content">
+        <h3>📐 多维度拆解</h3>
+        <p>按模式(strict/loose)、按星期、按连板数、按回调幅度分段统计表现</p>
+      </div>
+    </div>
+    <div class="option" data-choice="distribution">
+      <div class="content">
+        <h3>📊 收益分布图</h3>
+        <p>直方图展示收益分布形态 — 是正态还是肥尾？正偏还是负偏？</p>
+      </div>
+    </div>
+    <div class="option" data-choice="timeline">
+      <div class="content">
+        <h3>⏱️ 信号时间线</h3>
+        <p>按时间排列的信号卡片流，每张卡片显示入场/离场/收益，可筛选、可展开看AI分析</p>
+      </div>
+    </div>
+    <div class="option" data-choice="ranking">
+      <div class="content">
+        <h3>🏆 最佳/最差排行</h3>
+        <p>Top 10 最佳交易 + Bottom 10 最差交易，快速识别极端案例</p>
+      </div>
+    </div>
+  </div>
+</div>

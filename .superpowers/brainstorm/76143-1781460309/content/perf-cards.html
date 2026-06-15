@@ -1,0 +1,108 @@
+<h2>绩效总览卡片 — 你喜欢哪种风格？</h2>
+<p class="subtitle">单选你最喜欢的布局。配色保持 NEON VAULT 暗黑霓虹风格</p>
+
+<div class="cards" data-multiselect>
+
+<div class="card" data-choice="a" onclick="toggleSelect(this)">
+  <div class="card-image">
+    <div class="mockup">
+      <div class="mockup-header">A · 战术面板风格 — 横向4列数字 + 细节条</div>
+      <div class="mockup-body" style="background:#050508;padding:20px;font-family:monospace">
+        <div style="display:flex;gap:16px;margin-bottom:12px">
+          <div style="flex:1;background:rgba(0,255,136,0.03);border:1px solid rgba(0,255,136,0.12);border-radius:8px;padding:14px;text-align:center">
+            <div style="font-size:0.7rem;color:#666;text-transform:uppercase;letter-spacing:1px">累计收益</div>
+            <div style="font-size:1.6rem;font-weight:700;color:#00ff88;margin:6px 0">+58.3%</div>
+          </div>
+          <div style="flex:1;background:rgba(0,240,255,0.03);border:1px solid rgba(0,240,255,0.1);border-radius:8px;padding:14px;text-align:center">
+            <div style="font-size:0.7rem;color:#666;text-transform:uppercase;letter-spacing:1px">胜率</div>
+            <div style="font-size:1.6rem;font-weight:700;color:#00f0ff;margin:6px 0">66.7%</div>
+          </div>
+          <div style="flex:1;background:rgba(255,215,0,0.03);border:1px solid rgba(255,215,0,0.1);border-radius:8px;padding:14px;text-align:center">
+            <div style="font-size:0.7rem;color:#666;text-transform:uppercase;letter-spacing:1px">盈亏比</div>
+            <div style="font-size:1.6rem;font-weight:700;color:#ffd700;margin:6px 0">3.2</div>
+          </div>
+          <div style="flex:1;background:rgba(255,51,102,0.03);border:1px solid rgba(255,51,102,0.1);border-radius:8px;padding:14px;text-align:center">
+            <div style="font-size:0.7rem;color:#666;text-transform:uppercase;letter-spacing:1px">最大回撤</div>
+            <div style="font-size:1.6rem;font-weight:700;color:#ff3366;margin:6px 0">-8.5%</div>
+          </div>
+        </div>
+        <div style="color:#888;font-size:0.75rem;text-align:center;border-top:1px solid rgba(255,255,255,0.04);padding-top:8px">
+          12胜 / 6负 · 均盈+7.2% · 均亏-4.1% · 共18笔
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body"><h3>战术面板式 (A)</h3><p>4列数字卡 + 底部统计条。数字大、信息密度高，像军事仪表盘</p></div>
+</div>
+
+<div class="card" data-choice="b" onclick="toggleSelect(this)">
+  <div class="card-image">
+    <div class="mockup">
+      <div class="mockup-header">B · 不对称布局 — 主力指标突出 + 次要指标收缩</div>
+      <div class="mockup-body" style="background:#050508;padding:20px;font-family:monospace">
+        <div style="display:flex;gap:16px;align-items:stretch">
+          <div style="flex:2;background:linear-gradient(135deg, rgba(0,255,136,0.06), rgba(0,255,136,0.01));border:1px solid rgba(0,255,136,0.18);border-radius:10px;padding:20px;text-align:center">
+            <div style="font-size:0.65rem;color:#555;text-transform:uppercase;letter-spacing:2px;margin-bottom:8px">◆ 累计收益 (30日)</div>
+            <div style="font-size:3rem;font-weight:900;color:#00ff88;text-shadow:0 0 20px rgba(0,255,136,0.2)">+58.3%</div>
+            <div style="margin-top:8px">
+              <span style="font-size:0.75rem;color:#00ff88;background:rgba(0,255,136,0.08);padding:3px 10px;border-radius:12px">+12笔盈利</span>
+            </div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:10px">
+            <div style="flex:1;background:rgba(0,240,255,0.03);border:1px solid rgba(0,240,255,0.08);border-radius:8px;padding:12px;text-align:center">
+              <div style="font-size:0.65rem;color:#555;text-transform:uppercase">胜率</div>
+              <div style="font-size:1.3rem;font-weight:700;color:#00f0ff">66.7%</div>
+            </div>
+            <div style="flex:1;background:rgba(255,215,0,0.03);border:1px solid rgba(255,215,0,0.08);border-radius:8px;padding:12px;text-align:center">
+              <div style="font-size:0.65rem;color:#555;text-transform:uppercase">盈亏比</div>
+              <div style="font-size:1.3rem;font-weight:700;color:#ffd700">3.2</div>
+            </div>
+            <div style="flex:1;background:rgba(255,51,102,0.03);border:1px solid rgba(255,51,102,0.08);border-radius:8px;padding:12px;text-align:center">
+              <div style="font-size:0.65rem;color:#555;text-transform:uppercase">回撤</div>
+              <div style="font-size:1.3rem;font-weight:700;color:#ff3366">-8.5%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body"><h3>不对称布局 (B)</h3><p>累计收益最大最抢眼，其他指标缩小到右侧栏。适合"一眼看到收益"</p></div>
+</div>
+
+<div class="card" data-choice="c" onclick="toggleSelect(this)">
+  <div class="card-image">
+    <div class="mockup">
+      <div class="mockup-header">C · 极简霓虹条 — 横向信息带 + 只显示最核心数字</div>
+      <div class="mockup-body" style="background:#050508;padding:20px;font-family:monospace">
+        <div style="border:1px solid rgba(0,255,136,0.1);border-radius:8px;padding:16px 20px;background:rgba(0,255,136,0.02)">
+          <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap">
+            <div>
+              <span style="color:#555;font-size:0.7rem;text-transform:uppercase">P&L </span>
+              <span style="color:#00ff88;font-size:1.4rem;font-weight:700">+58.3%</span>
+            </div>
+            <div style="width:1px;height:24px;background:rgba(255,255,255,0.06)"></div>
+            <div>
+              <span style="color:#555;font-size:0.7rem">WR </span>
+              <span style="color:#00f0ff;font-size:1.1rem;font-weight:600">66.7%</span>
+            </div>
+            <div style="width:1px;height:24px;background:rgba(255,255,255,0.06)"></div>
+            <div>
+              <span style="color:#555;font-size:0.7rem">PF </span>
+              <span style="color:#ffd700;font-size:1.1rem;font-weight:600">3.2</span>
+            </div>
+            <div style="width:1px;height:24px;background:rgba(255,255,255,0.06)"></div>
+            <div>
+              <span style="color:#555;font-size:0.7rem">DD </span>
+              <span style="color:#ff3366;font-size:1.1rem;font-weight:600">-8.5%</span>
+            </div>
+            <div style="flex:1"></div>
+            <div style="font-size:0.7rem;color:#555">12W / 6L · 18笔 · avg +7.2%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body"><h3>极简霓虹条 (C)</h3><p>全部在一行。紧凑不占空间，适合"扫一眼就知道状况"</p></div>
+</div>
+
+</div>

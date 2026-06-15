@@ -16,7 +16,6 @@ import time
 import os
 import sys
 import importlib.util
-import threading
 import re
 
 # ==================== 页面配置 ====================
@@ -785,21 +784,13 @@ def inject_design_system():
       padding: 4px 12px;
       border-radius: 6px;
     }
-    .ai-badge.opinion {
-      color: #ffd700;
-      background: rgba(255,215,0,0.08);
-      border: 1px solid rgba(255,215,0,0.2);
-    }
-    .ai-badge.sentiment {
-      color: #00f0ff;
-      background: rgba(0,240,255,0.08);
-      border: 1px solid rgba(0,240,255,0.2);
-    }
-    .ai-badge.position {
-      color: #ff6b35;
-      background: rgba(255,107,53,0.08);
-      border: 1px solid rgba(255,107,53,0.2);
-    }
+    /* AI 判断：按结论着色 — 绿=参与, 琥珀=观望, 红=放弃 */
+    .ai-badge.opinion { color: #ffd700; background: rgba(255,215,0,0.08); border: 1px solid rgba(255,215,0,0.2); }
+    .ai-badge.opinion.opinion-participate { color: #00ff88; background: rgba(0,255,136,0.08); border: 1px solid rgba(0,255,136,0.25); }
+    .ai-badge.opinion.opinion-wait { color: #ffb800; background: rgba(255,184,0,0.08); border: 1px solid rgba(255,184,0,0.25); }
+    .ai-badge.opinion.opinion-skip { color: #ff3366; background: rgba(255,51,102,0.08); border: 1px solid rgba(255,51,102,0.25); }
+    .ai-badge.sentiment { color: #00f0ff; background: rgba(0,240,255,0.08); border: 1px solid rgba(0,240,255,0.2); }
+    .ai-badge.position { color: #ff6b35; background: rgba(255,107,53,0.08); border: 1px solid rgba(255,107,53,0.2); }
 
     .analysis-progress-bar {
       background: rgba(0,255,136,0.02);
@@ -1304,7 +1295,7 @@ def _load_csv_cache(codes_tuple, lookback_days, today_str):
                 'High': df['high'].values,
                 'Low': df['low'].values,
                 'Volume': df['volume'].values,
-            }).dropna()
+            }, index=pd.to_datetime(df['date'].values)).dropna()
             if len(stock_df) >= 10:
                 all_data[code] = stock_df
         except Exception:
@@ -1313,6 +1304,7 @@ def _load_csv_cache(codes_tuple, lookback_days, today_str):
 
 
 def load_all_recent_data(codes, lookback_days=30):
+    # DEPRECATED: not called in main(), retained for reference
     """三步加载 + 0-100% 进度条"""
 
     DATA_DIR = screener.DATA_DIR
@@ -1458,6 +1450,7 @@ def load_all_recent_data(codes, lookback_days=30):
 # ==================== 云端数据加载（Streamlit Cloud 无本地CSV时使用）====================
 @st.cache_data(ttl=86400, show_spinner=False)
 def cloud_load_data(version="v5"):
+    # DEPRECATED: not called in main(), retained for reference
     """云端模式：快照优先 + 5检查点刷新。缓存24h"""
     _ = version
     all_data = {}
@@ -1568,7 +1561,7 @@ def cloud_load_data(version="v5"):
             if len(close) >= 2:
                 pct = (close[-1] / close[-2] - 1) * 100
                 if pct >= 9.5: limit_up_count += 1
-        except: pass
+        except Exception: pass
 
     progress_bar.progress(100, text=f"▸ 100% 完成: {len(all_data)}只, 今日涨停{limit_up_count}只")
     progress_bar.empty()
@@ -1579,6 +1572,7 @@ def cloud_load_data(version="v5"):
 
 # ==================== 多模式筛选 ====================
 def screen_all_modes(all_data):
+    # DEPRECATED: not called in main(), retained for reference
     """用 strict/loose/bear 三种参数分别筛选，返回 {mode: [候选列表]}"""
     modes = ["strict", "loose", "bear"]
     results = {}
@@ -1593,7 +1587,7 @@ def screen_all_modes(all_data):
                 continue
             # 快速检查最近20天是否有涨停
             has_limit = False
-            threshold = 18.5 if code.startswith(('30', '688')) else 9.5
+            threshold = 18.5 if code.startswith(('30', '688', '689')) else 9.5
             for i in range(max(1, len(close) - 20), len(close)):
                 if close[i] > 0 and close[i-1] > 0:
                     chg = (close[i] / close[i-1] - 1) * 100
@@ -1644,7 +1638,7 @@ def screen_all_modes(all_data):
 
 
 # ==================== 信号追踪 ====================
-SIGNAL_FILE = "signal_tracker.csv"
+SIGNAL_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "signal_tracker.csv")
 
 def save_signals(all_candidates):
     """将今日候选保存到信号追踪文件（去重）"""
@@ -1680,9 +1674,9 @@ def save_signals(all_candidates):
         for _, row in df_new.iterrows():
             sig_date = str(row['signal_date'])
             code = row['code']
-            entry_price = round(float(row['entry_price']), 2)
 
             try:
+                entry_price = round(float(row['entry_price']), 2)
                 sig_dt = datetime.strptime(sig_date, '%Y%m%d')
                 cutoff_dt = sig_dt - timedelta(days=20)
                 cutoff_str = cutoff_dt.strftime('%Y%m%d')
@@ -1718,13 +1712,17 @@ def load_ai_memory():
     try:
         with open(AI_MEMORY_FILE, "r", encoding="utf-8") as f:
             return json.load(f)
+    except json.JSONDecodeError:
+        return {}
     except Exception:
         return {}
 
 def save_ai_memory(memory):
-    """保存 AI 记忆到文件"""
-    with open(AI_MEMORY_FILE, "w", encoding="utf-8") as f:
+    """保存 AI 记忆到文件（原子写入，防止并发损坏）"""
+    tmp_path = AI_MEMORY_FILE + ".tmp"
+    with open(tmp_path, "w", encoding="utf-8") as f:
         json.dump(memory, f, ensure_ascii=False, indent=2)
+    os.replace(tmp_path, AI_MEMORY_FILE)  # POSIX 原子操作
 
 def save_ai_analysis_record(code, date_str, mode, entry_price, pullback_pct, limit_days, analysis_text):
     """保存单条 AI 分析记录。按 (code, date) 去重。"""
@@ -1883,7 +1881,8 @@ def _build_svg_chart(cum_returns, returns_list, line_color="#00ff88"):
     for i, r in enumerate(returns_list):
         rp = r.get('return_pct', r) if isinstance(r, dict) else r
         bx = pad_l + gap * i + (gap - bar_w) / 2
-        bh = abs(rp) / max(abs(v) for v in cum_returns) * h_bar * 0.8 if cum_returns else 5
+        max_abs = max(abs(v) for v in cum_returns) if cum_returns else 1
+        bh = abs(rp) / max_abs * h_bar * 0.8 if max_abs > 0 else 5
         bh = max(3, min(bh, h_bar - 4))
         color = "rgba(0,255,136,0.55)" if rp > 0 else "rgba(255,51,102,0.4)"
         by = (h_bar - bh) / 2 if rp > 0 else h_bar / 2
@@ -1937,6 +1936,7 @@ def compute_performance(mode_filter=None, days_window=30):
         returns = []
         wins = 0
         losses = 0
+        neutral = 0
         for code, records in memory.items():
             for r in records:
                 date = str(r.get('date', ''))
@@ -1964,11 +1964,13 @@ def compute_performance(mode_filter=None, days_window=30):
                     wins += 1
                 elif r7 < 0:
                     losses += 1
+                else:
+                    neutral += 1
 
         if not returns:
             return None
 
-        total_trades = wins + losses
+        total_trades = wins + losses + neutral
         win_rate = wins / total_trades if total_trades > 0 else 0
         avg_win = sum(r['return_pct'] for r in returns if r['return_pct'] > 0) / wins if wins > 0 else 0
         avg_loss = abs(sum(r['return_pct'] for r in returns if r['return_pct'] < 0) / losses) if losses > 0 else 0
@@ -2008,6 +2010,7 @@ def compute_performance(mode_filter=None, days_window=30):
             'total_trades': total_trades,
             'wins': wins,
             'losses': losses,
+            'neutral': neutral,
             'win_rate': win_rate,
             'avg_win': avg_win,
             'avg_loss': avg_loss,
@@ -2054,11 +2057,59 @@ def load_latest_results():
         return None
 
 
-# ==================== 异步分析队列 ====================
-# 解决方案：queue.Queue 和 results dict 存在 st.session_state 中（初始化一次，rerun 不丢失），
-# worker 线程拿到的是这些对象的直接引用（不经过 st.session_state），从而绕过线程隔离。
-import queue as _queue
 
+
+
+# ==================== AI 标签格式化 ====================
+def _format_ai_badges(opinion, sentiment, position):
+    """将 AI 分析的三要素格式化为自解释的彩色标签。
+
+    Args:
+        opinion: AI 最终结论，如 "【参与】" / "【观望】" / "【放弃】"
+        sentiment: 市场情绪/大盘环境，如 "发酵期4档" / "谨慎" / "冰点"
+        position: 仓位建议，如 "3成仓" / "0成仓" / "半仓"
+    Returns:
+        HTML string: 三枚标签组成的 inline strip
+    """
+    # ── 1. 判断标签（带颜色） ──
+    op = opinion.strip().strip('【】◆ ').strip()
+    if any(kw in op for kw in ['参与', '买入', '做多']):
+        op_cls, op_icon, op_label = 'opinion-participate', '✅', f'判断: {op}'
+    elif any(kw in op for kw in ['放弃', '卖出', '规避', '不做']):
+        op_cls, op_icon, op_label = 'opinion-skip', '❌', f'判断: {op}'
+    else:
+        # 观望 或 空值
+        op_cls, op_icon = 'opinion-wait', '⏸️'
+        op_label = f'判断: {op}' if op else '判断: 待定'
+
+    # ── 2. 大盘标签 ──
+    st = sentiment.strip().strip('*').strip()
+    if st and st not in ('—', 'N/A', ''):
+        # 如果已经是市场档位描述（含"档"或"期"），加"大盘"前缀
+        if any(kw in st for kw in ['档', '期', '冰点', '高潮', '发酵']):
+            st_label = f'大盘: {st}'
+        else:
+            st_label = st  # 保留原样（如 "谨慎"）
+    else:
+        st_label = '大盘: —'
+
+    # ── 3. 仓位标签 ──
+    ps = position.strip().strip('*').strip()
+    if ps and ps not in ('—', 'N/A', ''):
+        ps_label = f'仓位: {ps}' if '仓' not in ps else f'仓位: {ps.replace("仓", "")}成'
+        # 避免 "仓位: 3成成"
+        if ps_label.endswith('成成'):
+            ps_label = ps_label[:-1]
+    else:
+        ps_label = '仓位: —'
+
+    return (
+        f'<div class="ai-inline-strip">'
+        f'<span class="ai-badge opinion {op_cls}">{op_icon} {op_label}</span>'
+        f'<span class="ai-badge sentiment">📊 {st_label}</span>'
+        f'<span class="ai-badge position">💰 {ps_label}</span>'
+        f'</div>'
+    )
 
 
 # ==================== 主界面 ====================
@@ -2185,7 +2236,7 @@ def main():
                         </div>""", unsafe_allow_html=True)
                 except Exception:
                     pass
-        except:
+        except Exception:
             st.warning("⚠️ 无法检测")
 
 
@@ -2276,11 +2327,10 @@ def main():
             else:
                 # ── 从 ai_memory.json 加载预计算的分析结果（auto_daily.py 产出）──
                 ai_memory = load_ai_memory()
-                _transferred = set()  # 避免重复展示
 
                 # 名称查找
                 codes = [c["code"] for c in candidates]
-                name_info = name_lookup.batch_lookup(codes, max_fetch=5)
+                name_info = name_lookup.batch_lookup(codes, max_fetch=min(len(codes), 10))
 
                 # ── 构建候选卡片 HTML ──
                 candidate_cards = []
@@ -2301,13 +2351,7 @@ def main():
                                 continue
                             opinion = rec.get("opinion", "")
                             position = rec.get("position", "")
-                            ai_strip = (
-                                f'<div class="ai-inline-strip">'
-                                f'<span class="ai-badge opinion">◆ {opinion}</span>'
-                                f'<span class="ai-badge sentiment">🎯 {sentiment}</span>'
-                                f'<span class="ai-badge position">💰 {position}</span>'
-                                f'</div>'
-                            )
+                            ai_strip = _format_ai_badges(opinion, sentiment, position)
                             break
                         if ai_strip is None:
                             ai_strip = '<span class="status-badge pending">📋 待AI分析</span>'
@@ -2323,13 +2367,7 @@ def main():
                             sentiment = sent_match.group(1).strip() if sent_match else "—"
                             position = pos_match.group(1).strip() if pos_match else "—"
                             opinion = op_match.group(1).strip() if op_match else "—"
-                            ai_strip = (
-                                f'<div class="ai-inline-strip">'
-                                f'<span class="ai-badge opinion">◆ {opinion}</span>'
-                                f'<span class="ai-badge sentiment">🎯 {sentiment}</span>'
-                                f'<span class="ai-badge position">💰 {position}</span>'
-                                f'</div>'
-                            )
+                            ai_strip = _format_ai_badges(opinion, sentiment, position)
                         else:
                             ai_strip = '<span class="status-badge pending">📋 待AI分析</span>'
 
@@ -2443,7 +2481,7 @@ def main():
               </div>
             </div>
             <div class="perf-detail-row">
-              {perf['wins']}胜/{perf['losses']}负 · 均盈+{perf['avg_win']:.1f}% · 均亏-{perf['avg_loss']:.1f}% · 共{perf['total_trades']}笔
+              {perf['wins']}胜/{perf['losses']}负{(' · ' + str(perf['neutral']) + '平') if perf.get('neutral', 0) > 0 else ''} · 均盈+{perf['avg_win']:.1f}% · 均亏-{perf['avg_loss']:.1f}% · 共{perf['total_trades']}笔
             </div>
             """, unsafe_allow_html=True)
 

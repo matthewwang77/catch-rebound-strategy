@@ -1,0 +1,70 @@
+<h2>选股页面：Before → After 对比</h2>
+<p class="subtitle">左侧当前三Tab布局 · 右侧统一单页设计</p>
+
+<div class="split">
+  <div class="mockup">
+    <div class="mockup-header">🔴 当前 (Before)</div>
+    <div class="mockup-body" style="background:#0a0e14; color:#ccc; font-family:monospace; font-size:11px; padding:10px; border-radius:4px;">
+      <div style="background:#111822; padding:8px 12px; border-radius:3px; margin-bottom:8px; border-left:3px solid #00ff88;">
+        <span style="color:#00ff88;">📊</span> 市场状态: 4档发酵期 | 推荐: LOOSE<br>
+        <span style="color:#666; font-size:10px;">上证 +1.2% | 深证 +2.1% | 创业板 +2.3%</span>
+      </div>
+      <div style="display:flex; gap:6px; margin-bottom:8px;">
+        <div style="background:#1a1f2e; padding:6px 12px; border-radius:3px 3px 0 0; border:1px solid #FF3366; border-bottom:none; color:#FF3366;">◆ STRICT (5只)</div>
+        <div style="background:#0a0e14; padding:6px 12px; border-radius:3px 3px 0 0; border:1px solid #00ff88; color:#00ff88;">◇ LOOSE (23只)</div>
+        <div style="background:#0a0e14; padding:6px 12px; border-radius:3px 3px 0 0; border:1px solid #FFA500; color:#FFA500;">🐻 BEAR (2只)</div>
+      </div>
+      <div style="background:#111822; padding:8px; border-radius:3px; border:1px solid #FF3366;">
+        <div style="color:#FF3366; margin-bottom:4px;">STRICT 模式 · 5只候选</div>
+        <div style="border-bottom:1px solid #1a1f2e; padding:4px 0;"><span style="color:#00ff88;">000001.SZ</span> 平安银行 | ¥12.50 | 回调-8.2% | 3连板 | <button style="background:#FF3366; color:#fff; border:none; padding:2px 8px; border-radius:3px; font-size:10px;">AI分析</button></div>
+        <div style="border-bottom:1px solid #1a1f2e; padding:4px 0;"><span style="color:#00ff88;">000002.SZ</span> 万科A | ¥8.92 | 回调-15.1% | 4连板 | <button style="background:#FF3366; color:#fff; border:none; padding:2px 8px; border-radius:3px; font-size:10px;">AI分析</button></div>
+        <div style="padding:4px 0; color:#666;">... 还有3只</div>
+      </div>
+      <div style="color:#666; text-align:center; margin-top:10px; font-size:10px;">用户需要手动切换Tab，手动点击AI分析按钮</div>
+    </div>
+  </div>
+
+  <div class="mockup">
+    <div class="mockup-header">🟢 新设计 (After)</div>
+    <div class="mockup-body" style="background:#0a0e14; color:#ccc; font-family:monospace; font-size:11px; padding:10px; border-radius:4px;">
+      <div style="background:#111822; padding:10px 12px; border-radius:3px; margin-bottom:10px; border-left:3px solid #00ff88;">
+        <span style="color:#00ff88; font-size:14px;">📊</span>
+        <span style="color:#fff;">上证 +1.2%</span> ·
+        <span style="color:#fff;">深证 +2.1%</span> ·
+        <span style="color:#fff;">创业板 +2.3%</span>
+        <span style="color:#666; margin-left:8px; font-size:10px;">4档 · 发酵期</span>
+      </div>
+      <div style="color:#00ff88; font-size:13px; margin-bottom:6px;">📋 选股结果 · 23只候选</div>
+      <div style="background:#111822; padding:8px; border-radius:3px;">
+        <div style="border-bottom:1px solid #1a1f2e; padding:6px 0; display:flex; justify-content:space-between; align-items:center;">
+          <div>
+            <span style="color:#00ff88;">000001.SZ</span> <span style="color:#aaa;">平安银行</span>
+            <span style="color:#666; margin-left:6px; font-size:10px;">¥12.50 · 回调-8.2% · 3连板</span>
+          </div>
+          <span style="color:#00ff88; font-size:10px;">🤖 分析中...</span>
+        </div>
+        <div style="border-bottom:1px solid #1a1f2e; padding:6px 0; display:flex; justify-content:space-between; align-items:center;">
+          <div>
+            <span style="color:#00ff88;">000002.SZ</span> <span style="color:#aaa;">万科A</span>
+            <span style="color:#666; margin-left:6px; font-size:10px;">¥8.92 · 回调-15.1% · 4连板</span>
+          </div>
+          <span style="color:#00ff88; font-size:10px;">🤖 分析中...</span>
+        </div>
+        <div style="border-bottom:1px solid #1a1f2e; padding:6px 0; display:flex; justify-content:space-between; align-items:center;">
+          <div>
+            <span style="color:#00ff88;">000003.SZ</span> <span style="color:#aaa;">金地集团</span>
+            <span style="color:#666; margin-left:6px; font-size:10px;">¥5.67 · 回调-18.3% · 2连板</span>
+          </div>
+          <span style="color:#aaa; font-size:10px;">✅ 已完成</span>
+        </div>
+        <div style="border-bottom:1px solid #1a1f2e; padding:6px 0;">
+          <span style="color:#00ff88;">000004.SZ</span> <span style="color:#aaa;">中国宝安</span>
+          <span style="color:#666; margin-left:6px; font-size:10px;">¥22.10 · 回调-12.5% · 3连板</span>
+          <span style="color:#FFD700; float:right; font-size:10px;">仓位3成 · 乐观</span>
+        </div>
+        <div style="padding:4px 0; color:#666;">... 还有19只</div>
+      </div>
+      <div style="color:#666; text-align:center; margin-top:10px; font-size:10px;">自动AI分析全部候选 · 完成即显示摘要</div>
+    </div>
+  </div>
+</div>

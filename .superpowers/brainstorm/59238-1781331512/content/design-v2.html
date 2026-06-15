@@ -1,0 +1,163 @@
+<h2>复盘页面 v2 · 精炼版</h2>
+<p class="subtitle">删除手动选股 · 极简霓虹风格</p>
+
+<div class="mockup">
+  <div class="mockup-header">◆ 复盘 · 完整页面</div>
+  <div class="mockup-body">
+    <div style="max-width:780px;background:#050508;border-radius:10px;border:1px solid rgba(0,240,255,0.05);overflow:hidden">
+
+      <!-- HERO: just 4 numbers, no boxes -->
+      <div style="padding:24px 28px 18px 28px;border-bottom:1px solid rgba(0,240,255,0.04)">
+        <div style="display:flex;align-items:baseline;gap:32px">
+          <div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:0.5rem;color:#555577;letter-spacing:0.08em;margin-bottom:4px">累计收益</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:1.3rem;color:#00FF88;font-weight:bold">+12.4%</div>
+          </div>
+          <div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:0.5rem;color:#555577;letter-spacing:0.08em;margin-bottom:4px">胜率</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:1.3rem;color:#D0D0E8;font-weight:bold">65.2%</div>
+          </div>
+          <div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:0.5rem;color:#555577;letter-spacing:0.08em;margin-bottom:4px">盈亏比</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:1.3rem;color:#D0D0E8;font-weight:bold">1.85</div>
+          </div>
+          <div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:0.5rem;color:#555577;letter-spacing:0.08em;margin-bottom:4px">最大回撤</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:1.3rem;color:#FF6B6B;font-weight:bold">-8.2%</div>
+          </div>
+        </div>
+        <!-- tiny metadata line -->
+        <div style="margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:0.48rem;color:#444466">
+          45胜 / 24负 &nbsp;·&nbsp; 均盈+3.2% / 均亏-1.7% &nbsp;·&nbsp; Sharpe 1.71
+        </div>
+      </div>
+
+      <!-- EQUITY CURVE: minimal -->
+      <div style="padding:0 28px 18px 28px;border-bottom:1px solid rgba(0,240,255,0.04)">
+        <svg viewBox="0 0 720 140" style="width:100%;height:140px">
+          <defs>
+            <linearGradient id="eq2" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="rgba(0,240,255,0.06)"/>
+              <stop offset="100%" stop-color="rgba(0,240,255,0)"/>
+            </linearGradient>
+          </defs>
+          <!-- grid lines -->
+          <line x1="0" y1="35" x2="720" y2="35" stroke="rgba(255,255,255,0.02)" stroke-dasharray="2 6"/>
+          <line x1="0" y1="70" x2="720" y2="70" stroke="rgba(255,255,255,0.02)" stroke-dasharray="2 6"/>
+          <line x1="0" y1="105" x2="720" y2="105" stroke="rgba(255,255,255,0.02)" stroke-dasharray="2 6"/>
+          <!-- line -->
+          <polyline points="0,90 50,88 100,82 150,86 200,90 250,78 300,70 350,74 400,62 450,66 500,52 550,56 600,42 650,46 700,30 720,24"
+            fill="none" stroke="#00F0FF" stroke-width="1" opacity="0.6"/>
+          <!-- glow area -->
+          <polygon points="0,90 50,88 100,82 150,86 200,90 250,78 300,70 350,74 400,62 450,66 500,52 550,56 600,42 650,46 700,30 720,24 720,140 0,140"
+            fill="url(#eq2)"/>
+          <!-- drawdown zone -->
+          <rect x="140" y="78" width="70" height="12" fill="rgba(255,80,80,0.08)" rx="1"/>
+          <text x="175" y="87" fill="#FF5050" font-size="7" text-anchor="middle" font-family="monospace" opacity="0.7">-3.1%</text>
+        </svg>
+      </div>
+
+      <!-- AI MEMORY: lean cards -->
+      <div style="padding:20px 28px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.5rem;color:#555577;letter-spacing:0.08em">AI 记忆</div>
+          <div style="display:flex;gap:6px;font-family:'JetBrains Mono',monospace;font-size:0.48rem;color:#444466">
+            <span style="padding:2px 8px;border:1px solid rgba(0,240,255,0.08);border-radius:3px">全部</span>
+            <span style="padding:2px 8px;border:1px solid rgba(0,240,255,0.08);border-radius:3px;color:#00F0FF;border-color:rgba(0,240,255,0.15)">✅ 正确</span>
+            <span style="padding:2px 8px;border:1px solid rgba(0,240,255,0.08);border-radius:3px">◈ 偏差</span>
+            <span style="padding:2px 8px;border:1px solid rgba(0,240,255,0.08);border-radius:3px">⏳ 待验</span>
+          </div>
+        </div>
+
+        <!-- card 1: verified correct -->
+        <div style="border-left:2px solid rgba(0,255,136,0.3);padding:10px 14px;margin-bottom:8px;background:rgba(10,11,20,0.5)">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <div style="display:flex;align-items:center;gap:10px">
+              <span style="font-family:'JetBrains Mono',monospace;color:#D0D0E8;font-size:0.72rem">002081.SZ</span>
+              <span style="font-family:'JetBrains Mono',monospace;color:#6666AA;font-size:0.58rem">金螳螂</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:0.48rem;color:#00FF88;background:rgba(0,255,136,0.06);padding:1px 6px;border-radius:3px">✅</span>
+            </div>
+            <span style="font-family:'JetBrains Mono',monospace;color:#444466;font-size:0.5rem">06-10</span>
+          </div>
+          <div style="display:flex;gap:16px;margin-top:4px;font-family:'JetBrains Mono',monospace;font-size:0.5rem;color:#555577">
+            <span>strict</span>
+            <span>¥12.34</span>
+            <span>回调 8.5%</span>
+            <span>3D <span style="color:#00FF88">+5.2%</span></span>
+          </div>
+          <div style="margin-top:6px;font-family:'JetBrains Mono',monospace;font-size:0.5rem;color:#666688;line-height:1.6">
+            <span style="color:#00F0FF">◆</span> 回调幅度适中，量能确认缩量，MACD空头收敛中。建议轻仓试探...
+            <span style="color:#444466;margin-left:6px">情绪: 🟢启动期 · 仓位: 3成</span>
+          </div>
+        </div>
+
+        <!-- card 2: verified wrong -->
+        <div style="border-left:2px solid rgba(255,80,80,0.25);padding:10px 14px;margin-bottom:8px;background:rgba(10,11,20,0.5)">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <div style="display:flex;align-items:center;gap:10px">
+              <span style="font-family:'JetBrains Mono',monospace;color:#D0D0E8;font-size:0.72rem">300123.SZ</span>
+              <span style="font-family:'JetBrains Mono',monospace;color:#6666AA;font-size:0.58rem">亚光科技</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:0.48rem;color:#FF6B6B;background:rgba(255,80,80,0.05);padding:1px 6px;border-radius:3px">◈</span>
+            </div>
+            <span style="font-family:'JetBrains Mono',monospace;color:#444466;font-size:0.5rem">06-08</span>
+          </div>
+          <div style="display:flex;gap:16px;margin-top:4px;font-family:'JetBrains Mono',monospace;font-size:0.5rem;color:#555577">
+            <span>loose</span>
+            <span>¥8.76</span>
+            <span>回调 12.1%</span>
+            <span>3D <span style="color:#FF5050">-2.1%</span></span>
+          </div>
+          <div style="margin-top:6px;font-family:'JetBrains Mono',monospace;font-size:0.5rem;color:#666688;line-height:1.6">
+            <span style="color:#FF5050">◆</span> 4连板回调幅度偏大，量能未明显萎缩，建议观望...
+            <span style="color:#444466;margin-left:6px">情绪: 🟡观望期 · 仓位: 不参与</span>
+          </div>
+        </div>
+
+        <!-- card 3: pending -->
+        <div style="border-left:2px solid rgba(123,47,255,0.25);padding:10px 14px;background:rgba(10,11,20,0.5)">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <div style="display:flex;align-items:center;gap:10px">
+              <span style="font-family:'JetBrains Mono',monospace;color:#D0D0E8;font-size:0.72rem">600519.SS</span>
+              <span style="font-family:'JetBrains Mono',monospace;color:#6666AA;font-size:0.58rem">贵州茅台</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:0.48rem;color:#9B6FFF;background:rgba(123,47,255,0.05);padding:1px 6px;border-radius:3px">⏳</span>
+            </div>
+            <span style="font-family:'JetBrains Mono',monospace;color:#444466;font-size:0.5rem">06-13</span>
+          </div>
+          <div style="display:flex;gap:16px;margin-top:4px;font-family:'JetBrains Mono',monospace;font-size:0.5rem;color:#555577">
+            <span>strict</span>
+            <span>¥1680</span>
+            <span>回调 5.2%</span>
+            <span>3D <span style="color:#444466">待验</span></span>
+          </div>
+          <div style="margin-top:6px;font-family:'JetBrains Mono',monospace;font-size:0.5rem;color:#666688;line-height:1.6">
+            <span style="color:#9B6FFF">◆</span> 蓝筹回调幅度较浅，量能正常，MACD仍多头排列。短线反弹可期...
+            <span style="color:#444466;margin-left:6px">情绪: 🟢启动期 · 仓位: 2成</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>设计原则</h3>
+  <table style="width:100%;font-family:monospace;font-size:0.7rem;color:#9999BB;border-collapse:collapse">
+    <tr style="border-bottom:1px solid rgba(0,240,255,0.06)">
+      <td style="padding:8px;color:#00F0FF">无框</td>
+      <td style="padding:8px">数值不用卡片包裹，纯文字排版。数据本身就是视觉重心</td>
+    </tr>
+    <tr style="border-bottom:1px solid rgba(0,240,255,0.06)">
+      <td style="padding:8px;color:#00F0FF">细线</td>
+      <td style="padding:8px">只用左边框2px区分状态（绿/红/紫），不用厚重卡片背景</td>
+    </tr>
+    <tr style="border-bottom:1px solid rgba(0,240,255,0.06)">
+      <td style="padding:8px;color:#00F0FF">留白</td>
+      <td style="padding:8px">大间距、小字号、低透明度分割线。让内容呼吸</td>
+    </tr>
+    <tr>
+      <td style="padding:8px;color:#00F0FF">单色</td>
+      <td style="padding:8px">只保留 cyan（主）/ green（盈）/ red（亏）/ purple（待验）四色</td>
+    </tr>
+  </table>
+</div>

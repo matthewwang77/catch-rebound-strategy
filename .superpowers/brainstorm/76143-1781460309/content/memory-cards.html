@@ -1,0 +1,137 @@
+<h2>AI 记忆卡片 — 你喜欢哪种风格？</h2>
+<p class="subtitle">每条记录展示：股票代码/中文名、日期、AI结论、7日回顾分析、裁决徽章。单选你最喜欢的。</p>
+
+<div class="cards" data-multiselect>
+
+<div class="card" data-choice="compact" onclick="toggleSelect(this)">
+  <div class="card-image">
+    <div class="mockup">
+      <div class="mockup-header">D · 紧凑信息卡 — 一行标题 + 折叠详情</div>
+      <div class="mockup-body" style="background:#050508;padding:16px;font-family:monospace">
+        <!-- Card 1: correct -->
+        <div style="background:rgba(13,13,30,0.9);border-left:3px solid #00ff88;border-radius:0 8px 8px 0;padding:12px 16px;margin-bottom:10px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+            <div style="display:flex;align-items:center;gap:10px">
+              <span style="color:#00ff88;font-weight:700;font-size:0.85rem">002081.SZ</span>
+              <span style="color:#aaa;font-size:0.75rem">金螳螂</span>
+              <span style="color:#666;font-size:0.7rem">06-13</span>
+              <span style="background:rgba(0,255,136,0.1);color:#00ff88;font-size:0.7rem;padding:2px 8px;border-radius:4px">✅ 准确预判</span>
+            </div>
+            <span style="color:#ff3366;font-size:0.75rem">◆ 【放弃】</span>
+          </div>
+          <div style="display:flex;gap:12px;font-size:0.72rem;color:#888">
+            <span>入场 ¥5.03</span>
+            <span>回调 13.7%</span>
+            <span>连板 5天</span>
+            <span>3d <span style="color:#00ff88">+22.2%</span></span>
+          </div>
+          <div style="margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.04);font-size:0.7rem;color:#666">
+            <span style="color:#ffb800">📝 教训：</span>过度关注均线破位，忽略了涨停日最低价支撑
+          </div>
+        </div>
+        <!-- Card 2: missed -->
+        <div style="background:rgba(13,13,30,0.9);border-left:3px solid #ffb800;border-radius:0 8px 8px 0;padding:12px 16px;margin-bottom:10px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+            <div style="display:flex;align-items:center;gap:10px">
+              <span style="color:#00ff88;font-weight:700;font-size:0.85rem">000518.SZ</span>
+              <span style="color:#aaa;font-size:0.75rem">东方盛虹</span>
+              <span style="color:#666;font-size:0.7rem">06-03</span>
+              <span style="background:rgba(255,184,0,0.1);color:#ffb800;font-size:0.7rem;padding:2px 8px;border-radius:4px">🔶 错失机会</span>
+            </div>
+            <span style="color:#ffb800;font-size:0.75rem">◆ 【观望】</span>
+          </div>
+          <div style="display:flex;gap:12px;font-size:0.72rem;color:#888">
+            <span>入场 ¥3.14</span>
+            <span>回调 13.4%</span>
+            <span>连板 4天</span>
+            <span>7d <span style="color:#00ff88">+25.0%</span></span>
+          </div>
+          <div style="margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.04);font-size:0.7rem;color:#666">
+            <span style="color:#ffb800">📝 遗漏信号：</span>极度缩量(量比0.31)是蓄势信号，不应解读为交投清淡
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body"><h3>紧凑信息卡 (D)</h3><p>每条一横条。核心信息一目了然，教训/遗漏信号在底部</p></div>
+</div>
+
+<div class="card" data-choice="expanded" onclick="toggleSelect(this)">
+  <div class="card-image">
+    <div class="mockup">
+      <div class="mockup-header">E · 展开式详情卡 — 全信息铺开，不折叠</div>
+      <div class="mockup-body" style="background:#050508;padding:16px;font-family:monospace">
+        <div style="background:rgba(13,13,30,0.9);border:1px solid rgba(0,255,136,0.12);border-radius:8px;padding:16px;margin-bottom:10px">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+            <span style="color:#00ff88;font-weight:700;font-size:0.9rem">◆ 002081.SZ</span>
+            <span style="color:#ccc;font-size:0.8rem">金螳螂</span>
+            <span style="margin-left:auto;background:rgba(0,255,136,0.1);color:#00ff88;font-size:0.72rem;padding:3px 10px;border-radius:4px;border:1px solid rgba(0,255,136,0.2)">准确预判</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px;font-size:0.72rem">
+            <div><span style="color:#666">日期</span> <span style="color:#ddd">2026-06-13</span></div>
+            <div><span style="color:#666">模式</span> <span style="color:#00f0ff">STRICT</span></div>
+            <div><span style="color:#666">AI结论</span> <span style="color:#ff3366">【放弃】</span></div>
+            <div><span style="color:#666">入场价</span> <span style="color:#ddd">¥5.03</span></div>
+            <div><span style="color:#666">回调</span> <span style="color:#ddd">13.7%</span></div>
+            <div><span style="color:#666">连板</span> <span style="color:#ddd">5天</span></div>
+          </div>
+          <div style="display:flex;gap:8px;margin-bottom:12px;font-size:0.75rem">
+            <span style="background:rgba(0,255,136,0.06);padding:3px 8px;border-radius:4px;color:#00ff88">7d +22.2%</span>
+            <span style="background:rgba(255,51,102,0.06);padding:3px 8px;border-radius:4px;color:#ff3366">止盈 Day3</span>
+          </div>
+          <div style="border-top:1px solid rgba(255,255,255,0.06);padding-top:10px">
+            <div style="font-size:0.72rem;color:#888;margin-bottom:4px">📖 走势回顾</div>
+            <div style="font-size:0.7rem;color:#aaa;line-height:1.5">第3天开盘跳空+22%触发止盈。缩量回调后放量跳空反弹，属于"缩倍阴"后标准反包形态。</div>
+            <div style="margin-top:8px;display:flex;gap:16px;font-size:0.7rem">
+              <div><span style="color:#ffb800">❌ 错在哪：</span><span style="color:#aaa">忽略了涨停日最低价5.29的强支撑</span></div>
+              <div><span style="color:#7b2fff">🔍 遗漏信号：</span><span style="color:#aaa">OBV未破前低，资金暗中承接</span></div>
+            </div>
+            <div style="margin-top:6px;font-size:0.7rem"><span style="color:#00ff88">💡 教训：</span><span style="color:#aaa">缩倍阴+OBV不破前低=高概率反弹，即使均线空头也不应简单放弃</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body"><h3>展开式详情卡 (E)</h3><p>全部信息铺开显示。结构化5字段一目了然，适合深度复盘</p></div>
+</div>
+
+<div class="card" data-choice="hybrid" onclick="toggleSelect(this)">
+  <div class="card-image">
+    <div class="mockup">
+      <div class="mockup-header">F · 混合式 — 紧凑头部 + 可展开回顾分析</div>
+      <div class="mockup-body" style="background:#050508;padding:16px;font-family:monospace">
+        <div style="background:rgba(13,13,30,0.9);border:1px solid rgba(255,184,0,0.15);border-radius:8px;padding:14px 16px;margin-bottom:10px">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+            <span style="color:#00ff88;font-weight:700;font-size:0.85rem">000518.SZ</span>
+            <span style="color:#ccc;font-size:0.78rem">东方盛虹</span>
+            <span style="color:#666;font-size:0.7rem">06-03</span>
+            <span style="margin-left:auto;background:rgba(255,184,0,0.1);color:#ffb800;font-size:0.7rem;padding:3px 10px;border-radius:4px;border:1px solid rgba(255,184,0,0.25)">🔶 错失机会</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:16px;font-size:0.72rem;color:#888;margin-bottom:6px">
+            <span>【观望】</span>
+            <span>¥3.14</span>
+            <span>回调13.4%</span>
+            <span style="color:#00ff88">7d +25.0%</span>
+            <span style="color:#ffb800;cursor:pointer;margin-left:auto">▶ 展开回顾分析</span>
+          </div>
+        </div>
+        <div style="background:rgba(13,13,30,0.9);border:1px solid rgba(0,255,136,0.12);border-radius:8px;padding:14px 16px">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+            <span style="color:#00ff88;font-weight:700;font-size:0.85rem">002208.SZ</span>
+            <span style="color:#ccc;font-size:0.78rem">合肥城建</span>
+            <span style="margin-left:auto;background:rgba(123,47,255,0.1);color:#7b2fff;font-size:0.7rem;padding:3px 10px;border-radius:4px;border:1px solid rgba(123,47,255,0.2)">📝 观望中</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:16px;font-size:0.72rem;color:#888;margin-bottom:6px">
+            <span>【观望】</span>
+            <span>¥15.46</span>
+            <span>待验证</span>
+            <span style="color:#666;margin-left:auto">⏳ 6天后可回顾</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body"><h3>混合式 (F)</h3><p>头部紧凑，回顾分析折叠。已验的展开详情，待验的简洁占位</p></div>
+</div>
+
+</div>

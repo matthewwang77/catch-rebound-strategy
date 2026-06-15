@@ -1,0 +1,188 @@
+- generic [ref=e1]:
+  - generic [ref=e5]:
+    - iframe [active] [ref=e19]:
+      - generic [ref=f3e2]:
+        - generic [ref=f3e8]:
+          - heading "◆ 控制面板" [level=3] [ref=f3e13]
+          - generic [ref=f3e15]:
+            - generic [ref=f3e16]:
+              - paragraph [ref=f3e19]: ◆ 导航
+              - button "Help for ◆ 导航" [ref=f3e23] [cursor=pointer]:
+                - img [ref=f3e24]
+            - radiogroup "◆ 导航" [ref=f3e27] [cursor=pointer]:
+              - generic [ref=f3e28]:
+                - radio "◆ 选股" [checked]
+                - paragraph [ref=f3e33]: ◆ 选股
+              - generic [ref=f3e34]:
+                - radio "◆ 复盘"
+                - paragraph [ref=f3e39]: ◆ 复盘
+          - separator [ref=f3e44]
+          - paragraph [ref=f3e49]:
+            - strong [ref=f3e50]: ◆ 两种模式（v5 优化参数）
+          - list [ref=f3e55]:
+            - listitem [ref=f3e56]:
+              - strong [ref=f3e57]: STRICT
+              - text: 严格 — 需3连板，~5信号/月，胜率70%，Sharpe 1.71
+          - list [ref=f3e62]:
+            - listitem [ref=f3e63]:
+              - strong [ref=f3e64]: LOOSE
+              - text: 宽松 — 需2连板，~18信号/月，胜率61%，Sharpe 1.54（STRICT超集）
+          - separator [ref=f3e69]
+          - paragraph [ref=f3e74]:
+            - strong [ref=f3e75]: ◆ 数据状态
+          - status [ref=f3e78]:
+            - generic [ref=f3e80]:
+              - generic [ref=f3e83]: ☁️
+              - paragraph [ref=f3e85]: 云端模式（快照 + yfinance）
+          - paragraph [ref=f3e90]: "上次扫描: 2026-06-12 20:04"
+        - generic [ref=f3e93]:
+          - banner [ref=f3e94]:
+            - generic [ref=f3e97]:
+              - generic [ref=f3e98]:
+                - button "Fork" [ref=f3e100] [cursor=pointer]:
+                  - generic [ref=f3e102]: Fork
+                - button [ref=f3e104] [cursor=pointer]
+              - button "Main menu" [ref=f3e108] [cursor=pointer]:
+                - img [ref=f3e109]
+          - generic [ref=f3e114]:
+            - heading "◆ NEON VAULT" [level=1] [ref=f3e119]:
+              - text: ◆ NEON VAULT
+              - generic [ref=f3e120]:
+                - link "Link to heading":
+                  - /url: "#neon-vault"
+                  - img
+            - paragraph [ref=f3e122]: "◈ 2026-06-12 20:49 | 🔴 已收盘 | 定时扫描: 10:00 / 11:30 / 14:00 / 15:00"
+            - separator [ref=f3e127]
+            - heading "◆ 大盘概况" [level=2] [ref=f3e132]:
+              - text: ◆ 大盘概况
+              - generic [ref=f3e133]:
+                - link "Link to heading":
+                  - /url: "#a9de6f0"
+                  - img
+            - generic [ref=f3e135]:
+              - generic [ref=f3e137]:
+                - generic [ref=f3e140]:
+                  - paragraph [ref=f3e143]: 上证指数
+                  - paragraph [ref=f3e146]: "4032"
+                  - generic [ref=f3e148]:
+                    - img [ref=f3e149]
+                    - paragraph [ref=f3e153]: +1.12%
+                - paragraph [ref=f3e158]: 5日高 4060 | 5日低 3928
+              - generic [ref=f3e160]:
+                - generic [ref=f3e163]:
+                  - paragraph [ref=f3e166]: 深证成指
+                  - paragraph [ref=f3e169]: "14963"
+                  - generic [ref=f3e171]:
+                    - img [ref=f3e172]
+                    - paragraph [ref=f3e176]: +0.75%
+                - paragraph [ref=f3e181]: 5日高 15275 | 5日低 14682
+              - generic [ref=f3e183]:
+                - generic [ref=f3e186]:
+                  - paragraph [ref=f3e189]: 创业板指
+                  - paragraph [ref=f3e192]: "3830"
+                  - generic [ref=f3e194]:
+                    - img [ref=f3e195]
+                    - paragraph [ref=f3e199]: +0.50%
+                - paragraph [ref=f3e204]: 5日高 3830 | 5日低 3830
+            - separator [ref=f3e209]
+            - heading "◆ 选股结果" [level=2] [ref=f3e214]:
+              - text: ◆ 选股结果
+              - generic [ref=f3e215]:
+                - link "Link to heading":
+                  - /url: "#56df7c0a"
+                  - img
+            - status [ref=f3e218]:
+              - generic [ref=f3e220]:
+                - generic [ref=f3e223]: ✅
+                - paragraph [ref=f3e225]: "今日最终结果（收盘后）| 扫描时间: 2026-06-12 20:04"
+            - generic [ref=f3e227]:
+              - tablist [ref=f3e229]:
+                - tab "STRICT 严格 (3只)" [active] [selected] [ref=f3e230] [cursor=pointer]:
+                  - paragraph [ref=f3e232]: STRICT 严格 (3只)
+                - tab "LOOSE 宽松 (17只)" [ref=f3e233] [cursor=pointer]:
+                  - paragraph [ref=f3e235]: LOOSE 宽松 (17只)
+              - tabpanel "STRICT 严格 (3只)" [ref=f3e238]:
+                - generic [ref=f3e239]:
+                  - generic [ref=f3e241]:
+                    - generic [ref=f3e243]:
+                      - paragraph [ref=f3e250]:
+                        - strong [ref=f3e251]:
+                          - code [ref=f3e252]: 002081.SZ
+                        - text: 金 螳 螂
+                      - generic [ref=f3e257]:
+                        - paragraph [ref=f3e260]: 价格
+                        - paragraph [ref=f3e263]: "5.03"
+                      - generic [ref=f3e268]:
+                        - paragraph [ref=f3e271]: 回调
+                        - paragraph [ref=f3e274]: 13.7%
+                      - generic [ref=f3e279]:
+                        - paragraph [ref=f3e282]: 连板
+                        - paragraph [ref=f3e285]: 5天
+                      - generic [ref=f3e290]:
+                        - paragraph [ref=f3e293]: 实体板
+                        - paragraph [ref=f3e296]: 100%
+                      - button "◆ AI分析" [ref=f3e301] [cursor=pointer]:
+                        - paragraph [ref=f3e305]: ◆ AI分析
+                    - separator [ref=f3e310]
+                  - generic [ref=f3e312]:
+                    - generic [ref=f3e314]:
+                      - paragraph [ref=f3e321]:
+                        - strong [ref=f3e322]:
+                          - code [ref=f3e323]: 002208.SZ
+                        - text: 合肥城建
+                      - generic [ref=f3e328]:
+                        - paragraph [ref=f3e331]: 价格
+                        - paragraph [ref=f3e334]: "15.46"
+                      - generic [ref=f3e339]:
+                        - paragraph [ref=f3e342]: 回调
+                        - paragraph [ref=f3e345]: 15.5%
+                      - generic [ref=f3e350]:
+                        - paragraph [ref=f3e353]: 连板
+                        - paragraph [ref=f3e356]: 3天
+                      - generic [ref=f3e361]:
+                        - paragraph [ref=f3e364]: 实体板
+                        - paragraph [ref=f3e367]: 100%
+                      - button "◆ AI分析" [ref=f3e372] [cursor=pointer]:
+                        - paragraph [ref=f3e376]: ◆ AI分析
+                    - separator [ref=f3e381]
+                  - generic [ref=f3e383]:
+                    - generic [ref=f3e385]:
+                      - paragraph [ref=f3e392]:
+                        - strong [ref=f3e393]:
+                          - code [ref=f3e394]: 000518.SZ
+                        - text: 四环生物
+                      - generic [ref=f3e399]:
+                        - paragraph [ref=f3e402]: 价格
+                        - paragraph [ref=f3e405]: "3.14"
+                      - generic [ref=f3e410]:
+                        - paragraph [ref=f3e413]: 回调
+                        - paragraph [ref=f3e416]: 13.4%
+                      - generic [ref=f3e421]:
+                        - paragraph [ref=f3e424]: 连板
+                        - paragraph [ref=f3e427]: 4天
+                      - generic [ref=f3e432]:
+                        - paragraph [ref=f3e435]: 实体板
+                        - paragraph [ref=f3e438]: 100%
+                      - button "◆ AI分析" [ref=f3e443] [cursor=pointer]:
+                        - paragraph [ref=f3e447]: ◆ AI分析
+                    - separator [ref=f3e452]
+            - separator [ref=f3e457]
+            - button "◆ 导出 CSV" [ref=f3e460] [cursor=pointer]:
+              - paragraph [ref=f3e464]: ◆ 导出 CSV
+    - link [ref=e20] [cursor=pointer]:
+      - /url: https://streamlit.io/cloud
+      - img [ref=e9]
+    - link "App Creator Avatar" [ref=e16] [cursor=pointer]:
+      - /url: https://share.streamlit.io/user/matthewwang77
+      - img "App Creator Avatar" [ref=e17]
+  - iframe [ref=e18]:
+    - generic [ref=f1e2]:
+      - img [ref=f1e27]
+      - generic [ref=f1e34]:
+        - heading "Status embed installed correctly" [level=1] [ref=f1e35]:
+          - paragraph [ref=f1e36]: Status embed installed correctly
+        - generic [ref=f1e37]: This will be shown if an incident or maintenance is posted on your status page.
+        - link "View latest updates" [ref=f1e39] [cursor=pointer]:
+          - /url: https://www.streamlitstatus.com?utm_source=embed
+      - button [ref=f1e41] [cursor=pointer]:
+        - img [ref=f1e42]

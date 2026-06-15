@@ -1,0 +1,58 @@
+<h2>扫描时间状态栏风格</h2>
+<p class="subtitle">现在是 Streamlit 默认绿框 + 灰字，跟霓虹风格割裂。换成哪种？</p>
+
+<div class="options">
+  <div class="option" data-choice="neon-status-bar" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Neon 状态条</h3>
+      <p>一整条暗底霓虹边框的横幅，左侧状态图标（✅/🔄） + 中间文字 + 右侧时间戳。收盘后 cyan 边框，盘中 amber 边框带 pulse 动画</p>
+    </div>
+  </div>
+  <div class="option" data-choice="terminal-line" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>终端命令行风格</h3>
+      <p>仿终端 prompt 的单行：<code>$ scan --last 2026-06-12 20:04 [CLOSED] ✓</code>，等宽字体 + 打字机光标。极客风，与 JetBrains Mono 呼应</p>
+    </div>
+  </div>
+  <div class="option" data-choice="minimal-pill" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>极简胶囊 chips</h3>
+      <p>一排小 chips：<code>[✅ 收盘]</code> <code>[🕐 06-12 20:04]</code>，半透明底 + 微弱边框，放在标题旁边，极度低调</p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>After 预览（方案 A：Neon 状态条）</h3>
+  <div class="mockup">
+    <div class="mockup-header">选股页面 · 标题下方</div>
+    <div class="mockup-body">
+      <div style="background:rgba(0,240,255,0.03);border:1px solid rgba(0,240,255,0.2);border-radius:8px;padding:10px 18px;display:flex;align-items:center;gap:16px;max-width:600px;font-family:monospace">
+        <span style="font-size:1.1rem">✅</span>
+        <span style="color:#00F0FF;font-size:0.75rem">今日最终结果（收盘后）</span>
+        <span style="flex:1"></span>
+        <span style="color:#6666AA;font-size:0.65rem">扫描时间</span>
+        <span style="color:#9999CC;font-size:0.7rem">2026-06-12 20:04</span>
+        <span style="width:8px;height:8px;border-radius:50%;background:#00F0FF;box-shadow:0 0 6px #00F0FF;animation:pulse 2s infinite"></span>
+      </div>
+      <div style="margin-top:8px;background:rgba(255,184,0,0.03);border:1px solid rgba(255,184,0,0.2);border-radius:8px;padding:10px 18px;display:flex;align-items:center;gap:16px;max-width:600px;font-family:monospace">
+        <span style="font-size:1.1rem">🔄</span>
+        <span style="color:#FFB800;font-size:0.75rem">盘中实时结果（每5分钟刷新）</span>
+        <span style="flex:1"></span>
+        <span style="color:#6666AA;font-size:0.65rem">最近扫描</span>
+        <span style="color:#9999CC;font-size:0.7rem">2026-06-13 11:30</span>
+        <span style="width:8px;height:8px;border-radius:50%;background:#FFB800;box-shadow:0 0 6px #FFB800"></span>
+      </div>
+    </div>
+  </div>
+  <h3>After 预览（方案 B：终端命令行）</h3>
+  <div class="mockup-body" style="margin-top:8px">
+    <div style="background:#050508;border:1px solid rgba(0,240,255,0.1);border-radius:6px;padding:12px 18px;max-width:600px;font-family:'JetBrains Mono',monospace">
+      <span style="color:#00FF88">$</span> <span style="color:#00F0FF">scan</span> <span style="color:#6666AA">--last</span> <span style="color:#9999CC">2026-06-12_20:04:00</span> <span style="color:#FFB800">--status=CLOSED</span>
+      <span style="display:inline-block;width:8px;height:14px;background:#00F0FF;margin-left:4px;animation:blink 1s step-end infinite"></span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,194 @@
+<h2>复盘页面 · 设计方案 v1</h2>
+<p class="subtitle">AI 记忆系统 + 绩效总览 + 信号复盘</p>
+
+<div class="section">
+  <h3>整体布局</h3>
+  <div class="mockup">
+    <div class="mockup-header">◆ 复盘 · 完整页面结构</div>
+    <div class="mockup-body">
+      <div style="max-width:800px;background:#050508;border-radius:12px;border:1px solid rgba(0,240,255,0.06);overflow:hidden;font-family:monospace;font-size:0.7rem">
+
+        <!-- HERO DASHBOARD -->
+        <div style="padding:20px 24px;border-bottom:1px solid rgba(0,240,255,0.06)">
+          <div style="color:#6666AA;font-size:0.55rem;letter-spacing:0.1em;margin-bottom:8px">◆ 策略绩效总览</div>
+          <div style="display:flex;gap:12px;align-items:center;margin-bottom:14px">
+            <span style="color:#555577;font-size:0.5rem">时间范围</span>
+            <span style="background:rgba(0,240,255,0.08);border:1px solid rgba(0,240,255,0.2);padding:4px 12px;border-radius:4px;color:#00F0FF;font-size:0.55rem">近30天</span>
+            <span style="color:#555577;font-size:0.55rem">近90天</span>
+            <span style="color:#555577;font-size:0.55rem">全部</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px">
+            <div style="background:rgba(0,240,255,0.03);border:1px solid rgba(0,240,255,0.06);border-radius:8px;padding:14px">
+              <div style="color:#555577;font-size:0.5rem;margin-bottom:4px">累计收益</div>
+              <div style="color:#00FF88;font-size:1.1rem;font-weight:bold">+12.4%</div>
+              <div style="color:#00FF88;font-size:0.55rem">+¥4,230</div>
+            </div>
+            <div style="background:rgba(0,240,255,0.03);border:1px solid rgba(0,240,255,0.06);border-radius:8px;padding:14px">
+              <div style="color:#555577;font-size:0.5rem;margin-bottom:4px">胜率</div>
+              <div style="color:#D0D0E8;font-size:1.1rem;font-weight:bold">65.2%</div>
+              <div style="color:#7777AA;font-size:0.55rem">45胜 / 24负</div>
+            </div>
+            <div style="background:rgba(0,240,255,0.03);border:1px solid rgba(0,240,255,0.06);border-radius:8px;padding:14px">
+              <div style="color:#555577;font-size:0.5rem;margin-bottom:4px">盈亏比</div>
+              <div style="color:#D0D0E8;font-size:1.1rem;font-weight:bold">1.85</div>
+              <div style="color:#7777AA;font-size:0.55rem">均盈+3.2% / 均亏-1.7%</div>
+            </div>
+            <div style="background:rgba(0,240,255,0.03);border:1px solid rgba(0,240,255,0.06);border-radius:8px;padding:14px">
+              <div style="color:#555577;font-size:0.5rem;margin-bottom:4px">最大回撤</div>
+              <div style="color:#FF6B6B;font-size:1.1rem;font-weight:bold">-8.2%</div>
+              <div style="color:#7777AA;font-size:0.55rem">Sharpe 1.71</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- EQUITY CURVE -->
+        <div style="padding:16px 24px;border-bottom:1px solid rgba(0,240,255,0.06)">
+          <div style="color:#6666AA;font-size:0.55rem;letter-spacing:0.08em;margin-bottom:10px">📈 累计收益曲线</div>
+          <div style="height:180px;background:rgba(0,240,255,0.015);border-radius:6px;position:relative;overflow:hidden">
+            <svg viewBox="0 0 750 180" style="width:100%;height:100%">
+              <defs>
+                <linearGradient id="eqGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="rgba(0,255,136,0.08)"/>
+                  <stop offset="100%" stop-color="rgba(0,255,136,0)"/>
+                </linearGradient>
+              </defs>
+              <polyline points="0,120 50,115 100,108 150,118 200,122 250,105 300,95 350,100 400,88 450,92 500,78 550,82 600,68 650,72 700,55 750,45"
+                fill="none" stroke="#00FF88" stroke-width="1.5" opacity="0.8"/>
+              <polygon points="0,120 50,115 100,108 150,118 200,122 250,105 300,95 350,100 400,88 450,92 500,78 550,82 600,68 650,72 700,55 750,45 750,180 0,180"
+                fill="url(#eqGrad)"/>
+              <rect x="180" y="105" width="80" height="17" fill="rgba(255,80,80,0.12)" rx="2"/>
+              <text x="220" y="117" fill="#FF5050" font-size="8" text-anchor="middle" font-family="monospace">-3.1%</text>
+              <line x1="0" y1="90" x2="750" y2="90" stroke="rgba(255,255,255,0.04)" stroke-dasharray="4"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- AI MEMORY BROWSER -->
+        <div style="padding:20px 24px;border-bottom:1px solid rgba(0,240,255,0.06)">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+            <div style="color:#6666AA;font-size:0.55rem;letter-spacing:0.08em">🧠 AI 记忆浏览器</div>
+            <div style="display:flex;gap:8px">
+              <span style="color:#555577;font-size:0.5rem;padding:3px 8px;border:1px solid rgba(0,240,255,0.1);border-radius:3px">🔍 搜索代码...</span>
+              <span style="color:#555577;font-size:0.5rem;padding:3px 8px;border:1px solid rgba(0,240,255,0.1);border-radius:3px">📅 全部日期 ▾</span>
+              <span style="color:#555577;font-size:0.5rem;padding:3px 8px;border:1px solid rgba(0,240,255,0.1);border-radius:3px">模式 ▾</span>
+            </div>
+          </div>
+
+          <!-- Card 1: with verified outcome -->
+          <div style="background:rgba(13,13,30,0.8);border:1px solid rgba(0,255,136,0.12);border-radius:8px;padding:14px 16px;margin-bottom:10px">
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <div>
+                <span style="color:#D0D0E8;font-weight:bold">002081.SZ</span>
+                <span style="color:#8888BB;margin-left:8px">金螳螂</span>
+                <span style="color:#00FF88;font-size:0.55rem;margin-left:8px;background:rgba(0,255,136,0.08);padding:2px 6px;border-radius:3px">✅ 预测正确</span>
+              </div>
+              <span style="color:#555577;font-size:0.5rem">2026-06-10</span>
+            </div>
+            <div style="display:flex;gap:16px;margin-top:6px;font-size:0.55rem;color:#7777AA">
+              <span>模式: <span style="color:#D0D0E8">strict</span></span>
+              <span>入场: <span style="color:#D0D0E8">¥12.34</span></span>
+              <span>回调: <span style="color:#D0D0E8">8.5%</span></span>
+              <span>3日收益: <span style="color:#00FF88">+5.2%</span></span>
+            </div>
+            <div style="margin-top:8px;font-size:0.55rem;color:#8888BB;background:rgba(0,240,255,0.03);padding:8px 10px;border-radius:4px;border-left:2px solid rgba(0,240,255,0.2)">
+              <span style="color:#00F0FF">AI 判断:</span> 回调幅度适中，量能确认缩量，MACD空头收敛中。建议轻仓试探...<br>
+              <span style="color:#9B6FFF">情绪:</span> 🟢 启动期 &nbsp; <span style="color:#9B6FFF">仓位:</span> 3成
+            </div>
+            <div style="margin-top:8px;display:flex;gap:8px">
+              <span style="color:#00F0FF;font-size:0.5rem;cursor:pointer">📖 展开完整分析</span>
+              <span style="color:#9B6FFF;font-size:0.5rem;cursor:pointer">🔄 重新分析(带入记忆)</span>
+            </div>
+          </div>
+
+          <!-- Card 2: with negative outcome -->
+          <div style="background:rgba(13,13,30,0.8);border:1px solid rgba(255,80,80,0.1);border-radius:8px;padding:14px 16px;margin-bottom:10px">
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <div>
+                <span style="color:#D0D0E8;font-weight:bold">300123.SZ</span>
+                <span style="color:#8888BB;margin-left:8px">亚光科技</span>
+                <span style="color:#FF6B6B;font-size:0.55rem;margin-left:8px;background:rgba(255,80,80,0.06);padding:2px 6px;border-radius:3px">◈ 预测偏差</span>
+              </div>
+              <span style="color:#555577;font-size:0.5rem">2026-06-08</span>
+            </div>
+            <div style="display:flex;gap:16px;margin-top:6px;font-size:0.55rem;color:#7777AA">
+              <span>模式: <span style="color:#D0D0E8">loose</span></span>
+              <span>入场: <span style="color:#D0D0E8">¥8.76</span></span>
+              <span>回调: <span style="color:#D0D0E8">12.1%</span></span>
+              <span>3日收益: <span style="color:#FF5050">-2.1%</span></span>
+            </div>
+            <div style="margin-top:8px;font-size:0.55rem;color:#8888BB;background:rgba(255,80,80,0.02);padding:8px 10px;border-radius:4px;border-left:2px solid rgba(255,80,80,0.2)">
+              <span style="color:#FF5050">AI 判断:</span> 4连板回调幅度偏大，量能未明显萎缩，建议观望等待...<br>
+              <span style="color:#9B6FFF">情绪:</span> 🟡 观望期 &nbsp; <span style="color:#9B6FFF">仓位:</span> 不参与
+            </div>
+            <div style="margin-top:8px;display:flex;gap:8px">
+              <span style="color:#00F0FF;font-size:0.5rem;cursor:pointer">📖 展开完整分析</span>
+              <span style="color:#9B6FFF;font-size:0.5rem;cursor:pointer">🔄 重新分析(带入记忆)</span>
+            </div>
+          </div>
+
+          <!-- Card 3: pending verification -->
+          <div style="background:rgba(13,13,30,0.8);border:1px solid rgba(0,240,255,0.06);border-radius:8px;padding:14px 16px">
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <div>
+                <span style="color:#D0D0E8;font-weight:bold">600519.SS</span>
+                <span style="color:#8888BB;margin-left:8px">贵州茅台</span>
+                <span style="color:#9B6FFF;font-size:0.55rem;margin-left:8px;background:rgba(123,47,255,0.06);padding:2px 6px;border-radius:3px">⏳ 待验证</span>
+              </div>
+              <span style="color:#555577;font-size:0.5rem">2026-06-13</span>
+            </div>
+            <div style="display:flex;gap:16px;margin-top:6px;font-size:0.55rem;color:#7777AA">
+              <span>模式: <span style="color:#D0D0E8">strict</span></span>
+              <span>入场: <span style="color:#D0D0E8">¥1680.00</span></span>
+              <span>回调: <span style="color:#D0D0E8">5.2%</span></span>
+              <span>🕐 持有中 (距验证券还有2天)</span>
+            </div>
+            <div style="margin-top:8px;font-size:0.55rem;color:#8888BB;background:rgba(123,47,255,0.02);padding:8px 10px;border-radius:4px;border-left:2px solid rgba(123,47,255,0.2)">
+              <span style="color:#9B6FFF">AI 判断:</span> 蓝筹回调幅度较浅，量能正常，MACD仍多头排列。短线反弹可期...
+            </div>
+            <div style="margin-top:8px;display:flex;gap:8px">
+              <span style="color:#00F0FF;font-size:0.5rem;cursor:pointer">📖 展开完整分析</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- BOTTOM SECTION: Manual Review -->
+        <div style="padding:20px 24px">
+          <div style="color:#6666AA;font-size:0.55rem;letter-spacing:0.08em;margin-bottom:10px">✏️ 手动选股复盘</div>
+          <div style="display:flex;gap:12px">
+            <div style="flex:1;background:rgba(13,13,30,0.6);border:1px solid rgba(0,240,255,0.06);border-radius:6px;padding:10px;color:#555577;font-size:0.55rem">
+              输入股票代码（每行一个）...
+            </div>
+            <span style="background:rgba(0,240,255,0.08);border:1px solid rgba(0,240,255,0.2);padding:6px 16px;border-radius:4px;color:#00F0FF;font-size:0.55rem">◆ 开始分析</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>核心设计要点</h3>
+  <table style="width:100%;font-family:monospace;font-size:0.7rem;color:#9999BB;border-collapse:collapse">
+    <tr style="border-bottom:1px solid rgba(0,240,255,0.08)">
+      <td style="padding:10px;color:#00F0FF;white-space:nowrap">🧠 AI 记忆</td>
+      <td style="padding:10px">每次 AI 分析自动存入 <code>ai_memory.json</code>，按股票+日期索引。自动关联 signal_tracker.csv 的实际收益做验证</td>
+    </tr>
+    <tr style="border-bottom:1px solid rgba(0,240,255,0.08)">
+      <td style="padding:10px;color:#00F0FF;white-space:nowrap">🔄 自动注入</td>
+      <td style="padding:10px">再次分析同只股票时，自动把历史分析+验证结果注入 DeepSeek prompt，AI 自己做连续性判断</td>
+    </tr>
+    <tr style="border-bottom:1px solid rgba(0,240,255,0.08)">
+      <td style="padding:10px;color:#00F0FF;white-space:nowrap">📈 绩效总览</td>
+      <td style="padding:10px">Hero 卡片(收益/胜率/盈亏比/回撤/Sharpe) + 累计收益曲线图(含回撤阴影)</td>
+    </tr>
+    <tr style="border-bottom:1px solid rgba(0,240,255,0.08)">
+      <td style="padding:10px;color:#00F0FF;white-space:nowrap">🏷️ 验证状态</td>
+      <td style="padding:10px">每张记忆卡片标注：✅预测正确 / ◈预测偏差 / ⏳待验证，颜色区分一目了然</td>
+    </tr>
+    <tr style="border-bottom:1px solid rgba(0,240,255,0.08)">
+      <td style="padding:10px;color:#00F0FF;white-space:nowrap">🔍 筛选</td>
+      <td style="padding:10px">按股票代码搜索、按日期/模式筛选、按验证状态过滤</td>
+    </tr>
+  </table>
+</div>

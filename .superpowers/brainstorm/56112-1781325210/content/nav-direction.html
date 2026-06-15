@@ -1,0 +1,55 @@
+<h2>侧边栏导航风格方向</h2>
+<p class="subtitle">当前是朴素的小圆点 radio，你想要多"大气"？</p>
+
+<div class="options">
+  <div class="option" data-choice="neon-pill" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Neon Pill 切换</h3>
+      <p>两个横向拉满的 neon 发光胶囊按钮，选中态 cyan 光晕 + 暗底高亮，贴合现有 NEON VAULT 风格</p>
+    </div>
+  </div>
+  <div class="option" data-choice="tab-bar" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>底部 Tab Bar</h3>
+      <p>仿移动端底部导航栏风格，icon + 文字，选中态有上划线指示器，极简现代感</p>
+    </div>
+  </div>
+  <div class="option" data-choice="card-radio" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>大卡片式切换</h3>
+      <p>两张横向大卡片（各占半宽），内含 icon + 标题 + 小描述，选中态整卡发光 + 缩放动效，信息量更大</p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>当前状态（Before）</h3>
+  <div class="mockup">
+    <div class="mockup-header">Sidebar · 现在</div>
+    <div class="mockup-body">
+      <div style="background:#0A0B14;padding:16px;border-radius:8px;max-width:260px">
+        <div style="font-family:sans-serif;color:#00F0FF;font-size:0.8rem;margin-bottom:12px">◆ 控制面板</div>
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <label style="font-family:monospace;font-size:0.7rem;color:#7777AA;padding:8px 12px;border-radius:4px;cursor:pointer;display:flex;align-items:center;gap:8px">
+            <span style="width:14px;height:14px;border-radius:50%;border:2px solid #00F0FF;background:#00F0FF;box-shadow:0 0 6px #00F0FF;display:inline-block"></span>
+            ◆ 选股
+          </label>
+          <label style="font-family:monospace;font-size:0.7rem;color:#7777AA;padding:8px 12px;border-radius:4px;cursor:pointer;display:flex;align-items:center;gap:8px">
+            <span style="width:14px;height:14px;border-radius:50%;border:2px solid #444466;display:inline-block"></span>
+            ◆ 复盘
+          </label>
+        </div>
+        <div style="border-top:1px solid rgba(0,240,255,0.06);margin-top:12px;padding-top:12px">
+          <div style="font-family:monospace;font-size:0.65rem;color:#7777AA">
+            <strong>◆ 两种模式（v5 优化参数）</strong><br>
+            - <b>STRICT</b> 严格 — 3连板，胜率70%<br>
+            - <b>LOOSE</b> 宽松 — 2连板，胜率61%
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

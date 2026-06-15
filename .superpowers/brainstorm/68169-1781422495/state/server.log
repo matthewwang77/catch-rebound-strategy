@@ -1,0 +1,4 @@
+{"type":"server-started","port":61531,"host":"127.0.0.1","url_host":"localhost","url":"http://localhost:61531","screen_dir":"/Users/mattsmacair/Desktop/Coding/量化模型/抓反弹策略/.superpowers/brainstorm/68169-1781422495/content","state_dir":"/Users/mattsmacair/Desktop/Coding/量化模型/抓反弹策略/.superpowers/brainstorm/68169-1781422495/state"}
+{"type":"screen-added","file":"/Users/mattsmacair/Desktop/Coding/量化模型/抓反弹策略/.superpowers/brainstorm/68169-1781422495/content/before-after.html"}
+{"type":"screen-added","file":"/Users/mattsmacair/Desktop/Coding/量化模型/抓反弹策略/.superpowers/brainstorm/68169-1781422495/content/final-design.html"}
+{"type":"server-stopped","reason":"idle timeout"}

@@ -1,0 +1,123 @@
+<h2>最终设计汇总</h2>
+<p class="subtitle">NEON VAULT 选股页面 · 6 项改动全景</p>
+
+<div class="section">
+  <h3>整体布局（After）</h3>
+  <div class="mockup">
+    <div class="mockup-header">◆ 选股 页面 · 完整 mockup</div>
+    <div class="mockup-body">
+      <div style="max-width:720px;background:#050508;border-radius:12px;border:1px solid rgba(0,240,255,0.06);overflow:hidden">
+
+        <!-- Header -->
+        <div style="padding:20px 24px;border-bottom:1px solid rgba(0,240,255,0.06)">
+          <div style="font-family:'Orbitron',sans-serif;color:#00F0FF;font-size:1.1rem;letter-spacing:0.08em">◆ 选股结果</div>
+
+          <!-- Mode pills (item 2) -->
+          <div style="display:flex;gap:8px;margin-top:10px;align-items:center">
+            <span style="font-family:monospace;font-size:0.55rem;color:#6666AA;text-transform:uppercase;letter-spacing:0.1em">筛选模式</span>
+            <span style="font-family:monospace;font-size:0.6rem;padding:4px 10px;border-radius:12px;background:rgba(255,51,102,0.08);border:1px solid rgba(255,51,102,0.2);color:#FF3366;cursor:pointer" title="3连板 | 胜率70% | Sharpe 1.71">🔴 STRICT</span>
+            <span style="font-family:monospace;font-size:0.6rem;padding:4px 10px;border-radius:12px;background:rgba(0,255,136,0.06);border:1px solid rgba(0,255,136,0.15);color:#00FF88;cursor:pointer" title="2连板 | 胜率60% | Sharpe 1.29">🟢 LOOSE</span>
+          </div>
+
+          <!-- Status bar (item 3) -->
+          <div style="margin-top:12px;background:rgba(0,240,255,0.03);border:1px solid rgba(0,240,255,0.2);border-radius:8px;padding:8px 16px;display:flex;align-items:center;gap:12px;font-family:monospace">
+            <span>✅</span>
+            <span style="color:#00F0FF;font-size:0.65rem">今日最终结果（收盘后）</span>
+            <span style="flex:1"></span>
+            <span style="color:#6666AA;font-size:0.55rem">扫描时间</span>
+            <span style="color:#9999CC;font-size:0.6rem">2026-06-12 20:04</span>
+            <span style="width:7px;height:7px;border-radius:50%;background:#00F0FF;box-shadow:0 0 6px #00F0FF"></span>
+          </div>
+        </div>
+
+        <!-- Candidate List -->
+        <div style="padding:16px 24px">
+          <div style="font-family:monospace;font-size:0.7rem;color:#7777AA;margin-bottom:12px">🔴 严格 3只 &nbsp;&nbsp; 🟢 宽松 8只</div>
+
+          <!-- Candidate card example -->
+          <div style="background:rgba(13,13,30,0.6);border:1px solid rgba(0,240,255,0.08);border-radius:8px;padding:12px 16px;margin-bottom:8px">
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <div>
+                <span style="font-family:monospace;color:#D0D0E8;font-size:0.75rem">002081.SZ</span>
+                <span style="font-family:monospace;color:#6666AA;font-size:0.55rem;margin-left:8px">金螳螂</span>
+              </div>
+              <span style="font-family:monospace;color:#00F0FF;font-size:0.6rem;background:rgba(0,240,255,0.06);padding:3px 8px;border-radius:4px">◆ AI分析</span>
+            </div>
+            <div style="display:flex;gap:16px;margin-top:6px;font-family:monospace;font-size:0.55rem;color:#7777AA">
+              <span>¥12.34</span><span>回调 8.5%</span><span>3连板</span><span>实体 72%</span>
+            </div>
+          </div>
+          <div style="background:rgba(13,13,30,0.6);border:1px solid rgba(255,51,102,0.12);border-radius:8px;padding:12px 16px;margin-bottom:8px">
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <div>
+                <span style="font-family:monospace;color:#D0D0E8;font-size:0.75rem">300123.SZ</span>
+                <span style="font-family:monospace;color:#6666AA;font-size:0.55rem;margin-left:8px">亚光科技</span>
+              </div>
+              <span style="font-family:monospace;color:#00F0FF;font-size:0.6rem;background:rgba(0,240,255,0.06);padding:3px 8px;border-radius:4px">◆ AI分析</span>
+            </div>
+            <div style="display:flex;gap:16px;margin-top:6px;font-family:monospace;font-size:0.55rem;color:#7777AA">
+              <span>¥8.76</span><span>回调 12.1%</span><span>4连板</span><span>实体 65%</span>
+            </div>
+          </div>
+
+          <!-- AI result expanded (item 6) -->
+          <div style="background:rgba(13,13,30,0.95);border:1px solid rgba(0,240,255,0.15);border-radius:10px;margin-top:12px;overflow:hidden">
+            <div style="padding:10px 16px;background:rgba(0,240,255,0.03);border-bottom:1px solid rgba(0,240,255,0.06);display:flex;align-items:center;gap:8px">
+              <span style="font-family:monospace;color:#00F0FF;font-size:0.7rem">◆ 002081.SZ AI分析报告</span>
+              <span style="font-family:monospace;color:#6666AA;font-size:0.5rem">展开中 ▼</span>
+              <span style="flex:1"></span>
+              <span style="font-family:monospace;color:#6666AA;font-size:0.5rem;border:1px solid rgba(0,240,255,0.15);border-radius:4px;padding:2px 8px;cursor:pointer">📋 复制</span>
+            </div>
+            <!-- Summary strip (item 6) -->
+            <div style="padding:10px 16px;display:flex;gap:12px;border-bottom:1px solid rgba(0,240,255,0.06)">
+              <span style="background:rgba(0,240,255,0.08);border-radius:6px;padding:5px 10px;font-family:monospace;font-size:0.6rem;color:#00F0FF">情绪: 🟢 启动期</span>
+              <span style="background:rgba(0,255,136,0.08);border-radius:6px;padding:5px 10px;font-family:monospace;font-size:0.6rem;color:#00FF88">仓位: 3成</span>
+              <span style="background:rgba(123,47,255,0.08);border-radius:6px;padding:5px 10px;font-family:monospace;font-size:0.6rem;color:#7B2FFF">观点: 短线反弹可期</span>
+            </div>
+            <div style="padding:16px;font-family:monospace;font-size:0.58rem;color:#9999BB;line-height:1.8">
+              <span style="color:#00F0FF">## 量 · 成交量分析</span><br>
+              回调期间量能持续萎缩，近3日缩量至首板日27%，今日温和放量...<br>
+              <span style="color:#6666AA">MACD(12,26,9): DIF=-0.023 DEA=-0.018 柱=-0.005 → 空头收敛</span><br>
+              <span style="color:#6666AA">RSI(14): 42.3 → 中性偏弱</span><br>
+              <span style="color:#6666AA">布林(20,2): 价格位于中轨下方，带宽收窄</span><br><br>
+              <span style="color:#00F0FF">## 价 · 价格位置</span><br>
+              当前价格¥12.34，位于MA10(¥12.18)上方，距MA20(¥12.62)仅2.3%...<br><br>
+              <span style="color:#00F0FF">## 综合建议</span><br>
+              回调幅度适中，量能确认缩量，MACD空头收敛中。建议轻仓试探...
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>改动清单</h3>
+  <table style="width:100%;font-family:monospace;font-size:0.7rem;color:#9999BB;border-collapse:collapse">
+    <tr style="border-bottom:1px solid rgba(0,240,255,0.08)">
+      <td style="padding:8px;color:#00F0FF">1. 导航</td>
+      <td style="padding:8px">大卡片式 · 两张横向卡片，选中整卡发光 + 缩放</td>
+    </tr>
+    <tr style="border-bottom:1px solid rgba(0,240,255,0.08)">
+      <td style="padding:8px;color:#00F0FF">2. 模式</td>
+      <td style="padding:8px">胶囊标签行 · 标题旁 [🔴STRICT] [🟢LOOSE]，hover 详情</td>
+    </tr>
+    <tr style="border-bottom:1px solid rgba(0,240,255,0.08)">
+      <td style="padding:8px;color:#00F0FF">3. 状态栏</td>
+      <td style="padding:8px">Neon 横幅 · cyan 边框，收盘/盘中双态，pulse 指示灯</td>
+    </tr>
+    <tr style="border-bottom:1px solid rgba(0,240,255,0.08)">
+      <td style="padding:8px;color:#00F0FF">4. 加载残留</td>
+      <td style="padding:8px">st.empty() placeholder · 分析完显式清除 · 统一处理入口</td>
+    </tr>
+    <tr style="border-bottom:1px solid rgba(0,240,255,0.08)">
+      <td style="padding:8px;color:#00F0FF">5. 股票消失</td>
+      <td style="padding:8px">scan_data 缓存 session_state · 列表与 AI 状态解耦</td>
+    </tr>
+    <tr style="border-bottom:1px solid rgba(0,240,255,0.08)">
+      <td style="padding:8px;color:#00F0FF">6. AI 展示</td>
+      <td style="padding:8px">顶部摘要条 · 情绪 + 仓位 + 观点 · 一键复制按钮</td>
+    </tr>
+  </table>
+</div>

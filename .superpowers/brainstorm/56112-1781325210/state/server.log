@@ -1,0 +1,8 @@
+{"type":"server-started","port":53278,"host":"127.0.0.1","url_host":"localhost","url":"http://localhost:53278","screen_dir":"/Users/mattsmacair/Desktop/Coding/量化模型/抓反弹策略/.superpowers/brainstorm/56112-1781325210/content","state_dir":"/Users/mattsmacair/Desktop/Coding/量化模型/抓反弹策略/.superpowers/brainstorm/56112-1781325210/state"}
+{"type":"screen-added","file":"/Users/mattsmacair/Desktop/Coding/量化模型/抓反弹策略/.superpowers/brainstorm/56112-1781325210/content/nav-direction.html"}
+{"type":"screen-added","file":"/Users/mattsmacair/Desktop/Coding/量化模型/抓反弹策略/.superpowers/brainstorm/56112-1781325210/content/mode-display.html"}
+{"type":"screen-added","file":"/Users/mattsmacair/Desktop/Coding/量化模型/抓反弹策略/.superpowers/brainstorm/56112-1781325210/content/status-bar.html"}
+{"type":"screen-added","file":"/Users/mattsmacair/Desktop/Coding/量化模型/抓反弹策略/.superpowers/brainstorm/56112-1781325210/content/ai-display.html"}
+{"type":"screen-added","file":"/Users/mattsmacair/Desktop/Coding/量化模型/抓反弹策略/.superpowers/brainstorm/56112-1781325210/content/final-design.html"}
+{"type":"screen-added","file":"/Users/mattsmacair/Desktop/Coding/量化模型/抓反弹策略/.superpowers/brainstorm/56112-1781325210/content/waiting.html"}
+{"type":"server-stopped","reason":"idle timeout"}
