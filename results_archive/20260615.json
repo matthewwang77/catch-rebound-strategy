@@ -1,21 +1,21 @@
 {
-  "scan_time": "2026-06-15 00:58",
+  "scan_time": "2026-06-15 10:02",
   "scan_date": "20260615",
   "market": {
     "上证": {
-      "price": 4031.51,
-      "pct": 1.12
+      "price": 4083.68,
+      "pct": 1.29
     },
     "深证": {
-      "price": 14963.41,
-      "pct": 0.75
+      "price": 15251.0,
+      "pct": 1.92
     }
   },
   "regime": {
     "status": "neutral",
-    "label": "4档: 发酵期 — 势头良好",
-    "avg_trend": 1.39,
-    "recommended_mode": "loose"
+    "label": "3档: 启动期 — 谨慎入场",
+    "avg_trend": 0.86,
+    "recommended_mode": "strict"
   },
   "modes": {
     "strict": {
@@ -23,7 +23,7 @@
       "candidates": [
         {
           "code": "002081.SZ",
-          "price": 5.03,
+          "price": 5.09,
           "signal_date": "20260529",
           "pullback_pct": 13.7,
           "limit_days": 5,
@@ -31,7 +31,7 @@
         },
         {
           "code": "002208.SZ",
-          "price": 15.46,
+          "price": 16.01,
           "signal_date": "20260610",
           "pullback_pct": 15.5,
           "limit_days": 3,
@@ -39,7 +39,7 @@
         },
         {
           "code": "000518.SZ",
-          "price": 3.14,
+          "price": 3.19,
           "signal_date": "20260603",
           "pullback_pct": 13.4,
           "limit_days": 4,
