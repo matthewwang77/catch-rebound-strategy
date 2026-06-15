@@ -1907,35 +1907,59 @@ def walkforward_analysis_v5(start_date, end_date, best_params, split_ratio=0.6):
 #           Tier 4-5 (发酵/高潮) 使用LOOSE替代原BULL (BULL IS 19.56→OOS 1.22 严重过拟合)
 SCREEN_MODES = {
     "bear": {
-        # v6: 熊市专属模式 — 浅回调(6-11%) + 极度缩量(41%) + 缩短持有(7天)
-        # 交叉验证：默认参数在熊市夏普-3.7，此模式+7.1
-        "min_consecutive_limit_up": 2,
-        "min_entity_board_ratio": 0.45,
-        "pullback_ratio_min": 0.06,
-        "pullback_ratio_max": 0.11,         # 关键：熊市回调>11%就崩了
-        "volume_shrink_ratio": 0.41,        # 关键：要求极度缩量
-        "volume_shrink_ratio_min": 0.10,
+        # v7: 2026-06-15 重新优化 (修复 for-else/Sharpe/止损三大bug)
+        # Period A (2023.01-2024.06, 熊市震荡) — WR 63.5%, Sharpe 2.01
+        "min_consecutive_limit_up": 3,      # v7: 3连板 (旧=2)
+        "min_entity_board_ratio": 0.15,
+        "pullback_ratio_min": 0.01,
+        "pullback_ratio_max": 0.11,
+        "volume_shrink_ratio": 0.55,
+        "volume_shrink_ratio_min": 0.05,
         "signal_today_yang": False,         # 熊市不要求阳线
         "signal_volume_expand": 1.0,        # 熊市不要求放量
         "min_pullback_days": 2,
         "max_pullback_days": 20,
         "ma_stabilize": 10,
         "volume_compare_days": 3,
-        "hold_days": 7,                     # 关键：快进快出
-        "take_profit": 0.057,
-        "stop_loss": -0.103,
+        "hold_days": 3,                     # v7: 3天快进快出 (旧=7)
+        "take_profit": 0.096,               # v7: 高止盈 (旧=0.057)
+        "stop_loss": -0.092,
         "require_oversold": False,
         "oversold_decline_threshold": 0.10,
         "require_low_close": False,
         "low_close_threshold": 0.5,
     },
     "strict": {
-        # v5 三阶段优化结果 — 震荡市/不明市首选
+        # v7: 2026-06-15 重新优化 (修复 for-else/Sharpe/止损三大bug)
+        # Period C (2025.07-2026.04, 震荡回调) — WR 72.1%, Sharpe 4.62
         "min_consecutive_limit_up": 3,
-        "min_entity_board_ratio": 0.55,
-        "pullback_ratio_min": 0.12,
-        "pullback_ratio_max": 0.40,
-        "volume_shrink_ratio": 0.67,
+        "min_entity_board_ratio": 0.10,     # v7: 放宽实体板 (旧=0.55)
+        "pullback_ratio_min": 0.02,
+        "pullback_ratio_max": 0.27,         # v7: 收紧上限 (旧=0.40)
+        "volume_shrink_ratio": 0.36,        # v7: 更严缩量 (旧=0.67)
+        "volume_shrink_ratio_min": 0.10,
+        "signal_today_yang": True,
+        "signal_volume_expand": 1.2,
+        "min_pullback_days": 2,
+        "max_pullback_days": 20,
+        "ma_stabilize": 10,
+        "volume_compare_days": 3,
+        "hold_days": 12,                    # v7: 延长持有 (旧=10)
+        "take_profit": 0.054,
+        "stop_loss": -0.09,
+        "require_oversold": False,
+        "oversold_decline_threshold": 0.10,
+        "require_low_close": False,
+        "low_close_threshold": 0.5,
+    },
+    "loose": {
+        # v7: 2026-06-15 首次优化 (之前是手工调的)
+        # Period B (2024.07-2025.06, 牛市大涨) — WR 93.1%, Sharpe 3.67
+        "min_consecutive_limit_up": 3,      # v7: 3连板 (旧=2)
+        "min_entity_board_ratio": 0.35,
+        "pullback_ratio_min": 0.01,
+        "pullback_ratio_max": 0.09,         # v7: 极紧上限 (旧=0.40)
+        "volume_shrink_ratio": 0.55,        # v7: 中等缩量 (旧=0.67)
         "volume_shrink_ratio_min": 0.05,
         "signal_today_yang": True,
         "signal_volume_expand": 1.2,
@@ -1943,32 +1967,9 @@ SCREEN_MODES = {
         "max_pullback_days": 20,
         "ma_stabilize": 10,
         "volume_compare_days": 3,
-        "hold_days": 10,
-        "take_profit": 0.051,
-        "stop_loss": -0.112,
-        "require_oversold": False,
-        "oversold_decline_threshold": 0.10,
-        "require_low_close": False,
-        "low_close_threshold": 0.5,
-    },
-    "loose": {
-        # 牛市模式 — STRICT的超集, 3.6倍信号量(285 vs 79)
-        # pullback_max/volume_shrink与STRICT一致，保证不漏掉STRICT的信号
-        "min_consecutive_limit_up": 2,
-        "min_entity_board_ratio": 0.3,
-        "pullback_ratio_min": 0.08,
-        "pullback_ratio_max": 0.40,        # = STRICT, 保证超集
-        "volume_shrink_ratio": 0.67,       # = STRICT, 保证超集
-        "volume_shrink_ratio_min": 0.0,
-        "signal_today_yang": True,
-        "signal_volume_expand": 1.2,
-        "min_pullback_days": 2,
-        "max_pullback_days": 20,
-        "ma_stabilize": 10,
-        "volume_compare_days": 3,
-        "hold_days": 7,
-        "take_profit": 0.05,
-        "stop_loss": -0.10,
+        "hold_days": 12,                    # v7: 延长持有 (旧=7)
+        "take_profit": 0.042,               # v7: 紧止盈 (旧=0.05)
+        "stop_loss": -0.173,                # v7: 宽止损 (旧=-0.10)
         "require_oversold": False,
         "oversold_decline_threshold": 0.10,
         "require_low_close": False,
