@@ -2085,11 +2085,10 @@ def _format_ai_badges(opinion, sentiment, position):
     # ── 2. 大盘标签 ──
     st = sentiment.strip().strip('*').strip()
     if st and st not in ('—', 'N/A', ''):
-        # 如果已经是市场档位描述（含"档"或"期"），加"大盘"前缀
-        if any(kw in st for kw in ['档', '期', '冰点', '高潮', '发酵']):
-            st_label = f'大盘: {st}'
-        else:
-            st_label = st  # 保留原样（如 "谨慎"）
+        # 补全截断的档位描述：如 "发酵期4" → "发酵期4档"
+        if re.search(r'[档期]\d$', st) and not st.endswith('档'):
+            st += '档'
+        st_label = f'大盘: {st}'
     else:
         st_label = '大盘: —'
 
