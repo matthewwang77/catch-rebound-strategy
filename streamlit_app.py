@@ -1214,8 +1214,12 @@ def get_market_data():
             with open(json_path) as f:
                 scan = _json.load(f)
             market_json = scan.get("market", {})
-            for name, m in market_json.items():
-                json_pct[name] = m.get("pct", None)
+            # JSON key → 显示名称 映射 (JSON: "上证"/"深证"/"创业板")
+            _key_map = {"上证": "上证指数", "深证": "深证成指", "创业板": "创业板指"}
+            for json_key, display_name in _key_map.items():
+                m = market_json.get(json_key, {})
+                if "pct" in m:
+                    json_pct[display_name] = m["pct"]
     except Exception:
         pass
 
