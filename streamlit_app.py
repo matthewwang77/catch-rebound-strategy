@@ -1285,16 +1285,20 @@ def get_market_data():
                     else:
                         vol_ratio = 1
                 else:
-                    # 降级：从 fast_info.previousClose 算涨跌
-                    try:
-                        prev_close = info.get('previousClose')
-                        if prev_close and float(prev_close) > 0:
-                            pct = round((current / float(prev_close) - 1) * 100, 2)
-                            has_delta = True
-                        else:
+                    # 降级：优先读 JSON 修正涨幅，其次用 fast_info.previousClose
+                    if name in json_pct and json_pct[name] is not None:
+                        pct = json_pct[name]
+                        has_delta = True
+                    else:
+                        try:
+                            prev_close = info.get('previousClose')
+                            if prev_close and float(prev_close) > 0:
+                                pct = round((current / float(prev_close) - 1) * 100, 2)
+                                has_delta = True
+                            else:
+                                pct, has_delta = 0, False
+                        except Exception:
                             pct, has_delta = 0, False
-                    except Exception:
-                        pct, has_delta = 0, False
                     vol_ratio = 1
 
                 data = {
