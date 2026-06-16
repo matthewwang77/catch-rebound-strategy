@@ -2769,6 +2769,7 @@ def main():
                 why_wrong = rec.get('why_wrong', '')
                 missed_signal = rec.get('missed_signal', '')
                 lesson = rec.get('lesson', '')
+                review_quality = rec.get('review_quality', '')
 
                 # 股票中文名
                 name_info = stock_names.get(code, {})
@@ -2834,7 +2835,9 @@ def main():
                     # 展示结构化回顾字段
                     if what_happened or why_wrong or missed_signal or lesson:
                         st.divider()
-                        st.caption("◆ 7日回顾分析")
+                        quality_badges = {'good': '✅ 高质量', 'partial': '🟡 部分完整', 'low': '🔴 质量不足'}
+                        q_label = quality_badges.get(review_quality, '')
+                        st.caption(f"◆ 7日回顾分析 {q_label}")
                         if what_happened:
                             st.caption(f"📖 走势回顾：{what_happened}")
                         if why_wrong:

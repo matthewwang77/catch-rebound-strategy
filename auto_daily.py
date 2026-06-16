@@ -318,10 +318,11 @@ def _get_stock_memory_context(code):
     records = memory[code]
     lines = ["[历史分析记录 · 含反思]"]
     has_mistakes = False
+    success_lessons = []  # 收集成功经验
 
     for rec in records[-5:]:  # 最多取最近5条
         sdate = rec.get("date", "未知")
-        if len(sdate) >= 8:
+        if len(sdate) == 8:
             sdate = f"{sdate[:4]}-{sdate[4:6]}-{sdate[6:]}"
         sentiment = rec.get("sentiment", "")
         position = rec.get("position", "")
@@ -330,6 +331,7 @@ def _get_stock_memory_context(code):
         ret7 = rec.get("return_7d")
         lesson = rec.get("lesson", "")
         missed_signal = rec.get("missed_signal", "")
+        why_wrong = rec.get("why_wrong", "")
 
         # 构建摘要
         summary_parts = [f"情绪:{sentiment}", f"仓位:{position}"]
@@ -338,6 +340,8 @@ def _get_stock_memory_context(code):
 
         if verdict == "correct":
             summary_parts.append(f"7日后 +{ret7}% ✅准确预判")
+            if lesson:
+                success_lessons.append(lesson)
         elif verdict == "wrong":
             has_mistakes = True
             summary_parts.append(f"7日后 {ret7}% ❌判断失误")
@@ -346,20 +350,27 @@ def _get_stock_memory_context(code):
             summary_parts.append(f"7日后 +{ret7}% 🔶错失机会")
         elif verdict == "avoided":
             summary_parts.append(f"7日后 {ret7}% 🛡正确规避")
+            if lesson:
+                success_lessons.append(lesson)
         else:
             summary_parts.append("(⏳待验证)")
 
         lines.append(f"- {sdate}: {' | '.join(summary_parts)}")
 
-        # 追加反思教训
-        if lesson and verdict in ('missed', 'wrong'):
-            lines.append(f"  ⚠️ 教训：{lesson}")
-        if missed_signal and verdict in ('missed', 'wrong'):
+        # 追加反思教训（成功和失败都展示）
+        if lesson:
+            tag = "💡 成功经验" if verdict in ('correct', 'avoided') else "⚠️ 教训"
+            lines.append(f"  {tag}：{lesson}")
+        if missed_signal:
             lines.append(f"  🔍 遗漏信号：{missed_signal}")
+        if why_wrong and verdict not in ('correct', 'avoided'):
+            lines.append(f"  📋 判断复盘：{why_wrong[:120]}")
 
-    # 如果有错误记录，追加全局反思提示
+    # 全局反思提示
     if has_mistakes:
         lines.append("\n⚠️ 注意：你之前对该股有判断失误。请反思之前的遗漏信号，本次分析更加谨慎。")
+    if success_lessons:
+        lines.append(f"\n💡 成功经验（上次正确的做法，可复制）：{'；'.join(success_lessons[-2:])}")
 
     return "\n".join(lines)
 
@@ -621,6 +632,7 @@ def _run_ai_analysis(code, stock_df, candidate, market_context, mode):
         "exit_day": None,
         "verdict": None,
         "review_analysis": None,
+        "review_quality": None,
         "what_happened": None,
         "why_wrong": None,
         "missed_signal": None,
@@ -855,6 +867,7 @@ def _compute_verdict(opinion, return_7d):
 def _run_ai_review(code, record, ret7, take_profit, stop_loss, entry_price, mode):
     """调用 DeepSeek API 进行7日全路径回顾分析，产出5字段结构化复盘。"""
     import requests
+    import market_news as _mn
 
     # 读取该股票的CSV数据，提取7日OHLCV
     csv_path = os.path.join(screener.DATA_DIR, f"{code}.csv")
@@ -895,34 +908,50 @@ def _run_ai_review(code, record, ret7, take_profit, stop_loss, entry_price, mode
     exit_reason = ret7.get('exit_reason', '?') if ret7 else '?'
     exit_day = ret7.get('exit_day', 0) if ret7 else 0
 
+    # ── 加载入场日新闻+市场情绪（从归档中读取）──
+    news_block = ""
+    try:
+        archive_path = os.path.join(_mn.NEWS_ARCHIVE_DIR, f"{entry_date}.json")
+        if os.path.exists(archive_path):
+            with open(archive_path, "r", encoding="utf-8") as f:
+                entry_news = json.load(f)
+            sentiment = entry_news.get("sentiment_impact", "未知")
+            summary = entry_news.get("market_summary", "")
+            headlines = entry_news.get("news", [])[:5]
+            news_block = f"\n【入场日市场环境】\n- 当日消息面情绪：{sentiment}\n- 市场综述：{summary}\n- 重点新闻：\n"
+            for h in headlines:
+                news_block += f"  · [{h.get('source','')}] {h.get('title','')} — {h.get('ai_summary','')}\n"
+    except Exception:
+        pass  # 无归档新闻则跳过
+
     review_prompt = f"""你是A股连板回调策略的复盘专家。以下是你7天前对【{code}】的分析，现在7天过去了，请做全路径回顾。
 
 【7日前AI原始分析】
-{record.get('analysis', '(无)')}
+{record.get('analysis', '(无)')[:1500]}
 
 【入场信息】
 - 入场日：{entry_date} | 入场价：¥{entry_price:.2f}
 - 模式：{mode} | 止盈：+{take_profit*100:.0f}% | 止损：{stop_loss*100:.0f}%
-
+{news_block}
 【7日实际走势（逐日OHLCV）】
 {ohlcv_text}
 
 【客观结果】
 - 7日收益：{return_pct:+.2f}% | 退出原因：{exit_reason} | 退出日：第{exit_day}天
 
-请按以下5个字段输出回顾（每字段2-4句话，简洁有力）：
+请按以下5个字段输出回顾（每字段至少20字，2-4句话，结合具体数据）：
 
-1. what_happened：这7天实际走势简述（涨跌节奏、关键转折日、触发了什么）
-2. why_wrong：上次分析哪里判断错了/对了（复盘预测偏差的根源）
-3. missed_signal：遗漏了什么关键信号（哪些量/价/形/时的信号被忽略了）
-4. lesson：下次遇到类似情况该怎么做（可操作的教训）
+1. what_happened：这7天实际走势简述（涨跌节奏、关键转折日、触发了什么止损/止盈）
+2. why_wrong：上次分析哪里判断对了/错了（结合当日消息面和实际走势，复盘预测偏差的根源）
+3. missed_signal：遗漏了什么关键信号（量/价/形/时四个维度逐一检查）
+4. lesson：下次遇到类似情况该怎么做（具体可操作的教训，不是泛泛而谈）
 5. verdict：从以下选一个 — 准确预判 / 判断失误 / 错失机会 / 正确规避 / 偏保守 / 偏准确
 
-输出格式：
-【走势回顾】<内容>
-【判断复盘】<内容>
-【遗漏信号】<内容>
-【教训】<内容>
+输出格式（严格按要求，不要省略任何字段）：
+【走势回顾】<20字以上>
+【判断复盘】<20字以上>
+【遗漏信号】<20字以上>
+【教训】<20字以上>
 【裁决】<选一个>"""
 
     try:
@@ -988,7 +1017,23 @@ def _run_ai_review(code, record, ret7, take_profit, stop_loss, entry_price, mode
                 else:
                     record[key] = val
 
-        print(f"  ✅ {code} AI回顾完成 → {record.get('verdict', '?')}")
+        # ── 质量门槛：校验5字段完整性 ──
+        required_fields = ['what_happened', 'why_wrong', 'missed_signal', 'lesson']
+        short_fields = []
+        for f in required_fields:
+            val = record.get(f, '')
+            if not val or len(val) < 10:  # 低于10字视为不合格
+                short_fields.append(f)
+                record[f] = (val or '') + ' [⚠️ 内容过短，待下次重新分析]'
+        if len(short_fields) >= 3:
+            record['review_quality'] = 'low'
+            print(f"  ⚠️ {code} AI回顾质量低 ({len(short_fields)}字段过短)")
+        elif len(short_fields) >= 1:
+            record['review_quality'] = 'partial'
+            print(f"  ✅ {code} AI回顾完成（{len(short_fields)}字段偏短）→ {record.get('verdict', '?')}")
+        else:
+            record['review_quality'] = 'good'
+            print(f"  ✅ {code} AI回顾完成 → {record.get('verdict', '?')}")
 
     except Exception as e:
         print(f"  ⚠️ {code} AI回顾异常: {e}")
