@@ -1,24 +1,177 @@
 {
   "date": "20260616",
-  "market_summary": "今日A股市场震荡上行，科创板领涨，AI算力概念活跃。",
+  "market_summary": "今日A股市场整体活跃，创业板指领涨，成交额连续突破3万亿，AI、稀土、机器人等科技主线强势，但商品期货多数下跌，市场结构性分化明显。",
   "sentiment_impact": "偏多",
   "news": [
     {
-      "title": "科创板强势延续！AI算力双轮驱动",
+      "title": "四部门：研究实施“蓝色工匠”培育计划和“引陆下海”计划",
       "source": "东方财富",
       "url": "https://finance.eastmoney.com/",
-      "time": "2026-06-16 15:00",
-      "ai_summary": "科创板领涨，AI算力概念爆发",
-      "impact_analysis": "利好科技板块，尤其是半导体和AI算力相关个股",
+      "time": "2026-06-16 15:04:50",
+      "ai_summary": "A股成交额连续3日突破3万亿元",
+      "impact_analysis": "成交额持续高位显示市场流动性充裕，资金活跃度高，支撑指数上行，但需警惕过热风险。",
+      "affected_sectors": [
+        "券商",
+        "金融科技"
+      ],
+      "affected_stocks": [
+        "600030.SH",
+        "300059.SZ"
+      ],
+      "importance": 9
+    },
+    {
+      "title": "科创板强势延续！科创100ETF易方达（588210）涨3.03%，半导体与AI算力双轮驱动科创新高行情",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/",
+      "time": "2026-06-16 14:32:35",
+      "ai_summary": "科创板强势延续，半导体与AI算力驱动",
+      "impact_analysis": "科创板ETF大涨反映市场对科技成长股的信心，半导体和AI算力板块受资金追捧，有望带动创业板和科创板指数上行。",
       "affected_sectors": [
         "半导体",
         "AI算力"
       ],
       "affected_stocks": [
-        "688981.SH",
-        "688256.SH"
+        "588210.SH",
+        "688981.SH"
       ],
-      "importance": 9
+      "importance": 8
+    },
+    {
+      "title": "稀有金属ETF华富(561800) 4连涨，AI算力爆发部分小金属“断货”，2026年全球磷化铟缺口仍超70%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/",
+      "time": "2026-06-16 14:28:12",
+      "ai_summary": "稀有金属ETF四连涨，AI算力致小金属短缺",
+      "impact_analysis": "AI算力需求爆发导致磷化铟等小金属缺口，稀有金属板块涨停潮，利好稀土和有色金属行业，短期资金集中涌入。",
+      "affected_sectors": [
+        "稀有金属",
+        "稀土永磁"
+      ],
+      "affected_stocks": [
+        "600549.SH",
+        "600206.SH"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "理想汽车向三位管理人员授出3500万份购股权 公司市值达到万亿港元可全部兑现",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/",
+      "time": "2026-06-16 14:24:04",
+      "ai_summary": "DeepSeek完成超70亿美元AI融资",
+      "impact_analysis": "中国AI行业最大单轮融资，提振AI板块信心，利好算力、大模型相关公司，但个股影响需关注后续。",
+      "affected_sectors": [
+        "AI算力",
+        "大模型"
+      ],
+      "affected_stocks": [
+        "300750.SZ",
+        "688111.SH"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "摩根大通2026年下半年展望：AI仍是主引擎 看好风险资产",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/",
+      "time": "2026-06-16 14:27:00",
+      "ai_summary": "摩根大通看好AI为下半年主引擎",
+      "impact_analysis": "外资机构明确看好AI上游主题，增强市场对AI产业链信心，利好算力、芯片等板块，吸引外资流入。",
+      "affected_sectors": [
+        "AI算力",
+        "半导体"
+      ],
+      "affected_stocks": [
+        "002415.SZ",
+        "688981.SH"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "国内商品期货收盘 主力合约多数下跌",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/",
+      "time": "2026-06-16 15:00:01",
+      "ai_summary": "商品期货多数下跌，多晶硅跌超7%",
+      "impact_analysis": "商品期货下跌反映需求疲软，利空相关周期股如化工、有色金属，但可能缓解通胀压力，对货币政策宽松预期有利。",
+      "affected_sectors": [
+        "化工",
+        "有色金属"
+      ],
+      "affected_stocks": [
+        "600010.SH",
+        "000630.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "中国AI行业最大单轮融资：消息称 DeepSeek完成超70亿美元投资",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/",
+      "time": "2026-06-16 14:30:58",
+      "ai_summary": "人形机器人全生命周期示范应用区发布",
+      "impact_analysis": "人形机器人产业化加速，政策支持明确，利好机器人、传感器和供应链板块，长期成长空间大。",
+      "affected_sectors": [
+        "人形机器人",
+        "传感器"
+      ],
+      "affected_stocks": [
+        "300124.SZ",
+        "002747.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "两部门：2026年度农业领域机器人典型应用场景遴选工作启动",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/",
+      "time": "2026-06-16 14:33:52",
+      "ai_summary": "两部门启动农业机器人典型场景遴选",
+      "impact_analysis": "政策推动农业机器人应用，利好农机和机器人板块，但影响范围有限，属于行业细分利好。",
+      "affected_sectors": [
+        "农业机械",
+        "机器人"
+      ],
+      "affected_stocks": [
+        "603766.SH",
+        "300124.SZ"
+      ],
+      "importance": 6
+    },
+    {
+      "title": "世界黄金协会：未来12个月全球央行黄金持有量将继续增加",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/",
+      "time": "2026-06-16 14:15:11",
+      "ai_summary": "世界黄金协会预计央行黄金持有量增加",
+      "impact_analysis": "央行增持黄金趋势明确，利好黄金板块和贵金属ETF，避险情绪升温，但短期对A股指数影响有限。",
+      "affected_sectors": [
+        "黄金",
+        "贵金属"
+      ],
+      "affected_stocks": [
+        "600489.SH",
+        "002155.SZ"
+      ],
+      "importance": 6
+    },
+    {
+      "title": "国家地方共建人形机器人创新中心机器人全生命周期示范应用区发布",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/",
+      "time": "2026-06-16 14:50:42",
+      "ai_summary": "四部门支持海洋经济，实施蓝色工匠计划",
+      "impact_analysis": "政策鼓励海洋经济与AI、新材料融合，利好海洋工程、海工装备板块，但短期催化有限。",
+      "affected_sectors": [
+        "海洋经济",
+        "海工装备"
+      ],
+      "affected_stocks": [
+        "600150.SH",
+        "002353.SZ"
+      ],
+      "importance": 5
     }
   ]
 }
