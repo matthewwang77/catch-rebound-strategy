@@ -1982,22 +1982,33 @@ SCREEN_MODES = {
 DEEPSEEK_API_URL = "https://api.deepseek.com/v1/chat/completions"
 
 
-def _estimate_index_daily_pct(data_dir=None):
-    """用个股数据估算全市场日涨跌幅（中位数）。
+def _estimate_index_daily_pct(market=None, data_dir=None):
+    """用个股数据估算市场日涨跌幅（中位数）。
 
     当 Yahoo Finance 缺失某日指数数据时（如 2026-06-15），
-    用个股的当日涨跌幅中位数代替。
+    用对应市场个股的当日涨跌幅中位数代替。
+
+    market: None=全市场, 'sh'=上证(.SS), 'sz'=深证主板(.SZ非300/301), 'cyb'=创业板(300/301.SZ)
     优先读本地 stock_data/ CSVs，若不存在则回退到 stock_snapshot.csv.gz (Cloud)。
-    采样上限 2000 只以保证速度。
     返回 float（百分比）或 None。
     """
     import os as _os
     import numpy as _np
     import pandas as _pd
-    from datetime import datetime as _dt
 
     if data_dir is None:
         data_dir = DATA_DIR
+
+    def _code_to_market(code):
+        """根据股票代码判断所属市场"""
+        if code.endswith('.SS'):
+            return 'sh'
+        if code.endswith('.SZ'):
+            num = code.split('.')[0]
+            if num.startswith('300') or num.startswith('301'):
+                return 'cyb'
+            return 'sz'
+        return None
 
     returns = []
     limit = 2000
@@ -2025,12 +2036,18 @@ def _estimate_index_daily_pct(data_dir=None):
             returns.append(ret)
             count += 1
 
+    def _filename_to_code(fname):
+        return fname.replace('.csv', '')
+
     try:
         # 优先：本地 stock_data/ CSVs
         if _os.path.isdir(data_dir):
             csv_files = [f for f in _os.listdir(data_dir) if f.endswith('.csv')]
             if len(csv_files) >= 50:
                 for fname in csv_files:
+                    code = _filename_to_code(fname)
+                    if market and _code_to_market(code) != market:
+                        continue
                     try:
                         df = _pd.read_csv(_os.path.join(data_dir, fname))
                         _process_stock_df(df)
@@ -2049,7 +2066,9 @@ def _estimate_index_daily_pct(data_dir=None):
                 snap = _pd.read_csv(snapshot_path)
                 if 'code' in snap.columns and 'date' in snap.columns:
                     codes = snap['code'].unique()
-                    for code in codes[:limit]:
+                    for code in codes:
+                        if market and _code_to_market(code) != market:
+                            continue
                         stock_df = snap[snap['code'] == code]
                         _process_stock_df(stock_df)
                         if count >= limit:
@@ -2086,7 +2105,8 @@ def get_market_context():
                 prev_date = idx_dates[-2]
                 gap_days = (last_date - prev_date).days
                 if gap_days > 2:  # >2自然日 ≈ 跳过了至少1个交易日
-                    stock_pct = _estimate_index_daily_pct()
+                    _mkt = {"上证": "sh", "深证": "sz", "创业板": "cyb"}.get(name)
+                    stock_pct = _estimate_index_daily_pct(market=_mkt)
                     if stock_pct is not None:
                         pct = stock_pct
                         parts.append(f"{name}: {cur:.0f} ({pct:+.2f}% 个股推算)")

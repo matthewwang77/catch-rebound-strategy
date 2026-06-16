@@ -1266,7 +1266,8 @@ def get_market_data():
                         gap_days = (idx_dates[-1] - idx_dates[-2]).days
                         if gap_days > 2:
                             try:
-                                stock_pct = screener._estimate_index_daily_pct()
+                                _mkt = {"上证指数": "sh", "深证成指": "sz", "创业板指": "cyb"}.get(name)
+                                stock_pct = screener._estimate_index_daily_pct(market=_mkt)
                                 if stock_pct is not None:
                                     pct = round(stock_pct, 2)
                                 else:

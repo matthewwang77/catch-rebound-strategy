@@ -74,7 +74,8 @@ def get_market_summary():
                 gap_days = (last_date - prev_date).days
                 if gap_days > 2:
                     try:
-                        stock_pct = screener._estimate_index_daily_pct()
+                        _mkt = {"上证": "sh", "深证": "sz", "创业板": "cyb"}.get(name)
+                        stock_pct = screener._estimate_index_daily_pct(market=_mkt)
                         if stock_pct is not None:
                             pct = stock_pct
                             lines.append(f"{name}: {cur:.0f} ({pct:+.2f}% 推算)")
@@ -685,7 +686,8 @@ def save_results_json(results):
                 gap_days = (idx_dates[-1] - idx_dates[-2]).days
                 if gap_days > 2:
                     try:
-                        stock_pct = screener._estimate_index_daily_pct()
+                        _mkt = {"上证": "sh", "深证": "sz", "创业板": "cyb"}.get(name)
+                        stock_pct = screener._estimate_index_daily_pct(market=_mkt)
                         if stock_pct is not None:
                             pct = round(stock_pct, 2)
                         else:
@@ -698,6 +700,23 @@ def save_results_json(results):
                 market[name] = {
                     "price": round(cur, 2),
                     "pct": pct,
+                }
+            elif df is not None and len(df) == 1:
+                # 只有1天数据（如 Yahoo 缺失创业板历史）：记录价格 + 从个股推算涨幅
+                close_col = df['Close']
+                if hasattr(close_col, 'iloc'):
+                    cur = float(close_col.iloc[-1].item() if hasattr(close_col.iloc[-1], 'item') else close_col.iloc[-1])
+                else:
+                    cur = float(close_col.values[-1] if hasattr(close_col, 'values') else close_col[-1])
+                _mkt = {"上证": "sh", "深证": "sz", "创业板": "cyb"}.get(name)
+                stock_pct = None
+                try:
+                    stock_pct = screener._estimate_index_daily_pct(market=_mkt)
+                except Exception:
+                    pass
+                market[name] = {
+                    "price": round(cur, 2),
+                    "pct": round(stock_pct, 2) if stock_pct is not None else 0,
                 }
     except Exception:
         pass
