@@ -277,6 +277,64 @@ def _save_ai_memory(memory):
         json.dump(memory, f, ensure_ascii=False, indent=2)
 
 
+def _get_stock_memory_context(code):
+    """获取某只股票的历史分析上下文，用于注入 AI prompt。含自我反思。
+
+    当历史记录中有 verdict=missed 或 wrong 时，注入反思提示帮助 AI 学习。
+    返回格式化文本或 None。
+    """
+    memory = _load_ai_memory()
+    if code not in memory or not memory[code]:
+        return None
+    records = memory[code]
+    lines = ["[历史分析记录 · 含反思]"]
+    has_mistakes = False
+
+    for rec in records[-5:]:  # 最多取最近5条
+        sdate = rec.get("date", "未知")
+        if len(sdate) >= 8:
+            sdate = f"{sdate[:4]}-{sdate[4:6]}-{sdate[6:]}"
+        sentiment = rec.get("sentiment", "")
+        position = rec.get("position", "")
+        opinion = rec.get("opinion", "")
+        verdict = rec.get("verdict", "")
+        ret7 = rec.get("return_7d")
+        lesson = rec.get("lesson", "")
+        missed_signal = rec.get("missed_signal", "")
+
+        # 构建摘要
+        summary_parts = [f"情绪:{sentiment}", f"仓位:{position}"]
+        if opinion:
+            summary_parts.append(f"结论:{opinion}")
+
+        if verdict == "correct":
+            summary_parts.append(f"7日后 +{ret7}% ✅准确预判")
+        elif verdict == "wrong":
+            has_mistakes = True
+            summary_parts.append(f"7日后 {ret7}% ❌判断失误")
+        elif verdict == "missed":
+            has_mistakes = True
+            summary_parts.append(f"7日后 +{ret7}% 🔶错失机会")
+        elif verdict == "avoided":
+            summary_parts.append(f"7日后 {ret7}% 🛡正确规避")
+        else:
+            summary_parts.append("(⏳待验证)")
+
+        lines.append(f"- {sdate}: {' | '.join(summary_parts)}")
+
+        # 追加反思教训
+        if lesson and verdict in ('missed', 'wrong'):
+            lines.append(f"  ⚠️ 教训：{lesson}")
+        if missed_signal and verdict in ('missed', 'wrong'):
+            lines.append(f"  🔍 遗漏信号：{missed_signal}")
+
+    # 如果有错误记录，追加全局反思提示
+    if has_mistakes:
+        lines.append("\n⚠️ 注意：你之前对该股有判断失误。请反思之前的遗漏信号，本次分析更加谨慎。")
+
+    return "\n".join(lines)
+
+
 def _run_ai_analysis(code, stock_df, candidate, market_context, mode):
     """对单只候选股调用 DeepSeek API 进行量价形时分析，存入 ai_memory.json。"""
     import requests
@@ -411,9 +469,19 @@ def _run_ai_analysis(code, stock_df, candidate, market_context, mode):
 
 ⚠️ 最终结论和仓位建议必须出现，缺一不可。"""
 
+    # 获取该股历史记忆（含裁决+教训）
+    memory_context = _get_stock_memory_context(code)
+
     prompt = f"""{technical_data}
 
-{market_context}
+{market_context}"""
+
+    if memory_context:
+        prompt += f"""
+
+{memory_context}"""
+
+    prompt += """
 
 请按"量价形时"框架逐项分析，每项给出具体判断，最后给出：
 - 反弹概率：低(≤30%) / 中(30-60%) / 高(≥60%)
