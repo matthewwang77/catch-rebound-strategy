@@ -1,0 +1,24 @@
+{
+  "date": "20260616",
+  "market_summary": "今日A股市场震荡上行，科创板领涨，AI算力概念活跃。",
+  "sentiment_impact": "偏多",
+  "news": [
+    {
+      "title": "科创板强势延续！AI算力双轮驱动",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/",
+      "time": "2026-06-16 15:00",
+      "ai_summary": "科创板领涨，AI算力概念爆发",
+      "impact_analysis": "利好科技板块，尤其是半导体和AI算力相关个股",
+      "affected_sectors": [
+        "半导体",
+        "AI算力"
+      ],
+      "affected_stocks": [
+        "688981.SH",
+        "688256.SH"
+      ],
+      "importance": 9
+    }
+  ]
+}

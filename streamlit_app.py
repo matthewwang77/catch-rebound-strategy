@@ -17,6 +17,7 @@ import os
 import sys
 import importlib.util
 import re
+import market_news
 
 # ==================== 页面配置 ====================
 st.set_page_config(
@@ -1147,6 +1148,133 @@ def inject_design_system():
     .mem-review-label.lesson { color: #00ff88; }
     .mem-review-label.wrong  { color: #ff3366; }
 
+    /* ── 新闻总览卡片 ── */
+    .news-summary-card {
+      background: rgba(13,13,30,0.9);
+      border: 1px solid rgba(0,240,255,0.1);
+      border-radius: 10px;
+      padding: 18px 22px;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .news-summary-text {
+      flex: 1;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      color: #CCC;
+      line-height: 1.7;
+      min-width: 280px;
+    }
+    .news-sentiment-badge {
+      font-family: 'Orbitron', monospace;
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 6px;
+      white-space: nowrap;
+      border: 1px solid;
+    }
+
+    /* ── 新闻卡片 v1 ── */
+    .news-card {
+      background: rgba(13,13,30,0.85);
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      margin-bottom: 12px;
+      border-top: 1px solid rgba(255,255,255,0.04);
+      border-right: 1px solid rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      border-left: 3px solid rgba(0,240,255,0.2);
+      transition: all 0.2s ease;
+    }
+    .news-card:hover {
+      background: rgba(13,13,30,0.95);
+      border-left-color: rgba(0,240,255,0.5);
+      transform: translateX(2px);
+    }
+    .news-card-header {
+      margin-bottom: 10px;
+    }
+    .news-card-title-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .news-title-text {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #E8E8E8;
+      line-height: 1.5;
+      flex: 1;
+    }
+    .news-importance {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      color: #ffb800;
+      letter-spacing: 2px;
+      white-space: nowrap;
+      padding-top: 2px;
+    }
+    .news-source-badge {
+      font-family: 'Orbitron', monospace;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 2px 10px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    .news-time {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: #666;
+    }
+    .news-read-link {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: #00F0FF;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .news-read-link:hover {
+      color: #00FF88;
+      text-decoration: underline;
+    }
+    .news-card-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .news-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .news-sector-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      padding: 3px 10px;
+      border-radius: 4px;
+      background: rgba(0,240,255,0.06);
+      border: 1px solid rgba(0,240,255,0.15);
+      color: #00F0FF;
+      white-space: nowrap;
+    }
+    .news-stock-code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      padding: 2px 8px;
+      border-radius: 3px;
+      background: rgba(0,255,136,0.05);
+      border: 1px solid rgba(0,255,136,0.12);
+      color: #00FF88;
+      white-space: nowrap;
+    }
+
     </style>
     """
 
@@ -2220,6 +2348,7 @@ def main():
         nav_pages = [
             ("nav_stock", "📊 选股", "◆ 选股"),
             ("nav_review", "📋 复盘", "◆ 复盘"),
+            ("nav_news", "📰 新闻", "◆ 新闻"),
             ("nav_intro", "📖 介绍", "◆ 介绍"),
         ]
         for key, label, page_val in nav_pages:
@@ -2702,6 +2831,105 @@ def main():
             <div style="padding:30px 0;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:#444466">
               ◆ AI 记忆为空<br>
               <span style="font-size:0.78rem;color:#333355">在选股页对候选股票使用 AI 分析后，记录会出现在这里</span>
+            </div>
+            """, unsafe_allow_html=True)
+
+    elif page == '◆ 新闻':
+        st.header("◆ 今日市场要闻")
+
+        news_data = market_news.load_market_news()
+
+        if news_data:
+            date_str = news_data.get("date", "")
+            date_display = f"{date_str[:4]}-{date_str[4:6]}-{date_str[6:]}" if len(date_str) >= 8 else date_str
+
+            # 市场情绪总览
+            sentiment = news_data.get("sentiment_impact", "中性")
+            sentiment_color = {"偏多": "#00ff88", "偏空": "#ff3366", "中性": "#ffb800"}.get(sentiment, "#888")
+
+            st.markdown(f"""
+            <div class="section-label">◆ 新闻总览 · {date_display}</div>
+            <div class="news-summary-card">
+              <div class="news-summary-text">{news_data.get('market_summary', '')}</div>
+              <div class="news-sentiment-badge" style="background:{sentiment_color}15;border-color:{sentiment_color}40;color:{sentiment_color}">
+                ◆ 今日情绪：{sentiment}
+              </div>
+            </div>
+            """, unsafe_allow_html=True)
+
+            news_list = news_data.get("news", [])
+            st.caption(f"◆ {len(news_list)} 条重点新闻")
+
+            for i, item in enumerate(news_list):
+                title = item.get("title", "")
+                source = item.get("source", "")
+                time_str = item.get("time", "")
+                url = item.get("url", "")
+                ai_summary = item.get("ai_summary", "")
+                impact_analysis = item.get("impact_analysis", "")
+                sectors = item.get("affected_sectors", [])
+                stocks = item.get("affected_stocks", [])
+                importance = item.get("importance", 5)
+                import_display = "◆" * min(10, max(1, importance // 1))
+
+                # Source badge color
+                source_colors = {
+                    "东方财富": "#e63946",
+                    "财联社": "#457b9d",
+                    "Yahoo Finance": "#7b2fff",
+                }
+                src_color = source_colors.get(source, "#666")
+
+                # Sector pills
+                sector_pills = " ".join([
+                    f'<span class="news-sector-pill">{s}</span>'
+                    for s in sectors[:5]
+                ])
+
+                # Stock codes
+                stock_codes_display = " ".join([
+                    f'<span class="news-stock-code">{s}</span>'
+                    for s in stocks[:5]
+                ])
+
+                # Render card
+                st.markdown(f"""
+                <div class="news-card">
+                  <div class="news-card-header">
+                    <div class="news-card-title-row">
+                      <span class="news-importance">{import_display}</span>
+                      <span class="news-title-text">{title}</span>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+                      <span class="news-source-badge" style="background:{src_color}20;border:1px solid {src_color}40;color:{src_color}">{source}</span>
+                      <span class="news-time">{time_str}</span>
+                      {f'<a href="{url}" target="_blank" rel="noopener noreferrer" class="news-read-link">📄 阅读原文</a>' if url else ''}
+                    </div>
+                  </div>
+                  <div class="news-card-meta">
+                    {f'<div class="news-meta-row">{sector_pills}</div>' if sectors else ''}
+                    {f'<div class="news-meta-row">{stock_codes_display}</div>' if stocks else ''}
+                  </div>
+                </div>
+                """, unsafe_allow_html=True)
+
+                # Expandable AI analysis
+                with st.expander(f"📖 AI 分析 · {title[:30]}...", expanded=False):
+                    st.markdown(f"**一句话总结：** {ai_summary}")
+                    st.divider()
+                    st.markdown(f"**影响分析：** {impact_analysis}")
+                    if sectors:
+                        st.caption(f"影响板块：{'、'.join(sectors)}")
+                    if stocks:
+                        st.caption(f"关注个股：{'、'.join(stocks)}")
+                    if url:
+                        st.markdown(f"[阅读原文 →]({url})")
+
+        else:
+            st.markdown("""
+            <div style="padding:30px 0;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:#444466">
+              ◆ 暂无今日新闻数据<br>
+              <span style="font-size:0.78rem;color:#333355">新闻将在每日自动扫描时生成</span>
             </div>
             """, unsafe_allow_html=True)
 

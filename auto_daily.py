@@ -14,6 +14,7 @@ import sys
 import time as _time
 import importlib.util
 import concurrent.futures
+import market_news
 
 # ==================== 加载模块 ====================
 def _load_module(filepath, module_name):
@@ -501,6 +502,13 @@ def _run_ai_analysis(code, stock_df, candidate, market_context, mode):
 
 {memory_context}"""
 
+    # v7: 注入今日新闻上下文，让AI理解消息面
+    news_context = market_news.get_news_context_for_prompt()
+    if news_context:
+        prompt += f"""
+
+{news_context}"""
+
     prompt += """
 
 请按"量价形时"框架逐项分析，每项给出具体判断，最后给出：
@@ -781,7 +789,7 @@ def git_push_results():
         cwd = BASE
         # git add 结果文件
         subprocess.run(
-            ["git", "add", "latest_scan_results.json", "results_archive/"],
+            ["git", "add", "latest_scan_results.json", "results_archive/", "market_news.json", "news_archive/", "ai_memory.json", "signal_tracker.csv"],
             cwd=cwd, capture_output=True, timeout=10,
         )
         # git commit
@@ -1085,6 +1093,33 @@ def main():
 
     # 保存信号到跟踪文件（供复盘页面使用）
     _save_signals(results)
+
+    # 新闻获取与分析（失败不影响选股）
+    try:
+        print("\n📰 获取今日新闻...")
+        all_news = (
+            market_news.fetch_news_eastmoney()
+            + market_news.fetch_news_cls()
+            + market_news.fetch_news_yahoo()
+        )
+        print(f"  原始新闻: {len(all_news)} 条")
+        filtered_news = market_news._prefilter_news(all_news)
+        print(f"  关键词过滤后: {len(filtered_news)} 条")
+        deduped_news = market_news.deduplicate_news(filtered_news)
+        print(f"  去重后: {len(deduped_news)} 条")
+        if len(deduped_news) >= 5:
+            news_data = market_news.ai_select_and_analyze_news(deduped_news)
+            if news_data:
+                market_news.save_market_news(news_data)
+                n_count = len(news_data.get("news", []))
+                sentiment = news_data.get("sentiment_impact", "?")
+                print(f"  ✅ 新闻分析完成: {n_count} 条重点新闻 | 情绪: {sentiment}")
+            else:
+                print("  ⚠️ AI 新闻分析失败，使用原始新闻")
+        else:
+            print("  ⚠️ 有效新闻不足，跳过AI筛选")
+    except Exception as e:
+        print(f"  ⚠️ 新闻获取/分析失败: {e}（不影响选股）")
 
     # AI 分析（对每个候选逐只分析，单只失败不中断）
     try:

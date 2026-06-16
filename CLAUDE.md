@@ -181,10 +181,12 @@ LOOSE 在牛市中 OOS Sharpe 7.29，是真正可复现的收益。LOOSE 是唯�
 - `v5_results/` — optimization stage outputs, bootstrap CIs, sensitivity analysis, cross-period validation
 - `auto_logs/` — daily automated scan output text files
 - `requirements.txt` — minimal deps (streamlit, yfinance, pandas, numpy, requests)
-- `TASK1_算法改进.md` — pending algorithm improvement task based on HuaAn research. ⚠️ References `选股new.py` (legacy name) — apply to `选股new_v5.py`. Simpson's paradox warning included.
+- `docs/TASK1_算法改进.md` — pending algorithm improvement task based on HuaAn research. ⚠️ References `选股new.py` (legacy name) — apply to `选股new_v5.py`. Simpson's paradox warning included.
 - `DESIGN.md` — NEON VAULT v3 design system spec: color palette, typography (Orbitron + JetBrains Mono), component styles, layout principles, animation rules, dos/don'ts. Authoritative reference for all UI changes.
-- `docs/superpowers/specs/` — 6 design specs (bugfix, UI polish, review page, market regime, unified auto UI, review fix)
-- `docs/superpowers/plans/` — 2 implementation plans (NEON VAULT UI polish, unified auto UI)
+- `docs/回测数据总览.md` — Historical backtest results overview and key findings
+- `docs/superpowers/specs/` — 9 design specs
+- `docs/superpowers/plans/` — 5 implementation plans
+- `screenshots/` — Diagnostic screenshots and verification logs (not for production)
 - `.gitignore` — Excludes `stock_data/`, `candidates_*.csv`, `.agents/`, `.playwright-mcp/`, `.env`
 - `skills-lock.json` — Tracks installed skill sources and content hashes for reproducibility
 
@@ -193,7 +195,7 @@ LOOSE 在牛市中 OOS Sharpe 7.29，是真正可复现的收益。LOOSE 是唯�
 - **No database** — All data is CSV/JSON files on disk. Stock price cache in `stock_data/`, results in CSV/JSON.
 - **yfinance as sole data source** — No AKShare or other Chinese data APIs. A-share codes use `.SS` (Shanghai) and `.SZ` (Shenzhen) suffixes.
 - **Pre-extraction pattern for optimization** — `extract_all_events()` scans all stocks once to find limit-up series, then `evaluate_params_on_events()` replays different parameter sets against these events. This avoids re-downloading data for each parameter combination.
-- **`require_oversold` and `require_low_close` are permanently False** — Both filters were eliminated during grid search (Simpson's paradox: they looked good in isolation but degraded multi-factor performance). The parameters remain in the dict for future experimentation but are never activated in production modes. TASK1_算法改进.md proposes re-adding them — verify with full backtest before activating.
+- **`require_oversold` and `require_low_close` are permanently False** — Both filters were eliminated during grid search (Simpson's paradox: they looked good in isolation but degraded multi-factor performance). The parameters remain in the dict for future experimentation but are never activated in production modes. docs/TASK1_算法改进.md proposes re-adding them — verify with full backtest before activating.
 - **Automated git-push pipeline** — `auto_daily.py` commits and pushes `latest_scan_results.json` + `results_archive/` to GitHub, which triggers Streamlit Cloud to redeploy with fresh results. This decouples data freshness from app load time.
 - **AI memory closed loop** — Every AI analysis is archived, auto-verified against actual returns after 7+ days, and injected as context for future analyses of the same stock. This creates a self-improving feedback loop.
 - **Syntax check hook** — `.claude/settings.json` has a PostToolUse hook that runs `py_compile` on `.py` files after every Edit/Write. No need to manually syntax-check — the hook catches errors immediately.
