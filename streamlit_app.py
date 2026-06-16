@@ -2843,8 +2843,28 @@ def main():
             date_str = news_data.get("date", "")
             date_display = f"{date_str[:4]}-{date_str[4:6]}-{date_str[6:]}" if len(date_str) >= 8 else date_str
 
-            # 预加载名称缓存（一次，给新闻卡片用）
+            # 预加载名称缓存 + yfinance兜底缓存
             _name_cache_df = name_lookup.load_name_cache()
+            _name_fallback = {}  # 本地无→yfinance查一次，页面内复用
+
+            @st.cache_data(ttl=86400, show_spinner=False)
+            def _resolve_name(code):
+                """解析股票/ETF名称。本地CSV优先，yfinance兜底并缓存24h。"""
+                # try local CSV
+                for attempt in [code, code.replace(".SH", ".SS"), code.replace(".SS", ".SH")]:
+                    cn = name_lookup._get_cn_name(attempt)
+                    if cn:
+                        return cn
+                    m = _name_cache_df[_name_cache_df['code'] == attempt]
+                    if len(m) > 0 and m.iloc[0].get('name'):
+                        return str(m.iloc[0]['name'])
+                # yfinance fallback
+                try:
+                    import yfinance as yf
+                    info = yf.Ticker(code).info
+                    return info.get('longName') or info.get('shortName') or ''
+                except Exception:
+                    return ''
 
             # 市场情绪总览
             sentiment = news_data.get("sentiment_impact", "中性")
@@ -2889,19 +2909,10 @@ def main():
                     for s in sectors[:5]
                 ])
 
-                # Stock codes with Chinese names (fast local lookup, normalize .SH→.SS)
+                # Stock codes with Chinese names
                 stock_items = []
                 for s in stocks[:5]:
-                    name = ""
-                    for attempt in [s, s.replace(".SH", ".SS"), s.replace(".SS", ".SH")]:
-                        cn_name = name_lookup._get_cn_name(attempt)
-                        if cn_name:
-                            name = cn_name
-                            break
-                        match = _name_cache_df[_name_cache_df['code'] == attempt]
-                        if len(match) > 0 and match.iloc[0].get('name'):
-                            name = str(match.iloc[0]['name'])
-                            break
+                    name = _resolve_name(s)
                     display = f"{s} {name}" if name else s
                     stock_items.append(f'<span class="news-stock-code">{display}</span>')
                 stock_codes_display = " ".join(stock_items)
@@ -2937,11 +2948,7 @@ def main():
                     if stocks:
                         stock_names = []
                         for sc in stocks:
-                            nm = ""
-                            for attempt in [sc, sc.replace(".SH", ".SS"), sc.replace(".SS", ".SH")]:
-                                nm = name_lookup._get_cn_name(attempt)
-                                if nm:
-                                    break
+                            nm = _resolve_name(sc)
                             stock_names.append(f"{sc} {nm}" if nm else sc)
                         st.caption(f"关注个股：{'、'.join(stock_names)}")
                     if url:
