@@ -1986,7 +1986,8 @@ def _estimate_index_daily_pct(data_dir=None):
     """用个股数据估算全市场日涨跌幅（中位数）。
 
     当 Yahoo Finance 缺失某日指数数据时（如 2026-06-15），
-    用 stock_data/ 中所有个股的当日涨跌幅中位数代替。
+    用个股的当日涨跌幅中位数代替。
+    优先读本地 stock_data/ CSVs，若不存在则回退到 stock_snapshot.csv.gz (Cloud)。
     采样上限 2000 只以保证速度。
     返回 float（百分比）或 None。
     """
@@ -1998,44 +1999,63 @@ def _estimate_index_daily_pct(data_dir=None):
     if data_dir is None:
         data_dir = DATA_DIR
 
-    today_str = _dt.now().strftime('%Y-%m-%d')
-    # 前一交易日（粗略：减1天，实际由数据驱动）
     returns = []
     limit = 2000
     count = 0
 
+    def _process_stock_df(df):
+        """从单只股票的 DataFrame 提取最近两日涨跌幅"""
+        nonlocal count
+        if 'date' not in df.columns or 'close' not in df.columns:
+            return
+        dates = df['date'].astype(str).str[:10]
+        unique_dates = sorted(set(dates), reverse=True)
+        if len(unique_dates) < 2:
+            return
+        today_data = df[dates == unique_dates[0]]
+        prev_data = df[dates == unique_dates[1]]
+        if len(today_data) == 0 or len(prev_data) == 0:
+            return
+        c_today = float(today_data['close'].iloc[-1])
+        c_prev = float(prev_data['close'].iloc[-1])
+        if _np.isnan(c_today) or _np.isnan(c_prev) or c_prev <= 0:
+            return
+        ret = (c_today / c_prev - 1) * 100
+        if -11 < ret < 11:
+            returns.append(ret)
+            count += 1
+
     try:
-        for fname in _os.listdir(data_dir):
-            if not fname.endswith('.csv'):
-                continue
-            try:
-                df = _pd.read_csv(_os.path.join(data_dir, fname))
-                if 'date' not in df.columns or 'close' not in df.columns:
-                    continue
-                dates = df['date'].astype(str).str[:10]
-                # 找最近两个有效日期
-                unique_dates = sorted(set(dates), reverse=True)
-                if len(unique_dates) < 2:
-                    continue
-                today_data = df[dates == unique_dates[0]]
-                prev_data = df[dates == unique_dates[1]]
-                if len(today_data) == 0 or len(prev_data) == 0:
-                    continue
-                c_today = float(today_data['close'].iloc[-1])
-                c_prev = float(prev_data['close'].iloc[-1])
-                if _np.isnan(c_today) or _np.isnan(c_prev) or c_prev <= 0:
-                    continue
-                ret = (c_today / c_prev - 1) * 100
-                # 过滤极端值（涨跌停）
-                if -11 < ret < 11:
-                    returns.append(ret)
-                    count += 1
-                    if count >= limit:
-                        break
-            except Exception:
-                continue
+        # 优先：本地 stock_data/ CSVs
+        if _os.path.isdir(data_dir):
+            csv_files = [f for f in _os.listdir(data_dir) if f.endswith('.csv')]
+            if len(csv_files) >= 50:
+                for fname in csv_files:
+                    try:
+                        df = _pd.read_csv(_os.path.join(data_dir, fname))
+                        _process_stock_df(df)
+                        if count >= limit:
+                            break
+                    except Exception:
+                        continue
     except Exception:
         pass
+
+    # 回退：stock_snapshot.csv.gz (Cloud 环境)
+    if count < 50:
+        try:
+            snapshot_path = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), 'stock_snapshot.csv.gz')
+            if _os.path.exists(snapshot_path):
+                snap = _pd.read_csv(snapshot_path)
+                if 'code' in snap.columns and 'date' in snap.columns:
+                    codes = snap['code'].unique()
+                    for code in codes[:limit]:
+                        stock_df = snap[snap['code'] == code]
+                        _process_stock_df(stock_df)
+                        if count >= limit:
+                            break
+        except Exception:
+            pass
 
     if len(returns) < 50:
         return None
