@@ -2886,11 +2886,14 @@ def main():
                     for s in sectors[:5]
                 ])
 
-                # Stock codes
-                stock_codes_display = " ".join([
-                    f'<span class="news-stock-code">{s}</span>'
-                    for s in stocks[:5]
-                ])
+                # Stock codes with Chinese names
+                stock_items = []
+                for s in stocks[:5]:
+                    info = name_lookup.lookup_code(s)
+                    name = info.get('name', '')
+                    display = f"{s} {name}" if name else s
+                    stock_items.append(f'<span class="news-stock-code">{display}</span>')
+                stock_codes_display = " ".join(stock_items)
 
                 # Render card
                 st.markdown(f"""
