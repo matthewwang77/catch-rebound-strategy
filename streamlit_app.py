@@ -1232,7 +1232,21 @@ def get_market_data():
 
                 if has_history:
                     prev = float(df['Close'].iloc[-2])
-                    pct = round((current / prev - 1) * 100, 2)
+
+                    # 检测 Yahoo 日期缺口：若最后两点间隔 > 2 自然日，用个股推算
+                    idx_dates = df.index
+                    gap_days = (idx_dates[-1] - idx_dates[-2]).days
+                    if gap_days > 2:
+                        try:
+                            stock_pct = screener._estimate_index_daily_pct()
+                            if stock_pct is not None:
+                                pct = round(stock_pct, 2)
+                            else:
+                                pct = round((current / prev - 1) * 100, 2)
+                        except Exception:
+                            pct = round((current / prev - 1) * 100, 2)
+                    else:
+                        pct = round((current / prev - 1) * 100, 2)
                     has_delta = True
                     vol_today = float(df['Volume'].iloc[-1])
                     vol_prev = float(df['Volume'].iloc[-2])
