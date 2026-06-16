@@ -66,8 +66,27 @@ def get_market_summary():
                 else:
                     cur = float(close_col.values[-1] if hasattr(close_col, 'values') else close_col[-1])
                     prev = float(close_col.values[-2] if hasattr(close_col, 'values') else close_col[-2])
-                pct = (cur / prev - 1) * 100
-                lines.append(f"{name}: {cur:.0f} ({pct:+.2f}%)")
+
+                # 检测 Yahoo 日期缺口：若最后两点间隔 > 2 自然日，用个股推算
+                idx_dates = df.index
+                last_date = idx_dates[-1]
+                prev_date = idx_dates[-2]
+                gap_days = (last_date - prev_date).days
+                if gap_days > 2:
+                    try:
+                        stock_pct = screener._estimate_index_daily_pct()
+                        if stock_pct is not None:
+                            pct = stock_pct
+                            lines.append(f"{name}: {cur:.0f} ({pct:+.2f}% 推算)")
+                        else:
+                            pct = (cur / prev - 1) * 100
+                            lines.append(f"{name}: {cur:.0f} ({pct:+.2f}% {gap_days}日)")
+                    except Exception:
+                        pct = (cur / prev - 1) * 100
+                        lines.append(f"{name}: {cur:.0f} ({pct:+.2f}%)")
+                else:
+                    pct = (cur / prev - 1) * 100
+                    lines.append(f"{name}: {cur:.0f} ({pct:+.2f}%)")
             elif df is not None and len(df) == 1:
                 close_col = df['Close']
                 if hasattr(close_col, 'iloc'):

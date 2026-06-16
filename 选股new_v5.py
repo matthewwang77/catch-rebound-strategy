@@ -1982,6 +1982,66 @@ SCREEN_MODES = {
 DEEPSEEK_API_URL = "https://api.deepseek.com/v1/chat/completions"
 
 
+def _estimate_index_daily_pct(data_dir=None):
+    """用个股数据估算全市场日涨跌幅（中位数）。
+
+    当 Yahoo Finance 缺失某日指数数据时（如 2026-06-15），
+    用 stock_data/ 中所有个股的当日涨跌幅中位数代替。
+    采样上限 2000 只以保证速度。
+    返回 float（百分比）或 None。
+    """
+    import os as _os
+    import numpy as _np
+    import pandas as _pd
+    from datetime import datetime as _dt
+
+    if data_dir is None:
+        data_dir = DATA_DIR
+
+    today_str = _dt.now().strftime('%Y-%m-%d')
+    # 前一交易日（粗略：减1天，实际由数据驱动）
+    returns = []
+    limit = 2000
+    count = 0
+
+    try:
+        for fname in _os.listdir(data_dir):
+            if not fname.endswith('.csv'):
+                continue
+            try:
+                df = _pd.read_csv(_os.path.join(data_dir, fname))
+                if 'date' not in df.columns or 'close' not in df.columns:
+                    continue
+                dates = df['date'].astype(str).str[:10]
+                # 找最近两个有效日期
+                unique_dates = sorted(set(dates), reverse=True)
+                if len(unique_dates) < 2:
+                    continue
+                today_data = df[dates == unique_dates[0]]
+                prev_data = df[dates == unique_dates[1]]
+                if len(today_data) == 0 or len(prev_data) == 0:
+                    continue
+                c_today = float(today_data['close'].iloc[-1])
+                c_prev = float(prev_data['close'].iloc[-1])
+                if _np.isnan(c_today) or _np.isnan(c_prev) or c_prev <= 0:
+                    continue
+                ret = (c_today / c_prev - 1) * 100
+                # 过滤极端值（涨跌停）
+                if -11 < ret < 11:
+                    returns.append(ret)
+                    count += 1
+                    if count >= limit:
+                        break
+            except Exception:
+                continue
+    except Exception:
+        pass
+
+    if len(returns) < 50:
+        return None
+    return float(_np.median(returns))
+
+
 def get_market_context():
     """获取大盘环境 + 情绪档位（供 AI 分析使用）"""
     try:
@@ -1998,8 +2058,24 @@ def get_market_context():
                 else:
                     cur = float(close_col.values[-1] if hasattr(close_col, 'values') else close_col[-1])
                     prev = float(close_col.values[-2] if hasattr(close_col, 'values') else close_col[-2])
-                pct = (cur / prev - 1) * 100
-                parts.append(f"{name}: {cur:.0f} ({pct:+.2f}%)")
+
+                # 检测日期缺口：若最后两点间隔 > 2 个自然日，Yahoo 可能缺失数据
+                # 用个股真实日涨跌幅中位数代替
+                idx_dates = df.index
+                last_date = idx_dates[-1]
+                prev_date = idx_dates[-2]
+                gap_days = (last_date - prev_date).days
+                if gap_days > 2:  # >2自然日 ≈ 跳过了至少1个交易日
+                    stock_pct = _estimate_index_daily_pct()
+                    if stock_pct is not None:
+                        pct = stock_pct
+                        parts.append(f"{name}: {cur:.0f} ({pct:+.2f}% 个股推算)")
+                    else:
+                        pct = (cur / prev - 1) * 100
+                        parts.append(f"{name}: {cur:.0f} ({pct:+.2f}% {gap_days}日)")
+                else:
+                    pct = (cur / prev - 1) * 100
+                    parts.append(f"{name}: {cur:.0f} ({pct:+.2f}%)")
 
                 # 5日趋势
                 if len(df) >= 5:
