@@ -1198,7 +1198,27 @@ import name_lookup
 # ==================== 大盘数据 ====================
 @st.cache_data(ttl=300, show_spinner=False)
 def get_market_data():
-    """获取三大指数最新数据（包含涨跌幅）"""
+    """获取三大指数最新数据（包含涨跌幅）。
+
+    优先从 latest_scan_results.json 读取已修正的涨幅（处理 Yahoo 数据缺口），
+    实时价格仍从 yfinance 获取。
+    """
+    import json as _json
+
+    # 预读 JSON 中的修正涨幅
+    json_pct = {}
+    try:
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        json_path = os.path.join(base_dir, "latest_scan_results.json")
+        if os.path.exists(json_path):
+            with open(json_path) as f:
+                scan = _json.load(f)
+            market_json = scan.get("market", {})
+            for name, m in market_json.items():
+                json_pct[name] = m.get("pct", None)
+    except Exception:
+        pass
+
     indices = {
         "上证指数": "000001.SS",
         "深证成指": "399001.SZ",
@@ -1233,20 +1253,24 @@ def get_market_data():
                 if has_history:
                     prev = float(df['Close'].iloc[-2])
 
-                    # 检测 Yahoo 日期缺口：若最后两点间隔 > 2 自然日，用个股推算
-                    idx_dates = df.index
-                    gap_days = (idx_dates[-1] - idx_dates[-2]).days
-                    if gap_days > 2:
-                        try:
-                            stock_pct = screener._estimate_index_daily_pct()
-                            if stock_pct is not None:
-                                pct = round(stock_pct, 2)
-                            else:
-                                pct = round((current / prev - 1) * 100, 2)
-                        except Exception:
-                            pct = round((current / prev - 1) * 100, 2)
+                    # 优先读 JSON 中的修正涨幅（已处理 Yahoo 数据缺口）
+                    if name in json_pct and json_pct[name] is not None:
+                        pct = json_pct[name]
                     else:
-                        pct = round((current / prev - 1) * 100, 2)
+                        # 检测 Yahoo 日期缺口：若最后两点间隔 > 2 自然日，用个股推算
+                        idx_dates = df.index
+                        gap_days = (idx_dates[-1] - idx_dates[-2]).days
+                        if gap_days > 2:
+                            try:
+                                stock_pct = screener._estimate_index_daily_pct()
+                                if stock_pct is not None:
+                                    pct = round(stock_pct, 2)
+                                else:
+                                    pct = round((current / prev - 1) * 100, 2)
+                            except Exception:
+                                pct = round((current / prev - 1) * 100, 2)
+                        else:
+                            pct = round((current / prev - 1) * 100, 2)
                     has_delta = True
                     vol_today = float(df['Volume'].iloc[-1])
                     vol_prev = float(df['Volume'].iloc[-2])
