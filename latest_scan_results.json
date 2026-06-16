@@ -1,155 +1,26 @@
 {
-  "scan_time": "2026-06-16 11:11",
+  "scan_time": "2026-06-16 11:32",
   "scan_date": "20260616",
   "market": {
     "上证": {
-      "price": 4096.67,
-      "pct": 1.62
+      "price": 4098.64,
+      "pct": 1.67
     },
     "深证": {
-      "price": 15663.02,
-      "pct": 4.68
+      "price": 15705.89,
+      "pct": 4.96
     }
   },
   "regime": {
     "status": "neutral",
     "label": "4档: 发酵期 — 势头良好",
-    "avg_trend": 2.37,
+    "avg_trend": 2.54,
     "recommended_mode": "loose"
   },
   "modes": {
     "loose": {
-      "count": 16,
-      "candidates": [
-        {
-          "code": "002971.SZ",
-          "price": 60.45,
-          "signal_date": "20260604",
-          "pullback_pct": 9.3,
-          "limit_days": 2,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "000925.SZ",
-          "price": 8.35,
-          "signal_date": "20260604",
-          "pullback_pct": 28.5,
-          "limit_days": 2,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "002081.SZ",
-          "price": 4.99,
-          "signal_date": "20260529",
-          "pullback_pct": 13.7,
-          "limit_days": 5,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "000055.SZ",
-          "price": 3.74,
-          "signal_date": "20260612",
-          "pullback_pct": 9.3,
-          "limit_days": 2,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "600488.SS",
-          "price": 4.75,
-          "signal_date": "20260529",
-          "pullback_pct": 23.7,
-          "limit_days": 2,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "600078.SS",
-          "price": 14.4,
-          "signal_date": "20260604",
-          "pullback_pct": 13.8,
-          "limit_days": 2,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "601678.SS",
-          "price": 6.1,
-          "signal_date": "20260610",
-          "pullback_pct": 10.9,
-          "limit_days": 2,
-          "entity_ratio": 50.0
-        },
-        {
-          "code": "002208.SZ",
-          "price": 16.77,
-          "signal_date": "20260610",
-          "pullback_pct": 15.5,
-          "limit_days": 3,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "000518.SZ",
-          "price": 3.18,
-          "signal_date": "20260603",
-          "pullback_pct": 13.4,
-          "limit_days": 4,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "605218.SS",
-          "price": 18.36,
-          "signal_date": "20260611",
-          "pullback_pct": 20.5,
-          "limit_days": 2,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "003041.SZ",
-          "price": 45.82,
-          "signal_date": "20260601",
-          "pullback_pct": 9.5,
-          "limit_days": 2,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "000037.SZ",
-          "price": 11.47,
-          "signal_date": "20260611",
-          "pullback_pct": 8.8,
-          "limit_days": 2,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "002931.SZ",
-          "price": 71.94,
-          "signal_date": "20260605",
-          "pullback_pct": 9.7,
-          "limit_days": 2,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "000402.SZ",
-          "price": 2.71,
-          "signal_date": "20260529",
-          "pullback_pct": 11.5,
-          "limit_days": 3,
-          "entity_ratio": 67.0
-        },
-        {
-          "code": "002374.SZ",
-          "price": 3.18,
-          "signal_date": "20260608",
-          "pullback_pct": 11.0,
-          "limit_days": 2,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "001257.SZ",
-          "price": 33.56,
-          "signal_date": "20260611",
-          "pullback_pct": 11.2,
-          "limit_days": 2,
-          "entity_ratio": 100.0
-        }
-      ]
+      "count": 0,
+      "candidates": []
     }
   }
 }
