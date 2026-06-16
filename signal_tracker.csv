@@ -20,3 +20,4 @@ date,signal_date,code,mode,entry_price,pullback_pct,limit_days,name,sector
 ,20260529,000402.SZ,loose,2.71,11.5,3,金 融 街,
 ,20260608,002374.SZ,loose,3.18,11.0,2,中锐股份,
 ,20260611,001257.SZ,loose,33.56,11.2,2,盛龙股份,
+20260529,000720.SZ,,,bear,4.25,7.2,2
