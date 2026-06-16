@@ -1968,7 +1968,7 @@ def get_stock_memory_context(code):
 
     for rec in records[-5:]:  # 最多取最近5条
         sdate = rec.get("date", "未知")
-        if len(sdate) >= 8:
+        if len(sdate) == 8:
             sdate = f"{sdate[:4]}-{sdate[4:6]}-{sdate[6:]}"
         sentiment = rec.get("sentiment", "")
         position = rec.get("position", "")
@@ -2056,7 +2056,7 @@ def _build_svg_chart(cum_returns, returns_list, line_color="#00ff88"):
     for i, r in enumerate(returns_list):
         rp = r.get('return_pct', r) if isinstance(r, dict) else r
         bx = pad_l + gap * i + (gap - bar_w) / 2
-        max_abs = max(abs(v) for v in cum_returns) if cum_returns else 1
+        max_abs = max(abs(rp) for rp in returns_list) if returns_list else 1
         bh = abs(rp) / max_abs * h_bar * 0.8 if max_abs > 0 else 5
         bh = max(3, min(bh, h_bar - 4))
         color = "rgba(0,255,136,0.55)" if rp > 0 else "rgba(255,51,102,0.4)"
@@ -2288,6 +2288,34 @@ def _format_ai_badges(opinion, sentiment, position):
         f'<span class="ai-badge position">💰 {ps_label}</span>'
         f'</div>'
     )
+
+
+# ==================== 工具函数 ====================
+@st.cache_data(ttl=86400, show_spinner=False)
+def _resolve_news_stock_name(code):
+    """解析股票/ETF名称（模块级缓存）。本地CSV优先，yfinance兜底。"""
+    # try local CSV
+    cn = name_lookup._get_cn_name(code)
+    if cn:
+        return cn
+    # try .SH→.SS / .SS→.SH variants
+    for attempt in [code.replace(".SH", ".SS"), code.replace(".SS", ".SH")]:
+        cn = name_lookup._get_cn_name(attempt)
+        if cn:
+            return cn
+    # try name cache
+    cache_df = name_lookup.load_name_cache()
+    for attempt in [code, code.replace(".SH", ".SS"), code.replace(".SS", ".SH")]:
+        m = cache_df[cache_df['code'] == attempt]
+        if len(m) > 0 and m.iloc[0].get('name'):
+            return str(m.iloc[0]['name'])
+    # yfinance fallback (for ETFs etc.)
+    try:
+        import yfinance as yf
+        info = yf.Ticker(code).info
+        return info.get('longName') or info.get('shortName') or ''
+    except Exception:
+        return ''
 
 
 # ==================== 主界面 ====================
@@ -2843,29 +2871,6 @@ def main():
             date_str = news_data.get("date", "")
             date_display = f"{date_str[:4]}-{date_str[4:6]}-{date_str[6:]}" if len(date_str) >= 8 else date_str
 
-            # 预加载名称缓存 + yfinance兜底缓存
-            _name_cache_df = name_lookup.load_name_cache()
-            _name_fallback = {}  # 本地无→yfinance查一次，页面内复用
-
-            @st.cache_data(ttl=86400, show_spinner=False)
-            def _resolve_name(code):
-                """解析股票/ETF名称。本地CSV优先，yfinance兜底并缓存24h。"""
-                # try local CSV
-                for attempt in [code, code.replace(".SH", ".SS"), code.replace(".SS", ".SH")]:
-                    cn = name_lookup._get_cn_name(attempt)
-                    if cn:
-                        return cn
-                    m = _name_cache_df[_name_cache_df['code'] == attempt]
-                    if len(m) > 0 and m.iloc[0].get('name'):
-                        return str(m.iloc[0]['name'])
-                # yfinance fallback
-                try:
-                    import yfinance as yf
-                    info = yf.Ticker(code).info
-                    return info.get('longName') or info.get('shortName') or ''
-                except Exception:
-                    return ''
-
             # 市场情绪总览
             sentiment = news_data.get("sentiment_impact", "中性")
             sentiment_color = {"偏多": "#00ff88", "偏空": "#ff3366", "中性": "#ffb800"}.get(sentiment, "#888")
@@ -2912,7 +2917,7 @@ def main():
                 # Stock codes with Chinese names
                 stock_items = []
                 for s in stocks[:5]:
-                    name = _resolve_name(s)
+                    name = _resolve_news_stock_name(s)
                     display = f"{s} {name}" if name else s
                     stock_items.append(f'<span class="news-stock-code">{display}</span>')
                 stock_codes_display = " ".join(stock_items)
@@ -2948,7 +2953,7 @@ def main():
                     if stocks:
                         stock_names = []
                         for sc in stocks:
-                            nm = _resolve_name(sc)
+                            nm = _resolve_news_stock_name(sc)
                             stock_names.append(f"{sc} {nm}" if nm else sc)
                         st.caption(f"关注个股：{'、'.join(stock_names)}")
                     if url:
@@ -2966,24 +2971,59 @@ def main():
         st.header("◆ NEON VAULT · 战术终端")
         st.markdown("""
         <div class="intro-section">
-          <h3>A股连板回调策略 v6</h3>
+          <h3>A股连板回调策略 v7</h3>
           <p>识别连续涨停后缩量回调的股票，在回调企稳时介入，博取反弹收益。</p>
           <p>基于「量价形时」四维分析框架，由 DeepSeek 提供深度 AI 诊断。</p>
 
-          <h4>◆ 核心特色</h4>
+          <h4>◆ 三模式市场自适应</h4>
+          <p>三大指数（上证/深证/创业板）5日趋势自动分5档，匹配最优策略参数：</p>
+          <table style="width:100%; border-collapse:collapse; margin:12px 0;">
+            <tr style="background:rgba(0,240,255,0.08);">
+              <th style="padding:8px 12px; text-align:left;">模式</th>
+              <th style="padding:8px 12px; text-align:center;">连板</th>
+              <th style="padding:8px 12px; text-align:left;">适用市场</th>
+              <th style="padding:8px 12px; text-align:left;">核心差异</th>
+            </tr>
+            <tr>
+              <td style="padding:8px 12px;">🐻 BEAR</td>
+              <td style="padding:8px 12px; text-align:center;">≥3</td>
+              <td style="padding:8px 12px;">冰点 / 低迷</td>
+              <td style="padding:8px 12px;">浅回调≤11% + 极度缩量 + 快进快出7天</td>
+            </tr>
+            <tr style="background:rgba(0,240,255,0.04);">
+              <td style="padding:8px 12px;">🎯 STRICT</td>
+              <td style="padding:8px 12px; text-align:center;">≥3</td>
+              <td style="padding:8px 12px;">震荡 / 启动</td>
+              <td style="padding:8px 12px;">高质量低频率，严标准，WR 72%</td>
+            </tr>
+            <tr>
+              <td style="padding:8px 12px;">🏆 LOOSE</td>
+              <td style="padding:8px 12px; text-align:center;">≥3</td>
+              <td style="padding:8px 12px;">发酵 / 高潮</td>
+              <td style="padding:8px 12px;">最泛化最稳健，WR 93%，OOS &gt; IS 🏆</td>
+            </tr>
+          </table>
+          <p style="font-size:0.85em; opacity:0.7;">※ BULL模式已在v7移除（IS夏普19.56→OOS 1.22，严重过拟合）</p>
+
+          <h4>◆ 核心功能</h4>
           <ul>
-            <li><strong>市场自适应</strong> — 三大指数5日趋势自动检测，熊市/震荡/牛市切换最优参数</li>
-            <li><strong>全自动 AI 分析</strong> — 所有候选股票自动深度诊断，无需手动触发</li>
-            <li><strong>AI 记忆闭环</strong> — 每笔分析存档，3天后自动验证收益，历史上下文注入未来分析</li>
-            <li><strong>三阶段参数优化</strong> — ~200k组合 × 多周期交叉验证 × Bootstrap统计检验</li>
-            <li><strong>全自动日频扫描</strong> — 每交易日4次定时扫描 + git自动推送</li>
+            <li><strong>市场自适应</strong> — 三大指数5日趋势自动分5档，熊市/震荡/牛市切换最优参数</li>
+            <li><strong>全自动 AI 分析</strong> — 所有候选股票自动深度诊断（量价形时四维框架），无需手动触发</li>
+            <li><strong>AI 记忆闭环</strong> — 7天自动验证收益，裁决矩阵（正确/错误/遗漏/避开），历史上下文注入</li>
+            <li><strong>📰 每日新闻</strong> — 东方财富 + 财联社 + Yahoo 三源汇聚，AI 精选 Top 10 + 影响分析</li>
+            <li><strong>历史回填 v7</strong> — 2025年5月至今全量历史数据回填，去重 + 收益验证 + 结构化复盘</li>
+            <li><strong>全自动日频扫描</strong> — 每交易日4次定时扫描 + git自动推送 + Streamlit Cloud自动部署</li>
           </ul>
 
           <h4>◆ 数据来源</h4>
-          <p>yfinance (Yahoo Finance) · ~5,200只A股 · 本地CSV缓存</p>
+          <p>股价：yfinance · ~5,200只A股 · 本地CSV缓存</p>
+          <p>新闻：东方财富(AKShare) · 财联社(CLS API) · Yahoo Finance</p>
 
           <h4>◆ 扫描时间</h4>
           <p>每个交易日 10:00 / 11:30 / 14:00 / 15:00</p>
+
+          <h4>◆ 参数优化</h4>
+          <p>三阶段漏斗优化（~200k组合）→ 多周期交叉验证 → Bootstrap统计检验 → Walk-forward分析</p>
         </div>
         """, unsafe_allow_html=True)
 

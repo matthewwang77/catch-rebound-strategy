@@ -294,8 +294,16 @@ def _load_ai_memory():
 
 
 def _save_ai_memory(memory):
-    with open(AI_MEMORY_FILE, "w", encoding="utf-8") as f:
-        json.dump(memory, f, ensure_ascii=False, indent=2)
+    """原子写入 ai_memory.json，防止进程崩溃导致文件截断丢失全部记忆。"""
+    tmp_path = AI_MEMORY_FILE + ".tmp"
+    try:
+        with open(tmp_path, "w", encoding="utf-8") as f:
+            json.dump(memory, f, ensure_ascii=False, indent=2, default=str)
+        os.replace(tmp_path, AI_MEMORY_FILE)
+    except Exception:
+        if os.path.exists(tmp_path):
+            os.remove(tmp_path)
+        raise
 
 
 def _get_stock_memory_context(code):
@@ -764,10 +772,12 @@ def save_results_json(results):
             ],
         }
 
-    # 保存最新结果（项目根目录）
+    # 保存最新结果（项目根目录）— 原子写入防截断
     latest_path = os.path.join(BASE, "latest_scan_results.json")
-    with open(latest_path, "w", encoding="utf-8") as f:
+    tmp_path = latest_path + ".tmp"
+    with open(tmp_path, "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
+    os.replace(tmp_path, latest_path)
 
     # 保存历史归档
     archive_dir = os.path.join(BASE, "results_archive")
@@ -787,9 +797,13 @@ def git_push_results():
     import subprocess
     try:
         cwd = BASE
-        # git add 结果文件
+        # git add 结果文件（仅添加存在的文件，避免 git add 不存在的路径导致 fatal error）
+        add_targets = ["latest_scan_results.json", "results_archive/"]
+        for extra in ["market_news.json", "news_archive/", "ai_memory.json", "signal_tracker.csv"]:
+            if os.path.exists(os.path.join(cwd, extra)):
+                add_targets.append(extra)
         subprocess.run(
-            ["git", "add", "latest_scan_results.json", "results_archive/", "market_news.json", "news_archive/", "ai_memory.json", "signal_tracker.csv"],
+            ["git", "add"] + add_targets,
             cwd=cwd, capture_output=True, timeout=10,
         )
         # git commit
@@ -801,7 +815,7 @@ def git_push_results():
         # 如果有变更才 push
         if b"nothing to commit" not in result.stdout and b"nothing to commit" not in result.stderr:
             subprocess.run(
-                ["git", "push", "origin", subprocess.run(["git", "rev-parse", "--abbrev-ref", "HEAD"], capture_output=True).stdout.decode().strip() or "master"],
+                ["git", "push", "origin", subprocess.run(["git", "rev-parse", "--abbrev-ref", "HEAD"], cwd=cwd, capture_output=True).stdout.decode().strip() or "master"],
                 cwd=cwd, capture_output=True, timeout=30,
             )
             print("✅ Git push 完成，Streamlit Cloud 将自动更新")
@@ -1086,13 +1100,25 @@ def main():
         print(f"⚠️ 后台维护失败: {e}（不影响选股）")
 
     # 选股
-    results, all_data = run_auto_mode()
+    try:
+        results, all_data = run_auto_mode()
+    except Exception as e:
+        print(f"❌ 选股失败: {e}")
+        import traceback
+        traceback.print_exc()
+        return
 
     # 保存 JSON（供 Streamlit 读取）
-    save_results_json(results)
+    try:
+        save_results_json(results)
+    except Exception as e:
+        print(f"⚠️ JSON保存失败: {e}（继续后续步骤）")
 
     # 保存信号到跟踪文件（供复盘页面使用）
-    _save_signals(results)
+    try:
+        _save_signals(results)
+    except Exception as e:
+        print(f"⚠️ 信号保存失败: {e}（继续后续步骤）")
 
     # 新闻获取与分析（失败不影响选股）
     try:

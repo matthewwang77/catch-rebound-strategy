@@ -64,12 +64,16 @@ def fetch_news_eastmoney() -> list[dict]:
             if time_str and today_str not in time_str:
                 continue
 
+            # 尝试提取 AKShare 返回的真实链接，无链接时用主页
+            article_url = str(row.get("链接", row.get("url", ""))).strip()
+            if not article_url:
+                article_url = "https://finance.eastmoney.com/"
             results.append({
                 "title": title,
                 "summary": summary,
                 "time": time_str,
                 "source": "东方财富",
-                "url": "https://finance.eastmoney.com/",
+                "url": article_url,
             })
 
         return results[:60]  # 上限60条
@@ -231,11 +235,16 @@ def deduplicate_news(news_list: list[dict]) -> list[dict]:
         return news_list
 
     def _tokenize(title: str) -> set[str]:
-        """简单分词：按2-gram切割中文字符。"""
+        """简单分词：中文按2-gram，英文按单词。"""
         chars = re.findall(r"[一-鿿]+", title)
         text = "".join(chars)
-        # 2-gram
-        grams = {text[i : i + 2] for i in range(len(text) - 1)} if len(text) >= 2 else {text}
+        if len(text) >= 2:
+            # 中文：2-gram
+            grams = {text[i : i + 2] for i in range(len(text) - 1)}
+        else:
+            # 英文/无中文：按单词分词（避免空集合导致纯英文标题全部被判重复）
+            words = re.findall(r"[a-zA-Z0-9]+", title.lower())
+            grams = set(words) if words else {title[:20]}
         return grams
 
     # 按摘要长度降序排列（优先保留内容更丰富的）
@@ -372,7 +381,7 @@ importance 1-10: 10=超级重磅（降息降准/重大政策转向），5=中等
                 result = json.loads(content)
             except json.JSONDecodeError:
                 # 尝试从 markdown 代码块提取
-                match = re.search(r"```(?:json)?\s*(\{.*?\})\s*```", content, re.DOTALL)
+                match = re.search(r"```(?:json)?\s*(\{.*\})\s*```", content, re.DOTALL)
                 if match:
                     result = json.loads(match.group(1))
                 else:

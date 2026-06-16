@@ -555,9 +555,11 @@ for mode_name in MODES_TO_TEST:
 
     # 简短摘要
     cv_summary = "—"
-    if pt:
-        cv_summary = f"p={pt['p_value']:.3f}"
-    pt_summary = pt['conclusion'] if pt else "—"
+    if cv:
+        oos_sharpes = [v['sharpe'] for v in cv.values() if v and not v.get('is_in_sample')]
+        if oos_sharpes:
+            cv_summary = f"OOS {np.mean(oos_sharpes):.2f}"
+    pt_summary = f"p={pt['p_value']:.3f}" if pt else "—"
     bs_summary = f"[{bs['sharpe']['lower']:.1f},{bs['sharpe']['upper']:.1f}]" if bs else "—"
     wf_summary = wf['verdict'] if wf else "—"
     sens_summary = f"{sum(1 for s in sens if s['sensitivity']>0.15)}关键" if sens else "—"

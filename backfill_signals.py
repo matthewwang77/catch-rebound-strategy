@@ -226,7 +226,7 @@ def main():
                 if not signal_date:
                     signal_date = scan_date
 
-                key = (code, scan_date, round(float(price), 2), sig.get('mode', 'unknown'))
+                key = (code, scan_date, round(float(price), 2), mode)
                 if key not in all_signals:
                     all_signals[key] = {
                         "date": scan_date,           # ✅ 扫描日 = 入场日期

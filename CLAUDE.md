@@ -65,7 +65,7 @@ Monolithic strategy file containing the entire pipeline. Key sections in order:
 6. **Backtest** (line 644) — `run_backtest()` simulates holding periods with take-profit/stop-loss exits, record-by-record.
 7. **v5 optimization engine** (line 760) — `extract_all_events()` pre-extracts all limit-up events to avoid redundant scanning. Three-stage funnel: `run_stage_coarse()` → `run_stage_fine()` → `run_stage_ultrafine()`. Each stage narrows parameter ranges around best performers. Uses `cluster_top_params()` for k-means clustering of top results between stages.
 8. **Statistical tests** (line 1496) — `cross_period_validation()`, `bootstrap_confidence()`, `permutation_test()`, `parameter_sensitivity()`, `walkforward_analysis_v5()`.
-9. **SCREEN_MODES dict** (line 1849) — Two production modes with hardcoded optimal params from v5 optimization. Both have `require_oversold` and `require_low_close` set to `False` (eliminated during grid search — Simpson's paradox). LOOSE is a superset of STRICT (same `pullback_ratio_max`=0.40 and `volume_shrink_ratio`=0.67).
+9. **SCREEN_MODES dict** (line 1849) — Three production modes (BEAR/STRICT/LOOSE) with v7 re-optimized params. All three require ≥3 limit-ups. All have `require_oversold` and `require_low_close` set to `False` (eliminated during grid search — Simpson's paradox).
 10. **`get_market_context()`** (line 1905) — Computes index returns and market sentiment level for AI analysis context. Returns a dict with `sentiment_tier` used by the Streamlit AI prompt.
 11. **`_screen_single_stock()`** (line 1967) — Single-stock screening function used by both `screen_today()` and `auto_daily.py`'s `run_all_modes()`.
 12. **CLI entry point** (line 2050) — argparse-style manual parsing of `sys.argv`.
@@ -107,7 +107,7 @@ Dark-themed "NEON VAULT" Streamlit dashboard with two pages: 选股 (screening) 
 **AI Memory System (line 1612):**
 - `ai_memory.json` — Persistent store of historical AI analyses, keyed by stock code. Each record includes: date, sentiment, position advice, opinion, entry price, pullback%, limit days, mode, precomputed returns (3d/5d/7d), exit reason, verdict, and structured review fields.
 - `save_ai_analysis_record()` — Archives each analysis with date, sentiment, position advice, opinion. Regex-extracts structured fields (仓位建议, 情绪档位, 最终结论) from free-text AI response. Deduplicates by (code, date).
-- `auto_verify_memory()` — After ≥7 days, backfills actual returns (3d/5d/7d) via `check_return_v5()` and sets verdict. Also performs retroactive fix-up on old records missing sentiment extraction.
+- `auto_verify_memory()` — After ≥7 days, backfills actual returns (3d/5d/7d) via `check_return_v5_local()` (imported from `backfill_signals.py`) and sets verdict. Also performs retroactive fix-up on old records missing sentiment extraction.
 - `get_stock_memory_context()` — Builds a formatted history block for the most recent 5 records, injected into future AI prompts as `[历史分析记录]`. When history contains wrong/missed verdicts, injects reflection prompts to help AI learn from past mistakes.
 - **Verdict matrix (裁决矩阵)**: 6 verdict types — `correct` (AI was right, made money), `wrong` (AI was wrong, lost money), `missed` (good stock AI missed), `avoided` (correctly avoided a loser), `noted_up`/`noted_down` (neutral observation). Verdict badges are color-coded in the UI (green=correct, red=wrong, amber=missed, purple=noted).
 - **7-day structured review**: Each record can include `what_happened` (走势回顾), `why_wrong` (判断复盘), `missed_signal` (遗漏信号), and `lesson` (教训) fields for post-mortem analysis.
@@ -117,7 +117,7 @@ Dark-themed "NEON VAULT" Streamlit dashboard with two pages: 选股 (screening) 
 - Fallback: if `ai_memory.json` lacks a record, checks `st.session_state` for any live analysis result (legacy compatibility).
 
 **Review page (复盘) (line 1497 & 1921):**
-- `check_return_v5()` — Simulates exit with take-profit/stop-loss for a given holding period. Returns dict with `return_pct`, `exit_reason`, `exit_date`, `hold_days_actual`.
+- `check_return_v5_local()` (in `backfill_signals.py`) — Simulates exit with take-profit/stop-loss for a given holding period. Returns dict with `return_pct`, `exit_reason`, `exit_date`, `hold_days_actual`. Imported by `auto_daily.py` for AI memory verification.
 - `compute_performance()` — Computes aggregate performance from `ai_memory.json` precomputed returns (7d). Supports mode filter and lookback window. No longer calls yfinance live.
 - `save_signals()` — Appends candidate signals to `signal_tracker.csv`.
 - Dynamically imports `选股new_v5` as `screener` module via `_load_module()`.

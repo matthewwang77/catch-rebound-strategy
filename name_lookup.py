@@ -15,7 +15,7 @@ CN_NAMES_FILE = os.path.join(BASE, "stock_names_cn.csv")
 _cn_names = {}
 if os.path.exists(CN_NAMES_FILE):
     try:
-        df_cn = pd.read_csv(CN_NAMES_FILE)
+        df_cn = pd.read_csv(CN_NAMES_FILE, encoding="utf-8-sig")
         for _, row in df_cn.iterrows():
             _cn_names[row['code']] = str(row['name'])
     except Exception:
@@ -31,7 +31,7 @@ def load_name_cache():
     """加载缓存的名称/板块数据"""
     if os.path.exists(NAME_CACHE_FILE) and os.path.getsize(NAME_CACHE_FILE) > 10:
         try:
-            df = pd.read_csv(NAME_CACHE_FILE)
+            df = pd.read_csv(NAME_CACHE_FILE, encoding="utf-8-sig")
             if len(df) > 0:
                 return df
         except Exception:

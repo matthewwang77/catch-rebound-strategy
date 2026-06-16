@@ -594,7 +594,7 @@ def check_pullback_conditions(df_stock, limit_series_item, current_idx):
     if current_price < ma: return None
     if PARAMS['signal_today_yang']:
         if df_stock.iloc[current_idx]['close'] <= df_stock.iloc[current_idx]['open']: return None
-    if current_idx >= 1:
+    if current_idx >= 1 and PARAMS.get('signal_volume_expand', 0) > 0:
         today_vol = df_stock.iloc[current_idx]['volume']
         yesterday_vol = df_stock.iloc[current_idx - 1]['volume']
         if yesterday_vol > 0 and today_vol / yesterday_vol < PARAMS['signal_volume_expand']: return None
@@ -712,7 +712,7 @@ def run_backtest(start_date, end_date, quiet=False):
             last_limit_idx = group[-1]
             highest_price = max(df_stock.iloc[i]['high'] for i in group)
             max_search = PARAMS.get('max_pullback_days', 20) + 1
-            for check_idx in range(last_limit_idx + PARAMS.get('min_pullback_days', 2) + 1, min(last_limit_idx + max_search, len(df_stock))):
+            for check_idx in range(last_limit_idx + PARAMS.get('min_pullback_days', 2), min(last_limit_idx + max_search, len(df_stock))):
                 current_price = df_stock.iloc[check_idx]['close']
                 pullback_ratio = (highest_price - current_price) / highest_price
                 if pullback_ratio < PARAMS['pullback_ratio_min'] or pullback_ratio > PARAMS['pullback_ratio_max']:
@@ -1118,10 +1118,10 @@ def run_stage_coarse(all_events, start_date, end_date):
         if (i + 1) % 100 == 0:
             elapsed = time.time() - start_time
             remaining = (total_combos - i - 1) * (elapsed / (i + 1))
+            status = f"最佳: {best_score:.4f}" if best_signals is not None else "暂无有效信号"
             print(f"  [{i+1}/{total_combos} {((i+1)/total_combos)*100:.0f}%] "
-                  f"剩余 {remaining/60:.0f}min | 最佳: {best_score:.4f} "
-                  f"(WR {best_signals['return'].gt(0).sum()/len(best_signals):.0%} "
-                  f"Sharpe {metrics.get('sharpe',0):.1f})")
+                  f"剩余 {remaining/60:.0f}min | {status} "
+                  f"(Sharpe {metrics.get('sharpe',0):.1f})")
 
     total_time = time.time() - start_time
     print(f"\n✅ Stage 1 完成！耗时: {total_time/60:.1f} 分钟")
