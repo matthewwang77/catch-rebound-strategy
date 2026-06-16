@@ -241,37 +241,24 @@ def _save_signals(results):
 
     df_new = pd.DataFrame(new_rows)
 
-    # 读取已有，去重: 同一(code, entry_price) 20天内不重复
+    # 读取已有，去重: 同日同代码同模式不重复（不再用20天窗口去重）
     if os.path.exists(tracker_path):
         df_old = pd.read_csv(tracker_path)
         if len(df_old) > 0:
             df_old['signal_date'] = df_old['signal_date'].astype(str)
+            existing_keys = set()
+            for _, row in df_old.iterrows():
+                key = (str(row['signal_date']), row['code'], str(row.get('mode', '')))
+                existing_keys.add(key)
             keep_rows = []
             for _, row in df_new.iterrows():
-                sig_date = str(row['signal_date'])
-                code = row['code']
-                entry_price = round(float(row['entry_price']), 2)
-                try:
-                    sig_dt = datetime.strptime(sig_date, '%Y%m%d')
-                    cutoff_dt = sig_dt - timedelta(days=20)
-                    cutoff_str = cutoff_dt.strftime('%Y%m%d')
-                except ValueError:
-                    keep_rows.append(True)
-                    continue
-                in_window = df_old[
-                    (df_old['code'] == code) &
-                    (df_old['entry_price'].round(2) == entry_price) &
-                    (df_old['signal_date'] >= cutoff_str) &
-                    (df_old['signal_date'] <= sig_date)
-                ]
-                keep_rows.append(len(in_window) == 0)
+                key = (str(row['signal_date']), row['code'], str(row.get('mode', '')))
+                keep_rows.append(key not in existing_keys)
             df_new = df_new[keep_rows]
             if len(df_new) == 0:
                 print("📁 信号无新增（全部重复）")
                 return
-            df_combined = pd.concat([df_old, df_new], ignore_index=True)
-        else:
-            df_combined = df_new
+        df_combined = pd.concat([df_old, df_new], ignore_index=True)
     else:
         df_combined = df_new
 
@@ -339,17 +326,17 @@ def _get_stock_memory_context(code):
             summary_parts.append(f"结论:{opinion}")
 
         if verdict == "correct":
-            summary_parts.append(f"7日后 +{ret7}% ✅准确预判")
+            summary_parts.append(f"策略 +{ret7}% ✅准确预判")
             if lesson:
                 success_lessons.append(lesson)
         elif verdict == "wrong":
             has_mistakes = True
-            summary_parts.append(f"7日后 {ret7}% ❌判断失误")
+            summary_parts.append(f"策略 {ret7}% ❌判断失误")
         elif verdict == "missed":
             has_mistakes = True
-            summary_parts.append(f"7日后 +{ret7}% 🔶错失机会")
+            summary_parts.append(f"策略 +{ret7}% 🔶错失机会")
         elif verdict == "avoided":
-            summary_parts.append(f"7日后 {ret7}% 🛡正确规避")
+            summary_parts.append(f"策略 {ret7}% 🛡正确规避")
             if lesson:
                 success_lessons.append(lesson)
         else:

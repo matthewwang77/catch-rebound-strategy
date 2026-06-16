@@ -1985,15 +1985,15 @@ def get_stock_memory_context(code):
             summary_parts.append(f"结论:{opinion}")
 
         if verdict == "correct":
-            summary_parts.append(f"7日后 +{ret7}% ✅准确预判")
+            summary_parts.append(f"策略 +{ret7}% ✅准确预判")
         elif verdict == "wrong":
             has_mistakes = True
-            summary_parts.append(f"7日后 {ret7}% ❌判断失误")
+            summary_parts.append(f"策略 {ret7}% ❌判断失误")
         elif verdict == "missed":
             has_mistakes = True
-            summary_parts.append(f"7日后 +{ret7}% 🔶错失机会")
+            summary_parts.append(f"策略 +{ret7}% 🔶错失机会")
         elif verdict == "avoided":
-            summary_parts.append(f"7日后 {ret7}% 🛡正确规避")
+            summary_parts.append(f"策略 {ret7}% 🛡正确规避")
         else:
             summary_parts.append("(⏳待验证)")
 
@@ -2655,7 +2655,7 @@ def main():
             <div class="section-label">◆ 绩效总览 (近30天 · {hold_info})</div>
             <div class="perf-panel-v2">
               <div class="perf-hero">
-                <div class="perf-hero-label">累计收益</div>
+                <div class="perf-hero-label">策略收益</div>
                 <div class="perf-hero-value" style="color:{ret_color}">{perf['total_return']:+.1f}%</div>
                 {f'<div class="perf-hero-sub" style="color:#00ff88;background:rgba(0,255,136,0.08);border:1px solid rgba(0,255,136,0.15)">{win_label}</div>' if win_label else ''}
               </div>
@@ -2775,11 +2775,17 @@ def main():
                 name_info = stock_names.get(code, {})
                 stock_name = name_info.get('name', '') if isinstance(name_info, dict) else str(name_info) if name_info else ''
 
-                # 收益显示
+                # 收益显示（策略模拟盈亏: 止盈/止损/到期）
                 if ret7_val is not None:
                     ret_color_7d = "#00ff88" if ret7_val > 0 else ("#ff3366" if ret7_val < 0 else "#888")
-                    ret_display = f'<span style="color:{ret_color_7d};font-weight:600">7d {ret7_val:+.1f}%</span>'
-                    exit_display = f'<span style="color:#888">{exit_reason} Day{exit_day}</span>' if exit_reason else ''
+                    # 退出原因 → emoji
+                    exit_emoji_map = {"止盈": "🎯", "止损": "🛑", "到期": "⏰", "到期(截断)": "⏰"}
+                    exit_emoji = exit_emoji_map.get(exit_reason, "")
+                    ret_display = f'<span style="color:{ret_color_7d};font-weight:600">策略 {ret7_val:+.1f}%</span>'
+                    if exit_reason:
+                        exit_display = f'<span style="color:#888">{exit_emoji}{exit_reason} Day{exit_day}</span>'
+                    else:
+                        exit_display = ''
                 else:
                     ret_display = '<span style="color:#666">⏳ 待验证</span>'
                     exit_display = ''
