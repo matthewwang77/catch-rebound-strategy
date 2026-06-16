@@ -679,9 +679,25 @@ def save_results_json(results):
                 else:
                     cur = float(close_col.values[-1] if hasattr(close_col, 'values') else close_col[-1])
                     prev = float(close_col.values[-2] if hasattr(close_col, 'values') else close_col[-2])
+
+                # 检测 Yahoo 日期缺口
+                idx_dates = df.index
+                gap_days = (idx_dates[-1] - idx_dates[-2]).days
+                if gap_days > 2:
+                    try:
+                        stock_pct = screener._estimate_index_daily_pct()
+                        if stock_pct is not None:
+                            pct = round(stock_pct, 2)
+                        else:
+                            pct = round((cur / prev - 1) * 100, 2)
+                    except Exception:
+                        pct = round((cur / prev - 1) * 100, 2)
+                else:
+                    pct = round((cur / prev - 1) * 100, 2)
+
                 market[name] = {
                     "price": round(cur, 2),
-                    "pct": round((cur / prev - 1) * 100, 2),
+                    "pct": pct,
                 }
     except Exception:
         pass
