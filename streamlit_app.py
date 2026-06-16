@@ -1840,36 +1840,22 @@ def save_signals(all_candidates):
 
     df_new = pd.DataFrame(new_rows)
 
-    # 读取已有记录，去重 — 同一(code, entry_price)在20天窗口内不重复
+    # 读取已有记录，去重: 同日同代码同模式不重复
     if os.path.exists(SIGNAL_FILE):
         df_old = pd.read_csv(SIGNAL_FILE)
-        df_old['signal_date'] = df_old['signal_date'].astype(str)
-
-        keep_rows = []
-        for _, row in df_new.iterrows():
-            sig_date = str(row['signal_date'])
-            code = row['code']
-
-            try:
-                entry_price = round(float(row['entry_price']), 2)
-                sig_dt = datetime.strptime(sig_date, '%Y%m%d')
-                cutoff_dt = sig_dt - timedelta(days=20)
-                cutoff_str = cutoff_dt.strftime('%Y%m%d')
-            except ValueError:
-                keep_rows.append(True)
-                continue
-
-            in_window = df_old[
-                (df_old['code'] == code) &
-                (df_old['entry_price'].round(2) == entry_price) &
-                (df_old['signal_date'] >= cutoff_str) &
-                (df_old['signal_date'] <= sig_date)
-            ]
-            keep_rows.append(len(in_window) == 0)
-
-        df_new = df_new[keep_rows]
-        if len(df_new) == 0:
-            return
+        if len(df_old) > 0:
+            df_old['signal_date'] = df_old['signal_date'].astype(str)
+            existing_keys = set()
+            for _, row in df_old.iterrows():
+                key = (str(row['signal_date']), row['code'], str(row.get('mode', '')))
+                existing_keys.add(key)
+            keep_rows = []
+            for _, row in df_new.iterrows():
+                key = (str(row['signal_date']), row['code'], str(row.get('mode', '')))
+                keep_rows.append(key not in existing_keys)
+            df_new = df_new[keep_rows]
+            if len(df_new) == 0:
+                return
         df_combined = pd.concat([df_old, df_new], ignore_index=True)
     else:
         df_combined = df_new
