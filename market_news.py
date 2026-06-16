@@ -321,7 +321,7 @@ def ai_select_and_analyze_news(news_list: list[dict]) -> dict | None:
       "ai_summary": "一句话概括（20字以内）",
       "impact_analysis": "对A股市场的影响分析（80字以内）",
       "affected_sectors": ["板块1", "板块2"],
-      "affected_stocks": ["000001.SZ", "600000.SH"],
+      "affected_stocks": ["000001.SZ", "600000.SS"],
       "importance": 9
     }}
   ]

@@ -2843,6 +2843,9 @@ def main():
             date_str = news_data.get("date", "")
             date_display = f"{date_str[:4]}-{date_str[4:6]}-{date_str[6:]}" if len(date_str) >= 8 else date_str
 
+            # 预加载名称缓存（一次，给新闻卡片用）
+            _name_cache_df = name_lookup.load_name_cache()
+
             # 市场情绪总览
             sentiment = news_data.get("sentiment_impact", "中性")
             sentiment_color = {"偏多": "#00ff88", "偏空": "#ff3366", "中性": "#ffb800"}.get(sentiment, "#888")
@@ -2886,11 +2889,19 @@ def main():
                     for s in sectors[:5]
                 ])
 
-                # Stock codes with Chinese names
+                # Stock codes with Chinese names (fast local lookup, normalize .SH→.SS)
                 stock_items = []
                 for s in stocks[:5]:
-                    info = name_lookup.lookup_code(s)
-                    name = info.get('name', '')
+                    name = ""
+                    for attempt in [s, s.replace(".SH", ".SS"), s.replace(".SS", ".SH")]:
+                        cn_name = name_lookup._get_cn_name(attempt)
+                        if cn_name:
+                            name = cn_name
+                            break
+                        match = _name_cache_df[_name_cache_df['code'] == attempt]
+                        if len(match) > 0 and match.iloc[0].get('name'):
+                            name = str(match.iloc[0]['name'])
+                            break
                     display = f"{s} {name}" if name else s
                     stock_items.append(f'<span class="news-stock-code">{display}</span>')
                 stock_codes_display = " ".join(stock_items)
@@ -2924,7 +2935,15 @@ def main():
                     if sectors:
                         st.caption(f"影响板块：{'、'.join(sectors)}")
                     if stocks:
-                        st.caption(f"关注个股：{'、'.join(stocks)}")
+                        stock_names = []
+                        for sc in stocks:
+                            nm = ""
+                            for attempt in [sc, sc.replace(".SH", ".SS"), sc.replace(".SS", ".SH")]:
+                                nm = name_lookup._get_cn_name(attempt)
+                                if nm:
+                                    break
+                            stock_names.append(f"{sc} {nm}" if nm else sc)
+                        st.caption(f"关注个股：{'、'.join(stock_names)}")
                     if url:
                         st.markdown(f"[阅读原文 →]({url})")
 
