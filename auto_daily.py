@@ -1068,9 +1068,13 @@ def _auto_maintenance():
             # 只做回顾（≥持有期天数后才触发）
             if days_ago < mp.get('hold_days', 7):
                 continue
-            if r.get('verified'):
-                continue
             if r.get('sentiment') == '历史回填':
+                continue
+
+            # 已验证 + 已回顾 → 跳过；已验证但未回顾 → 补跑回顾
+            already_verified = r.get('verified', False)
+            already_reviewed = bool(r.get('review_analysis') or r.get('what_happened'))
+            if already_verified and already_reviewed:
                 continue
 
             entry_price = r.get('entry_price', 0)
@@ -1079,17 +1083,26 @@ def _auto_maintenance():
             tp = mp.get('take_profit', 0.05)
             sl = mp.get('stop_loss', -0.10)
 
-            # 本地 CSV 计算7日收益
-            from backfill_signals import check_return_v5_local
-            ret7 = check_return_v5_local(code, date, entry_price, mp.get('hold_days', 7), tp, sl, screener.DATA_DIR)
+            # 本地 CSV 计算7日收益（仅在未验证时计算）
+            if not already_verified:
+                from backfill_signals import check_return_v5_local
+                ret7 = check_return_v5_local(code, date, entry_price, mp.get('hold_days', 7), tp, sl, screener.DATA_DIR)
 
-            r7 = ret7.get('return_pct') if ret7 else None
-            r['return_7d'] = round(r7, 2) if r7 is not None else None
-            r['exit_reason'] = ret7.get('exit_reason', '') if ret7 else ''
-            r['exit_day'] = ret7.get('exit_day', 0) if ret7 else 0
-            r['verdict'] = _compute_verdict(r.get('opinion', ''), r7)
-            r['verified'] = True
-            verify_count += 1
+                r7 = ret7.get('return_pct') if ret7 else None
+                r['return_7d'] = round(r7, 2) if r7 is not None else None
+                r['exit_reason'] = ret7.get('exit_reason', '') if ret7 else ''
+                r['exit_day'] = ret7.get('exit_day', 0) if ret7 else 0
+                r['verdict'] = _compute_verdict(r.get('opinion', ''), r7)
+                r['verified'] = True
+                verify_count += 1
+            else:
+                # 已验证但未回顾：用已有的 return_7d 构建 ret7
+                r7 = r.get('return_7d')
+                ret7 = {
+                    'return_pct': r7 if r7 is not None else 0,
+                    'exit_reason': r.get('exit_reason', '到期'),
+                    'exit_day': r.get('exit_day', mp.get('hold_days', 7)),
+                }
 
             # --- AI 7日全路径回顾分析 ---
             if r7 is not None:
