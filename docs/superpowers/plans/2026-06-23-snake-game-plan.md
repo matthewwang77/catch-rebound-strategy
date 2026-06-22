@@ -312,6 +312,12 @@ function die() {
 
 function win() {
   gameState = 'dead';
+  if (score > highScore) {
+    highScore = score;
+    saveHighScore(highScore);
+    highScoreEl.textContent = highScore;
+  }
+  restartBtn.classList.add('visible');
   draw();
   // Show win message on canvas
   ctx.fillStyle = 'rgba(10,10,15,0.75)';
@@ -435,13 +441,7 @@ function draw() {
 
 // --- Input ---
 function setDirection(dx, dy) {
-  if (gameState === 'dead') return;
-  if (gameState === 'paused') {
-    // Allow unpausing with any direction key
-    gameState = 'playing';
-    draw();
-    timer = setTimeout(loop, SPEED);
-  }
+  if (gameState !== 'playing') return;
   if (direction.x === -dx && direction.y === -dy) return; // no 180° turn
   if (dx !== 0 && direction.x !== 0) return; // already horizontal
   if (dy !== 0 && direction.y !== 0) return; // already vertical
@@ -488,6 +488,8 @@ canvas.addEventListener('touchend', e => {
   if (gameState !== 'playing') return;
   const dx = e.changedTouches[0].clientX - touchStartX;
   const dy = e.changedTouches[0].clientY - touchStartY;
+  const minSwipe = 15;
+  if (Math.abs(dx) < minSwipe && Math.abs(dy) < minSwipe) return;
   if (Math.abs(dx) > Math.abs(dy)) {
     setDirection(dx > 0 ? 1 : -1, 0);
   } else {
