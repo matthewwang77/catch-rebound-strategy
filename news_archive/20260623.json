@@ -1,6 +1,6 @@
 {
   "date": "20260623",
-  "market_summary": "今日消息面偏中性，新兴市场ETF资金回流显示外资对A股情绪有所改善，但缺乏国内重磅政策或数据支撑，市场可能维持震荡格局。",
+  "market_summary": "今日消息面偏中性，新兴市场ETF资金回流显示外资对A股等新兴市场信心有所恢复，但美联储逆回购规模变化及美股科技股走强对A股影响有限。光通信概念受美股带动走强，可能刺激A股相关板块活跃。",
   "sentiment_impact": "中性",
   "news": [
     {
@@ -8,14 +8,15 @@
       "source": "东方财富",
       "url": "https://finance.eastmoney.com/a/202606233778464260.html",
       "time": "2026-06-23 00:27:02",
-      "ai_summary": "新兴市场ETF资金回流",
-      "impact_analysis": "资金回流新兴市场ETF，显示外资风险偏好回升，可能带动A股增量资金流入，对大盘指数形成支撑。",
+      "ai_summary": "新兴市场ETF资金回流21.6亿美元",
+      "impact_analysis": "外资回流新兴市场，A股作为重要组成部分可能受益，短期提振市场情绪和资金面，但需关注持续性。",
       "affected_sectors": [
-        "大盘"
+        "整体市场",
+        "外资重仓股"
       ],
       "affected_stocks": [
-        "000001.SH",
-        "399001.SZ"
+        "000300.SH",
+        "510050.SH"
       ],
       "importance": 8
     },
@@ -24,11 +25,11 @@
       "source": "东方财富",
       "url": "https://finance.eastmoney.com/a/202606233778462316.html",
       "time": "2026-06-23 00:08:13",
-      "ai_summary": "光通信概念股持续走强",
-      "impact_analysis": "光通信板块受海外龙头股上涨带动，A股相关概念股可能跟涨，利好通信设备、光模块等细分领域。",
+      "ai_summary": "光通信概念股美股盘中走强",
+      "impact_analysis": "美股光通信板块上涨，可能带动A股光通信、光纤光缆等概念股跟涨，短期刺激相关行业活跃度。",
       "affected_sectors": [
-        "通信",
-        "光模块"
+        "光通信",
+        "光纤光缆"
       ],
       "affected_stocks": [
         "000063.SZ",
@@ -37,33 +38,37 @@
       "importance": 7
     },
     {
+      "title": "部分光通信概念股盘中持续走强",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202606233778472624.html",
+      "time": "2026-06-23 01:29:43",
+      "ai_summary": "美联储逆回购规模大幅上升",
+      "impact_analysis": "逆回购规模增加反映市场流动性收紧预期，对全球风险资产情绪有压制，但A股受直接冲击有限。",
+      "affected_sectors": [
+        "整体市场",
+        "金融"
+      ],
+      "affected_stocks": [
+        "000001.SH",
+        "399001.SZ"
+      ],
+      "importance": 6
+    },
+    {
       "title": "美联储隔夜逆回购协议（RRP）周一使用规模为39.25亿美元（交易对手4家）",
       "source": "东方财富",
       "url": "https://finance.eastmoney.com/a/202606233778472216.html",
       "time": "2026-06-23 01:17:22",
       "ai_summary": "谷歌DeepMind与A24合作",
-      "impact_analysis": "AI与影视跨界合作，提振市场对AI应用落地预期，利好A股AI概念股及传媒板块。",
+      "impact_analysis": "AI与影视娱乐跨界合作，可能刺激A股AI应用、影视传媒板块短期炒作，但实质影响有限。",
       "affected_sectors": [
         "人工智能",
-        "传媒"
+        "影视传媒"
       ],
       "affected_stocks": [
         "002230.SZ",
         "300413.SZ"
       ],
-      "importance": 6
-    },
-    {
-      "title": "部分光通信概念股盘中持续走强",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606233778472624.html",
-      "time": "2026-06-23 01:29:43",
-      "ai_summary": "美联储隔夜逆回购规模上升",
-      "impact_analysis": "逆回购规模增加反映市场流动性收紧，但绝对值仍低，对A股影响有限，需关注后续美联储政策信号。",
-      "affected_sectors": [
-        "大盘"
-      ],
-      "affected_stocks": [],
       "importance": 5
     },
     {
@@ -71,22 +76,32 @@
       "source": "东方财富",
       "url": "https://finance.eastmoney.com/a/202606233778471421.html",
       "time": "2026-06-23 01:10:28",
-      "ai_summary": "纳斯达克支持德州交易所",
-      "impact_analysis": "对A股无直接影响，但反映全球交易所竞争格局变化，可能间接影响中概股流动性预期。",
-      "affected_sectors": [],
-      "affected_stocks": [],
-      "importance": 3
+      "ai_summary": "纳斯达克支持德州交易所交易",
+      "impact_analysis": "美国交易所竞争格局变化，对A股无直接影响，但可能引发市场对金融科技板块的短期关注。",
+      "affected_sectors": [
+        "金融科技"
+      ],
+      "affected_stocks": [
+        "600570.SS",
+        "300033.SZ"
+      ],
+      "importance": 4
     },
     {
       "title": "纳斯达克将支持在德克萨斯州证券交易所进行交易",
       "source": "东方财富",
       "url": "https://finance.eastmoney.com/a/202606233778467947.html",
       "time": "2026-06-23 00:39:10",
-      "ai_summary": "摩根士丹利建新办公楼",
-      "impact_analysis": "属公司个体行为，对A股无直接影响，不纳入重点分析。",
-      "affected_sectors": [],
-      "affected_stocks": [],
-      "importance": 1
+      "ai_summary": "摩根士丹利达拉斯建新大楼",
+      "impact_analysis": "外资投行扩张业务，对A股无直接影响，但反映全球金融业活跃度，间接利好市场信心。",
+      "affected_sectors": [
+        "金融"
+      ],
+      "affected_stocks": [
+        "600036.SS",
+        "601398.SS"
+      ],
+      "importance": 3
     }
   ]
 }
