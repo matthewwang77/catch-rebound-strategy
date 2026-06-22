@@ -1,5 +1,5 @@
 {
-  "scan_time": "2026-06-23 01:41",
+  "scan_time": "2026-06-23 01:44",
   "scan_date": "20260623",
   "market": {
     "上证": {
@@ -17,12 +17,12 @@
   },
   "regime": {
     "status": "neutral",
-    "label": "1档: 冰点期 — 坚决不参与",
-    "avg_trend": NaN,
-    "recommended_mode": "strict"
+    "label": "5档: 高潮期 — 短期风险积聚",
+    "avg_trend": 4.3,
+    "recommended_mode": "loose"
   },
   "modes": {
-    "strict": {
+    "loose": {
       "count": 0,
       "candidates": []
     }
