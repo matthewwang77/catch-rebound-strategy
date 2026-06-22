@@ -1,6 +1,6 @@
 {
   "date": "20260623",
-  "market_summary": "今日消息面偏中性，新兴市场ETF资金回流显示外资对A股可能回暖，但美联储逆回购规模上升暗示流动性收紧，光通信板块受美股带动走强，整体市场缺乏明确方向。",
+  "market_summary": "今日消息面偏中性，新兴市场ETF资金回流显示外资对A股可能重拾兴趣，但美联储逆回购规模波动及美股科技股局部走强对A股影响有限，光通信概念股走强可能带动A股相关板块。",
   "sentiment_impact": "中性",
   "news": [
     {
@@ -8,15 +8,15 @@
       "source": "东方财富",
       "url": "https://finance.eastmoney.com/a/202606233778464260.html",
       "time": "2026-06-23 00:27:02",
-      "ai_summary": "新兴市场ETF资金回流",
-      "impact_analysis": "外资回流新兴市场，可能带动A股资金流入，利好大盘指数，尤其是外资偏好的消费、金融板块。",
+      "ai_summary": "新兴市场ETF资金大幅回流",
+      "impact_analysis": "外资回流新兴市场，A股作为重要组成部分可能受益，短期提振市场情绪和资金面，利好大盘指数。",
       "affected_sectors": [
-        "金融",
-        "消费"
+        "大盘",
+        "外资重仓股"
       ],
       "affected_stocks": [
-        "600519.SS",
-        "000858.SZ"
+        "000300.SH",
+        "510050.SH"
       ],
       "importance": 8
     },
@@ -25,15 +25,15 @@
       "source": "东方财富",
       "url": "https://finance.eastmoney.com/a/202606233778462316.html",
       "time": "2026-06-23 00:08:13",
-      "ai_summary": "光通信概念股持续走强",
-      "impact_analysis": "美股光通信板块上涨，可能传导至A股光通信概念，带动通信设备、光纤光缆相关个股。",
+      "ai_summary": "光通信概念股美股走强",
+      "impact_analysis": "美股光通信板块上涨可能映射至A股，带动相关概念股跟涨，利好通信和半导体产业链。",
       "affected_sectors": [
-        "通信设备",
-        "光通信"
+        "光通信",
+        "半导体"
       ],
       "affected_stocks": [
-        "000063.SZ",
-        "600487.SS"
+        "600703.SH",
+        "300308.SZ"
       ],
       "importance": 7
     },
@@ -42,34 +42,34 @@
       "source": "东方财富",
       "url": "https://finance.eastmoney.com/a/202606233778472624.html",
       "time": "2026-06-23 01:29:43",
-      "ai_summary": "美联储逆回购规模上升",
-      "impact_analysis": "逆回购规模增加显示市场流动性收紧，可能压制全球风险偏好，对A股外资流入形成短期压力。",
+      "ai_summary": "美联储逆回购规模波动",
+      "impact_analysis": "逆回购规模变化反映流动性状况，但波动较小，对A股直接影响有限，需关注后续趋势。",
       "affected_sectors": [
         "金融",
         "大盘"
       ],
       "affected_stocks": [
-        "600036.SS",
-        "601318.SS"
+        "601398.SH",
+        "600036.SH"
       ],
-      "importance": 6
+      "importance": 4
     },
     {
       "title": "美联储隔夜逆回购协议（RRP）周一使用规模为39.25亿美元（交易对手4家）",
       "source": "东方财富",
       "url": "https://finance.eastmoney.com/a/202606233778472216.html",
       "time": "2026-06-23 01:17:22",
-      "ai_summary": "谷歌DeepMind与A24合作",
-      "impact_analysis": "AI与影视跨界合作，可能刺激A股AI应用和传媒板块，但影响有限，需观察后续落地。",
+      "ai_summary": "谷歌与A24达成研究合作",
+      "impact_analysis": "科技巨头合作利好AI和内容创作领域，但具体影响有限，可能小幅提振A股AI概念股。",
       "affected_sectors": [
         "人工智能",
         "传媒"
       ],
       "affected_stocks": [
-        "300418.SZ",
-        "002230.SZ"
+        "002230.SZ",
+        "300418.SZ"
       ],
-      "importance": 4
+      "importance": 3
     },
     {
       "title": "谷歌DeepMind与A24宣布达成研究合作关系",
@@ -77,16 +77,12 @@
       "url": "https://finance.eastmoney.com/a/202606233778471421.html",
       "time": "2026-06-23 01:10:28",
       "ai_summary": "纳斯达克支持德州交易所",
-      "impact_analysis": "美国交易所竞争加剧，对A股直接影响小，但可能影响美股中概股情绪，间接波及港股和A股。",
+      "impact_analysis": "美国交易所竞争格局变化，对A股无直接影响，但可能间接影响全球资本流动。",
       "affected_sectors": [
-        "金融",
-        "中概股"
+        "金融"
       ],
-      "affected_stocks": [
-        "600570.SS",
-        "300059.SZ"
-      ],
-      "importance": 3
+      "affected_stocks": [],
+      "importance": 2
     },
     {
       "title": "纳斯达克将支持在德克萨斯州证券交易所进行交易",
@@ -94,7 +90,7 @@
       "url": "https://finance.eastmoney.com/a/202606233778467947.html",
       "time": "2026-06-23 00:39:10",
       "ai_summary": "摩根士丹利建新办公楼",
-      "impact_analysis": "与A股无直接关联，属于公司个体行为，对市场影响极小。",
+      "impact_analysis": "个股层面事件，对A股无直接影响，不纳入重点分析。",
       "affected_sectors": [],
       "affected_stocks": [],
       "importance": 1
