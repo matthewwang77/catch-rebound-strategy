@@ -1,14 +1,14 @@
 {
-  "scan_time": "2026-06-23 01:56",
+  "scan_time": "2026-06-23 01:59",
   "scan_date": "20260623",
   "market": {
     "上证": {
-      "price": 4074.12,
-      "pct": -0.4
+      "price": 4090.48,
+      "pct": -0.43
     },
     "深证": {
-      "price": 15987.42,
-      "pct": -0.27
+      "price": 16030.7,
+      "pct": 0.94
     },
     "创业板": {
       "price": 4382.93,
@@ -17,9 +17,9 @@
   },
   "regime": {
     "status": "neutral",
-    "label": "5档: 高潮期 — 短期风险积聚",
-    "avg_trend": 4.3,
-    "recommended_mode": "loose"
+    "label": "1档: 冰点期 — 坚决不参与",
+    "avg_trend": NaN,
+    "recommended_mode": "strict"
   },
   "modes": {
     "strict": {
