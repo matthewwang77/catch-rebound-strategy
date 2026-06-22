@@ -1,14 +1,28 @@
-# 贪吃蛇游戏 Implementation Plan
+# 贪吃蛇游戏 Implementation Plan v2
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task.
 
-**Goal:** 纯前端贪吃蛇游戏，Neon Vault 霓虹风格，单文件 snake.html
+**Goal:** 纯前端贪吃蛇游戏，Neon Vault 霓虹风格，单文件 snake.html。已修复 Codex S2 审查发现的全部 23 个问题。
 
-**Architecture:** 单文件 HTML + 内联 CSS + 内联 JS。Canvas 渲染 20×20 网格，游戏循环用 setTimeout 150ms/帧。
+**Architecture:** 单文件 HTML + 内联 CSS + 内联 JS。Canvas 渲染 20×20 网格，游戏循环用 setTimeout 150ms/帧。状态机：playing/paused/dead。
 
 **Tech Stack:** HTML5 Canvas, 内联 CSS, vanilla JS
 
-**Verification:** `open snake.html` 在浏览器中手动验证游戏可玩
+**Fixes applied (v2):**
+- 🔴 棋盘满时胜利而非死循环
+- 🟡 尾部碰撞检查顺序（先 pop 再 check）
+- 🟡 localStorage try/catch
+- 🟡 暂停状态（空格+失焦）
+- 🟡 触摸滑动控制
+- 🟡 visibilitychange/blur 处理
+- 🟡 死亡后方向键仍 preventDefault
+- 🟡 Canvas context null 检查
+- 🟡 canvas max-width:100% 响应式
+- 🟢 移除未使用变量 ec
+- 🟢 眼睛位置用 CELL 计算
+- 🟢 内联 style 移至 CSS class
+- 🟢 字体大小 ≥ 0.75rem
+- 🟢 合并死亡显示到 canvas
 
 ---
 
@@ -37,7 +51,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
     overflow: hidden;
   }
 
@@ -69,14 +83,14 @@
 
   .score-label {
     color: rgba(0,255,136,0.5);
-    font-size: 12px;
+    font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 2px;
   }
 
   .score-value {
     color: #00ff88;
-    font-size: 32px;
+    font-size: 2rem;
     font-weight: 700;
     text-shadow: 0 0 12px rgba(0,255,136,0.6), 0 0 24px rgba(0,255,136,0.3);
   }
@@ -87,34 +101,20 @@
 
   .high-score .score-value {
     color: rgba(0,255,136,0.4);
-    font-size: 18px;
+    font-size: 1.125rem;
     text-shadow: none;
+  }
+
+  .canvas-container {
+    position: relative;
   }
 
   canvas {
     border: 2px solid rgba(0,255,136,0.2);
     box-shadow: 0 0 20px rgba(0,255,136,0.08), 0 0 60px rgba(0,255,136,0.04);
     display: block;
-  }
-
-  .overlay {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-  }
-
-  .game-over-text {
-    color: #ff4444;
-    font-size: 36px;
-    font-weight: 700;
-    text-shadow: 0 0 20px rgba(255,68,68,0.8);
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-
-  .game-over-text.visible {
-    opacity: 1;
+    max-width: 100%;
+    height: auto;
   }
 
   .restart-btn {
@@ -124,8 +124,8 @@
     background: transparent;
     color: #00ff88;
     border: 2px solid rgba(0,255,136,0.4);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 14px;
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-size: 0.875rem;
     cursor: pointer;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -147,9 +147,16 @@
 
   .controls-hint {
     color: rgba(0,255,136,0.25);
-    font-size: 11px;
+    font-size: 0.75rem;
     margin-top: 12px;
     letter-spacing: 1px;
+  }
+
+  .error-message {
+    color: #ff4444;
+    font-size: 1rem;
+    text-align: center;
+    padding: 40px;
   }
 
   /* Death flash */
@@ -175,22 +182,26 @@
       <div class="score-value" id="highScore">0</div>
     </div>
   </div>
-  <div style="position: relative;">
+  <div class="canvas-container">
     <canvas id="canvas" width="400" height="400"></canvas>
-    <div class="overlay">
-      <div class="game-over-text" id="gameOverText">GAME OVER</div>
-    </div>
   </div>
-  <button class="restart-btn" id="restartBtn" onclick="restart()">↻ Retry</button>
-  <div class="controls-hint">↑↓←→ or WASD to move</div>
+  <button class="restart-btn" id="restartBtn">↻ Retry</button>
+  <div class="controls-hint">↑↓←→ / WASD / Swipe &nbsp;|&nbsp; Space to Pause</div>
 </div>
 
 <script>
+(function() {
 const canvas = document.getElementById('canvas');
+if (!canvas) return;
+
 const ctx = canvas.getContext('2d');
+if (!ctx) {
+  canvas.insertAdjacentHTML('afterend', '<div class="error-message">Canvas 2D not supported in this browser.</div>');
+  return;
+}
+
 const scoreEl = document.getElementById('score');
 const highScoreEl = document.getElementById('highScore');
-const gameOverText = document.getElementById('gameOverText');
 const restartBtn = document.getElementById('restartBtn');
 
 const GRID = 20;
@@ -198,6 +209,16 @@ const CELL = canvas.width / GRID;
 const SPEED = 150;
 
 let snake, food, direction, nextDirection, score, highScore, gameState, timer;
+
+// --- Safe localStorage ---
+function loadHighScore() {
+  try { return parseInt(localStorage.getItem('neonSnakeHighScore')) || 0; }
+  catch(e) { return 0; }
+}
+function saveHighScore(v) {
+  try { localStorage.setItem('neonSnakeHighScore', v); }
+  catch(e) { /* silently degrade */ }
+}
 
 // --- Init ---
 function init() {
@@ -211,28 +232,35 @@ function init() {
   score = 0;
   gameState = 'playing';
   scoreEl.textContent = '0';
-  gameOverText.classList.remove('visible');
   restartBtn.classList.remove('visible');
   document.body.classList.remove('dead');
-  spawnFood();
+  if (!spawnFood()) {
+    // Board is full already (shouldn't happen at init, but guard)
+    return;
+  }
   if (timer) clearTimeout(timer);
   loop();
 }
 
 function spawnFood() {
-  do {
-    food = {
-      x: Math.floor(Math.random() * GRID),
-      y: Math.floor(Math.random() * GRID),
-    };
-  } while (snake.some(s => s.x === food.x && s.y === food.y));
+  const empty = [];
+  for (let x = 0; x < GRID; x++) {
+    for (let y = 0; y < GRID; y++) {
+      if (!snake.some(s => s.x === x && s.y === y)) {
+        empty.push({x, y});
+      }
+    }
+  }
+  if (empty.length === 0) return false;
+  food = empty[Math.floor(Math.random() * empty.length)];
+  return true;
 }
 
 // --- Game Loop ---
 function loop() {
   if (gameState !== 'playing') return;
   update();
-  if (gameState === 'dead') return;
+  if (gameState !== 'playing') return;
   draw();
   timer = setTimeout(loop, SPEED);
 }
@@ -246,34 +274,60 @@ function update() {
     die();
     return;
   }
-  // Self collision
-  if (snake.some(s => s.x === head.x && s.y === head.y)) {
-    die();
-    return;
-  }
+
+  // Check eating BEFORE adding head
+  const willEat = (head.x === food.x && head.y === food.y);
 
   snake.unshift(head);
 
-  if (head.x === food.x && head.y === food.y) {
+  if (willEat) {
     score += 10;
     scoreEl.textContent = score;
-    spawnFood();
+    if (!spawnFood()) {
+      win();
+      return;
+    }
   } else {
     snake.pop();
+  }
+
+  // Self collision AFTER tail removal (avoids false positive on tail cell)
+  const [shead, ...sbody] = snake;
+  if (sbody.some(s => s.x === shead.x && s.y === shead.y)) {
+    die();
   }
 }
 
 function die() {
   gameState = 'dead';
   document.body.classList.add('dead');
-  gameOverText.classList.add('visible');
   restartBtn.classList.add('visible');
   if (score > highScore) {
     highScore = score;
-    localStorage.setItem('neonSnakeHighScore', highScore);
+    saveHighScore(highScore);
     highScoreEl.textContent = highScore;
   }
   draw();
+}
+
+function win() {
+  gameState = 'dead';
+  draw();
+  // Show win message on canvas
+  ctx.fillStyle = 'rgba(10,10,15,0.75)';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = '#ffd700';
+  ctx.font = 'bold 24px "JetBrains Mono", monospace';
+  ctx.textAlign = 'center';
+  ctx.shadowColor = '#ffd700';
+  ctx.shadowBlur = 20;
+  ctx.fillText('YOU WIN!', canvas.width / 2, canvas.height / 2 - 12);
+  ctx.fillStyle = '#00ff88';
+  ctx.font = '16px "JetBrains Mono", monospace';
+  ctx.fillText('SCORE: ' + score, canvas.width / 2, canvas.height / 2 + 24);
+  ctx.shadowBlur = 0;
+  ctx.textAlign = 'start';
+  restartBtn.classList.add('visible');
 }
 
 // --- Render ---
@@ -295,18 +349,20 @@ function draw() {
     ctx.stroke();
   }
 
-  // Food
-  const fx = food.x * CELL + CELL / 2;
-  const fy = food.y * CELL + CELL / 2;
-  const pulse = Math.sin(Date.now() / 200) * 2 + 7;
+  // Food (only if set)
+  if (food) {
+    const fx = food.x * CELL + CELL / 2;
+    const fy = food.y * CELL + CELL / 2;
+    const pulse = Math.sin(Date.now() / 200) * 2 + 7;
 
-  ctx.shadowColor = '#ff6b35';
-  ctx.shadowBlur = 12;
-  ctx.fillStyle = '#ff6b35';
-  ctx.beginPath();
-  ctx.arc(fx, fy, pulse, 0, Math.PI * 2);
-  ctx.fill();
-  ctx.shadowBlur = 0;
+    ctx.shadowColor = '#ff6b35';
+    ctx.shadowBlur = 12;
+    ctx.fillStyle = '#ff6b35';
+    ctx.beginPath();
+    ctx.arc(fx, fy, pulse, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.shadowBlur = 0;
+  }
 
   // Snake
   snake.forEach((seg, i) => {
@@ -323,23 +379,23 @@ function draw() {
     const pad = i === 0 ? 1 : 2;
     ctx.fillRect(gx + pad, gy + pad, CELL - pad * 2, CELL - pad * 2);
 
+    // Head eyes (positions computed from CELL)
     if (i === 0) {
-      // Head eyes
       ctx.shadowBlur = 0;
       ctx.fillStyle = '#0a0a0f';
-      const ec = 4, er = 2.5;
+      const er = CELL * 0.125; // eye radius = 2.5px @ CELL=20
       if (direction.x === 1) {
-        ctx.beginPath(); ctx.arc(gx + 14, gy + 6, er, 0, Math.PI*2); ctx.fill();
-        ctx.beginPath(); ctx.arc(gx + 14, gy + 14, er, 0, Math.PI*2); ctx.fill();
+        ctx.beginPath(); ctx.arc(gx + CELL*0.7, gy + CELL*0.3, er, 0, Math.PI*2); ctx.fill();
+        ctx.beginPath(); ctx.arc(gx + CELL*0.7, gy + CELL*0.7, er, 0, Math.PI*2); ctx.fill();
       } else if (direction.x === -1) {
-        ctx.beginPath(); ctx.arc(gx + 6, gy + 6, er, 0, Math.PI*2); ctx.fill();
-        ctx.beginPath(); ctx.arc(gx + 6, gy + 14, er, 0, Math.PI*2); ctx.fill();
+        ctx.beginPath(); ctx.arc(gx + CELL*0.3, gy + CELL*0.3, er, 0, Math.PI*2); ctx.fill();
+        ctx.beginPath(); ctx.arc(gx + CELL*0.3, gy + CELL*0.7, er, 0, Math.PI*2); ctx.fill();
       } else if (direction.y === -1) {
-        ctx.beginPath(); ctx.arc(gx + 6, gy + 6, er, 0, Math.PI*2); ctx.fill();
-        ctx.beginPath(); ctx.arc(gx + 14, gy + 6, er, 0, Math.PI*2); ctx.fill();
+        ctx.beginPath(); ctx.arc(gx + CELL*0.3, gy + CELL*0.3, er, 0, Math.PI*2); ctx.fill();
+        ctx.beginPath(); ctx.arc(gx + CELL*0.7, gy + CELL*0.3, er, 0, Math.PI*2); ctx.fill();
       } else {
-        ctx.beginPath(); ctx.arc(gx + 6, gy + 14, er, 0, Math.PI*2); ctx.fill();
-        ctx.beginPath(); ctx.arc(gx + 14, gy + 14, er, 0, Math.PI*2); ctx.fill();
+        ctx.beginPath(); ctx.arc(gx + CELL*0.3, gy + CELL*0.7, er, 0, Math.PI*2); ctx.fill();
+        ctx.beginPath(); ctx.arc(gx + CELL*0.7, gy + CELL*0.7, er, 0, Math.PI*2); ctx.fill();
       }
     }
   });
@@ -350,34 +406,119 @@ function draw() {
     ctx.fillStyle = 'rgba(10,10,15,0.7)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = '#ff4444';
-    ctx.font = 'bold 28px "JetBrains Mono"';
+    ctx.font = 'bold 28px "JetBrains Mono", monospace';
     ctx.textAlign = 'center';
     ctx.shadowColor = '#ff4444';
     ctx.shadowBlur = 20;
-    ctx.fillText(`SCORE: ${score}`, canvas.width / 2, canvas.height / 2);
+    ctx.fillText('GAME OVER', canvas.width / 2, canvas.height / 2 - 16);
+    ctx.fillStyle = 'rgba(255,255,255,0.7)';
+    ctx.font = '16px "JetBrains Mono", monospace';
+    ctx.fillText('SCORE: ' + score, canvas.width / 2, canvas.height / 2 + 24);
+    ctx.shadowBlur = 0;
+    ctx.textAlign = 'start';
+  }
+
+  // Pause overlay
+  if (gameState === 'paused') {
+    ctx.fillStyle = 'rgba(10,10,15,0.6)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#ffd700';
+    ctx.font = 'bold 28px "JetBrains Mono", monospace';
+    ctx.textAlign = 'center';
+    ctx.shadowColor = '#ffd700';
+    ctx.shadowBlur = 16;
+    ctx.fillText('PAUSED', canvas.width / 2, canvas.height / 2);
     ctx.shadowBlur = 0;
     ctx.textAlign = 'start';
   }
 }
 
 // --- Input ---
-document.addEventListener('keydown', e => {
+function setDirection(dx, dy) {
   if (gameState === 'dead') return;
+  if (gameState === 'paused') {
+    // Allow unpausing with any direction key
+    gameState = 'playing';
+    draw();
+    timer = setTimeout(loop, SPEED);
+  }
+  if (direction.x === -dx && direction.y === -dy) return; // no 180° turn
+  if (dx !== 0 && direction.x !== 0) return; // already horizontal
+  if (dy !== 0 && direction.y !== 0) return; // already vertical
+  nextDirection = {x: dx, y: dy};
+}
+
+document.addEventListener('keydown', e => {
+  // Always preventDefault for arrow keys to stop page scrolling
+  if (['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key)) {
+    e.preventDefault();
+  }
+
+  if (e.key === ' ' || e.key === 'Spacebar') {
+    e.preventDefault();
+    if (gameState === 'playing') {
+      gameState = 'paused';
+      draw();
+      return;
+    } else if (gameState === 'paused') {
+      gameState = 'playing';
+      draw();
+      timer = setTimeout(loop, SPEED);
+      return;
+    }
+  }
+  if (gameState !== 'playing') return;
+
   const key = e.key.toLowerCase();
-  if (key === 'arrowup' || key === 'w')    { if (direction.y === 0) nextDirection = {x: 0, y: -1}; e.preventDefault(); }
-  if (key === 'arrowdown' || key === 's')  { if (direction.y === 0) nextDirection = {x: 0, y: 1};  e.preventDefault(); }
-  if (key === 'arrowleft' || key === 'a')  { if (direction.x === 0) nextDirection = {x: -1, y: 0}; e.preventDefault(); }
-  if (key === 'arrowright' || key === 'd') { if (direction.x === 0) nextDirection = {x: 1, y: 0};  e.preventDefault(); }
+  if (key === 'arrowup'    || key === 'w') setDirection(0, -1);
+  if (key === 'arrowdown'  || key === 's') setDirection(0, 1);
+  if (key === 'arrowleft'  || key === 'a') setDirection(-1, 0);
+  if (key === 'arrowright' || key === 'd') setDirection(1, 0);
+});
+
+// Touch/swipe support
+let touchStartX = 0, touchStartY = 0;
+canvas.addEventListener('touchstart', e => {
+  e.preventDefault();
+  touchStartX = e.touches[0].clientX;
+  touchStartY = e.touches[0].clientY;
+}, {passive: false});
+canvas.addEventListener('touchmove', e => e.preventDefault(), {passive: false});
+canvas.addEventListener('touchend', e => {
+  if (gameState !== 'playing') return;
+  const dx = e.changedTouches[0].clientX - touchStartX;
+  const dy = e.changedTouches[0].clientY - touchStartY;
+  if (Math.abs(dx) > Math.abs(dy)) {
+    setDirection(dx > 0 ? 1 : -1, 0);
+  } else {
+    setDirection(0, dy > 0 ? 1 : -1);
+  }
+});
+
+// Pause on tab blur / visibility change
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden && gameState === 'playing') {
+    gameState = 'paused';
+    draw();
+  }
+});
+window.addEventListener('blur', () => {
+  if (gameState === 'playing') {
+    gameState = 'paused';
+    draw();
+  }
 });
 
 function restart() {
   init();
 }
+restartBtn.addEventListener('click', restart);
 
 // --- Start ---
-highScore = parseInt(localStorage.getItem('neonSnakeHighScore')) || 0;
+highScore = loadHighScore();
 highScoreEl.textContent = highScore;
 init();
+})();
 </script>
 </body>
 </html>
@@ -389,24 +530,30 @@ init();
 ls -la snake.html && wc -l snake.html
 ```
 
-- [ ] **Step 3: 用浏览器打开验证游戏可玩**
+- [ ] **Step 3: 浏览器打开验证**
 
 ```bash
 open snake.html
 ```
 
-手动验证：
-- 蛇在 400×400 画布上移动 ✅
-- 方向键控制方向 ✅
-- 吃食物增长 + 分数 +10 ✅
-- 撞墙死亡 + Game Over ✅
-- 撞自己死亡 ✅
-- 重开按钮可用 ✅
-- 最高分存储在 localStorage ✅
+手动验证清单：
+- [ ] 蛇在 400×400 画布上移动
+- [ ] ↑↓←→ / WASD 控制方向，无页面滚动
+- [ ] 触摸滑动控制
+- [ ] 空格键暂停/恢复
+- [ ] 切换标签自动暂停
+- [ ] 吃食物增长 + 分数 +10
+- [ ] 撞墙死亡 + GAME OVER
+- [ ] 撞自己死亡
+- [ ] 尾部移动不误判死亡
+- [ ] 重开按钮可用
+- [ ] 最高分 localStorage 持久化
+- [ ] 棋盘满时 YOU WIN
+- [ ] 死亡后方向键不滚动页面
 
 - [ ] **Step 4: 提交**
 
 ```bash
 git add snake.html
-git commit -m "feat: Neon Vault 贪吃蛇游戏"
+git commit -m "feat: Neon Vault 贪吃蛇游戏 (v2 — Codex 23 issues fixed)"
 ```
