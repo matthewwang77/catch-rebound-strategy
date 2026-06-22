@@ -1,6 +1,6 @@
 {
   "date": "20260623",
-  "market_summary": "今日消息面偏中性，新兴市场ETF资金回流显示外资对A股等新兴市场信心有所恢复，但美联储逆回购规模变化及美股科技股走强对A股影响有限。光通信概念受美股带动走强，可能刺激A股相关板块活跃。",
+  "market_summary": "今日消息面偏中性，新兴市场ETF资金回流显示外资对A股情绪有所改善，但原油期货下跌和美联储逆回购规模波动带来不确定性，光通信板块受美股带动走强。",
   "sentiment_impact": "中性",
   "news": [
     {
@@ -9,14 +9,14 @@
       "url": "https://finance.eastmoney.com/a/202606233778464260.html",
       "time": "2026-06-23 00:27:02",
       "ai_summary": "新兴市场ETF资金回流21.6亿美元",
-      "impact_analysis": "外资回流新兴市场，A股作为重要组成部分可能受益，短期提振市场情绪和资金面，但需关注持续性。",
+      "impact_analysis": "外资回流新兴市场，利好A股流动性，尤其利好外资重仓的消费、新能源等板块，短期提振市场信心。",
       "affected_sectors": [
-        "整体市场",
-        "外资重仓股"
+        "消费",
+        "新能源"
       ],
       "affected_stocks": [
-        "000300.SH",
-        "510050.SH"
+        "600519.SS",
+        "300750.SZ"
       ],
       "importance": 8
     },
@@ -26,10 +26,10 @@
       "url": "https://finance.eastmoney.com/a/202606233778462316.html",
       "time": "2026-06-23 00:08:13",
       "ai_summary": "光通信概念股美股盘中走强",
-      "impact_analysis": "美股光通信板块上涨，可能带动A股光通信、光纤光缆等概念股跟涨，短期刺激相关行业活跃度。",
+      "impact_analysis": "Coherent等大涨可能带动A股光通信板块跟涨，利好5G、数据中心产业链，短期有交易性机会。",
       "affected_sectors": [
         "光通信",
-        "光纤光缆"
+        "5G"
       ],
       "affected_stocks": [
         "000063.SZ",
@@ -42,15 +42,32 @@
       "source": "东方财富",
       "url": "https://finance.eastmoney.com/a/202606233778472624.html",
       "time": "2026-06-23 01:29:43",
-      "ai_summary": "美联储逆回购规模大幅上升",
-      "impact_analysis": "逆回购规模增加反映市场流动性收紧预期，对全球风险资产情绪有压制，但A股受直接冲击有限。",
+      "ai_summary": "原油期货夜盘收跌1.72%",
+      "impact_analysis": "原油下跌利好航空、化工等成本敏感行业，但利空能源板块，对大盘指数影响有限。",
       "affected_sectors": [
-        "整体市场",
-        "金融"
+        "航空",
+        "化工"
       ],
       "affected_stocks": [
-        "000001.SH",
-        "399001.SZ"
+        "600029.SS",
+        "600309.SS"
+      ],
+      "importance": 6
+    },
+    {
+      "title": "上期所原油期货2608合约夜盘收跌1.72% 报501.70元人民币/桶",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202606233778475887.html",
+      "time": "2026-06-23 02:37:01",
+      "ai_summary": "美联储逆回购规模大幅波动",
+      "impact_analysis": "逆回购规模骤升反映市场流动性收紧，可能引发全球风险资产波动，对A股外资流入有间接压力。",
+      "affected_sectors": [
+        "金融",
+        "外资重仓"
+      ],
+      "affected_stocks": [
+        "601318.SS",
+        "600519.SS"
       ],
       "importance": 6
     },
@@ -59,49 +76,45 @@
       "source": "东方财富",
       "url": "https://finance.eastmoney.com/a/202606233778472216.html",
       "time": "2026-06-23 01:17:22",
-      "ai_summary": "谷歌DeepMind与A24合作",
-      "impact_analysis": "AI与影视娱乐跨界合作，可能刺激A股AI应用、影视传媒板块短期炒作，但实质影响有限。",
+      "ai_summary": "纳斯达克支持德州交易所交易",
+      "impact_analysis": "对A股直接影响小，但反映美股市场结构变化，可能影响中概股回归预期，间接影响科技板块情绪。",
       "affected_sectors": [
-        "人工智能",
-        "影视传媒"
+        "科技",
+        "中概股"
       ],
       "affected_stocks": [
-        "002230.SZ",
-        "300413.SZ"
+        "688981.SS",
+        "002230.SZ"
       ],
-      "importance": 5
+      "importance": 4
     },
     {
       "title": "谷歌DeepMind与A24宣布达成研究合作关系",
       "source": "东方财富",
       "url": "https://finance.eastmoney.com/a/202606233778471421.html",
       "time": "2026-06-23 01:10:28",
-      "ai_summary": "纳斯达克支持德州交易所交易",
-      "impact_analysis": "美国交易所竞争格局变化，对A股无直接影响，但可能引发市场对金融科技板块的短期关注。",
+      "ai_summary": "谷歌DeepMind与A24合作",
+      "impact_analysis": "对A股无直接冲击，但可能提振AI应用和影视内容板块的长期想象空间，短期影响有限。",
       "affected_sectors": [
-        "金融科技"
+        "人工智能",
+        "传媒"
       ],
       "affected_stocks": [
-        "600570.SS",
-        "300033.SZ"
+        "002230.SZ",
+        "300413.SZ"
       ],
-      "importance": 4
+      "importance": 3
     },
     {
       "title": "纳斯达克将支持在德克萨斯州证券交易所进行交易",
       "source": "东方财富",
       "url": "https://finance.eastmoney.com/a/202606233778467947.html",
       "time": "2026-06-23 00:39:10",
-      "ai_summary": "摩根士丹利达拉斯建新大楼",
-      "impact_analysis": "外资投行扩张业务，对A股无直接影响，但反映全球金融业活跃度，间接利好市场信心。",
-      "affected_sectors": [
-        "金融"
-      ],
-      "affected_stocks": [
-        "600036.SS",
-        "601398.SS"
-      ],
-      "importance": 3
+      "ai_summary": "摩根士丹利拟建13亿美元大楼",
+      "impact_analysis": "与A股无直接关联，仅反映美国地产市场动态，对A股影响微乎其微。",
+      "affected_sectors": [],
+      "affected_stocks": [],
+      "importance": 1
     }
   ]
 }

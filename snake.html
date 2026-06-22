@@ -184,6 +184,14 @@ function saveHighScore(v) {
   catch(e) { /* silently degrade */ }
 }
 
+function checkHighScore() {
+  if (score > highScore) {
+    highScore = score;
+    saveHighScore(highScore);
+    highScoreEl.textContent = highScore;
+  }
+}
+
 // --- Init ---
 function init() {
   snake = [
@@ -198,10 +206,7 @@ function init() {
   scoreEl.textContent = '0';
   restartBtn.classList.remove('visible');
   document.body.classList.remove('dead');
-  if (!spawnFood()) {
-    // Board is full already (shouldn't happen at init, but guard)
-    return;
-  }
+  spawnFood();
   if (timer) clearTimeout(timer);
   loop();
 }
@@ -256,9 +261,11 @@ function update() {
   }
 
   // Self collision AFTER tail removal (avoids false positive on tail cell)
-  const [shead, ...sbody] = snake;
-  if (sbody.some(s => s.x === shead.x && s.y === shead.y)) {
-    die();
+  for (let i = 1; i < snake.length; i++) {
+    if (snake[i].x === head.x && snake[i].y === head.y) {
+      die();
+      return;
+    }
   }
 }
 
@@ -266,37 +273,15 @@ function die() {
   gameState = 'dead';
   document.body.classList.add('dead');
   restartBtn.classList.add('visible');
-  if (score > highScore) {
-    highScore = score;
-    saveHighScore(highScore);
-    highScoreEl.textContent = highScore;
-  }
+  checkHighScore();
   draw();
 }
 
 function win() {
-  gameState = 'dead';
-  if (score > highScore) {
-    highScore = score;
-    saveHighScore(highScore);
-    highScoreEl.textContent = highScore;
-  }
+  gameState = 'won';
   restartBtn.classList.add('visible');
+  checkHighScore();
   draw();
-  // Show win message on canvas
-  ctx.fillStyle = 'rgba(10,10,15,0.75)';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = '#ffd700';
-  ctx.font = 'bold 24px "JetBrains Mono", monospace';
-  ctx.textAlign = 'center';
-  ctx.shadowColor = '#ffd700';
-  ctx.shadowBlur = 20;
-  ctx.fillText('YOU WIN!', canvas.width / 2, canvas.height / 2 - 12);
-  ctx.fillStyle = '#00ff88';
-  ctx.font = '16px "JetBrains Mono", monospace';
-  ctx.fillText('SCORE: ' + score, canvas.width / 2, canvas.height / 2 + 24);
-  ctx.shadowBlur = 0;
-  ctx.textAlign = 'start';
 }
 
 // --- Render ---
@@ -400,12 +385,29 @@ function draw() {
     ctx.shadowBlur = 0;
     ctx.textAlign = 'start';
   }
+
+  // Win overlay
+  if (gameState === 'won') {
+    ctx.fillStyle = 'rgba(10,10,15,0.75)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#ffd700';
+    ctx.font = 'bold 24px "JetBrains Mono", monospace';
+    ctx.textAlign = 'center';
+    ctx.shadowColor = '#ffd700';
+    ctx.shadowBlur = 20;
+    ctx.fillText('YOU WIN!', canvas.width / 2, canvas.height / 2 - 12);
+    ctx.fillStyle = '#00ff88';
+    ctx.font = '16px "JetBrains Mono", monospace';
+    ctx.fillText('SCORE: ' + score, canvas.width / 2, canvas.height / 2 + 24);
+    ctx.shadowBlur = 0;
+    ctx.textAlign = 'start';
+  }
 }
 
 // --- Input ---
 function setDirection(dx, dy) {
   if (gameState !== 'playing') return;
-  if (direction.x === -dx && direction.y === -dy) return; // no 180° turn
+  if (nextDirection.x === -dx && nextDirection.y === -dy) return; // no 180° turn
   if (dx !== 0 && direction.x !== 0) return; // already horizontal
   if (dy !== 0 && direction.y !== 0) return; // already vertical
   nextDirection = {x: dx, y: dy};
@@ -420,6 +422,7 @@ document.addEventListener('keydown', e => {
   if (e.key === ' ' || e.key === 'Spacebar') {
     e.preventDefault();
     if (gameState === 'playing') {
+      if (timer) { clearTimeout(timer); timer = null; }
       gameState = 'paused';
       draw();
       return;
@@ -443,12 +446,14 @@ document.addEventListener('keydown', e => {
 let touchStartX = 0, touchStartY = 0;
 canvas.addEventListener('touchstart', e => {
   e.preventDefault();
+  if (!e.touches.length) return;
   touchStartX = e.touches[0].clientX;
   touchStartY = e.touches[0].clientY;
 }, {passive: false});
 canvas.addEventListener('touchmove', e => e.preventDefault(), {passive: false});
 canvas.addEventListener('touchend', e => {
   if (gameState !== 'playing') return;
+  if (!e.changedTouches.length) return;
   const dx = e.changedTouches[0].clientX - touchStartX;
   const dy = e.changedTouches[0].clientY - touchStartY;
   const minSwipe = 15;
@@ -463,12 +468,14 @@ canvas.addEventListener('touchend', e => {
 // Pause on tab blur / visibility change
 document.addEventListener('visibilitychange', () => {
   if (document.hidden && gameState === 'playing') {
+    if (timer) { clearTimeout(timer); timer = null; }
     gameState = 'paused';
     draw();
   }
 });
 window.addEventListener('blur', () => {
   if (gameState === 'playing') {
+    if (timer) { clearTimeout(timer); timer = null; }
     gameState = 'paused';
     draw();
   }
