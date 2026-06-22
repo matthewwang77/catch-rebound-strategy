@@ -1,17 +1,17 @@
 {
-  "scan_time": "2026-06-23 01:50",
+  "scan_time": "2026-06-23 01:56",
   "scan_date": "20260623",
   "market": {
     "上证": {
-      "price": 4090.48,
+      "price": 4074.12,
       "pct": -0.4
     },
     "深证": {
-      "price": 16030.7,
+      "price": 15987.42,
       "pct": -0.27
     },
     "创业板": {
-      "price": 4359.39,
+      "price": 4382.93,
       "pct": 0.54
     }
   },
@@ -22,7 +22,7 @@
     "recommended_mode": "loose"
   },
   "modes": {
-    "loose": {
+    "strict": {
       "count": 0,
       "candidates": []
     }

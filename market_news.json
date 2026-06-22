@@ -1,65 +1,67 @@
 {
   "date": "20260623",
-  "market_summary": "今日消息面偏中性，新兴市场ETF资金回流显示外资对新兴市场信心有所恢复，但美联储逆回购规模波动及个别板块走强对A股整体影响有限。",
+  "market_summary": "今日消息面偏中性，新兴市场ETF资金回流显示外资对新兴市场兴趣回升，但美联储逆回购规模波动及部分科技股走强对A股影响有限，整体缺乏重大政策或数据驱动。",
   "sentiment_impact": "中性",
   "news": [
+    {
+      "title": "摩根士丹利拟打造13亿美元新办公大楼 拓展达拉斯业务",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202606233778464260.html",
+      "time": "2026-06-23 00:27:02",
+      "ai_summary": "新兴市场ETF资金大幅回流",
+      "impact_analysis": "外资回流新兴市场，可能带动A股资金流入，尤其是北向资金，对大盘有正面情绪提振，但需关注持续性。",
+      "affected_sectors": [
+        "整体市场"
+      ],
+      "affected_stocks": [],
+      "importance": 7
+    },
     {
       "title": "在美上市新兴市场ETF资金回流",
       "source": "东方财富",
       "url": "https://finance.eastmoney.com/a/202606233778462316.html",
       "time": "2026-06-23 00:08:13",
-      "ai_summary": "光通信概念股走强",
-      "impact_analysis": "海外光通信股上涨可能带动A股光通信板块情绪，利好相关概念股，但需关注持续性。",
+      "ai_summary": "光通信概念股海外走强",
+      "impact_analysis": "海外光通信股上涨可能映射A股光通信板块，带动相关概念股跟涨，对通信和科技板块有短期刺激。",
       "affected_sectors": [
         "光通信",
         "通信设备"
       ],
       "affected_stocks": [
         "000063.SZ",
-        "600487.SS"
+        "600498.SS"
       ],
       "importance": 6
-    },
-    {
-      "title": "摩根士丹利拟打造13亿美元新办公大楼 拓展达拉斯业务",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606233778464260.html",
-      "time": "2026-06-23 00:27:02",
-      "ai_summary": "新兴市场ETF资金回流",
-      "impact_analysis": "外资流入新兴市场ETF，可能间接提振A股情绪，但资金主要流向韩国等市场，对A股直接利好有限。",
-      "affected_sectors": [
-        "外资重仓板块"
-      ],
-      "affected_stocks": [],
-      "importance": 5
     },
     {
       "title": "美联储隔夜逆回购协议（RRP）周一使用规模为39.25亿美元（交易对手4家）",
       "source": "东方财富",
       "url": "https://finance.eastmoney.com/a/202606233778472216.html",
       "time": "2026-06-23 01:17:22",
-      "ai_summary": "谷歌与A24研究合作",
-      "impact_analysis": "AI与影视合作消息可能刺激A股AI应用和传媒板块，但影响有限。",
+      "ai_summary": "谷歌DeepMind与A24合作",
+      "impact_analysis": "AI与影视跨界合作，可能提振A股AI应用和传媒板块情绪，但属海外事件，影响有限。",
       "affected_sectors": [
-        "AI应用",
+        "人工智能",
         "传媒"
       ],
       "affected_stocks": [
-        "300418.SZ",
-        "002602.SZ"
+        "002230.SZ",
+        "300413.SZ"
       ],
-      "importance": 3
+      "importance": 4
     },
     {
       "title": "部分光通信概念股盘中持续走强",
       "source": "东方财富",
       "url": "https://finance.eastmoney.com/a/202606233778472624.html",
       "time": "2026-06-23 01:29:43",
-      "ai_summary": "美联储逆回购规模波动",
-      "impact_analysis": "RRP规模变化反映市场流动性状况，但波动较小，对A股影响微弱。",
-      "affected_sectors": [],
+      "ai_summary": "美联储逆回购规模小幅波动",
+      "impact_analysis": "逆回购规模变化反映流动性状况，但波动较小，对A股直接影响有限，需结合后续美联储政策信号。",
+      "affected_sectors": [
+        "整体市场"
+      ],
       "affected_stocks": [],
-      "importance": 2
+      "importance": 3
     },
     {
       "title": "谷歌DeepMind与A24宣布达成研究合作关系",
@@ -67,18 +69,20 @@
       "url": "https://finance.eastmoney.com/a/202606233778471421.html",
       "time": "2026-06-23 01:10:28",
       "ai_summary": "纳斯达克支持德州交易所",
-      "impact_analysis": "美国交易所竞争格局变化，对A股无直接影响。",
-      "affected_sectors": [],
+      "impact_analysis": "美国交易所竞争格局变化，对A股无直接影响，但可能间接影响中概股情绪，进而波及港股和A股。",
+      "affected_sectors": [
+        "整体市场"
+      ],
       "affected_stocks": [],
-      "importance": 1
+      "importance": 2
     },
     {
       "title": "纳斯达克将支持在德克萨斯州证券交易所进行交易",
       "source": "东方财富",
       "url": "https://finance.eastmoney.com/a/202606233778467947.html",
       "time": "2026-06-23 00:39:10",
-      "ai_summary": "摩根士丹利建新大楼",
-      "impact_analysis": "投行扩张业务，对A股无直接关联。",
+      "ai_summary": "摩根士丹利建新办公楼",
+      "impact_analysis": "投行扩张业务，反映美国经济活跃度，但对A股无直接关联，仅作为宏观背景参考。",
       "affected_sectors": [],
       "affected_stocks": [],
       "importance": 1
