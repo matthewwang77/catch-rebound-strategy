@@ -333,7 +333,6 @@ function win() {
   ctx.fillText('SCORE: ' + score, canvas.width / 2, canvas.height / 2 + 24);
   ctx.shadowBlur = 0;
   ctx.textAlign = 'start';
-  restartBtn.classList.add('visible');
 }
 
 // --- Render ---
