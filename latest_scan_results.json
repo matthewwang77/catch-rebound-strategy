@@ -1,5 +1,5 @@
 {
-  "scan_time": "2026-06-23 14:02",
+  "scan_time": "2026-06-23 15:02",
   "scan_date": "20260623",
   "data_date": "2026-06-22",
   "market": {
@@ -18,12 +18,12 @@
   },
   "regime": {
     "status": "neutral",
-    "label": "4档: 发酵期 — 势头良好",
-    "avg_trend": 1.53,
-    "recommended_mode": "loose"
+    "label": "3档: 启动期 — 谨慎入场",
+    "avg_trend": 0.51,
+    "recommended_mode": "strict"
   },
   "modes": {
-    "loose": {
+    "strict": {
       "count": 0,
       "candidates": []
     }
