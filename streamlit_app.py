@@ -2514,6 +2514,28 @@ def main():
         if not scan_fresh and scan_data is not None:
             st.warning(f"⚠️ 扫描结果已过期（{scan_age_text}）— 建议运行 `python auto_daily.py` 更新数据")
 
+        # ── 大盘概况 ──
+        st.header("◆ 大盘概况")
+        market = get_market_data()
+
+        cols = st.columns(3)
+        for i, (name, data) in enumerate(market.items()):
+            with cols[i]:
+                if data:
+                    delta_str = f"{data['pct']:+.2f}%" if data.get('has_delta', True) else "—"
+                    st.metric(
+                        label=name,
+                        value=f"{data['price']:.0f}",
+                        delta=delta_str,
+                    )
+                    st.caption(
+                        f"5日高 {data['high_5d']:.0f}  |  "
+                        f"5日低 {data['low_5d']:.0f}"
+                    )
+                else:
+                    st.metric(label=name, value="—")
+        st.divider()
+
         if scan_data is None:
             st.info("◆ 等待首次定时扫描… 结果将在 10:00 / 11:30 / 14:00 / 15:00 自动出现")
             st.caption("💡 也可以手动运行: `python auto_daily.py`")
