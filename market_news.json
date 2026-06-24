@@ -1,172 +1,176 @@
 {
   "date": "20260624",
-  "market_summary": "今日A股市场受半导体、芯片板块强势拉升带动，科创50指数涨超4%，但整体成交额缩量，市场分化明显，医药、消费等板块表现疲弱。",
+  "market_summary": "今日A股市场受半导体、AI算力及新能源板块强势带动，科创50指数再创历史新高，但成交额略有缩量，整体市场情绪偏积极。",
   "sentiment_impact": "偏多",
   "news": [
     {
-      "title": "绿电点亮2026夏季达沃斯 核心场馆100%绿电直供",
+      "title": "卫星化学上半年预盈超60亿创纪录，化工ETF天弘标的指数盘中大涨超3%",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606243781270644.html",
-      "time": "2026-06-24 13:48:09",
-      "ai_summary": "科创50涨超3%，芯片ETF创新高",
-      "impact_analysis": "科创50指数大涨反映科技股强势，芯片ETF量价齐升，显示资金集中流入，对创业板和科创板指数有直接拉动作用。",
-      "affected_sectors": [
-        "科创板",
-        "芯片"
-      ],
-      "affected_stocks": [
-        "589130.SZ",
-        "688347.SH"
-      ],
-      "importance": 9
-    },
-    {
-      "title": "国家网信办：我国累计有900余款大模型上线服务",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606243781289679.html",
-      "time": "2026-06-24 14:06:30",
-      "ai_summary": "科创50指数涨逾4%，成分股多股涨超10%",
-      "impact_analysis": "科创50指数大涨直接反映市场对科技股的追捧，成分股普涨，对大盘指数有显著拉动，显示资金偏好成长股。",
-      "affected_sectors": [
-        "科创板",
-        "半导体"
-      ],
-      "affected_stocks": [
-        "688012.SH",
-        "688981.SH"
-      ],
-      "importance": 9
-    },
-    {
-      "title": "芯片巨头领衔韩国股市反弹，芯片ETF午后涨超4.5%",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606243781239946.html",
-      "time": "2026-06-24 13:23:50",
-      "ai_summary": "韩国芯片股反弹，国内芯片ETF涨超4.5%",
-      "impact_analysis": "韩国芯片股反弹提振全球半导体情绪，国内芯片ETF大涨，直接带动A股半导体板块走强，利好科创50指数。",
+      "url": "https://finance.eastmoney.com/a/202606243781307773.html",
+      "time": "2026-06-24 14:11:39",
+      "ai_summary": "科创50指数涨近4%再创历史新高",
+      "impact_analysis": "科创50指数创新高反映科技成长股全面回暖，半导体和新能源板块领涨，市场风险偏好提升，对大盘有积极带动。",
       "affected_sectors": [
         "半导体",
-        "芯片"
-      ],
-      "affected_stocks": [
-        "159599.SZ",
-        "002049.SZ"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "马云名下云锋基金入股峥研软件",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606243781268918.html",
-      "time": "2026-06-24 13:41:00",
-      "ai_summary": "半导体设备ETF净值突破4元创新高",
-      "impact_analysis": "半导体设备ETF净值创新高，显示行业景气度持续，带动相关个股涨停，对半导体设备板块形成强催化。",
-      "affected_sectors": [
-        "半导体设备",
-        "电子"
-      ],
-      "affected_stocks": [
-        "561980.SH",
-        "002371.SZ"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "蒙特利尔银行：下调今年黄金目标价至4625美元/盎司 美联储加息是头号威胁",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606243781269569.html",
-      "time": "2026-06-24 13:46:03",
-      "ai_summary": "港股芯片股活跃，华虹宏力涨超18%",
-      "impact_analysis": "港股芯片股大涨带动A股半导体情绪，华虹宏力创历史新高，对A股芯片板块有联动效应，利好中芯国际等。",
-      "affected_sectors": [
-        "半导体",
-        "港股科技"
+        "新能源",
+        "科创板"
       ],
       "affected_stocks": [
         "688981.SH",
-        "00981.HK"
+        "300750.SZ"
+      ],
+      "importance": 10
+    },
+    {
+      "title": "存储涨价仍在延续，HBM下半年采购成本或再涨超50%！芯片ETF广发涨超5%，科创芯片设计ETF广发、科创芯片ETF广发盘中涨超3%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202606243781316935.html",
+      "time": "2026-06-24 14:26:36",
+      "ai_summary": "存储涨价延续，芯片板块大涨",
+      "impact_analysis": "存储芯片涨价直接利好半导体产业链，带动芯片ETF和个股大涨，对科创50指数有显著提振作用，强化市场对科技主线的信心。",
+      "affected_sectors": [
+        "半导体",
+        "存储芯片"
+      ],
+      "affected_stocks": [
+        "688981.SH",
+        "600584.SS",
+        "600703.SS"
+      ],
+      "importance": 9
+    },
+    {
+      "title": "星网锐捷增资至7.6亿 增幅约30%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202606243781352811.html",
+      "time": "2026-06-24 14:57:22",
+      "ai_summary": "台积电涨价，半导体设备ETF创新高",
+      "impact_analysis": "台积电全面涨价反映AI算力需求旺盛，直接利好半导体设备和材料板块，推动相关ETF创新高，强化科技主线。",
+      "affected_sectors": [
+        "半导体设备",
+        "半导体材料"
+      ],
+      "affected_stocks": [
+        "002371.SZ",
+        "688012.SH"
+      ],
+      "importance": 9
+    },
+    {
+      "title": "三星砸90万亿韩元回购股份，芯片ETF延续行情继续上涨5%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202606243781329989.html",
+      "time": "2026-06-24 14:39:08",
+      "ai_summary": "三星回购股份，芯片ETF续涨",
+      "impact_analysis": "三星巨额回购和AI算力需求驱动芯片板块持续走强，国产替代逻辑强化，对半导体设备、设计等子行业形成利好。",
+      "affected_sectors": [
+        "半导体",
+        "AI芯片"
+      ],
+      "affected_stocks": [
+        "688981.SH",
+        "600584.SS"
       ],
       "importance": 8
     },
     {
-      "title": "上市以来翻3倍！半导体设备ETF净值突破4元，1:5拆分在即",
+      "title": "稀有金属ETF华富(561800)午后拉升涨超2%，2026年前五月碳酸锂需求维持高增，行业景气度或延续上行",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606243781249758.html",
-      "time": "2026-06-24 13:26:40",
+      "url": "https://finance.eastmoney.com/a/202606243781316173.html",
+      "time": "2026-06-24 14:23:57",
+      "ai_summary": "碳酸锂需求高增，稀有金属ETF涨",
+      "impact_analysis": "碳酸锂需求维持高增，带动稀有金属板块走强，对新能源上游产业链形成支撑，但需警惕价格波动风险。",
+      "affected_sectors": [
+        "稀有金属",
+        "锂电池"
+      ],
+      "affected_stocks": [
+        "002466.SZ",
+        "002240.SZ",
+        "002497.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "韩股午后大反攻！规模突破11亿的科创芯片设计ETF天弘标的指数午后直线拉升超3%，芯片ETF天弘标的指数飙涨超5%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202606243781308189.html",
+      "time": "2026-06-24 14:14:15",
       "ai_summary": "国家网信办：累计900余款大模型上线",
-      "impact_analysis": "大模型数量快速增长，显示AI产业生态成熟，利好AI应用和算力板块，但短期对市场情绪提振有限。",
+      "impact_analysis": "大模型数量增长显示AI产业快速发展，利好AI应用和算力板块，但需关注商业化进展，对市场情绪有正面提振。",
       "affected_sectors": [
         "人工智能",
         "算力"
       ],
       "affected_stocks": [
-        "688256.SH",
-        "300418.SZ"
+        "688111.SH",
+        "300308.SZ"
       ],
       "importance": 7
     },
     {
-      "title": "锆急！002167四连板",
+      "title": "阿里被曝打包出售灵犀互娱 三七互娱、世纪华通等回应收购传闻",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606243781266072.html",
-      "time": "2026-06-24 13:47:00",
-      "ai_summary": "碳酸锂主力合约涨超4%，锂矿股拉升",
-      "impact_analysis": "碳酸锂期货大涨带动锂矿股午后拉升，利好新能源产业链，但持续性需观察，对创业板有间接支撑。",
+      "url": "https://finance.eastmoney.com/a/202606243781350190.html",
+      "time": "2026-06-24 14:58:16",
+      "ai_summary": "阿里出售灵犀互娱，游戏板块震荡",
+      "impact_analysis": "阿里出售游戏资产引发行业整合预期，涉及多家上市游戏公司，短期可能带来板块波动，但长期影响有限，需关注交易进展。",
       "affected_sectors": [
-        "锂电池",
-        "新能源"
+        "游戏",
+        "互联网"
       ],
       "affected_stocks": [
-        "002466.SZ",
-        "002460.SZ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "半导体设备板块持续走高！半导体设备ETF易方达（159558）涨4.54%，永新光学等多股涨停",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606243781236632.html",
-      "time": "2026-06-24 13:18:16",
-      "ai_summary": "沪深两市成交额超2.5万亿元，缩量1233亿",
-      "impact_analysis": "成交额缩量显示市场追高意愿不足，尽管指数上涨，但资金面偏谨慎，可能限制后续反弹空间。",
-      "affected_sectors": [
-        "大盘"
-      ],
-      "affected_stocks": [],
-      "importance": 7
-    },
-    {
-      "title": "科创50涨超3%！科创芯片ETF易方达（589130）涨3.33%，华虹宏力创历史新高",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606243781240931.html",
-      "time": "2026-06-24 13:19:16",
-      "ai_summary": "第12批医药国采开启，CXO板块大涨",
-      "impact_analysis": "医药国采和BIO会议利好CXO板块，凯莱英等大涨，但医药板块整体仍弱，对创业板影响有限。",
-      "affected_sectors": [
-        "医药",
-        "CXO"
-      ],
-      "affected_stocks": [
-        "002821.SZ",
-        "603259.SH"
+        "002555.SZ",
+        "002602.SZ",
+        "002558.SZ"
       ],
       "importance": 6
     },
     {
-      "title": "越跌越买！科创芯片设计ETF国联安(588780)连续3天合计“吸金”超8000万元",
+      "title": "宁德时代创始人曾毓群：AI用电没想象得那么可怕",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606243781241485.html",
-      "time": "2026-06-24 13:21:36",
-      "ai_summary": "军工板块午后异动，多股涨超10%",
-      "impact_analysis": "军工板块异动拉升，显示资金轮动，但持续性待验证，对大盘影响较小，属于行业性事件。",
+      "url": "https://finance.eastmoney.com/a/202606243781341796.html",
+      "time": "2026-06-24 14:47:46",
+      "ai_summary": "曾毓群称AI用电影响不大",
+      "impact_analysis": "宁德时代创始人言论缓解市场对AI能耗的担忧，利好新能源和储能板块，但影响偏温和，需结合后续政策。",
       "affected_sectors": [
-        "军工"
+        "新能源",
+        "储能"
       ],
       "affected_stocks": [
-        "600760.SH",
-        "002013.SZ"
+        "300750.SZ"
       ],
       "importance": 5
+    },
+    {
+      "title": "曾毓群：固态电池技术路线现在只到了level 4 level 9是可以量产",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202606243781352754.html",
+      "time": "2026-06-24 14:56:04",
+      "ai_summary": "固态电池技术仍处早期阶段",
+      "impact_analysis": "曾毓群指出固态电池量产尚需时间，短期对板块影响偏中性，但长期技术路线明确，利好研发领先企业。",
+      "affected_sectors": [
+        "固态电池",
+        "新能源"
+      ],
+      "affected_stocks": [
+        "300750.SZ"
+      ],
+      "importance": 5
+    },
+    {
+      "title": "财政部：5月份全国共销售彩票528.63亿元 同比下降7.3%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202606243781349152.html",
+      "time": "2026-06-24 14:51:07",
+      "ai_summary": "财政部：5月彩票销售同比下降7.3%",
+      "impact_analysis": "彩票销售下滑反映消费疲软，对相关板块构成利空，但影响范围有限，主要涉及彩票和文体娱乐行业。",
+      "affected_sectors": [
+        "彩票",
+        "文体娱乐"
+      ],
+      "affected_stocks": [],
+      "importance": 3
     }
   ]
 }
