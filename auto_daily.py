@@ -28,6 +28,55 @@ BASE = os.path.dirname(os.path.abspath(__file__))  # project root
 screener = _load_module(os.path.join(BASE, "选股new_v5.py"), "screener")
 
 
+# ==================== 指数数据获取（AKShare 优先，yfinance 降级）====================
+def _get_index_data_akshare():
+    """通过 AKShare 获取三大指数最近5日数据，比 yfinance 更新更及时。
+
+    返回格式与 yf.download 兼容: {指数名: DataFrame(index=date, columns=[Open,High,Low,Close,Volume])}
+    失败返回 None，由调用方降级到 yfinance。
+    """
+    try:
+        import akshare as ak
+        import pandas as pd
+    except ImportError:
+        print("  ℹ️ akshare 未安装，跳过 AKShare 指数数据")
+        return None
+    except Exception as e:
+        print(f"  ⚠️ akshare 导入失败: {e}")
+        return None
+
+    index_map = {
+        "上证": ("sh000001", "000001.SS"),
+        "深证": ("sz399001", "399001.SZ"),
+        "创业板": ("sz399006", "399006.SZ"),
+    }
+    result = {}
+    failed = []
+    for name, (ak_code, _) in index_map.items():
+        try:
+            df = ak.stock_zh_index_daily(symbol=ak_code)
+            if df is None or df.empty:
+                failed.append(f"{name}(空)")
+                continue
+            df = df.rename(columns={
+                'open': 'Open', 'high': 'High', 'low': 'Low',
+                'close': 'Close', 'volume': 'Volume',
+            })
+            df['date'] = pd.to_datetime(df['date'])
+            df = df.set_index('date').sort_index()
+            df = df.tail(5)
+            if len(df) >= 1:
+                result[name] = df
+            else:
+                failed.append(f"{name}(行数不足)")
+        except Exception as e:
+            failed.append(f"{name}({type(e).__name__})")
+
+    if failed:
+        print(f"  ⚠️ AKShare 部分指数获取失败: {', '.join(failed)}")
+    return result if result else None
+
+
 # ==================== yf.download 超时保护 ====================
 def _download_with_timeout(tickers, period="5d", timeout=30, **kwargs):
     """yf.download with timeout protection."""
@@ -54,32 +103,67 @@ def _download_with_timeout(tickers, period="5d", timeout=30, **kwargs):
 
 # ==================== 获取大盘数据 ====================
 def get_market_summary():
+    """获取三大指数最新行情摘要。AKShare 优先（数据更新），yfinance 降级。"""
+    # 优先 AKShare（数据更及时：通常 T+1 vs yfinance T+5）
+    akshare_data = _get_index_data_akshare()
+    data_source = "AKShare" if akshare_data else "yfinance"
+
     indices = {"上证": "000001.SS", "深证": "399001.SZ", "创业板": "399006.SZ"}
     lines = []
+    latest_data_date = None
     for name, code in indices.items():
         try:
-            df = _download_with_timeout(code, period="5d", timeout=30)
-            if df is not None and len(df) >= 2:
-                close_col = df['Close']
-                if hasattr(close_col, 'iloc'):
-                    cur = float(close_col.iloc[-1].item() if hasattr(close_col.iloc[-1], 'item') else close_col.iloc[-1])
-                    prev = float(close_col.iloc[-2].item() if hasattr(close_col.iloc[-2], 'item') else close_col.iloc[-2])
+            # 优先读 AKShare 数据
+            if akshare_data and name in akshare_data:
+                df = akshare_data[name]
+                close_col = df['Close'].dropna()
+            else:
+                df = _download_with_timeout(code, period="5d", timeout=30)
+                if df is None or len(df) < 2:
+                    continue
+                # 兼容 yfinance MultiIndex
+                if isinstance(df.columns, pd.MultiIndex):
+                    close_col = df.xs('Close', axis=1, level=0)
+                    if isinstance(close_col, pd.DataFrame):
+                        close_col = close_col.iloc[:, 0]
                 else:
-                    cur = float(close_col.values[-1] if hasattr(close_col, 'values') else close_col[-1])
-                    prev = float(close_col.values[-2] if hasattr(close_col, 'values') else close_col[-2])
+                    close_col = df['Close']
+                close_col = close_col.dropna()
 
-                # 检测 Yahoo 日期缺口：若最后两点间隔 > 2 自然日，用个股推算
-                idx_dates = df.index
+            if len(close_col) >= 2:
+                valid = close_col.dropna()
+                if len(valid) >= 2:
+                    cur = float(valid.iloc[-1])
+                    prev = float(valid.iloc[-2])
+                    ld = valid.index[-1]
+                    if latest_data_date is None or ld > latest_data_date:
+                        latest_data_date = ld
+                elif len(valid) == 1:
+                    cur = float(valid.iloc[-1])
+                    lines.append(f"{name}: {cur:.0f}")
+                    ld = valid.index[-1]
+                    if latest_data_date is None or ld > latest_data_date:
+                        latest_data_date = ld
+                    continue
+                else:
+                    lines.append(f"{name}: 数据缺失")
+                    continue
+
+                # 检测日期缺口: >4天间隔（跨周末+假期）说明缺失最新交易日数据
+                # 2天缺口是正常周末（周五→周一），不算过期
+                idx_dates = valid.index
                 last_date = idx_dates[-1]
                 prev_date = idx_dates[-2]
                 gap_days = (last_date - prev_date).days
-                if gap_days > 2:
+                if gap_days > 4:
                     try:
                         _mkt = {"上证": "sh", "深证": "sz", "创业板": "cyb"}.get(name)
                         stock_pct = screener._estimate_index_daily_pct(market=_mkt)
                         if stock_pct is not None:
                             pct = stock_pct
-                            lines.append(f"{name}: {cur:.0f} ({pct:+.2f}% 推算)")
+                            # ✅ 用推算涨跌幅估算今日点位，保持价格与涨跌幅一致
+                            est_price = cur * (1 + pct / 100)
+                            lines.append(f"{name}: {est_price:.0f} ({pct:+.2f}% 推算)")
                         else:
                             pct = (cur / prev - 1) * 100
                             lines.append(f"{name}: {cur:.0f} ({pct:+.2f}% {gap_days}日)")
@@ -89,15 +173,20 @@ def get_market_summary():
                 else:
                     pct = (cur / prev - 1) * 100
                     lines.append(f"{name}: {cur:.0f} ({pct:+.2f}%)")
-            elif df is not None and len(df) == 1:
-                close_col = df['Close']
-                if hasattr(close_col, 'iloc'):
-                    cur = float(close_col.iloc[-1].item() if hasattr(close_col.iloc[-1], 'item') else close_col.iloc[-1])
-                else:
-                    cur = float(close_col.values[-1] if hasattr(close_col, 'values') else close_col[-1])
+            elif len(close_col) == 1:
+                cur = float(close_col.iloc[-1])
                 lines.append(f"{name}: {cur:.0f}")
+                ld = close_col.index[-1]
+                if latest_data_date is None or ld > latest_data_date:
+                    latest_data_date = ld
+                else:
+                    lines.append(f"{name}: 无数据")
         except Exception as e:
             lines.append(f"{name}: 获取失败 ({e})")
+    # 添加数据日期标注（yfinance A股数据通常延迟1-2个交易日）
+    if latest_data_date is not None:
+        date_str = latest_data_date.strftime('%Y-%m-%d')
+        lines.append(f"\n📅 数据截至: {date_str}")
     return "\n".join(lines)
 
 
@@ -221,11 +310,14 @@ def _save_signals(results):
     import csv
     from datetime import timedelta
 
+    FIELD_NAMES = ['date', 'signal_date', 'code', 'name', 'sector', 'mode', 'entry_price', 'pullback_pct', 'limit_days']
+    today_str = china_now().strftime('%Y%m%d')
     tracker_path = os.path.join(BASE, "signal_tracker.csv")
     new_rows = []
     for mode, candidates in results.items():
         for c in candidates:
             new_rows.append({
+                'date': today_str,
                 'signal_date': str(c.get('signal_date', '')),
                 'code': c.get('code', ''),
                 'name': '',
@@ -262,6 +354,7 @@ def _save_signals(results):
     else:
         df_combined = df_new
 
+    df_combined = df_combined[FIELD_NAMES]  # enforce column order
     df_combined.to_csv(tracker_path, index=False, encoding='utf-8-sig')
     print(f"📁 信号保存: {len(df_new)} 条新记录 → {tracker_path}")
 
@@ -281,16 +374,19 @@ def _load_ai_memory():
 
 
 def _save_ai_memory(memory):
-    """原子写入 ai_memory.json，防止进程崩溃导致文件截断丢失全部记忆。"""
+    """原子写入 ai_memory.json。失败时优雅降级（打印+清理），不抛异常。"""
     tmp_path = AI_MEMORY_FILE + ".tmp"
     try:
         with open(tmp_path, "w", encoding="utf-8") as f:
             json.dump(memory, f, ensure_ascii=False, indent=2, default=str)
         os.replace(tmp_path, AI_MEMORY_FILE)
-    except Exception:
+    except Exception as e:
+        print(f"⚠️ _save_ai_memory 写入失败: {e}")
         if os.path.exists(tmp_path):
-            os.remove(tmp_path)
-        raise
+            try:
+                os.remove(tmp_path)
+            except Exception:
+                pass
 
 
 def _get_stock_memory_context(code):
@@ -681,30 +777,48 @@ def save_results_json(results):
     import json
 
     now = datetime.now()
-    # 解析大盘数据
+    # 解析大盘数据（AKShare 优先，yfinance 降级）
+    akshare_data = _get_index_data_akshare()
     market = {}
+    latest_market_date = None
     try:
         indices = {"上证": "000001.SS", "深证": "399001.SZ", "创业板": "399006.SZ"}
         for name, code in indices.items():
-            df = _download_with_timeout(code, period="5d", timeout=30)
-            if df is not None and len(df) >= 2:
-                close_col = df['Close']
-                if hasattr(close_col, 'iloc'):
-                    cur = float(close_col.iloc[-1].item() if hasattr(close_col.iloc[-1], 'item') else close_col.iloc[-1])
-                    prev = float(close_col.iloc[-2].item() if hasattr(close_col.iloc[-2], 'item') else close_col.iloc[-2])
+            # 优先 AKShare
+            if akshare_data and name in akshare_data:
+                df = akshare_data[name]
+                close_col = df['Close'].dropna()
+            else:
+                df = _download_with_timeout(code, period="5d", timeout=30)
+                if df is None or len(df) < 2:
+                    continue
+                if isinstance(df.columns, pd.MultiIndex):
+                    close_col = df.xs('Close', axis=1, level=0)
+                    if isinstance(close_col, pd.DataFrame):
+                        close_col = close_col.iloc[:, 0]
                 else:
-                    cur = float(close_col.values[-1] if hasattr(close_col, 'values') else close_col[-1])
-                    prev = float(close_col.values[-2] if hasattr(close_col, 'values') else close_col[-2])
+                    close_col = df['Close']
+                close_col = close_col.dropna()
 
-                # 检测 Yahoo 日期缺口
-                idx_dates = df.index
-                gap_days = (idx_dates[-1] - idx_dates[-2]).days
-                if gap_days > 2:
+            if len(close_col) >= 2:
+                cur = float(close_col.iloc[-1])
+                prev = float(close_col.iloc[-2])
+
+                # 记录最新数据日期
+                ld = close_col.index[-1]
+                if latest_market_date is None or ld > latest_market_date:
+                    latest_market_date = ld
+
+                # 检测日期缺口: >4天用个股推算（周末2天正常）
+                gap_days = (ld - close_col.index[-2]).days
+                est_price = None
+                if gap_days > 4:
                     try:
                         _mkt = {"上证": "sh", "深证": "sz", "创业板": "cyb"}.get(name)
                         stock_pct = screener._estimate_index_daily_pct(market=_mkt)
                         if stock_pct is not None:
                             pct = round(stock_pct, 2)
+                            est_price = round(cur * (1 + pct / 100), 2)
                         else:
                             pct = round((cur / prev - 1) * 100, 2)
                     except Exception:
@@ -713,26 +827,20 @@ def save_results_json(results):
                     pct = round((cur / prev - 1) * 100, 2)
 
                 market[name] = {
-                    "price": round(cur, 2),
+                    "price": est_price if est_price is not None else round(cur, 2),
                     "pct": pct,
                 }
-            elif df is not None and len(df) == 1:
-                # 只有1天数据（如 Yahoo 缺失创业板历史）：记录价格 + 从个股推算涨幅
-                close_col = df['Close']
-                if hasattr(close_col, 'iloc'):
-                    cur = float(close_col.iloc[-1].item() if hasattr(close_col.iloc[-1], 'item') else close_col.iloc[-1])
-                else:
-                    cur = float(close_col.values[-1] if hasattr(close_col, 'values') else close_col[-1])
+            elif len(close_col) == 1:
+                cur = float(close_col.iloc[-1])
                 _mkt = {"上证": "sh", "深证": "sz", "创业板": "cyb"}.get(name)
                 stock_pct = None
                 try:
                     stock_pct = screener._estimate_index_daily_pct(market=_mkt)
                 except Exception:
                     pass
-                market[name] = {
-                    "price": round(cur, 2),
-                    "pct": round(stock_pct, 2) if stock_pct is not None else 0,
-                }
+                pct_val = round(stock_pct, 2) if stock_pct is not None else 0
+                est_price = round(cur * (1 + pct_val / 100), 2) if stock_pct is not None else round(cur, 2)
+                market[name] = {"price": est_price, "pct": pct_val}
     except Exception:
         pass
 
@@ -743,9 +851,12 @@ def save_results_json(results):
     except Exception:
         regime = {'regime': 'unknown', 'sentiment_label': '检测失败'}
 
+    data_date = latest_market_date.strftime('%Y-%m-%d') if latest_market_date else now.strftime('%Y-%m-%d')
+
     output = {
         "scan_time": now.strftime("%Y-%m-%d %H:%M"),
         "scan_date": now.strftime("%Y%m%d"),
+        "data_date": data_date,  # 数据实际日期（yfinance 通常延迟1-2天）
         "market": market,
         "regime": {
             "status": regime.get('regime', 'unknown'),
@@ -1138,6 +1249,13 @@ def main():
     print(f"🚀 自动选股启动: {now.strftime('%Y-%m-%d %H:%M:%S')}")
     print("=" * 50)
 
+    # ---- 第0步：更新 CSV 数据到最新（确保 _estimate_index_daily_pct 使用新鲜数据）----
+    try:
+        print("📥 更新股票数据...")
+        screener.update_today_data()
+    except Exception as e:
+        print(f"⚠️ 数据更新失败: {e}（继续使用缓存）")
+
     # 后台维护：验证旧记录 + 补全中文名
     try:
         _auto_maintenance()
@@ -1172,6 +1290,8 @@ def main():
             market_news.fetch_news_eastmoney()
             + market_news.fetch_news_cls()
             + market_news.fetch_news_yahoo()
+            + market_news.fetch_news_sina()
+            + market_news.fetch_news_stcn()
         )
         print(f"  原始新闻: {len(all_news)} 条")
         filtered_news = market_news._prefilter_news(all_news)
@@ -1239,7 +1359,233 @@ def main():
     print("\n✅ 完成")
 
 
+def check_market_data_health(verbose=True):
+    """诊断大盘数据源健康状态。测试 AKShare / yfinance / JSON 三级数据源。
+
+    Returns:
+        dict: {
+            'ok': bool,              # 至少有一个源可用
+            'best_source': str,      # 'akshare' / 'yfinance' / 'json' / 'none'
+            'sources': {name: {'ok': bool, 'detail': str, 'latest_date': str}},
+            'staleness_hours': float,  # 最佳数据距今小时数
+        }
+    """
+    import json as _json
+    from datetime import datetime, timezone
+
+    result = {'ok': False, 'best_source': 'none', 'sources': {}, 'staleness_hours': 999}
+    now = datetime.now()
+
+    # --- Source 1: AKShare ---
+    akshare_ok = False
+    akshare_detail = ""
+    akshare_date = None
+    try:
+        akshare_data = _get_index_data_akshare()
+        if akshare_data:
+            dates = []
+            for name, df in akshare_data.items():
+                if df is not None and not df.empty:
+                    dates.append(df.index[-1])
+            if dates:
+                akshare_date = max(dates)
+                age_h = (now - akshare_date.replace(tzinfo=None)).total_seconds() / 3600
+                akshare_detail = f"✅ {len(akshare_data)}/3 指数, 最新 {akshare_date.strftime('%Y-%m-%d')}, 距今 {age_h:.0f}h"
+                akshare_ok = age_h < 48  # 2天内都算可用
+            else:
+                akshare_detail = "❌ 返回空数据"
+        else:
+            akshare_detail = "❌ 返回 None（AKShare 不可用或未安装）"
+    except Exception as e:
+        akshare_detail = f"❌ 异常: {type(e).__name__}: {e}"
+    result['sources']['akshare'] = {'ok': akshare_ok, 'detail': akshare_detail, 'latest_date': akshare_date}
+
+    # --- Source 2: yfinance ---
+    yf_ok = False
+    yf_detail = ""
+    yf_date = None
+    try:
+        import yfinance as yf
+        indices = {"上证": "000001.SS", "深证": "399001.SZ", "创业板": "399006.SZ"}
+        yf_dates = []
+        for name, code in indices.items():
+            try:
+                tk = yf.Ticker(code)
+                df = tk.history(period="5d")
+                if df is not None and not df.empty:
+                    yf_dates.append(df.index[-1])
+            except Exception:
+                pass
+        if yf_dates:
+            yf_date = max(yf_dates)
+            age_h = (now - yf_date.replace(tzinfo=None)).total_seconds() / 3600
+            yf_detail = f"✅ {len(yf_dates)}/3 指数, 最新 {yf_date.strftime('%Y-%m-%d')}, 距今 {age_h:.0f}h"
+            yf_ok = age_h < 120  # 5天内都算可用（yfinance A股常有延迟）
+        else:
+            yf_detail = "❌ 全部获取失败"
+    except Exception as e:
+        yf_detail = f"❌ 异常: {type(e).__name__}: {e}"
+    result['sources']['yfinance'] = {'ok': yf_ok, 'detail': yf_detail, 'latest_date': yf_date}
+
+    # --- Source 3: latest_scan_results.json ---
+    json_ok = False
+    json_detail = ""
+    json_date = None
+    try:
+        json_path = os.path.join(BASE, "latest_scan_results.json")
+        if os.path.exists(json_path):
+            with open(json_path) as f:
+                scan = _json.load(f)
+            scan_time = scan.get("scan_time", "")
+            market = scan.get("market", {})
+            index_count = sum(1 for v in market.values() if v)
+            if index_count > 0:
+                try:
+                    json_date = datetime.strptime(scan_time[:10], "%Y-%m-%d")
+                except Exception:
+                    json_date = datetime.fromtimestamp(os.path.getmtime(json_path))
+                age_h = (now - json_date).total_seconds() / 3600
+                json_detail = f"✅ {index_count}/3 指数, 扫描 {scan_time}, 距今 {age_h:.0f}h"
+                json_ok = age_h < 24
+            else:
+                json_detail = f"⚠️ 文件存在但 market 字段为空"
+        else:
+            json_detail = "❌ 文件不存在（auto_daily.py 尚未运行）"
+    except Exception as e:
+        json_detail = f"❌ 异常: {type(e).__name__}: {e}"
+    result['sources']['json'] = {'ok': json_ok, 'detail': json_detail, 'latest_date': json_date}
+
+    # --- 判定最佳源 ---
+    if akshare_ok:
+        result['best_source'] = 'akshare'
+        result['ok'] = True
+        result['staleness_hours'] = (now - akshare_date.replace(tzinfo=None)).total_seconds() / 3600
+    elif yf_ok:
+        result['best_source'] = 'yfinance'
+        result['ok'] = True
+        result['staleness_hours'] = (now - yf_date.replace(tzinfo=None)).total_seconds() / 3600
+    elif json_ok:
+        result['best_source'] = 'json'
+        result['ok'] = True
+        result['staleness_hours'] = (now - json_date).total_seconds() / 3600
+    else:
+        result['ok'] = False
+        result['best_source'] = 'none'
+
+    if verbose:
+        print("📊 大盘数据源诊断:")
+        for name, info in result['sources'].items():
+            print(f"  {name}: {info['detail']}")
+        print(f"  最佳源: {result['best_source']} | 数据距今: {result['staleness_hours']:.0f}h | 整体: {'✅ 可用' if result['ok'] else '❌ 不可用'}")
+
+    return result
+
+
+def refresh_market_data():
+    """收盘后用 AKShare 获取当日实际收盘价，更新 latest_scan_results.json 中的大盘数据。
+
+    盘中扫描（15:00）抓到的是盘中价格，收盘后 AKShare 才有最终收盘数据。
+    此函数在收盘后运行（建议 15:30），用真实收盘价覆盖盘中估算值。
+    """
+    import json as _json
+    from datetime import datetime
+
+    print("📊 刷新大盘收盘数据...")
+    health = check_market_data_health(verbose=False)
+
+    if not health['ok']:
+        print("❌ 所有数据源不可用，无法刷新")
+        return False
+
+    # 从 AKShare 获取最新收盘价（优先级最高）
+    akshare_data = _get_index_data_akshare()
+    if not akshare_data:
+        print("⚠️ AKShare 不可用，尝试 yfinance...")
+        akshare_data = None
+
+    json_path = os.path.join(BASE, "latest_scan_results.json")
+    if not os.path.exists(json_path):
+        print("❌ latest_scan_results.json 不存在")
+        return False
+
+    with open(json_path) as f:
+        scan = _json.load(f)
+
+    old_market = scan.get("market", {})
+    new_market = {}
+    updated = False
+
+    index_map = {"上证": "000001.SS", "深证": "399001.SZ", "创业板": "399006.SZ"}
+    for name, code in index_map.items():
+        try:
+            cur = None
+            pct = None
+
+            # 优先 AKShare（真正的收盘价）
+            if akshare_data and name in akshare_data:
+                df = akshare_data[name]
+                close_col = df['Close'].dropna()
+                if len(close_col) >= 2:
+                    cur = float(close_col.iloc[-1])
+                    prev = float(close_col.iloc[-2])
+                    pct = round((cur / prev - 1) * 100, 2)
+
+            # AKShare 失败 → yfinance
+            if cur is None:
+                df = _download_with_timeout(code, period="5d", timeout=30)
+                if df is not None and len(df) >= 2:
+                    if isinstance(df.columns, pd.MultiIndex):
+                        close_col = df.xs('Close', axis=1, level=0)
+                        if isinstance(close_col, pd.DataFrame):
+                            close_col = close_col.iloc[:, 0]
+                    else:
+                        close_col = df['Close']
+                    close_col = close_col.dropna()
+                    if len(close_col) >= 2:
+                        cur = float(close_col.iloc[-1])
+                        prev = float(close_col.iloc[-2])
+                        pct = round((cur / prev - 1) * 100, 2)
+
+            if cur is not None:
+                old = old_market.get(name, {})
+                old_price = old.get("price", 0)
+                new_market[name] = {"price": round(cur, 2), "pct": pct if pct is not None else 0}
+                if abs(cur - old_price) > 1:
+                    print(f"  {name}: {old_price:.0f}→{cur:.0f} ({pct:+.2f}%)")
+                    updated = True
+                else:
+                    print(f"  {name}: {cur:.0f} ({pct:+.2f}%) — 与盘中一致")
+        except Exception as e:
+            print(f"  {name}: 获取失败 ({e})")
+            # 保留旧数据
+            if name in old_market:
+                new_market[name] = old_market[name]
+
+    if not updated:
+        print("✅ 收盘数据已是最新，无需更新")
+        return True
+
+    # 更新 JSON
+    scan["market"] = new_market
+    scan["scan_time"] = datetime.now().strftime("%Y-%m-%d %H:%M")
+    scan["data_date"] = datetime.now().strftime("%Y-%m-%d")
+
+    tmp_path = json_path + ".tmp"
+    with open(tmp_path, "w", encoding="utf-8") as f:
+        _json.dump(scan, f, ensure_ascii=False, indent=2, default=str)
+    os.replace(tmp_path, json_path)
+    print(f"✅ 大盘收盘数据已更新 → {json_path}")
+    return True
+
+
 if __name__ == "__main__":
+    import sys
+    if len(sys.argv) > 1 and sys.argv[1] == "--check-market":
+        check_market_data_health()
+        sys.exit(0)
+    if len(sys.argv) > 1 and sys.argv[1] == "--refresh-market":
+        refresh_market_data()
+        sys.exit(0)
     main()
 
 # ==================== 设置定时运行 ====================

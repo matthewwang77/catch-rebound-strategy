@@ -116,10 +116,13 @@ def fetch_news_cls() -> list[dict]:
             if not title:
                 continue
 
-            # 转换时间戳
+            # 转换时间戳（兼容秒/毫秒）
             try:
-                time_str = datetime.fromtimestamp(int(ctime)).strftime("%Y-%m-%d %H:%M")
-            except (ValueError, OSError):
+                ctime_int = int(ctime)
+                if ctime_int > 1e12:  # 毫秒时间戳
+                    ctime_int //= 1000
+                time_str = datetime.fromtimestamp(ctime_int).strftime("%Y-%m-%d %H:%M")
+            except (ValueError, OSError, OverflowError):
                 time_str = ""
 
             # 只保留今天的
@@ -192,6 +195,102 @@ def fetch_news_yahoo() -> list[dict]:
         return results[:15]
     except Exception as e:
         print(f"  [market_news] Yahoo Finance获取失败: {e}")
+        return []
+
+
+def fetch_news_sina() -> list[dict]:
+    """从新浪财经获取A股滚动新闻。
+
+    Returns:
+        list[dict]: 新闻列表，每个包含 title, summary, time, source, url
+    """
+    try:
+        url = "https://feed.mix.sina.com.cn/api/roll/get"
+        params = {"pageid": "153", "lid": "2509", "k": "", "num": 30}
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
+            "Referer": "https://finance.sina.com.cn/",
+        }
+        resp = requests.get(url, params=params, headers=headers, timeout=15)
+        resp.raise_for_status()
+        data = resp.json()
+        news_list = data.get("result", {}).get("data", [])
+        if not news_list:
+            return []
+
+        today_str = datetime.now().strftime("%Y-%m-%d")
+        results = []
+        for item in news_list:
+            title = str(item.get("title", "")).strip()
+            if not title:
+                continue
+            ctime = item.get("ctime", "")
+            try:
+                ctime_int = int(ctime)
+                if ctime_int > 1e12:
+                    ctime_int //= 1000
+                time_str = datetime.fromtimestamp(ctime_int).strftime("%Y-%m-%d %H:%M")
+            except (ValueError, OSError, OverflowError):
+                time_str = ""
+            if time_str and today_str not in time_str:
+                continue
+            url = str(item.get("url", "")) or "https://finance.sina.com.cn/"
+            results.append({
+                "title": title,
+                "summary": str(item.get("intro", ""))[:300],
+                "time": time_str,
+                "source": "新浪财经",
+                "url": url,
+            })
+        return results[:30]
+    except Exception as e:
+        print(f"  [market_news] 新浪财经获取失败: {e}")
+        return []
+
+
+def fetch_news_stcn() -> list[dict]:
+    """从证券时报获取A股快讯。
+
+    Returns:
+        list[dict]: 新闻列表，每个包含 title, summary, time, source, url
+    """
+    try:
+        url = "https://kuaixun.stcn.com/egs/kuaixun/kuaixun.js"
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
+            "Referer": "https://kuaixun.stcn.com/",
+        }
+        resp = requests.get(url, headers=headers, timeout=15)
+        resp.raise_for_status()
+        # Response is JSONP: var kuaixun = [...]
+        text = resp.text
+        start = text.index("=")
+        end = text.rindex("]") + 1 if "]" in text else len(text)
+        data = json.loads(text[start+1:end].strip().rstrip(";"))
+        if not isinstance(data, list):
+            return []
+
+        today_str = datetime.now().strftime("%Y-%m-%d")
+        results = []
+        for item in data[:30]:
+            title = str(item.get("title", "")).strip()
+            if not title:
+                continue
+            time_str = str(item.get("datetime", ""))
+            if today_str not in time_str:
+                continue
+            news_id = item.get("id", "")
+            url = f"https://www.stcn.com/article/detail/{news_id}.html" if news_id else "https://kuaixun.stcn.com/"
+            results.append({
+                "title": title,
+                "summary": str(item.get("content", ""))[:300],
+                "time": time_str,
+                "source": "证券时报",
+                "url": url,
+            })
+        return results[:20]
+    except Exception as e:
+        print(f"  [market_news] 证券时报获取失败: {e}")
         return []
 
 
@@ -280,7 +379,7 @@ def deduplicate_news(news_list: list[dict]) -> list[dict]:
 # AI 分析
 # ──────────────────────────────────────────────
 
-def ai_select_and_analyze_news(news_list: list[dict]) -> dict | None:
+def ai_select_and_analyze_news(news_list: list):  # -> dict or None
     """调用 DeepSeek 从新闻列表中选出对A股影响最大的10条，并逐一分析。
 
     Args:
@@ -434,7 +533,7 @@ importance 1-10: 10=超级重磅（降息降准/重大政策转向），5=中等
     return None
 
 
-def get_news_context_for_prompt() -> str | None:
+def get_news_context_for_prompt():  # -> str or None
     """构建注入选股AI prompt的新闻摘要。
 
     Returns:
@@ -509,7 +608,7 @@ def save_market_news(news_data: dict):
         print(f"  [market_news] 归档失败: {e}")
 
 
-def load_market_news() -> dict | None:
+def load_market_news():  # -> dict or None
     """加载最新的市场新闻。
 
     Returns:

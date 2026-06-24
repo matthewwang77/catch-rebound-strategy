@@ -642,14 +642,6 @@ def inject_design_system():
       justify-content: space-between;
       align-items: center;
     }
-    .market-index-row {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.85rem;
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      color: #e0e0e0;
-    }
     .market-sentiment { flex-shrink: 0; }
     .sentiment-tag {
       font-family: 'JetBrains Mono', monospace;
@@ -1320,6 +1312,28 @@ def china_today_dtstr():
     """返回北京时间日期字符串 YYYY-MM-DD"""
     return china_now().strftime('%Y-%m-%d')
 
+# ==================== 数据新鲜度检查 ====================
+def _check_data_freshness(filepath, max_hours=24):
+    """检查数据文件是否过期。
+
+    Args:
+        filepath: 相对于项目根目录的文件路径
+        max_hours: 最大允许的小时数
+
+    Returns:
+        (is_fresh: bool, age_hours: float, age_text: str)
+    """
+    full_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), filepath)
+    if not os.path.exists(full_path):
+        return False, float('inf'), "文件不存在"
+    age_hours = (time.time() - os.path.getmtime(full_path)) / 3600
+    if age_hours <= max_hours:
+        return True, age_hours, f"{age_hours:.0f}小时前"
+    elif age_hours < 48:
+        return False, age_hours, f"{age_hours:.0f}小时前"
+    else:
+        return False, age_hours, f"{age_hours/24:.0f}天前"
+
 # ==================== 名称/板块查询 ====================
 import name_lookup
 
@@ -1328,13 +1342,14 @@ import name_lookup
 def get_market_data():
     """获取三大指数最新数据（包含涨跌幅）。
 
-    优先从 latest_scan_results.json 读取已修正的涨幅（处理 Yahoo 数据缺口），
-    实时价格仍从 yfinance 获取。
+    优先从 latest_scan_results.json 读取 auto_daily.py 已修正的涨幅和预估点位，
+    当 yfinance 数据缺失/过期时，JSON 中的价格和涨跌幅保持一致性。
     """
     import json as _json
+    import math as _math
 
-    # 预读 JSON 中的修正涨幅
-    json_pct = {}
+    # 预读 JSON 中的修正数据（价格 + 涨跌幅，已保持一致性）
+    json_market = {}
     try:
         base_dir = os.path.dirname(os.path.abspath(__file__))
         json_path = os.path.join(base_dir, "latest_scan_results.json")
@@ -1342,14 +1357,35 @@ def get_market_data():
             with open(json_path) as f:
                 scan = _json.load(f)
             market_json = scan.get("market", {})
-            # JSON key → 显示名称 映射 (JSON: "上证"/"深证"/"创业板")
+            # JSON key → 显示名称 映射
             _key_map = {"上证": "上证指数", "深证": "深证成指", "创业板": "创业板指"}
             for json_key, display_name in _key_map.items():
                 m = market_json.get(json_key, {})
-                if "pct" in m:
-                    json_pct[display_name] = m["pct"]
+                if m:
+                    entry = {}
+                    if "pct" in m:
+                        entry["pct"] = m["pct"]
+                    if "price" in m:
+                        # 过滤 NaN
+                        p = m["price"]
+                        if not (isinstance(p, float) and _math.isnan(p)):
+                            entry["price"] = p
+                    if entry:
+                        json_market[display_name] = entry
     except Exception:
         pass
+
+    # 辅助：从 yfinance df 提取 Series（兼容 MultiIndex 列名）
+    def _get_series(df, col_name):
+        if df is None or df.empty:
+            return None
+        if isinstance(df.columns, pd.MultiIndex):
+            s = df.xs(col_name, axis=1, level=0)
+            if isinstance(s, pd.DataFrame):
+                s = s.iloc[:, 0]
+        else:
+            s = df.get(col_name)
+        return s.dropna() if s is not None and len(s) > 0 else None
 
     indices = {
         "上证指数": "000001.SS",
@@ -1362,71 +1398,77 @@ def get_market_data():
         for attempt in range(2):
             try:
                 ticker = yf.Ticker(code)
-                # 同时获取日线数据（用于涨跌幅和5日高低）
                 df = ticker.history(period="1mo")
                 has_history = df is not None and len(df) >= 2
 
-                # 获取当前价格
+                # 提取 OHLCV Series（兼容 MultiIndex）
+                close_s = _get_series(df, 'Close')
+                high_s = _get_series(df, 'High')
+                low_s = _get_series(df, 'Low')
+                vol_s = _get_series(df, 'Volume')
+
+                # 获取当前价格：优先 fast_info，其次 close_s 最后值
                 current = None
                 try:
                     info = ticker.fast_info
                     current = info.get('lastPrice') or info.get('regularMarketPrice')
                 except Exception:
                     pass
-                if not current and has_history:
-                    current = float(df['Close'].iloc[-1])
+                if not current and close_s is not None and len(close_s) >= 1:
+                    current = float(close_s.iloc[-1])
+                if not current:
+                    # 都拿不到，尝试用 JSON 中的价格
+                    jm = json_market.get(name, {})
+                    if jm.get("price"):
+                        current = jm["price"]
                 if not current:
                     continue
-
                 current = float(current)
-                high_5d = float(df['High'].tail(5).max()) if has_history else current
-                low_5d = float(df['Low'].tail(5).min()) if has_history else current
 
-                if has_history:
-                    prev = float(df['Close'].iloc[-2])
+                # 5日高低
+                if high_s is not None and len(high_s) >= 1:
+                    high_5d = float(high_s.tail(5).max())
+                    low_5d = float(low_s.tail(5).min())
+                else:
+                    high_5d = current
+                    low_5d = current
 
-                    # 优先读 JSON 中的修正涨幅（已处理 Yahoo 数据缺口）
-                    if name in json_pct and json_pct[name] is not None:
-                        pct = json_pct[name]
-                    else:
-                        # 检测 Yahoo 日期缺口：若最后两点间隔 > 2 自然日，用个股推算
-                        idx_dates = df.index
-                        gap_days = (idx_dates[-1] - idx_dates[-2]).days
-                        if gap_days > 2:
-                            try:
-                                _mkt = {"上证指数": "sh", "深证成指": "sz", "创业板指": "cyb"}.get(name)
-                                stock_pct = screener._estimate_index_daily_pct(market=_mkt)
-                                if stock_pct is not None:
-                                    pct = round(stock_pct, 2)
-                                else:
-                                    pct = round((current / prev - 1) * 100, 2)
-                            except Exception:
-                                pct = round((current / prev - 1) * 100, 2)
-                        else:
-                            pct = round((current / prev - 1) * 100, 2)
+                # 涨跌幅：优先 JSON（auto_daily 已修正），其次自行计算
+                json_entry = json_market.get(name, {})
+                if "pct" in json_entry:
+                    pct = json_entry["pct"]
+                    # ✅ 若 JSON 有预估价格（说明 Yahoo 数据过期），用 JSON 价格保持一致性
+                    if "price" in json_entry:
+                        current = json_entry["price"]
                     has_delta = True
-                    vol_today = float(df['Volume'].iloc[-1])
-                    vol_prev = float(df['Volume'].iloc[-2])
+                elif close_s is not None and len(close_s) >= 2:
+                    cur_c = float(close_s.iloc[-1])
+                    prev_c = float(close_s.iloc[-2])
+                    idx_dates = close_s.index
+                    gap_days = (idx_dates[-1] - idx_dates[-2]).days
+                    if gap_days > 2:
+                        _mkt = {"上证指数": "sh", "深证成指": "sz", "创业板指": "cyb"}.get(name)
+                        stock_pct = screener._estimate_index_daily_pct(market=_mkt)
+                        if stock_pct is not None:
+                            pct = round(stock_pct, 2)
+                            current = round(cur_c * (1 + pct / 100), 2)
+                        else:
+                            pct = round((cur_c / prev_c - 1) * 100, 2)
+                    else:
+                        pct = round((cur_c / prev_c - 1) * 100, 2)
+                    has_delta = True
+                else:
+                    pct, has_delta = 0, False
+
+                # 量比
+                if vol_s is not None and len(vol_s) >= 2:
+                    vol_today = float(vol_s.iloc[-1])
+                    vol_prev = float(vol_s.iloc[-2])
                     if vol_prev > 0 and vol_today > 0:
-                        ratio = vol_today / vol_prev
-                        vol_ratio = round(max(0.01, min(ratio, 100)), 2)
+                        vol_ratio = round(max(0.01, min(vol_today / vol_prev, 100)), 2)
                     else:
                         vol_ratio = 1
                 else:
-                    # 降级：优先读 JSON 修正涨幅，其次用 fast_info.previousClose
-                    if name in json_pct and json_pct[name] is not None:
-                        pct = json_pct[name]
-                        has_delta = True
-                    else:
-                        try:
-                            prev_close = info.get('previousClose')
-                            if prev_close and float(prev_close) > 0:
-                                pct = round((current / float(prev_close) - 1) * 100, 2)
-                                has_delta = True
-                            else:
-                                pct, has_delta = 0, False
-                        except Exception:
-                            pct, has_delta = 0, False
                     vol_ratio = 1
 
                 data = {
@@ -1479,7 +1521,8 @@ def _load_csv_cache(codes_tuple, lookback_days, today_str):
 
 
 def load_all_recent_data(codes, lookback_days=30):
-    # DEPRECATED: not called in main(), retained for reference
+    # ARCHIVED: 2026-06-23 — not called in main(), retained for reference.
+    # Remove after 2026-09-23 if still unused.
     """三步加载 + 0-100% 进度条"""
 
     DATA_DIR = screener.DATA_DIR
@@ -1625,7 +1668,8 @@ def load_all_recent_data(codes, lookback_days=30):
 # ==================== 云端数据加载（Streamlit Cloud 无本地CSV时使用）====================
 @st.cache_data(ttl=86400, show_spinner=False)
 def cloud_load_data(version="v5"):
-    # DEPRECATED: not called in main(), retained for reference
+    # ARCHIVED: 2026-06-23 — not called in main(), retained for reference.
+    # Remove after 2026-09-23 if still unused.
     """云端模式：快照优先 + 5检查点刷新。缓存24h"""
     _ = version
     all_data = {}
@@ -1879,11 +1923,20 @@ def load_ai_memory():
         return {}
 
 def save_ai_memory(memory):
-    """保存 AI 记忆到文件（原子写入，防止并发损坏）"""
+    """保存 AI 记忆到文件（原子写入，防止并发损坏）。
+    失败时优雅降级：打印警告并清理临时文件，不抛出异常。"""
     tmp_path = AI_MEMORY_FILE + ".tmp"
-    with open(tmp_path, "w", encoding="utf-8") as f:
-        json.dump(memory, f, ensure_ascii=False, indent=2)
-    os.replace(tmp_path, AI_MEMORY_FILE)  # POSIX 原子操作
+    try:
+        with open(tmp_path, "w", encoding="utf-8") as f:
+            json.dump(memory, f, ensure_ascii=False, indent=2, default=str)
+        os.replace(tmp_path, AI_MEMORY_FILE)
+    except Exception as e:
+        print(f"⚠️ save_ai_memory failed: {e}")
+        if os.path.exists(tmp_path):
+            try:
+                os.remove(tmp_path)
+            except Exception:
+                pass
 
 def save_ai_analysis_record(code, date_str, mode, entry_price, pullback_pct, limit_days, analysis_text):
     """保存单条 AI 分析记录。按 (code, date) 去重。"""
@@ -2085,9 +2138,10 @@ def compute_performance(mode_filter=None, days_window=30):
     - days_window: 只看最近N天的记录（自然日）
     - 使用 ai_memory.json 中预计算的 return_7d
     """
+    ZERO_PERF = {'total_return': 0, 'wins': 0, 'losses': 0, 'neutral': 0, 'total_trades': 0, 'win_rate': 0, 'avg_win': 0, 'avg_loss': 0, 'profit_factor': 0, 'max_drawdown': 0, 'cum_returns': [], 'returns': [], 'exit_reasons': {}, 'mode_hold_days': {}}
     memory = load_ai_memory()
     if not memory:
-        return None
+        return ZERO_PERF
     try:
         today_int = int(china_now().strftime('%Y%m%d'))
         cutoff_date = china_now() - timedelta(days=days_window)
@@ -2133,7 +2187,7 @@ def compute_performance(mode_filter=None, days_window=30):
                     neutral += 1
 
         if not returns:
-            return None
+            return ZERO_PERF
 
         total_trades = wins + losses + neutral
         win_rate = wins / total_trades if total_trades > 0 else 0
@@ -2433,28 +2487,6 @@ def main():
             st.warning("⚠️ 无法检测")
 
 
-    # ---- 大盘概览 ----
-    st.header("◆ 大盘概况")
-    market = get_market_data()
-
-    cols = st.columns(3)
-    for i, (name, data) in enumerate(market.items()):
-        with cols[i]:
-            if data:
-                delta_str = f"{data['pct']:+.2f}%" if data.get('has_delta', True) else "—"
-                st.metric(
-                    label=name,
-                    value=f"{data['price']:.0f}",
-                    delta=delta_str,
-                )
-                st.caption(
-                    f"5日高 {data['high_5d']:.0f}  |  "
-                    f"5日低 {data['low_5d']:.0f}"
-                )
-            else:
-                st.metric(label=name, value="—")
-    st.divider()
-
     # 获取当前页面
     page = st.session_state.get('nav_page', '◆ 选股')
 
@@ -2477,33 +2509,26 @@ def main():
         is_trading = (wd < 5 and ((9 <= h < 11) or (h == 11 and m <= 30) or (13 <= h < 15)))
         is_post_close = (wd < 5 and h >= 15)
 
+        # 扫描结果新鲜度提醒
+        scan_fresh, scan_age_h, scan_age_text = _check_data_freshness('latest_scan_results.json', max_hours=24)
+        if not scan_fresh and scan_data is not None:
+            st.warning(f"⚠️ 扫描结果已过期（{scan_age_text}）— 建议运行 `python auto_daily.py` 更新数据")
+
         if scan_data is None:
             st.info("◆ 等待首次定时扫描… 结果将在 10:00 / 11:30 / 14:00 / 15:00 自动出现")
             st.caption("💡 也可以手动运行: `python auto_daily.py`")
         else:
             # ── 市场状态卡片 ──
             regime = scan_data.get("regime", {})
-            market = scan_data.get("market", {})
             rec_mode = regime.get("recommended_mode", "strict")
             modes = scan_data.get("modes", {})
 
-            # Build compact market status line
-            index_parts = []
-            for name, data in market.items():
-                pct = data.get("pct", 0)
-                color = "#00ff88" if pct >= 0 else "#ff5050"
-                sign = "+" if pct >= 0 else ""
-                index_parts.append(
-                    f'<span style="color:#888;font-size:0.75rem;">{name}</span> '
-                    f'<span style="color:{color};font-size:0.85rem;">{data["price"]:.0f} {sign}{pct:.2f}%</span>'
-                )
-
             sentiment_label = regime.get("label", "—")
+
+            # 收盘后自动从 AKShare 拉取当日收盘价（用于计算档位，不显示）
+            # 数据新鲜度确保 detect_market_regime 的判断基于最新行情
             st.markdown(f"""
             <div class="market-status-card">
-              <div class="market-index-row">
-                {" · ".join(index_parts) if index_parts else "—"}
-              </div>
               <div class="market-sentiment">
                 <span class="sentiment-tag">{sentiment_label}</span>
               </div>
@@ -2811,10 +2836,8 @@ def main():
                   </div>
                   <div class="mem-metrics-row">
                     <span>入场 ¥{rec.get('entry_price', 0):.2f}</span>
-                    <span>回调 {rec.get('pullback_pct', 0):.1f}%</span>
-                    <span>连板 {rec.get('limit_days', 0)}天</span>
-                    {ret_display}
-                    {exit_display}
+                    <span>策略收益 {ret_display}</span>
+                    <span>{exit_display}</span>
                   </div>
                   {f'<div class="mem-review-row">{review_html}</div>' if review_html else ''}
                 </div>
@@ -2859,6 +2882,14 @@ def main():
 
     elif page == '◆ 新闻':
         st.header("◆ 今日市场要闻")
+
+        # 数据新鲜度检查
+        fresh, age_h, age_text = _check_data_freshness('market_news.json', max_hours=24)
+        if not fresh:
+            if age_h == float('inf'):
+                st.error("🚨 新闻数据文件不存在 — 请运行 `python market_news.py` 生成")
+            else:
+                st.warning(f"⚠️ 新闻数据已过期（{age_text}）— 建议运行 `python market_news.py` 或 `python auto_daily.py` 更新")
 
         news_data = market_news.load_market_news()
 

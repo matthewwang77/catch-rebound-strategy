@@ -959,7 +959,7 @@ def main():
             try:
                 ret = backfill.check_return_v5_local(
                     code=code,
-                    signal_date=rec.get('signal_date', rec['date']),
+                    entry_date=rec['date'],  # ✅ 使用扫描日，非 signal_date
                     entry_price=rec.get('entry_price', 0),
                     hold_days=params.get('hold_days', 7),
                     take_profit=params['take_profit'],
