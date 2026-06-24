@@ -1,177 +1,177 @@
 {
   "date": "20260624",
-  "market_summary": "今日市场消息面偏多，半导体、创新药等科技板块受多重利好提振走强，但大盘受外围不确定性及缩量影响低开，结构性行情明显。",
-  "sentiment_impact": "偏多",
+  "market_summary": "今日市场分化明显，科创50涨超2%领涨，但全市场超4400家下跌，成交额缩量。半导体、医药板块强势，政策面关注三部门首台套保险补偿及监管暂停跨境TRS新增。",
+  "sentiment_impact": "中性",
   "news": [
     {
-      "title": "机构：第二季度LPDDR5X环比涨价89%、DRAM涨50%",
+      "title": "李家超：在广东和福建养老的香港长者下月起可选择将现金津贴汇入内地账户",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606243780865945.html",
-      "time": "2026-06-24 10:10:19",
-      "ai_summary": "DRAM/NAND价格Q2大涨，供需失衡",
-      "impact_analysis": "存储芯片涨价直接利好A股存储及半导体产业链，提升板块盈利预期，带动芯片ETF及个股走强。",
+      "url": "https://finance.eastmoney.com/a/202606243781184684.html",
+      "time": "2026-06-24 12:27:52",
+      "ai_summary": "三部门实施首台套保险补偿政策",
+      "impact_analysis": "利好高端装备和半导体设备板块，政策支持重大技术装备国产化，提振相关企业订单预期和估值。",
       "affected_sectors": [
-        "半导体",
-        "存储芯片"
+        "高端装备",
+        "半导体设备"
       ],
       "affected_stocks": [
-        "600584.SS",
-        "002049.SZ"
-      ],
-      "importance": 9
-    },
-    {
-      "title": "高盛投资主管：美联储7月份加息概率为50% 股价上涨的财富效应或成为加息理由",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606243780580187.html",
-      "time": "2026-06-24 09:13:11",
-      "ai_summary": "高盛称美联储7月加息概率50%",
-      "impact_analysis": "美联储加息预期升温，压制全球风险偏好，对A股外资流入及成长股估值形成短期压力。",
-      "affected_sectors": [
-        "大盘指数",
-        "成长股"
-      ],
-      "affected_stocks": [
-        "000001.SH",
-        "399001.SZ"
+        "688012.SS",
+        "002371.SZ"
       ],
       "importance": 8
     },
     {
-      "title": "高盛将立讯精密目标价翻倍至106元 因数据中心等业务强劲扩张预期",
+      "title": "午评：科创50半日涨超2% 芯片产业链大幅走强",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606243780786089.html",
-      "time": "2026-06-24 09:58:21",
-      "ai_summary": "国新办将发布新型能源体系规划",
-      "impact_analysis": "政策利好新能源板块，明确“十五五”能源发展方向，提振光伏、风电、储能等产业链预期。",
+      "url": "https://finance.eastmoney.com/a/202606243781176065.html",
+      "time": "2026-06-24 11:31:49",
+      "ai_summary": "监管暂停跨境TRS规模新增",
+      "impact_analysis": "限制资金外流，短期利空港股和跨境投资情绪，但利好A股流动性，可能引发北向资金波动。",
       "affected_sectors": [
-        "新能源",
-        "光伏",
-        "风电"
+        "券商",
+        "港股"
       ],
       "affected_stocks": [
-        "601012.SS",
-        "300274.SZ"
+        "600030.SS",
+        "06862.HK"
       ],
       "importance": 8
     },
     {
-      "title": "三星电子推出通用闪存存储UFS 5.0解决方案，芯片ETF翻红拉升超2%",
+      "title": "6月24日午间新闻精选",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606243780865160.html",
-      "time": "2026-06-24 10:11:07",
-      "ai_summary": "三星推出UFS 5.0，芯片ETF涨超2%",
-      "impact_analysis": "技术升级刺激芯片板块活跃，带动先进封装、存储等细分领域上涨，短期资金聚焦半导体。",
+      "url": "https://finance.eastmoney.com/a/202606243781179989.html",
+      "time": "2026-06-24 12:05:34",
+      "ai_summary": "科创50半日涨超2%，芯片走强",
+      "impact_analysis": "半导体产业链领涨，显示市场对国产替代和AI算力需求信心，带动科创板和创业板情绪。",
       "affected_sectors": [
         "半导体",
-        "芯片"
+        "芯片设计"
       ],
       "affected_stocks": [
-        "600584.SS",
-        "002049.SZ"
+        "688981.SS",
+        "600584.SS"
       ],
       "importance": 7
     },
     {
-      "title": "创新药概念早盘走势强劲，创新药ETF开盘涨超4.5%",
+      "title": "日本对华冷轧不锈钢板卷作出反倾销肯定性初裁",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606243780792116.html",
-      "time": "2026-06-24 09:59:11",
-      "ai_summary": "创新药概念强势，ETF涨超4.5%",
-      "impact_analysis": "创新药板块延续修复行情，政策及临床进展催化，资金流入明显，带动医药板块整体回暖。",
+      "url": "https://finance.eastmoney.com/a/202606243781175967.html",
+      "time": "2026-06-24 11:34:19",
+      "ai_summary": "港股通日均成交额同比跃升84%",
+      "impact_analysis": "显示内地资金南下活跃，利好港股流动性，但可能分流A股资金，需关注后续政策变化。",
       "affected_sectors": [
-        "医药",
+        "港股",
+        "券商"
+      ],
+      "affected_stocks": [
+        "00700.HK",
+        "06862.HK"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "工商银行：停办代理上海黄金交易所个人贵金属竞价交易业务",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202606243781175346.html",
+      "time": "2026-06-24 11:33:22",
+      "ai_summary": "CRO板块大爆发，药明康德涨停",
+      "impact_analysis": "医药板块连续反弹，受产业资本回购和集采消息催化，创新药和CXO龙头领涨，短期情绪偏多。",
+      "affected_sectors": [
+        "创新药",
+        "CRO"
+      ],
+      "affected_stocks": [
+        "603259.SS",
+        "002821.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "中国国新：未参与国富新联、弘懿创投或其关联方开展的任何活动",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202606243781146344.html",
+      "time": "2026-06-24 11:04:19",
+      "ai_summary": "全球半导体设备规模上调至1522亿美元",
+      "impact_analysis": "利好半导体设备板块，行业景气度提升，国产替代逻辑强化，北方华创等龙头受益。",
+      "affected_sectors": [
+        "半导体设备",
+        "电子"
+      ],
+      "affected_stocks": [
+        "002371.SZ",
+        "688012.SS"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "海思科两款自研新药海外授权落地，医药板块连续两日反弹！港股创新药ETF广发盘中涨超5%，恒生生物科技ETF广发、创新药ETF广发盘中涨超4%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202606243781177315.html",
+      "time": "2026-06-24 11:39:45",
+      "ai_summary": "孙正义：Arm将进军芯片制造",
+      "impact_analysis": "强化AI芯片和算力主题，利好国内芯片设计及制造产业链，但需关注竞争格局变化。",
+      "affected_sectors": [
+        "芯片设计",
+        "AI算力"
+      ],
+      "affected_stocks": [
+        "688981.SS",
+        "603986.SS"
+      ],
+      "importance": 6
+    },
+    {
+      "title": "科创50指数上涨2.48% 两市半日缩量超2300亿 能源金属、芯片产业链走强",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202606243781175882.html",
+      "time": "2026-06-24 11:30:10",
+      "ai_summary": "中国移动将构建一体化算力网",
+      "impact_analysis": "利好算力基础设施和AI产业链，中国移动布局超大规模智算中心，带动相关设备需求。",
+      "affected_sectors": [
+        "算力",
+        "通信设备"
+      ],
+      "affected_stocks": [
+        "600941.SS",
+        "000063.SZ"
+      ],
+      "importance": 6
+    },
+    {
+      "title": "香港证监会：港股通日均成交额按年跃升84%至1241亿元",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202606243781179531.html",
+      "time": "2026-06-24 12:00:55",
+      "ai_summary": "美国工厂6月裁员规模逼近金融危机",
+      "impact_analysis": "利空出口导向型板块，美国经济放缓担忧加剧，可能影响A股外贸相关行业情绪。",
+      "affected_sectors": [
+        "出口",
+        "制造业"
+      ],
+      "affected_stocks": [
+        "000651.SZ",
+        "600690.SS"
+      ],
+      "importance": 6
+    },
+    {
+      "title": "标普：美国工厂6月裁员规模正逼近金融危机和新冠疫情",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202606243781140350.html",
+      "time": "2026-06-24 11:01:26",
+      "ai_summary": "第12批药品集采开闸",
+      "impact_analysis": "短期压制仿制药板块，但创新药受益于集采免疫逻辑，板块分化加剧，龙头药企承压。",
+      "affected_sectors": [
+        "仿制药",
         "创新药"
       ],
       "affected_stocks": [
-        "300760.SZ",
-        "600276.SS"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "预告：国新办将就“十五五”时期加快新型能源体系建设有关规划情况举行新闻发布会",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606243780587324.html",
-      "time": "2026-06-24 09:16:17",
-      "ai_summary": "韩国与三星、SK海力士磋商芯片投资",
-      "impact_analysis": "全球半导体投资加码，强化存储及芯片产业链景气预期，对A股相关板块形成正面催化。",
-      "affected_sectors": [
-        "半导体",
-        "存储芯片"
-      ],
-      "affected_stocks": [
-        "600584.SS",
-        "002049.SZ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "券商又动！600909涨停",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606243780817281.html",
-      "time": "2026-06-24 10:04:00",
-      "ai_summary": "券商异动，华安证券涨停",
-      "impact_analysis": "券商股拉升反映市场情绪回暖，华安证券因存储概念涨停，但持续性待观察，对指数有支撑。",
-      "affected_sectors": [
-        "券商",
-        "金融"
-      ],
-      "affected_stocks": [
-        "600909.SS",
-        "000728.SZ"
+        "600276.SS",
+        "300760.SZ"
       ],
       "importance": 6
-    },
-    {
-      "title": "特朗普向选民打包票：伊朗战争结束后 美国经济将“飞向新高度”！",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606243780403769.html",
-      "time": "2026-06-24 09:04:02",
-      "ai_summary": "沪深两市成交额缩量超2300亿",
-      "impact_analysis": "成交额萎缩显示市场观望情绪浓厚，资金追高意愿不足，短期大盘上行动能受限。",
-      "affected_sectors": [
-        "大盘指数"
-      ],
-      "affected_stocks": [
-        "000001.SH",
-        "399001.SZ"
-      ],
-      "importance": 6
-    },
-    {
-      "title": "电容炭国产化率提升至约60%",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606243780669134.html",
-      "time": "2026-06-24 09:40:35",
-      "ai_summary": "电容炭国产化率提升至60%",
-      "impact_analysis": "国产替代加速利好电容炭及超级电容产业链，提升相关公司竞争力，但影响范围有限。",
-      "affected_sectors": [
-        "新材料",
-        "电子元器件"
-      ],
-      "affected_stocks": [
-        "300037.SZ",
-        "002484.SZ"
-      ],
-      "importance": 5
-    },
-    {
-      "title": "高盛二季度股票交易业务营收据悉将突破50亿美元 再创行业纪录",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606243780599161.html",
-      "time": "2026-06-24 09:21:47",
-      "ai_summary": "高盛股票交易营收将破50亿美元",
-      "impact_analysis": "反映全球股市活跃度提升，尤其是AI相关投资，间接利好A股科技及AI板块情绪。",
-      "affected_sectors": [
-        "AI",
-        "科技"
-      ],
-      "affected_stocks": [
-        "688256.SH",
-        "002230.SZ"
-      ],
-      "importance": 5
     }
   ]
 }

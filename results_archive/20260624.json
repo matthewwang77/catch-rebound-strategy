@@ -1,5 +1,5 @@
 {
-  "scan_time": "2026-06-24 12:38",
+  "scan_time": "2026-06-24 12:39",
   "scan_date": "20260624",
   "data_date": "2026-06-23",
   "market": {
@@ -24,8 +24,17 @@
   },
   "modes": {
     "strict": {
-      "count": 0,
-      "candidates": []
+      "count": 1,
+      "candidates": [
+        {
+          "code": "000518.SZ",
+          "price": 3.3,
+          "signal_date": "20260623",
+          "pullback_pct": 26.4,
+          "limit_days": 4,
+          "entity_ratio": 100.0
+        }
+      ]
     }
   }
 }
