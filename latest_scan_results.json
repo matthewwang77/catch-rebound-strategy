@@ -1,15 +1,15 @@
 {
-  "scan_time": "2026-06-25 15:02",
+  "scan_time": "2026-06-25 15:08",
   "scan_date": "20260625",
-  "data_date": "2026-06-24",
+  "data_date": "2026-06-25",
   "market": {
     "上证": {
-      "price": 4110.81,
-      "pct": 0.11
+      "price": 4120.21,
+      "pct": 0.23
     },
     "深证": {
-      "price": 16051.32,
-      "pct": 1.24
+      "price": 16353.27,
+      "pct": 1.88
     },
     "创业板": {
       "price": 4251.42,
@@ -19,7 +19,7 @@
   "regime": {
     "status": "neutral",
     "label": "4档: 发酵期 — 势头良好",
-    "avg_trend": 1.27,
+    "avg_trend": 1.37,
     "recommended_mode": "loose"
   },
   "modes": {

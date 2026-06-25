@@ -1,174 +1,175 @@
 {
   "date": "20260625",
-  "market_summary": "今日A股市场受多重利好驱动，成交额连续突破2.5万亿元并达3万亿元，科技板块（芯片、光模块、AI）强势领涨，券商板块爆发，油价下跌利好航空股，但银行板块承压，整体消息面偏多。",
+  "market_summary": "今日A股市场受AI算力需求爆发、美光财报超预期及央行稳流动性操作提振，科技股全线大涨，创业板指和科创50指数再创新高，但商品期货普跌显示周期板块承压，市场结构性分化明显。",
   "sentiment_impact": "偏多",
   "news": [
     {
-      "title": "安徽光智科技有限公司等走私国家禁止进出口的货物案一审宣判",
+      "title": "银河证券章俊：AI与地缘重塑宏观框架 Token或成新货币锚点",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606253782819480.html",
-      "time": "2026-06-25 12:50:02",
-      "ai_summary": "央行将增加隔夜逆回购操作",
-      "impact_analysis": "释放流动性管理信号，缓解短期资金压力，利好大盘指数，尤其对金融板块有支撑作用。",
+      "url": "https://finance.eastmoney.com/a/202606253782934117.html",
+      "time": "2026-06-25 14:02:50",
+      "ai_summary": "央行MLF加量续作稳流动性",
+      "impact_analysis": "央行开展5000亿元MLF操作，叠加隔夜逆回购即将落地，释放明确稳信号，缓解跨季资金压力，利好大盘指数和金融板块。",
       "affected_sectors": [
         "银行",
-        "证券"
+        "金融"
       ],
       "affected_stocks": [
         "600036.SS",
-        "601211.SS"
+        "601398.SS"
       ],
       "importance": 9
+    },
+    {
+      "title": "澳大利亚楼市滑坡 悉尼和墨尔本两大市场本季缩水1280亿美元",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202606253782974680.html",
+      "time": "2026-06-25 14:37:39",
+      "ai_summary": "美光财报超预期引爆半导体",
+      "impact_analysis": "美光业绩炸裂带动全球科技股共振，A股芯片ETF大涨超4%，半导体板块受益于AI存储需求，有望持续走强。",
+      "affected_sectors": [
+        "半导体",
+        "芯片"
+      ],
+      "affected_stocks": [
+        "688981.SH",
+        "002049.SZ"
+      ],
+      "importance": 9
+    },
+    {
+      "title": "IDC：到2027年推理将占智能算力需求70%以上",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202606253782988130.html",
+      "time": "2026-06-25 14:53:41",
+      "ai_summary": "创业板指和科创50再创新高",
+      "impact_analysis": "创业板指涨近3%，科创50涨近4%，成交额超3.6万亿，显示资金集中涌入科技成长股，强化市场做多情绪。",
+      "affected_sectors": [
+        "创业板",
+        "科创板"
+      ],
+      "affected_stocks": [
+        "300750.SZ",
+        "688981.SH"
+      ],
+      "importance": 9
+    },
+    {
+      "title": "抖音电商强化食品类商品管理规范",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202606253782983492.html",
+      "time": "2026-06-25 14:48:00",
+      "ai_summary": "IDC预测推理算力需求占比超70%",
+      "impact_analysis": "到2027年推理占智能算力需求70%以上，利好AI算力基础设施和边缘计算，推动相关板块长期增长。",
+      "affected_sectors": [
+        "人工智能",
+        "算力"
+      ],
+      "affected_stocks": [
+        "000977.SZ",
+        "688041.SH"
+      ],
+      "importance": 8
     },
     {
       "title": "穆长春：央行数字货币重塑跨境支付",
       "source": "东方财富",
       "url": "https://finance.eastmoney.com/a/202606253782850037.html",
       "time": "2026-06-25 13:58:40",
-      "ai_summary": "美光财报引爆，芯片板块跳涨超3%",
-      "impact_analysis": "存储芯片需求旺盛，带动A股芯片产业链走强，利好科创板和创业板指数，资金持续流入科技ETF。",
-      "affected_sectors": [
-        "半导体",
-        "存储芯片"
-      ],
-      "affected_stocks": [
-        "688981.SH",
-        "300661.SZ"
-      ],
-      "importance": 9
-    },
-    {
-      "title": "油价跌回原点 航空股集体狂飙！机构提示：重视珍贵布局时机",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606253782817724.html",
-      "time": "2026-06-25 13:47:00",
-      "ai_summary": "券商板块爆发，ETF指数飙升近4%",
-      "impact_analysis": "券商作为牛市旗手，大涨提升市场情绪和风险偏好，直接推动上证指数和深证成指上行。",
-      "affected_sectors": [
-        "证券",
-        "金融科技"
-      ],
-      "affected_stocks": [
-        "600030.SS",
-        "601688.SS"
-      ],
-      "importance": 9
-    },
-    {
-      "title": "中国IPO正在被硬科技“承包”",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606253782865463.html",
-      "time": "2026-06-25 13:25:28",
-      "ai_summary": "IPO聚焦硬科技，中国交易所全球前十占四席",
-      "impact_analysis": "强化市场对科技股信心，引导资金流向硬科技板块，利好科创板、创业板指数，提升整体市场风险偏好。",
-      "affected_sectors": [
-        "半导体",
-        "人工智能"
-      ],
-      "affected_stocks": [
-        "688981.SH",
-        "300750.SZ"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "银河证券章俊：AI与地缘重塑宏观框架 Token或成新货币锚点",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606253782934117.html",
-      "time": "2026-06-25 14:02:50",
-      "ai_summary": "油价跌回战前水平，航空股集体狂飙",
-      "impact_analysis": "原油价格下行直接降低航空、运输成本，推动相关板块反弹，利好航空指数，但需警惕油价波动风险。",
-      "affected_sectors": [
-        "航空机场",
-        "交通运输"
-      ],
-      "affected_stocks": [
-        "600029.SS",
-        "601111.SS"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "消息称因CEO阿莫迪难以沟通 Anthropic更换对接美政府人员协商解封Fable 5",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606253782880684.html",
-      "time": "2026-06-25 13:36:23",
-      "ai_summary": "沪深两市成交额连续突破3万亿元",
-      "impact_analysis": "天量成交显示市场活跃度极高，资金入场意愿强，支撑大盘指数上行，但需警惕过热风险。",
-      "affected_sectors": [
-        "证券",
-        "多元金融"
-      ],
-      "affected_stocks": [
-        "600030.SS",
-        "601878.SS"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "浙江国资成立低空基础设施产业发展公司",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606253782834443.html",
-      "time": "2026-06-25 13:04:55",
       "ai_summary": "央行数字货币重塑跨境支付",
-      "impact_analysis": "数字货币进展利好金融科技和跨境支付板块，提升相关概念股关注度，对创业板指数有间接提振。",
+      "impact_analysis": "穆长春称央行数字货币目标为新型FMI，累计交易额近5000亿元，利好数字货币和金融科技板块。",
       "affected_sectors": [
         "数字货币",
         "金融科技"
       ],
       "affected_stocks": [
-        "300059.SZ",
-        "002152.SZ"
+        "002152.SZ",
+        "300773.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "广汽集团持股的祺迹汽车成立新公司 含多项机器人业务",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202606253782954618.html",
+      "time": "2026-06-25 14:24:00",
+      "ai_summary": "我国牵头制定自动驾驶全球法规",
+      "impact_analysis": "联合国批准中国牵头的自动驾驶系统全球技术法规，利好自动驾驶和智能网联汽车板块，加速产业国际化。",
+      "affected_sectors": [
+        "自动驾驶",
+        "智能汽车"
+      ],
+      "affected_stocks": [
+        "002920.SZ",
+        "601689.SS"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "创业板大涨科技股全线爆发！科创创业ETF易方达（159781）涨3.48%，成交额突破6亿",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202606253782936022.html",
+      "time": "2026-06-25 14:04:35",
+      "ai_summary": "沪深两市成交额突破3.5万亿",
+      "impact_analysis": "成交额放量3022亿元，显示市场活跃度提升，资金入场积极，支撑指数上行，但需警惕过热风险。",
+      "affected_sectors": [
+        "券商",
+        "金融科技"
+      ],
+      "affected_stocks": [
+        "600030.SS",
+        "300059.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "国内商品期货收盘 主力合约几乎全线下跌",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202606253782993360.html",
+      "time": "2026-06-25 15:00:12",
+      "ai_summary": "广东发布脑机接口行动计划",
+      "impact_analysis": "广东规划脑机接口系统研制，聚焦神经疾病诊疗，利好脑机接口和医疗器械板块，政策催化明确。",
+      "affected_sectors": [
+        "脑机接口",
+        "医疗器械"
+      ],
+      "affected_stocks": [
+        "300003.SZ",
+        "688169.SH"
       ],
       "importance": 7
     },
     {
-      "title": "美光炸裂财报引爆！科创芯片设计ETF天弘标的指数跳涨超3%，连续10日净流入累计超7亿元，规模迭创历史新高",
+      "title": "压力测试过关 摩根大通、高盛等大型银行提高股利并回购股份",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606253782876877.html",
-      "time": "2026-06-25 13:30:42",
-      "ai_summary": "中汽协：5月中国品牌乘用车销量占比75%",
-      "impact_analysis": "自主品牌市场份额提升，利好汽车整车板块，尤其新能源车企，对深证成指有正面影响。",
+      "url": "https://finance.eastmoney.com/a/202606253782988711.html",
+      "time": "2026-06-25 14:53:40",
+      "ai_summary": "商品期货全线下跌沪银跌超7%",
+      "impact_analysis": "沪银、碳酸锂等大跌，反映周期板块承压，利空贵金属和能源金属板块，资金可能从周期流向科技。",
       "affected_sectors": [
-        "汽车整车",
-        "新能源汽车"
+        "贵金属",
+        "能源金属"
       ],
       "affected_stocks": [
-        "600104.SS",
-        "002594.SZ"
+        "600547.SS",
+        "002460.SZ"
       ],
       "importance": 7
     },
     {
-      "title": "“买券商等于买打折版科技股”！深市同标的规模最大的证券ETF天弘标的指数飙升近4%，盘中申购超1亿份居深市同标的第一",
+      "title": "广东：研制面向神经精神疾病诊疗、状态监测干预等场景的脑机接口系统",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606253782877418.html",
-      "time": "2026-06-25 13:31:09",
-      "ai_summary": "港股银行板块午后走低，中国银行跌超6%",
-      "impact_analysis": "银行股承压可能拖累A股银行板块，对大盘指数形成一定压力，但影响有限，因科技股强势对冲。",
+      "url": "https://finance.eastmoney.com/a/202606253782986498.html",
+      "time": "2026-06-25 14:51:26",
+      "ai_summary": "国资委举办量子科技人才特训班",
+      "impact_analysis": "国资委加速培养量子科技人才，政策支持明确，利好量子计算和通信板块，但短期影响有限。",
       "affected_sectors": [
-        "银行"
+        "量子科技",
+        "通信"
       ],
       "affected_stocks": [
-        "601398.SS",
-        "601939.SS"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "应对消费贷缩量 有银行调整考核模式",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606253782816014.html",
-      "time": "2026-06-25 12:50:00",
-      "ai_summary": "消费贷余额前五月减少超1.1万亿元",
-      "impact_analysis": "消费贷缩量反映居民消费疲软，利空消费板块，对深证成指和创业板指数有负面影响，但市场焦点在科技。",
-      "affected_sectors": [
-        "消费",
-        "银行"
-      ],
-      "affected_stocks": [
-        "000333.SZ",
-        "600519.SS"
+        "600260.SS",
+        "688027.SH"
       ],
       "importance": 6
     }
