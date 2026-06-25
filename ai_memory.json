@@ -169,6 +169,29 @@
       "why_wrong": null,
       "missed_signal": null,
       "lesson": null
+    },
+    {
+      "date": "20260625",
+      "signal_date": "20260623",
+      "mode": "strict",
+      "entry_price": 3.2,
+      "pullback_pct": 26.4,
+      "limit_days": 4,
+      "analysis": "量：缩量明显（近3日均量仅为涨停日27%），OBV上升显示资金仍在流入，但量比0.62x表明交投清淡。  \n价：股价跌破MA5/MA10/MA20三条均线，3.20元处于布林中轨3.32下方，支撑位看下轨2.89元。  \n形：匹配连板后深度回调形态，回调幅度26.4%接近黄金分割位。  \n时：距涨停日17天，回调天数偏长，窗口处于弱势修复期，反弹概率低。  \n仓位建议：0成仓（启动期3档）  \n反弹概率：低（≤30%）  \n最终结论：【放弃】",
+      "sentiment": "启动期3档",
+      "position": "0成仓",
+      "opinion": "【放弃】",
+      "verified": false,
+      "return_7d": null,
+      "exit_reason": null,
+      "exit_day": null,
+      "verdict": null,
+      "review_analysis": null,
+      "review_quality": null,
+      "what_happened": null,
+      "why_wrong": null,
+      "missed_signal": null,
+      "lesson": null
     }
   ]
 }
