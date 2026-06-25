@@ -1,5 +1,5 @@
 {
-  "scan_time": "2026-06-25 11:32",
+  "scan_time": "2026-06-25 14:03",
   "scan_date": "20260625",
   "data_date": "2026-06-24",
   "market": {
@@ -19,22 +19,13 @@
   "regime": {
     "status": "neutral",
     "label": "4档: 发酵期 — 势头良好",
-    "avg_trend": 1.18,
+    "avg_trend": 1.05,
     "recommended_mode": "loose"
   },
   "modes": {
-    "strict": {
-      "count": 1,
-      "candidates": [
-        {
-          "code": "000518.SZ",
-          "price": 3.19,
-          "signal_date": "20260623",
-          "pullback_pct": 26.4,
-          "limit_days": 4,
-          "entity_ratio": 100.0
-        }
-      ]
+    "loose": {
+      "count": 0,
+      "candidates": []
     }
   }
 }

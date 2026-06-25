@@ -1,175 +1,176 @@
 {
   "date": "20260625",
-  "market_summary": "今日A股消息面偏多，半导体产业链受美光业绩超预期和AI基建长期需求提振全面爆发，带动科创50指数大涨；同时央行加量续作MLF、证券板块拉升，市场情绪回暖。但创业板指冲高回落，个股分化明显。",
+  "market_summary": "今日A股市场受多重利好驱动，成交额连续突破2.5万亿元并达3万亿元，科技板块（芯片、光模块、AI）强势领涨，券商板块爆发，油价下跌利好航空股，但银行板块承压，整体消息面偏多。",
   "sentiment_impact": "偏多",
   "news": [
     {
-      "title": "Token效率成AI竞争关键 中兴通讯MWCS秀智算超节点方案",
+      "title": "安徽光智科技有限公司等走私国家禁止进出口的货物案一审宣判",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606253782764667.html",
-      "time": "2026-06-25 11:03:41",
-      "ai_summary": "央行开展5000亿元MLF操作",
-      "impact_analysis": "央行加量续作MLF释放流动性，缓解市场资金面压力，利好银行及整体市场，支撑指数上行。",
+      "url": "https://finance.eastmoney.com/a/202606253782819480.html",
+      "time": "2026-06-25 12:50:02",
+      "ai_summary": "央行将增加隔夜逆回购操作",
+      "impact_analysis": "释放流动性管理信号，缓解短期资金压力，利好大盘指数，尤其对金融板块有支撑作用。",
       "affected_sectors": [
         "银行",
-        "大盘"
+        "证券"
       ],
       "affected_stocks": [
-        "000001.SZ",
-        "600036.SS"
+        "600036.SS",
+        "601211.SS"
       ],
       "importance": 9
     },
     {
-      "title": "中国银行回应逃避税23.67亿元 A股开盘价跌近2%",
+      "title": "穆长春：央行数字货币重塑跨境支付",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606253782758397.html",
-      "time": "2026-06-25 10:53:00",
-      "ai_summary": "美光科技业绩超预期，净利增1398%",
-      "impact_analysis": "美光业绩炸裂印证存储芯片高景气，直接催化A股存储龙头股价创新高，带动半导体全产业链上涨。",
+      "url": "https://finance.eastmoney.com/a/202606253782850037.html",
+      "time": "2026-06-25 13:58:40",
+      "ai_summary": "美光财报引爆，芯片板块跳涨超3%",
+      "impact_analysis": "存储芯片需求旺盛，带动A股芯片产业链走强，利好科创板和创业板指数，资金持续流入科技ETF。",
       "affected_sectors": [
         "半导体",
         "存储芯片"
-      ],
-      "affected_stocks": [
-        "603986.SS",
-        "300308.SZ"
-      ],
-      "importance": 9
-    },
-    {
-      "title": "交通运输部等：围绕航线规划等核心任务 鼓励开发民航垂域大模型",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606253782780674.html",
-      "time": "2026-06-25 11:13:42",
-      "ai_summary": "A股六大存储龙头股价齐创历史新高",
-      "impact_analysis": "存储龙头集体新高显示资金高度追捧，芯片供应紧缺预期持续，半导体板块成为市场主线。",
-      "affected_sectors": [
-        "半导体",
-        "存储芯片"
-      ],
-      "affected_stocks": [
-        "603986.SS",
-        "300308.SZ"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "A股六大存储龙头股价齐创历史新高！芯片供应紧缺或持续到2027年，芯片ETF广发、科创芯片ETF广发涨超4%，科创芯片设计ETF广发盘中涨超3%",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606253782790934.html",
-      "time": "2026-06-25 11:15:09",
-      "ai_summary": "科创50指数涨幅扩大至4%",
-      "impact_analysis": "科创50大涨反映科技股强势，带动创业板和主板情绪，指数层面形成正向反馈。",
-      "affected_sectors": [
-        "科创板",
-        "半导体"
       ],
       "affected_stocks": [
         "688981.SH",
-        "688012.SH"
+        "300661.SZ"
       ],
-      "importance": 8
+      "importance": 9
     },
     {
-      "title": "重庆：拟积极争取电信增值、医疗、教育等领域开放试点政策",
+      "title": "油价跌回原点 航空股集体狂飙！机构提示：重视珍贵布局时机",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606253782719589.html",
-      "time": "2026-06-25 10:35:47",
-      "ai_summary": "证券ETF上午持续拉升超3.5%",
-      "impact_analysis": "券商作为牛市旗手拉升，提振市场信心，预示大盘可能进一步走强，资金入场意愿增强。",
+      "url": "https://finance.eastmoney.com/a/202606253782817724.html",
+      "time": "2026-06-25 13:47:00",
+      "ai_summary": "券商板块爆发，ETF指数飙升近4%",
+      "impact_analysis": "券商作为牛市旗手，大涨提升市场情绪和风险偏好，直接推动上证指数和深证成指上行。",
       "affected_sectors": [
         "证券",
-        "金融"
+        "金融科技"
       ],
       "affected_stocks": [
         "600030.SS",
-        "601066.SS"
+        "601688.SS"
+      ],
+      "importance": 9
+    },
+    {
+      "title": "中国IPO正在被硬科技“承包”",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202606253782865463.html",
+      "time": "2026-06-25 13:25:28",
+      "ai_summary": "IPO聚焦硬科技，中国交易所全球前十占四席",
+      "impact_analysis": "强化市场对科技股信心，引导资金流向硬科技板块，利好科创板、创业板指数，提升整体市场风险偏好。",
+      "affected_sectors": [
+        "半导体",
+        "人工智能"
+      ],
+      "affected_stocks": [
+        "688981.SH",
+        "300750.SZ"
       ],
       "importance": 8
     },
     {
-      "title": "交通运输部：健全“人工智能+交通运输”标准体系 积极开展预标准化研究",
+      "title": "银河证券章俊：AI与地缘重塑宏观框架 Token或成新货币锚点",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606253782776991.html",
-      "time": "2026-06-25 11:05:00",
-      "ai_summary": "交通运输部等鼓励开发民航垂域大模型",
-      "impact_analysis": "政策推动AI+交通运输，利好民航智能化、AI应用板块，相关概念股有望受益。",
+      "url": "https://finance.eastmoney.com/a/202606253782934117.html",
+      "time": "2026-06-25 14:02:50",
+      "ai_summary": "油价跌回战前水平，航空股集体狂飙",
+      "impact_analysis": "原油价格下行直接降低航空、运输成本，推动相关板块反弹，利好航空指数，但需警惕油价波动风险。",
       "affected_sectors": [
-        "人工智能",
+        "航空机场",
         "交通运输"
       ],
       "affected_stocks": [
-        "002230.SZ",
-        "600029.SS"
+        "600029.SS",
+        "601111.SS"
       ],
-      "importance": 7
+      "importance": 8
     },
     {
-      "title": "郭兰峰：提升消费能力需要收入分配改革 更充分体现出劳动价值",
+      "title": "消息称因CEO阿莫迪难以沟通 Anthropic更换对接美政府人员协商解封Fable 5",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606253782754589.html",
-      "time": "2026-06-25 10:50:32",
-      "ai_summary": "交通运输部等开展智能驾驶端到端大模型研发",
-      "impact_analysis": "智能驾驶政策加码，利好自动驾驶、车联网产业链，相关技术公司迎来发展机遇。",
+      "url": "https://finance.eastmoney.com/a/202606253782880684.html",
+      "time": "2026-06-25 13:36:23",
+      "ai_summary": "沪深两市成交额连续突破3万亿元",
+      "impact_analysis": "天量成交显示市场活跃度极高，资金入场意愿强，支撑大盘指数上行，但需警惕过热风险。",
       "affected_sectors": [
-        "智能驾驶",
-        "汽车零部件"
+        "证券",
+        "多元金融"
       ],
       "affected_stocks": [
-        "002920.SZ",
-        "600741.SS"
+        "600030.SS",
+        "601878.SS"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "浙江国资成立低空基础设施产业发展公司",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202606253782834443.html",
+      "time": "2026-06-25 13:04:55",
+      "ai_summary": "央行数字货币重塑跨境支付",
+      "impact_analysis": "数字货币进展利好金融科技和跨境支付板块，提升相关概念股关注度，对创业板指数有间接提振。",
+      "affected_sectors": [
+        "数字货币",
+        "金融科技"
+      ],
+      "affected_stocks": [
+        "300059.SZ",
+        "002152.SZ"
       ],
       "importance": 7
     },
     {
-      "title": "证券ETF鹏华涨超2%，投行业务“马太效应”加剧",
+      "title": "美光炸裂财报引爆！科创芯片设计ETF天弘标的指数跳涨超3%，连续10日净流入累计超7亿元，规模迭创历史新高",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606253782759959.html",
-      "time": "2026-06-25 10:50:30",
-      "ai_summary": "中国银行回应逃避税23.67亿元",
-      "impact_analysis": "负面消息导致中国银行股价下跌，短期压制银行板块情绪，但影响有限，或为个股风险。",
+      "url": "https://finance.eastmoney.com/a/202606253782876877.html",
+      "time": "2026-06-25 13:30:42",
+      "ai_summary": "中汽协：5月中国品牌乘用车销量占比75%",
+      "impact_analysis": "自主品牌市场份额提升，利好汽车整车板块，尤其新能源车企，对深证成指有正面影响。",
+      "affected_sectors": [
+        "汽车整车",
+        "新能源汽车"
+      ],
+      "affected_stocks": [
+        "600104.SS",
+        "002594.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "“买券商等于买打折版科技股”！深市同标的规模最大的证券ETF天弘标的指数飙升近4%，盘中申购超1亿份居深市同标的第一",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202606253782877418.html",
+      "time": "2026-06-25 13:31:09",
+      "ai_summary": "港股银行板块午后走低，中国银行跌超6%",
+      "impact_analysis": "银行股承压可能拖累A股银行板块，对大盘指数形成一定压力，但影响有限，因科技股强势对冲。",
       "affected_sectors": [
         "银行"
       ],
       "affected_stocks": [
-        "601988.SS"
+        "601398.SS",
+        "601939.SS"
       ],
-      "importance": 6
+      "importance": 7
     },
     {
-      "title": "摩根大通将韩国股市Kospi指数在牛市情景的目标位上调至15000点",
+      "title": "应对消费贷缩量 有银行调整考核模式",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606253782785831.html",
-      "time": "2026-06-25 11:18:27",
-      "ai_summary": "现货黄金跌破4000美元/盎司",
-      "impact_analysis": "金价回调利空黄金股，但资金可能从避险转向风险资产，间接利好A股科技和成长板块。",
-      "affected_sectors": [
-        "贵金属",
-        "有色金属"
-      ],
-      "affected_stocks": [
-        "600489.SS",
-        "002155.SZ"
-      ],
-      "importance": 6
-    },
-    {
-      "title": "招商银行王小青：以大财富管理为抓手的零售业务依然是压舱石",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606253782706358.html",
-      "time": "2026-06-25 10:31:00",
-      "ai_summary": "郭兰峰：提升消费能力需要收入分配改革",
-      "impact_analysis": "高层言论指向消费刺激政策预期，利好消费板块，但短期影响有限，需关注后续具体措施。",
+      "url": "https://finance.eastmoney.com/a/202606253782816014.html",
+      "time": "2026-06-25 12:50:00",
+      "ai_summary": "消费贷余额前五月减少超1.1万亿元",
+      "impact_analysis": "消费贷缩量反映居民消费疲软，利空消费板块，对深证成指和创业板指数有负面影响，但市场焦点在科技。",
       "affected_sectors": [
         "消费",
-        "食品饮料"
+        "银行"
       ],
       "affected_stocks": [
-        "000858.SZ",
+        "000333.SZ",
         "600519.SS"
       ],
-      "importance": 5
+      "importance": 6
     }
   ]
 }
