@@ -1,107 +1,73 @@
 {
   "date": "20260626",
-  "market_summary": "今日A股三大指数大幅回调，但半导体、卫星等科技板块逆势走强，市场结构性分化明显，消息面偏多科技成长方向。",
-  "sentiment_impact": "中性",
+  "market_summary": "今日A股三大指数大幅回调，沪指跌超2%，创业板指跌超4%，但商业航天、卫星等板块逆市走强，同时政策面有新能源汽车下乡和电网投资增长等利好，市场整体偏空但结构性机会明显。",
+  "sentiment_impact": "偏空",
   "news": [
     {
-      "title": "福森药业：帕拉米韦注射液获国家药监局批准上市",
+      "title": "埃塞俄比亚航空高管：零关税政策令非洲农产品对华出口爆发式增长",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606263784543262.html",
-      "time": "2026-06-26 12:19:00",
-      "ai_summary": "半导体硅片涨价潮预期升温",
-      "impact_analysis": "半导体硅片涨价预期直接利好硅片及设备板块，带动相关ETF逆市大涨，显示市场对产业链景气度提升的强烈信心，对半导体行业形成正向催化。",
+      "url": "https://finance.eastmoney.com/a/202606263784630835.html",
+      "time": "2026-06-26 14:02:14",
+      "ai_summary": "十五五电网投资增长30%以上",
+      "impact_analysis": "电网投资大幅增长利好电力设备、特高压、智能电网等板块，长期确定性增强，相关龙头公司受益明显。",
       "affected_sectors": [
-        "半导体",
-        "电子"
+        "电力设备",
+        "特高压"
       ],
       "affected_stocks": [
-        "688126.SH",
-        "300604.SZ"
+        "601179.SS",
+        "600406.SS"
       ],
-      "importance": 8
+      "importance": 9
     },
     {
       "title": "SpaceX星链推移动通信服务催化产业预期，卫星ETF易方达（563530）逆市涨2.02%",
       "source": "东方财富",
       "url": "https://finance.eastmoney.com/a/202606263784608611.html",
       "time": "2026-06-26 13:39:33",
-      "ai_summary": "美光签千亿长期供货协议",
-      "impact_analysis": "美光与16家客户签署长期协议，锁定千亿营收，强化存储芯片供需紧张预期，利好国内存储及半导体产业链，提振市场对芯片行业信心。",
+      "ai_summary": "五部门启动新能源汽车下乡活动",
+      "impact_analysis": "政策直接利好新能源汽车产业链，提振消费预期，对整车、充电桩等板块形成支撑，有望对冲部分市场下行压力。",
+      "affected_sectors": [
+        "新能源汽车",
+        "充电桩"
+      ],
+      "affected_stocks": [
+        "002594.SZ",
+        "300750.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "2026南京软件大会在南京国际博览中心开幕",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202606263784654313.html",
+      "time": "2026-06-26 14:22:35",
+      "ai_summary": "商业航天概念逆市走强",
+      "impact_analysis": "长征十号乙首飞催化，卫星ETF涨超3%，显示市场对商业航天规模化发展预期升温，短期资金聚焦该板块。",
+      "affected_sectors": [
+        "商业航天",
+        "卫星互联网"
+      ],
+      "affected_stocks": [
+        "600118.SS",
+        "300102.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "海光信息：已提前准备“CPU+DCU”双芯融合技术开发",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202606263784631759.html",
+      "time": "2026-06-26 14:05:15",
+      "ai_summary": "美银预计AI存储芯片短缺持续至明年底",
+      "impact_analysis": "AI存储供需失衡利好存储芯片产业链，国产替代逻辑强化，相关公司如兆易创新等有望受益。",
       "affected_sectors": [
         "存储芯片",
         "半导体"
       ],
       "affected_stocks": [
-        "688981.SH",
+        "603986.SS",
         "002049.SZ"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "半导体硅片涨价潮预期升温，半导体设备ETF易方达（159558）逆市涨3.39%，成交额超12亿元",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606263784600468.html",
-      "time": "2026-06-26 13:34:14",
-      "ai_summary": "SpaceX星链推移动通信服务",
-      "impact_analysis": "SpaceX星链业务进展催化国内卫星互联网产业预期，带动卫星ETF逆市上涨，利好商业航天和卫星通信板块，增强市场对相关产业链的关注。",
-      "affected_sectors": [
-        "卫星互联网",
-        "商业航天"
-      ],
-      "affected_stocks": [
-        "600118.SH",
-        "688568.SH"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "深半协：2025年深圳集成电路产业实现销售收入3610.4亿元",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606263784564662.html",
-      "time": "2026-06-26 13:03:41",
-      "ai_summary": "深圳集成电路产业销售收入增长27%",
-      "impact_analysis": "深圳集成电路产业高速增长，反映国产替代进程加速，提振半导体板块情绪，尤其利好深圳本地芯片设计、制造企业，强化行业景气预期。",
-      "affected_sectors": [
-        "集成电路",
-        "半导体"
-      ],
-      "affected_stocks": [
-        "688981.SH",
-        "002371.SZ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "美光签署多领域长期供货协议，锁定千亿营收，半导体ETF博时(159582)涨超2%，冲击3连涨",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606263784594726.html",
-      "time": "2026-06-26 13:29:50",
-      "ai_summary": "扬杰科技年内第二次产品提价",
-      "impact_analysis": "功率半导体龙头扬杰科技提价10%-15%，反映供需紧张和成本传导，利好功率半导体板块，可能带动其他企业跟进，提升行业盈利预期。",
-      "affected_sectors": [
-        "功率半导体",
-        "电子元器件"
-      ],
-      "affected_stocks": [
-        "300373.SZ",
-        "600745.SH"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "华虹集团原董事长张素心：传统检测模式难适配芯片产业迭代 AI赋能是行业待解命题",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606263784549747.html",
-      "time": "2026-06-26 12:37:00",
-      "ai_summary": "AI生成视频耗电巨大，算电协同推进",
-      "impact_analysis": "AI算力耗电激增，国家能源局推动算电协同，利好电力设备和算力基础设施板块，强化市场对AI产业链长期需求的预期。",
-      "affected_sectors": [
-        "电力设备",
-        "算力基础设施"
-      ],
-      "affected_stocks": [
-        "600406.SH",
-        "300750.SZ"
       ],
       "importance": 7
     },
@@ -110,68 +76,101 @@
       "source": "东方财富",
       "url": "https://finance.eastmoney.com/a/202606263784535375.html",
       "time": "2026-06-26 13:54:37",
-      "ai_summary": "中国电动装载机热销，工程机械订单爆满",
-      "impact_analysis": "电动装载机销量同比增90.9%，工程机械淡季不淡，利好新能源工程机械和电动化转型板块，显示行业高景气度，提振相关个股。",
-      "affected_sectors": [
-        "工程机械",
-        "新能源装备"
-      ],
-      "affected_stocks": [
-        "600031.SH",
-        "000528.SZ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "1496亿保证金到账！美光最新协议曝光：客户不买也得付",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606263784598726.html",
-      "time": "2026-06-26 13:34:50",
-      "ai_summary": "全球首个自动驾驶系统法规获批",
-      "impact_analysis": "自动驾驶国际法规获批，加速行业标准化和商业化进程，利好自动驾驶概念股，推动智能驾驶板块发展，增强市场对相关技术的信心。",
-      "affected_sectors": [
-        "自动驾驶",
-        "智能汽车"
-      ],
-      "affected_stocks": [
-        "002920.SZ",
-        "601689.SH"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "A股下半程怎么走？头部券商中期策略密集出炉 分歧聚焦四个变量",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606263784553662.html",
-      "time": "2026-06-26 13:05:00",
-      "ai_summary": "沪深两市成交额连续44日破2.5万亿",
-      "impact_analysis": "持续高成交额显示市场交投活跃，资金流动性充裕，对券商板块形成直接利好，同时反映市场情绪高涨，支撑指数稳定。",
+      "ai_summary": "沪深两市成交额连续10日超3万亿",
+      "impact_analysis": "成交额持续高位显示市场交投活跃，但今日缩量回调，资金面仍充裕但情绪转弱，需关注后续量能变化。",
       "affected_sectors": [
         "券商",
-        "金融"
+        "金融科技"
       ],
       "affected_stocks": [
-        "600030.SH",
-        "601211.SH"
+        "600030.SS",
+        "300059.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "26年飞天批价小幅回升！开源证券：白酒板块已无悲观必要",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202606263784655018.html",
+      "time": "2026-06-26 14:29:00",
+      "ai_summary": "金融股震荡走低，多股跌超8%",
+      "impact_analysis": "金融股集体下挫拖累大盘，财富趋势等跌超8%，反映市场避险情绪升温，短期压制指数。",
+      "affected_sectors": [
+        "金融科技",
+        "券商"
+      ],
+      "affected_stocks": [
+        "300033.SZ",
+        "002736.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "宏川智算：与长兴半导体打通算力存储供应链 DDR5内存条送达某头部GPU设计厂商",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202606263784662813.html",
+      "time": "2026-06-26 14:34:29",
+      "ai_summary": "扬杰科技年内第二次提价10%-15%",
+      "impact_analysis": "功率半导体涨价信号明确，反映行业景气度回升，利好功率器件板块，但需注意市场整体回调风险。",
+      "affected_sectors": [
+        "功率半导体"
+      ],
+      "affected_stocks": [
+        "300373.SZ",
+        "600171.SS"
       ],
       "importance": 6
     },
     {
-      "title": "中国电动装载机热销 工程机械订单爆满",
+      "title": "跨境清算公司北京分公司与工行北京分行签署《推动跨境人民币发展合作备忘录》",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606263784602671.html",
-      "time": "2026-06-26 13:34:45",
-      "ai_summary": "京东方A成交额超300亿元",
-      "impact_analysis": "京东方A放量上涨，成交额超300亿元，显示资金对面板龙头的关注，利好面板及光学光电子板块，可能带动行业估值修复。",
+      "url": "https://finance.eastmoney.com/a/202606263784651521.html",
+      "time": "2026-06-26 14:17:17",
+      "ai_summary": "高通将在华推数据中心AI芯片",
+      "impact_analysis": "高通入局AI芯片加剧竞争，但利好国内AI算力产业链，国产芯片设计公司面临挑战与机遇。",
       "affected_sectors": [
-        "面板",
-        "光学光电子"
+        "AI芯片",
+        "算力"
       ],
       "affected_stocks": [
-        "000725.SZ",
-        "002456.SZ"
+        "688041.SS",
+        "603019.SS"
       ],
       "importance": 6
+    },
+    {
+      "title": "中国高考迎来放榜高峰期 AI成为风口专业",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202606263784644214.html",
+      "time": "2026-06-26 14:11:14",
+      "ai_summary": "中际旭创成交额达400亿元",
+      "impact_analysis": "光模块龙头成交额巨大但下跌，显示高位分歧加剧，可能拖累通信板块，需警惕获利盘回吐。",
+      "affected_sectors": [
+        "光模块",
+        "通信设备"
+      ],
+      "affected_stocks": [
+        "300308.SZ",
+        "300502.SZ"
+      ],
+      "importance": 6
+    },
+    {
+      "title": "扩容加速！交行发行市场首单TCD形式中长期自贸离岸债",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202606263784611137.html",
+      "time": "2026-06-26 13:49:10",
+      "ai_summary": "飞天茅台批价小幅回升",
+      "impact_analysis": "白酒龙头批价企稳，开源证券称板块已无悲观必要，短期提振消费板块信心，但整体市场偏弱。",
+      "affected_sectors": [
+        "白酒",
+        "食品饮料"
+      ],
+      "affected_stocks": [
+        "600519.SS",
+        "000858.SZ"
+      ],
+      "importance": 5
     }
   ]
 }
