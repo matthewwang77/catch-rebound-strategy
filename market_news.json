@@ -1,175 +1,177 @@
 {
   "date": "20260626",
-  "market_summary": "今日A股市场消息面偏空，股指期货全线下挫，大宗商品受美元走强承压，但央行推动人民币国际化及能源局政策利好相关板块。",
-  "sentiment_impact": "偏空",
+  "market_summary": "今日A股三大指数大幅回调，但半导体、卫星等科技板块逆势走强，市场结构性分化明显，消息面偏多科技成长方向。",
+  "sentiment_impact": "中性",
   "news": [
     {
-      "title": "中金：滔搏维持跑赢行业评级 目标价下调至2.77港元",
-      "source": "新浪财经",
-      "url": "https://finance.sina.com.cn/stock/hkstock/hkgg/2026-06-26/doc-inieszry5262275.shtml",
-      "time": "2026-06-26 11:04",
-      "ai_summary": "股指期货全线下挫超3%",
-      "impact_analysis": "直接反映市场恐慌情绪，预示大盘指数可能大幅下跌，影响投资者信心和资金流向。",
+      "title": "福森药业：帕拉米韦注射液获国家药监局批准上市",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202606263784543262.html",
+      "time": "2026-06-26 12:19:00",
+      "ai_summary": "半导体硅片涨价潮预期升温",
+      "impact_analysis": "半导体硅片涨价预期直接利好硅片及设备板块，带动相关ETF逆市大涨，显示市场对产业链景气度提升的强烈信心，对半导体行业形成正向催化。",
       "affected_sectors": [
-        "大盘指数",
+        "半导体",
+        "电子"
+      ],
+      "affected_stocks": [
+        "688126.SH",
+        "300604.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "SpaceX星链推移动通信服务催化产业预期，卫星ETF易方达（563530）逆市涨2.02%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202606263784608611.html",
+      "time": "2026-06-26 13:39:33",
+      "ai_summary": "美光签千亿长期供货协议",
+      "impact_analysis": "美光与16家客户签署长期协议，锁定千亿营收，强化存储芯片供需紧张预期，利好国内存储及半导体产业链，提振市场对芯片行业信心。",
+      "affected_sectors": [
+        "存储芯片",
+        "半导体"
+      ],
+      "affected_stocks": [
+        "688981.SH",
+        "002049.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "半导体硅片涨价潮预期升温，半导体设备ETF易方达（159558）逆市涨3.39%，成交额超12亿元",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202606263784600468.html",
+      "time": "2026-06-26 13:34:14",
+      "ai_summary": "SpaceX星链推移动通信服务",
+      "impact_analysis": "SpaceX星链业务进展催化国内卫星互联网产业预期，带动卫星ETF逆市上涨，利好商业航天和卫星通信板块，增强市场对相关产业链的关注。",
+      "affected_sectors": [
+        "卫星互联网",
+        "商业航天"
+      ],
+      "affected_stocks": [
+        "600118.SH",
+        "688568.SH"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "深半协：2025年深圳集成电路产业实现销售收入3610.4亿元",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202606263784564662.html",
+      "time": "2026-06-26 13:03:41",
+      "ai_summary": "深圳集成电路产业销售收入增长27%",
+      "impact_analysis": "深圳集成电路产业高速增长，反映国产替代进程加速，提振半导体板块情绪，尤其利好深圳本地芯片设计、制造企业，强化行业景气预期。",
+      "affected_sectors": [
+        "集成电路",
+        "半导体"
+      ],
+      "affected_stocks": [
+        "688981.SH",
+        "002371.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "美光签署多领域长期供货协议，锁定千亿营收，半导体ETF博时(159582)涨超2%，冲击3连涨",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202606263784594726.html",
+      "time": "2026-06-26 13:29:50",
+      "ai_summary": "扬杰科技年内第二次产品提价",
+      "impact_analysis": "功率半导体龙头扬杰科技提价10%-15%，反映供需紧张和成本传导，利好功率半导体板块，可能带动其他企业跟进，提升行业盈利预期。",
+      "affected_sectors": [
+        "功率半导体",
+        "电子元器件"
+      ],
+      "affected_stocks": [
+        "300373.SZ",
+        "600745.SH"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "华虹集团原董事长张素心：传统检测模式难适配芯片产业迭代 AI赋能是行业待解命题",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202606263784549747.html",
+      "time": "2026-06-26 12:37:00",
+      "ai_summary": "AI生成视频耗电巨大，算电协同推进",
+      "impact_analysis": "AI算力耗电激增，国家能源局推动算电协同，利好电力设备和算力基础设施板块，强化市场对AI产业链长期需求的预期。",
+      "affected_sectors": [
+        "电力设备",
+        "算力基础设施"
+      ],
+      "affected_stocks": [
+        "600406.SH",
+        "300750.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "扬杰科技年内第二次产品提价：来自原料端和市场端的共振",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202606263784535375.html",
+      "time": "2026-06-26 13:54:37",
+      "ai_summary": "中国电动装载机热销，工程机械订单爆满",
+      "impact_analysis": "电动装载机销量同比增90.9%，工程机械淡季不淡，利好新能源工程机械和电动化转型板块，显示行业高景气度，提振相关个股。",
+      "affected_sectors": [
+        "工程机械",
+        "新能源装备"
+      ],
+      "affected_stocks": [
+        "600031.SH",
+        "000528.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "1496亿保证金到账！美光最新协议曝光：客户不买也得付",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202606263784598726.html",
+      "time": "2026-06-26 13:34:50",
+      "ai_summary": "全球首个自动驾驶系统法规获批",
+      "impact_analysis": "自动驾驶国际法规获批，加速行业标准化和商业化进程，利好自动驾驶概念股，推动智能驾驶板块发展，增强市场对相关技术的信心。",
+      "affected_sectors": [
+        "自动驾驶",
+        "智能汽车"
+      ],
+      "affected_stocks": [
+        "002920.SZ",
+        "601689.SH"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "A股下半程怎么走？头部券商中期策略密集出炉 分歧聚焦四个变量",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202606263784553662.html",
+      "time": "2026-06-26 13:05:00",
+      "ai_summary": "沪深两市成交额连续44日破2.5万亿",
+      "impact_analysis": "持续高成交额显示市场交投活跃，资金流动性充裕，对券商板块形成直接利好，同时反映市场情绪高涨，支撑指数稳定。",
+      "affected_sectors": [
+        "券商",
         "金融"
       ],
       "affected_stocks": [
-        "000300.SH",
-        "000016.SH"
-      ],
-      "importance": 10
-    },
-    {
-      "title": "光大期货0626黄金点评：黄金重返4000美元/盎司，反弹可持续吗？",
-      "source": "新浪财经",
-      "url": "https://finance.sina.com.cn/money/nmetal/hjzx/2026-06-26/doc-inieszrv7336040.shtml",
-      "time": "2026-06-26 11:01",
-      "ai_summary": "黄金重返4000美元/盎司",
-      "impact_analysis": "避险情绪升温，黄金板块受益，同时暗示市场对经济前景担忧，可能分流股市资金。",
-      "affected_sectors": [
-        "黄金",
-        "贵金属"
-      ],
-      "affected_stocks": [
-        "600489.SH",
-        "002155.SZ"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "央行决定授权中国银行（香港）雅加达分行担任印度尼西亚人民币清算行",
-      "source": "新浪财经",
-      "url": "https://finance.sina.com.cn/jryx/bank/2026-06-26/doc-inieszsa2043485.shtml",
-      "time": "2026-06-26 11:09",
-      "ai_summary": "国家能源局发布新型能源体系规划",
-      "impact_analysis": "明确西部能源基地建设方向，利好新能源、电网和储能板块，政策催化明确。",
-      "affected_sectors": [
-        "新能源",
-        "电网",
-        "储能"
-      ],
-      "affected_stocks": [
-        "600905.SH",
-        "601012.SH"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "快讯：股指期货全线下挫 IF、IC跌超3%",
-      "source": "新浪财经",
-      "url": "https://finance.sina.com.cn/money/gzqh/futuresyspzx/2026-06-26/doc-inieszru0557267.shtml",
-      "time": "2026-06-26 10:59",
-      "ai_summary": "日元汇率跌向近40年低位",
-      "impact_analysis": "日元贬值加剧亚洲货币竞争性贬值压力，可能引发外资流出A股，影响出口导向型企业。",
-      "affected_sectors": [
-        "外贸",
-        "纺织"
-      ],
-      "affected_stocks": [
-        "600519.SH",
-        "000651.SZ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "福布斯发布2026全球企业2000强 国有六大行和招商银行上榜前100名",
-      "source": "新浪财经",
-      "url": "https://finance.sina.com.cn/jryx/bank/2026-06-26/doc-inieszru0590313.shtml",
-      "time": "2026-06-26 11:35",
-      "ai_summary": "央行授权人民币清算行",
-      "impact_analysis": "推动人民币国际化，利好跨境支付和银行板块，长期提升人民币资产吸引力。",
-      "affected_sectors": [
-        "银行",
-        "跨境支付"
-      ],
-      "affected_stocks": [
-        "601398.SH",
-        "601939.SH"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "嘉实基金副总经理程剑因工作职责调整离任",
-      "source": "新浪财经",
-      "url": "https://finance.sina.com.cn/stock/observe/2026-06-26/doc-inieszsa2036248.shtml",
-      "time": "2026-06-26 11:02",
-      "ai_summary": "中信证券看好银行股下半年",
-      "impact_analysis": "高股息率吸引资金，银行股估值低，防御属性强，在市场偏空时可能成为避风港。",
-      "affected_sectors": [
-        "银行"
-      ],
-      "affected_stocks": [
-        "601398.SH",
-        "600036.SH"
+        "600030.SH",
+        "601211.SH"
       ],
       "importance": 6
     },
     {
-      "title": "棕榈油：原油带动现货明显下滑",
-      "source": "新浪财经",
-      "url": "https://finance.sina.com.cn/money/future/2026-06-26/doc-inieszrv7340744.shtml",
-      "time": "2026-06-26 11:07",
-      "ai_summary": "铅价受加息风暴承压",
-      "impact_analysis": "美元走强打压大宗商品，铅价下跌利空有色金属板块，但减产可能提供支撑。",
+      "title": "中国电动装载机热销 工程机械订单爆满",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202606263784602671.html",
+      "time": "2026-06-26 13:34:45",
+      "ai_summary": "京东方A成交额超300亿元",
+      "impact_analysis": "京东方A放量上涨，成交额超300亿元，显示资金对面板龙头的关注，利好面板及光学光电子板块，可能带动行业估值修复。",
       "affected_sectors": [
-        "有色金属",
-        "铅"
+        "面板",
+        "光学光电子"
       ],
       "affected_stocks": [
-        "600497.SH",
-        "000060.SZ"
+        "000725.SZ",
+        "002456.SZ"
       ],
       "importance": 6
-    },
-    {
-      "title": "中国人民银行行长潘功胜会见花旗集团董事会主席兼首席执行官范洁恩",
-      "source": "新浪财经",
-      "url": "https://finance.sina.com.cn/money/bank/bank_hydt/2026-06-26/doc-inieszrv7340822.shtml",
-      "time": "2026-06-26 11:07",
-      "ai_summary": "福布斯全球2000强银行上榜",
-      "impact_analysis": "彰显中国银行体系实力，短期提振银行股信心，但影响有限。",
-      "affected_sectors": [
-        "银行"
-      ],
-      "affected_stocks": [
-        "601398.SH",
-        "601939.SH"
-      ],
-      "importance": 5
-    },
-    {
-      "title": "五粮液集团董事长邓敏：两大点始终没有改变 对五粮液发展充满信心",
-      "source": "新浪财经",
-      "url": "https://finance.sina.com.cn/jjxw/2026-06-26/doc-inieszsa2049201.shtml",
-      "time": "2026-06-26 11:13",
-      "ai_summary": "五粮液董事长对发展充满信心",
-      "impact_analysis": "白酒行业调整期，龙头表态稳定市场情绪，但行业压力仍在，影响中性。",
-      "affected_sectors": [
-        "白酒"
-      ],
-      "affected_stocks": [
-        "000858.SZ",
-        "600519.SH"
-      ],
-      "importance": 5
-    },
-    {
-      "title": "央行决定授权南非标准银行和中国工商银行担任非洲人民币联合清算行",
-      "source": "新浪财经",
-      "url": "https://finance.sina.com.cn/jryx/bank/2026-06-26/doc-inieszrv7338916.shtml",
-      "time": "2026-06-26 11:05",
-      "ai_summary": "木头姐出售阿里巴巴股票",
-      "impact_analysis": "外资减持中概股，可能引发对科技板块的担忧，但影响有限。",
-      "affected_sectors": [
-        "互联网",
-        "科技"
-      ],
-      "affected_stocks": [
-        "9988.HK",
-        "BABA.N"
-      ],
-      "importance": 4
     }
   ]
 }
