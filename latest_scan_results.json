@@ -1,15 +1,15 @@
 {
-  "scan_time": "2026-06-29 14:02",
+  "scan_time": "2026-06-29 15:40",
   "scan_date": "20260629",
-  "data_date": "2026-06-26",
+  "data_date": "2026-06-29",
   "market": {
     "上证": {
-      "price": 4027.26,
-      "pct": -2.26
+      "price": 4073.9,
+      "pct": 1.16
     },
     "深证": {
-      "price": 15782.22,
-      "pct": -3.44
+      "price": 15812.87,
+      "pct": 0.19
     },
     "创业板": {
       "price": 4194.21,
@@ -19,7 +19,7 @@
   "regime": {
     "status": "bear",
     "label": "2档: 低迷期 — 建议观望",
-    "avg_trend": -1.14,
+    "avg_trend": -0.52,
     "recommended_mode": "bear"
   },
   "modes": {
