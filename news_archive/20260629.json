@@ -1,183 +1,175 @@
 {
   "date": "20260629",
-  "market_summary": "今日A股市场受韩国芯片投资计划、消费刺激政策及创新药医保谈判等多重消息影响，半导体、消费、医药板块强势拉升，带动上证指数涨1%，创业板指翻红，市场情绪偏多。",
+  "market_summary": "今日A股市场在半导体和医药板块的强势带动下大幅上涨，科创50指数创历史新高，成交额超3.5万亿，市场情绪高涨。",
   "sentiment_impact": "偏多",
   "news": [
     {
-      "title": "三星海力士将发布超千兆韩元投资机会，存储芯片延续涨势，芯片ETF广发、科创芯片ETF广发盘中最高涨超4%，科创芯片设计ETF广发盘中涨超3%",
+      "title": "香港贸发局：上调2026年香港出口增长预测 预计至少增长20%",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606293786515962.html",
-      "time": "2026-06-29 13:53:12",
-      "ai_summary": "韩国芯片投资计划引爆半导体板块",
-      "impact_analysis": "三星、SK海力士等投资81万亿韩元建设HBM封装设施及800万亿韩元芯片厂计划，直接提振A股半导体产业链，存储芯片、设备等板块大涨，带动科创50指数涨近3.5%。",
+      "url": "https://finance.eastmoney.com/a/202606293786566823.html",
+      "time": "2026-06-29 15:01:38",
+      "ai_summary": "科创50指数大涨4.61%创新高",
+      "impact_analysis": "科创50指数再创历史新高，成交额突破6000亿，显示市场风险偏好提升，科技成长股成为主线。",
       "affected_sectors": [
-        "半导体",
-        "存储芯片",
-        "芯片设备"
+        "科创板",
+        "科技成长"
       ],
       "affected_stocks": [
-        "688012.SH",
-        "002371.SZ",
-        "300661.SZ"
+        "588000.SS",
+        "588050.SS"
       ],
       "importance": 10
     },
     {
-      "title": "沪硅产业、新傲科技一行到金华海纳考察交流",
+      "title": "成交近8亿刷新历史天量！半导体设备ETF盘中第27次新高！中微公司、北方华创联袂上攻",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606293786431527.html",
-      "time": "2026-06-29 12:55:26",
-      "ai_summary": "消费板块受财政补贴政策走强",
-      "impact_analysis": "发改委下达625亿元超长期国债用于消费品以旧换新，财政乘数效应扩大，消费50ETF涨超3%，食品饮料、零售等板块反弹，提振大盘指数。",
+      "url": "https://finance.eastmoney.com/a/202606293786551990.html",
+      "time": "2026-06-29 14:43:28",
+      "ai_summary": "半导体设备ETF创历史新高",
+      "impact_analysis": "半导体设备板块持续爆发，ETF成交近8亿刷新天量，显示资金高度集中，对科创板和半导体产业链形成直接提振。",
       "affected_sectors": [
-        "食品饮料",
-        "零售",
-        "日化"
+        "半导体设备",
+        "半导体材料"
       ],
       "affected_stocks": [
-        "605499.SH",
-        "600519.SS",
-        "000568.SZ"
+        "688012.SS",
+        "002371.SZ"
       ],
       "importance": 9
     },
     {
-      "title": "海外XBI(标普生物科技ETF)创阶段性新高，A股医药板块异动拉升，创新药ETF广发最高涨超8%，港股创新药ETF广发、恒生生物科技ETF广发涨超7%",
+      "title": "科创半导体设备ETF鹏华涨超6%，三星海力士加大资本开支提振半导体材料与设备",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606293786515249.html",
-      "time": "2026-06-29 13:53:49",
-      "ai_summary": "创新药医保谈判推动医药板块飙升",
-      "impact_analysis": "557个药品通过医保目录初审，创新药ETF涨超8%，三生国建等20cm涨停，医药板块异动拉升，带动创业板指翻红。",
+      "url": "https://finance.eastmoney.com/a/202606293786544654.html",
+      "time": "2026-06-29 14:37:33",
+      "ai_summary": "近20家半导体企业7月涨价",
+      "impact_analysis": "半导体涨价潮确认行业高景气，产能能见度提升，利好模拟及功率半导体企业，推动板块估值上行。",
       "affected_sectors": [
-        "创新药",
-        "生物医药"
+        "半导体",
+        "功率半导体"
       ],
       "affected_stocks": [
-        "688336.SH",
-        "600276.SS",
-        "002007.SZ"
+        "600745.SS",
+        "300661.SZ"
       ],
       "importance": 9
     },
     {
-      "title": "三星电子、SK海力士拟投资81万亿韩元建设HBM封装设施",
+      "title": "科创综指ETF鹏华涨超2.5%，医药、半导体材料、超导材料领涨市场",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606293786503586.html",
-      "time": "2026-06-29 13:41:06",
-      "ai_summary": "央行推出隔夜逆回购新工具",
-      "impact_analysis": "央行首次启用隔夜逆回购操作，释放流动性管理信号，稳定市场资金面预期，对大盘指数形成支撑。",
+      "url": "https://finance.eastmoney.com/a/202606293786551715.html",
+      "time": "2026-06-29 14:41:58",
+      "ai_summary": "医药股爆发多股涨停",
+      "impact_analysis": "医药板块超跌反弹，资金从AI回流，生物制品、创新药等领涨，短期提振市场情绪，但持续性待观察。",
       "affected_sectors": [
-        "银行",
-        "金融"
+        "生物医药",
+        "创新药"
       ],
       "affected_stocks": [
-        "601398.SS",
-        "600036.SS"
+        "688198.SS",
+        "300122.SZ"
       ],
       "importance": 8
     },
     {
-      "title": "今日消费板块走强，消费50ETF国联安（159670）涨超3%",
+      "title": "欣旺达动力：积极响应《动力和储能电池企业供应商账款支付规范倡议》",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606293786469434.html",
-      "time": "2026-06-29 13:08:57",
-      "ai_summary": "韩国AI数据中心投资计划利好科技",
-      "impact_analysis": "韩国计划2035年前投资超1000万亿韩元建设AI数据中心，强化全球AI产业链预期，A股半导体、AI算力板块受益，科创50指数大涨。",
+      "url": "https://finance.eastmoney.com/a/202606293786595465.html",
+      "time": "2026-06-29 15:23:16",
+      "ai_summary": "三星海力士加大资本开支",
+      "impact_analysis": "韩国半导体巨头投资计划提振全球半导体设备材料需求，利好国内相关供应链企业。",
       "affected_sectors": [
-        "AI算力",
-        "数据中心",
+        "半导体设备",
+        "半导体材料"
+      ],
+      "affected_stocks": [
+        "688012.SS",
+        "002371.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "AI存储狂欢背后的反垄断暗雷：三巨头遭美国集体诉讼 HBM转型被指操纵DRAM价格",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202606293786551193.html",
+      "time": "2026-06-29 14:51:37",
+      "ai_summary": "长鑫存储与腾讯签30亿美元合同",
+      "impact_analysis": "长鑫存储大单落地，显示国产存储芯片需求旺盛，利好存储产业链及半导体国产替代。",
+      "affected_sectors": [
+        "存储芯片",
         "半导体"
       ],
       "affected_stocks": [
-        "688041.SH",
-        "300308.SZ",
-        "603019.SS"
+        "688981.SS",
+        "300661.SZ"
       ],
       "importance": 8
     },
     {
-      "title": "华金证券管理层调整",
+      "title": "歌尔股份旗下精密制造公司增资至约10.7亿",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606293786511323.html",
-      "time": "2026-06-29 13:52:34",
-      "ai_summary": "消费电子涨价潮影响板块预期",
-      "impact_analysis": "苹果等品牌第二轮涨价潮，旗舰机型涨幅超20%，短期提振消费电子板块盈利预期，但可能抑制需求，需关注后续销量数据。",
+      "url": "https://finance.eastmoney.com/a/202606293786601285.html",
+      "time": "2026-06-29 15:29:39",
+      "ai_summary": "外资净卖出韩股创历史纪录",
+      "impact_analysis": "外资大幅流出韩国市场，可能引发亚太资金再配置，部分资金或流入A股，但需谨慎。",
       "affected_sectors": [
-        "消费电子",
-        "手机产业链"
+        "外资重仓",
+        "大盘蓝筹"
       ],
       "affected_stocks": [
-        "002475.SZ",
-        "601138.SS",
-        "002241.SZ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "创新药ETF涨超8%，多家创新药企有望持续步入业绩收获期",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606293786473564.html",
-      "time": "2026-06-29 13:20:17",
-      "ai_summary": "韩国6月出口增速创近50年最快",
-      "impact_analysis": "韩国出口受益于芯片旺销，增速创纪录，印证全球半导体需求强劲，利好A股半导体出口相关公司，提振市场信心。",
-      "affected_sectors": [
-        "半导体",
-        "出口贸易"
-      ],
-      "affected_stocks": [
-        "688981.SH",
-        "002049.SZ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "世界先进：预期2026年8英寸晶圆代工市场将维持缺货状态",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606293786430927.html",
-      "time": "2026-06-29 12:50:52",
-      "ai_summary": "刘世锦建议划拨20万亿国资充实社保",
-      "impact_analysis": "专家建议划拨国资充实社保以降低储蓄率，若实施将释放消费潜力，利好大消费板块，但短期政策落地存不确定性。",
-      "affected_sectors": [
-        "消费",
-        "社保概念"
-      ],
-      "affected_stocks": [
-        "600887.SS",
+        "600519.SS",
         "000858.SZ"
       ],
       "importance": 7
     },
     {
-      "title": "逐际动力：FluxVLA Engine 大模型工程底座合入人形机器人VLA支持",
+      "title": "北京市率先建立平台经济“破卷向善”协商对话机制 围绕餐饮外卖商家降本增利开展协商",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606293786508016.html",
-      "time": "2026-06-29 13:51:39",
-      "ai_summary": "苹果游说引入长鑫存储对冲断供风险",
-      "impact_analysis": "苹果寻求采购长鑫存储DRAM，反映供应链安全需求，利好国内存储芯片企业，但短期对A股影响有限，需关注政策进展。",
+      "url": "https://finance.eastmoney.com/a/202606293786560257.html",
+      "time": "2026-06-29 14:55:19",
+      "ai_summary": "香港出口增长预测上调至20%",
+      "impact_analysis": "香港出口数据改善，反映外贸韧性，利好出口导向型行业，但A股直接关联有限。",
       "affected_sectors": [
-        "存储芯片",
-        "半导体材料"
+        "外贸",
+        "港口航运"
       ],
       "affected_stocks": [
-        "688981.SH",
-        "002371.SZ"
+        "601919.SS",
+        "600018.SS"
       ],
       "importance": 6
     },
     {
-      "title": "降价在即？7款已在商保目录的创新药 寻求进入新一轮基本医保目录",
+      "title": "太空操作系统开源标准体系发布",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202606293786422963.html",
-      "time": "2026-06-29 12:58:12",
-      "ai_summary": "四川宜宾地震影响区域经济预期",
-      "impact_analysis": "5.5级地震启动四级应急响应，短期可能影响当地基建和保险板块，但对大盘整体影响有限，需关注后续重建需求。",
+      "url": "https://finance.eastmoney.com/a/202606293786548957.html",
+      "time": "2026-06-29 14:44:12",
+      "ai_summary": "北京建立平台经济协商机制",
+      "impact_analysis": "政策引导平台经济健康发展，降低内卷，利好外卖、电商平台，但短期影响有限。",
       "affected_sectors": [
-        "基建",
-        "保险"
+        "平台经济",
+        "外卖"
       ],
       "affected_stocks": [
-        "601668.SS",
-        "601318.SS"
+        "03690.HK",
+        "09988.HK"
+      ],
+      "importance": 5
+    },
+    {
+      "title": "上海医药：氨己烯酸口服溶液用散获批准生产",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202606293786606311.html",
+      "time": "2026-06-29 15:37:55",
+      "ai_summary": "太空操作系统开源标准发布",
+      "impact_analysis": "太空算力领域标准发布，利好航天、卫星互联网板块，但商业化尚早，影响有限。",
+      "affected_sectors": [
+        "航天",
+        "卫星互联网"
+      ],
+      "affected_stocks": [
+        "600118.SS",
+        "002151.SZ"
       ],
       "importance": 5
     }
