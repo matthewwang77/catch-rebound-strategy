@@ -1,174 +1,175 @@
 {
   "date": "20260702",
-  "market_summary": "今日消息面偏空，港股上涨但A股早盘下跌，美联储政策转向和AI杠杆ETF风险引发市场波动，科技成长主线分化，黄金和小金属板块受关注。",
+  "market_summary": "今日市场消息面偏空，美国经济数据疲软及美联储通胀数据改革引发外部不确定性，叠加存储芯片龙头兆易创新跌停拖累科技股情绪，但央企红利资产和业绩预增股获资金关注，市场结构性分化明显。",
   "sentiment_impact": "偏空",
   "news": [
     {
-      "title": "港股午评：恒指涨1.19% 科指涨0.62% 科网股、黄金股普涨 芯片股下挫 猪肉概念股爆发",
+      "title": "年翻两倍、净利率仅2.9%，远海国际赴港上市成色几何？",
       "source": "新浪财经",
-      "url": "https://finance.sina.com.cn/stock/hkstock/marketalerts/2026-07-02/doc-inifkuqa2657219.shtml",
-      "time": "2026-07-02 12:00",
-      "ai_summary": "A股早盘下跌，上证跌0.9%",
-      "impact_analysis": "直接反映市场情绪偏空，创业板和深证跌幅更大，显示科技股承压，成交额放大但个股涨多跌少，结构性分化。",
+      "url": "https://finance.sina.com.cn/stock/newstock/2026-07-02/doc-inifkuqa2728863.shtml",
+      "time": "2026-07-02 13:24",
+      "ai_summary": "美联储主席启动通胀数据大变革",
+      "impact_analysis": "美联储通胀测算方式变革可能重塑加息预期，增加全球市场不确定性，对A股外资流入节奏和科技股估值产生压制。",
       "affected_sectors": [
-        "大盘指数",
-        "科技"
+        "科技",
+        "外资重仓"
       ],
       "affected_stocks": [
-        "000001.SS",
-        "399001.SZ"
-      ],
-      "importance": 10
-    },
-    {
-      "title": "挚达科技午前涨超16% 挚达全资子公司签约落户张江",
-      "source": "新浪财经",
-      "url": "https://finance.sina.com.cn/stock/hkstock/marketalerts/2026-07-02/doc-inifkuqa2655661.shtml",
-      "time": "2026-07-02 11:59",
-      "ai_summary": "AI押注杠杆ETF引发全球波动",
-      "impact_analysis": "警示A股科技板块波动风险，杠杆资金可能放大涨跌，对创业板和科创板指数有负面影响，需警惕回调。",
-      "affected_sectors": [
-        "科技成长",
-        "ETF"
-      ],
-      "affected_stocks": [
-        "588000.SS",
-        "159915.SZ"
+        "000333.SZ",
+        "600519.SS"
       ],
       "importance": 9
     },
     {
-      "title": "恒瑞医药午前涨超3% 近期创新药艾瑞利®新增适应",
+      "title": "小摩：中金公司维持“增持”评级 目标价上调至28.5港元",
       "source": "新浪财经",
-      "url": "https://finance.sina.com.cn/stock/hkstock/marketalerts/2026-07-02/doc-inifkuqa2654812.shtml",
-      "time": "2026-07-02 11:57",
-      "ai_summary": "美联储政策框架历史性转向",
-      "impact_analysis": "美联储结束前瞻指引进入数据驱动时代，利好黄金和避险资产，对A股黄金板块有提振，但可能加剧汇率波动。",
+      "url": "https://finance.sina.com.cn/stock/hkstock/hkgg/2026-07-02/doc-inifkuqa2751739.shtml",
+      "time": "2026-07-02 14:02",
+      "ai_summary": "美国小非农与制造业PMI降温",
+      "impact_analysis": "美国经济数据疲软加剧衰退担忧，可能影响A股出口导向板块，但全球央行增持黄金利好贵金属板块，避险情绪升温。",
       "affected_sectors": [
-        "黄金",
-        "有色金属"
+        "贵金属",
+        "出口贸易"
       ],
       "affected_stocks": [
         "600489.SS",
         "002155.SZ"
-      ],
-      "importance": 9
-    },
-    {
-      "title": "英伟达将为GPU采购提供财务担保，并从云服务收入中抽成",
-      "source": "新浪财经",
-      "url": "https://finance.sina.com.cn/stock/usstock/c/2026-07-02/doc-inifkqfu3674237.shtml",
-      "time": "2026-07-02 11:45",
-      "ai_summary": "英伟达为GPU采购提供财务担保",
-      "impact_analysis": "利好AI算力产业链，但可能加剧芯片供应紧张，对A股光模块、服务器等板块有提振，但需警惕估值泡沫。",
-      "affected_sectors": [
-        "AI算力",
-        "芯片"
-      ],
-      "affected_stocks": [
-        "300308.SZ",
-        "688981.SS"
       ],
       "importance": 8
     },
     {
-      "title": "维昇药业-B早盘涨超20% 公司近期与镁信健康达成项目合作",
+      "title": "无风险利率低位下股息优势有望持续扩大，央企红利ETF华泰柏瑞（561580）有望迎来布局窗口",
       "source": "新浪财经",
-      "url": "https://finance.sina.com.cn/stock/hkstock/marketalerts/2026-07-02/doc-inifkqfw0425123.shtml",
-      "time": "2026-07-02 11:11",
-      "ai_summary": "港股午评恒指涨1.19%",
-      "impact_analysis": "港股上涨对A股情绪有正面引导，但A股早盘下跌显示分化，需关注后续联动性，科网股和黄金股普涨。",
+      "url": "https://finance.sina.com.cn/money/fund/jjh/2026-07-02/doc-inifkups3600040.shtml",
+      "time": "2026-07-02 13:18",
+      "ai_summary": "兆易创新放量跌停",
+      "impact_analysis": "存储芯片龙头跌停拖累半导体板块情绪，成交额巨大显示资金出逃，可能引发科技股短期调整，影响创业板指数。",
       "affected_sectors": [
-        "科网股",
-        "黄金"
+        "半导体",
+        "存储芯片"
       ],
       "affected_stocks": [
-        "00700.HK",
-        "01818.HK"
+        "603986.SS",
+        "002049.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "递延支付、追索扣回！券商以“薪”革新释放哪些信号？",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/stock/quanshang/2026-07-02/doc-inifkuqa2728120.shtml",
+      "time": "2026-07-02 13:30",
+      "ai_summary": "央企红利ETF布局窗口显现",
+      "impact_analysis": "无风险利率低位下，央企红利资产股息优势扩大，吸引避险资金流入，利好高股息板块，支撑上证指数。",
+      "affected_sectors": [
+        "央企红利",
+        "高股息"
+      ],
+      "affected_stocks": [
+        "601088.SS",
+        "600900.SS"
       ],
       "importance": 7
     },
     {
-      "title": "微软与新加坡Lightstorm公司合作，建设连接印度与东南亚的海底光缆",
+      "title": "小摩：博彩板块维持“选择性”投资策略 仍以银河娱乐为行业首选",
       "source": "新浪财经",
-      "url": "https://finance.sina.com.cn/stock/usstock/c/2026-07-02/doc-inifkqhe2767392.shtml",
-      "time": "2026-07-02 11:37",
-      "ai_summary": "半年收官看两创狂飙",
-      "impact_analysis": "科创板创业板上半年强势，但今日回调显示获利了结压力，中长期科技主线未变，短期需谨慎。",
+      "url": "https://finance.sina.com.cn/stock/hkstock/hkgg/2026-07-02/doc-inifkupu0404317.shtml",
+      "time": "2026-07-02 13:57",
+      "ai_summary": "业绩预增股获资金追捧",
+      "impact_analysis": "益生股份等业绩利好股涨停，显示市场聚焦中报主线，资金向业绩确定性板块集中，利好养殖、消费等景气行业。",
       "affected_sectors": [
-        "科创板",
-        "创业板"
+        "养殖",
+        "消费"
       ],
       "affected_stocks": [
-        "588000.SS",
-        "159915.SZ"
+        "002458.SZ",
+        "000895.SZ"
       ],
       "importance": 7
     },
     {
-      "title": "AI押注推动杠杆ETF迅速膨胀 庞然巨兽引发全球市场剧烈波动",
+      "title": "罕见，存储芯片“一哥”兆易创新放量跌停！",
       "source": "新浪财经",
-      "url": "https://finance.sina.com.cn/stock/usstock/c/2026-07-02/doc-inifkqfw0430656.shtml",
-      "time": "2026-07-02 11:19",
-      "ai_summary": "小金属爆发，东方锆业10天7板",
-      "impact_analysis": "小金属板块活跃，受供需和避险情绪推动，对锆、钨等资源股有提振，但需关注持续性。",
+      "url": "https://finance.sina.com.cn/stock/relnews/2026-07-02/doc-inifkupu0392030.shtml",
+      "time": "2026-07-02 13:37",
+      "ai_summary": "创新药企与阿斯利康达成合作",
+      "impact_analysis": "港股龙头药企与阿斯利康合作提振创新药板块信心，恒生创新药ETF成交活跃，利好A股创新药产业链。",
       "affected_sectors": [
-        "小金属",
-        "有色金属"
+        "创新药",
+        "生物医药"
       ],
       "affected_stocks": [
-        "002167.SZ",
-        "600489.SS"
+        "600276.SS",
+        "300760.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "美国小非农与制造业PMI双双降温，全球央行增持黄金储备趋势延续",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/jjxw/2026-07-02/doc-inifkuqa2723732.shtml",
+      "time": "2026-07-02 13:23",
+      "ai_summary": "券商薪酬制度改革加速落地",
+      "impact_analysis": "薪酬递延支付和追索扣回机制强化风控，短期可能抑制券商股活跃度，但长期利好行业稳健发展，影响金融板块。",
+      "affected_sectors": [
+        "券商",
+        "金融"
+      ],
+      "affected_stocks": [
+        "600030.SS",
+        "601211.SS"
       ],
       "importance": 6
     },
     {
-      "title": "从ETF看2026上半年市场：冰火两重天，谁在逆势突围？",
+      "title": "弘康人寿积极开展2026年“7·8全国保险公众宣传日”系列宣传活动",
       "source": "新浪财经",
-      "url": "https://finance.sina.com.cn/stock/enterprise/sale/2026-07-02/doc-inifkqfu3660299.shtml",
-      "time": "2026-07-02 11:30",
-      "ai_summary": "招金矿业涨超6%",
-      "impact_analysis": "黄金股受美联储政策转向和通胀预期缓和推动，避险需求上升，对A股黄金板块有正面影响。",
+      "url": "https://finance.sina.com.cn/jryx/insurance/2026-07-02/doc-inifkups3607622.shtml",
+      "time": "2026-07-02 13:30",
+      "ai_summary": "非农前美元承压小幅回落",
+      "impact_analysis": "美元走弱利好人民币资产和外资流入，但非农数据不确定性增加市场观望情绪，短期对A股影响中性偏多。",
       "affected_sectors": [
-        "黄金"
+        "外资重仓",
+        "人民币资产"
       ],
       "affected_stocks": [
-        "600489.SS",
-        "002155.SZ"
+        "000858.SZ",
+        "601318.SS"
       ],
       "importance": 6
     },
     {
-      "title": "投研体系 5.0赋能长期价值，华夏基金2026上半年主动权益业绩亮眼",
+      "title": "太平人寿河南分公司全面启动“7.8全国保险公众宣传日”活动",
       "source": "新浪财经",
-      "url": "https://finance.sina.com.cn/money/fund/jjh/2026-07-02/doc-inifkuqa2656132.shtml",
-      "time": "2026-07-02 12:00",
-      "ai_summary": "金力永磁预计上半年纯利增50%",
-      "impact_analysis": "稀土永磁板块业绩预增，利好新能源和高端制造产业链，对相关个股有提振。",
+      "url": "https://finance.sina.com.cn/money/insurance/bxyx/2026-07-02/doc-inifkups3631804.shtml",
+      "time": "2026-07-02 14:05",
+      "ai_summary": "江化微上演地天板涨停",
+      "impact_analysis": "光刻胶概念股江化微地天板显示资金博弈激烈，短期提振光刻胶板块情绪，但波动风险较大，影响半导体材料。",
       "affected_sectors": [
-        "稀土永磁",
-        "新能源"
+        "光刻胶",
+        "半导体材料"
       ],
       "affected_stocks": [
-        "300748.SZ",
-        "600010.SS"
+        "603078.SS",
+        "300655.SZ"
       ],
       "importance": 5
     },
     {
-      "title": "REITs一键配置时代来袭，华夏中证REITs全收益指数基金重磅发行",
+      "title": "美联储主席启动通胀数据大变革，多套物价指标将重塑加息逻辑",
       "source": "新浪财经",
-      "url": "https://finance.sina.com.cn/money/fund/jjh/2026-07-02/doc-inifkupy5880382.shtml",
-      "time": "2026-07-02 12:00",
-      "ai_summary": "恒瑞医药涨超3%",
-      "impact_analysis": "创新药新增适应症利好医药板块，但个股影响有限，对创新药和PD-L1概念有短期提振。",
+      "url": "https://finance.sina.com.cn/money/forex/hbfx/2026-07-02/doc-inifkups3601967.shtml",
+      "time": "2026-07-02 13:18",
+      "ai_summary": "澳门博彩收入17个月首降",
+      "impact_analysis": "澳门博彩收入下降拖累博彩板块，但市场已有预期，对A股相关旅游消费板块影响有限，关注后续复苏。",
       "affected_sectors": [
-        "创新药",
-        "医药"
+        "博彩",
+        "旅游"
       ],
       "affected_stocks": [
-        "600276.SS",
-        "300122.SZ"
+        "002033.SZ",
+        "000888.SZ"
       ],
       "importance": 5
     }
