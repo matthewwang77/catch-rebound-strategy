@@ -1,15 +1,15 @@
 {
-  "scan_time": "2026-07-02 14:03",
+  "scan_time": "2026-07-02 15:08",
   "scan_date": "20260702",
-  "data_date": "2026-07-01",
+  "data_date": "2026-07-02",
   "market": {
     "上证": {
-      "price": 4112.44,
-      "pct": 0.44
+      "price": 4021.16,
+      "pct": -2.22
     },
     "深证": {
-      "price": 16119.17,
-      "pct": -0.53
+      "price": 15466.24,
+      "pct": -4.05
     },
     "创业板": {
       "price": 4260.72,
@@ -17,13 +17,13 @@
     }
   },
   "regime": {
-    "status": "neutral",
-    "label": "3档: 启动期 — 谨慎入场",
-    "avg_trend": -0.37,
-    "recommended_mode": "strict"
+    "status": "bear",
+    "label": "2档: 低迷期 — 建议观望",
+    "avg_trend": -1.08,
+    "recommended_mode": "bear"
   },
   "modes": {
-    "strict": {
+    "bear": {
       "count": 0,
       "candidates": []
     }
