@@ -1,103 +1,70 @@
 {
   "date": "20260703",
-  "market_summary": "今日A股市场情绪全面回暖，创业板指涨逾2%，科创50指数探底回升涨超2%，机器人、AI、半导体等科技板块领涨，非农数据远逊预期助推成长风格回归。",
+  "market_summary": "今日A股市场受机器人板块爆发、韩国股市V型反弹及半导体存储涨价等多重利好驱动，沪指重返4000点，深成指和创业板指涨超2%，市场情绪显著回暖。",
   "sentiment_impact": "偏多",
   "news": [
     {
-      "title": "风语筑布局物理AI仿真与合成数据业务",
+      "title": "6月央行国债买卖大幅缩量 净投放100亿创下去年10月来最低值",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607033793296198.html",
-      "time": "2026-07-03 11:21:21",
-      "ai_summary": "美国非农数据远逊预期",
-      "impact_analysis": "美国6月非农新增就业仅5.7万人，远低预期，花旗预计美联储10月重启降息，利好A股成长股估值提升，外资回流预期增强。",
+      "url": "https://finance.eastmoney.com/a/202607033793327694.html",
+      "time": "2026-07-03 13:00:13",
+      "ai_summary": "6月央行国债净投放创去年10月来新低",
+      "impact_analysis": "央行流动性投放大幅缩量，显示货币政策边际收紧，对市场资金面形成压力，可能抑制大盘指数上行空间。",
       "affected_sectors": [
-        "成长风格",
-        "科技"
+        "银行",
+        "债券"
       ],
       "affected_stocks": [
-        "159259.SZ",
-        "588780.SS"
-      ],
-      "importance": 10
-    },
-    {
-      "title": "“靠金融吃金融”案件细节曝光！上市银行重庆农商行原副行长违规批贷470万元 私吞400万元入股小贷公司",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607033793283983.html",
-      "time": "2026-07-03 11:12:27",
-      "ai_summary": "央行6月国债买卖净投放100亿元",
-      "impact_analysis": "央行通过公开市场国债买卖净投放100亿元，释放流动性宽松信号，对A股整体资金面形成支撑，利好大盘指数。",
-      "affected_sectors": [
-        "大盘",
-        "金融"
-      ],
-      "affected_stocks": [
-        "000001.SS",
-        "399001.SZ"
+        "000001.SZ",
+        "600036.SS"
       ],
       "importance": 9
     },
     {
-      "title": "两款重磅火箭或本月回收验证！百亿级行业主题基金卫星ETF永赢盘中涨超3%，近5个交易日净流入超27亿元",
+      "title": "机器人指数盘中大涨超7%，产业催化利好不断，机器人ETF天弘基金经理祁世超解读异动",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607033793261430.html",
-      "time": "2026-07-03 10:40:13",
-      "ai_summary": "创业板指涨逾2%，算力硬件反弹",
-      "impact_analysis": "创业板指领涨，算力硬件股反弹，显示市场风险偏好提升，科技成长主线明确，对指数和板块形成直接推动。",
-      "affected_sectors": [
-        "算力",
-        "半导体"
-      ],
-      "affected_stocks": [
-        "300750.SZ",
-        "688981.SS"
-      ],
-      "importance": 9
-    },
-    {
-      "title": "金银反弹叠加非农助攻！有色ETF易方达（560470）涨3.44%，贵金属板块全线飙升",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607033793276169.html",
-      "time": "2026-07-03 10:57:02",
-      "ai_summary": "机器人板块大涨，特斯拉排产爬坡",
-      "impact_analysis": "特斯拉机器人周排产从不足100台爬坡至100台以上，叠加优必选订单超1.1万台，机器人板块爆发，带动相关ETF涨超5%。",
+      "url": "https://finance.eastmoney.com/a/202607033793470052.html",
+      "time": "2026-07-03 13:58:23",
+      "ai_summary": "机器人指数大涨超7%，产业催化不断",
+      "impact_analysis": "机器人板块受宇树科技IPO及量产预期推动，资金集中布局核心零部件，板块效应显著，带动创业板和科创100指数走强。",
       "affected_sectors": [
         "机器人",
-        "自动化设备"
+        "高端制造"
       ],
       "affected_stocks": [
         "688017.SS",
-        "002747.SZ"
+        "002050.SZ"
       ],
-      "importance": 8
+      "importance": 9
     },
     {
-      "title": "“科技牛”还能走多远？基金公司解盘2026年投资“下半场”",
+      "title": "韩国推进开发前沿人工智能模型并扩展基础设施",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607033793261332.html",
-      "time": "2026-07-03 11:26:04",
-      "ai_summary": "AI赛道多重催化，可灵30亿美元融资",
-      "impact_analysis": "AI板块受可灵30亿美元融资等催化，人工智能ETF涨2.81%，资金参与热情升温，科技牛主线延续。",
+      "url": "https://finance.eastmoney.com/a/202607033793463979.html",
+      "time": "2026-07-03 14:01:13",
+      "ai_summary": "韩国AI预算增至9.9万亿韩元，数据中心扩容",
+      "impact_analysis": "韩国加大AI投入，提振全球AI产业链信心，利好A股算力、半导体及数据中心相关板块，带动科技股情绪。",
       "affected_sectors": [
         "人工智能",
-        "AI应用"
+        "半导体",
+        "数据中心"
       ],
       "affected_stocks": [
-        "300308.SZ",
-        "688256.SS"
+        "002230.SZ",
+        "688981.SS"
       ],
       "importance": 8
     },
     {
-      "title": "AI赛道多重催化密集落地！人工智能ETF易方达（159819）涨2.81%，可灵30亿美元融资引爆板块",
+      "title": "韩国资金逆势加仓半导体！公募：上行周期未终结",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607033793280579.html",
-      "time": "2026-07-03 10:58:43",
-      "ai_summary": "近20家芯片厂商集体涨价",
-      "impact_analysis": "芯片厂商集体涨价，存储与HBM景气延续，科创芯片设计ETF涨超2%，半导体板块受益于供需改善和业绩预期。",
+      "url": "https://finance.eastmoney.com/a/202607033793324180.html",
+      "time": "2026-07-03 12:58:11",
+      "ai_summary": "韩国资金逆势加仓半导体ETF",
+      "impact_analysis": "外资逆势加仓半导体显示对上行周期信心，提振A股半导体板块，缓解回调压力，吸引跟风资金。",
       "affected_sectors": [
         "半导体",
-        "存储芯片"
+        "算力硬件"
       ],
       "affected_stocks": [
         "688981.SS",
@@ -106,71 +73,102 @@
       "importance": 8
     },
     {
-      "title": "创新药概念持续活跃！港股通创新药ETF易方达（159316）涨4.21%，石药景峰2连板引领板块反弹",
+      "title": "超40股涨停！机器人ETF易方达（159530）午后飙涨8.75%，宇树科技IPO引爆人形机器人板块",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607033793184446.html",
-      "time": "2026-07-03 10:23:36",
-      "ai_summary": "金银反弹，有色ETF涨3.44%",
-      "impact_analysis": "贵金属板块受非农数据提振全线飙升，有色ETF涨3.44%，铜铝等工业金属同步走强，资源股获资金追捧。",
+      "url": "https://finance.eastmoney.com/a/202607033793412672.html",
+      "time": "2026-07-03 13:34:57",
+      "ai_summary": "沪指重返4000点，工程机械ETF涨3.56%",
+      "impact_analysis": "沪指重回4000点关键位，基建投资预期和出海逻辑支撑工程机械板块，对大盘指数形成正向贡献。",
       "affected_sectors": [
-        "有色金属",
-        "贵金属"
+        "工程机械",
+        "基建"
       ],
       "affected_stocks": [
-        "601899.SS",
-        "600547.SS"
+        "600031.SS",
+        "000528.SZ"
       ],
-      "importance": 7
+      "importance": 8
     },
     {
-      "title": "市场情绪全面回暖！成长ETF易方达（159259）涨3.57%，非农远逊预期助推成长风格回归",
+      "title": "新国都：不存在被中国人民银行立案调查或实施行政处罚情形",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607033793275458.html",
-      "time": "2026-07-03 10:56:32",
-      "ai_summary": "银行系资本入局科技创投",
-      "impact_analysis": "银行系资本以耐心资本身份批量切入硬科技赛道，利好半导体、AI等长期发展，提升板块估值预期。",
+      "url": "https://finance.eastmoney.com/a/202607033793325325.html",
+      "time": "2026-07-03 12:53:29",
+      "ai_summary": "韩股暴涨5%触发熔断，半导体股飙涨",
+      "impact_analysis": "韩国股市V型反弹，AI交易情绪逆转，提振全球科技股，A股半导体和算力板块受情绪带动上涨。",
       "affected_sectors": [
         "半导体",
         "人工智能"
       ],
       "affected_stocks": [
-        "688981.SS",
-        "300308.SZ"
+        "002230.SZ",
+        "688981.SS"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "上海召开四方座谈会 共商汽车行业网络乱象协同治理路径",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202607033793394163.html",
+      "time": "2026-07-03 13:23:36",
+      "ai_summary": "科创100ETF涨超3%，机器人存储火箭催化",
+      "impact_analysis": "科创100指数受机器人量产、存储涨价和航天发射多重催化，带动科创板整体上涨，提升市场风险偏好。",
+      "affected_sectors": [
+        "科创板",
+        "机器人",
+        "存储芯片"
+      ],
+      "affected_stocks": [
+        "688017.SS",
+        "688981.SS"
       ],
       "importance": 7
     },
     {
-      "title": "美股芯片股恐回调30%？“大空头”伯里再度宣战：已做空美光！",
+      "title": "沪指重返4000点！工程机械ETF易方达（159138）涨3.56%，基建投资预期升温叠加出海逻辑持续兑现",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607033793244848.html",
-      "time": "2026-07-03 10:43:08",
-      "ai_summary": "高盛看好半导体，低配科技巨头",
-      "impact_analysis": "高盛认为半导体是下半年王者，投资者低配科技巨头，利好A股半导体板块，资金或从美股转向A股科技。",
+      "url": "https://finance.eastmoney.com/a/202607033793438126.html",
+      "time": "2026-07-03 13:48:21",
+      "ai_summary": "港股机器人概念全线大涨，优必选涨14%",
+      "impact_analysis": "港股机器人板块受宇树科技IPO注册获批提振，联动A股机器人概念，强化板块赚钱效应和资金流入。",
       "affected_sectors": [
-        "半导体",
-        "AI芯片"
+        "机器人",
+        "港股通"
       ],
       "affected_stocks": [
-        "688981.SS",
+        "09880.HK",
+        "02252.HK"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "科创100ETF鹏华涨超3%，机器人量产在即+存储涨价延续+大型可重复液体运载火箭即将发射，催化板块行情",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202607033793435066.html",
+      "time": "2026-07-03 13:46:08",
+      "ai_summary": "北京君正称存储芯片涨价，产能紧张",
+      "impact_analysis": "存储涨价趋势明确，北京君正等公司受益，带动存储芯片板块午后拉升，对半导体行业形成业绩支撑。",
+      "affected_sectors": [
+        "存储芯片",
+        "半导体"
+      ],
+      "affected_stocks": [
+        "300223.SZ",
         "603986.SS"
       ],
       "importance": 7
     },
     {
-      "title": "银行系资本强势入局 科技创投迎来“长钱”时代",
+      "title": "“美国娃娃炒股”7月4日正式启动！特朗普公开喊马斯克捐股 美光豪掷2.5亿美元！",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607033793264795.html",
-      "time": "2026-07-03 10:54:05",
-      "ai_summary": "沪深成交额连续59日破2万亿",
-      "impact_analysis": "成交额连续高位显示市场活跃度维持，但缩量超1800亿需警惕短期资金分歧，整体流动性仍充裕。",
+      "url": "https://finance.eastmoney.com/a/202607033793321528.html",
+      "time": "2026-07-03 12:45:00",
+      "ai_summary": "沪深成交额连续50日破2.5万亿",
+      "impact_analysis": "成交额持续高位显示市场活跃，但缩量暗示动能减弱，需关注后续资金持续性，对大盘指数影响中性偏多。",
       "affected_sectors": [
-        "大盘",
-        "券商"
+        "全市场"
       ],
-      "affected_stocks": [
-        "600030.SS",
-        "300059.SZ"
-      ],
+      "affected_stocks": [],
       "importance": 6
     }
   ]
