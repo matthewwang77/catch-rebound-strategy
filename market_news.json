@@ -1,173 +1,173 @@
 {
   "date": "20260707",
-  "market_summary": "今日A股三大指数集体低开，但AI、机器人、半导体等科技题材逆势走强，港股科网股反弹，市场呈现结构性分化。央行净回笼资金，外资动向和监管关注异常交易，整体消息面偏中性。",
-  "sentiment_impact": "中性",
+  "market_summary": "今日A股三大指数集体下跌，上证失守4000点，成交额缩量；外部地缘冲突与AI板块疑虑加剧市场恐慌，韩国股市暴跌触发熔断，拖累亚太半导体板块。",
+  "sentiment_impact": "偏空",
   "news": [
     {
-      "title": "AI产业链逆势走强！科创人工智能ETF易方达（588730）涨2.50%，端侧AI概念股批量涨停",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607073796165775.html",
-      "time": "2026-07-07 09:51:15",
-      "ai_summary": "AI产业链逆势走强，ETF涨2.5%",
-      "impact_analysis": "AI板块强势表现提振市场情绪，科创AI指数跑赢大盘，吸引资金关注，短期利好AI相关概念股。",
+      "title": "卡塔尔天然气油轮在霍尔木兹海峡遭袭",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/stock/usstock/c/2026-07-07/doc-inifykny8410088.shtml",
+      "time": "2026-07-07 16:32",
+      "ai_summary": "卡塔尔油轮在霍尔木兹海峡遭袭",
+      "impact_analysis": "地缘风险升温，推升油价及避险情绪，利好石油石化板块，但可能加剧全球市场波动，影响A股风险偏好。",
       "affected_sectors": [
-        "人工智能",
-        "半导体"
+        "石油石化",
+        "军工"
       ],
       "affected_stocks": [
-        "588730.SH",
-        "688256.SH"
+        "600028.SS",
+        "601857.SS"
       ],
-      "importance": 8
+      "importance": 9
     },
     {
-      "title": "三星电子大跳水！韩股杀跌 发生了什么？",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607073795899796.html",
-      "time": "2026-07-07 09:06:42",
-      "ai_summary": "三星电子暴跌拖累韩股，半导体承压",
-      "impact_analysis": "三星业绩超预期但股价大跌，反映半导体板块动能衰竭，可能引发A股半导体板块短期调整，需警惕外资流出。",
+      "title": "三星业绩大增难掩市场对人工智能“见顶”担忧 韩国股市遭遇剧烈震荡",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/stock/usstock/c/2026-07-07/doc-inifyknx1611720.shtml",
+      "time": "2026-07-07 16:10",
+      "ai_summary": "三星业绩大增但AI见顶担忧加剧",
+      "impact_analysis": "AI板块盈利预期分化，引发全球科技股抛售，A股半导体、AI概念股承压，短期资金流出风险加大。",
       "affected_sectors": [
         "半导体",
-        "消费电子"
-      ],
-      "affected_stocks": [
-        "002049.SZ",
-        "603986.SH"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "港股科网集体反弹！中概互联网ETF易方达（513050）涨3.22%，恒生科技重回4600点",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607073796175896.html",
-      "time": "2026-07-07 09:54:47",
-      "ai_summary": "港股科网反弹，中概互联网ETF涨3.22%",
-      "impact_analysis": "港股科技股反弹带动中概股情绪，对A股科技板块有联动效应，提振市场风险偏好。",
-      "affected_sectors": [
-        "互联网",
-        "科技"
-      ],
-      "affected_stocks": [
-        "513050.SH",
-        "0700.HK"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "机构：算力租赁市场延续高景气 国内算力仍供不应求",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607073795934411.html",
-      "time": "2026-07-07 09:12:00",
-      "ai_summary": "算力租赁市场高景气，国内供不应求",
-      "impact_analysis": "算力需求旺盛利好算力租赁和AI基础设施板块，推动相关个股上涨，中期看好。",
-      "affected_sectors": [
-        "算力",
         "人工智能"
       ],
       "affected_stocks": [
-        "603019.SH",
-        "688041.SH"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "人工智能ETF华富(515980)盘中拉升，腾讯混元Hy3 正式发布，国产模型性能进一步向全球顶尖迈进",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607073796177962.html",
-      "time": "2026-07-07 09:54:17",
-      "ai_summary": "腾讯混元Hy3发布，国产模型进步",
-      "impact_analysis": "国产大模型性能提升，利好AI应用和算力板块，增强市场对AI产业链信心。",
-      "affected_sectors": [
-        "人工智能",
-        "软件"
-      ],
-      "affected_stocks": [
-        "688256.SH",
+        "688981.SH",
         "002230.SZ"
       ],
+      "importance": 9
+    },
+    {
+      "title": "韩国股市收盘暴跌近5%受AI疑虑影响 盘中触发熔断机制",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/stock/usstock/c/2026-07-07/doc-inifyknx1607172.shtml",
+      "time": "2026-07-07 16:06",
+      "ai_summary": "韩国股市暴跌近5%触发熔断",
+      "impact_analysis": "全球AI板块恐慌传导至A股，加剧市场对科技股估值泡沫的担忧，短期资金避险情绪升温。",
+      "affected_sectors": [
+        "半导体",
+        "人工智能"
+      ],
+      "affected_stocks": [
+        "688981.SH",
+        "002230.SZ"
+      ],
+      "importance": 9
+    },
+    {
+      "title": "A股尾盘，大象起舞",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/stock/marketresearch/2026-07-07/doc-inifykny8394005.shtml",
+      "time": "2026-07-07 16:11",
+      "ai_summary": "A股尾盘弱势，三大指数下跌",
+      "impact_analysis": "直接反映市场情绪低迷，成交额大幅萎缩显示资金观望，短期大盘承压，需关注后续政策面支撑。",
+      "affected_sectors": [
+        "大盘指数"
+      ],
+      "affected_stocks": [
+        "000001.SH",
+        "399001.SZ",
+        "399006.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "创业板高位震荡，成长行情还能走多远",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/stock/marketresearch/2026-07-07/doc-inifykpe5262825.shtml",
+      "time": "2026-07-07 16:11",
+      "ai_summary": "创业板高位震荡，成长行情承压",
+      "impact_analysis": "创业板指7月跌幅近10%，科技成长板块集中抛售，市场风格或转向防御，影响中小盘股流动性。",
+      "affected_sectors": [
+        "创业板",
+        "科技成长"
+      ],
+      "affected_stocks": [
+        "300750.SZ",
+        "300059.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "全线跳水，原因找到了",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/stock/marketresearch/2026-07-07/doc-inifykny8398007.shtml",
+      "time": "2026-07-07 16:15",
+      "ai_summary": "亚洲市场全线跳水，原因分析",
+      "impact_analysis": "市场恐慌情绪蔓延，A股受外部拖累明显，短期需警惕连锁反应，关注政策维稳信号。",
+      "affected_sectors": [
+        "大盘指数"
+      ],
+      "affected_stocks": [
+        "000001.SH",
+        "399001.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "博时市场点评7月7日：三大指数下跌，上证指数失守4000点",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/money/fund/jjh/2026-07-07/doc-inifyknx1598455.shtml",
+      "time": "2026-07-07 15:57",
+      "ai_summary": "上证失守4000点，博时点评",
+      "impact_analysis": "关键点位失守引发技术性抛售，市场信心受挫，后续需关注政策托底及资金面变化。",
+      "affected_sectors": [
+        "大盘指数"
+      ],
+      "affected_stocks": [
+        "000001.SH"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "中公教育打开涨停，央视网评：莫把股市当赌场",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/stock/marketresearch/2026-07-07/doc-inifykny8417241.shtml",
+      "time": "2026-07-07 16:35",
+      "ai_summary": "央视网评莫把股市当赌场",
+      "impact_analysis": "监管层点名炒作行为，打击投机情绪，短期抑制题材股活跃度，利好价值投资导向。",
+      "affected_sectors": [
+        "投机炒作股"
+      ],
+      "affected_stocks": [
+        "002607.SZ",
+        "603118.SS"
+      ],
       "importance": 7
     },
     {
-      "title": "潘功胜：香港可以抓住有利时机 吸引更多的主权财富和国际企业到香港发债融资",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607073796061129.html",
-      "time": "2026-07-07 09:38:55",
-      "ai_summary": "潘功胜：香港可吸引主权财富发债",
-      "impact_analysis": "央行行长讲话利好香港人民币债券市场，间接支持A股流动性预期，但短期影响有限，偏中性。",
+      "title": "日本日经指数收挫2.1% 三星电子股价暴跌引发半导体类股抛售",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/stock/usstock/c/2026-07-07/doc-inifykpa8478883.shtml",
+      "time": "2026-07-07 16:06",
+      "ai_summary": "日经指数收跌，半导体股遭抛售",
+      "impact_analysis": "亚太半导体板块联动下跌，A股半导体产业链受情绪波及，短期调整压力加大。",
       "affected_sectors": [
-        "银行",
-        "债券"
+        "半导体",
+        "电子"
       ],
       "affected_stocks": [
-        "601398.SH",
-        "600036.SH"
+        "688981.SH",
+        "002371.SZ"
       ],
-      "importance": 6
+      "importance": 7
     },
     {
-      "title": "花旗：腾讯减持快手令人意外 或引发进一步出售动作担忧",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607073796171527.html",
-      "time": "2026-07-07 09:53:31",
-      "ai_summary": "花旗：腾讯减持快手引发担忧",
-      "impact_analysis": "腾讯减持快手可能引发市场对科技股减持潮的担忧，短期利空快手及港股科技股，但影响有限。",
+      "title": "两部门：推动境内保险机构在再保险登记交易中心进行再保险合同、赔付等信息统一登记",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/jryx/insurance/2026-07-07/doc-inifyknx1606090.shtml",
+      "time": "2026-07-07 16:05",
+      "ai_summary": "两部门推动再保险中心建设",
+      "impact_analysis": "政策利好保险及再保险行业，提升行业规范性和透明度，中长期利好保险板块估值修复。",
       "affected_sectors": [
-        "互联网",
-        "短视频"
+        "保险",
+        "再保险"
       ],
       "affected_stocks": [
-        "1024.HK",
-        "0700.HK"
+        "601318.SS",
+        "601601.SS"
       ],
       "importance": 6
-    },
-    {
-      "title": "港股通互联网逆势走强！港股通互联网ETF易方达（513040）涨2.53%，南向资金持续涌入",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607073796190713.html",
-      "time": "2026-07-07 09:54:34",
-      "ai_summary": "港股通互联网ETF涨2.53%，南向资金涌入",
-      "impact_analysis": "南向资金持续流入港股科技，显示资金偏好，对A股科技板块有正面引导作用。",
-      "affected_sectors": [
-        "互联网",
-        "科技"
-      ],
-      "affected_stocks": [
-        "513040.SH",
-        "0700.HK"
-      ],
-      "importance": 6
-    },
-    {
-      "title": "又现匿名对个股发布赌约帖 相关股票交易情况已被密切监控",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607073796162323.html",
-      "time": "2026-07-07 09:54:08",
-      "ai_summary": "央行公开市场净回笼595亿元",
-      "impact_analysis": "央行小幅净回笼，流动性略有收紧，但操作利率不变，对市场影响中性偏空。",
-      "affected_sectors": [
-        "银行",
-        "整体市场"
-      ],
-      "affected_stocks": [],
-      "importance": 6
-    },
-    {
-      "title": "微光启航完成亿元级人民币天使++轮融资",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607073796167378.html",
-      "time": "2026-07-07 09:53:07",
-      "ai_summary": "匿名赌约帖被监管监控，共进股份涨停",
-      "impact_analysis": "监管密切监控异常交易，短期抑制投机情绪，但长期利于市场规范，对个股影响有限。",
-      "affected_sectors": [
-        "监管",
-        "小盘股"
-      ],
-      "affected_stocks": [
-        "600130.SH"
-      ],
-      "importance": 5
     }
   ]
 }
