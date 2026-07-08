@@ -217,6 +217,29 @@
       "why_wrong": null,
       "missed_signal": null,
       "lesson": null
+    },
+    {
+      "date": "20260708",
+      "signal_date": "20260703",
+      "mode": "bear",
+      "entry_price": 13.56,
+      "pullback_pct": 5.6,
+      "limit_days": 4,
+      "analysis": "量：缩量程度中等（近3日均量/涨停日量123%），OBV下降显示资金持续流出，量价背离。\n\n价：股价跌破MA5和MA10，受MA20（13.22）支撑，但距涨停高点15.20回调5.6%，关键位承压。\n\n形：匹配连板后缩量回调形态，但未出现明显止跌反转信号。\n\n时：回调已7天，处于窗口中期，但大盘冰点期（1档）压制反弹时机。\n\n反弹概率：低（≤30%）\n仓位建议：0成仓（冰点期1档）\n最终结论：【放弃】",
+      "sentiment": "冰点期1档",
+      "position": "0成仓",
+      "opinion": "【放弃】",
+      "verified": false,
+      "return_7d": null,
+      "exit_reason": null,
+      "exit_day": null,
+      "verdict": null,
+      "review_analysis": null,
+      "review_quality": null,
+      "what_happened": null,
+      "why_wrong": null,
+      "missed_signal": null,
+      "lesson": null
     }
   ]
 }
