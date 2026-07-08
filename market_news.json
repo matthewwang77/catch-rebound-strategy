@@ -1,18 +1,35 @@
 {
   "date": "20260708",
-  "market_summary": "今日A股市场整体呈现探底回升走势，AI算力、半导体芯片等科技板块强势领涨，带动创业板指和科创50指数翻红，市场情绪有所回暖。",
+  "market_summary": "今日市场消息面偏多，国产算力与AI服务器板块受华为昇腾950超节点首秀及浪潮信息业绩超预期提振，带动科技股强势反弹；同时韩国股市熔断引发亚太市场波动，但A股科技主线独立走强。",
   "sentiment_impact": "偏多",
   "news": [
     {
-      "title": "全球云计算基础设施投资加速演进，云计算ETF广发(159527)盘中大涨，权重股浪潮信息26年上半年净利预计最高暴增288%",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607083798102450.html",
-      "time": "2026-07-08 10:44:22",
-      "ai_summary": "全球云计算投资加速，AI算力需求激增",
-      "impact_analysis": "英伟达与Palantir合作拓展政府AI市场，算力基础设施需求扩容，直接利好A股云计算、AI服务器及算力租赁板块，推动相关ETF大涨。",
+      "title": "天工国际午后涨近4% 公司有望实现向高附加值精密工具领域延伸",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/stock/hkstock/marketalerts/2026-07-08/doc-inihapna8009393.shtml",
+      "time": "2026-07-08 13:59",
+      "ai_summary": "华为昇腾950超节点首秀，国产算力爆发",
+      "impact_analysis": "华为昇腾950超节点首秀直接刺激国产算力产业链，大数据ETF暴涨6.38%，科创人工智能ETF上探3.5%，显示市场对国产替代信心增强，利好算力、AI应用板块。",
       "affected_sectors": [
-        "云计算",
-        "AI算力"
+        "国产算力",
+        "人工智能"
+      ],
+      "affected_stocks": [
+        "000977.SZ",
+        "688981.SH"
+      ],
+      "importance": 9
+    },
+    {
+      "title": "韩股又熔断，三星电子跌超7%",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/stock/roll/2026-07-08/doc-inihaiee8115199.shtml",
+      "time": "2026-07-08 13:11",
+      "ai_summary": "AI服务器涨停潮，浪潮信息业绩超预期",
+      "impact_analysis": "浪潮信息业绩超预期印证AI服务器高景气，带动华勤技术涨超14%、联想涨超8%，AI服务器板块爆发涨停潮，利好算力基础设施和服务器产业链。",
+      "affected_sectors": [
+        "AI服务器",
+        "算力基础设施"
       ],
       "affected_stocks": [
         "000977.SZ",
@@ -21,153 +38,139 @@
       "importance": 9
     },
     {
-      "title": "云计算ETF鹏华涨超5%，算力租赁、AI服务器相关概念走强",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607083798102773.html",
-      "time": "2026-07-08 10:47:10",
-      "ai_summary": "科创芯片ETF暴涨，半导体设备走强",
-      "impact_analysis": "科创芯片ETF涨超4%，半导体设备龙头业绩预增，ASML上调指引，显示芯片需求旺盛，带动科创50指数大涨，提振科技股情绪。",
+      "title": "华为昇腾950超节点首秀在即！国产算力突围，大数据ETF华宝（516700）暴涨6.38%！科创人工智能ETF上探3.5%",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/money/fund/etf/2026-07-08/doc-inihapmy8192829.shtml",
+      "time": "2026-07-08 13:38",
+      "ai_summary": "韩股熔断，三星电子跌超7%",
+      "impact_analysis": "韩国股市熔断引发亚太市场避险情绪，可能拖累A股早盘情绪，但A股科技主线独立走强，显示外资流出压力有限，需关注后续外资动向。",
       "affected_sectors": [
         "半导体",
-        "芯片设备"
+        "消费电子"
       ],
       "affected_stocks": [
-        "688981.SS",
-        "688012.SS"
-      ],
-      "importance": 9
-    },
-    {
-      "title": "医药股延续涨势，中国生物制药与阿斯利康达成19亿美元自研创新药授权合作，港股创新药ETF广发、恒生生物科技ETF广发盘中涨超2%",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607083798134315.html",
-      "time": "2026-07-08 11:16:09",
-      "ai_summary": "深圳发布15个政务AI应用场景",
-      "impact_analysis": "地方政府推动AI落地，加速政务智能化，利好AI应用、软件服务及算力基础设施板块，提振市场对AI产业化的信心。",
-      "affected_sectors": [
-        "人工智能",
-        "政务软件"
-      ],
-      "affected_stocks": [
-        "002230.SZ",
-        "688256.SS"
+        "002049.SZ",
+        "600703.SS"
       ],
       "importance": 8
     },
     {
-      "title": "深圳发布15个政务领域人工智能应用场景",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607083798047733.html",
-      "time": "2026-07-08 10:34:18",
-      "ai_summary": "创业板指V型反转，AI赛道逆市领涨",
-      "impact_analysis": "大盘重挫下AI板块一枝独秀，算力硬件逆市狂飙，显示资金避险偏好科技成长，创业板指翻红，市场结构性行情凸显。",
+      "title": "H&H国际控股午后涨逾8% 上半年各业务板块经营表现强劲",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/stock/hkstock/marketalerts/2026-07-08/doc-inihapna8011395.shtml",
+      "time": "2026-07-08 14:03",
+      "ai_summary": "1-5月全国电力市场交易电量增24.8%",
+      "impact_analysis": "电力市场化交易规模持续扩大，电力ETF连续6日资金净流入，显示电力板块景气度提升，利好电力运营和电力交易相关公司。",
       "affected_sectors": [
-        "人工智能",
-        "算力硬件"
+        "电力",
+        "电力交易"
       ],
       "affected_stocks": [
-        "300750.SZ",
-        "688111.SS"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "伊朗议长称决不屈服",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607083798121211.html",
-      "time": "2026-07-08 11:06:53",
-      "ai_summary": "算力租赁概念持续走高，多股涨停",
-      "impact_analysis": "算力租赁板块涨停潮，反映AI算力需求爆发，资金集中涌入，短期带动相关个股和ETF大涨，但需警惕追高风险。",
-      "affected_sectors": [
-        "算力租赁",
-        "AI服务器"
-      ],
-      "affected_stocks": [
-        "600602.SS",
-        "603881.SS"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "报告：企业AI愿景与组织就绪度差距日趋扩大 需要清晰的领导力指引、员工信任与能力建设体系",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607083798130839.html",
-      "time": "2026-07-08 11:14:40",
-      "ai_summary": "河南发布30个人工智能应用场景",
-      "impact_analysis": "继深圳后河南跟进，多地政策密集出台，加速AI场景落地，利好AI应用、智慧城市及算力板块，增强市场对AI产业链的预期。",
-      "affected_sectors": [
-        "人工智能",
-        "智慧城市"
-      ],
-      "affected_stocks": [
-        "002415.SZ",
-        "600570.SS"
+        "600900.SS",
+        "601985.SS"
       ],
       "importance": 7
     },
     {
-      "title": "韩国立法严治网络虚假信息 大幅加大对网络虚假信息的惩戒力度",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607083798111832.html",
-      "time": "2026-07-08 10:56:36",
-      "ai_summary": "港股科技龙头密集落地AI大模型",
-      "impact_analysis": "港股科技股大涨带动恒生科技指数涨超3%，间接提振A股科技板块情绪，AI大模型商业化加速，利好相关算力和应用公司。",
+      "title": "1-5月全国电力市场交易电量同比增长24.8%！电力ETF华泰柏瑞（561560）连续6个交易日获得资金净流入",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/money/fund/jjh/2026-07-08/doc-inihaiee8108783.shtml",
+      "time": "2026-07-08 13:09",
+      "ai_summary": "阿里急速冲高10%，淘宝闪购减亏超预期",
+      "impact_analysis": "阿里巴巴财报前瞻显示电商业务利润稳健，淘宝闪购减亏超预期，带动港股互联网ETF溢价飙升，提振中概股和港股科技板块情绪，间接利好A股科技股。",
       "affected_sectors": [
-        "AI大模型",
-        "港股科技"
+        "互联网",
+        "电商"
       ],
       "affected_stocks": [
-        "00700.HK",
-        "09988.HK"
+        "688981.SH",
+        "002415.SZ"
       ],
       "importance": 7
     },
     {
-      "title": "大盘重挫下AI赛道一枝独秀！科创创业人工智能ETF易方达（159140）大涨2.64%，算力硬件逆市狂飙，科创板AI标的成资金避风港",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607083798098581.html",
-      "time": "2026-07-08 10:40:55",
-      "ai_summary": "沪深两市成交额突破1.5万亿",
-      "impact_analysis": "成交额放大显示市场交投活跃，资金入场意愿增强，尤其科技板块吸金明显，有助于支撑指数反弹，但需关注持续性。",
+      "title": "香港新增两家专属自保保险公司 总数增至9家",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/jjxw/2026-07-08/doc-inihapna8007662.shtml",
+      "time": "2026-07-08 13:53",
+      "ai_summary": "联想集团涨超8%，AI服务器订单达210亿美元",
+      "impact_analysis": "联想AI服务器潜在订单达210亿美元，叠加浪潮信息业绩超预期，强化AI服务器高景气逻辑，利好服务器和算力产业链。",
       "affected_sectors": [
-        "全市场"
+        "AI服务器",
+        "算力"
       ],
-      "affected_stocks": [],
+      "affected_stocks": [
+        "000977.SZ",
+        "603019.SS"
+      ],
       "importance": 7
     },
     {
-      "title": "高盛、美银、花旗给予“买入”评级 MiniMax获华尔街集体看多",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607083798097526.html",
-      "time": "2026-07-08 10:44:47",
-      "ai_summary": "美国芯片工厂面临16万技术工短缺",
-      "impact_analysis": "美国芯片制造受阻，可能延缓台积电、三星海外建厂，利好国内半导体设备及材料国产替代，提升自主可控预期。",
+      "title": "AI服务器爆发涨停潮！中信证券：国产算力“Plan B”有望获外资配置！跑赢科创50的“宽基”科技ETF深V反弹",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/money/fund/etf/2026-07-08/doc-inihapmx1420331.shtml",
+      "time": "2026-07-08 13:43",
+      "ai_summary": "华虹宏力涨超5%，高盛上调目标价至333港元",
+      "impact_analysis": "高盛大幅上调华虹宏力目标价，叠加台积电业绩预期，提振半导体板块情绪，利好晶圆代工和半导体设备。",
       "affected_sectors": [
-        "半导体设备",
-        "国产芯片"
+        "半导体",
+        "晶圆代工"
       ],
       "affected_stocks": [
-        "688012.SS",
+        "688981.SH",
         "002371.SZ"
       ],
-      "importance": 7
+      "importance": 6
     },
     {
-      "title": "加拿大5月贸易顺差创四年新高 对美出口占比逼近70%",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607083798094928.html",
-      "time": "2026-07-08 10:39:15",
-      "ai_summary": "工信部辟谣智驾芯片自主化率新规",
-      "impact_analysis": "辟谣消除市场对汽车芯片政策的过度担忧，稳定智能驾驶板块情绪，但短期可能压制相关概念炒作，影响中性偏多。",
+      "title": "韩国上半年生物制药出口额料达45亿美元，创历史同期新高",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/stock/usstock/c/2026-07-08/doc-inihaieh4894099.shtml",
+      "time": "2026-07-08 13:20",
+      "ai_summary": "地缘避险与油价飙升，美元兑加元高位震荡",
+      "impact_analysis": "美军空袭伊朗引发地缘风险，油价飙升可能推升通胀预期，短期利空A股风险偏好，但利好石油石化板块。",
       "affected_sectors": [
-        "智能驾驶",
-        "汽车芯片"
+        "石油石化",
+        "黄金"
       ],
       "affected_stocks": [
-        "002920.SZ",
-        "600745.SS"
+        "600028.SS",
+        "600547.SS"
       ],
       "importance": 6
+    },
+    {
+      "title": "淘宝闪购减亏快于预期，阿里急速冲高10%！低位港股互联网ETF华宝（513770）溢价飙升5%，拐点来了？",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/money/fund/etf/2026-07-08/doc-inihapmx1407990.shtml",
+      "time": "2026-07-08 13:29",
+      "ai_summary": "韩国上半年生物制药出口额创历史新高",
+      "impact_analysis": "韩国生物制药出口创新高，显示全球生物医药需求旺盛，利好A股创新药和CXO板块，但需关注国内政策环境。",
+      "affected_sectors": [
+        "生物医药",
+        "CXO"
+      ],
+      "affected_stocks": [
+        "300760.SZ",
+        "603259.SS"
+      ],
+      "importance": 5
+    },
+    {
+      "title": "地缘避险与油价飙升角力，美元兑加元静待沃什首份纪要",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/money/forex/hbfx/2026-07-08/doc-inihaieh4896421.shtml",
+      "time": "2026-07-08 13:20",
+      "ai_summary": "香港新增两家专属自保保险公司",
+      "impact_analysis": "香港保监局批出两家新自保保险公司，显示香港保险市场活跃，但对A股保险板块直接影响有限，属于行业中性消息。",
+      "affected_sectors": [
+        "保险"
+      ],
+      "affected_stocks": [
+        "601318.SS",
+        "601628.SS"
+      ],
+      "importance": 3
     }
   ]
 }
