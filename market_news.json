@@ -1,177 +1,171 @@
 {
   "date": "20260708",
-  "market_summary": "今日A股市场受AI算力、创新药等板块强势拉升影响高开，但随后高开低走，创业板指跌超2%，显示市场分歧加大。消息面偏多，AI产业链景气度持续，但部分板块如锂矿、半导体回落，整体情绪谨慎。",
-  "sentiment_impact": "中性",
+  "market_summary": "今日A股市场整体呈现探底回升走势，AI算力、半导体芯片等科技板块强势领涨，带动创业板指和科创50指数翻红，市场情绪有所回暖。",
+  "sentiment_impact": "偏多",
   "news": [
     {
-      "title": "越贵越好卖 多房企靠溢价品完成销售目标",
+      "title": "全球云计算基础设施投资加速演进，云计算ETF广发(159527)盘中大涨，权重股浪潮信息26年上半年净利预计最高暴增288%",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607083797683858.html",
-      "time": "2026-07-08 09:38:34",
-      "ai_summary": "AI算力板块集体爆发",
-      "impact_analysis": "AI算力板块受浪潮信息业绩大增及英伟达看涨期权活跃催化，带动云计算、服务器等产业链涨停，对科技股情绪提振明显，但需警惕短期过热。",
+      "url": "https://finance.eastmoney.com/a/202607083798102450.html",
+      "time": "2026-07-08 10:44:22",
+      "ai_summary": "全球云计算投资加速，AI算力需求激增",
+      "impact_analysis": "英伟达与Palantir合作拓展政府AI市场，算力基础设施需求扩容，直接利好A股云计算、AI服务器及算力租赁板块，推动相关ETF大涨。",
       "affected_sectors": [
-        "AI算力",
         "云计算",
-        "服务器"
+        "AI算力"
       ],
       "affected_stocks": [
         "000977.SZ",
-        "600570.SS",
         "603019.SS"
       ],
       "importance": 9
     },
     {
-      "title": "报告：65.3%的企业在校招中引入AI工具",
+      "title": "云计算ETF鹏华涨超5%，算力租赁、AI服务器相关概念走强",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607083797798886.html",
-      "time": "2026-07-08 09:55:41",
-      "ai_summary": "恒瑞GLP-1药物III期成功",
-      "impact_analysis": "恒瑞医药GLP-1药物临床成功引爆创新药板块，港股通创新药ETF大涨，显示市场对创新药研发突破的积极反应，利好医药行业。",
+      "url": "https://finance.eastmoney.com/a/202607083798102773.html",
+      "time": "2026-07-08 10:47:10",
+      "ai_summary": "科创芯片ETF暴涨，半导体设备走强",
+      "impact_analysis": "科创芯片ETF涨超4%，半导体设备龙头业绩预增，ASML上调指引，显示芯片需求旺盛，带动科创50指数大涨，提振科技股情绪。",
       "affected_sectors": [
-        "创新药",
-        "医药生物"
+        "半导体",
+        "芯片设备"
       ],
       "affected_stocks": [
-        "600276.SS",
-        "159316.SZ"
+        "688981.SS",
+        "688012.SS"
       ],
-      "importance": 8
+      "importance": 9
     },
     {
-      "title": "科技日报：谁才是全球AI领域的“超级反派”？",
+      "title": "医药股延续涨势，中国生物制药与阿斯利康达成19亿美元自研创新药授权合作，港股创新药ETF广发、恒生生物科技ETF广发盘中涨超2%",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607083797541311.html",
-      "time": "2026-07-08 09:10:09",
-      "ai_summary": "A股三大指数高开低走",
-      "impact_analysis": "三大指数高开低走，创业板跌超2%，显示市场抛压加大，短期调整风险上升，但AI等主线仍活跃，结构性行情延续。",
+      "url": "https://finance.eastmoney.com/a/202607083798134315.html",
+      "time": "2026-07-08 11:16:09",
+      "ai_summary": "深圳发布15个政务AI应用场景",
+      "impact_analysis": "地方政府推动AI落地，加速政务智能化，利好AI应用、软件服务及算力基础设施板块，提振市场对AI产业化的信心。",
       "affected_sectors": [
-        "大盘指数",
-        "创业板"
-      ],
-      "affected_stocks": [
-        "000001.SS",
-        "399006.SZ"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "江苏：要系统化研究加强技术、绿电等要素保障 拓展投融资渠道",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607083797715631.html",
-      "time": "2026-07-08 09:43:56",
-      "ai_summary": "AI拟人化服务监管趋严",
-      "impact_analysis": "豆包、千问下线智能体功能，反映AI监管收紧，短期压制AI应用端情绪，但长期规范行业健康发展，对合规龙头有利。",
-      "affected_sectors": [
-        "AI应用",
-        "人工智能"
+        "人工智能",
+        "政务软件"
       ],
       "affected_stocks": [
         "002230.SZ",
-        "300418.SZ"
+        "688256.SS"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "深圳发布15个政务领域人工智能应用场景",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202607083798047733.html",
+      "time": "2026-07-08 10:34:18",
+      "ai_summary": "创业板指V型反转，AI赛道逆市领涨",
+      "impact_analysis": "大盘重挫下AI板块一枝独秀，算力硬件逆市狂飙，显示资金避险偏好科技成长，创业板指翻红，市场结构性行情凸显。",
+      "affected_sectors": [
+        "人工智能",
+        "算力硬件"
+      ],
+      "affected_stocks": [
+        "300750.SZ",
+        "688111.SS"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "伊朗议长称决不屈服",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202607083798121211.html",
+      "time": "2026-07-08 11:06:53",
+      "ai_summary": "算力租赁概念持续走高，多股涨停",
+      "impact_analysis": "算力租赁板块涨停潮，反映AI算力需求爆发，资金集中涌入，短期带动相关个股和ETF大涨，但需警惕追高风险。",
+      "affected_sectors": [
+        "算力租赁",
+        "AI服务器"
+      ],
+      "affected_stocks": [
+        "600602.SS",
+        "603881.SS"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "报告：企业AI愿景与组织就绪度差距日趋扩大 需要清晰的领导力指引、员工信任与能力建设体系",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202607083798130839.html",
+      "time": "2026-07-08 11:14:40",
+      "ai_summary": "河南发布30个人工智能应用场景",
+      "impact_analysis": "继深圳后河南跟进，多地政策密集出台，加速AI场景落地，利好AI应用、智慧城市及算力板块，增强市场对AI产业链的预期。",
+      "affected_sectors": [
+        "人工智能",
+        "智慧城市"
+      ],
+      "affected_stocks": [
+        "002415.SZ",
+        "600570.SS"
       ],
       "importance": 7
     },
     {
-      "title": "沉睡巨人正在苏醒？英伟达逆势抗跌 看涨期权酝酿“大干一场”",
+      "title": "韩国立法严治网络虚假信息 大幅加大对网络虚假信息的惩戒力度",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607083797756146.html",
-      "time": "2026-07-08 09:51:33",
-      "ai_summary": "英伟达看涨期权成交量激增",
-      "impact_analysis": "英伟达看涨期权活跃，显示海外AI龙头受追捧，提振A股AI产业链信心，但需关注美股科技股波动传导风险。",
+      "url": "https://finance.eastmoney.com/a/202607083798111832.html",
+      "time": "2026-07-08 10:56:36",
+      "ai_summary": "港股科技龙头密集落地AI大模型",
+      "impact_analysis": "港股科技股大涨带动恒生科技指数涨超3%，间接提振A股科技板块情绪，AI大模型商业化加速，利好相关算力和应用公司。",
       "affected_sectors": [
-        "AI芯片",
-        "半导体"
+        "AI大模型",
+        "港股科技"
       ],
       "affected_stocks": [
-        "002049.SZ",
-        "603986.SS"
+        "00700.HK",
+        "09988.HK"
       ],
       "importance": 7
     },
     {
-      "title": "恒瑞GLP-1药物III期成功引爆创新药行情！港股通创新药ETF易方达（159316）涨2.34%，恒指涨超1%提振板块情绪",
+      "title": "大盘重挫下AI赛道一枝独秀！科创创业人工智能ETF易方达（159140）大涨2.64%，算力硬件逆市狂飙，科创板AI标的成资金避风港",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607083797734787.html",
-      "time": "2026-07-08 09:40:09",
-      "ai_summary": "国际能源署预计天然气消费下降",
-      "impact_analysis": "全球天然气消费预期下降，受中东局势和价格影响，短期压制油气板块情绪，但油气股今日逆势走强，市场反应分化。",
+      "url": "https://finance.eastmoney.com/a/202607083798098581.html",
+      "time": "2026-07-08 10:40:55",
+      "ai_summary": "沪深两市成交额突破1.5万亿",
+      "impact_analysis": "成交额放大显示市场交投活跃，资金入场意愿增强，尤其科技板块吸金明显，有助于支撑指数反弹，但需关注持续性。",
       "affected_sectors": [
-        "油气开采",
-        "天然气"
+        "全市场"
       ],
-      "affected_stocks": [
-        "002490.SZ",
-        "600028.SS"
-      ],
-      "importance": 6
+      "affected_stocks": [],
+      "importance": 7
     },
     {
-      "title": "全球最赚钱公司股价大跌？或许是业绩“好得不够让人意外”",
+      "title": "高盛、美银、花旗给予“买入”评级 MiniMax获华尔街集体看多",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607083797630485.html",
-      "time": "2026-07-08 09:27:36",
-      "ai_summary": "人民币兑美元中间价调贬",
-      "impact_analysis": "人民币小幅贬值，对出口型企业有利，但可能引发资本外流担忧，对大盘影响中性偏空，需关注后续汇率走势。",
+      "url": "https://finance.eastmoney.com/a/202607083798097526.html",
+      "time": "2026-07-08 10:44:47",
+      "ai_summary": "美国芯片工厂面临16万技术工短缺",
+      "impact_analysis": "美国芯片制造受阻，可能延缓台积电、三星海外建厂，利好国内半导体设备及材料国产替代，提升自主可控预期。",
       "affected_sectors": [
-        "外贸",
-        "纺织服装"
+        "半导体设备",
+        "国产芯片"
       ],
       "affected_stocks": [
-        "002832.SZ",
-        "600630.SS"
+        "688012.SS",
+        "002371.SZ"
       ],
-      "importance": 6
+      "importance": 7
     },
     {
-      "title": "买个包先查二手价？ 奢侈品消费逻辑生变",
+      "title": "加拿大5月贸易顺差创四年新高 对美出口占比逼近70%",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607083797693030.html",
-      "time": "2026-07-08 09:39:51",
-      "ai_summary": "江苏加强技术、绿电要素保障",
-      "impact_analysis": "江苏政策利好新能源和科技产业，绿电和投融资渠道拓展，对光伏、风电等板块有提振，但短期市场反应有限。",
+      "url": "https://finance.eastmoney.com/a/202607083798094928.html",
+      "time": "2026-07-08 10:39:15",
+      "ai_summary": "工信部辟谣智驾芯片自主化率新规",
+      "impact_analysis": "辟谣消除市场对汽车芯片政策的过度担忧，稳定智能驾驶板块情绪，但短期可能压制相关概念炒作，影响中性偏多。",
       "affected_sectors": [
-        "绿电",
-        "新能源"
+        "智能驾驶",
+        "汽车芯片"
       ],
       "affected_stocks": [
-        "601012.SS",
-        "300274.SZ"
-      ],
-      "importance": 6
-    },
-    {
-      "title": "人工智能ETF华富(515980)盘中冲高涨超2%，AI基础设施到2026年仍将维持高景气，产业链有望逐步进入再配置区间",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607083797708577.html",
-      "time": "2026-07-08 09:39:42",
-      "ai_summary": "上海再保险中心建设政策出台",
-      "impact_analysis": "金融监管总局和上海市政府联合发文，利好保险和金融板块，推动再保险市场发展，对金融股有正面影响。",
-      "affected_sectors": [
-        "保险",
-        "金融"
-      ],
-      "affected_stocks": [
-        "601318.SS",
-        "601601.SS"
-      ],
-      "importance": 6
-    },
-    {
-      "title": "AI算力板块集体爆发！云计算ETF易方达（516510）涨3.68%，算力硬件股批量涨停",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607083797711770.html",
-      "time": "2026-07-08 09:40:24",
-      "ai_summary": "韩国芯片股反弹，供应紧张",
-      "impact_analysis": "韩国芯片股反弹反映全球芯片供应紧张，利好A股半导体和存储芯片板块，但需注意美股抛售后的波动风险。",
-      "affected_sectors": [
-        "半导体",
-        "存储芯片"
-      ],
-      "affected_stocks": [
-        "002185.SZ",
-        "603986.SS"
+        "002920.SZ",
+        "600745.SS"
       ],
       "importance": 6
     }
