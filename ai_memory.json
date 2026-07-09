@@ -240,6 +240,29 @@
       "why_wrong": null,
       "missed_signal": null,
       "lesson": null
+    },
+    {
+      "date": "20260709",
+      "signal_date": "20260703",
+      "mode": "bear",
+      "entry_price": 12.85,
+      "pullback_pct": 5.6,
+      "limit_days": 4,
+      "analysis": "量：缩量至5日均量的21%，OBV持续下降，资金明显流出，反弹动能不足。  \n价：股价跌破MA5和MA10，勉强站上MA20，13.03元为关键支撑，若失守则加速下行。  \n形：4连板后回调59天，幅度仅5.6%，属高位横盘整理形态，未形成有效突破。  \n时：回调天数远超正常窗口（通常5-10天），反弹概率极低，需等待新催化。  \n仓位建议：0成仓（冰点期1档）  \n最终结论：【放弃】",
+      "sentiment": "冰点期1档",
+      "position": "0成仓",
+      "opinion": "【放弃】",
+      "verified": false,
+      "return_7d": null,
+      "exit_reason": null,
+      "exit_day": null,
+      "verdict": null,
+      "review_analysis": null,
+      "review_quality": null,
+      "what_happened": null,
+      "why_wrong": null,
+      "missed_signal": null,
+      "lesson": null
     }
   ]
 }
