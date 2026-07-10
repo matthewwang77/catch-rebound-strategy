@@ -1,25 +1,12 @@
 {
-  "scan_time": "2026-07-10 11:18",
+  "scan_time": "2026-07-10 11:49",
   "scan_date": "20260710",
-  "data_date": "2026-07-09",
-  "market": {
-    "上证": {
-      "price": 4036.59,
-      "pct": 1.65
-    },
-    "深证": {
-      "price": 15398.73,
-      "pct": 3.07
-    },
-    "创业板": {
-      "price": 4018.17,
-      "pct": 4.49
-    }
-  },
+  "data_date": "2026-07-10",
+  "market": {},
   "regime": {
     "status": "neutral",
-    "label": "3档: 启动期 — 谨慎入场",
-    "avg_trend": 0.43,
+    "label": "数据不足，默认非熊市",
+    "avg_trend": 0,
     "recommended_mode": "strict"
   },
   "modes": {
