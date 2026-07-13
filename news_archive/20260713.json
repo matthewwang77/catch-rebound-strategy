@@ -1,171 +1,174 @@
 {
   "date": "20260713",
-  "market_summary": "今日A股三大指数集体大跌，沪指跌1.54%，深成指跌2.61%，创业板指跌2.38%，超4500只个股下跌，市场情绪悲观。韩国股市暴跌及芯片股抛售潮引发全球科技股回调，A股存储芯片、商业航天等板块领跌，银行、中药逆势走强。",
-  "sentiment_impact": "偏空",
+  "market_summary": "今日A股市场受中东地缘扰动影响主要指数飘绿，但银行板块因大规模分红派息逆势拉升，同时AI大会预期和芯片巨头上市消息提振科技板块关注度，整体消息面多空交织。",
+  "sentiment_impact": "中性",
   "news": [
     {
-      "title": "燃气轮机供应商慕帆动力完成连续两轮总计超过5亿元融资",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607133803179819.html",
-      "time": "2026-07-13 10:32:16",
-      "ai_summary": "韩国股市暴跌超5%，芯片股领跌",
-      "impact_analysis": "韩国KOSPI指数跌超7%，SK海力士等芯片股暴跌，引发全球科技股恐慌，直接拖累A股存储芯片、算力等板块，加剧市场下行压力。",
-      "affected_sectors": [
-        "存储芯片",
-        "算力硬件"
-      ],
-      "affected_stocks": [
-        "000021.SZ",
-        "603986.SS"
-      ],
-      "importance": 9
-    },
-    {
-      "title": "工银投资等在北京成立创业投资基金 出资额5.06亿",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607133803298574.html",
-      "time": "2026-07-13 10:50:54",
-      "ai_summary": "沪指跌1.54%，深成指跌2.61%",
-      "impact_analysis": "大盘指数大幅下跌，成交量缩量，显示市场抛压沉重，投资者信心不足，短期可能延续调整，需关注政策面支撑。",
-      "affected_sectors": [
-        "全市场"
-      ],
-      "affected_stocks": [
-        "000001.SH",
-        "399001.SZ"
-      ],
-      "importance": 9
-    },
-    {
-      "title": "亨通光电旗下江苏新能源智控公司增资至7.7亿元",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607133803435645.html",
-      "time": "2026-07-13 11:43:00",
-      "ai_summary": "存储芯片概念持续下挫，德明利跌停",
-      "impact_analysis": "存储芯片板块受韩国芯片股暴跌及AI需求担忧拖累，个股大面积跌停，板块短期风险释放，但中期需关注行业基本面变化。",
-      "affected_sectors": [
-        "存储芯片",
-        "半导体"
-      ],
-      "affected_stocks": [
-        "000021.SZ",
-        "603986.SS"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "AI迫使苹果加快研发节奏 M6芯片发布半年后完成了M7流片",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607133803425612.html",
-      "time": "2026-07-13 11:35:13",
-      "ai_summary": "商业航天概念大幅下挫",
-      "impact_analysis": "商业航天板块前期涨幅较大，今日深度回调，反映市场风险偏好下降，短期资金流出明显，但长期政策支持仍存。",
-      "affected_sectors": [
-        "商业航天",
-        "航空航天"
-      ],
-      "affected_stocks": [
-        "600391.SS",
-        "000901.SZ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "沪指下跌1.54% 中药板块走强 MLCC、被动元件概念大跌",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607133803426068.html",
-      "time": "2026-07-13 11:30:28",
-      "ai_summary": "银行板块逆势拉升，苏州银行涨超5%",
-      "impact_analysis": "银行股逆势走强，显示资金避险情绪浓厚，银行作为高股息板块受青睐，短期可能继续护盘，但持续性待观察。",
+      "title": "百胜中国午后涨超3% 华泰证券维持“买入”评级",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/stock/hkstock/marketalerts/2026-07-13/doc-inihrxce8969422.shtml",
+      "time": "2026-07-13 14:43",
+      "ai_summary": "银行板块逆势拉升，分红潮来袭",
+      "impact_analysis": "三家上市银行今日派息，本周分红逼近900亿，直接提振银行板块估值和资金流入，对大盘形成支撑，显示高股息策略受追捧。",
       "affected_sectors": [
         "银行"
       ],
       "affected_stocks": [
         "601939.SS",
+        "601658.SS",
         "002142.SZ"
       ],
-      "importance": 7
+      "importance": 8
     },
     {
-      "title": "日系车企三强上半年在华销量集体下滑",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607133802823966.html",
-      "time": "2026-07-13 11:17:27",
-      "ai_summary": "汽车整车板块走弱，赛力斯触及跌停",
-      "impact_analysis": "汽车板块受日系车销量下滑及个股利空拖累，赛力斯等龙头大跌，行业竞争加剧，短期承压，关注新能源车政策。",
+      "title": "沐曦股份为何逆市涨超7%？本周！世界AI大会来袭！科创人工智能ETF随市回调，资金迎来逢跌布局机会？",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/money/fund/etf/2026-07-13/doc-inihrxaz4194426.shtml",
+      "time": "2026-07-13 14:22",
+      "ai_summary": "SK海力士赴美上市，引燃AI投资热潮",
+      "impact_analysis": "全球最大外企赴美上市案落地，强化AI芯片需求预期，利好A股半导体和AI产业链，尤其是存储芯片和算力相关标的。",
       "affected_sectors": [
-        "汽车整车",
-        "新能源汽车"
+        "半导体",
+        "人工智能"
       ],
       "affected_stocks": [
-        "601127.SS",
-        "000980.SZ"
+        "002049.SZ",
+        "603986.SS"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "不花钱也能办大事！芝麻AI真正成为投资者“靠谱的军师”",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/stock/aigcy/2026-07-13/doc-inihrxce8959076.shtml",
+      "time": "2026-07-13 14:23",
+      "ai_summary": "世界AI大会来袭，科创AI ETF回调",
+      "impact_analysis": "AI大会预期催化国产AI产业链，科创人工智能ETF回调提供布局机会，短期提振AI板块情绪，中长期利好算力、芯片等细分领域。",
+      "affected_sectors": [
+        "人工智能",
+        "半导体"
+      ],
+      "affected_stocks": [
+        "588000.SS",
+        "688256.SS"
       ],
       "importance": 7
     },
     {
-      "title": "A股午评：深成指半日跌2.61%，全市场超4500只个股飘绿",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607133803430762.html",
-      "time": "2026-07-13 11:34:25",
-      "ai_summary": "AI账单引发成本焦虑，模型性价比竞争加剧",
-      "impact_analysis": "AI模型成本下降趋势可能压缩算力需求预期，对A股算力芯片、服务器等板块形成利空，但长期利好应用端。",
+      "title": "长龙航空IPO：刘启宏年薪1211万，短债缺口56.5亿",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/roll/2026-06-23/doc-iniekknw2109700.shtml",
+      "time": "2026-07-13 14:39",
+      "ai_summary": "美联储纪要划定利率边界，7月加息概率约40%",
+      "impact_analysis": "美联储政策不确定性压制全球风险偏好，对A股外资流入形成扰动，但通胀分歧下加息概率不高，整体影响中性偏空。",
       "affected_sectors": [
-        "AI算力",
-        "AI应用"
+        "大盘"
+      ],
+      "affected_stocks": [
+        "000001.SS",
+        "399001.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "科威特下调8月发往全球各市场原油售价",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/stock/usstock/c/2026-07-13/doc-inihrxaz4199546.shtml",
+      "time": "2026-07-13 14:28",
+      "ai_summary": "科威特下调8月原油售价",
+      "impact_analysis": "原油价格下调利好航空、化工等用油成本敏感行业，但利空石油板块，短期影响能源股表现，对大盘影响有限。",
+      "affected_sectors": [
+        "航空",
+        "化工",
+        "石油"
+      ],
+      "affected_stocks": [
+        "600028.SS",
+        "601111.SS"
+      ],
+      "importance": 6
+    },
+    {
+      "title": "华尔街从SpaceX首次公开募股与大型并购交易中赚取丰厚佣金",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/stock/usstock/c/2026-07-13/doc-inihrxcc2175053.shtml",
+      "time": "2026-07-13 14:12",
+      "ai_summary": "AI大模型垄断引发数据主权危机",
+      "impact_analysis": "美科技巨头与初创企业矛盾激化，凸显AI数据安全重要性，利好A股国产AI大模型和网络安全板块，催化自主可控主题。",
+      "affected_sectors": [
+        "人工智能",
+        "网络安全"
+      ],
+      "affected_stocks": [
+        "300454.SZ",
+        "688111.SS"
+      ],
+      "importance": 6
+    },
+    {
+      "title": "三家上市银行今日派息 银行板块逆势拉升",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/roll/2026-07-13/doc-inihrxax7421471.shtml",
+      "time": "2026-07-13 14:11",
+      "ai_summary": "花旗下调英国股市评级，上调金融板块",
+      "impact_analysis": "花旗策略调整暗示全球资金或从防御板块转向金融，间接利好A股银行、券商等金融股，但影响有限。",
+      "affected_sectors": [
+        "金融"
+      ],
+      "affected_stocks": [
+        "600030.SS",
+        "601166.SS"
+      ],
+      "importance": 5
+    },
+    {
+      "title": "单只股票杠杆指数基金发行潮引华尔街警惕 专家呼吁监管介入防范市场系统性风险",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/stock/usstock/c/2026-07-13/doc-inihrxax7437402.shtml",
+      "time": "2026-07-13 14:44",
+      "ai_summary": "欧盟从俄罗斯天然气进口创历史新高",
+      "impact_analysis": "欧盟对俄气依赖超预期，能源博弈持续，利好A股天然气和能源板块，但禁令生效前影响有限。",
+      "affected_sectors": [
+        "天然气",
+        "能源"
+      ],
+      "affected_stocks": [
+        "600256.SS",
+        "601857.SS"
+      ],
+      "importance": 5
+    },
+    {
+      "title": "AI大模型垄断引发“数据主权”危机 美科技巨头与新兴初创企业矛盾激化",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/stock/usstock/c/2026-07-13/doc-inihrxax7430437.shtml",
+      "time": "2026-07-13 14:37",
+      "ai_summary": "新疆有色拟与新疆地矿战略重组",
+      "impact_analysis": "新疆区域资源整合预期提振有色板块，尤其是新疆本地矿业股，但个股影响为主，板块效应有限。",
+      "affected_sectors": [
+        "有色金属"
+      ],
+      "affected_stocks": [
+        "600888.SS",
+        "000762.SZ"
+      ],
+      "importance": 5
+    },
+    {
+      "title": "银行红包雨来了！建行、邮储领衔，本周分红逼近900亿",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/money/bank/bank_hydt/2026-07-13/doc-inihrxaz4194519.shtml",
+      "time": "2026-07-13 14:14",
+      "ai_summary": "红土创新基金二季报确认AI景气",
+      "impact_analysis": "公募基金二季报显示AI景气共识，强化市场对AI主线信心，利好相关板块资金流入，但风险判断分歧需警惕。",
+      "affected_sectors": [
+        "人工智能"
       ],
       "affected_stocks": [
         "688256.SS",
-        "603019.SS"
+        "300750.SZ"
       ],
-      "importance": 7
-    },
-    {
-      "title": "人形机器人关节公司零差云控完成数亿元C++轮融资",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607133803262433.html",
-      "time": "2026-07-13 10:44:24",
-      "ai_summary": "PCB概念持续调整，大族激光跌停",
-      "impact_analysis": "PCB板块受科技股整体回调影响，个股跌停，反映产业链需求预期转弱，短期需回避，等待行业催化剂。",
-      "affected_sectors": [
-        "PCB",
-        "电子元器件"
-      ],
-      "affected_stocks": [
-        "002008.SZ",
-        "002636.SZ"
-      ],
-      "importance": 6
-    },
-    {
-      "title": "5000元以下笔记本越来越少了 经销商：至少一年看不到涨价尽头",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607133803339350.html",
-      "time": "2026-07-13 11:03:44",
-      "ai_summary": "上半年国产创新药获批数量超去年全年",
-      "impact_analysis": "创新药行业政策利好持续，获批加速提振板块信心，中药板块今日走强，医药股有望成为避险方向。",
-      "affected_sectors": [
-        "创新药",
-        "中药"
-      ],
-      "affected_stocks": [
-        "600085.SS",
-        "300760.SZ"
-      ],
-      "importance": 6
-    },
-    {
-      "title": "具身创企清研精准完成数亿元B轮融资",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607133803178666.html",
-      "time": "2026-07-13 10:32:16",
-      "ai_summary": "沪深两市成交额缩量超3200亿",
-      "impact_analysis": "成交量萎缩显示市场交投活跃度下降，资金观望情绪浓厚，短期大盘可能继续震荡，需关注增量资金动向。",
-      "affected_sectors": [
-        "全市场"
-      ],
-      "affected_stocks": [],
-      "importance": 6
+      "importance": 5
     }
   ]
 }
