@@ -1,177 +1,177 @@
 {
   "date": "20260714",
-  "market_summary": "今日A股市场消息面偏多，外贸数据超预期增长，科技领域国产芯片突破和AI融资活跃提振成长风格，但美联储加息预期和外围地缘风险压制市场情绪，沪指跌破3900点，创业板指逆势走强。",
+  "market_summary": "今日消息面多空交织，外贸数据超预期增长，创新药、新能源等板块受政策利好提振，但市场整体冲高回落，半导体、AI等板块跌幅较大，资金面缩量明显。",
   "sentiment_impact": "中性",
   "news": [
     {
-      "title": "成长风格强势领涨！成长ETF易方达（159259）涨超3%，创业板指涨逾0.5%",
+      "title": "我国上半年创新药对外授权约1100亿美元，创历史新高，港股创新药ETF博时(520690)涨超1%",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607143804965325.html",
-      "time": "2026-07-14 09:57:49",
-      "ai_summary": "上半年外贸进出口同比增16.9%",
-      "impact_analysis": "外贸数据超预期，显示经济韧性，利好出口导向型行业，提振市场信心，对大盘指数有正面支撑。",
+      "url": "https://finance.eastmoney.com/a/202607143805216493.html",
+      "time": "2026-07-14 10:47:46",
+      "ai_summary": "6月出口同比增27%超预期",
+      "impact_analysis": "出口数据强劲，提振市场信心，利好外贸相关板块，但市场已部分消化，需关注持续性。",
       "affected_sectors": [
         "外贸",
-        "港口航运"
+        "制造业"
       ],
       "affected_stocks": [
-        "601919.SS",
-        "600018.SS"
+        "000651.SZ",
+        "600519.SS"
       ],
       "importance": 9
     },
     {
-      "title": "爱诗科技完成29.8亿元C轮融资",
+      "title": "3500亿龙头反攻！昨天跌停 今天涨停",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607143804587619.html",
-      "time": "2026-07-14 08:53:02",
-      "ai_summary": "国产3D芯片发布，性能超英伟达",
-      "impact_analysis": "全国产AI芯片突破，绕开EUV光刻，利好半导体设备、先进封装及国产替代概念，提振科技板块情绪。",
+      "url": "https://finance.eastmoney.com/a/202607143805214791.html",
+      "time": "2026-07-14 10:44:00",
+      "ai_summary": "三大指数均跌逾1%",
+      "impact_analysis": "市场冲高回落，半导体、AI领跌，成交缩量，显示短期获利回吐压力，需关注支撑位。",
+      "affected_sectors": [
+        "大盘",
+        "半导体"
+      ],
+      "affected_stocks": [
+        "000001.SS",
+        "399006.SZ"
+      ],
+      "importance": 9
+    },
+    {
+      "title": "上半年我国专用装备、船舶和海洋工程装备出口5402.4亿元和2149.9亿元 分别增长24.4％和19.9%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202607143805193843.html",
+      "time": "2026-07-14 10:33:25",
+      "ai_summary": "上半年锂电池出口增37.6%",
+      "impact_analysis": "绿色能源出口高增，强化新能源产业链景气度，利好锂电池、风电板块，带动相关个股。",
+      "affected_sectors": [
+        "锂电池",
+        "风电"
+      ],
+      "affected_stocks": [
+        "300750.SZ",
+        "601012.SS"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "广合科技盘中涨停 云擎智造基地预计11月底投产布局GPU产品",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202607143805180367.html",
+      "time": "2026-07-14 10:31:17",
+      "ai_summary": "上半年创新药授权约1100亿美元",
+      "impact_analysis": "创新药出海创历史新高，政策支持明确，医药板块受提振，创新药ETF表现活跃。",
+      "affected_sectors": [
+        "创新药",
+        "生物科技"
+      ],
+      "affected_stocks": [
+        "300760.SZ",
+        "600276.SS"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "上半年我国锂电池、风力发电机组等绿色能源相关产品出口分别增长37.6％和35.6%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202607143805150892.html",
+      "time": "2026-07-14 10:28:23",
+      "ai_summary": "上半年集成电路出口增96.1%",
+      "impact_analysis": "芯片出口翻倍，AI投资热潮驱动，利好半导体产业链，但板块今日回调，需警惕高位波动。",
       "affected_sectors": [
         "半导体",
-        "芯片设计"
+        "芯片"
       ],
       "affected_stocks": [
         "688981.SS",
         "002371.SZ"
       ],
-      "importance": 9
+      "importance": 8
     },
     {
-      "title": "逐际动力完成近2亿美元Pre-IPO轮融资",
+      "title": "医药板块全线走强！生物科技ETF易方达（159837）涨2.33%，药易购20cm涨停引领医药商业高潮",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607143804678188.html",
-      "time": "2026-07-14 09:07:42",
-      "ai_summary": "创业板指涨逾1%，算力股反弹",
-      "impact_analysis": "创业板指领涨，算力硬件股反弹，显示成长风格占优，资金流入科技板块，对中小盘指数有带动。",
+      "url": "https://finance.eastmoney.com/a/202607143805156048.html",
+      "time": "2026-07-14 10:28:57",
+      "ai_summary": "美国6月CPI或六年来首次回落",
+      "impact_analysis": "通胀回落预期缓解美联储加息压力，利好全球风险资产，A股外资流入或增加，但需关注实际数据。",
       "affected_sectors": [
-        "算力",
-        "PCB"
+        "大盘",
+        "外资重仓"
       ],
       "affected_stocks": [
-        "300750.SZ",
+        "000001.SS",
+        "399001.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "千味央厨与灵心巧手展开深层合作 加速布局具身智能赛道",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202607143805227367.html",
+      "time": "2026-07-14 10:52:00",
+      "ai_summary": "全球智能手机Q2出货量跌至低点",
+      "impact_analysis": "内存涨价抑制消费电子需求，利空手机产业链，相关芯片和零部件公司承压。",
+      "affected_sectors": [
+        "消费电子",
+        "半导体"
+      ],
+      "affected_stocks": [
+        "002475.SZ",
+        "600745.SS"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "内存涨价冷行情：全球智能手机Q2出货量跌至2013年以来同期最低水平",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202607143805090583.html",
+      "time": "2026-07-14 10:43:18",
+      "ai_summary": "生益科技业绩预增涨停",
+      "impact_analysis": "覆铜板龙头业绩超预期，带动PCB板块反弹，显示AI硬件需求强劲，但个股波动大。",
+      "affected_sectors": [
+        "PCB",
+        "覆铜板"
+      ],
+      "affected_stocks": [
+        "600183.SS",
         "002916.SZ"
       ],
-      "importance": 8
+      "importance": 7
     },
     {
-      "title": "部分脑机接口概念股走强 脑动极光涨超14%",
+      "title": "青心意创发布首个具身角色基座模型Dino OS",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607143804950025.html",
-      "time": "2026-07-14 09:54:48",
-      "ai_summary": "美联储加息预期升温",
-      "impact_analysis": "加息预期压制全球风险资产，对A股外资流入和成长股估值形成压力，偏空影响。",
+      "url": "https://finance.eastmoney.com/a/202607143805233971.html",
+      "time": "2026-07-14 11:00:27",
+      "ai_summary": "新华保险半年净利预增40%-60%",
+      "impact_analysis": "保险龙头业绩亮眼，提振金融板块，券商中报预增也支撑估值修复，但市场整体偏弱。",
       "affected_sectors": [
-        "外资重仓",
-        "成长股"
+        "保险",
+        "券商"
       ],
       "affected_stocks": [
-        "600519.SS",
-        "000858.SZ"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "深交所：“宜化转债”盘中临时停牌 于14时57分00秒复牌",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607143804791872.html",
-      "time": "2026-07-14 09:30:05",
-      "ai_summary": "上证综指跌破3900点",
-      "impact_analysis": "沪指跌破关键点位，显示市场短期承压，可能引发技术性抛售，但创业板指逆势上涨，结构性分化明显。",
-      "affected_sectors": [
-        "大盘权重",
-        "金融"
-      ],
-      "affected_stocks": [
-        "601318.SS",
-        "600036.SS"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "今年上半年我国货物贸易进出口同比增长16.9%",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607143804962953.html",
-      "time": "2026-07-14 10:00:40",
-      "ai_summary": "爱诗科技完成29.8亿元C轮融资",
-      "impact_analysis": "AI视频生成领域大额融资，阿里巴巴领投，提振AI应用和传媒板块，显示资本对AI赛道信心。",
-      "affected_sectors": [
-        "人工智能",
-        "传媒"
-      ],
-      "affected_stocks": [
-        "300418.SZ",
-        "002230.SZ"
+        "601336.SS",
+        "600030.SS"
       ],
       "importance": 7
     },
     {
-      "title": "博世首家美国半导体工厂启动试生产",
+      "title": "沃什今晚造访国会山！华尔街担心：要再和市场“卖关子”可能会出事",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607143804905382.html",
-      "time": "2026-07-14 09:46:48",
-      "ai_summary": "逐际动力完成近2亿美元Pre-IPO轮",
-      "impact_analysis": "人形机器人公司大额融资，IDG等参与，利好机器人产业链，提振相关概念股。",
+      "url": "https://finance.eastmoney.com/a/202607143805238494.html",
+      "time": "2026-07-14 11:04:50",
+      "ai_summary": "长鑫科技即将打新",
+      "impact_analysis": "作为A股最大新股之一，吸引资金关注，利好半导体板块情绪，但抽血效应可能压制市场。",
       "affected_sectors": [
-        "机器人",
-        "智能制造"
+        "半导体",
+        "新股"
       ],
       "affected_stocks": [
-        "300124.SZ",
-        "002747.SZ"
+        "688981.SS",
+        "002371.SZ"
       ],
       "importance": 7
-    },
-    {
-      "title": "绕过EUV光刻、性能超英伟达A卡 全国产“软件定义近存计算3D芯片”发布",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607143804675026.html",
-      "time": "2026-07-14 09:08:59",
-      "ai_summary": "商品期货原油涨超8%，油气板块活跃",
-      "impact_analysis": "原油大涨带动油气板块走强，利好能源股，但通胀预期升温可能压制货币政策宽松空间。",
-      "affected_sectors": [
-        "石油天然气",
-        "化工"
-      ],
-      "affected_stocks": [
-        "600028.SS",
-        "601857.SS"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "多所高校宣布停招学硕 研究生招生考试改革纵深推进",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607133804034046.html",
-      "time": "2026-07-14 09:59:41",
-      "ai_summary": "脑机接口概念走强，政策支持",
-      "impact_analysis": "多部门联合方案攻坚脑机接口技术，政策利好推动板块上涨，关注相关医疗科技股。",
-      "affected_sectors": [
-        "脑机接口",
-        "医疗器械"
-      ],
-      "affected_stocks": [
-        "300003.SZ",
-        "688029.SS"
-      ],
-      "importance": 6
-    },
-    {
-      "title": "国内商品期货早盘开盘 主力合约跌多涨少",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607143804612670.html",
-      "time": "2026-07-14 09:00:00",
-      "ai_summary": "人民币兑美元中间价调贬18基点",
-      "impact_analysis": "人民币小幅贬值，对出口企业有利，但可能加剧资本外流担忧，对大盘影响中性偏空。",
-      "affected_sectors": [
-        "出口",
-        "航空"
-      ],
-      "affected_stocks": [
-        "000651.SZ",
-        "600029.SS"
-      ],
-      "importance": 6
     }
   ]
 }
