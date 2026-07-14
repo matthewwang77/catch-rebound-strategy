@@ -286,6 +286,29 @@
       "why_wrong": null,
       "missed_signal": null,
       "lesson": null
+    },
+    {
+      "date": "20260714",
+      "signal_date": "20260703",
+      "mode": "bear",
+      "entry_price": 10.66,
+      "pullback_pct": 5.6,
+      "limit_days": 4,
+      "analysis": "量：缩量至5日均量51%，OBV持续下降，资金加速流出，属流动性枯竭特征。  \n价：跌破MA5/10/20，逼近布林下轨10.55，均线空头排列无支撑。  \n形：4连板后回调58天横盘，实为下跌中继，非底部整理。  \n时：回调天数远超正常窗口，冰点期1档下无新催化，窗口恶化。  \n仓位建议：0成仓（冰点期1档）  \n反弹概率：低（≤30%）  \n最终结论：【放弃】",
+      "sentiment": "冰点期1档",
+      "position": "0成仓",
+      "opinion": "【放弃】",
+      "verified": false,
+      "return_7d": null,
+      "exit_reason": null,
+      "exit_day": null,
+      "verdict": null,
+      "review_analysis": null,
+      "review_quality": null,
+      "what_happened": null,
+      "why_wrong": null,
+      "missed_signal": null,
+      "lesson": null
     }
   ]
 }
