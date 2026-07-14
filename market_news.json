@@ -1,176 +1,179 @@
 {
   "date": "20260714",
-  "market_summary": "今日A股午后V型反转，创业板指涨超3%，科技、有色、消费电子板块领涨，市场情绪回暖。总理座谈会释放新旧动能转换信号，资金面宽基ETF净流入超610亿元，显示抄底意愿强烈。",
+  "market_summary": "今日A股午后强势反弹，创业板指大涨超3%，有色、光模块、创新药等板块领涨，美伊冲突推升油价，市场情绪回暖。",
   "sentiment_impact": "偏多",
   "news": [
     {
-      "title": "创业板指V型反转飙涨3.24%！创业板成长ETF易方达（159597）涨3.21%，从跌逾1%到涨超3%彰显成长弹性",
+      "title": "有色板块午后强势反弹！稀有金属ETF易方达（561050）涨3.30%，港股中国铝业飙涨近10%引领板块共振",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607143805411441.html",
-      "time": "2026-07-14 13:37:18",
-      "ai_summary": "总理座谈会推进新旧动能转换",
-      "impact_analysis": "政策信号明确，提振市场信心，利好经济转型相关板块，如科技和新能源，对大盘有支撑作用。",
+      "url": "https://finance.eastmoney.com/a/202607143805502757.html",
+      "time": "2026-07-14 14:49:49",
+      "ai_summary": "美伊冲突引爆油价涨超9%",
+      "impact_analysis": "油价暴涨直接利好石油石化板块，带动相关个股上涨，同时可能推高通胀预期，影响货币政策节奏。",
       "affected_sectors": [
-        "科技",
-        "新能源"
+        "石油石化",
+        "能源"
       ],
       "affected_stocks": [
-        "000001.SZ",
-        "600000.SS"
+        "601857.SS",
+        "600028.SS",
+        "600938.SS"
       ],
       "importance": 9
     },
     {
-      "title": "有色ETF鹏华涨超2%，中稀有色预计2026年上半年净利润同比增加410.35%到493.11%",
+      "title": "富乐华半导体：推出基于DAB陶瓷基板的嵌入式封装技术 为高性能功率模块提供新技术选择",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607143805393067.html",
-      "time": "2026-07-14 13:28:15",
-      "ai_summary": "创业板指V型反转涨3.24%",
-      "impact_analysis": "创业板强势反弹，显示成长股弹性，提振市场风险偏好，利好科技和医药生物板块。",
-      "affected_sectors": [
-        "科技",
-        "医药生物"
-      ],
-      "affected_stocks": [
-        "159597.SZ",
-        "300750.SZ"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "中集安瑞科：旗下公司与金宏气体的300多支电子特气洁净气瓶Y瓶订单正在分批交付",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607143805409448.html",
-      "time": "2026-07-14 13:39:06",
-      "ai_summary": "股票ETF资金净流入超610亿元",
-      "impact_analysis": "资金大幅流入宽基和半导体ETF，显示机构抄底意愿强，对大盘形成支撑，利好半导体板块。",
-      "affected_sectors": [
-        "半导体",
-        "宽基指数"
-      ],
-      "affected_stocks": [
-        "159995.SZ",
-        "512480.SS"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "总理座谈会释放新信号 推进新旧动能平稳接续转换",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607143805303415.html",
-      "time": "2026-07-14 12:55:56",
-      "ai_summary": "Meta豪掷400亿美元利好光模块",
-      "impact_analysis": "Meta投资带动光模块板块大涨，新易盛、中际旭创等龙头受益，利好AI算力产业链。",
+      "url": "https://finance.eastmoney.com/a/202607143805459693.html",
+      "time": "2026-07-14 14:19:30",
+      "ai_summary": "Meta追加百亿美元扩建AI数据中心",
+      "impact_analysis": "Meta巨额投资提振光模块、PCB等AI产业链需求，相关板块午后异动拉升，市场情绪高涨。",
       "affected_sectors": [
         "光模块",
-        "AI算力"
+        "PCB",
+        "通信设备"
       ],
       "affected_stocks": [
         "300502.SZ",
+        "002916.SZ",
         "300308.SZ"
       ],
+      "importance": 9
+    },
+    {
+      "title": "英特尔发布代号为Starfire的太空级SoC",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202607143805465826.html",
+      "time": "2026-07-14 14:22:33",
+      "ai_summary": "A股三大指数收涨，创业板指大涨超3%",
+      "impact_analysis": "指数全面上涨，成交额超2.7万亿，显示市场做多动能强劲，短期大盘有望延续反弹。",
+      "affected_sectors": [
+        "大盘",
+        "创业板"
+      ],
+      "affected_stocks": [
+        "000001.SS",
+        "399001.SZ",
+        "399006.SZ"
+      ],
+      "importance": 9
+    },
+    {
+      "title": "三部门：进一步做好公立医疗卫生机构医用设备集中采购工作",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202607143805513729.html",
+      "time": "2026-07-14 14:59:56",
+      "ai_summary": "有色板块午后强势反弹，龙头业绩预喜",
+      "impact_analysis": "供给端扰动和业绩催化推动有色板块大涨，铜铝等工业金属中期胜率获机构看好。",
+      "affected_sectors": [
+        "有色金属",
+        "工业金属"
+      ],
+      "affected_stocks": [
+        "000807.SZ",
+        "600219.SS",
+        "600362.SS"
+      ],
       "importance": 8
-    },
-    {
-      "title": "工业金属板块强势拉升！工业有色ETF易方达（159032）涨3.47%，全球供应链重构驱动有色行情",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607143805410292.html",
-      "time": "2026-07-14 13:37:55",
-      "ai_summary": "韩国央行驳斥半导体见顶论",
-      "impact_analysis": "韩国央行看好半导体需求，缓解市场担忧，利好A股半导体和存储芯片板块，提振科技股情绪。",
-      "affected_sectors": [
-        "半导体",
-        "存储芯片"
-      ],
-      "affected_stocks": [
-        "688981.SS",
-        "002049.SZ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "“黄金气体” 氦气出口管控落地，科创新材料ETF博时(588010)午后拉升涨超1%",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607143805394616.html",
-      "time": "2026-07-14 13:28:37",
-      "ai_summary": "工业金属板块强势拉升",
-      "impact_analysis": "全球供应链重构驱动有色行情，中孚实业涨停，利好工业金属和有色板块，受益于经济复苏预期。",
-      "affected_sectors": [
-        "工业金属",
-        "有色金属"
-      ],
-      "affected_stocks": [
-        "600595.SS",
-        "000630.SZ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "韩国政府四部门将于周四召开会议 就单股杠杆ETF对股市冲击研究应对方案",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607143805422564.html",
-      "time": "2026-07-14 13:47:26",
-      "ai_summary": "化工行业中报大规模预喜",
-      "impact_analysis": "化工板块业绩预喜比例高，提振行业信心，利好化工ETF和个股，显示基本面改善。",
-      "affected_sectors": [
-        "化工"
-      ],
-      "affected_stocks": [
-        "600309.SS",
-        "002601.SZ"
-      ],
-      "importance": 6
     },
     {
       "title": "曦智科技将发布首款基于光电混合计算芯片的一体化边缘计算盒",
       "source": "东方财富",
       "url": "https://finance.eastmoney.com/a/202607143805432180.html",
       "time": "2026-07-14 13:56:45",
-      "ai_summary": "韩国拟放宽外汇管控",
-      "impact_analysis": "韩元国际化或影响外资流向，但对A股直接影响有限，需关注汇率波动对出口型企业的影响。",
+      "ai_summary": "三部门推进公立医院医用设备集中采购",
+      "impact_analysis": "政策利好医疗器械板块，集中采购可能提升行业集中度，利好龙头公司。",
       "affected_sectors": [
-        "出口型企业",
-        "外汇"
+        "医疗器械",
+        "医药商业"
       ],
       "affected_stocks": [
-        "000001.SZ",
-        "600000.SS"
+        "300760.SZ",
+        "688271.SS"
       ],
-      "importance": 5
+      "importance": 8
     },
     {
       "title": "韩国拟放宽外汇管控 进一步推动韩元国际化",
       "source": "东方财富",
       "url": "https://finance.eastmoney.com/a/202607143805435073.html",
       "time": "2026-07-14 13:55:49",
-      "ai_summary": "伊朗石油出口照常进行",
-      "impact_analysis": "伊朗石油出口稳定，缓解供应担忧，利好油气板块，但影响有限，油价波动需关注。",
+      "ai_summary": "2026年上半年创新药对外授权交易额创新高",
+      "impact_analysis": "创新药出海加速，行业景气度提升，午后概念股异动拉升，迪哲医药等涨停。",
       "affected_sectors": [
-        "石油",
-        "油气"
+        "创新药",
+        "医药生物"
       ],
       "affected_stocks": [
-        "601857.SS",
-        "600028.SS"
+        "688192.SS",
+        "600276.SS"
       ],
-      "importance": 5
+      "importance": 8
+    },
+    {
+      "title": "SK海力士加速Y1工厂建设 现已开始订购DRAM制造设备",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202607143805488239.html",
+      "time": "2026-07-14 14:30:14",
+      "ai_summary": "沪深两市成交额连续57日突破2.5万亿",
+      "impact_analysis": "持续高成交额显示市场流动性充裕，资金活跃度高，为指数上涨提供支撑。",
+      "affected_sectors": [
+        "大盘",
+        "券商"
+      ],
+      "affected_stocks": [
+        "600030.SS",
+        "601211.SS"
+      ],
+      "importance": 7
     },
     {
       "title": "Meta豪掷400亿美元！“易中天”应声大涨",
       "source": "东方财富",
       "url": "https://finance.eastmoney.com/a/202607143805430437.html",
       "time": "2026-07-14 13:54:08",
-      "ai_summary": "全球智能手机出货量下降11%",
-      "impact_analysis": "手机出货量下滑利空消费电子，但午后板块反弹，显示市场情绪主导，需警惕需求疲软风险。",
+      "ai_summary": "英特尔发布太空级SoC，基于18A工艺",
+      "impact_analysis": "利好半导体产业链，尤其是先进封装和太空级芯片概念，但短期影响有限。",
       "affected_sectors": [
-        "消费电子",
-        "半导体"
+        "半导体",
+        "先进封装"
       ],
       "affected_stocks": [
-        "002475.SZ",
-        "000725.SZ"
+        "688981.SS",
+        "002371.SZ"
       ],
-      "importance": 5
+      "importance": 7
+    },
+    {
+      "title": "联讯仪器增资至1.03亿",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202607143805495723.html",
+      "time": "2026-07-14 14:42:08",
+      "ai_summary": "国有大行紧急辟谣高息存款产品",
+      "impact_analysis": "辟谣稳定市场预期，避免资金流向高息存款，利好股市资金面。",
+      "affected_sectors": [
+        "银行",
+        "大盘"
+      ],
+      "affected_stocks": [
+        "601398.SS",
+        "601939.SS"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "银华日利A成单只规模最大ETF",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202607143805463476.html",
+      "time": "2026-07-14 14:22:09",
+      "ai_summary": "国新办将介绍上半年外汇收支数据",
+      "impact_analysis": "外汇数据发布会关注人民币汇率和资本流动，可能影响外资动向和市场情绪。",
+      "affected_sectors": [
+        "外汇",
+        "大盘"
+      ],
+      "affected_stocks": [],
+      "importance": 6
     }
   ]
 }
