@@ -309,6 +309,29 @@
       "why_wrong": null,
       "missed_signal": null,
       "lesson": null
+    },
+    {
+      "date": "20260715",
+      "signal_date": "20260703",
+      "mode": "bear",
+      "entry_price": 10.69,
+      "pullback_pct": 5.6,
+      "limit_days": 4,
+      "analysis": "量：缩量至涨停日量63%，OBV持续下降，资金加速流出，属流动性枯竭特征。  \n价：股价已跌破MA5/10/20所有均线，布林下轨10.32为唯一支撑，但破位风险极大。  \n形：4连板后回调6天，已演变为破位下跌中继，无企稳形态。  \n时：回调天数6天，处于下跌加速窗口，冰点期1档下无参与时机。  \n反弹概率：低（≤30%）  \n仓位建议：0成仓（冰点期1档）  \n最终结论：【放弃】",
+      "sentiment": "冰点期1档",
+      "position": "0成仓",
+      "opinion": "【放弃】",
+      "verified": false,
+      "return_7d": null,
+      "exit_reason": null,
+      "exit_day": null,
+      "verdict": null,
+      "review_analysis": null,
+      "review_quality": null,
+      "what_happened": null,
+      "why_wrong": null,
+      "missed_signal": null,
+      "lesson": null
     }
   ]
 }

@@ -1,15 +1,15 @@
 {
-  "scan_time": "2026-07-15 15:03",
+  "scan_time": "2026-07-15 15:08",
   "scan_date": "20260715",
-  "data_date": "2026-07-14",
+  "data_date": "2026-07-15",
   "market": {
     "上证": {
-      "price": 3967.13,
-      "pct": 1.36
+      "price": 3958.25,
+      "pct": 1.14
     },
     "深证": {
-      "price": 14924.87,
-      "pct": 2.77
+      "price": 14791.6,
+      "pct": 1.85
     },
     "创业板": {
       "price": 3851.14,
@@ -19,7 +19,7 @@
   "regime": {
     "status": "bear",
     "label": "2档: 低迷期 — 建议观望",
-    "avg_trend": -0.83,
+    "avg_trend": -0.65,
     "recommended_mode": "bear"
   },
   "modes": {
@@ -28,7 +28,7 @@
       "candidates": [
         {
           "code": "603135.SS",
-          "price": 13.15,
+          "price": 10.69,
           "signal_date": "20260703",
           "pullback_pct": 5.6,
           "limit_days": 4,
