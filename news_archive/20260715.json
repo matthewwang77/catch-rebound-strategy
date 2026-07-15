@@ -1,191 +1,175 @@
 {
   "date": "20260715",
-  "market_summary": "今日GDP数据低于预期，但消费和工业数据温和，市场情绪偏谨慎；宽基ETF持续净流入显示资金托底，创新药、机器人等题材活跃，但半导体、算力芯片回调，整体震荡分化。",
-  "sentiment_impact": "中性",
+  "market_summary": "今日市场消息面偏多，国家统计局发布上半年经济数据，显示消费回暖、房地产积极变化、新兴领域投资增长，同时创新药和消费板块受政策利好大涨，但半导体芯片股领跌，科创50指数大幅下挫。",
+  "sentiment_impact": "偏多",
   "news": [
     {
-      "title": "统计局：上半年我国GDP同比增长4.7% 规模以上工业增加值同比增长5.4%",
+      "title": "广电计量无源医疗器械实验室正式启用",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607153806930049.html",
-      "time": "2026-07-15 10:00:20",
-      "ai_summary": "上半年GDP同比增长4.7%",
-      "impact_analysis": "GDP增速低于市场预期，二季度仅4.3%，引发经济放缓担忧，压制大盘指数，但政策加码预期升温。",
+      "url": "https://finance.eastmoney.com/a/202607153807218298.html",
+      "time": "2026-07-15 11:18:51",
+      "ai_summary": "创新药政策与BD交易双催化",
+      "impact_analysis": "《国民健康十五五规划》支持创新药发展，上半年BD交易额达1100亿美元，创新药板块大涨，利好医药研发和CRO企业。",
       "affected_sectors": [
-        "宏观经济",
-        "大盘指数"
+        "创新药",
+        "医疗器械"
       ],
       "affected_stocks": [
-        "000001.SH",
-        "399001.SZ",
-        "399006.SZ"
-      ],
-      "importance": 10
-    },
-    {
-      "title": "华泰柏瑞沪深300ETF跃升规模排名第二 仅比第一名低4.06亿",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607153806727976.html",
-      "time": "2026-07-15 09:23:42",
-      "ai_summary": "宽基ETF两日净流入555亿元",
-      "impact_analysis": "大规模资金流入显示国家队或机构托底意图，提振市场信心，尤其利好中证1000、科创50等中小盘指数。",
-      "affected_sectors": [
-        "大盘指数",
-        "宽基ETF"
-      ],
-      "affected_stocks": [
-        "000905.SH",
-        "000688.SH",
-        "000300.SH"
+        "603259.SS",
+        "300760.SZ"
       ],
       "importance": 9
     },
     {
-      "title": "港股开盘：恒生指数高开0.87% 恒生科技指数高开0.78%",
+      "title": "新华社：韩国股市极端行情折射“情绪化”投资风险",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607153806723666.html",
-      "time": "2026-07-15 09:23:11",
-      "ai_summary": "1-6月房地产开发投资同比降18%",
-      "impact_analysis": "房地产投资持续下滑，拖累经济复苏预期，利空地产链及周期板块，但可能强化政策宽松预期。",
+      "url": "https://finance.eastmoney.com/a/202607153807236843.html",
+      "time": "2026-07-15 11:30:00",
+      "ai_summary": "上半年房地产出现积极变化",
+      "impact_analysis": "国家统计局表态房地产市场回暖，一线城市房价连续上涨、去库存推进，提振市场信心，利好地产及产业链板块。",
       "affected_sectors": [
         "房地产开发",
-        "建筑材料",
-        "钢铁"
+        "建筑材料"
       ],
       "affected_stocks": [
-        "000002.SZ",
-        "600585.SS",
-        "600019.SS"
+        "600048.SS",
+        "000002.SZ"
       ],
-      "importance": 9
+      "importance": 8
     },
     {
-      "title": "江西：积极培育宠物消费新热点 激发宠物产业新增量",
+      "title": "发生了什么？有红利连续两日涨超2%！网友拍断腿：“割在了黎明前！”",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607153806857218.html",
-      "time": "2026-07-15 09:49:09",
-      "ai_summary": "上半年社零总额增长1.3%",
-      "impact_analysis": "消费增速温和，但低于潜在水平，利好消费刺激政策预期，食品饮料、零售板块短期受益。",
+      "url": "https://finance.eastmoney.com/a/202607153807209464.html",
+      "time": "2026-07-15 11:05:22",
+      "ai_summary": "6月社零同比+1%重返增长",
+      "impact_analysis": "消费数据重返增长区间，叠加政策支持，消费板块释放明确回暖信号，利好食品饮料、零售等消费行业。",
       "affected_sectors": [
         "食品饮料",
-        "零售",
-        "消费"
+        "商业百货"
       ],
       "affected_stocks": [
         "600519.SS",
-        "000858.SZ",
-        "601933.SS"
+        "000858.SZ"
       ],
       "importance": 8
     },
     {
-      "title": "人工智能ETF华富(515980)近5日累计净流入近4亿元，国产大模型商业化进程加速，国产算力与大模型企业迎来份额突破窗口期",
+      "title": "国台办：福建高质量建设两岸融合发展示范区取得阶段性进展",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607153806963496.html",
-      "time": "2026-07-15 10:01:58",
-      "ai_summary": "中国AI产业综合实力全球第一梯队",
-      "impact_analysis": "政策背书AI产业，国产大模型和算力加速，利好人工智能、算力芯片板块，但短期需消化获利盘。",
+      "url": "https://finance.eastmoney.com/a/202607153807220527.html",
+      "time": "2026-07-15 11:17:26",
+      "ai_summary": "科创50跌超4%芯片股领跌",
+      "impact_analysis": "半导体芯片股大幅回调，拖累科创50指数，显示科技板块分化，短期风险偏好下降。",
+      "affected_sectors": [
+        "半导体",
+        "芯片"
+      ],
+      "affected_stocks": [
+        "688981.SS",
+        "603986.SS"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "医疗器械ETF鹏华涨超3%，国产医疗设备从“成本项”向“创收项”转变",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202607153807174543.html",
+      "time": "2026-07-15 10:43:05",
+      "ai_summary": "新兴领域投资持续增长",
+      "impact_analysis": "国家统计局指出新能源、AI、集成电路投资增长明显，新质生产力布局加速，利好科技成长板块。",
       "affected_sectors": [
         "人工智能",
-        "算力芯片",
-        "大模型"
+        "半导体"
       ],
       "affected_stocks": [
-        "688111.SS",
-        "603019.SS",
+        "688981.SS",
         "002230.SZ"
       ],
-      "importance": 8
+      "importance": 7
     },
     {
-      "title": "国家统计局：1—6月份全国房地产开发投资38074亿元",
+      "title": "“囤猴”业绩赚翻 “猴茅”股价齐涨",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607153806951398.html",
-      "time": "2026-07-15 10:02:31",
-      "ai_summary": "央行开展4265亿元逆回购操作",
-      "impact_analysis": "央行维持流动性宽松，利率持平，稳定市场资金面，利好大盘，但信号中性。",
+      "url": "https://finance.eastmoney.com/a/202607153807196218.html",
+      "time": "2026-07-15 10:59:28",
+      "ai_summary": "沪深两市成交额突破1.5万亿",
+      "impact_analysis": "成交量放大显示市场活跃度提升，资金入场意愿增强，对大盘指数形成支撑，利好券商板块。",
       "affected_sectors": [
-        "银行",
-        "大盘指数"
+        "证券"
       ],
       "affected_stocks": [
-        "601398.SS",
-        "601939.SS",
-        "000001.SH"
+        "600030.SS",
+        "601211.SS"
       ],
       "importance": 7
     },
     {
-      "title": "两名实控人被刑事立案 *ST高科开盘跌停",
+      "title": "实验猴涨价 “猴茅”净利最高预增超13倍 股价创近4年新高",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607153806815436.html",
-      "time": "2026-07-15 09:39:50",
-      "ai_summary": "国产工业机器人加速出海",
-      "impact_analysis": "全球订单增长，国产机器人高性价比优势凸显，利好工业机器人、自动化设备板块。",
+      "url": "https://finance.eastmoney.com/a/202607153807232497.html",
+      "time": "2026-07-15 11:22:00",
+      "ai_summary": "SK海力士ADR暴涨27%",
+      "impact_analysis": "存储芯片巨头大涨，巴克莱看好存储荒持续数年，提振A股存储芯片及半导体板块情绪。",
       "affected_sectors": [
-        "工业机器人",
-        "自动化设备"
+        "半导体",
+        "存储芯片"
       ],
       "affected_stocks": [
-        "300124.SZ",
-        "688165.SS",
-        "002747.SZ"
+        "001309.SZ",
+        "688981.SS"
       ],
       "importance": 7
     },
     {
-      "title": "江西：支持促进服务消费加快发展",
+      "title": "国家统计局：上半年房地产市场出现了积极变化",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607153806862924.html",
-      "time": "2026-07-15 09:50:12",
-      "ai_summary": "创新药概念反复活跃",
-      "impact_analysis": "CXO业绩预增及创新药出海加速，带动板块情绪，利好医药研发、医疗服务板块。",
+      "url": "https://finance.eastmoney.com/a/202607153807213419.html",
+      "time": "2026-07-15 11:14:33",
+      "ai_summary": "DeepSeek筹备IPO最快年内申请",
+      "impact_analysis": "AI龙头IPO消息刺激AI板块估值重估，利好人工智能产业链及港股科技股。",
       "affected_sectors": [
-        "创新药",
-        "CXO",
-        "医疗服务"
+        "人工智能",
+        "港股科技"
       ],
       "affected_stocks": [
-        "300347.SZ",
-        "603259.SS",
-        "002821.SZ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "高盛等大行的股票交易收入创纪录",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607153806758663.html",
-      "time": "2026-07-15 09:30:31",
-      "ai_summary": "人民币兑美元中间价上调80点",
-      "impact_analysis": "人民币升值利好进口型企业，但可能压制出口板块，整体对大盘影响中性偏多。",
-      "affected_sectors": [
-        "航空",
-        "造纸",
-        "外贸"
-      ],
-      "affected_stocks": [
-        "600029.SS",
-        "000488.SZ",
-        "002142.SZ"
+        "002230.SZ",
+        "0700.HK"
       ],
       "importance": 6
     },
     {
-      "title": "昭衍新药中报最高预增超13倍！港股医疗ETF永赢早盘涨超2%，CXO板块进入业绩验证期",
+      "title": "《中国汽车行业整车成本测算规则》团体标准正式发布",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607153806839472.html",
-      "time": "2026-07-15 09:44:26",
-      "ai_summary": "高盛等大行股票交易收入创纪录",
-      "impact_analysis": "反映全球市场活跃，但A股关联度有限，情绪上利好券商板块，但影响有限。",
+      "url": "https://finance.eastmoney.com/a/202607153807179989.html",
+      "time": "2026-07-15 10:48:42",
+      "ai_summary": "猪肉板块受消费数据提振大涨",
+      "impact_analysis": "社零数据回暖叠加产能去化预期，猪肉股集体走强，利好养殖业和农牧板块。",
       "affected_sectors": [
-        "券商"
+        "养殖业",
+        "农牧"
       ],
       "affected_stocks": [
-        "600030.SS",
-        "601211.SS",
-        "002736.SZ"
+        "002714.SZ",
+        "000876.SZ"
       ],
-      "importance": 5
+      "importance": 6
+    },
+    {
+      "title": "国家统计局：智能绿色健康消费逐渐成为新消费风尚",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202607153807186017.html",
+      "time": "2026-07-15 10:51:36",
+      "ai_summary": "券商板块走强中金领涨7%",
+      "impact_analysis": "科创跟投利润高增，券商重估空间打开，资金大幅流入，利好券商板块。",
+      "affected_sectors": [
+        "证券"
+      ],
+      "affected_stocks": [
+        "601995.SS",
+        "600030.SS"
+      ],
+      "importance": 6
     }
   ]
 }
