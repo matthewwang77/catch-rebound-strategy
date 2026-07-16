@@ -1,174 +1,174 @@
 {
   "date": "20260716",
-  "market_summary": "今日A股受韩国央行加息及外围市场大跌影响，三大指数集体低开，但AI、机器人等科技题材逆势活跃，市场分化明显。",
-  "sentiment_impact": "偏空",
+  "market_summary": "今日市场消息面偏多，AI、半导体、创新药等科技板块受多重利好催化，但大盘成交缩量，市场情绪谨慎。",
+  "sentiment_impact": "偏多",
   "news": [
     {
-      "title": "欧盟仍未能就对俄第21轮制裁达成一致",
+      "title": "底层架构升级、金融场景打通 MiniMax旗下通用智能体产品全新升级",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607163808461584.html",
-      "time": "2026-07-16 09:37:12",
-      "ai_summary": "韩国央行加息，KOSPI暴跌7%",
-      "impact_analysis": "韩国加息引发亚太市场动荡，A股开盘承压，尤其对半导体、存储等板块形成情绪冲击，但内资科技股韧性较强。",
+      "url": "https://finance.eastmoney.com/a/202607163808784149.html",
+      "time": "2026-07-16 11:10:16",
+      "ai_summary": "美国CPI超预期降温，降息概率上升",
+      "impact_analysis": "美国6月CPI环比降0.4%，美联储加息概率骤降，利好全球流动性预期，对A股成长股估值形成支撑。",
+      "affected_sectors": [
+        "成长股",
+        "科技"
+      ],
+      "affected_stocks": [
+        "000001.SZ",
+        "399006.SZ"
+      ],
+      "importance": 9
+    },
+    {
+      "title": "机构：预测2030年全球DRAM缺口达28.7EB 存储芯片市场或迈入长期供需紧张周期",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202607163808760179.html",
+      "time": "2026-07-16 10:42:45",
+      "ai_summary": "DRAM缺口预测引发存储芯片关注",
+      "impact_analysis": "DRAM长期供需紧张预期利好存储芯片产业链，但美国337调查增加不确定性，板块短期波动或加大。",
       "affected_sectors": [
         "半导体",
         "存储芯片"
       ],
       "affected_stocks": [
-        "002049.SZ",
-        "600584.SS"
+        "688825.SH",
+        "000021.SZ"
       ],
-      "importance": 9
+      "importance": 8
     },
     {
-      "title": "中国联通韶关数据中心：预计年底总算力规模突破20000P",
+      "title": "创新药板块迎“产业+业绩+资金”三维共振，布局性价比凸显，港股创新药ETF博时(520690)盘中涨超2%，冲击3连涨",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607163808260016.html",
-      "time": "2026-07-16 09:07:28",
-      "ai_summary": "阿里千问集成苹果AI底座",
-      "impact_analysis": "重大利好，标志中国AI技术获国际认可，提振AI及苹果产业链，带动港股及A股相关概念股走强。",
+      "url": "https://finance.eastmoney.com/a/202607163808773781.html",
+      "time": "2026-07-16 10:54:55",
+      "ai_summary": "创新药板块三维共振走强",
+      "impact_analysis": "产业、业绩、资金共振推动创新药板块上涨，港股创新药ETF涨超2%，A股CXO概念跟涨，板块布局性价比凸显。",
+      "affected_sectors": [
+        "创新药",
+        "CXO"
+      ],
+      "affected_stocks": [
+        "603259.SH",
+        "300347.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "2026WAIC镇馆之宝公布：阶跃智能体手机、中科曙光AI超集群等入选",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202607163808722813.html",
+      "time": "2026-07-16 10:23:24",
+      "ai_summary": "险企中报预增，投资业绩成推手",
+      "impact_analysis": "国寿、新华预增超预期，二季度资本市场回暖利好险企投资端，保险板块估值修复预期增强。",
+      "affected_sectors": [
+        "保险"
+      ],
+      "affected_stocks": [
+        "601628.SS",
+        "601336.SS"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "申万宏源赵伟：若后续内需复苏态势仍不稳固 财政与货币政策或协同发力",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202607163808779977.html",
+      "time": "2026-07-16 11:05:00",
+      "ai_summary": "长鑫科技科创板申购，半导体热度提升",
+      "impact_analysis": "国产DRAM龙头长鑫科技申购，叠加半导体设备订单加速，科创AI ETF逆市上涨，板块关注度提升。",
+      "affected_sectors": [
+        "半导体",
+        "人工智能"
+      ],
+      "affected_stocks": [
+        "688825.SH",
+        "688981.SH"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "四方光电、高德红外等在武汉成立传感科技公司 注册资本500万",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202607163808755618.html",
+      "time": "2026-07-16 10:40:56",
+      "ai_summary": "WAIC镇馆之宝公布，AI硬件受关注",
+      "impact_analysis": "世界人工智能大会公布十大镇馆之宝，涉及AI手机、超算等，提振AI硬件和算力板块，但短期催化有限。",
       "affected_sectors": [
         "人工智能",
-        "消费电子"
+        "算力"
       ],
       "affected_stocks": [
-        "688981.SH",
-        "002475.SZ"
+        "603019.SH",
+        "002230.SZ"
       ],
-      "importance": 9
+      "importance": 7
     },
     {
-      "title": "土耳其对原产于中国的义齿雕刻机作出反倾销终裁",
+      "title": "稀有金属ETF华富(561800)调整蓄势，锂电产业链企业上半年业绩大面积预喜，三季度下游补库有望带动锂价企稳反弹",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607163808383341.html",
-      "time": "2026-07-16 09:28:00",
-      "ai_summary": "A股三大指数集体低开",
-      "impact_analysis": "受外围拖累，市场情绪悲观，但低开为后续反弹提供空间，需关注资金流向和政策面支撑。",
-      "affected_sectors": [
-        "大盘指数"
-      ],
-      "affected_stocks": [
-        "000001.SH",
-        "399001.SZ"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "匈牙利前外交部长加入比亚迪",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607163808490720.html",
-      "time": "2026-07-16 09:47:50",
-      "ai_summary": "存储龙头德明利连续跌停",
-      "impact_analysis": "存储板块利空，反映行业需求疲软或个股风险，拖累半导体整体表现，需警惕板块连锁反应。",
-      "affected_sectors": [
-        "存储芯片",
-        "半导体"
-      ],
-      "affected_stocks": [
-        "002913.SZ",
-        "300661.SZ"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "阿里巴巴涨近5%！千问成苹果设备AI底座，中概互联ETF涨超2%",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607163808484441.html",
-      "time": "2026-07-16 09:32:14",
-      "ai_summary": "央行开展6260亿元逆回购",
-      "impact_analysis": "大额逆回购释放流动性，对冲市场悲观情绪，稳定资金面，对大盘形成支撑。",
-      "affected_sectors": [
-        "银行",
-        "大盘"
-      ],
-      "affected_stocks": [
-        "601398.SS",
-        "600036.SS"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "北方铜业：公司压延铜箔产品按照下游订单情况组织生产 良品率处于行业较高水平",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607163808363261.html",
-      "time": "2026-07-16 09:20:55",
-      "ai_summary": "端侧AI概念持续走高",
-      "impact_analysis": "AI应用落地加速，端侧AI受资金追捧，带动消费电子和智能硬件板块，成为市场热点。",
+      "url": "https://finance.eastmoney.com/a/202607163808756280.html",
+      "time": "2026-07-16 10:42:09",
+      "ai_summary": "阿里千问与苹果AI合作，港股科技大涨",
+      "impact_analysis": "阿里千问集成至苹果智能，港股科技ETF涨超2%，A股AI应用和互联网板块受提振，但影响偏港股。",
       "affected_sectors": [
         "人工智能",
-        "消费电子"
+        "互联网"
       ],
       "affected_stocks": [
-        "000676.SZ",
-        "002045.SZ"
+        "09988.HK",
+        "002230.SZ"
       ],
       "importance": 7
     },
     {
-      "title": "成都摩宝网络科技有限公司被罚没合计超2942万元",
+      "title": "净利最高增两倍 国寿新华率先预增 投资业绩成险企中报“最大推手”",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607163808568057.html",
-      "time": "2026-07-16 09:58:40",
-      "ai_summary": "英伟达与丰田深化AI合作",
-      "impact_analysis": "利好自动驾驶和智能制造，提振AI算力需求，间接利好A股相关产业链。",
+      "url": "https://finance.eastmoney.com/a/202607163808795393.html",
+      "time": "2026-07-16 11:29:17",
+      "ai_summary": "实验猴价格大涨，CXO板块走强",
+      "impact_analysis": "实验猴均价超20万元，供需缺口持续，昭衍新药5天3板，CXO板块受成本推动和业绩预期提振。",
       "affected_sectors": [
-        "自动驾驶",
-        "智能制造"
+        "CXO",
+        "医药研发"
       ],
       "affected_stocks": [
-        "002920.SZ",
-        "300124.SZ"
+        "603127.SH",
+        "300759.SZ"
       ],
       "importance": 7
     },
     {
-      "title": "硬蛋创新：战略升级进军垂直AI Token工厂赛道及签订意向服务订单逾10亿美元",
+      "title": "腾讯云与RoboScience机器科学达成战略合作，港股通科技ETF博时(159010)涨超2%，冲击3连涨",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607163808369655.html",
-      "time": "2026-07-16 09:22:30",
-      "ai_summary": "白酒价格持续下跌创新低",
-      "impact_analysis": "消费疲软信号，压制白酒板块估值，对消费类指数形成拖累，需关注行业去库存进度。",
+      "url": "https://finance.eastmoney.com/a/202607163808778981.html",
+      "time": "2026-07-16 10:58:20",
+      "ai_summary": "腾讯云与机器科学合作，港股科技ETF涨",
+      "impact_analysis": "AI合作催化港股科技板块，港股通科技ETF涨超2%，带动A股AI概念股情绪，但影响偏局部。",
       "affected_sectors": [
-        "白酒",
-        "消费"
+        "人工智能",
+        "云计算"
       ],
       "affected_stocks": [
-        "600519.SS",
-        "000858.SZ"
+        "00700.HK",
+        "000938.SZ"
       ],
-      "importance": 7
+      "importance": 6
     },
     {
-      "title": "Apple智能完成备案、阿里千问深度集成苹果生态！港股通互联网ETF永赢涨超2.5%，AI资产重估窗口开启",
+      "title": "三星端侧模型通过人工智能服务备案 百度智能云为合作方",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607163808536826.html",
-      "time": "2026-07-16 09:52:38",
-      "ai_summary": "6月末社融存量增长7.4%",
-      "impact_analysis": "社融数据超预期，显示实体经济融资需求回暖，利好银行和周期板块，支撑市场信心。",
+      "url": "https://finance.eastmoney.com/a/202607163808686253.html",
+      "time": "2026-07-16 10:19:23",
+      "ai_summary": "影视院线板块走强，年度票房破190亿",
+      "impact_analysis": "暑期档票房超33亿元，影视院线板块集体走强，儒意电影2连板，消费复苏预期提振板块。",
       "affected_sectors": [
-        "银行",
-        "基建"
+        "影视院线",
+        "文化传媒"
       ],
       "affected_stocks": [
-        "601166.SS",
-        "600585.SS"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "三重催化共振！阿里、腾讯等港股科网集体走强",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607163808565443.html",
-      "time": "2026-07-16 09:55:04",
-      "ai_summary": "创新药概念反复活跃",
-      "impact_analysis": "医药板块逆势走强，创新药受政策支持和行业景气度提升，成为防御性配置方向。",
-      "affected_sectors": [
-        "医药",
-        "创新药"
-      ],
-      "affected_stocks": [
-        "600664.SS",
-        "688117.SH"
+        "002739.SZ",
+        "600977.SS"
       ],
       "importance": 6
     }
