@@ -1,176 +1,177 @@
 {
   "date": "20260716",
-  "market_summary": "今日市场消息面偏多，AI、半导体、创新药等科技板块受多重利好催化，但大盘成交缩量，市场情绪谨慎。",
-  "sentiment_impact": "偏多",
+  "market_summary": "今日消息面偏多，台积电业绩超预期和英伟达新品发布提振科技板块，但半导体设备板块回调，市场整体缩量，资金观望情绪浓厚。",
+  "sentiment_impact": "中性",
   "news": [
     {
-      "title": "底层架构升级、金融场景打通 MiniMax旗下通用智能体产品全新升级",
+      "title": "三星平泽P5工厂新动态：首条产线半导体设备商遴选进入最后阶段",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607163808784149.html",
-      "time": "2026-07-16 11:10:16",
-      "ai_summary": "美国CPI超预期降温，降息概率上升",
-      "impact_analysis": "美国6月CPI环比降0.4%，美联储加息概率骤降，利好全球流动性预期，对A股成长股估值形成支撑。",
-      "affected_sectors": [
-        "成长股",
-        "科技"
-      ],
-      "affected_stocks": [
-        "000001.SZ",
-        "399006.SZ"
-      ],
-      "importance": 9
-    },
-    {
-      "title": "机构：预测2030年全球DRAM缺口达28.7EB 存储芯片市场或迈入长期供需紧张周期",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607163808760179.html",
-      "time": "2026-07-16 10:42:45",
-      "ai_summary": "DRAM缺口预测引发存储芯片关注",
-      "impact_analysis": "DRAM长期供需紧张预期利好存储芯片产业链，但美国337调查增加不确定性，板块短期波动或加大。",
-      "affected_sectors": [
-        "半导体",
-        "存储芯片"
-      ],
-      "affected_stocks": [
-        "688825.SH",
-        "000021.SZ"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "创新药板块迎“产业+业绩+资金”三维共振，布局性价比凸显，港股创新药ETF博时(520690)盘中涨超2%，冲击3连涨",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607163808773781.html",
-      "time": "2026-07-16 10:54:55",
-      "ai_summary": "创新药板块三维共振走强",
-      "impact_analysis": "产业、业绩、资金共振推动创新药板块上涨，港股创新药ETF涨超2%，A股CXO概念跟涨，板块布局性价比凸显。",
-      "affected_sectors": [
-        "创新药",
-        "CXO"
-      ],
-      "affected_stocks": [
-        "603259.SH",
-        "300347.SZ"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "2026WAIC镇馆之宝公布：阶跃智能体手机、中科曙光AI超集群等入选",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607163808722813.html",
-      "time": "2026-07-16 10:23:24",
-      "ai_summary": "险企中报预增，投资业绩成推手",
-      "impact_analysis": "国寿、新华预增超预期，二季度资本市场回暖利好险企投资端，保险板块估值修复预期增强。",
-      "affected_sectors": [
-        "保险"
-      ],
-      "affected_stocks": [
-        "601628.SS",
-        "601336.SS"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "申万宏源赵伟：若后续内需复苏态势仍不稳固 财政与货币政策或协同发力",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607163808779977.html",
-      "time": "2026-07-16 11:05:00",
-      "ai_summary": "长鑫科技科创板申购，半导体热度提升",
-      "impact_analysis": "国产DRAM龙头长鑫科技申购，叠加半导体设备订单加速，科创AI ETF逆市上涨，板块关注度提升。",
+      "url": "https://finance.eastmoney.com/a/202607163808830921.html",
+      "time": "2026-07-16 13:09:42",
+      "ai_summary": "台积电Q2净利润同比增77.4%",
+      "impact_analysis": "超预期业绩验证AI需求强劲，利好半导体和AI算力板块，提振市场信心。",
       "affected_sectors": [
         "半导体",
         "人工智能"
       ],
       "affected_stocks": [
-        "688825.SH",
-        "688981.SH"
+        "688981.SH",
+        "002371.SZ"
+      ],
+      "importance": 9
+    },
+    {
+      "title": "八匹马超导完成A+轮融资",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202607163808884668.html",
+      "time": "2026-07-16 13:43:45",
+      "ai_summary": "阿斯麦计划提价光刻机10%",
+      "impact_analysis": "利空半导体设备板块，成本上升或压制下游利润，但凸显设备稀缺性，长期利好国产替代。",
+      "affected_sectors": [
+        "半导体设备",
+        "光刻机"
+      ],
+      "affected_stocks": [
+        "002371.SZ",
+        "688012.SH"
       ],
       "importance": 8
     },
     {
-      "title": "四方光电、高德红外等在武汉成立传感科技公司 注册资本500万",
+      "title": "泡泡玛特：与苹果围绕创意设计、数字生态与全球消费趋势展开交流",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607163808755618.html",
-      "time": "2026-07-16 10:40:56",
-      "ai_summary": "WAIC镇馆之宝公布，AI硬件受关注",
-      "impact_analysis": "世界人工智能大会公布十大镇馆之宝，涉及AI手机、超算等，提振AI硬件和算力板块，但短期催化有限。",
+      "url": "https://finance.eastmoney.com/a/202607163808840346.html",
+      "time": "2026-07-16 13:19:00",
+      "ai_summary": "沪市9只ETF发行引入增量资金",
+      "impact_analysis": "利好大盘，增量资金入场支撑指数，尤其利好科创和行业主题板块。",
       "affected_sectors": [
+        "宽基指数",
         "人工智能",
-        "算力"
+        "光伏"
       ],
       "affected_stocks": [
-        "603019.SH",
-        "002230.SZ"
+        "588000.SH",
+        "159915.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "英伟达发布多款物理AI产品 两款机器人计算模组明年上市",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202607163808807395.html",
+      "time": "2026-07-16 13:51:52",
+      "ai_summary": "英伟达发布机器人计算模组",
+      "impact_analysis": "利好AI和机器人产业链，提振相关板块情绪，但产品上市时间较远，短期影响有限。",
+      "affected_sectors": [
+        "人工智能",
+        "机器人"
+      ],
+      "affected_stocks": [
+        "002230.SZ",
+        "300124.SZ"
       ],
       "importance": 7
     },
     {
-      "title": "稀有金属ETF华富(561800)调整蓄势，锂电产业链企业上半年业绩大面积预喜，三季度下游补库有望带动锂价企稳反弹",
+      "title": "专家建言对新能源汽车开征消费税 新增收入划归地方政府",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607163808756280.html",
-      "time": "2026-07-16 10:42:09",
-      "ai_summary": "阿里千问与苹果AI合作，港股科技大涨",
-      "impact_analysis": "阿里千问集成至苹果智能，港股科技ETF涨超2%，A股AI应用和互联网板块受提振，但影响偏港股。",
+      "url": "https://finance.eastmoney.com/a/202607163808809355.html",
+      "time": "2026-07-16 12:39:23",
+      "ai_summary": "专家建议对新能源车征消费税",
+      "impact_analysis": "利空新能源汽车板块，增加成本或抑制需求，但政策尚未落地，短期情绪冲击为主。",
       "affected_sectors": [
-        "人工智能",
+        "新能源汽车"
+      ],
+      "affected_stocks": [
+        "002594.SZ",
+        "600104.SS"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "花样年境外债重组进展：已获发改委外债审批 7月30日境外债重组生效",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202607163808810990.html",
+      "time": "2026-07-16 12:48:46",
+      "ai_summary": "华为云推动机器人产业平台",
+      "impact_analysis": "利好机器人板块，华为入局加速产业生态建设，提振相关概念股。",
+      "affected_sectors": [
+        "机器人",
+        "人工智能"
+      ],
+      "affected_stocks": [
+        "002230.SZ",
+        "300124.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "花样年控股境外债务重组最新进展：指定7月30日为重组生效日期",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202607163808807850.html",
+      "time": "2026-07-16 12:27:39",
+      "ai_summary": "港股互联网爆发小米涨超7%",
+      "impact_analysis": "利好港股科技板块，资金流入带动恒生科技指数，间接提振A股科技情绪。",
+      "affected_sectors": [
+        "港股科技",
         "互联网"
       ],
       "affected_stocks": [
-        "09988.HK",
-        "002230.SZ"
+        "01810.HK",
+        "00700.HK"
       ],
       "importance": 7
     },
     {
-      "title": "净利最高增两倍 国寿新华率先预增 投资业绩成险企中报“最大推手”",
+      "title": "长鑫科技IPO的券商盛宴：中金和中信建投预计各赚20亿 跟投直投收益远超保荐承销费",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607163808795393.html",
-      "time": "2026-07-16 11:29:17",
-      "ai_summary": "实验猴价格大涨，CXO板块走强",
-      "impact_analysis": "实验猴均价超20万元，供需缺口持续，昭衍新药5天3板，CXO板块受成本推动和业绩预期提振。",
+      "url": "https://finance.eastmoney.com/a/202607163808806292.html",
+      "time": "2026-07-16 12:46:29",
+      "ai_summary": "检察机关起诉证券犯罪240人",
+      "impact_analysis": "偏空信号，强化监管预期，短期压制市场情绪，但长期利于市场健康。",
       "affected_sectors": [
-        "CXO",
-        "医药研发"
+        "金融",
+        "证券"
       ],
       "affected_stocks": [
-        "603127.SH",
-        "300759.SZ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "腾讯云与RoboScience机器科学达成战略合作，港股通科技ETF博时(159010)涨超2%，冲击3连涨",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607163808778981.html",
-      "time": "2026-07-16 10:58:20",
-      "ai_summary": "腾讯云与机器科学合作，港股科技ETF涨",
-      "impact_analysis": "AI合作催化港股科技板块，港股通科技ETF涨超2%，带动A股AI概念股情绪，但影响偏局部。",
-      "affected_sectors": [
-        "人工智能",
-        "云计算"
-      ],
-      "affected_stocks": [
-        "00700.HK",
-        "000938.SZ"
+        "600030.SS",
+        "601211.SS"
       ],
       "importance": 6
     },
     {
-      "title": "三星端侧模型通过人工智能服务备案 百度智能云为合作方",
+      "title": "车企发布会“降温” 营销开始“做减法”",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607163808686253.html",
-      "time": "2026-07-16 10:19:23",
-      "ai_summary": "影视院线板块走强，年度票房破190亿",
-      "impact_analysis": "暑期档票房超33亿元，影视院线板块集体走强，儒意电影2连板，消费复苏预期提振板块。",
+      "url": "https://finance.eastmoney.com/a/202607163808797994.html",
+      "time": "2026-07-16 12:51:54",
+      "ai_summary": "养殖ETF涨超10%产能去化加速",
+      "impact_analysis": "利好养殖板块，产能去化推升猪价预期，带动相关个股走强。",
       "affected_sectors": [
-        "影视院线",
-        "文化传媒"
+        "养殖",
+        "猪肉"
       ],
       "affected_stocks": [
-        "002739.SZ",
-        "600977.SS"
+        "300498.SZ",
+        "002714.SZ"
       ],
       "importance": 6
+    },
+    {
+      "title": "今年上半年检察机关起诉财务造假、内幕交易、操纵市场、欺诈发行等证券犯罪240人",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202607163808901866.html",
+      "time": "2026-07-16 13:56:32",
+      "ai_summary": "韩国拟限制杠杆ETF波动",
+      "impact_analysis": "利空港股和A股相关ETF，短期或引发资金流出，但影响有限。",
+      "affected_sectors": [
+        "ETF",
+        "港股"
+      ],
+      "affected_stocks": [
+        "159740.SZ",
+        "159152.SZ"
+      ],
+      "importance": 5
     }
   ]
 }
