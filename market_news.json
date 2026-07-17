@@ -1,168 +1,164 @@
 {
   "date": "20260717",
-  "market_summary": "今日外汇局发布会释放外资流入、服务贸易增长等积极信号，但A股市场出现大幅调整，创业板指跌5%，创新药、PCB等板块领跌，电力、银行等防御性板块逆势走强，市场情绪偏空。",
-  "sentiment_impact": "偏空",
+  "market_summary": "今日A股市场大幅调整，沪指跌破3800点，创业板指跌超7%，但人工智能大会释放多重利好，国家发改委发布AI合作发展行动计划，宽基ETF放量显示资金抄底迹象。",
+  "sentiment_impact": "中性",
   "news": [
     {
-      "title": "外汇局：近5年我国服务贸易出口年均增长14% 今年前5个月同比增长21%",
+      "title": "英特尔与Google Cloud宣布深化战略合作",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607173810457276.html",
-      "time": "2026-07-17 10:54:15",
-      "ai_summary": "创业板指跌5%，市场恐慌情绪蔓延",
-      "impact_analysis": "创业板指暴跌5%直接反映市场恐慌，拖累大盘指数，引发资金避险，短期压制市场情绪，可能触发连锁抛售。",
+      "url": "https://finance.eastmoney.com/a/202607173810532621.html",
+      "time": "2026-07-17 12:42:05",
+      "ai_summary": "沪指跌超2%跌破3800点",
+      "impact_analysis": "指数破位下跌，市场恐慌情绪蔓延，短期压制大盘，但可能触发政策护盘或资金抄底。",
       "affected_sectors": [
-        "创业板",
-        "科技股"
+        "全市场"
       ],
       "affected_stocks": [
-        "159915.SZ",
-        "510300.SS"
+        "000001.SH",
+        "399001.SZ"
       ],
       "importance": 10
     },
     {
-      "title": "SK集团会长崔泰源回应近期股价下跌：内存芯片需求支撑下股价将长期上涨",
+      "title": "昇腾384超节点已商用落地750多套",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607173810495744.html",
-      "time": "2026-07-17 11:20:30",
-      "ai_summary": "外资来华投资净增1600亿美元",
-      "impact_analysis": "外资大幅流入显示国际资本对中国市场信心增强，利好A股流动性及估值修复，尤其利好外资重仓板块。",
+      "url": "https://finance.eastmoney.com/a/202607173810536283.html",
+      "time": "2026-07-17 12:54:00",
+      "ai_summary": "国家发改委发布AI合作发展行动计划",
+      "impact_analysis": "明确支持数据跨境流动和算力设施联通，直接利好AI算力、数据中心板块，但市场情绪低迷下效果待观察。",
       "affected_sectors": [
-        "金融",
-        "消费"
+        "人工智能",
+        "算力基础设施"
       ],
       "affected_stocks": [
-        "600519.SS",
-        "000858.SZ"
+        "000977.SZ",
+        "688041.SH"
       ],
       "importance": 9
     },
     {
-      "title": "领跑全球“光速赛道”！烽火通信空芯反谐振光纤三项重磅成果登上全球光子学权威讲台",
+      "title": "美光宣布与高通等七家企业签订SCA保障汽车内存供应",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607173810474924.html",
-      "time": "2026-07-17 11:04:00",
-      "ai_summary": "外汇局：上半年银行结售汇顺差2712亿美元",
-      "impact_analysis": "结售汇顺差扩大反映外汇市场稳定，人民币汇率预期向好，有助于缓解资本外流压力，间接支撑A股。",
+      "url": "https://finance.eastmoney.com/a/202607173810536857.html",
+      "time": "2026-07-17 12:55:21",
+      "ai_summary": "创业板指跌幅扩大至7%",
+      "impact_analysis": "创业板暴跌反映科技股抛售严重，市场风险偏好骤降，短期拖累成长板块，但超跌后或有反弹。",
       "affected_sectors": [
-        "银行",
-        "外汇"
-      ],
-      "affected_stocks": [
-        "601398.SS",
-        "601939.SS"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "原中国银行保险监督管理委员会法规部副主任张劲松一审获刑十六年",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607173810473423.html",
-      "time": "2026-07-17 10:57:08",
-      "ai_summary": "多只宽基ETF显著放量",
-      "impact_analysis": "宽基ETF放量表明机构资金入场托底，尤其是创业板ETF成交额超昨日全天，显示资金抄底意愿，短期有望稳定指数。",
-      "affected_sectors": [
-        "ETF",
-        "大盘"
-      ],
-      "affected_stocks": [
-        "159915.SZ",
-        "588000.SS"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "外汇局：上半年高技术服务业和高技术制造业外资流入规模同比增长61%",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607173810300159.html",
-      "time": "2026-07-17 10:27:30",
-      "ai_summary": "恒生科技指数跌3.5%，生物科技跌6%",
-      "impact_analysis": "港股科技和医药板块暴跌拖累A股相关板块，尤其是创新药和科技股，加剧市场下跌压力，影响投资者信心。",
-      "affected_sectors": [
-        "科技",
-        "医药"
-      ],
-      "affected_stocks": [
-        "00700.HK",
-        "01801.HK"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "外汇局：近年来人民币汇率双向浮动增强 企业更需坚持汇率风险中性理念",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607173810311497.html",
-      "time": "2026-07-17 10:31:48",
-      "ai_summary": "电力板块逆势走强，多股涨停",
-      "impact_analysis": "电力板块在弱势中领涨，显示资金避险需求，厄尔尼诺推动用电需求，板块量价双升逻辑强化，短期有望持续。",
-      "affected_sectors": [
-        "电力"
-      ],
-      "affected_stocks": [
-        "600236.SS",
-        "600744.SS"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "外汇局：继续完善企业汇率避险政策供给和服务",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607173810383097.html",
-      "time": "2026-07-17 10:41:33",
-      "ai_summary": "创新药板块暴跌，龙头股跌超10%",
-      "impact_analysis": "创新药板块集体大跌，可能受政策或海外风险影响，拖累医药ETF和创业板，短期板块承压，需警惕连锁反应。",
-      "affected_sectors": [
-        "医药",
-        "创新药"
-      ],
-      "affected_stocks": [
-        "300122.SZ",
-        "688166.SS"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "多只宽基ETF显著放量  创业板ETF易方达（159915）成交额超昨日全天",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607173810513722.html",
-      "time": "2026-07-17 11:30:17",
-      "ai_summary": "沪深两市成交额突破1.5万亿",
-      "impact_analysis": "成交额放量显示市场交投活跃，但伴随下跌表明恐慌性抛售，短期波动加剧，需关注后续资金流向。",
-      "affected_sectors": [
-        "大盘"
-      ],
-      "affected_stocks": [
-        "000001.SS",
-        "399001.SZ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "外汇局：一季度末人民币外债占比55% 中长期外债占比稳定在40%以上",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607173810459986.html",
-      "time": "2026-07-17 10:54:15",
-      "ai_summary": "中兴通讯触及跌停，成交额超95亿",
-      "impact_analysis": "中兴通讯作为科技龙头跌停，拖累通信和科技板块，反映市场对科技股估值担忧，短期压制板块情绪。",
-      "affected_sectors": [
-        "通信",
+        "创业板",
         "科技"
       ],
       "affected_stocks": [
-        "000063.SZ",
-        "600941.SS"
+        "300750.SZ",
+        "300059.SZ"
+      ],
+      "importance": 9
+    },
+    {
+      "title": "习近平出席2026世界人工智能大会暨人工智能全球治理高级别会议开幕式并发表主旨讲话",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202607173810532993.html",
+      "time": "2026-07-17 12:46:47",
+      "ai_summary": "习近平出席AI大会并发表讲话",
+      "impact_analysis": "最高层表态提振AI产业信心，但市场短期调整中，政策利好需时间消化，对大盘影响偏正面但有限。",
+      "affected_sectors": [
+        "人工智能",
+        "科技"
+      ],
+      "affected_stocks": [
+        "000938.SZ",
+        "688256.SH"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "2.8万亿参数 Kimi发布“迄今最强”模型",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202607173810837838.html",
+      "time": "2026-07-17 13:58:00",
+      "ai_summary": "宽基ETF午后放量，3只成交超百亿",
+      "impact_analysis": "大资金通过ETF入场，显示护盘或抄底意图，对指数有稳定作用，但需观察持续性。",
+      "affected_sectors": [
+        "全市场"
+      ],
+      "affected_stocks": [
+        "159915.SZ",
+        "588000.SH",
+        "510300.SH"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "午后宽基ETF持续放量 3只ETF成交额超100亿",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202607173810931881.html",
+      "time": "2026-07-17 13:55:00",
+      "ai_summary": "亚洲芯片股抛售加剧",
+      "impact_analysis": "台积电业绩未达预期引发全球芯片股下跌，直接拖累A股半导体板块，加剧市场调整。",
+      "affected_sectors": [
+        "半导体",
+        "芯片"
+      ],
+      "affected_stocks": [
+        "688981.SH",
+        "002371.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "全国产十万卡AI超集群曙光8000全球首展",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202607173810744161.html",
+      "time": "2026-07-17 13:34:13",
+      "ai_summary": "银行股逆势走强",
+      "impact_analysis": "银行股作为防御板块上涨，显示资金避险情绪，对大盘有支撑作用，但难以扭转整体跌势。",
+      "affected_sectors": [
+        "银行"
+      ],
+      "affected_stocks": [
+        "601939.SH",
+        "601398.SH"
       ],
       "importance": 7
     },
     {
-      "title": "外汇局：守好开放条件下的安全底线 外汇便利化改革思路涉及六方面",
+      "title": "光本位科技全球首发256*256光子存内计算芯片",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607173810484818.html",
-      "time": "2026-07-17 11:10:15",
-      "ai_summary": "股票私募平均仓位创近4年新高",
-      "impact_analysis": "私募仓位新高显示机构对后市乐观，但高仓位也意味着加仓空间有限，市场调整时可能加剧抛压。",
+      "url": "https://finance.eastmoney.com/a/202607173810535789.html",
+      "time": "2026-07-17 12:52:00",
+      "ai_summary": "原材料涨价拖累汽车公司利润",
+      "impact_analysis": "成本上升导致多家车企亏损或利润下滑，利空汽车板块，尤其新能源车产业链承压。",
       "affected_sectors": [
-        "大盘"
+        "汽车",
+        "新能源车"
+      ],
+      "affected_stocks": [
+        "601238.SH",
+        "000625.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "东方财富策略陈果市场下跌点评：买在悲观时、相聚在新高 下半年牛市新一轮行情即将展开",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202607173810818536.html",
+      "time": "2026-07-17 13:49:13",
+      "ai_summary": "IMF上调中国经济增长预期",
+      "impact_analysis": "国际机构看好中国经济，对A股中长期基本面构成支撑，但短期市场情绪主导下影响有限。",
+      "affected_sectors": [
+        "全市场"
+      ],
+      "affected_stocks": [],
+      "importance": 6
+    },
+    {
+      "title": "“一字之差”炒错股？万邦医药股价狂飙 公司提示风险！ST万邦股民：你的利好是我的",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202607173810727957.html",
+      "time": "2026-07-17 13:32:46",
+      "ai_summary": "国债期货拉升，30年期涨超0.3%",
+      "impact_analysis": "债市走强反映避险需求，与股市下跌形成跷跷板，暗示市场风险偏好下降，资金流向债市。",
+      "affected_sectors": [
+        "债券"
       ],
       "affected_stocks": [],
       "importance": 6
