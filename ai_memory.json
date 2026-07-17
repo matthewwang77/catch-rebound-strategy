@@ -355,6 +355,29 @@
       "why_wrong": null,
       "missed_signal": null,
       "lesson": null
+    },
+    {
+      "date": "20260717",
+      "signal_date": "20260703",
+      "mode": "bear",
+      "entry_price": 9.76,
+      "pullback_pct": 5.6,
+      "limit_days": 4,
+      "analysis": "量：缩量至5日均量39%，OBV持续下降，资金加速流出，地量后仍有下跌风险。  \n价：股价跌破MA5/10/20，布林下轨9.06附近无支撑，均线空头排列压制明显。  \n形：4连板后回调12天，演变为“M头”破位形态，无止跌信号。  \n时：回调12天超正常窗口，冰点期1档下无催化，反弹窗口已关闭。  \n仓位建议：0成仓（冰点期1档）  \n反弹概率：低（≤30%）  \n最终结论：【放弃】",
+      "sentiment": "冰点期1档",
+      "position": "0成仓",
+      "opinion": "【放弃】",
+      "verified": false,
+      "return_7d": null,
+      "exit_reason": null,
+      "exit_day": null,
+      "verdict": null,
+      "review_analysis": null,
+      "review_quality": null,
+      "what_happened": null,
+      "why_wrong": null,
+      "missed_signal": null,
+      "lesson": null
     }
   ]
 }
