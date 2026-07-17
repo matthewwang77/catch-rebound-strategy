@@ -1,139 +1,122 @@
 {
   "date": "20260717",
-  "market_summary": "今日A股市场大幅调整，沪指跌破3800点，创业板指跌超7%，但人工智能大会释放多重利好，国家发改委发布AI合作发展行动计划，宽基ETF放量显示资金抄底迹象。",
-  "sentiment_impact": "中性",
+  "market_summary": "今日A股市场大幅调整，沪指跌破3800点，创业板指一度跌超8%，午后宽基ETF放量带动指数回升，但整体情绪偏空。市场受海外科技股暴跌及国内AI、芯片板块杀跌拖累，但电力、银行等防御板块逆势走强，显示结构性分化。",
+  "sentiment_impact": "偏空",
   "news": [
-    {
-      "title": "英特尔与Google Cloud宣布深化战略合作",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607173810532621.html",
-      "time": "2026-07-17 12:42:05",
-      "ai_summary": "沪指跌超2%跌破3800点",
-      "impact_analysis": "指数破位下跌，市场恐慌情绪蔓延，短期压制大盘，但可能触发政策护盘或资金抄底。",
-      "affected_sectors": [
-        "全市场"
-      ],
-      "affected_stocks": [
-        "000001.SH",
-        "399001.SZ"
-      ],
-      "importance": 10
-    },
-    {
-      "title": "昇腾384超节点已商用落地750多套",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607173810536283.html",
-      "time": "2026-07-17 12:54:00",
-      "ai_summary": "国家发改委发布AI合作发展行动计划",
-      "impact_analysis": "明确支持数据跨境流动和算力设施联通，直接利好AI算力、数据中心板块，但市场情绪低迷下效果待观察。",
-      "affected_sectors": [
-        "人工智能",
-        "算力基础设施"
-      ],
-      "affected_stocks": [
-        "000977.SZ",
-        "688041.SH"
-      ],
-      "importance": 9
-    },
-    {
-      "title": "美光宣布与高通等七家企业签订SCA保障汽车内存供应",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607173810536857.html",
-      "time": "2026-07-17 12:55:21",
-      "ai_summary": "创业板指跌幅扩大至7%",
-      "impact_analysis": "创业板暴跌反映科技股抛售严重，市场风险偏好骤降，短期拖累成长板块，但超跌后或有反弹。",
-      "affected_sectors": [
-        "创业板",
-        "科技"
-      ],
-      "affected_stocks": [
-        "300750.SZ",
-        "300059.SZ"
-      ],
-      "importance": 9
-    },
-    {
-      "title": "习近平出席2026世界人工智能大会暨人工智能全球治理高级别会议开幕式并发表主旨讲话",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607173810532993.html",
-      "time": "2026-07-17 12:46:47",
-      "ai_summary": "习近平出席AI大会并发表讲话",
-      "impact_analysis": "最高层表态提振AI产业信心，但市场短期调整中，政策利好需时间消化，对大盘影响偏正面但有限。",
-      "affected_sectors": [
-        "人工智能",
-        "科技"
-      ],
-      "affected_stocks": [
-        "000938.SZ",
-        "688256.SH"
-      ],
-      "importance": 8
-    },
     {
       "title": "2.8万亿参数 Kimi发布“迄今最强”模型",
       "source": "东方财富",
       "url": "https://finance.eastmoney.com/a/202607173810837838.html",
       "time": "2026-07-17 13:58:00",
-      "ai_summary": "宽基ETF午后放量，3只成交超百亿",
-      "impact_analysis": "大资金通过ETF入场，显示护盘或抄底意图，对指数有稳定作用，但需观察持续性。",
+      "ai_summary": "沪指盘中跌破3800点",
+      "impact_analysis": "直接冲击市场信心，引发恐慌性抛售，但午后ETF放量显示资金抄底，短期波动加剧，中长期需关注政策面支撑。",
       "affected_sectors": [
-        "全市场"
+        "大盘指数",
+        "宽基ETF"
       ],
       "affected_stocks": [
         "159915.SZ",
-        "588000.SH",
-        "510300.SH"
+        "588000.SS",
+        "510300.SS"
       ],
-      "importance": 8
+      "importance": 10
     },
     {
       "title": "午后宽基ETF持续放量 3只ETF成交额超100亿",
       "source": "东方财富",
       "url": "https://finance.eastmoney.com/a/202607173810931881.html",
       "time": "2026-07-17 13:55:00",
-      "ai_summary": "亚洲芯片股抛售加剧",
-      "impact_analysis": "台积电业绩未达预期引发全球芯片股下跌，直接拖累A股半导体板块，加剧市场调整。",
+      "ai_summary": "午后宽基ETF持续放量",
+      "impact_analysis": "显示国家队或机构资金入场托底，缓解市场恐慌，对指数企稳有积极作用，但持续性待观察。",
       "affected_sectors": [
-        "半导体",
-        "芯片"
+        "宽基ETF",
+        "大盘指数"
       ],
       "affected_stocks": [
-        "688981.SH",
-        "002371.SZ"
+        "159915.SZ",
+        "588000.SS",
+        "510300.SS"
+      ],
+      "importance": 9
+    },
+    {
+      "title": "“神秘人”已出价32亿竞拍大通证券控股权 国海证券：如果竞拍成功结束后会发公告",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202607173810927047.html",
+      "time": "2026-07-17 14:12:39",
+      "ai_summary": "A股三大指数集体收跌",
+      "impact_analysis": "确认今日市场大幅回调，成交额放量显示多空博弈激烈，短期市场情绪偏弱，需关注后续政策动向。",
+      "affected_sectors": [
+        "大盘指数",
+        "全市场"
+      ],
+      "affected_stocks": [],
+      "importance": 9
+    },
+    {
+      "title": "“热穹顶”现象致美国多州创下高温新纪录",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202607173810959960.html",
+      "time": "2026-07-17 14:13:57",
+      "ai_summary": "华尔街科技股大跌蔓延至亚洲",
+      "impact_analysis": "海外科技股暴跌引发A股科技板块跟跌，特别是芯片、光模块等板块，加剧市场恐慌，外资流出压力增大。",
+      "affected_sectors": [
+        "芯片",
+        "光模块",
+        "存储"
+      ],
+      "affected_stocks": [
+        "002049.SZ",
+        "300308.SZ",
+        "603986.SS"
       ],
       "importance": 8
     },
     {
-      "title": "全国产十万卡AI超集群曙光8000全球首展",
+      "title": "众擎机器人创始人兼CEO赵同阳：中国也要有自己的钢铁侠",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607173810744161.html",
-      "time": "2026-07-17 13:34:13",
-      "ai_summary": "银行股逆势走强",
-      "impact_analysis": "银行股作为防御板块上涨，显示资金避险情绪，对大盘有支撑作用，但难以扭转整体跌势。",
+      "url": "https://finance.eastmoney.com/a/202607173810949866.html",
+      "time": "2026-07-17 14:07:15",
+      "ai_summary": "存储芯片、光模块双杀",
+      "impact_analysis": "科技板块核心赛道遭重挫，多股跌停，反映市场对AI产业链短期过热后的调整，板块估值承压。",
       "affected_sectors": [
-        "银行"
+        "存储芯片",
+        "光模块"
       ],
       "affected_stocks": [
-        "601939.SH",
-        "601398.SH"
+        "603986.SS",
+        "300308.SZ",
+        "002049.SZ"
       ],
-      "importance": 7
+      "importance": 8
     },
     {
-      "title": "光本位科技全球首发256*256光子存内计算芯片",
+      "title": "华人运通公司发生高管变更 丁磊卸任法定代表人",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607173810535789.html",
-      "time": "2026-07-17 12:52:00",
-      "ai_summary": "原材料涨价拖累汽车公司利润",
-      "impact_analysis": "成本上升导致多家车企亏损或利润下滑，利空汽车板块，尤其新能源车产业链承压。",
+      "url": "https://finance.eastmoney.com/a/202607173810964865.html",
+      "time": "2026-07-17 14:21:36",
+      "ai_summary": "股指期货全线下挫",
+      "impact_analysis": "期货市场大幅下跌预示后市悲观预期，中证1000跌幅最大，显示中小盘股风险释放，市场杠杆去化加速。",
       "affected_sectors": [
-        "汽车",
-        "新能源车"
+        "股指期货",
+        "中小盘股"
+      ],
+      "affected_stocks": [],
+      "importance": 8
+    },
+    {
+      "title": "沪指盘中跌破3800点 A股怎么了？",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202607173810971633.html",
+      "time": "2026-07-17 14:40:00",
+      "ai_summary": "6月全社会用电量同比增长3.7%",
+      "impact_analysis": "用电量数据稳健，支撑电力板块逆势走强，显示经济基本面韧性，防御性板块受资金青睐。",
+      "affected_sectors": [
+        "电力"
       ],
       "affected_stocks": [
-        "601238.SH",
-        "000625.SZ"
+        "600900.SS",
+        "601985.SS"
       ],
       "importance": 7
     },
@@ -142,23 +125,42 @@
       "source": "东方财富",
       "url": "https://finance.eastmoney.com/a/202607173810818536.html",
       "time": "2026-07-17 13:49:13",
-      "ai_summary": "IMF上调中国经济增长预期",
-      "impact_analysis": "国际机构看好中国经济，对A股中长期基本面构成支撑，但短期市场情绪主导下影响有限。",
+      "ai_summary": "42家A股上市银行盘中全红",
+      "impact_analysis": "银行股逆势上涨，受益于低估值和防御属性，同时银行系投资长鑫科技带来业绩预期，板块护盘作用明显。",
       "affected_sectors": [
-        "全市场"
+        "银行"
+      ],
+      "affected_stocks": [
+        "601398.SS",
+        "601939.SS",
+        "600036.SS"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "2只科创、创业板ETF创2024年11月以来成交额新高",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202607173810978263.html",
+      "time": "2026-07-17 14:44:05",
+      "ai_summary": "证监会接收主动ETF首批申请",
+      "impact_analysis": "主动ETF创新产品获批，丰富市场工具，吸引稳健资金入市，长期利好市场结构优化，短期影响有限。",
+      "affected_sectors": [
+        "ETF",
+        "基金"
       ],
       "affected_stocks": [],
       "importance": 6
     },
     {
-      "title": "“一字之差”炒错股？万邦医药股价狂飙 公司提示风险！ST万邦股民：你的利好是我的",
+      "title": "2026世界人工智能大会暨人工智能全球治理高级别会议主席声明（全文）",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607173810727957.html",
-      "time": "2026-07-17 13:32:46",
-      "ai_summary": "国债期货拉升，30年期涨超0.3%",
-      "impact_analysis": "债市走强反映避险需求，与股市下跌形成跷跷板，暗示市场风险偏好下降，资金流向债市。",
+      "url": "https://finance.eastmoney.com/a/202607173810860650.html",
+      "time": "2026-07-17 13:45:03",
+      "ai_summary": "国内商品期货大面积飘绿",
+      "impact_analysis": "商品期货下跌反映市场对经济需求担忧，但欧线集运逆势上涨，显示结构性分化，对周期板块有负面影响。",
       "affected_sectors": [
-        "债券"
+        "商品期货",
+        "周期板块"
       ],
       "affected_stocks": [],
       "importance": 6
