@@ -1,177 +1,179 @@
 {
   "date": "20260720",
-  "market_summary": "今日工信部密集发布多项产业政策，涵盖创新药、人工智能、算力、机器人等领域，同时国际油价因美伊局势上涨，A股成交额放量，市场情绪偏多。",
-  "sentiment_impact": "偏多",
+  "market_summary": "今日A股市场消息面多空交织，监管层稳市场信号释放、险资发声支持、私募自购加仓等积极因素与外部输入性冲击、部分板块大幅下挫并存，整体呈现结构性分化。",
+  "sentiment_impact": "中性",
   "news": [
     {
-      "title": "工信部：加快光子、时空信息等新兴增长点培育 加速算电一体化布局落地",
+      "title": "泰国计划年内推出新型个人免税储蓄账户 以鼓励民众长期投资股票、债券及共同基金",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607203812651892.html",
-      "time": "2026-07-20 10:54:40",
-      "ai_summary": "工信部：将加快出台人工智能+软件行动方案",
-      "impact_analysis": "直接利好AI软件和算力板块，加速产业落地，提振科技股整体表现。",
+      "url": "https://finance.eastmoney.com/a/202607203812877469.html",
+      "time": "2026-07-20 13:34:12",
+      "ai_summary": "证监会召开稳市场座谈会",
+      "impact_analysis": "监管层释放稳定市场信号，有助于提振投资者信心，对大盘指数形成正面支撑，尤其利好券商、基金及权重股。",
       "affected_sectors": [
-        "人工智能",
-        "软件"
+        "证券",
+        "基金"
       ],
       "affected_stocks": [
-        "002230.SZ",
-        "600570.SS"
+        "600030.SS",
+        "601211.SS"
       ],
       "importance": 9
     },
     {
-      "title": "恒生生物科技ETF鹏华涨超4%，今年上半年38款创新药获批上市",
+      "title": "花旗下调韩国并上调中国股票评级 因预计新兴市场涨势范围扩大",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607203812660866.html",
-      "time": "2026-07-20 11:01:28",
-      "ai_summary": "工信部：加快光子、时空信息等新兴增长点培育",
-      "impact_analysis": "政策利好电子信息、算力产业链，推动相关板块上涨，提升市场对科技成长股的信心。",
+      "url": "https://finance.eastmoney.com/a/202607203812747145.html",
+      "time": "2026-07-20 12:56:58",
+      "ai_summary": "花旗上调中国股票评级",
+      "impact_analysis": "外资机构看好A股，预计新兴市场涨势扩大，有望吸引外资流入，对市场情绪和资金面构成积极影响。",
       "affected_sectors": [
-        "电子信息",
-        "算力"
+        "大盘",
+        "外资重仓"
       ],
       "affected_stocks": [
-        "000977.SZ",
-        "600745.SS"
+        "000300.SH",
+        "510050.SS"
       ],
       "importance": 8
     },
     {
-      "title": "今年上半年我国获批38个1类创新药，港股创新药ETF博时(520690)强势涨超4%",
+      "title": "韩国今年人均GDP有望达3.9万美元 增幅7.6%",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607203812679494.html",
-      "time": "2026-07-20 11:11:33",
-      "ai_summary": "工信部：将印发算力标准体系建设指南",
-      "impact_analysis": "推动算力市场化定价，利好算力基础设施和AI芯片企业，增强板块长期确定性。",
+      "url": "https://finance.eastmoney.com/a/202607203812824583.html",
+      "time": "2026-07-20 13:20:32",
+      "ai_summary": "百亿私募扎堆自购加仓",
+      "impact_analysis": "私募自购和仓位创新高释放积极信号，显示机构对后市乐观，有助于稳定市场信心，推动资金入市。",
+      "affected_sectors": [
+        "大盘",
+        "私募重仓"
+      ],
+      "affected_stocks": [
+        "000001.SH",
+        "399001.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "美联储“不再剧透” 华尔街推出“WarshGPT”解码",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202607203812914856.html",
+      "time": "2026-07-20 13:40:00",
+      "ai_summary": "中国太保将投资科技成长等",
+      "impact_analysis": "险资作为长期资金表态继续投资，对科技、消费、新能源等板块构成直接利好，增强市场稳定性。",
+      "affected_sectors": [
+        "科技成长",
+        "消费",
+        "新能源"
+      ],
+      "affected_stocks": [
+        "300750.SZ",
+        "600519.SS"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "港股通科技ETF鹏华涨超3%，2030年智算中心年复合增长率有望达到20.74%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202607203812889430.html",
+      "time": "2026-07-20 13:34:14",
+      "ai_summary": "电力板块多股涨停走强",
+      "impact_analysis": "电力板块强势拉升，受益于边际反转预期和资金追捧，对大盘指数有支撑，带动能源相关板块。",
+      "affected_sectors": [
+        "电力",
+        "能源"
+      ],
+      "affected_stocks": [
+        "600900.SS",
+        "601985.SS"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "花旗力挺茅台二度提价：维持“买入”评级 目标价看高至1788.65元",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202607203812848482.html",
+      "time": "2026-07-20 13:28:56",
+      "ai_summary": "Kimi算力紧缺推国产算力",
+      "impact_analysis": "Kimi暂停新用户订阅凸显算力需求旺盛，利好国产算力产业链，如IDC、服务器、AI芯片等板块。",
       "affected_sectors": [
         "算力",
-        "AI芯片"
+        "AI",
+        "半导体"
       ],
       "affected_stocks": [
-        "688041.SS",
-        "603019.SS"
+        "688041.SH",
+        "000977.SZ"
       ],
-      "importance": 8
+      "importance": 7
     },
     {
-      "title": "工信部：正在加紧制定培育全国一体化技术市场相关文件 破除交易壁垒和制度障碍",
+      "title": "南京诚之材股权投资合伙企业成立 出资额约1.1亿",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607203812657164.html",
-      "time": "2026-07-20 11:01:28",
-      "ai_summary": "工信部：上半年38款创新药获批上市",
-      "impact_analysis": "创新药获批数量创新高，叠加政策支持，直接提振医药板块，尤其是创新药和CXO领域。",
+      "url": "https://finance.eastmoney.com/a/202607203812893255.html",
+      "time": "2026-07-20 13:34:49",
+      "ai_summary": "石油板块受油价大涨拉升",
+      "impact_analysis": "布油、WTI原油期货大涨，叠加地缘风险，推动石油板块走强，对能源股和通胀预期有提振。",
       "affected_sectors": [
-        "创新药",
-        "医药研发"
+        "石油",
+        "能源"
       ],
       "affected_stocks": [
-        "600276.SS",
-        "300347.SZ"
+        "601857.SS",
+        "600028.SS"
       ],
-      "importance": 8
+      "importance": 7
     },
     {
-      "title": "工信部：将强化基础电信市场秩序规范治理 有效遏制非理性竞争",
+      "title": "极智嘉人形机器人Gino 1首秀 不卷“人形”卷“干活”",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607203812643423.html",
-      "time": "2026-07-20 10:49:00",
-      "ai_summary": "沪深两市成交额突破1.5万亿",
-      "impact_analysis": "放量表明市场活跃度提升，资金入场意愿增强，利好大盘指数和券商板块。",
+      "url": "https://finance.eastmoney.com/a/202607203812910434.html",
+      "time": "2026-07-20 13:31:57",
+      "ai_summary": "电子化学品板块大幅下挫",
+      "impact_analysis": "电子化学品板块持续大跌，多股跌停，反映市场对部分科技细分领域担忧，拖累创业板和科技股。",
       "affected_sectors": [
-        "券商",
+        "电子化学品",
+        "半导体材料"
+      ],
+      "affected_stocks": [
+        "002409.SZ",
+        "688126.SH"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "黑石集团同意投资韩国机器人供应商Futronic",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202607203812814487.html",
+      "time": "2026-07-20 13:17:28",
+      "ai_summary": "沪深成交额连续70日破2万亿",
+      "impact_analysis": "成交额持续高位显示市场交投活跃，流动性充裕，对券商板块和整体市场情绪有正面作用。",
+      "affected_sectors": [
+        "证券",
         "大盘"
       ],
       "affected_stocks": [
         "600030.SS",
         "601688.SS"
       ],
-      "importance": 8
+      "importance": 6
     },
     {
-      "title": "工信部：上半年38款创新药获批上市 其中国产创新药31款",
+      "title": "迅策科技与洪泰达成战略合作",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607203812645114.html",
-      "time": "2026-07-20 10:48:22",
-      "ai_summary": "布油站上91美元/桶，美伊局势升级",
-      "impact_analysis": "油价上涨直接利好石油板块，同时推升通胀预期，影响市场风险偏好。",
+      "url": "https://finance.eastmoney.com/a/202607203812775911.html",
+      "time": "2026-07-20 13:08:48",
+      "ai_summary": "银行理财涌入长鑫科技打新",
+      "impact_analysis": "银行理财积极参与打新，显示对半导体龙头看好，利好半导体板块和科创板，但影响相对有限。",
       "affected_sectors": [
-        "石油",
-        "能源"
+        "半导体",
+        "科创板"
       ],
       "affected_stocks": [
-        "600938.SS",
-        "601857.SS"
+        "688981.SH",
+        "688012.SH"
       ],
-      "importance": 8
-    },
-    {
-      "title": "中石油集团获证监会批准成为英大期货实控人",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607203812697330.html",
-      "time": "2026-07-20 11:24:48",
-      "ai_summary": "我国智能算力规模达2185EFLOPS",
-      "impact_analysis": "数据印证算力需求爆发，利好算力基建和AI应用板块，提升市场对科技成长股的关注。",
-      "affected_sectors": [
-        "算力",
-        "人工智能"
-      ],
-      "affected_stocks": [
-        "000938.SZ",
-        "688256.SS"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "上海清算所：中央债券借贷业务清算费由实时逐笔收取改为按季度统一收取",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607203812544374.html",
-      "time": "2026-07-20 10:34:35",
-      "ai_summary": "工信部：集中力量打造“创新医药”等",
-      "impact_analysis": "政策明确支持创新药和AI赋能医药，利好医药板块长期发展，短期提振市场情绪。",
-      "affected_sectors": [
-        "创新药",
-        "医药AI"
-      ],
-      "affected_stocks": [
-        "688180.SS",
-        "300760.SZ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "昭衍新药净利润预增最高1377.4%！创新药ETF天弘标的指数盘中跳涨超4%，近20日净流入近4亿元",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607203812669353.html",
-      "time": "2026-07-20 11:08:09",
-      "ai_summary": "我国人形机器人整机产品超全球半数",
-      "impact_analysis": "数据凸显我国机器人产业领先地位，利好机器人及智能制造板块，吸引资金关注。",
-      "affected_sectors": [
-        "机器人",
-        "智能制造"
-      ],
-      "affected_stocks": [
-        "300124.SZ",
-        "688160.SS"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "2025年度国家发展改革委政府集中采购支出总额2244.48万元",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607203812677275.html",
-      "time": "2026-07-20 11:17:28",
-      "ai_summary": "工信部：持续实施机械、汽车等行业稳增长方案",
-      "impact_analysis": "政策稳增长利好装备制造和汽车板块，提升相关行业盈利预期，带动指数上行。",
-      "affected_sectors": [
-        "装备制造",
-        "汽车"
-      ],
-      "affected_stocks": [
-        "600031.SS",
-        "000625.SZ"
-      ],
-      "importance": 7
+      "importance": 6
     }
   ]
 }
