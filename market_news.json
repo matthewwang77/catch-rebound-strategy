@@ -1,18 +1,18 @@
 {
   "date": "20260720",
-  "market_summary": "今日A股市场消息面多空交织，监管层稳市场信号释放、险资发声支持、私募自购加仓等积极因素与外部输入性冲击、部分板块大幅下挫并存，整体呈现结构性分化。",
-  "sentiment_impact": "中性",
+  "market_summary": "今日A股市场消息面偏多，证监会召开投资者座谈会、国家队增持及ETF放量等利好信号提振市场信心，但外部扰动和个股分化仍存。",
+  "sentiment_impact": "偏多",
   "news": [
     {
-      "title": "泰国计划年内推出新型个人免税储蓄账户 以鼓励民众长期投资股票、债券及共同基金",
+      "title": "国内商品期货收盘 主力合约多数上涨",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607203812877469.html",
-      "time": "2026-07-20 13:34:12",
-      "ai_summary": "证监会召开稳市场座谈会",
-      "impact_analysis": "监管层释放稳定市场信号，有助于提振投资者信心，对大盘指数形成正面支撑，尤其利好券商、基金及权重股。",
+      "url": "https://finance.eastmoney.com/a/202607203813221843.html",
+      "time": "2026-07-20 15:00:14",
+      "ai_summary": "证监会召开投资者座谈会",
+      "impact_analysis": "证监会主席吴清亲自调研并听取意见，释放稳定市场信号，直接提振投资者信心，利好大盘指数。",
       "affected_sectors": [
-        "证券",
-        "基金"
+        "券商",
+        "金融"
       ],
       "affected_stocks": [
         "600030.SS",
@@ -21,157 +21,155 @@
       "importance": 9
     },
     {
-      "title": "花旗下调韩国并上调中国股票评级 因预计新兴市场涨势范围扩大",
+      "title": "新能源汽车维修作业安全国标8月施行",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607203812747145.html",
-      "time": "2026-07-20 12:56:58",
-      "ai_summary": "花旗上调中国股票评级",
-      "impact_analysis": "外资机构看好A股，预计新兴市场涨势扩大，有望吸引外资流入，对市场情绪和资金面构成积极影响。",
+      "url": "https://finance.eastmoney.com/a/202607203813159335.html",
+      "time": "2026-07-20 14:32:47",
+      "ai_summary": "国家队领衔大额增持",
+      "impact_analysis": "国家队增持及五大利好信号明确，显示政策底支撑，增强市场稳定性，利好大盘蓝筹。",
       "affected_sectors": [
-        "大盘",
-        "外资重仓"
+        "银行",
+        "保险"
       ],
       "affected_stocks": [
-        "000300.SH",
-        "510050.SS"
+        "601398.SS",
+        "601318.SS"
+      ],
+      "importance": 9
+    },
+    {
+      "title": "长江存储IPO提速！31人超配团队完成首期辅导 头部券商抢先卡位",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202607203812991236.html",
+      "time": "2026-07-20 14:19:39",
+      "ai_summary": "宽基ETF成交额持续放量",
+      "impact_analysis": "沪深300、科创50等ETF成交额破百亿，显示资金涌入，支撑指数反弹，利好市场流动性。",
+      "affected_sectors": [
+        "ETF",
+        "金融"
+      ],
+      "affected_stocks": [
+        "510300.SS",
+        "588000.SS"
       ],
       "importance": 8
     },
     {
-      "title": "韩国今年人均GDP有望达3.9万美元 增幅7.6%",
+      "title": "商务部将于2026-2028年组织开展绿色消费试点工作",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607203812824583.html",
-      "time": "2026-07-20 13:20:32",
-      "ai_summary": "百亿私募扎堆自购加仓",
-      "impact_analysis": "私募自购和仓位创新高释放积极信号，显示机构对后市乐观，有助于稳定市场信心，推动资金入市。",
+      "url": "https://finance.eastmoney.com/a/202607203813191910.html",
+      "time": "2026-07-20 14:39:30",
+      "ai_summary": "商务部开展绿色消费试点",
+      "impact_analysis": "政策推动绿色消费，利好新能源、环保等板块，刺激相关产业链需求。",
       "affected_sectors": [
-        "大盘",
-        "私募重仓"
-      ],
-      "affected_stocks": [
-        "000001.SH",
-        "399001.SZ"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "美联储“不再剧透” 华尔街推出“WarshGPT”解码",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607203812914856.html",
-      "time": "2026-07-20 13:40:00",
-      "ai_summary": "中国太保将投资科技成长等",
-      "impact_analysis": "险资作为长期资金表态继续投资，对科技、消费、新能源等板块构成直接利好，增强市场稳定性。",
-      "affected_sectors": [
-        "科技成长",
-        "消费",
-        "新能源"
+        "新能源",
+        "环保"
       ],
       "affected_stocks": [
         "300750.SZ",
-        "600519.SS"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "港股通科技ETF鹏华涨超3%，2030年智算中心年复合增长率有望达到20.74%",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607203812889430.html",
-      "time": "2026-07-20 13:34:14",
-      "ai_summary": "电力板块多股涨停走强",
-      "impact_analysis": "电力板块强势拉升，受益于边际反转预期和资金追捧，对大盘指数有支撑，带动能源相关板块。",
-      "affected_sectors": [
-        "电力",
-        "能源"
-      ],
-      "affected_stocks": [
-        "600900.SS",
-        "601985.SS"
+        "600406.SS"
       ],
       "importance": 7
     },
     {
-      "title": "花旗力挺茅台二度提价：维持“买入”评级 目标价看高至1788.65元",
+      "title": "辽宁省东铁盛泰私募股权投资基金合伙企业成立 出资额16.06亿",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607203812848482.html",
-      "time": "2026-07-20 13:28:56",
-      "ai_summary": "Kimi算力紧缺推国产算力",
-      "impact_analysis": "Kimi暂停新用户订阅凸显算力需求旺盛，利好国产算力产业链，如IDC、服务器、AI芯片等板块。",
+      "url": "https://finance.eastmoney.com/a/202607203813211346.html",
+      "time": "2026-07-20 14:45:30",
+      "ai_summary": "长江存储IPO提速",
+      "impact_analysis": "国产存储龙头IPO加速，提振半导体产业链情绪，利好芯片设计、设备板块。",
       "affected_sectors": [
-        "算力",
-        "AI",
-        "半导体"
+        "半导体",
+        "芯片"
       ],
       "affected_stocks": [
-        "688041.SH",
-        "000977.SZ"
+        "688981.SS",
+        "002371.SZ"
       ],
       "importance": 7
     },
     {
-      "title": "南京诚之材股权投资合伙企业成立 出资额约1.1亿",
+      "title": "“老登资产中流行‘鬼故事’” 中泰资管姜诚分析“糟糕”业绩",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607203812893255.html",
-      "time": "2026-07-20 13:34:49",
-      "ai_summary": "石油板块受油价大涨拉升",
-      "impact_analysis": "布油、WTI原油期货大涨，叠加地缘风险，推动石油板块走强，对能源股和通胀预期有提振。",
+      "url": "https://finance.eastmoney.com/a/202607203813091734.html",
+      "time": "2026-07-20 14:06:10",
+      "ai_summary": "一体化算力网国产生态联盟扩员",
+      "impact_analysis": "国产芯片厂商加入算力网联盟，推动国产替代，利好AI算力、国产芯片板块。",
       "affected_sectors": [
-        "石油",
-        "能源"
+        "AI算力",
+        "国产芯片"
       ],
       "affected_stocks": [
-        "601857.SS",
-        "600028.SS"
+        "688256.SS",
+        "002049.SZ"
       ],
       "importance": 7
     },
     {
-      "title": "极智嘉人形机器人Gino 1首秀 不卷“人形”卷“干活”",
+      "title": "中证500、中证1000指数ETF午后持续放量 多只成交额超上一交易日全天",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607203812910434.html",
-      "time": "2026-07-20 13:31:57",
-      "ai_summary": "电子化学品板块大幅下挫",
-      "impact_analysis": "电子化学品板块持续大跌，多股跌停，反映市场对部分科技细分领域担忧，拖累创业板和科技股。",
+      "url": "https://finance.eastmoney.com/a/202607203813090326.html",
+      "time": "2026-07-20 14:07:52",
+      "ai_summary": "新能源汽车维修国标8月施行",
+      "impact_analysis": "新国标规范维修安全，利好新能源汽车后市场及检测设备企业，推动行业标准化。",
       "affected_sectors": [
-        "电子化学品",
-        "半导体材料"
+        "新能源汽车",
+        "汽车服务"
       ],
       "affected_stocks": [
-        "002409.SZ",
-        "688126.SH"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "黑石集团同意投资韩国机器人供应商Futronic",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607203812814487.html",
-      "time": "2026-07-20 13:17:28",
-      "ai_summary": "沪深成交额连续70日破2万亿",
-      "impact_analysis": "成交额持续高位显示市场交投活跃，流动性充裕，对券商板块和整体市场情绪有正面作用。",
-      "affected_sectors": [
-        "证券",
-        "大盘"
-      ],
-      "affected_stocks": [
-        "600030.SS",
-        "601688.SS"
+        "002594.SZ",
+        "601238.SS"
       ],
       "importance": 6
     },
     {
-      "title": "迅策科技与洪泰达成战略合作",
+      "title": "一体化算力网国产生态联盟迎来新成员",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607203812775911.html",
-      "time": "2026-07-20 13:08:48",
-      "ai_summary": "银行理财涌入长鑫科技打新",
-      "impact_analysis": "银行理财积极参与打新，显示对半导体龙头看好，利好半导体板块和科创板，但影响相对有限。",
+      "url": "https://finance.eastmoney.com/a/202607203813102124.html",
+      "time": "2026-07-20 14:49:04",
+      "ai_summary": "博时基金自购5000万元权益基金",
+      "impact_analysis": "基金公司自购释放积极信号，增强市场信心，利好公募重仓股及大盘。",
       "affected_sectors": [
-        "半导体",
-        "科创板"
+        "金融",
+        "消费"
       ],
       "affected_stocks": [
-        "688981.SH",
-        "688012.SH"
+        "600519.SS",
+        "000858.SZ"
+      ],
+      "importance": 6
+    },
+    {
+      "title": "3只热门宽基ETF成交额均破百亿元",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202607203813188498.html",
+      "time": "2026-07-20 14:37:12",
+      "ai_summary": "韩国股市大跌4.5%",
+      "impact_analysis": "外部市场波动加剧，可能引发A股短期情绪扰动，但影响有限，需关注外资动向。",
+      "affected_sectors": [
+        "半导体",
+        "消费电子"
+      ],
+      "affected_stocks": [
+        "603986.SS",
+        "002475.SZ"
+      ],
+      "importance": 6
+    },
+    {
+      "title": "华泰证券研究所所长张继强：A股正经历极致分化后的再平衡过程",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202607203813208335.html",
+      "time": "2026-07-20 14:43:27",
+      "ai_summary": "国产创新药出海交易活跃",
+      "impact_analysis": "创新药出海持续活跃，利好医药板块，尤其港股医药ETF上涨，带动A股医药股。",
+      "affected_sectors": [
+        "医药",
+        "创新药"
+      ],
+      "affected_stocks": [
+        "600276.SS",
+        "300760.SZ"
       ],
       "importance": 6
     }
