@@ -378,6 +378,29 @@
       "why_wrong": null,
       "missed_signal": null,
       "lesson": null
+    },
+    {
+      "date": "20260720",
+      "signal_date": "20260703",
+      "mode": "bear",
+      "entry_price": 9.3,
+      "pullback_pct": 5.6,
+      "limit_days": 4,
+      "analysis": "量：今日量比0.29x，缩量至涨停日43%，OBV持续下降，资金加速流出，未现止跌信号。\n价：股价9.30远低于MA5/10/20，布林下轨8.33有支撑但未触及，均线空头排列压制明显。\n形：连板后回调13天，形态类似“旗形整理”向下破位，无任何止跌K线组合。\n时：回调第13天，冰点期1档下反弹窗口已过，当前处于加速下跌阶段，风险大于机会。\n反弹概率：低（≤30%）\n仓位建议：0成仓（冰点期1档）\n最终结论：【放弃】",
+      "sentiment": "冰点期1档",
+      "position": "0成仓",
+      "opinion": "【放弃】",
+      "verified": false,
+      "return_7d": null,
+      "exit_reason": null,
+      "exit_day": null,
+      "verdict": null,
+      "review_analysis": null,
+      "review_quality": null,
+      "what_happened": null,
+      "why_wrong": null,
+      "missed_signal": null,
+      "lesson": null
     }
   ]
 }
