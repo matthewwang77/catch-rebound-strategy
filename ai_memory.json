@@ -401,6 +401,29 @@
       "why_wrong": null,
       "missed_signal": null,
       "lesson": null
+    },
+    {
+      "date": "20260721",
+      "signal_date": "20260703",
+      "mode": "bear",
+      "entry_price": 8.38,
+      "pullback_pct": 5.6,
+      "limit_days": 4,
+      "analysis": "- **量**：今日量比仅0.21x，近3日均量仅为涨停日51%，缩量严重但未达地量标准；OBV持续下降，资金明确流出。\n- **价**：股价8.38元已跌破布林下轨8.74元，且远低于MA5/10/20均线，均线空头排列，无有效支撑。\n- **形**：4连板后横盘58天形成旗形整理向下突破，当前无止跌形态（如十字星或长下影线）。\n- **时**：回调第9天，处于冰点期1档，反弹窗口已过，下跌概率极高。\n- **仓位建议**：0成仓（冰点期1档）\n- **最终结论**：【放弃】",
+      "sentiment": "",
+      "position": "",
+      "opinion": "",
+      "verified": false,
+      "return_7d": null,
+      "exit_reason": null,
+      "exit_day": null,
+      "verdict": null,
+      "review_analysis": null,
+      "review_quality": null,
+      "what_happened": null,
+      "why_wrong": null,
+      "missed_signal": null,
+      "lesson": null
     }
   ]
 }
