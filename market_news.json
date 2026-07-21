@@ -1,173 +1,173 @@
 {
   "date": "20260721",
-  "market_summary": "今日A股市场早盘大幅波动，科技板块上演深V反转，芯片、AI、消费电子等硬科技方向全线爆发，带动科创50和创业板指大幅反弹，成交量显著放大，市场情绪由悲观转为乐观。",
+  "market_summary": "今日A股市场深V反转，科技成长风格强势反弹，半导体、AI等板块领涨，成交量显著放大，市场情绪回暖。",
   "sentiment_impact": "偏多",
   "news": [
     {
-      "title": "AI板块全线回暖！人工智能ETF易方达（159819）涨3.97%，算力产业链共振驱动资金持续涌入",
+      "title": "人工智能ETF华富(515980)半日收涨5.46%，科技成长风格反弹，国产AI生态自主可控进程进一步提速",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607213814941615.html",
-      "time": "2026-07-21 11:10:17",
-      "ai_summary": "科创50强势反攻涨超6%",
-      "impact_analysis": "科创50作为硬科技风向标，大涨6%直接提振市场信心，带动创业板和主板科技股反弹，显示资金对科技成长股的强烈偏好。",
+      "url": "https://finance.eastmoney.com/a/202607213815334060.html",
+      "time": "2026-07-21 13:10:44",
+      "ai_summary": "Kimi K3发布，国产大模型全球第一",
+      "impact_analysis": "Kimi K3登顶全球盲测平台，标志国产AI生态自主可控进程提速，直接利好AI算力、芯片及大模型产业链，带动相关板块强势反弹。",
       "affected_sectors": [
-        "半导体",
-        "人工智能"
+        "人工智能",
+        "半导体"
       ],
       "affected_stocks": [
-        "588080.SH",
-        "000688.SH"
+        "688256.SH",
+        "688041.SH"
       ],
       "importance": 9
     },
     {
-      "title": "科创50强势反攻涨超6%！科创50ETF易方达（588080）成交额近14亿，硬科技全线回暖",
+      "title": "科创200ETF鹏华涨超3%，半导体芯片产业链集体爆发，机构称最激烈的抛压或已过去",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607213814930617.html",
-      "time": "2026-07-21 11:08:18",
-      "ai_summary": "科技股早盘上演V型反转",
-      "impact_analysis": "科技板块从暴跌到暴涨的极端反转，显示市场情绪剧烈波动，但半导体领涨表明资金聚焦硬科技主线，短期调整后反弹动能强劲。",
-      "affected_sectors": [
-        "半导体",
-        "光通信"
-      ],
-      "affected_stocks": [
-        "002371.SZ",
-        "688012.SH"
-      ],
-      "importance": 9
-    },
-    {
-      "title": "消费电子板块暴力拉升！消费电子ETF易方达（562950）涨6.10%，AI终端换机潮预期点燃板块行情",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607213814932655.html",
-      "time": "2026-07-21 11:10:38",
-      "ai_summary": "多只宽基ETF放量反弹",
-      "impact_analysis": "科创50ETF成交超100亿，创业板和沪深300ETF放量，显示机构资金大举抄底，对大盘指数形成强力支撑，市场流动性改善。",
-      "affected_sectors": [
-        "宽基指数",
-        "科技"
-      ],
-      "affected_stocks": [
-        "588000.SH",
-        "159915.SZ"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "芯片板块强势反弹！芯片ETF易方达（516350）涨3.68%，全产业链景气共振驱动资金回流",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607213814761911.html",
-      "time": "2026-07-21 10:41:59",
-      "ai_summary": "芯片板块全产业链共振走强",
-      "impact_analysis": "芯片ETF大涨超8%，成分股多只涨停，显示全产业链景气度提升，AI算力需求驱动资金持续流入，半导体成为市场核心主线。",
+      "url": "https://finance.eastmoney.com/a/202607213815385382.html",
+      "time": "2026-07-21 13:44:45",
+      "ai_summary": "半导体设备ETF涨停，板块全面爆发",
+      "impact_analysis": "半导体设备板块多只ETF涨停，成交额超24亿，显示资金强烈追捧。全球芯片设备销售额预期增长23.2%，行业高景气周期未改，提振市场信心。",
       "affected_sectors": [
         "半导体设备",
         "芯片设计"
       ],
       "affected_stocks": [
-        "002371.SZ",
-        "688012.SH"
+        "688012.SH",
+        "002371.SZ"
       ],
-      "importance": 8
+      "importance": 9
     },
     {
-      "title": "科创芯片逆市狂飙！科创芯片ETF易方达（589130）涨3.72%，AI算力驱动科创板芯片板块领涨",
+      "title": "《山西省统筹煤炭行业发展和安全新规十七条》即将发布 拟彻底清理取缔隐蔽工作面",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607213814752969.html",
-      "time": "2026-07-21 10:41:34",
-      "ai_summary": "AI板块全线回暖",
-      "impact_analysis": "人工智能ETF大涨近4%，与科创50共振，算力产业链资金涌入，AI作为长期主线，反弹确认市场对科技创新的信心。",
+      "url": "https://finance.eastmoney.com/a/202607213815372642.html",
+      "time": "2026-07-21 13:40:20",
+      "ai_summary": "科创50指数涨超8%，硬科技全线反攻",
+      "impact_analysis": "科创50指数从跌超3%到涨超8%，振幅超11%，成交额放大，显示市场对硬科技龙头的强烈买入意愿，带动创业板指涨超6%，大盘指数企稳。",
       "affected_sectors": [
-        "人工智能",
-        "算力"
+        "科创板",
+        "创业板"
       ],
       "affected_stocks": [
-        "159819.SZ",
-        "688256.SH"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "中国移动：支持光互联、光计算等前沿技术创新",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607213814901136.html",
-      "time": "2026-07-21 11:05:33",
-      "ai_summary": "消费电子板块暴力拉升",
-      "impact_analysis": "消费电子ETF涨超6%，AI终端换机潮预期点燃行情，与科技板块共振，显示下游需求复苏预期增强，利好产业链。",
-      "affected_sectors": [
-        "消费电子",
-        "半导体"
-      ],
-      "affected_stocks": [
-        "562950.SH",
-        "002475.SZ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "中国石油集团：推动“数智中国石油”建设迈上新台阶",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607213814731883.html",
-      "time": "2026-07-21 10:39:17",
-      "ai_summary": "创业板指涨逾3% 芯片股领涨",
-      "impact_analysis": "创业板指大涨3%，芯片股领涨，显示成长股反弹力度大，市场风险偏好回升，对中小盘股有带动作用。",
-      "affected_sectors": [
-        "创业板",
-        "半导体"
-      ],
-      "affected_stocks": [
-        "159915.SZ",
+        "688981.SH",
         "300750.SZ"
       ],
-      "importance": 7
+      "importance": 9
     },
     {
-      "title": "国家铁路局：上半年铁路固定资产投资完成3632亿元",
+      "title": "2030年我国新材料总产值力争突破12万亿元，科创新材料ETF博时(588010)涨超5%",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607213815026344.html",
-      "time": "2026-07-21 11:22:17",
-      "ai_summary": "沪深两市成交额突破2万亿",
-      "impact_analysis": "成交额放量超3300亿元，显示市场交投活跃，资金入场意愿强，为反弹提供流动性支撑，短期市场动能充足。",
+      "url": "https://finance.eastmoney.com/a/202607213815360517.html",
+      "time": "2026-07-21 13:19:06",
+      "ai_summary": "全球芯片设备销售额预期增长23.2%",
+      "impact_analysis": "SEMI报告预测2026年全球芯片设备销售额增长23.2%，AI基础设施和HBM投资驱动，强化半导体行业长期增长逻辑，支撑板块估值。",
+      "affected_sectors": [
+        "半导体设备",
+        "存储芯片"
+      ],
+      "affected_stocks": [
+        "688012.SH",
+        "002049.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "《山西省统筹煤炭行业发展和安全新规十七条》拟发布：将常态化开展违法“四链”整治",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202607213815381617.html",
+      "time": "2026-07-21 13:48:21",
+      "ai_summary": "沪深两市成交额突破2.5万亿",
+      "impact_analysis": "成交额较昨日放量超3000亿，显示资金大幅入场，市场流动性充裕，为反弹提供支撑，反映投资者情绪从悲观转向积极。",
       "affected_sectors": [
         "全市场"
       ],
       "affected_stocks": [],
+      "importance": 8
+    },
+    {
+      "title": "科创50午后涨超6%！科创50ETF易方达（588080）成交额逾18亿，硬科技全线反攻",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202607213815364726.html",
+      "time": "2026-07-21 13:29:24",
+      "ai_summary": "山西发布煤炭行业安全新规十七条",
+      "impact_analysis": "新规拟彻底清理隐蔽工作面，加强安全监管，可能导致煤炭供给收紧，短期利好煤价，但增加合规成本，对中小煤矿影响较大。",
+      "affected_sectors": [
+        "煤炭",
+        "能源"
+      ],
+      "affected_stocks": [
+        "601088.SH",
+        "600188.SH"
+      ],
       "importance": 7
     },
     {
-      "title": "国信证券首席经济学家荀玉根：短期波动尚未演变成流动性压力 调整后会有新风景",
+      "title": "半导体设备板块全面爆发！半导体设备ETF易方达（159558）涨停涨10.04%，成交额突破24亿",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607213814828146.html",
-      "time": "2026-07-21 10:50:53",
-      "ai_summary": "半导体设备板块持续走高",
-      "impact_analysis": "北方华创涨停，半导体设备板块领涨，显示国产替代逻辑强化，设备龙头受资金追捧，利好整个半导体产业链。",
+      "url": "https://finance.eastmoney.com/a/202607213815362353.html",
+      "time": "2026-07-21 13:29:51",
+      "ai_summary": "上半年上海外贸进出口增长18.6%",
+      "impact_analysis": "上海外贸数据强劲，AI算力产业链成重要增长动能，显示出口韧性，利好外贸及科技产业链，提振经济复苏预期。",
       "affected_sectors": [
-        "半导体设备",
-        "芯片制造"
+        "外贸",
+        "AI算力"
       ],
       "affected_stocks": [
-        "002371.SZ",
-        "688012.SH"
+        "600845.SH",
+        "000977.SZ"
       ],
       "importance": 7
     },
     {
-      "title": "芯片板块全产业链共振走强！芯片ETF东财大涨超8%",
+      "title": "港股通信息技术ETF鹏华涨超5%，Kimi K3发布国产大模型迎来分水岭事件",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202607213814977079.html",
-      "time": "2026-07-21 11:15:55",
-      "ai_summary": "国家铁路局：上半年铁路投资3632亿",
-      "impact_analysis": "铁路投资同比增长2.1%，显示基建稳增长政策持续发力，利好铁路基建和装备板块，但影响相对温和。",
+      "url": "https://finance.eastmoney.com/a/202607213815371140.html",
+      "time": "2026-07-21 13:36:13",
+      "ai_summary": "河南发布下半年促消费大礼包",
+      "impact_analysis": "河南推出汽车最高补2万、家电补1500元等以旧换新政策，直接刺激消费需求，利好汽车、家电板块，带动相关产业链。",
       "affected_sectors": [
-        "铁路基建",
-        "高端装备"
+        "汽车",
+        "家电"
       ],
       "affected_stocks": [
-        "601390.SH",
-        "601766.SH"
+        "002594.SZ",
+        "000333.SZ"
       ],
-      "importance": 6
+      "importance": 7
+    },
+    {
+      "title": "V型大反转！科创芯片设计ETF天弘标的指数暴拉超7%，近20日“吸金”超18亿",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202607213815376581.html",
+      "time": "2026-07-21 13:38:24",
+      "ai_summary": "上半年人形机器人整机产品超全球半数",
+      "impact_analysis": "我国人形机器人整机产品达400款，占全球半数以上，显示产业快速发展，政策支持和技术突破催化板块行情，创业板相关ETF净申购大增。",
+      "affected_sectors": [
+        "人形机器人",
+        "创业板"
+      ],
+      "affected_stocks": [
+        "300124.SZ",
+        "688160.SH"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "易方达张坤二季度“大变阵”：4只基金齐降仓位 蓝筹精选首次买入硬科技",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202607213815342615.html",
+      "time": "2026-07-21 13:13:53",
+      "ai_summary": "张坤二季度大幅调仓，首买硬科技",
+      "impact_analysis": "顶流基金经理张坤大幅降仓并首次买入中芯国际等硬科技股，显示机构资金从消费转向科技，引导市场风格切换，增强科技板块信心。",
+      "affected_sectors": [
+        "半导体",
+        "科技"
+      ],
+      "affected_stocks": [
+        "688981.SH",
+        "002384.SZ"
+      ],
+      "importance": 7
     }
   ]
 }
