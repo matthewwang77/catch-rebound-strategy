@@ -1,5 +1,5 @@
 {
-  "scan_time": "2026-07-22 14:03",
+  "scan_time": "2026-07-22 15:02",
   "scan_date": "20260722",
   "data_date": "2026-07-21",
   "market": {
@@ -19,7 +19,7 @@
   "regime": {
     "status": "bear",
     "label": "2档: 低迷期 — 建议观望",
-    "avg_trend": -1.35,
+    "avg_trend": -1.75,
     "recommended_mode": "bear"
   },
   "modes": {
@@ -28,7 +28,7 @@
       "candidates": [
         {
           "code": "603135.SS",
-          "price": 10.86,
+          "price": 8.45,
           "signal_date": "20260703",
           "pullback_pct": 5.6,
           "limit_days": 4,
