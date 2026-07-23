@@ -1,5 +1,5 @@
 {
-  "scan_time": "2026-07-23 14:02",
+  "scan_time": "2026-07-23 15:03",
   "scan_date": "20260723",
   "data_date": "2026-07-22",
   "market": {
@@ -19,7 +19,7 @@
   "regime": {
     "status": "neutral",
     "label": "4档: 发酵期 — 势头良好",
-    "avg_trend": 2.9,
+    "avg_trend": 2.93,
     "recommended_mode": "loose"
   },
   "modes": {
@@ -28,7 +28,7 @@
       "candidates": [
         {
           "code": "603135.SS",
-          "price": 8.49,
+          "price": 8.63,
           "signal_date": "20260703",
           "pullback_pct": 5.6,
           "limit_days": 4,
