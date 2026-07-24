@@ -1,5 +1,5 @@
 {
-  "scan_time": "2026-07-24 10:04",
+  "scan_time": "2026-07-24 11:32",
   "scan_date": "20260724",
   "data_date": "2026-07-23",
   "market": {
@@ -19,16 +19,24 @@
   "regime": {
     "status": "neutral",
     "label": "4档: 发酵期 — 势头良好",
-    "avg_trend": 2.34,
+    "avg_trend": 1.24,
     "recommended_mode": "loose"
   },
   "modes": {
     "loose": {
-      "count": 1,
+      "count": 2,
       "candidates": [
         {
+          "code": "603956.SS",
+          "price": 6.31,
+          "signal_date": "20260724",
+          "pullback_pct": 1.6,
+          "limit_days": 3,
+          "entity_ratio": 67.0
+        },
+        {
           "code": "603135.SS",
-          "price": 8.52,
+          "price": 8.27,
           "signal_date": "20260703",
           "pullback_pct": 5.6,
           "limit_days": 4,
