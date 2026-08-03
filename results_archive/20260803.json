@@ -1,5 +1,5 @@
 {
-  "scan_time": "2026-08-03 11:33",
+  "scan_time": "2026-08-03 14:02",
   "scan_date": "20260803",
   "data_date": "2026-07-31",
   "market": {
@@ -19,7 +19,7 @@
   "regime": {
     "status": "neutral",
     "label": "3档: 启动期 — 谨慎入场",
-    "avg_trend": -0.19,
+    "avg_trend": -0.32,
     "recommended_mode": "strict"
   },
   "modes": {
