@@ -1,5 +1,5 @@
 {
-  "scan_time": "2026-08-05 14:01",
+  "scan_time": "2026-08-05 15:03",
   "scan_date": "20260805",
   "data_date": "2026-08-04",
   "market": {
@@ -19,7 +19,7 @@
   "regime": {
     "status": "neutral",
     "label": "5档: 高潮期 — 短期风险积聚",
-    "avg_trend": 4.61,
+    "avg_trend": 4.1,
     "recommended_mode": "loose"
   },
   "modes": {
