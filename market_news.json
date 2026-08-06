@@ -1,190 +1,175 @@
 {
   "date": "20260806",
-  "market_summary": "今日A股市场低开高走，科技成长风格强势回归，半导体、先进封装、存储芯片等板块全线爆发，同时黄金、贵金属板块受国际金价突破4300美元提振走强。消息面上，智能驾驶L3/L4国标发布、6G产业规划等政策利好频出，市场情绪明显回暖，成交额突破1.5万亿。",
-  "sentiment_impact": "偏多",
+  "market_summary": "今日A股市场消息面偏多，贵金属、有色、煤炭等资源板块受美联储加息预期降温及供给约束强化影响走强，但宁德时代等权重股下跌拖累创业板，市场成交额连续9日超2万亿，整体呈现分化格局。",
+  "sentiment_impact": "中性",
   "news": [
     {
-      "title": "国瓷材料：针对AI服务器及车规级MLCC粉体 已完成部分高端产线的扩产工作",
+      "title": "清华系物理AI基建初创再融数千万美元",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608063833639855.html",
-      "time": "2026-08-06 10:43:08",
-      "ai_summary": "半导体产业链全线爆发，设备ETF涨4.45%",
-      "impact_analysis": "半导体设备板块受存储芯片业绩超预期及供需缺口支撑，资金大幅流入，带动科创板及创业板反弹，成为今日市场核心主线，预计短期持续强势。",
+      "url": "https://finance.eastmoney.com/a/202608063833767655.html",
+      "time": "2026-08-06 13:52:15",
+      "ai_summary": "美联储加息预期降温，贵金属走强",
+      "impact_analysis": "美国ADP就业不及预期，美联储加息预期降温，利好黄金等贵金属板块，带动A股相关个股上涨，提升市场风险偏好。",
       "affected_sectors": [
-        "半导体设备",
-        "存储芯片",
-        "先进封装"
+        "贵金属",
+        "有色金属"
       ],
       "affected_stocks": [
-        "159558.SZ",
-        "688012.SS",
-        "002371.SZ"
+        "600988.SS",
+        "000975.SZ"
       ],
       "importance": 9
     },
     {
-      "title": "联想创投入股薄膜铌酸锂调制器芯片研发商铌奥光电",
+      "title": "美联储加息预期降温叠加供给约束强化，贵金属、工业金属走强，铜+黄金占比超49%的有色ETF广发(159029)盘中最高涨超3%",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608063833629255.html",
-      "time": "2026-08-06 10:33:07",
-      "ai_summary": "智能驾驶L3/L4重磅国标发布",
-      "impact_analysis": "工信部发布首部L3/L4自动驾驶安全要求，政策落地将加速智能驾驶商业化进程，利好相关产业链，推动智能驾驶板块估值提升。",
+      "url": "https://finance.eastmoney.com/a/202608063833755194.html",
+      "time": "2026-08-06 13:37:21",
+      "ai_summary": "宁德时代跌超5%，拖累创业板",
+      "impact_analysis": "宁德时代作为创业板权重股，其下跌直接拖累创业板指数，引发市场对新能源板块的担忧，可能影响市场情绪。",
       "affected_sectors": [
-        "智能驾驶",
-        "汽车电子",
-        "车联网"
+        "锂电池",
+        "新能源"
       ],
       "affected_stocks": [
-        "002920.SZ",
-        "601689.SS",
-        "300496.SZ"
+        "300750.SZ"
       ],
       "importance": 9
     },
     {
-      "title": "国瓷材料：目前公司已建成硫化物固态电解质自动化生产线 量产能力初步构建",
+      "title": "受香港保险征税消息影响 部分香港保险股大跌",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608063833641122.html",
-      "time": "2026-08-06 10:44:41",
-      "ai_summary": "国际金价突破4300美元，黄金股大涨",
-      "impact_analysis": "美国小非农数据爆冷，降息预期升温，金价创新高，黄金板块及贵金属概念股受提振，避险情绪与宽松预期共同支撑黄金牛市。",
+      "url": "https://finance.eastmoney.com/a/202608063833704939.html",
+      "time": "2026-08-06 12:51:55",
+      "ai_summary": "厄尔尼诺或成150年最强，农产品涨价",
+      "impact_analysis": "厄尔尼诺现象增强，推升全球农产品价格，利好A股农业板块，同时可能引发通胀担忧，影响货币政策预期。",
       "affected_sectors": [
-        "黄金",
-        "贵金属"
+        "农业",
+        "农产品加工"
       ],
       "affected_stocks": [
-        "600547.SS",
-        "002155.SZ",
-        "159934.SZ"
+        "000998.SZ",
+        "600598.SS"
       ],
       "importance": 8
     },
     {
-      "title": "MiniMax注册资本增至55亿元",
+      "title": "诺基亚收购恩智浦一工厂 计划自产磷化铟半导体",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608063833642113.html",
-      "time": "2026-08-06 10:41:20",
-      "ai_summary": "6G万亿级市场蓄势待发",
-      "impact_analysis": "央视评论强调6G纳入十五五规划，产业加速发展，卫星互联网、通信设备等板块受益，政策预期推动相关概念股活跃。",
+      "url": "https://finance.eastmoney.com/a/202608063833764738.html",
+      "time": "2026-08-06 13:49:46",
+      "ai_summary": "沪深两市成交额连续9日破2万亿",
+      "impact_analysis": "成交额持续高位显示市场交投活跃，资金参与度高，但缩量可能暗示短期动能减弱，需关注后续量能变化。",
       "affected_sectors": [
-        "6G",
-        "卫星互联网",
-        "通信设备"
+        "券商",
+        "金融科技"
       ],
       "affected_stocks": [
-        "600050.SS",
-        "002396.SZ",
-        "300308.SZ"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "“AI 教父”辛顿：人工智能可能会发展出自己的目标 这很可怕",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608063833625788.html",
-      "time": "2026-08-06 10:30:30",
-      "ai_summary": "A股回购增持潮，央国企领衔",
-      "impact_analysis": "7月19日以来超120家披露回购增持，金额超280亿，提振市场信心，尤其央国企和硬科技公司，有助于稳定大盘。",
-      "affected_sectors": [
-        "央企改革",
-        "高股息"
-      ],
-      "affected_stocks": [
-        "601398.SS",
-        "600028.SS",
-        "000858.SZ"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "央视财经评论｜6G万亿级市场蓄势待发",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608063833637515.html",
-      "time": "2026-08-06 10:30:19",
-      "ai_summary": "美国小非农爆冷，降息预期升温",
-      "impact_analysis": "美国就业数据疲软，美联储降息预期增强，利好A股风险资产，尤其成长股和黄金，外资流入预期提升。",
-      "affected_sectors": [
-        "黄金",
-        "成长股"
-      ],
-      "affected_stocks": [
-        "600547.SS",
-        "300750.SZ",
-        "159937.SZ"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "贷款利率上限从6%至24% 银行定价“众生相”背后",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608053832899760.html",
-      "time": "2026-08-06 11:05:46",
-      "ai_summary": "SpaceX携手英伟达，太空算力催化",
-      "impact_analysis": "商业航天与卫星互联网板块受太空算力概念催化，卫星ETF涨超2%，通宇通讯涨停，主题投资热度提升。",
-      "affected_sectors": [
-        "商业航天",
-        "卫星通信"
-      ],
-      "affected_stocks": [
-        "002792.SZ",
-        "600118.SS",
-        "300101.SZ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "科创半导体设备ETF鹏华涨超2%，供需缺口支撑晶圆厂扩产刚需",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608063833632654.html",
-      "time": "2026-08-06 10:34:49",
-      "ai_summary": "先进封装概念反弹，长电科技涨停",
-      "impact_analysis": "先进封装作为半导体核心环节，受益AI算力需求，长电科技涨停带动板块，预计持续活跃。",
-      "affected_sectors": [
-        "先进封装",
-        "半导体"
-      ],
-      "affected_stocks": [
-        "600584.SS",
-        "002156.SZ",
-        "688981.SS"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "闪迪财报带崩存储股？马斯克投喂“定心丸”：存储需求增速十倍于供应",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608063833630678.html",
-      "time": "2026-08-06 10:47:53",
-      "ai_summary": "电子特气概念走强，多股涨停",
-      "impact_analysis": "电子特气是半导体材料关键环节，受益国产替代及晶圆厂扩产，和远气体2连板，板块景气度高。",
-      "affected_sectors": [
-        "电子特气",
-        "半导体材料"
-      ],
-      "affected_stocks": [
-        "002971.SZ",
-        "688268.SS",
-        "600378.SS"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "中微半导体在光谷设立华中总部",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608063833635561.html",
-      "time": "2026-08-06 10:37:55",
-      "ai_summary": "创业板指V型反转，成长风格回归",
-      "impact_analysis": "创业板指从跌2.5%翻红，成长ETF涨3.32%，显示资金回流科技成长，市场风险偏好提升，短期有望延续。",
-      "affected_sectors": [
-        "创业板",
-        "科技成长"
-      ],
-      "affected_stocks": [
-        "159915.SZ",
-        "300750.SZ",
+        "600030.SS",
         "300059.SZ"
       ],
+      "importance": 8
+    },
+    {
+      "title": "美联储戴利：关税对美国物价影响明显减弱 但科技投资成为新通胀风险",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608063833722020.html",
+      "time": "2026-08-06 13:13:21",
+      "ai_summary": "AI算力需求推动高端铜材需求爆发",
+      "impact_analysis": "AI算力需求激增带动高端铜材需求，利好稀有金属和铜相关板块，相关个股涨停，板块热度有望持续。",
+      "affected_sectors": [
+        "稀有金属",
+        "铜"
+      ],
+      "affected_stocks": [
+        "000060.SZ",
+        "002171.SZ"
+      ],
       "importance": 7
+    },
+    {
+      "title": "因美纳MiSeq i100 Series-CN中国上市",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608063833719537.html",
+      "time": "2026-08-06 13:05:00",
+      "ai_summary": "煤炭板块持续走高，多股涨停",
+      "impact_analysis": "煤炭板块走强，受供给约束和需求支撑，淮北矿业等涨停，板块估值修复，但需注意政策调控风险。",
+      "affected_sectors": [
+        "煤炭"
+      ],
+      "affected_stocks": [
+        "600985.SS",
+        "601088.SS"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "“150年最强”厄尔尼诺逼近 小麦等农产品已全线涨价！",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608063833722626.html",
+      "time": "2026-08-06 13:51:41",
+      "ai_summary": "工业气体概念拉升，多股涨停",
+      "impact_analysis": "工业气体概念受半导体国产化及AI算力需求带动，蜀道装备等涨停，板块景气度提升，关注后续订单。",
+      "affected_sectors": [
+        "工业气体",
+        "半导体设备"
+      ],
+      "affected_stocks": [
+        "300540.SZ",
+        "688268.SS"
+      ],
+      "importance": 6
+    },
+    {
+      "title": "银行午休引热议 反内卷、经营承压下的商业银行何去何从？",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608063833756149.html",
+      "time": "2026-08-06 13:46:00",
+      "ai_summary": "信息安全板块异动拉升",
+      "impact_analysis": "信息安全板块受政策预期和事件驱动，国安股份等涨停，板块短期活跃，但持续性需观察。",
+      "affected_sectors": [
+        "网络安全",
+        "信息安全"
+      ],
+      "affected_stocks": [
+        "300369.SZ",
+        "002212.SZ"
+      ],
+      "importance": 6
+    },
+    {
+      "title": "矩阵起源完成超千万美元A轮融资",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608063833747746.html",
+      "time": "2026-08-06 13:33:28",
+      "ai_summary": "智能驾驶概念午后活跃",
+      "impact_analysis": "智能驾驶概念受政策和技术进步推动，大众交通等涨停，板块热度提升，但需关注业绩兑现。",
+      "affected_sectors": [
+        "智能驾驶",
+        "汽车电子"
+      ],
+      "affected_stocks": [
+        "600611.SS",
+        "002920.SZ"
+      ],
+      "importance": 5
+    },
+    {
+      "title": "上海新生基金3亿元专项PE深陷航天云网 八年难退出 联合九家股东提起解散诉讼",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608063833733521.html",
+      "time": "2026-08-06 13:25:21",
+      "ai_summary": "私募研判科技调整是拥挤交易出清",
+      "impact_analysis": "私募认为科技调整是交易拥挤释放，而非产业趋势逆转，有助于稳定市场情绪，但需关注资金流向。",
+      "affected_sectors": [
+        "科技",
+        "人工智能"
+      ],
+      "affected_stocks": [
+        "688981.SS",
+        "002230.SZ"
+      ],
+      "importance": 5
     }
   ]
 }
