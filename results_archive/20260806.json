@@ -1,5 +1,5 @@
 {
-  "scan_time": "2026-08-06 15:03",
+  "scan_time": "2026-08-06 15:07",
   "scan_date": "20260806",
   "data_date": "2026-08-05",
   "market": {
@@ -19,7 +19,7 @@
   "regime": {
     "status": "neutral",
     "label": "4档: 发酵期 — 势头良好",
-    "avg_trend": 2.67,
+    "avg_trend": 2.78,
     "recommended_mode": "loose"
   },
   "modes": {
