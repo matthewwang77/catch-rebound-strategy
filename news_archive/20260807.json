@@ -1,175 +1,177 @@
 {
   "date": "20260807",
-  "market_summary": "今日市场消息面偏多，政策面鼓励民爆行业整合、上海支持民营经济，行业面白酒批价回暖、电网投资高增、AI散热与机器人催化，但资金面股票ETF连续净流出，市场分化明显。",
-  "sentiment_impact": "中性",
+  "market_summary": "今日A股市场科技成长风格强势领涨，创业板指涨超2%，半导体、PCB、创新药等板块多点开花。海关总署公布的前7个月进出口数据超预期，出口机电产品增长21.2%，集成电路出口金额同比大增99.5%，显示外贸韧性强劲。同时，刚果（金）禁止铜精矿出口推升铜价创新高，有色金属板块大涨。整体消息面偏多，市场情绪积极。",
+  "sentiment_impact": "偏多",
   "news": [
     {
-      "title": "工信部发文鼓励民爆企业重组整合 新疆、西藏地区民爆持续高景气",
+      "title": "成长风格强势领涨！成长ETF易方达（159259）涨超4%，全球科技共振驱动预期业绩上行",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608073834455163.html",
-      "time": "2026-08-07 08:54:00",
-      "ai_summary": "五粮液批价持续走强，白酒企稳",
-      "impact_analysis": "白酒龙头批价上行，行业边际改善，带动白酒板块估值修复，利好白酒股。",
+      "url": "https://finance.eastmoney.com/a/202608073834941742.html",
+      "time": "2026-08-07 10:23:21",
+      "ai_summary": "前7月出口机电产品增长21.2%",
+      "impact_analysis": "出口数据强劲，显示外需韧性，利好制造业及出口导向型企业，提振市场信心，对大盘有正面支撑。",
       "affected_sectors": [
-        "白酒"
+        "机械设备",
+        "电子"
       ],
       "affected_stocks": [
-        "000858.SZ",
-        "600519.SS"
+        "600031.SS",
+        "000725.SZ"
       ],
-      "importance": 8
+      "importance": 9
     },
     {
-      "title": "广钢气体与韩国AirFirst达成长期绑定战略合作",
+      "title": "今年前7个月我国出口机电产品11.12万亿元 增长21.2%",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608073834613275.html",
-      "time": "2026-08-07 09:09:13",
-      "ai_summary": "股票ETF连续3日流出774亿元",
-      "impact_analysis": "资金持续流出，反映市场情绪谨慎，对大盘形成压力，尤其科技板块承压。",
-      "affected_sectors": [
-        "科技",
-        "宽基ETF"
-      ],
-      "affected_stocks": [
-        "510300.SS",
-        "159915.SZ"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "空间智能技术公司Ommo完成数千万美元A轮融资",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608073834850928.html",
-      "time": "2026-08-07 09:52:40",
-      "ai_summary": "工信部鼓励民爆企业重组整合",
-      "impact_analysis": "政策推动民爆行业集中度提升，利好龙头企业，相关概念股异动拉升，板块短期有催化。",
-      "affected_sectors": [
-        "民爆"
-      ],
-      "affected_stocks": [
-        "002683.SZ",
-        "600985.SS"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "上海发布促进民营经济发展“十五五”规划 2030年GDP占比要达1/3",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608073834860996.html",
-      "time": "2026-08-07 09:55:50",
-      "ai_summary": "紫金矿业回应铜钴出口禁令影响",
-      "impact_analysis": "澄清旗下产品不受禁令影响，缓解市场对铜钴供应担忧，利好紫金矿业及有色板块。",
+      "url": "https://finance.eastmoney.com/a/202608073834952946.html",
+      "time": "2026-08-07 10:33:53",
+      "ai_summary": "刚果金禁止铜精矿出口，铜价新高",
+      "impact_analysis": "供给端收缩预期推升铜价，利好有色金属板块，相关资源股受益，但需关注下游成本压力。",
       "affected_sectors": [
         "有色金属",
-        "铜",
-        "钴"
+        "铜"
       ],
       "affected_stocks": [
-        "601899.SS",
-        "603993.SS"
+        "600362.SS",
+        "000630.SZ"
       ],
-      "importance": 7
+      "importance": 9
     },
     {
-      "title": "小瓶酒能否撬动大市场",
+      "title": "下游多产业需求放量，湿电子化学品国产替代加速，科创新材料ETF博时(588010)上涨2.71%，冲击4连涨",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608063834042464.html",
-      "time": "2026-08-07 08:51:02",
-      "ai_summary": "电网设备投资高增，板块估值修复",
-      "impact_analysis": "电网投资增长超预期，行业景气度提升，利好电网设备板块，估值有修复空间。",
+      "url": "https://finance.eastmoney.com/a/202608073834964082.html",
+      "time": "2026-08-07 10:47:57",
+      "ai_summary": "前7月集成电路出口金额同比增99.5%",
+      "impact_analysis": "集成电路出口爆发式增长，凸显半导体产业高景气，国产替代逻辑强化，利好半导体设备、材料及设计公司。",
       "affected_sectors": [
-        "电网设备"
+        "半导体",
+        "集成电路"
       ],
       "affected_stocks": [
-        "600406.SS",
-        "002028.SZ"
+        "002371.SZ",
+        "603986.SS"
       ],
-      "importance": 7
+      "importance": 9
     },
     {
-      "title": "一年8折 小米YU7成为7月纯电车保值率榜首",
+      "title": "人工智能ETF华富(515980)反转拉升上涨1.41%，成分股光迅科技10cm涨停，云厂商资本开支持续加码成为关键验证",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608063834018718.html",
-      "time": "2026-08-07 08:52:08",
-      "ai_summary": "港股医药走强，百济神州业绩大增",
-      "impact_analysis": "医药板块业绩超预期，带动港股及A股医药股情绪，创新药、CXO等受益。",
+      "url": "https://finance.eastmoney.com/a/202608073834972860.html",
+      "time": "2026-08-07 10:51:41",
+      "ai_summary": "存储三巨头2027产能已售罄",
+      "impact_analysis": "存储芯片供不应求，价格有望持续上涨，A股存储产业链公司业绩弹性大，板块或迎独立行情。",
       "affected_sectors": [
-        "医药",
-        "创新药"
+        "半导体",
+        "存储芯片"
       ],
       "affected_stocks": [
-        "688235.SS",
-        "603259.SS"
+        "603986.SS",
+        "688008.SS"
       ],
-      "importance": 7
+      "importance": 8
     },
     {
-      "title": "第八代五粮液市场批价近日持续走强 下半年白酒行业有望边际企稳",
+      "title": "刚果金出口禁令叠加铜关税不确定性，推升铜价创出新高，工业有色ETF博时(159171)涨超2%，冲击4连涨",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608073834455718.html",
-      "time": "2026-08-07 08:55:00",
-      "ai_summary": "上海发布民营经济十五五规划",
-      "impact_analysis": "地方政策支持民营经济，提升市场信心，利好上海本地民企及整体市场情绪。",
+      "url": "https://finance.eastmoney.com/a/202608073834971844.html",
+      "time": "2026-08-07 10:49:39",
+      "ai_summary": "高盛上调AI服务器PCB和CCL预测",
+      "impact_analysis": "AI服务器需求超预期，PCB及覆铜板市场规模大幅上调，产业链公司订单饱满，业绩确定性高。",
       "affected_sectors": [
-        "民营经济",
-        "上海本地股"
+        "PCB",
+        "电子材料"
       ],
       "affected_stocks": [
-        "600000.SS",
-        "600036.SS"
+        "002463.SZ",
+        "600183.SS"
       ],
-      "importance": 6
+      "importance": 8
     },
     {
-      "title": "AI推动天文观测向“智能分析与自主发现”演进",
+      "title": "海关总署：截至目前已对63个国家实施了零关税政策",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608073834592121.html",
-      "time": "2026-08-07 09:05:46",
-      "ai_summary": "金刚石用于AI散热，概念受关注",
-      "impact_analysis": "AI算力需求带动散热材料创新，金刚石散热概念兴起，利好相关材料公司。",
+      "url": "https://finance.eastmoney.com/a/202608073834955465.html",
+      "time": "2026-08-07 10:34:28",
+      "ai_summary": "创业板指涨超2%，科技主线回归",
+      "impact_analysis": "创业板大涨反映市场风险偏好提升，科技成长股受资金追捧，带动市场赚钱效应，对大盘指数有拉动作用。",
       "affected_sectors": [
-        "金刚石",
-        "AI散热"
-      ],
-      "affected_stocks": [
-        "300064.SZ",
-        "002046.SZ"
-      ],
-      "importance": 6
-    },
-    {
-      "title": "金刚石跻身AI散热界“新贵”",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608073834602367.html",
-      "time": "2026-08-07 09:07:17",
-      "ai_summary": "创业板指涨逾1%，能源金属领涨",
-      "impact_analysis": "创业板走强，能源金属、算力硬件活跃，市场结构性机会明显，但需注意分化。",
-      "affected_sectors": [
-        "能源金属",
-        "算力硬件"
+        "创业板",
+        "科技"
       ],
       "affected_stocks": [
         "300750.SZ",
-        "002460.SZ"
+        "300059.SZ"
       ],
-      "importance": 6
+      "importance": 8
     },
     {
-      "title": "中研股份：高管、部分股东未减持股份并提前终止减持计划",
+      "title": "澳大利亚AI基础设施公司Firmus完成20亿美元融资 英伟达、黑石等参投",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608073834567094.html",
-      "time": "2026-08-07 09:02:27",
-      "ai_summary": "美国抛售欧元提振日元，汇率波动",
-      "impact_analysis": "国际汇率波动可能影响外资流向，但人民币中间价稳定，对A股影响有限。",
+      "url": "https://finance.eastmoney.com/a/202608073834968390.html",
+      "time": "2026-08-07 10:50:52",
+      "ai_summary": "创新药、CRO概念十余股涨停",
+      "impact_analysis": "创新药板块业绩催化估值修复，政策支持明确，行业景气度回升，吸引资金持续流入。",
       "affected_sectors": [
-        "外汇",
-        "外资重仓股"
+        "医药",
+        "CRO"
+      ],
+      "affected_stocks": [
+        "603259.SS",
+        "300347.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "半导体设备板块持续走强！半导体设备ETF易方达（159558）涨近3%，HBM扩产驱动设备需求高景气",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608073834962030.html",
+      "time": "2026-08-07 10:45:51",
+      "ai_summary": "主力资金净流入电子板块超149亿",
+      "impact_analysis": "资金面明确流向电子、通信等科技板块，显示机构做多意愿强烈，短期行情有望延续。",
+      "affected_sectors": [
+        "电子",
+        "通信"
+      ],
+      "affected_stocks": [
+        "002281.SZ",
+        "300308.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "AMD收购AI推理芯片公司Taalas AI芯片巨头走向异构计算",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608073834980622.html",
+      "time": "2026-08-07 11:22:00",
+      "ai_summary": "7月出口同比增长23.9%，进口增27.5%",
+      "impact_analysis": "进出口数据超预期，反映内外需改善，经济基本面支撑增强，利好外贸及消费板块。",
+      "affected_sectors": [
+        "外贸",
+        "消费"
       ],
       "affected_stocks": [
         "600519.SS",
         "000333.SZ"
       ],
-      "importance": 5
+      "importance": 7
+    },
+    {
+      "title": "刚果（金）禁止铜精矿和钴精矿出口！有色金属ETF天弘标的指数盘中大涨2.63%，估值低于近1年近七成时间",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608073834987122.html",
+      "time": "2026-08-07 11:13:48",
+      "ai_summary": "AMD收购AI推理芯片公司Taalas",
+      "impact_analysis": "海外巨头加码AI芯片，强化AI算力需求预期，利好国内AI芯片及服务器产业链。",
+      "affected_sectors": [
+        "AI芯片",
+        "算力"
+      ],
+      "affected_stocks": [
+        "688041.SS",
+        "000977.SZ"
+      ],
+      "importance": 7
     }
   ]
 }
