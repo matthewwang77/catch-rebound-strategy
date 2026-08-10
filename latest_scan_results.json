@@ -1,15 +1,15 @@
 {
-  "scan_time": "2026-08-10 14:18",
+  "scan_time": "2026-08-10 15:02",
   "scan_date": "20260810",
-  "data_date": "2026-08-07",
+  "data_date": "2026-08-10",
   "market": {
     "上证": {
-      "price": 3940.04,
-      "pct": 1.02
+      "price": 3964.09,
+      "pct": 0.61
     },
     "深证": {
-      "price": 14311.01,
-      "pct": 1.42
+      "price": 14303.87,
+      "pct": -0.05
     },
     "创业板": {
       "price": 3563.12,
@@ -18,8 +18,8 @@
   },
   "regime": {
     "status": "neutral",
-    "label": "4档: 发酵期 — 势头良好",
-    "avg_trend": 2.78,
+    "label": "5档: 高潮期 — 短期风险积聚",
+    "avg_trend": 3.36,
     "recommended_mode": "loose"
   },
   "modes": {
