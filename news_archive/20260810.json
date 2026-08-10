@@ -1,175 +1,173 @@
 {
   "date": "20260810",
-  "market_summary": "今日A股市场消息面多空交织，成交额连续第11日突破2万亿显示交投活跃，但存储芯片、CPO等前期热门科技板块大幅回调，资金转向白酒、贵金属、影视等防御性板块，市场呈现结构性分化行情。",
+  "market_summary": "今日A股市场消息面偏多，养殖、军工、消费等板块表现强势，沪指五连阳，但AI板块回调明显，市场分化加剧。政策面暂无重大利好，资金面活跃，成交额超2.5万亿。",
   "sentiment_impact": "中性",
   "news": [
     {
-      "title": "通用中国：合资企业将继续在华生产雪佛兰产品 并提供售后服务保障",
+      "title": "数字政通等在河北成立智能算力公司 含AI相关业务",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608103836438832.html",
-      "time": "2026-08-10 13:01:29",
-      "ai_summary": "宇树科技今日打新，人形机器人第一股",
-      "impact_analysis": "宇树科技作为人形机器人第一股上市，发行市值约610亿元，创年内最快IPO纪录，将显著提升机器人板块关注度，带动相关产业链估值，但需注意打新资金分流效应。",
+      "url": "https://finance.eastmoney.com/a/202608103836481326.html",
+      "time": "2026-08-10 13:57:36",
+      "ai_summary": "A股三大指数涨跌不一，沪指五连阳",
+      "impact_analysis": "市场整体偏强，但创业板回调，AI板块领跌，资金转向防御性板块，短期市场风格切换，关注后续量能。",
       "affected_sectors": [
-        "机器人",
-        "人工智能"
-      ],
-      "affected_stocks": [
-        "688777.SS",
-        "300024.SZ"
-      ],
-      "importance": 9
-    },
-    {
-      "title": "宇树今天打新！中一签缴7.5万元，港股机器人已经涨疯了",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608103836435280.html",
-      "time": "2026-08-10 13:01:00",
-      "ai_summary": "非农爆冷金价站上4300美元",
-      "impact_analysis": "美国非农数据不及预期，降息预期升温，金价突破4300美元，利好A股黄金板块，贵金属股有望持续走强，同时降息预期对成长股估值有支撑。",
-      "affected_sectors": [
-        "黄金",
+        "军工",
         "贵金属"
       ],
       "affected_stocks": [
-        "600988.SS",
-        "002155.SZ"
+        "600316.SS",
+        "600489.SS"
       ],
       "importance": 8
     },
     {
-      "title": "机构：预估iPhone 18 Pro成本大增近40% 苹果或调整毛利策略以稳健出货",
+      "title": "宇树科技开启申购：预计中签率万分之二 单签盈利或超35万元",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608103836484727.html",
-      "time": "2026-08-10 14:00:05",
-      "ai_summary": "台积电7月营收同比增45%",
-      "impact_analysis": "台积电营收大增验证AI硬件需求强劲，对A股半导体产业链形成正面提振，但今日存储芯片板块回调，需关注结构性机会，AI算力相关标的或受支撑。",
+      "url": "https://finance.eastmoney.com/a/202608103836528321.html",
+      "time": "2026-08-10 14:50:49",
+      "ai_summary": "宇树科技开启申购，中签率低",
+      "impact_analysis": "宇树科技作为机器人龙头，申购火爆反映市场对机器人板块热情，可能带动相关概念股活跃，但打新资金分流或对市场流动性有短期影响。",
       "affected_sectors": [
-        "半导体",
-        "AI算力"
+        "机器人",
+        "智能制造"
       ],
       "affected_stocks": [
-        "688981.SS",
-        "002371.SZ"
+        "688836.SS"
       ],
-      "importance": 8
+      "importance": 7
+    },
+    {
+      "title": "摩根士丹利策略师：看好优质股票与人工智能应用企业",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608103836516944.html",
+      "time": "2026-08-10 14:34:49",
+      "ai_summary": "摩根士丹利看好优质股和AI应用",
+      "impact_analysis": "外资机构看好A股盈利改善和AI应用，提振市场信心，利好AI应用端和高质量蓝筹股，但需关注外资实际流入。",
+      "affected_sectors": [
+        "人工智能",
+        "蓝筹股"
+      ],
+      "affected_stocks": [
+        "600519.SS",
+        "300750.SZ"
+      ],
+      "importance": 7
     },
     {
       "title": "卡斯梦（上海）文化传播有限公司增资至4460万 增幅约78%",
       "source": "东方财富",
       "url": "https://finance.eastmoney.com/a/202608103836482872.html",
       "time": "2026-08-10 13:56:24",
-      "ai_summary": "存储芯片集体回调，股王跌超6%",
-      "impact_analysis": "存储芯片板块午后持续下挫，朗科科技跌超14%，兆易创新等跟跌，显示前期涨幅过大后的获利回吐压力，短期板块或继续调整，需注意风险。",
+      "ai_summary": "半导体设备ETF涨2.68%",
+      "impact_analysis": "半导体设备板块活跃，反映资金对国产替代和AI算力需求，带动相关个股上涨，但需警惕高位回调风险。",
       "affected_sectors": [
-        "存储芯片",
-        "半导体"
+        "半导体设备",
+        "芯片"
       ],
       "affected_stocks": [
-        "603986.SS",
-        "300661.SZ"
+        "002371.SZ",
+        "688012.SS"
       ],
-      "importance": 8
-    },
-    {
-      "title": "广哈通信建设大湾区首个智能指挥调度专业化基地",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608103836458362.html",
-      "time": "2026-08-10 13:27:53",
-      "ai_summary": "CPO板块走弱，光迅科技跌停",
-      "impact_analysis": "CPO板块震荡走弱，光迅科技跌停，中际旭创跌超8%，成交额达400亿元，显示资金从高位科技股撤离，短期板块承压，但AI长期需求仍存。",
-      "affected_sectors": [
-        "CPO",
-        "光通信"
-      ],
-      "affected_stocks": [
-        "002281.SZ",
-        "300308.SZ"
-      ],
-      "importance": 8
+      "importance": 7
     },
     {
       "title": "华能澜沧江（施甸）新能源有限公司成立 注册资本2.4亿",
       "source": "东方财富",
       "url": "https://finance.eastmoney.com/a/202608103836493743.html",
       "time": "2026-08-10 14:09:35",
-      "ai_summary": "沪深两市成交额连续11日破2万亿",
-      "impact_analysis": "市场成交额连续第11个交易日突破2万亿，显示资金参与度高，市场活跃度维持，但较上一日缩量超500亿，需关注量能变化对指数支撑力度。",
+      "ai_summary": "猪肉价格转涨，养殖板块走强",
+      "impact_analysis": "猪价上涨和能繁母猪存栏下降，利好养殖板块，带动农业股，但需关注猪价持续性及产能去化进度。",
       "affected_sectors": [
-        "券商",
-        "金融科技"
+        "养殖业",
+        "农业"
       ],
       "affected_stocks": [
-        "600030.SS",
-        "300059.SZ"
+        "002714.SZ",
+        "000876.SZ"
       ],
       "importance": 7
     },
     {
-      "title": "曼德海峡再遭重创 胡塞武装炮轰红海贸易港口和沙特炼油厂",
+      "title": "印尼总统提名德斯特莉·达玛杨蒂为印尼央行行长唯一候选人 印尼盾走强",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608103836456815.html",
-      "time": "2026-08-10 13:25:21",
-      "ai_summary": "白酒板块午后上扬，迎驾贡酒领涨",
-      "impact_analysis": "白酒板块上涨3.22%，迎驾贡酒涨超8%，古井贡酒等跟涨，资金回流防御性消费板块，显示市场风险偏好下降，白酒作为权重板块对指数有支撑。",
+      "url": "https://finance.eastmoney.com/a/202608103836515045.html",
+      "time": "2026-08-10 14:32:46",
+      "ai_summary": "贝莱德二季度猛买半导体芯片",
+      "impact_analysis": "全球最大资管增持半导体，反映外资对A股芯片板块看好，利好半导体产业链，但需注意短期涨幅过大。",
       "affected_sectors": [
-        "白酒",
-        "食品饮料"
+        "半导体",
+        "芯片"
       ],
       "affected_stocks": [
-        "603198.SS",
-        "000596.SZ"
+        "688981.SS",
+        "002049.SZ"
       ],
       "importance": 7
     },
     {
-      "title": "报道称三星电子HBM4近期良率已达到80%",
+      "title": "Adnoc Gas考虑建设绕开霍尔木兹海峡的LNG出口设施",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608103836457973.html",
-      "time": "2026-08-10 13:24:46",
-      "ai_summary": "影视院线板块冲高，儒意电影涨停",
-      "impact_analysis": "《欢迎来龙餐馆》票房火爆，北京文化、儒意电影涨停，影视板块受事件驱动走强，但持续性需观察，短期可关注相关出品方及院线股。",
-      "affected_sectors": [
-        "影视院线",
-        "传媒"
-      ],
-      "affected_stocks": [
-        "000802.SZ",
-        "002905.SZ"
-      ],
-      "importance": 6
-    },
-    {
-      "title": "欧股全面走强 欧洲AI应用标的跑赢美股云巨头",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608103836468549.html",
-      "time": "2026-08-10 13:33:56",
-      "ai_summary": "三星HBM4良率达80%",
-      "impact_analysis": "三星HBM4良率提升至80%，显示HBM技术成熟，对存储芯片行业竞争格局有影响，A股HBM相关概念股或受情绪扰动，但国产替代逻辑不变。",
-      "affected_sectors": [
-        "HBM",
-        "存储芯片"
-      ],
-      "affected_stocks": [
-        "002156.SZ",
-        "300223.SZ"
-      ],
-      "importance": 6
-    },
-    {
-      "title": "数字政通等在河北成立智能算力公司 含AI相关业务",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608103836481326.html",
-      "time": "2026-08-10 13:57:36",
-      "ai_summary": "哈萨克斯坦石油出口改道",
-      "impact_analysis": "里海管道中断导致哈萨克斯坦石油出口改道，可能影响全球原油供应，油价波动对A股石油石化板块有影响，但整体影响有限。",
+      "url": "https://finance.eastmoney.com/a/202608103836502560.html",
+      "time": "2026-08-10 14:17:35",
+      "ai_summary": "Adnoc Gas考虑绕开霍尔木兹海峡",
+      "impact_analysis": "地缘政治风险缓解，降低原油供应中断担忧，利空油价，对A股石油板块形成压力，但利好航空、化工等下游行业。",
       "affected_sectors": [
         "石油石化",
-        "油运"
+        "航空运输"
       ],
       "affected_stocks": [
         "601857.SS",
-        "600026.SS"
+        "600028.SS"
+      ],
+      "importance": 6
+    },
+    {
+      "title": "机构：预估iPhone 18 Pro成本大增近40% 苹果或调整毛利策略以稳健出货",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608103836484727.html",
+      "time": "2026-08-10 14:00:05",
+      "ai_summary": "iPhone 18 Pro成本大增近40%",
+      "impact_analysis": "苹果成本上升可能推高售价，影响消费电子需求，对A股苹果产业链公司构成不确定性，但零部件涨价利好存储、面板等上游。",
+      "affected_sectors": [
+        "消费电子",
+        "半导体"
+      ],
+      "affected_stocks": [
+        "002475.SZ",
+        "300433.SZ"
+      ],
+      "importance": 6
+    },
+    {
+      "title": "AI投资浪潮持续涌动！半导体设备ETF易方达（159558）涨2.68%，成交额突破15亿",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608103836517466.html",
+      "time": "2026-08-10 14:32:53",
+      "ai_summary": "消费板块午后强势，影视链爆发",
+      "impact_analysis": "消费板块走强，影视院线受票房提振，带动市场情绪，但持续性需观察，关注政策刺激消费预期。",
+      "affected_sectors": [
+        "影视院线",
+        "食品饮料"
+      ],
+      "affected_stocks": [
+        "000802.SZ",
+        "600088.SS"
+      ],
+      "importance": 6
+    },
+    {
+      "title": "富加镓业：与芯长征集团战略合作 推动第四代半导体氧化镓产业化",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608103836521341.html",
+      "time": "2026-08-10 14:42:50",
+      "ai_summary": "富加镓业推动氧化镓产业化",
+      "impact_analysis": "第四代半导体氧化镓产业化进展，利好相关概念股，但公司体量较小，对大盘影响有限，关注后续技术突破。",
+      "affected_sectors": [
+        "半导体材料",
+        "第三代半导体"
+      ],
+      "affected_stocks": [
+        "300666.SZ"
       ],
       "importance": 5
     }
