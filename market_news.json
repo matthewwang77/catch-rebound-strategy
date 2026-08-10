@@ -1,175 +1,176 @@
 {
   "date": "20260810",
-  "market_summary": "今日A股市场消息面偏多，三大指数集体高开，成交额放量，半导体设备、稀有金属、创新药等板块表现强势，资金活跃度提升。",
-  "sentiment_impact": "偏多",
+  "market_summary": "今日市场消息面多空交织，医药板块受药明康德司法胜利及业绩提振强势领涨，存储芯片国产化进程加速，但CPO等前期热门科技板块遭主力大幅抛售，创业板指跌2%，市场分化明显。",
+  "sentiment_impact": "中性",
   "news": [
     {
-      "title": "稀有金属ETF华富(561800)早盘冲高涨超2%冲击7连涨，美国30亿美元加码关键矿产，机构提示关注能源金属、小金属反弹窗口",
+      "title": "巡天千河：XS-01星今日出征",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608103836223771.html",
-      "time": "2026-08-10 09:51:10",
-      "ai_summary": "美国30亿美元加码关键矿产，稀有金属板块大涨",
-      "impact_analysis": "美国加码关键矿产投资，刺激全球稀有金属需求预期，A股相关板块受提振，能源金属和小金属有望持续反弹，带动市场情绪。",
+      "url": "https://finance.eastmoney.com/a/202608103836382516.html",
+      "time": "2026-08-10 10:38:16",
+      "ai_summary": "药明康德司法胜利，创新药板块爆发",
+      "impact_analysis": "药明康德获美法院阶段性叫停1260H认定，股价创历史新高，带动CXO及创新药板块大涨，成为今日市场最强主线，显著提升医药板块风险偏好，吸引资金流入。",
       "affected_sectors": [
-        "稀有金属",
-        "能源金属"
-      ],
-      "affected_stocks": [
-        "603799.SS",
-        "002460.SZ"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "半导体设备板块强势领涨！半导体设备ETF易方达（159558）涨3.20%，资金积极涌入",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608103836227785.html",
-      "time": "2026-08-10 09:52:59",
-      "ai_summary": "半导体设备板块强势领涨，ETF涨3.2%",
-      "impact_analysis": "半导体设备板块受资金追捧，反映国产替代逻辑强化，行业景气度提升，有望带动科技股整体走强，对创业板和科创板形成支撑。",
-      "affected_sectors": [
-        "半导体设备",
-        "集成电路"
-      ],
-      "affected_stocks": [
-        "688012.SS",
-        "002371.SZ"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "药明康德“解禁”！美法院阶段性叫停1260H认定，港股医疗ETF永赢含药明系全市场最高，开盘涨超2%",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608103836154810.html",
-      "time": "2026-08-10 09:41:40",
-      "ai_summary": "药明康德解禁，美法院叫停1260H认定，CXO板块领涨",
-      "impact_analysis": "药明康德等CXO企业受利好刺激，板块大涨，带动医药医疗整体回暖，对创业板和科创板权重股有积极影响，市场情绪改善。",
-      "affected_sectors": [
-        "CXO",
-        "医药医疗"
+        "创新药",
+        "CXO"
       ],
       "affected_stocks": [
         "603259.SS",
         "300759.SZ"
       ],
-      "importance": 8
+      "importance": 10
     },
     {
-      "title": "A股开盘：三大指数集体高开",
+      "title": "十年磨一剑 国产存储产业的突围",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608103836080589.html",
-      "time": "2026-08-10 09:25:33",
-      "ai_summary": "A股三大指数集体高开，市场情绪回暖",
-      "impact_analysis": "三大指数高开，显示市场情绪回暖，成交额放量，资金入场意愿增强，短期大盘有望延续反弹，但需关注后续持续性。",
+      "url": "https://finance.eastmoney.com/a/202608103836409789.html",
+      "time": "2026-08-10 11:13:22",
+      "ai_summary": "国产存储芯片有望进入苹果供应链",
+      "impact_analysis": "国产存储芯片获苹果测试，标志性突破，利好国产存储产业链，长鑫科技、长江存储等企业受益，带动半导体设备及材料板块情绪，但需注意实际落地时间。",
       "affected_sectors": [
-        "全市场"
+        "存储芯片",
+        "半导体设备"
       ],
       "affected_stocks": [
-        "000001.SS",
-        "399001.SZ"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "沪深两市成交额突破1万亿元 较上一个交易日此时放量超1500亿元",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608103836287584.html",
-      "time": "2026-08-10 10:03:49",
-      "ai_summary": "沪深两市成交额突破1万亿，放量超1500亿",
-      "impact_analysis": "成交额显著放量，显示市场交投活跃，资金参与度高，短期市场情绪偏暖，有利于指数进一步上行，但需警惕过热风险。",
-      "affected_sectors": [
-        "全市场"
-      ],
-      "affected_stocks": [
-        "000001.SS",
-        "399001.SZ"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "股票ETF结束5周净流入 上周流出760亿",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608103836122091.html",
-      "time": "2026-08-10 09:34:39",
-      "ai_summary": "股票ETF上周净流出760亿，结束5周净流入",
-      "impact_analysis": "ETF资金流出反映短期市场情绪谨慎，可能对大盘形成一定压力，但流出规模较大，需关注后续资金动向，或影响指数走势。",
-      "affected_sectors": [
-        "大盘蓝筹",
-        "创业板"
-      ],
-      "affected_stocks": [
-        "000300.SS",
-        "399006.SZ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "AI医疗概念持续走高 金域医学等多股涨停",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608103836214349.html",
-      "time": "2026-08-10 09:51:16",
-      "ai_summary": "AI医疗概念持续走高，多股涨停",
-      "impact_analysis": "AI医疗概念受资金追捧，金域医学等涨停，带动医疗信息化和AI应用板块活跃，对创业板和科创板有积极影响，市场热点扩散。",
-      "affected_sectors": [
-        "AI医疗",
-        "医疗信息化"
-      ],
-      "affected_stocks": [
-        "603882.SS",
-        "300244.SZ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "半导体设备板块再度走强 盛美上海涨超10%",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608103836236582.html",
-      "time": "2026-08-10 09:54:07",
-      "ai_summary": "半导体设备板块再度走强，盛美上海涨超10%",
-      "impact_analysis": "半导体设备板块持续走强，盛美上海领涨，反映行业高景气，国产替代加速，对科技股整体有带动作用，支撑市场风险偏好。",
-      "affected_sectors": [
-        "半导体设备",
-        "集成电路"
-      ],
-      "affected_stocks": [
-        "688082.SS",
+        "688981.SS",
         "688012.SS"
       ],
+      "importance": 9
+    },
+    {
+      "title": "药明康德司法反制1260H名单迎阶段胜利！“药明系含量近30%”·创新药ETF天弘标的指数再飙涨近4%，年内累计涨超20%，居同类前列",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608103836370164.html",
+      "time": "2026-08-10 10:28:20",
+      "ai_summary": "主力资金大幅流出电子板块",
+      "impact_analysis": "电子板块净流出超199亿，中际旭创遭净卖出超52亿，显示资金从前期热门科技股撤出，转向医药、消费等防御板块，短期科技股承压，市场风格切换。",
+      "affected_sectors": [
+        "电子",
+        "通信"
+      ],
+      "affected_stocks": [
+        "300308.SZ",
+        "002475.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "广州市白云区政数局局长陈佳毅带队到天亿马调研词元出海业务",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608103836413136.html",
+      "time": "2026-08-10 11:21:19",
+      "ai_summary": "大摩上调全球云资本开支预期",
+      "impact_analysis": "摩根士丹利预计2027年云资本开支增29%，实际或达1.4万亿美元，利好算力产业链，但今日CPO概念走弱，需关注资金是否回流，长期利好AI基础设施。",
+      "affected_sectors": [
+        "算力",
+        "云计算"
+      ],
+      "affected_stocks": [
+        "000977.SZ",
+        "300502.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "主力资金监控：中际旭创净卖出超52亿",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608103836402282.html",
+      "time": "2026-08-10 10:57:23",
+      "ai_summary": "猪肉价格大涨，养殖板块景气回升",
+      "impact_analysis": "猪肉价格大幅转涨，养殖ETF涨2.69%，行业景气拐点信号渐明，利好养殖及饲料板块，龙头企业盈利有望修复，资金关注度提升。",
+      "affected_sectors": [
+        "养殖",
+        "饲料"
+      ],
+      "affected_stocks": [
+        "000876.SZ",
+        "002714.SZ"
+      ],
       "importance": 7
     },
     {
-      "title": "鸡苗供给偏紧，畜牧养殖板块走强！养殖ETF永赢盘中涨超2%",
+      "title": "华沿机器人等在广东横琴成立数智科技公司",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608103836247946.html",
-      "time": "2026-08-10 09:56:14",
-      "ai_summary": "鸡苗供给偏紧，畜牧养殖板块走强",
-      "impact_analysis": "白羽鸡供给收缩预期升温，养殖板块走强，益生股份涨停，带动农业板块活跃，但影响范围相对有限，对大盘指数影响较小。",
+      "url": "https://finance.eastmoney.com/a/202608103836412122.html",
+      "time": "2026-08-10 11:19:19",
+      "ai_summary": "沪深两市成交额突破1.5万亿",
+      "impact_analysis": "成交额显著放量，预计全天超2.7万亿，显示市场交投活跃，资金博弈加剧，但创业板指跌2%，分化明显，需警惕高位股风险。",
       "affected_sectors": [
-        "养殖业",
-        "农业"
+        "券商",
+        "金融科技"
       ],
       "affected_stocks": [
-        "002458.SZ",
-        "300498.SZ"
+        "300059.SZ",
+        "600030.SS"
       ],
-      "importance": 5
+      "importance": 7
     },
     {
-      "title": "电力板块震荡拉升 立新能源涨停",
+      "title": "美股牛市即将逆转？美银直指这一“转折点” 建议用黄金对冲！",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608103836145118.html",
-      "time": "2026-08-10 09:39:32",
-      "ai_summary": "全国用电负荷创新高，电力板块拉升",
-      "impact_analysis": "用电负荷创新高，电力需求旺盛，电力板块受提振，立新能源涨停，对公用事业板块有正面影响，但整体对大盘影响有限。",
+      "url": "https://finance.eastmoney.com/a/202608103836348441.html",
+      "time": "2026-08-10 10:57:08",
+      "ai_summary": "韩国推动半导体与AI数据中心投资",
+      "impact_analysis": "韩国拟加快半导体和AI数据中心投资，全球科技竞争加剧，利好国内半导体及AI产业链，但需关注国产替代进程，短期情绪提振有限。",
       "affected_sectors": [
-        "电力",
-        "公用事业"
+        "半导体",
+        "AI"
       ],
       "affected_stocks": [
-        "001258.SZ",
-        "600027.SS"
+        "688981.SS",
+        "002230.SZ"
       ],
-      "importance": 5
+      "importance": 6
+    },
+    {
+      "title": "中国联通在广东成立终端智能运营公司",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608103836391638.html",
+      "time": "2026-08-10 10:46:30",
+      "ai_summary": "股票ETF资金净流出超290亿元",
+      "impact_analysis": "大涨日ETF资金净流出，显示部分资金逢高减仓，中证1000净流出居前，市场情绪谨慎，短期反弹持续性存疑，需关注后续资金流向。",
+      "affected_sectors": [
+        "宽基指数"
+      ],
+      "affected_stocks": [
+        "510300.SS",
+        "159919.SZ"
+      ],
+      "importance": 6
+    },
+    {
+      "title": "大摩：全球云资本开支2027年料激增29% 算力饥渴下四大巨头产能全线告急",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608103836415132.html",
+      "time": "2026-08-10 11:21:51",
+      "ai_summary": "央行连续21个月增持黄金",
+      "impact_analysis": "央行持续购金，7月增持64万盎司，黄金储备达7608万盎司，支撑金价反弹，利好黄金板块，避险需求提升，但需注意金价高位波动。",
+      "affected_sectors": [
+        "黄金",
+        "贵金属"
+      ],
+      "affected_stocks": [
+        "600547.SS",
+        "002155.SZ"
+      ],
+      "importance": 6
+    },
+    {
+      "title": "宜宾普华新材料科技有限责任公司成立 注册资本1.5亿",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608103836403843.html",
+      "time": "2026-08-10 10:57:43",
+      "ai_summary": "创业板指跌2%，科技股回调",
+      "impact_analysis": "创业板指跌幅扩大至2%，CPO概念走弱，光迅科技逼近跌停，科技成长股调整压力大，市场风格转向医药、消费等防御板块，短期注意风险。",
+      "affected_sectors": [
+        "创业板",
+        "CPO"
+      ],
+      "affected_stocks": [
+        "300502.SZ",
+        "002281.SZ"
+      ],
+      "importance": 6
     }
   ]
 }
