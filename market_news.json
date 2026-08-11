@@ -1,170 +1,178 @@
 {
   "date": "20260811",
-  "market_summary": "今日A股市场消息面偏多，AI、创新药、人形机器人等科技成长板块表现活跃，但有色板块走弱，市场呈现结构性行情。海外方面，美联储官员释放鹰派信号，但国内政策面相对平静。",
-  "sentiment_impact": "偏多",
+  "market_summary": "今日A股市场整体震荡分化，沪指收跌，创业板指微涨，成交额超2.3万亿但较昨日缩量。盘面上，人形机器人、MLCC、CRO等概念活跃，而有色、贵金属板块走弱。消息面，国际油价大涨带动能化板块走强，韩国出口数据强劲显示半导体景气，英伟达联合金融机构组局5000亿美元投资AI基础设施，对AI算力产业链形成利好。",
+  "sentiment_impact": "中性",
   "news": [
     {
-      "title": "上周全球调用量排名前四均为中国AI大模型，CSP资本支出预计在2026年同比激增约90%",
+      "title": "英伟达联合金融机构组局 5000亿美元能干啥？",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608113837738231.html",
-      "time": "2026-08-11 13:07:48",
-      "ai_summary": "中国AI大模型全球调用量领先，CSP资本支出激增",
-      "impact_analysis": "AI产业景气度持续验证，资本支出大增利好算力基础设施产业链，带动AI板块上涨，对创业板和科技股形成支撑。",
-      "affected_sectors": [
-        "人工智能",
-        "算力"
-      ],
-      "affected_stocks": [
-        "300308.SZ",
-        "688111.SS"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "CXO含量超35%! 创新药ETF天弘标的指数大涨超2.6%，今年以来涨幅超21%",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608113837730555.html",
-      "time": "2026-08-11 13:03:32",
-      "ai_summary": "创新药指数大涨，CXO板块表现强势",
-      "impact_analysis": "创新药板块持续走强，CXO含量高，显示资金对医药生物板块关注度提升，叠加估值低位，有望带动医药板块反弹。",
-      "affected_sectors": [
-        "创新药",
-        "CXO"
-      ],
-      "affected_stocks": [
-        "300759.SZ",
-        "688235.SS"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "机器人ETF鹏华涨超2%，上半年全球人形机器人出货量约为19100台",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608113837764183.html",
-      "time": "2026-08-11 13:44:38",
-      "ai_summary": "人形机器人出货量同比增近三倍，中国占97%",
-      "impact_analysis": "人形机器人行业高增长，中国厂商主导，直接利好机器人产业链，带动相关概念股上涨。",
-      "affected_sectors": [
-        "人形机器人",
-        "自动化设备"
-      ],
-      "affected_stocks": [
-        "002527.SZ",
-        "603901.SS"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "光伏企业实控人罕见转让自家股票！",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608113837767293.html",
-      "time": "2026-08-11 13:55:00",
-      "ai_summary": "天合光能实控人转让股份，光伏行业困境凸显",
-      "impact_analysis": "光伏龙头实控人减持反映行业深度内卷和盈利压力，可能引发市场对光伏板块的担忧，短期利空光伏股。",
-      "affected_sectors": [
-        "光伏"
-      ],
-      "affected_stocks": [
-        "688599.SS"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "非科技板块的春天？医药板块调研热度超越半导体",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608113837715259.html",
-      "time": "2026-08-11 12:53:23",
-      "ai_summary": "医药板块调研热度超越半导体，机构关注度提升",
-      "impact_analysis": "公募调研转向医药，显示机构资金可能从科技流向医药，医药板块配置价值凸显，有望吸引增量资金。",
-      "affected_sectors": [
-        "医药生物"
-      ],
-      "affected_stocks": [
-        "688235.SS",
-        "688266.SS"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "太极实业直线拉涨停！存储芯片震荡拉升 反弹还能走多远？",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608113837762621.html",
-      "time": "2026-08-11 13:47:00",
-      "ai_summary": "存储芯片拉升，太极实业涨停，反弹持续性存疑",
-      "impact_analysis": "存储芯片板块反弹，但券商认为属超跌修复，市场风格轮动快，短期可能继续活跃，但需注意追高风险。",
-      "affected_sectors": [
-        "存储芯片",
-        "半导体"
-      ],
-      "affected_stocks": [
-        "600667.SS",
-        "002185.SZ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "黄仁勋深度解读5000亿美元融资计划：AI算力是“投资级资产”",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608113837711837.html",
-      "time": "2026-08-11 12:54:01",
-      "ai_summary": "黄仁勋强调AI算力是投资级资产，回应融资质疑",
-      "impact_analysis": "英伟达CEO言论强化AI算力长期需求逻辑，利好A股AI算力产业链，提振市场对AI板块信心。",
+      "url": "https://finance.eastmoney.com/a/202608113837787748.html",
+      "time": "2026-08-11 14:33:00",
+      "ai_summary": "英伟达联合六大机构撬动5000亿美元投资AI基础设施",
+      "impact_analysis": "英伟达将GPU定义为可抵押资产，有望加速全球AI数据中心建设，利好A股AI算力、光模块、服务器等产业链，提升市场对AI板块的长期信心。",
       "affected_sectors": [
         "AI算力",
+        "光模块",
         "数据中心"
       ],
       "affected_stocks": [
         "300308.SZ",
-        "000977.SZ"
+        "000977.SZ",
+        "002415.SZ"
       ],
-      "importance": 7
+      "importance": 9
     },
     {
-      "title": "美联储官员布洛克：委员会讨论了加息或维持利率不变 而非降息",
+      "title": "韩国第二季度出口2755亿美元创新高 同比增长57.3%",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608113837761376.html",
-      "time": "2026-08-11 13:39:55",
-      "ai_summary": "美联储官员讨论加息而非降息，鹰派信号",
-      "impact_analysis": "美联储鹰派言论可能压制全球风险偏好，对A股外资流入和成长股估值形成一定压力，但影响有限。",
-      "affected_sectors": [
-        "全市场"
-      ],
-      "affected_stocks": [],
-      "importance": 7
-    },
-    {
-      "title": "韩国宣布成立5万亿韩元半导体专项基金！科创半导体设备ETF华泰柏瑞（588710）“存储芯片”含量超80%",
-      "source": "新浪财经",
-      "url": "https://finance.sina.com.cn/money/fund/jjh/2026-08-11/doc-inimxmer4338744.shtml",
-      "time": "2026-08-11 13:26",
-      "ai_summary": "韩国设立5万亿韩元半导体基金，利好存储芯片",
-      "impact_analysis": "韩国半导体基金支持芯片产业，强化存储芯片景气预期，对A股存储芯片板块形成正面催化。",
+      "url": "https://finance.eastmoney.com/a/202608113837803996.html",
+      "time": "2026-08-11 14:54:53",
+      "ai_summary": "韩国二季度出口创新高，半导体出口强劲",
+      "impact_analysis": "韩国出口数据印证全球半导体高景气，对A股半导体板块形成正面映射，尤其利好存储、设备、材料等细分领域。",
       "affected_sectors": [
         "半导体",
         "存储芯片"
       ],
       "affected_stocks": [
-        "002185.SZ",
+        "002371.SZ",
+        "688012.SS",
         "603986.SS"
       ],
+      "importance": 8
+    },
+    {
+      "title": "国内商品期货收盘 主力合约多数上涨",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608113837805070.html",
+      "time": "2026-08-11 15:00:16",
+      "ai_summary": "国内商品期货多数上涨，原油焦煤领涨",
+      "impact_analysis": "原油、焦煤等大涨，将直接利好A股石油、煤炭板块，同时可能推升PPI，对周期股形成提振，但需关注通胀压力。",
+      "affected_sectors": [
+        "石油石化",
+        "煤炭"
+      ],
+      "affected_stocks": [
+        "601857.SS",
+        "600188.SS",
+        "601088.SS"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "A股三大指数涨跌不一 MLCC与CRO概念股走强",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608113837804943.html",
+      "time": "2026-08-11 15:00:33",
+      "ai_summary": "A股收盘：沪指跌0.82%，创业板涨0.34%",
+      "impact_analysis": "大盘分化，沪指受权重拖累下跌，创业板相对抗跌，市场结构性机会为主，机器人、医药等板块活跃，但整体情绪谨慎。",
+      "affected_sectors": [
+        "机器人",
+        "医药商业"
+      ],
+      "affected_stocks": [
+        "300124.SZ",
+        "603259.SS"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "人形机器人概念午后强势拉升 巨轮智能北特科技双双涨停 机器人ETF易方达（159530）涨2.64%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608113837778746.html",
+      "time": "2026-08-11 14:12:10",
+      "ai_summary": "人形机器人概念午后拉升，多股涨停",
+      "impact_analysis": "人形机器人板块强势，产业进入三重驱动阶段，政策与资本加码，短期资金关注度高，但需注意回调风险。",
+      "affected_sectors": [
+        "人形机器人",
+        "智能制造"
+      ],
+      "affected_stocks": [
+        "002031.SZ",
+        "002472.SZ",
+        "300024.SZ"
+      ],
       "importance": 7
+    },
+    {
+      "title": "打新行情火爆！超纯应材涨653%，银行APP扎堆推打新理财",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/roll/2026-08-11/doc-inimxrnq5813882.shtml",
+      "time": "2026-08-11 14:36",
+      "ai_summary": "新股超纯应材上市暴涨653%，打新火爆",
+      "impact_analysis": "新股赚钱效应显著，提振市场情绪，但过度炒作可能引发监管关注，对次新股板块有短期刺激。",
+      "affected_sectors": [
+        "次新股",
+        "半导体"
+      ],
+      "affected_stocks": [
+        "301717.SZ"
+      ],
+      "importance": 6
     },
     {
       "title": "有色板块持续走弱 洛阳钼业等多股跌超5%",
       "source": "东方财富",
       "url": "https://finance.eastmoney.com/a/202608113837767062.html",
       "time": "2026-08-11 13:50:40",
-      "ai_summary": "有色板块走弱，贵金属领跌，多股跌超5%",
-      "impact_analysis": "有色板块下跌可能受海外宏观和商品价格影响，短期拖累大盘，但属于板块轮动，对整体市场影响有限。",
+      "ai_summary": "有色板块走弱，贵金属领跌",
+      "impact_analysis": "有色板块下跌拖累大盘，贵金属回调或与美元走强有关，短期对相关个股形成压力，但中长期逻辑未变。",
       "affected_sectors": [
         "有色金属",
         "贵金属"
       ],
       "affected_stocks": [
         "603993.SS",
-        "601899.SS"
+        "601899.SS",
+        "600988.SS"
       ],
       "importance": 6
+    },
+    {
+      "title": "沪深两市成交额突破2万亿 较上一个交易日此时缩量超2000亿元",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608113837783741.html",
+      "time": "2026-08-11 14:24:37",
+      "ai_summary": "沪深两市成交额突破2万亿，较昨日缩量",
+      "impact_analysis": "成交额虽超2万亿但缩量，显示市场活跃度有所下降，资金观望情绪升温，短期大盘或维持震荡。",
+      "affected_sectors": [
+        "大盘"
+      ],
+      "affected_stocks": [],
+      "importance": 6
+    },
+    {
+      "title": "集运指数欧线期货连续主力合约日内跌7%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608113837774747.html",
+      "time": "2026-08-11 14:06:12",
+      "ai_summary": "集运指数欧线期货大跌7%",
+      "impact_analysis": "欧线集运大跌，反映航运需求或走弱，利空航运板块，但可能利好下游出口企业成本改善。",
+      "affected_sectors": [
+        "航运",
+        "港口"
+      ],
+      "affected_stocks": [
+        "601919.SS",
+        "600018.SS"
+      ],
+      "importance": 5
+    },
+    {
+      "title": "先锋集团分析师预计美国7月CPI环比上升0.1%、同比上升3.3%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608113837804722.html",
+      "time": "2026-08-11 14:56:56",
+      "ai_summary": "先锋集团预计美国7月CPI同比3.3%",
+      "impact_analysis": "美国CPI预期温和，若实际符合，将缓解美联储加息压力，利好全球风险资产，对A股外资流入有正面影响。",
+      "affected_sectors": [
+        "大盘",
+        "外资重仓股"
+      ],
+      "affected_stocks": [
+        "600519.SS",
+        "300750.SZ"
+      ],
+      "importance": 5
     }
   ]
 }
