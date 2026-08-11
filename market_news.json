@@ -1,186 +1,169 @@
 {
   "date": "20260811",
-  "market_summary": "今日市场消息面偏多，新能源汽车出口数据强劲、创新药政策利好、AI及存储芯片板块活跃，但成交额缩量显示市场观望情绪浓厚，黄金价格创新高带来避险情绪。",
+  "market_summary": "今日A股市场消息面偏多，AI、创新药、人形机器人等科技成长板块表现活跃，但有色板块走弱，市场呈现结构性行情。海外方面，美联储官员释放鹰派信号，但国内政策面相对平静。",
   "sentiment_impact": "偏多",
   "news": [
     {
-      "title": "中汽协：上半年中国出口到“一带一路”沿线国家新能源汽车113.5万辆 同比增长59.4%",
+      "title": "上周全球调用量排名前四均为中国AI大模型，CSP资本支出预计在2026年同比激增约90%",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608113837700060.html",
-      "time": "2026-08-11 11:16:31",
-      "ai_summary": "上半年新能源汽车出口一带一路增59.4%",
-      "impact_analysis": "出口数据强劲，直接利好新能源汽车产业链，提升行业景气度，带动相关板块估值修复，对创业板和深成指有支撑。",
+      "url": "https://finance.eastmoney.com/a/202608113837738231.html",
+      "time": "2026-08-11 13:07:48",
+      "ai_summary": "中国AI大模型全球调用量领先，CSP资本支出激增",
+      "impact_analysis": "AI产业景气度持续验证，资本支出大增利好算力基础设施产业链，带动AI板块上涨，对创业板和科技股形成支撑。",
       "affected_sectors": [
-        "新能源汽车",
-        "汽车整车",
-        "锂电池"
+        "人工智能",
+        "算力"
       ],
       "affected_stocks": [
-        "002594.SZ",
-        "601633.SS",
-        "300750.SZ"
+        "300308.SZ",
+        "688111.SS"
       ],
       "importance": 8
     },
     {
-      "title": "上海七部门发文支持创新药，机构扎堆调研药企！港股通创新药ETF万家近一周涨超13%",
+      "title": "CXO含量超35%! 创新药ETF天弘标的指数大涨超2.6%，今年以来涨幅超21%",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608113837683595.html",
-      "time": "2026-08-11 10:39:56",
-      "ai_summary": "上海七部门发文支持创新药",
-      "impact_analysis": "政策利好创新药行业，机构调研增加，创新药概念股走强，带动医药板块反弹，对创业板和科创板有积极影响。",
+      "url": "https://finance.eastmoney.com/a/202608113837730555.html",
+      "time": "2026-08-11 13:03:32",
+      "ai_summary": "创新药指数大涨，CXO板块表现强势",
+      "impact_analysis": "创新药板块持续走强，CXO含量高，显示资金对医药生物板块关注度提升，叠加估值低位，有望带动医药板块反弹。",
       "affected_sectors": [
         "创新药",
-        "生物医药"
+        "CXO"
       ],
       "affected_stocks": [
-        "300347.SZ",
-        "688180.SS",
-        "600276.SS"
+        "300759.SZ",
+        "688235.SS"
       ],
       "importance": 8
     },
     {
-      "title": "北京数据集团与华为达成战略合作意向 铜牛信息将参与北京算力基础设施建设任务",
+      "title": "机器人ETF鹏华涨超2%，上半年全球人形机器人出货量约为19100台",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608113837675892.html",
-      "time": "2026-08-11 10:37:23",
-      "ai_summary": "北京数据集团与华为战略合作",
-      "impact_analysis": "算力基础设施建设合作，利好数字经济、AI算力板块，相关概念股有望受益，提升市场对科技股的关注度。",
+      "url": "https://finance.eastmoney.com/a/202608113837764183.html",
+      "time": "2026-08-11 13:44:38",
+      "ai_summary": "人形机器人出货量同比增近三倍，中国占97%",
+      "impact_analysis": "人形机器人行业高增长，中国厂商主导，直接利好机器人产业链，带动相关概念股上涨。",
       "affected_sectors": [
-        "算力",
-        "数字经济",
-        "华为产业链"
+        "人形机器人",
+        "自动化设备"
       ],
       "affected_stocks": [
-        "000977.SZ",
-        "600588.SS",
-        "002230.SZ"
+        "002527.SZ",
+        "603901.SS"
       ],
-      "importance": 7
+      "importance": 8
     },
     {
-      "title": "新能源电池板块集体走强 碳酸锂价格企稳叠加电力板块反弹 储能电池ETF易方达（159566）涨2.36%",
+      "title": "光伏企业实控人罕见转让自家股票！",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608113837684044.html",
-      "time": "2026-08-11 10:43:22",
-      "ai_summary": "新能源电池板块集体走强",
-      "impact_analysis": "碳酸锂价格企稳，储能电池ETF上涨，反映新能源板块回暖，带动产业链相关个股，对创业板指有积极影响。",
+      "url": "https://finance.eastmoney.com/a/202608113837767293.html",
+      "time": "2026-08-11 13:55:00",
+      "ai_summary": "天合光能实控人转让股份，光伏行业困境凸显",
+      "impact_analysis": "光伏龙头实控人减持反映行业深度内卷和盈利压力，可能引发市场对光伏板块的担忧，短期利空光伏股。",
       "affected_sectors": [
-        "储能",
-        "锂电池",
-        "新能源"
+        "光伏"
       ],
       "affected_stocks": [
-        "300750.SZ",
-        "002074.SZ",
-        "300014.SZ"
+        "688599.SS"
       ],
       "importance": 7
     },
     {
-      "title": "金价涨破4400美元关口，多路资金涌入黄金配置，黄金ETF博时(159937)高开高走涨超1.5%，冲击5连涨",
+      "title": "非科技板块的春天？医药板块调研热度超越半导体",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608113837686548.html",
-      "time": "2026-08-11 10:49:53",
-      "ai_summary": "金价涨破4400美元，黄金ETF五连涨",
-      "impact_analysis": "黄金价格创新高，避险情绪升温，资金涌入黄金板块，利好黄金股，但可能分流股市资金，对大盘形成一定压力。",
+      "url": "https://finance.eastmoney.com/a/202608113837715259.html",
+      "time": "2026-08-11 12:53:23",
+      "ai_summary": "医药板块调研热度超越半导体，机构关注度提升",
+      "impact_analysis": "公募调研转向医药，显示机构资金可能从科技流向医药，医药板块配置价值凸显，有望吸引增量资金。",
       "affected_sectors": [
-        "黄金",
-        "贵金属"
+        "医药生物"
       ],
       "affected_stocks": [
-        "600547.SS",
-        "002155.SZ",
-        "601899.SS"
+        "688235.SS",
+        "688266.SS"
       ],
       "importance": 7
     },
     {
-      "title": "海外大厂联手施压，光模块利空解除？“易中天”集体反弹，华宝基金创业板人工智能ETF（159363）拉升超2%",
-      "source": "新浪财经",
-      "url": "https://finance.sina.com.cn/money/fund/etf/2026-08-11/doc-inimxewr7607904.shtml",
-      "time": "2026-08-11 10:55",
-      "ai_summary": "光模块龙头反弹，AI交易回暖",
-      "impact_analysis": "光模块板块反弹，AI交易回暖，带动创业板人工智能ETF上涨，利好科技成长股，提升市场风险偏好。",
-      "affected_sectors": [
-        "光模块",
-        "AI",
-        "通信设备"
-      ],
-      "affected_stocks": [
-        "300502.SZ",
-        "300308.SZ",
-        "300394.SZ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "净利暴增715倍！江波龙预估权重占比最高的——华宝基金信创ETF（562030）拉升1.9%，机构：AI安全重要性提升",
-      "source": "新浪财经",
-      "url": "https://finance.sina.com.cn/money/fund/etf/2026-08-11/doc-inimxewu5939461.shtml",
-      "time": "2026-08-11 11:15",
-      "ai_summary": "江波龙净利暴增715倍，存储芯片景气",
-      "impact_analysis": "存储龙头业绩大增，验证行业高景气，带动存储芯片板块走高，利好半导体产业链，对科创板及创业板有提振。",
+      "title": "太极实业直线拉涨停！存储芯片震荡拉升 反弹还能走多远？",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608113837762621.html",
+      "time": "2026-08-11 13:47:00",
+      "ai_summary": "存储芯片拉升，太极实业涨停，反弹持续性存疑",
+      "impact_analysis": "存储芯片板块反弹，但券商认为属超跌修复，市场风格轮动快，短期可能继续活跃，但需注意追高风险。",
       "affected_sectors": [
         "存储芯片",
         "半导体"
       ],
       "affected_stocks": [
-        "301308.SZ",
-        "603986.SS",
-        "688981.SS"
+        "600667.SS",
+        "002185.SZ"
       ],
       "importance": 7
     },
     {
-      "title": "创新药概念持续走强 万邦医药20cm涨停",
+      "title": "黄仁勋深度解读5000亿美元融资计划：AI算力是“投资级资产”",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608113837696019.html",
-      "time": "2026-08-11 11:08:22",
-      "ai_summary": "创新药概念持续走强，多股涨停",
-      "impact_analysis": "创新药板块活跃，多股涨停，市场情绪高涨，政策支持叠加行业基本面改善，医药板块有望持续走强。",
+      "url": "https://finance.eastmoney.com/a/202608113837711837.html",
+      "time": "2026-08-11 12:54:01",
+      "ai_summary": "黄仁勋强调AI算力是投资级资产，回应融资质疑",
+      "impact_analysis": "英伟达CEO言论强化AI算力长期需求逻辑，利好A股AI算力产业链，提振市场对AI板块信心。",
       "affected_sectors": [
-        "创新药",
-        "医药商业"
+        "AI算力",
+        "数据中心"
       ],
       "affected_stocks": [
-        "300725.SZ",
-        "600664.SS",
-        "603087.SS"
+        "300308.SZ",
+        "000977.SZ"
       ],
       "importance": 7
     },
     {
-      "title": "三环集团早盘涨超12% MLCC掀起追价抢料潮产业链有望持续受益",
-      "source": "新浪财经",
-      "url": "https://finance.sina.com.cn/stock/hkstock/marketalerts/2026-08-11/doc-inimxewt4370881.shtml",
-      "time": "2026-08-11 10:41",
-      "ai_summary": "MLCC追价抢料，三环集团涨超12%",
-      "impact_analysis": "AI需求带动被动元件涨价，MLCC产业链受益，相关个股大涨，利好电子元器件板块，提升市场对消费电子的预期。",
-      "affected_sectors": [
-        "MLCC",
-        "被动元件",
-        "电子"
-      ],
-      "affected_stocks": [
-        "300408.SZ",
-        "603228.SS",
-        "002138.SZ"
-      ],
-      "importance": 6
-    },
-    {
-      "title": "沪深两市成交额突破1.5万亿 较上一日此时缩量超2200亿",
+      "title": "美联储官员布洛克：委员会讨论了加息或维持利率不变 而非降息",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608113837705719.html",
-      "time": "2026-08-11 11:27:02",
-      "ai_summary": "沪深两市成交额缩量超2200亿",
-      "impact_analysis": "成交额缩量显示市场观望情绪浓厚，资金入场意愿不足，可能制约指数上行空间，需关注后续量能变化。",
+      "url": "https://finance.eastmoney.com/a/202608113837761376.html",
+      "time": "2026-08-11 13:39:55",
+      "ai_summary": "美联储官员讨论加息而非降息，鹰派信号",
+      "impact_analysis": "美联储鹰派言论可能压制全球风险偏好，对A股外资流入和成长股估值形成一定压力，但影响有限。",
       "affected_sectors": [
-        "大盘"
+        "全市场"
       ],
       "affected_stocks": [],
+      "importance": 7
+    },
+    {
+      "title": "韩国宣布成立5万亿韩元半导体专项基金！科创半导体设备ETF华泰柏瑞（588710）“存储芯片”含量超80%",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/money/fund/jjh/2026-08-11/doc-inimxmer4338744.shtml",
+      "time": "2026-08-11 13:26",
+      "ai_summary": "韩国设立5万亿韩元半导体基金，利好存储芯片",
+      "impact_analysis": "韩国半导体基金支持芯片产业，强化存储芯片景气预期，对A股存储芯片板块形成正面催化。",
+      "affected_sectors": [
+        "半导体",
+        "存储芯片"
+      ],
+      "affected_stocks": [
+        "002185.SZ",
+        "603986.SS"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "有色板块持续走弱 洛阳钼业等多股跌超5%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608113837767062.html",
+      "time": "2026-08-11 13:50:40",
+      "ai_summary": "有色板块走弱，贵金属领跌，多股跌超5%",
+      "impact_analysis": "有色板块下跌可能受海外宏观和商品价格影响，短期拖累大盘，但属于板块轮动，对整体市场影响有限。",
+      "affected_sectors": [
+        "有色金属",
+        "贵金属"
+      ],
+      "affected_stocks": [
+        "603993.SS",
+        "601899.SS"
+      ],
       "importance": 6
     }
   ]
