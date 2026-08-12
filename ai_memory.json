@@ -425,5 +425,30 @@
       "missed_signal": null,
       "lesson": null
     }
+  ],
+  "002841.SZ": [
+    {
+      "date": "20260812",
+      "signal_date": "20260810",
+      "mode": "loose",
+      "entry_price": 49.37,
+      "pullback_pct": 8.8,
+      "limit_days": 3,
+      "analysis": "量：缩量回调至涨停日量57%，OBV下降显示资金持续流出，缩量但未现止跌信号。  \n价：现价站上MA10（48.84）与MA20（47.70），但受MA5压制，关键支撑看MA10，上方压力55.98。  \n形：3连板后回调7日，幅度8.8%，呈缩量旗形整理，未破MA20，形态偏中性。  \n时：回调7日处于3-8日窗口临界，MACD死叉但RSI中性，大盘发酵期利好科技，窗口尚可。  \n\n反弹概率：中（45%）  \n仓位建议：3成仓（发酵期4档）  \n最终结论：【观望】",
+      "sentiment": "发酵期4档",
+      "position": "3成仓",
+      "opinion": "【观望】",
+      "verified": false,
+      "return_7d": null,
+      "exit_reason": null,
+      "exit_day": null,
+      "verdict": null,
+      "review_analysis": null,
+      "review_quality": null,
+      "what_happened": null,
+      "why_wrong": null,
+      "missed_signal": null,
+      "lesson": null
+    }
   ]
 }
