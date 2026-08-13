@@ -1,12 +1,25 @@
 {
-  "scan_time": "2026-08-13 10:19",
+  "scan_time": "2026-08-13 11:36",
   "scan_date": "20260813",
-  "data_date": "2026-08-13",
-  "market": {},
+  "data_date": "2026-08-12",
+  "market": {
+    "上证": {
+      "price": 3946.68,
+      "pct": 0.32
+    },
+    "深证": {
+      "price": 14414.43,
+      "pct": 1.09
+    },
+    "创业板": {
+      "price": 3602.08,
+      "pct": 1.49
+    }
+  },
   "regime": {
     "status": "neutral",
-    "label": "数据不足，默认非熊市",
-    "avg_trend": 0,
+    "label": "3档: 启动期 — 谨慎入场",
+    "avg_trend": 0.97,
     "recommended_mode": "strict"
   },
   "modes": {
@@ -15,7 +28,7 @@
       "candidates": [
         {
           "code": "603903.SS",
-          "price": 12.94,
+          "price": 13.66,
           "signal_date": "20260810",
           "pullback_pct": 16.0,
           "limit_days": 3,
