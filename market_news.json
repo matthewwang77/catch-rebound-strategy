@@ -1,53 +1,34 @@
 {
   "date": "20260813",
-  "market_summary": "今日市场消息面偏多，AI硬件、创新药、半导体设备等科技成长板块受多重利好催化集体走强，同时四川算力政策、海外云厂商业绩验证算力需求，叠加港股科技股大涨带动市场情绪，但需关注日本央行加息预期及资金面净流出压力。",
-  "sentiment_impact": "偏多",
+  "market_summary": "今日A股三大指数集体收跌，但创新药、生物医药板块逆市走强，AI算力及半导体相关消息活跃，市场成交额连续14日突破2万亿，整体消息面偏多但市场情绪谨慎。",
+  "sentiment_impact": "中性",
   "news": [
     {
-      "title": "BD首付款进入集中兑现窗口、全球医药融资回暖！港股医疗ETF永赢半日涨2.03%，CXO方向领涨",
+      "title": "行云科技：在手算力3-5年长期订单规模约150.82亿元",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608133840284098.html",
-      "time": "2026-08-13 13:01:10",
-      "ai_summary": "四川发布算力网建设政策，布局万卡集群",
-      "impact_analysis": "政策直接利好算力基础设施产业链，推动数据中心、光模块、服务器等需求，相关板块有望持续活跃，对科技成长风格形成支撑。",
+      "url": "https://finance.eastmoney.com/a/202608133840383596.html",
+      "time": "2026-08-13 14:43:42",
+      "ai_summary": "腾讯Q2资本开支同比增176%超预期",
+      "impact_analysis": "腾讯作为港股科技龙头，资本开支大增显示AI算力投入持续加码，利好A股AI算力产业链，如服务器、光模块、芯片等板块，有望带动相关个股表现。",
       "affected_sectors": [
-        "算力",
-        "数据中心",
-        "光模块"
+        "AI算力",
+        "半导体",
+        "通信设备"
       ],
       "affected_stocks": [
         "000977.SZ",
         "300308.SZ",
-        "688041.SS"
+        "600584.SS"
       ],
-      "importance": 8
+      "importance": 9
     },
     {
       "title": "韩国7月汽车出口超62亿美元创历年同期新高",
       "source": "东方财富",
       "url": "https://finance.eastmoney.com/a/202608133840327042.html",
       "time": "2026-08-13 13:53:43",
-      "ai_summary": "联想业绩超预期，AI收入大增60%",
-      "impact_analysis": "联想作为港股科技龙头，业绩验证AI硬件需求高景气，带动A股AI服务器、算力产业链情绪，相关概念股有望跟涨。",
-      "affected_sectors": [
-        "AI硬件",
-        "服务器",
-        "消费电子"
-      ],
-      "affected_stocks": [
-        "000977.SZ",
-        "603019.SS",
-        "002415.SZ"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "四川：建强成都平原算力核心区 打造攀西—川西北算电融合发展带",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608133840309838.html",
-      "time": "2026-08-13 13:40:55",
-      "ai_summary": "创新药出海交易逼近千亿美元",
-      "impact_analysis": "创新药出海加速，BD交易活跃，CRO/CDMO板块受益，行业基本面改善，资金持续流入，板块有望延续强势。",
+      "ai_summary": "创新药出海半年逼近千亿美元",
+      "impact_analysis": "创新药出海规模扩大，CRO板块获杠杆资金加仓，显示行业景气度提升，利好创新药及CRO产业链，相关龙头股如药明康德等有望受益。",
       "affected_sectors": [
         "创新药",
         "CRO",
@@ -56,127 +37,157 @@
       "affected_stocks": [
         "603259.SS",
         "300759.SZ",
-        "688180.SS"
+        "600276.SS"
+      ],
+      "importance": 9
+    },
+    {
+      "title": "5年期存款利率逆势上升",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608133840362161.html",
+      "time": "2026-08-13 14:29:43",
+      "ai_summary": "生物医药晋升新兴支柱产业",
+      "impact_analysis": "生物医药产业地位提升，CGT审评提速赋能产业升级，政策支持力度加大，利好生物科技板块，相关ETF及个股有望获得资金关注。",
+      "affected_sectors": [
+        "生物医药",
+        "基因检测",
+        "细胞治疗"
+      ],
+      "affected_stocks": [
+        "300122.SZ",
+        "688180.SS",
+        "002007.SZ"
       ],
       "importance": 8
     },
     {
-      "title": "“AI硬件+医药”双主线共振，科创200ETF鹏华涨超2%",
+      "title": "花旗：维持联想集团“买入”评级 目标价31港元",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608133840324044.html",
-      "time": "2026-08-13 13:48:48",
-      "ai_summary": "药明康德禁令获美法院批准",
-      "impact_analysis": "药明康德诉讼取得进展，消除海外政策不确定性，利好CRO板块估值修复，带动医药外包产业链走强。",
+      "url": "https://finance.eastmoney.com/a/202608133840345612.html",
+      "time": "2026-08-13 14:15:10",
+      "ai_summary": "联想第一财季营收超预期，AI收入占比35%",
+      "impact_analysis": "联想业绩强劲，AI相关收入高增长，提振市场对AI硬件及PC产业链信心，利好A股消费电子、半导体及AI相关概念股。",
       "affected_sectors": [
-        "CRO",
-        "医药外包"
+        "消费电子",
+        "半导体",
+        "AI硬件"
       ],
       "affected_stocks": [
-        "603259.SS",
-        "300759.SZ",
-        "002821.SZ"
+        "002475.SZ",
+        "603986.SS",
+        "300433.SZ"
       ],
-      "importance": 7
-    },
-    {
-      "title": "国家机器人创新中心在金属增材制造工艺研究方面取得进展",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608133840311946.html",
-      "time": "2026-08-13 13:43:31",
-      "ai_summary": "SK海力士等巨头大额扩产半导体",
-      "impact_analysis": "海外存储巨头扩产，验证半导体设备需求，国内设备厂商有望获得订单，板块景气度提升。",
-      "affected_sectors": [
-        "半导体设备",
-        "存储芯片"
-      ],
-      "affected_stocks": [
-        "002371.SZ",
-        "688012.SS",
-        "688981.SS"
-      ],
-      "importance": 7
+      "importance": 8
     },
     {
       "title": "生物医药晋升新兴支柱产业！生物科技ETF易方达（159837）涨2.10%，CGT审评提速赋能产业升级",
       "source": "东方财富",
       "url": "https://finance.eastmoney.com/a/202608133840328634.html",
       "time": "2026-08-13 13:57:29",
-      "ai_summary": "摩根士丹利称算力供应受限",
-      "impact_analysis": "算力稀缺性凸显，利好算力基础设施和AI芯片企业，相关板块有望持续获得市场关注。",
+      "ai_summary": "A股三大指数集体收跌，创新药逆市走强",
+      "impact_analysis": "大盘收跌但创新药逆势上涨，显示市场结构性行情明显，资金聚焦医药板块，短期可能延续分化，创新药及医疗服务板块有望继续活跃。",
       "affected_sectors": [
-        "算力",
-        "AI芯片"
+        "创新药",
+        "医疗服务",
+        "生物制品"
       ],
       "affected_stocks": [
-        "688256.SS",
-        "000977.SZ",
-        "300308.SZ"
+        "603259.SS",
+        "300759.SZ",
+        "600196.SS"
       ],
-      "importance": 6
+      "importance": 8
     },
     {
-      "title": "游族网络涨停 联手康盈与曦望将落地“2.5D/3D先进封装中心”",
+      "title": "第五届滴水湖论坛在临港举行 10款本土RISC-V芯片新品亮相",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608133840300147.html",
-      "time": "2026-08-13 13:27:49",
-      "ai_summary": "日本央行可能9月或10月加息",
-      "impact_analysis": "日本加息预期升温，可能引发全球资金流动变化，对A股外资流向产生扰动，需关注汇率波动。",
+      "url": "https://finance.eastmoney.com/a/202608133840345310.html",
+      "time": "2026-08-13 14:19:12",
+      "ai_summary": "韩国KOSPI指数收盘上涨3.6%",
+      "impact_analysis": "韩国股市大涨，芯片股领涨，反映全球半导体行业景气度回升，对A股半导体板块有提振作用，相关个股或受资金追捧。",
       "affected_sectors": [
-        "银行",
-        "外汇"
+        "半导体",
+        "芯片"
+      ],
+      "affected_stocks": [
+        "688981.SS",
+        "002371.SZ",
+        "603986.SS"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "创新药出海半年逼近千亿美元！创新药ETF易方达（516080）涨2.18%，CRO板块获杠杆资金密集加仓",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608133840328487.html",
+      "time": "2026-08-13 13:56:05",
+      "ai_summary": "Anthropic估值达2万亿美元，AI热潮持续",
+      "impact_analysis": "Anthropic上市预期推高AI估值，全球AI投资热情高涨，利好A股AI概念股，尤其是算力、大模型相关企业，可能带动板块情绪。",
+      "affected_sectors": [
+        "AI",
+        "算力",
+        "大模型"
+      ],
+      "affected_stocks": [
+        "300308.SZ",
+        "688111.SS",
+        "002230.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "投资方预计Anthropic将于10月挂牌上市 估值有望达2万亿美元",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608133840366498.html",
+      "time": "2026-08-13 14:32:55",
+      "ai_summary": "沪深两市成交额连续14日突破2万亿",
+      "impact_analysis": "成交额持续高位显示市场交投活跃，资金参与度高，利于券商板块业绩，同时反映市场情绪偏暖，但需警惕高位放量后的回调风险。",
+      "affected_sectors": [
+        "券商",
+        "金融科技"
+      ],
+      "affected_stocks": [
+        "600030.SS",
+        "300059.SZ",
+        "601688.SS"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "江苏九宸睿进一期科技合伙企业成立 出资额约1.9亿",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608133840373380.html",
+      "time": "2026-08-13 14:37:03",
+      "ai_summary": "5年期存款利率逆势上升",
+      "impact_analysis": "存款利率分化，5年期上升或反映银行负债端压力，对银行股影响中性，但可能影响市场流动性预期，需关注后续政策动向。",
+      "affected_sectors": [
+        "银行"
       ],
       "affected_stocks": [
         "601398.SS",
-        "600036.SS"
+        "600036.SS",
+        "000001.SZ"
       ],
       "importance": 6
     },
     {
-      "title": "中保研发布最新汽车零整比研究结果：新能源汽车维修负担指数降约14%",
+      "title": "“算力大省”河北试水“词元经济”",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608133840314943.html",
-      "time": "2026-08-13 13:42:02",
-      "ai_summary": "股票ETF单日净流出约150亿元",
-      "impact_analysis": "资金面短期承压，市场情绪或受抑制，但结构性机会仍存，需关注后续资金流向变化。",
+      "url": "https://finance.eastmoney.com/a/202608133840387988.html",
+      "time": "2026-08-13 14:49:09",
+      "ai_summary": "前7个月江苏外贸进出口同比增长26.2%",
+      "impact_analysis": "江苏外贸数据强劲，显示出口韧性，利好港口航运、外贸相关板块，同时提振市场对经济复苏的信心，对大盘有正面支撑。",
       "affected_sectors": [
-        "大盘"
-      ],
-      "affected_stocks": [],
-      "importance": 6
-    },
-    {
-      "title": "摩根士丹利：电力、劳动力瓶颈等因素将在未来几年持续制约算力供应",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608133840308562.html",
-      "time": "2026-08-13 13:36:43",
-      "ai_summary": "CPO概念午后走强，剑桥科技涨停",
-      "impact_analysis": "CPO作为AI算力核心环节，板块活跃反映资金对算力产业链的持续关注，相关个股有望继续表现。",
-      "affected_sectors": [
-        "CPO",
-        "光模块"
+        "港口航运",
+        "外贸",
+        "物流"
       ],
       "affected_stocks": [
-        "603083.SS",
-        "300394.SZ",
-        "688498.SS"
+        "601008.SS",
+        "600018.SS",
+        "002120.SZ"
       ],
       "importance": 6
-    },
-    {
-      "title": "知识星球账号违规荐股遭投诉 平台加大打击力度 已有账号准备“搬家”",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608133840276225.html",
-      "time": "2026-08-13 13:09:08",
-      "ai_summary": "韩国央行买入黄金ETF，时隔13年",
-      "impact_analysis": "韩国央行购金或提振黄金市场情绪，利好A股黄金板块，但影响相对有限。",
-      "affected_sectors": [
-        "黄金"
-      ],
-      "affected_stocks": [
-        "600547.SS",
-        "002155.SZ"
-      ],
-      "importance": 5
     }
   ]
 }

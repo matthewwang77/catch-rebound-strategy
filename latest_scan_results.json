@@ -1,15 +1,15 @@
 {
-  "scan_time": "2026-08-13 15:03",
+  "scan_time": "2026-08-13 15:08",
   "scan_date": "20260813",
   "data_date": "2026-08-13",
   "market": {
     "上证": {
-      "price": 3932.69,
-      "pct": -0.35
+      "price": 3928.38,
+      "pct": -0.46
     },
     "深证": {
-      "price": 14331.57,
-      "pct": -0.57
+      "price": 14303.01,
+      "pct": -0.77
     },
     "创业板": {
       "price": 3602.08,
@@ -19,7 +19,7 @@
   "regime": {
     "status": "neutral",
     "label": "3档: 启动期 — 谨慎入场",
-    "avg_trend": -0.02,
+    "avg_trend": -0.18,
     "recommended_mode": "strict"
   },
   "modes": {
@@ -36,7 +36,7 @@
         },
         {
           "code": "000078.SZ",
-          "price": 1.73,
+          "price": 1.72,
           "signal_date": "20260807",
           "pullback_pct": 24.0,
           "limit_days": 4,
