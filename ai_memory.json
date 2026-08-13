@@ -450,5 +450,55 @@
       "missed_signal": null,
       "lesson": null
     }
+  ],
+  "603903.SS": [
+    {
+      "date": "20260813",
+      "signal_date": "20260810",
+      "mode": "strict",
+      "entry_price": 13.64,
+      "pullback_pct": 16.0,
+      "limit_days": 3,
+      "analysis": "量：缩量至涨停日61%，OBV上升资金流入，回调缩量健康但量比仅1.05x，承接力度一般。  \n价：现价站上MA5/MA10/MA20三线，但距20日高16.60仍差18%，上方13.11-13.64区间为密集压力带。  \n形：3连板后8日回调16%，呈旗形整理末端，MACD金叉但RSI 47.7中性，未确认突破。  \n时：回调8天处于3-10日窗口临界，今日放量反弹但未过前高，需观察次日能否站稳MA5。  \n反弹概率：中（45%）  \n仓位建议：3成仓（发酵期4档）  \n最终结论：【观望】——缩量反弹未破关键压力，需放量突破13.64-13.80确认再介入。",
+      "sentiment": "发酵期4档",
+      "position": "3成仓",
+      "opinion": "【观望】——缩量反弹未破关键压力，需放量突破13.64-13.80确认再介入。",
+      "verified": false,
+      "return_7d": null,
+      "exit_reason": null,
+      "exit_day": null,
+      "verdict": null,
+      "review_analysis": null,
+      "review_quality": null,
+      "what_happened": null,
+      "why_wrong": null,
+      "missed_signal": null,
+      "lesson": null
+    }
+  ],
+  "000078.SZ": [
+    {
+      "date": "20260813",
+      "signal_date": "20260807",
+      "mode": "strict",
+      "entry_price": 1.74,
+      "pullback_pct": 24.0,
+      "limit_days": 4,
+      "analysis": "量：缩量显著（近3日均量/涨停日量仅25%），OBV下降显示资金持续流出，反弹缺乏量能配合。\n\n价：股价跌破MA5/MA10，勉强站上MA20（1.69），上方1.83布林上轨构成强压力，关键位1.91（20日高）遥不可及。\n\n形：4连板后深度回调24%，已破坏强势形态，当前呈弱势整理格局，无明确底部反转信号。\n\n时：距涨停日23天，远超常规3-8天回调窗口，时间成本过高，反弹动能已大幅衰竭。\n\n仓位建议：2成仓（发酵期4档下限）\n反弹概率：低（≤30%）\n最终结论：【观望】",
+      "sentiment": "发酵期4档下限",
+      "position": "2成仓",
+      "opinion": "【观望】",
+      "verified": false,
+      "return_7d": null,
+      "exit_reason": null,
+      "exit_day": null,
+      "verdict": null,
+      "review_analysis": null,
+      "review_quality": null,
+      "what_happened": null,
+      "why_wrong": null,
+      "missed_signal": null,
+      "lesson": null
+    }
   ]
 }
