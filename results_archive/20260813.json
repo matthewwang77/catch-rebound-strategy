@@ -1,5 +1,5 @@
 {
-  "scan_time": "2026-08-13 11:36",
+  "scan_time": "2026-08-13 14:03",
   "scan_date": "20260813",
   "data_date": "2026-08-12",
   "market": {
@@ -18,31 +18,14 @@
   },
   "regime": {
     "status": "neutral",
-    "label": "4档: 发酵期 — 势头良好",
-    "avg_trend": 1.03,
-    "recommended_mode": "loose"
+    "label": "3档: 启动期 — 谨慎入场",
+    "avg_trend": 0.97,
+    "recommended_mode": "strict"
   },
   "modes": {
-    "strict": {
-      "count": 2,
-      "candidates": [
-        {
-          "code": "603903.SS",
-          "price": 13.64,
-          "signal_date": "20260810",
-          "pullback_pct": 16.0,
-          "limit_days": 3,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "000078.SZ",
-          "price": 1.74,
-          "signal_date": "20260807",
-          "pullback_pct": 24.0,
-          "limit_days": 4,
-          "entity_ratio": 100.0
-        }
-      ]
+    "loose": {
+      "count": 0,
+      "candidates": []
     }
   }
 }
