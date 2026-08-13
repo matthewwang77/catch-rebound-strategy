@@ -1,177 +1,182 @@
 {
   "date": "20260813",
-  "market_summary": "今日A股市场整体偏强，创业板指半日涨1.61%，医药、算力、光通信等板块表现活跃，两市成交额放量超2000亿。消息面利好集中，但个股跌多涨少，市场分化明显。",
+  "market_summary": "今日市场消息面偏多，AI硬件、创新药、半导体设备等科技成长板块受多重利好催化集体走强，同时四川算力政策、海外云厂商业绩验证算力需求，叠加港股科技股大涨带动市场情绪，但需关注日本央行加息预期及资金面净流出压力。",
   "sentiment_impact": "偏多",
   "news": [
     {
-      "title": "午评：创业板指半日涨1.61% 医药板块集体爆发",
+      "title": "BD首付款进入集中兑现窗口、全球医药融资回暖！港股医疗ETF永赢半日涨2.03%，CXO方向领涨",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608133840258868.html",
-      "time": "2026-08-13 11:31:13",
-      "ai_summary": "央行连续三日逆回购零投放",
-      "impact_analysis": "央行连续三日7天期逆回购操作量为零，引发市场对流动性收紧的担忧，但机构认为货币政策取向未变，后续中期流动性投放是关键，对大盘影响中性偏空，需关注资金面变化。",
+      "url": "https://finance.eastmoney.com/a/202608133840284098.html",
+      "time": "2026-08-13 13:01:10",
+      "ai_summary": "四川发布算力网建设政策，布局万卡集群",
+      "impact_analysis": "政策直接利好算力基础设施产业链，推动数据中心、光模块、服务器等需求，相关板块有望持续活跃，对科技成长风格形成支撑。",
+      "affected_sectors": [
+        "算力",
+        "数据中心",
+        "光模块"
+      ],
+      "affected_stocks": [
+        "000977.SZ",
+        "300308.SZ",
+        "688041.SS"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "韩国7月汽车出口超62亿美元创历年同期新高",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608133840327042.html",
+      "time": "2026-08-13 13:53:43",
+      "ai_summary": "联想业绩超预期，AI收入大增60%",
+      "impact_analysis": "联想作为港股科技龙头，业绩验证AI硬件需求高景气，带动A股AI服务器、算力产业链情绪，相关概念股有望跟涨。",
+      "affected_sectors": [
+        "AI硬件",
+        "服务器",
+        "消费电子"
+      ],
+      "affected_stocks": [
+        "000977.SZ",
+        "603019.SS",
+        "002415.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "四川：建强成都平原算力核心区 打造攀西—川西北算电融合发展带",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608133840309838.html",
+      "time": "2026-08-13 13:40:55",
+      "ai_summary": "创新药出海交易逼近千亿美元",
+      "impact_analysis": "创新药出海加速，BD交易活跃，CRO/CDMO板块受益，行业基本面改善，资金持续流入，板块有望延续强势。",
+      "affected_sectors": [
+        "创新药",
+        "CRO",
+        "生物医药"
+      ],
+      "affected_stocks": [
+        "603259.SS",
+        "300759.SZ",
+        "688180.SS"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "“AI硬件+医药”双主线共振，科创200ETF鹏华涨超2%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608133840324044.html",
+      "time": "2026-08-13 13:48:48",
+      "ai_summary": "药明康德禁令获美法院批准",
+      "impact_analysis": "药明康德诉讼取得进展，消除海外政策不确定性，利好CRO板块估值修复，带动医药外包产业链走强。",
+      "affected_sectors": [
+        "CRO",
+        "医药外包"
+      ],
+      "affected_stocks": [
+        "603259.SS",
+        "300759.SZ",
+        "002821.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "国家机器人创新中心在金属增材制造工艺研究方面取得进展",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608133840311946.html",
+      "time": "2026-08-13 13:43:31",
+      "ai_summary": "SK海力士等巨头大额扩产半导体",
+      "impact_analysis": "海外存储巨头扩产，验证半导体设备需求，国内设备厂商有望获得订单，板块景气度提升。",
+      "affected_sectors": [
+        "半导体设备",
+        "存储芯片"
+      ],
+      "affected_stocks": [
+        "002371.SZ",
+        "688012.SS",
+        "688981.SS"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "生物医药晋升新兴支柱产业！生物科技ETF易方达（159837）涨2.10%，CGT审评提速赋能产业升级",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608133840328634.html",
+      "time": "2026-08-13 13:57:29",
+      "ai_summary": "摩根士丹利称算力供应受限",
+      "impact_analysis": "算力稀缺性凸显，利好算力基础设施和AI芯片企业，相关板块有望持续获得市场关注。",
+      "affected_sectors": [
+        "算力",
+        "AI芯片"
+      ],
+      "affected_stocks": [
+        "688256.SS",
+        "000977.SZ",
+        "300308.SZ"
+      ],
+      "importance": 6
+    },
+    {
+      "title": "游族网络涨停 联手康盈与曦望将落地“2.5D/3D先进封装中心”",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608133840300147.html",
+      "time": "2026-08-13 13:27:49",
+      "ai_summary": "日本央行可能9月或10月加息",
+      "impact_analysis": "日本加息预期升温，可能引发全球资金流动变化，对A股外资流向产生扰动，需关注汇率波动。",
       "affected_sectors": [
         "银行",
-        "债券"
+        "外汇"
       ],
       "affected_stocks": [
         "601398.SS",
         "600036.SS"
       ],
-      "importance": 8
+      "importance": 6
     },
     {
-      "title": "光通信医药携手上涨！科创100ETF鹏华涨超2%",
+      "title": "中保研发布最新汽车零整比研究结果：新能源汽车维修负担指数降约14%",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608133840256691.html",
-      "time": "2026-08-13 11:28:35",
-      "ai_summary": "腾讯资本开支大增176%",
-      "impact_analysis": "腾讯二季度资本开支同比增176%，显示大厂持续加码AI投入，利好算力、云计算产业链，带动A股相关板块走强，对科技成长股有积极影响。",
+      "url": "https://finance.eastmoney.com/a/202608133840314943.html",
+      "time": "2026-08-13 13:42:02",
+      "ai_summary": "股票ETF单日净流出约150亿元",
+      "impact_analysis": "资金面短期承压，市场情绪或受抑制，但结构性机会仍存，需关注后续资金流向变化。",
       "affected_sectors": [
-        "算力",
-        "云计算"
+        "大盘"
       ],
-      "affected_stocks": [
-        "000977.SZ",
-        "600588.SS"
-      ],
-      "importance": 8
+      "affected_stocks": [],
+      "importance": 6
     },
     {
-      "title": "美国ITC终止对Reebok、华米等企业智能可穿戴设备、系统及其组件337调查",
+      "title": "摩根士丹利：电力、劳动力瓶颈等因素将在未来几年持续制约算力供应",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608133840215860.html",
-      "time": "2026-08-13 10:39:25",
-      "ai_summary": "算力网纳入国家六张网工程",
-      "impact_analysis": "算力网被正式纳入国家重大工程，政策支持力度加大，利好算力基础设施、东数西算等板块，相关概念股活跃，对科技板块有提振作用。",
+      "url": "https://finance.eastmoney.com/a/202608133840308562.html",
+      "time": "2026-08-13 13:36:43",
+      "ai_summary": "CPO概念午后走强，剑桥科技涨停",
+      "impact_analysis": "CPO作为AI算力核心环节，板块活跃反映资金对算力产业链的持续关注，相关个股有望继续表现。",
       "affected_sectors": [
-        "算力",
-        "云计算"
+        "CPO",
+        "光模块"
       ],
       "affected_stocks": [
-        "300308.SZ",
-        "600845.SS"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "“十五五”时期 应对气候变化将聚焦“五个重点”",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608133840218997.html",
-      "time": "2026-08-13 10:43:04",
-      "ai_summary": "美股光通信巨头财报超预期",
-      "impact_analysis": "Lumentum和Coherent财报超预期，验证AI算力需求，带动A股光通信、光芯片板块大涨，天孚通信等个股涨停，对通信行业有显著利好。",
-      "affected_sectors": [
-        "光通信",
-        "光芯片"
-      ],
-      "affected_stocks": [
+        "603083.SS",
         "300394.SZ",
-        "300502.SZ"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "臻宝科技落子光谷 将投建半导体零部件研发生产基地项目",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608133840248568.html",
-      "time": "2026-08-13 11:21:43",
-      "ai_summary": "医药板块集体爆发，CRO领涨",
-      "impact_analysis": "医药板块今日集体爆发，CRO、创新药等方向领涨，多股涨停，受创新药临床进展和行业景气度提升影响，对医药生物板块有重大利好。",
-      "affected_sectors": [
-        "CRO",
-        "创新药"
-      ],
-      "affected_stocks": [
-        "603259.SS",
-        "300347.SZ"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "恒大清盘人获香港高院批准 追讨近60亿港元“过桥贷款”",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608133840233083.html",
-      "time": "2026-08-13 11:03:22",
-      "ai_summary": "韩国股市进入技术性牛市",
-      "impact_analysis": "韩国股市10天涨23%，受AI交易回暖带动，芯片股大涨，对A股半导体、存储芯片板块有情绪提振，但需注意外围市场波动风险。",
-      "affected_sectors": [
-        "半导体",
-        "存储芯片"
-      ],
-      "affected_stocks": [
-        "688981.SS",
-        "002371.SZ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "Alo关联公司今年4月成立",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608133840236847.html",
-      "time": "2026-08-13 11:06:00",
-      "ai_summary": "险资密集调研通信板块",
-      "impact_analysis": "险资近一个月密集调研通信设备、集成电路等科技赛道，显示机构资金关注度提升，对通信、半导体板块有中长期利好，可能带来增量资金。",
-      "affected_sectors": [
-        "通信设备",
-        "集成电路"
-      ],
-      "affected_stocks": [
-        "600050.SS",
-        "603986.SS"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "消息称美国 AI 网络安全审查机制未来很可能会覆盖前沿开源模型",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608133840229935.html",
-      "time": "2026-08-13 10:58:15",
-      "ai_summary": "美国ITC终止可穿戴设备337调查",
-      "impact_analysis": "美国ITC终止对华米等企业智能可穿戴设备337调查，利好相关出口企业，减少贸易摩擦风险，对消费电子板块有积极影响。",
-      "affected_sectors": [
-        "消费电子",
-        "智能穿戴"
-      ],
-      "affected_stocks": [
-        "002241.SZ",
-        "300327.SZ"
+        "688498.SS"
       ],
       "importance": 6
     },
     {
-      "title": "创业板指上涨1.61% CRO板块领涨 医药股集体走强",
+      "title": "知识星球账号违规荐股遭投诉 平台加大打击力度 已有账号准备“搬家”",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608133840260171.html",
-      "time": "2026-08-13 11:30:20",
-      "ai_summary": "十五五应对气候变化聚焦五个重点",
-      "impact_analysis": "十五五期间应对气候变化聚焦绿色低碳转型和碳市场建设，利好环保、新能源板块，政策预期明确，对相关行业有中长期利好。",
+      "url": "https://finance.eastmoney.com/a/202608133840276225.html",
+      "time": "2026-08-13 13:09:08",
+      "ai_summary": "韩国央行买入黄金ETF，时隔13年",
+      "impact_analysis": "韩国央行购金或提振黄金市场情绪，利好A股黄金板块，但影响相对有限。",
       "affected_sectors": [
-        "环保",
-        "新能源"
+        "黄金"
       ],
       "affected_stocks": [
-        "600406.SS",
-        "300070.SZ"
+        "600547.SS",
+        "002155.SZ"
       ],
-      "importance": 6
-    },
-    {
-      "title": "投资百亿美元 特斯拉计划在得州新建大型太阳能电池板工厂",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608133840203598.html",
-      "time": "2026-08-13 10:34:56",
-      "ai_summary": "DeepSeek概念股集体涨停",
-      "impact_analysis": "DeepSeek概念表现活跃，11只个股涨停，受AI应用和模型更新催化，带动软件、AI应用板块走强，对科技成长股有提振作用。",
-      "affected_sectors": [
-        "AI应用",
-        "软件"
-      ],
-      "affected_stocks": [
-        "300229.SZ",
-        "002230.SZ"
-      ],
-      "importance": 6
+      "importance": 5
     }
   ]
 }
