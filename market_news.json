@@ -1,91 +1,126 @@
 {
   "date": "20260814",
-  "market_summary": "今日市场消息面围绕AI算力、半导体产业链展开，中芯国际业绩超预期但面临折旧压力，算力租赁概念持续走强，同时市场缩量调整，资金观望情绪浓厚。",
-  "sentiment_impact": "中性",
+  "market_summary": "今日A股市场震荡回升，创业板指涨超1%，成交额连续15日突破2万亿。消息面偏多，外资加速流入中国股票基金，AI算力、稀土、通信等板块表现强势，但电力、白酒等板块回调。",
+  "sentiment_impact": "偏多",
   "news": [
     {
-      "title": "中芯国际单季收入首破30亿美元 但更大的压力还在后面",
+      "title": "AI服务器订单火爆：联想、戴尔、工业富联吃到AI基建红利",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608143841579393.html",
-      "time": "2026-08-14 12:59:22",
-      "ai_summary": "中芯国际收入破30亿美元，折旧压力大",
-      "impact_analysis": "中芯国际作为半导体龙头，业绩超预期但折旧增加压制毛利率，影响半导体板块情绪，但港股午后回升显示市场消化利空，对A股半导体设备材料板块有间接影响。",
+      "url": "https://finance.eastmoney.com/a/202608143841633866.html",
+      "time": "2026-08-14 14:21:22",
+      "ai_summary": "全球资金近月涌入中国股票基金超500亿美元",
+      "impact_analysis": "外资大规模流入将直接提振市场信心，推动A股估值修复，尤其利好半导体、互联网等外资偏好的核心资产，对大盘指数形成支撑。",
       "affected_sectors": [
         "半导体",
-        "芯片制造"
+        "互联网",
+        "电力",
+        "医疗"
       ],
       "affected_stocks": [
-        "688981.SS",
-        "002371.SZ"
+        "600519.SS",
+        "300750.SZ"
+      ],
+      "importance": 10
+    },
+    {
+      "title": "全球资金加速涌入 中国股票基金近一个月吸金逾500亿美元",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608143841665578.html",
+      "time": "2026-08-14 14:23:44",
+      "ai_summary": "AI服务器订单火爆，产业链业绩兑现",
+      "impact_analysis": "AI服务器需求强劲，带动工业富联等产业链公司业绩增长，利好算力硬件、服务器制造板块，有望成为市场持续热点。",
+      "affected_sectors": [
+        "AI服务器",
+        "算力硬件"
+      ],
+      "affected_stocks": [
+        "601138.SS",
+        "000977.SZ"
+      ],
+      "importance": 9
+    },
+    {
+      "title": "冠盛股份旗下冠盛东驰与中核汇海签署战略合作框架协议 推进固液混合储能规模化落地",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608143841656717.html",
+      "time": "2026-08-14 14:10:23",
+      "ai_summary": "通信板块主力净流入超100亿",
+      "impact_analysis": "主力资金大幅流入通信板块，显示市场对通信基础设施和AI算力需求的看好，亨通光电等个股领涨，板块短期有望继续走强。",
+      "affected_sectors": [
+        "通信设备",
+        "光纤光缆"
+      ],
+      "affected_stocks": [
+        "600487.SS",
+        "300308.SZ"
       ],
       "importance": 8
     },
     {
-      "title": "训练西迁、推理东沉 中国算力新版图正在形成",
+      "title": "主力资金监控：通信板块净流入超100亿",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608143841577226.html",
-      "time": "2026-08-14 12:57:00",
-      "ai_summary": "中国算力新版图形成，西部数据中心加速",
-      "impact_analysis": "算力基础设施向西部迁移，利好IDC、光模块、液冷等算力产业链，带动算力租赁概念午后走强，相关个股涨停，对AI算力板块有直接提振。",
+      "url": "https://finance.eastmoney.com/a/202608143841666518.html",
+      "time": "2026-08-14 14:20:45",
+      "ai_summary": "稀土板块午后走强，中国稀土涨停",
+      "impact_analysis": "稀土板块受战略资源属性及供需格局改善推动，午后集体走强，中国稀土涨停，北方稀土涨超3%，短期板块热度有望延续。",
       "affected_sectors": [
-        "算力租赁",
-        "数据中心",
-        "光模块"
+        "稀土永磁",
+        "稀有金属"
       ],
       "affected_stocks": [
-        "603881.SS",
-        "300017.SZ"
+        "000831.SZ",
+        "600111.SS"
       ],
       "importance": 8
     },
     {
-      "title": "SK海力士董事长：AI智能体的使用量五年内可能增长77倍",
+      "title": "美国30年期国债拍卖中标收益率升至26年来最高水平",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608143841608757.html",
-      "time": "2026-08-14 13:21:14",
-      "ai_summary": "SK海力士称AI存储需求五年增77倍",
-      "impact_analysis": "存储芯片需求爆发，HBM供不应求，利好国内存储产业链，如兆易创新、北京君正等，同时带动半导体设备材料需求，对A股存储板块有积极影响。",
-      "affected_sectors": [
-        "存储芯片",
-        "半导体设备"
-      ],
-      "affected_stocks": [
-        "603986.SS",
-        "300223.SZ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "DeepSeek正式涨价！国产AI芯片或迎价值重估！华宝基金科创人工智能ETF（589520）此前2日连续吸金！",
-      "source": "新浪财经",
-      "url": "https://finance.sina.com.cn/money/fund/etf/2026-08-14/doc-ininhhrn4163824.shtml",
-      "time": "2026-08-14 13:46",
-      "ai_summary": "DeepSeek涨价，国产AI芯片价值重估",
-      "impact_analysis": "DeepSeek涨价反映算力紧缺，利好国产AI芯片及算力租赁板块，科创AI ETF吸金，带动寒武纪、海光信息等个股，对AI产业链有积极影响。",
-      "affected_sectors": [
-        "AI芯片",
-        "算力租赁"
-      ],
-      "affected_stocks": [
-        "688256.SS",
-        "688041.SS"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "下半年险资加码权益资产力度有望加大！资金连续6个交易日流入港股通红利ETF华泰柏瑞（513530）",
-      "source": "新浪财经",
-      "url": "https://finance.sina.com.cn/money/fund/jjh/2026-08-14/doc-ininhhrr2879727.shtml",
-      "time": "2026-08-14 13:24",
-      "ai_summary": "险资加码权益资产，长线资金入市",
-      "impact_analysis": "险资持续增持，利好高股息板块，如银行、公用事业，同时提升市场信心，对大盘有支撑作用，属于资金面利好。",
+      "url": "https://finance.eastmoney.com/a/202608143841678325.html",
+      "time": "2026-08-14 14:38:25",
+      "ai_summary": "美国30年期国债收益率创26年新高",
+      "impact_analysis": "美债收益率飙升可能引发全球资金回流美国，对A股外资流入形成扰动，但国内政策独立，影响有限，需关注后续市场反应。",
       "affected_sectors": [
         "银行",
-        "高股息"
+        "债券"
       ],
       "affected_stocks": [
         "601398.SS",
-        "600900.SS"
+        "600036.SS"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "崔东树：7月车市走弱是多重因素共振所致",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608143841672213.html",
+      "time": "2026-08-14 14:30:28",
+      "ai_summary": "日本央行考虑9月加息并加快紧缩",
+      "impact_analysis": "日本央行加息预期升温，可能引发日元套息交易逆转，导致全球流动性收紧，对A股外资流向和风险偏好产生负面影响。",
+      "affected_sectors": [
+        "外资重仓股",
+        "高估值成长股"
+      ],
+      "affected_stocks": [
+        "600519.SS",
+        "300750.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "交通银行推动全市场首单企业自贸离岸债业务落地",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608143841634190.html",
+      "time": "2026-08-14 13:53:08",
+      "ai_summary": "美联储加息预期降温，通胀数据改善",
+      "impact_analysis": "美联储加息预期降温，缓解全球流动性紧缩担忧，利好A股成长股和外资流入，但需关注后续经济数据验证。",
+      "affected_sectors": [
+        "成长股",
+        "外资重仓股"
+      ],
+      "affected_stocks": [
+        "300750.SZ",
+        "600519.SS"
       ],
       "importance": 7
     },
@@ -94,80 +129,52 @@
       "source": "东方财富",
       "url": "https://finance.eastmoney.com/a/202608143841623847.html",
       "time": "2026-08-14 13:43:56",
-      "ai_summary": "飞天茅台自营店放开购买，价格上调",
-      "impact_analysis": "茅台渠道改革，自营放开C端，短期可能影响批发价，但长期利好公司直销占比提升，对白酒板块有稳定作用，但需关注市场对价格波动的反应。",
+      "ai_summary": "国内成品油价今晚下调，加满一箱少花9元",
+      "impact_analysis": "油价下调降低交通运输和物流成本，利好航空、物流等用油大户，但对石油开采板块形成利空，整体对A股影响偏中性。",
       "affected_sectors": [
-        "白酒"
+        "航空",
+        "物流",
+        "石油开采"
       ],
       "affected_stocks": [
-        "600519.SS"
+        "601111.SS",
+        "002352.SZ"
       ],
       "importance": 6
     },
     {
-      "title": "消息人士称日本央行考虑9月加息，并加快紧缩步伐",
-      "source": "新浪财经",
-      "url": "https://finance.sina.com.cn/stock/usstock/c/2026-08-14/doc-ininhhrt9404523.shtml",
-      "time": "2026-08-14 13:42",
-      "ai_summary": "日本央行或9月加息，全球流动性收紧",
-      "impact_analysis": "日本央行加息预期升温，可能引发全球资金回流日本，对A股外资流向构成压力，但影响有限，需关注日元走势及全球风险偏好。",
+      "title": "启元机器人瞄准C端开启线下体验 上纬新材将获新支撑？",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608143841660742.html",
+      "time": "2026-08-14 14:18:27",
+      "ai_summary": "电力股昨日涨停今日大跌，板块回调",
+      "impact_analysis": "电力板块短期涨幅过大后出现回调，大唐发电等个股遭主力净卖出，但长期受益于电力市场化改革，回调或提供布局机会。",
       "affected_sectors": [
-        "外资重仓股"
+        "电力",
+        "公用事业"
       ],
       "affected_stocks": [
-        "600519.SS",
-        "000333.SZ"
+        "601991.SS",
+        "600023.SS"
       ],
       "importance": 6
     },
     {
-      "title": "沪深两市成交额突破1.5万亿 较上一个交易日此时缩量超2300亿元",
+      "title": "高盛：印度不太可能因人工智能出现大规模失业",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608143841607551.html",
-      "time": "2026-08-14 13:22:38",
-      "ai_summary": "沪深两市成交缩量超2300亿",
-      "impact_analysis": "成交额缩量显示市场观望情绪浓厚，短期可能延续震荡，但缩量调整后往往酝酿反弹，对大盘影响中性偏空。",
+      "url": "https://finance.eastmoney.com/a/202608143841665784.html",
+      "time": "2026-08-14 14:22:51",
+      "ai_summary": "韩国股市连续五日大涨，逼近7000点",
+      "impact_analysis": "韩国股市大涨主要受芯片股带动，对A股半导体板块形成情绪提振，但需注意外围市场波动可能传导至A股。",
       "affected_sectors": [
-        "大盘"
+        "半导体",
+        "芯片"
       ],
       "affected_stocks": [
-        "000001.SS",
-        "399001.SZ"
+        "688981.SS",
+        "002371.SZ"
       ],
       "importance": 6
-    },
-    {
-      "title": "交通银行推动全市场首单企业自贸离岸债业务落地",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608143841634190.html",
-      "time": "2026-08-14 13:53:08",
-      "ai_summary": "首单企业自贸离岸债落地，金融创新",
-      "impact_analysis": "自贸离岸债创新，利好上海本地金融股及离岸金融业务，但影响范围有限，对银行板块有轻微提振，属于政策面利好。",
-      "affected_sectors": [
-        "银行",
-        "上海自贸区"
-      ],
-      "affected_stocks": [
-        "601328.SS",
-        "600000.SS"
-      ],
-      "importance": 5
-    },
-    {
-      "title": "全球资金谨慎重返韩国股市",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608143841607918.html",
-      "time": "2026-08-14 13:20:48",
-      "ai_summary": "外资重返韩国股市，亚洲资金回流",
-      "impact_analysis": "外资回流韩国，可能分流部分亚洲资金，但整体反映全球风险偏好回升，对A股外资流向有间接影响，需关注北向资金动向。",
-      "affected_sectors": [
-        "外资重仓股"
-      ],
-      "affected_stocks": [
-        "600519.SS",
-        "000858.SZ"
-      ],
-      "importance": 5
     }
   ]
 }
