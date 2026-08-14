@@ -1,134 +1,132 @@
 {
   "date": "20260814",
-  "market_summary": "今日市场消息面偏多，存储芯片、液冷、CPO等科技板块受利好刺激活跃，日韩股市大涨提振亚太情绪，但高位股杀跌和缩量显示市场分化加剧。",
-  "sentiment_impact": "偏多",
+  "market_summary": "今日市场消息面围绕AI算力、半导体产业链展开，中芯国际业绩超预期但面临折旧压力，算力租赁概念持续走强，同时市场缩量调整，资金观望情绪浓厚。",
+  "sentiment_impact": "中性",
   "news": [
     {
-      "title": "长江存储首入全球NAND市占率前3！科创半导体设备ETF华泰柏瑞(588710)标的指数\"存储芯片\"含量超80%有望受益",
-      "source": "新浪财经",
-      "url": "https://finance.sina.com.cn/money/fund/jjh/2026-08-14/doc-ininhaiv9444638.shtml",
-      "time": "2026-08-14 11:23",
-      "ai_summary": "长江存储首入全球NAND市占率前三",
-      "impact_analysis": "国产存储芯片里程碑，验证国产替代加速，利好存储产业链，相关设备及材料公司有望受益。",
+      "title": "中芯国际单季收入首破30亿美元 但更大的压力还在后面",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608143841579393.html",
+      "time": "2026-08-14 12:59:22",
+      "ai_summary": "中芯国际收入破30亿美元，折旧压力大",
+      "impact_analysis": "中芯国际作为半导体龙头，业绩超预期但折旧增加压制毛利率，影响半导体板块情绪，但港股午后回升显示市场消化利空，对A股半导体设备材料板块有间接影响。",
+      "affected_sectors": [
+        "半导体",
+        "芯片制造"
+      ],
+      "affected_stocks": [
+        "688981.SS",
+        "002371.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "训练西迁、推理东沉 中国算力新版图正在形成",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608143841577226.html",
+      "time": "2026-08-14 12:57:00",
+      "ai_summary": "中国算力新版图形成，西部数据中心加速",
+      "impact_analysis": "算力基础设施向西部迁移，利好IDC、光模块、液冷等算力产业链，带动算力租赁概念午后走强，相关个股涨停，对AI算力板块有直接提振。",
+      "affected_sectors": [
+        "算力租赁",
+        "数据中心",
+        "光模块"
+      ],
+      "affected_stocks": [
+        "603881.SS",
+        "300017.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "SK海力士董事长：AI智能体的使用量五年内可能增长77倍",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608143841608757.html",
+      "time": "2026-08-14 13:21:14",
+      "ai_summary": "SK海力士称AI存储需求五年增77倍",
+      "impact_analysis": "存储芯片需求爆发，HBM供不应求，利好国内存储产业链，如兆易创新、北京君正等，同时带动半导体设备材料需求，对A股存储板块有积极影响。",
       "affected_sectors": [
         "存储芯片",
         "半导体设备"
       ],
       "affected_stocks": [
-        "688981.SS",
-        "688012.SS"
+        "603986.SS",
+        "300223.SZ"
       ],
-      "importance": 9
+      "importance": 7
     },
     {
-      "title": "数据中心液冷技术国标发布！液冷概念股集体大涨 康盛股份涨停",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608143841515643.html",
-      "time": "2026-08-14 10:32:00",
-      "ai_summary": "数据中心液冷国标发布，概念股大涨",
-      "impact_analysis": "首部液冷国标发布，利好数据中心散热产业链，提升行业规范化水平，相关概念股集体涨停，预计短期持续活跃。",
-      "affected_sectors": [
-        "液冷服务器",
-        "数据中心"
-      ],
-      "affected_stocks": [
-        "000619.SZ",
-        "603019.SS"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "刚刚大涨超1200点！日股爆拉 韩股重回“牛市”！",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608143841536024.html",
-      "time": "2026-08-14 10:58:33",
-      "ai_summary": "日韩股市大涨，芯片股领涨",
-      "impact_analysis": "亚太市场情绪回暖，日韩芯片股大涨带动A股半导体板块，外资风险偏好提升，利好科技成长股。",
-      "affected_sectors": [
-        "半导体",
-        "消费电子"
-      ],
-      "affected_stocks": [
-        "002371.SZ",
-        "603986.SS"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "新能源活跃！宁德时代拿下3GWh海外储能大单！创业板新能源ETF（159076）多头格局稳固",
+      "title": "DeepSeek正式涨价！国产AI芯片或迎价值重估！华宝基金科创人工智能ETF（589520）此前2日连续吸金！",
       "source": "新浪财经",
-      "url": "https://finance.sina.com.cn/money/fund/etf/2026-08-14/doc-ininhaiv9419343.shtml",
-      "time": "2026-08-14 10:50",
-      "ai_summary": "宁德时代获3GWh海外储能大单",
-      "impact_analysis": "海外储能订单验证锂电需求，新能源赛道活跃，利好锂电池及储能产业链，带动创业板走强。",
+      "url": "https://finance.sina.com.cn/money/fund/etf/2026-08-14/doc-ininhhrn4163824.shtml",
+      "time": "2026-08-14 13:46",
+      "ai_summary": "DeepSeek涨价，国产AI芯片价值重估",
+      "impact_analysis": "DeepSeek涨价反映算力紧缺，利好国产AI芯片及算力租赁板块，科创AI ETF吸金，带动寒武纪、海光信息等个股，对AI产业链有积极影响。",
       "affected_sectors": [
-        "锂电池",
-        "储能"
+        "AI芯片",
+        "算力租赁"
       ],
       "affected_stocks": [
-        "300750.SZ",
-        "002074.SZ"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "CPO概念持续走高 阿莱德20cm涨停",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608143841519428.html",
-      "time": "2026-08-14 10:33:40",
-      "ai_summary": "CPO概念持续走高，光模块散热领涨",
-      "impact_analysis": "光模块高景气延续，Lumentum财报验证需求，CPO概念受资金追捧，带动算力产业链。",
-      "affected_sectors": [
-        "CPO",
-        "光模块"
-      ],
-      "affected_stocks": [
-        "300308.SZ",
-        "300502.SZ"
+        "688256.SS",
+        "688041.SS"
       ],
       "importance": 7
     },
     {
-      "title": "存储巨头大规模扩产，六氟化钨供需缺口持续扩大，科创新材料ETF博时高开高走涨超2%",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608143841535488.html",
-      "time": "2026-08-14 10:54:21",
-      "ai_summary": "存储巨头扩产，六氟化钨供需缺口扩大",
-      "impact_analysis": "存储扩产带动上游材料需求，六氟化钨供需紧张，利好新材料板块，相关ETF大涨。",
+      "title": "下半年险资加码权益资产力度有望加大！资金连续6个交易日流入港股通红利ETF华泰柏瑞（513530）",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/money/fund/jjh/2026-08-14/doc-ininhhrr2879727.shtml",
+      "time": "2026-08-14 13:24",
+      "ai_summary": "险资加码权益资产，长线资金入市",
+      "impact_analysis": "险资持续增持，利好高股息板块，如银行、公用事业，同时提升市场信心，对大盘有支撑作用，属于资金面利好。",
       "affected_sectors": [
-        "半导体材料",
-        "电子化学品"
+        "银行",
+        "高股息"
       ],
       "affected_stocks": [
-        "688268.SS",
-        "688234.SS"
+        "601398.SS",
+        "600900.SS"
       ],
       "importance": 7
     },
     {
-      "title": "人形机器人试验方法系列国家标准编制工作启动",
+      "title": "飞天茅台告别“一瓶难寻” 茅台这盘“大棋”不只是卖酒",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608143841548385.html",
-      "time": "2026-08-14 11:11:51",
-      "ai_summary": "人形机器人试验方法国标编制启动",
-      "impact_analysis": "国家标准制定推动人形机器人产业规范化，利好机器人核心零部件及整机企业，主题投资升温。",
+      "url": "https://finance.eastmoney.com/a/202608143841623847.html",
+      "time": "2026-08-14 13:43:56",
+      "ai_summary": "飞天茅台自营店放开购买，价格上调",
+      "impact_analysis": "茅台渠道改革，自营放开C端，短期可能影响批发价，但长期利好公司直销占比提升，对白酒板块有稳定作用，但需关注市场对价格波动的反应。",
       "affected_sectors": [
-        "人形机器人",
-        "自动化设备"
+        "白酒"
       ],
       "affected_stocks": [
-        "002472.SZ",
-        "688017.SS"
+        "600519.SS"
       ],
-      "importance": 7
+      "importance": 6
     },
     {
-      "title": "沪深两市成交额突破1万亿 较上一日此时缩量超1400亿",
+      "title": "消息人士称日本央行考虑9月加息，并加快紧缩步伐",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/stock/usstock/c/2026-08-14/doc-ininhhrt9404523.shtml",
+      "time": "2026-08-14 13:42",
+      "ai_summary": "日本央行或9月加息，全球流动性收紧",
+      "impact_analysis": "日本央行加息预期升温，可能引发全球资金回流日本，对A股外资流向构成压力，但影响有限，需关注日元走势及全球风险偏好。",
+      "affected_sectors": [
+        "外资重仓股"
+      ],
+      "affected_stocks": [
+        "600519.SS",
+        "000333.SZ"
+      ],
+      "importance": 6
+    },
+    {
+      "title": "沪深两市成交额突破1.5万亿 较上一个交易日此时缩量超2300亿元",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608143841515214.html",
-      "time": "2026-08-14 10:28:51",
-      "ai_summary": "沪深两市成交额突破1万亿，缩量",
-      "impact_analysis": "成交额虽破万亿但较昨日缩量，显示市场观望情绪浓厚，资金分歧加大，短期大盘或震荡。",
+      "url": "https://finance.eastmoney.com/a/202608143841607551.html",
+      "time": "2026-08-14 13:22:38",
+      "ai_summary": "沪深两市成交缩量超2300亿",
+      "impact_analysis": "成交额缩量显示市场观望情绪浓厚，短期可能延续震荡，但缩量调整后往往酝酿反弹，对大盘影响中性偏空。",
       "affected_sectors": [
         "大盘"
       ],
@@ -136,40 +134,40 @@
         "000001.SS",
         "399001.SZ"
       ],
-      "importance": 7
+      "importance": 6
     },
     {
-      "title": "272只基金持股突破“双十”限制 近期为何批量“时点破线”？",
+      "title": "交通银行推动全市场首单企业自贸离岸债业务落地",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608143841559347.html",
-      "time": "2026-08-14 11:29:15",
-      "ai_summary": "272只基金持股突破双十限制",
-      "impact_analysis": "监管警示基金投资集中度，可能引发部分基金调仓，对高集中度个股和行业形成压力。",
+      "url": "https://finance.eastmoney.com/a/202608143841634190.html",
+      "time": "2026-08-14 13:53:08",
+      "ai_summary": "首单企业自贸离岸债落地，金融创新",
+      "impact_analysis": "自贸离岸债创新，利好上海本地金融股及离岸金融业务，但影响范围有限，对银行板块有轻微提振，属于政策面利好。",
       "affected_sectors": [
-        "基金重仓股"
+        "银行",
+        "上海自贸区"
+      ],
+      "affected_stocks": [
+        "601328.SS",
+        "600000.SS"
+      ],
+      "importance": 5
+    },
+    {
+      "title": "全球资金谨慎重返韩国股市",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608143841607918.html",
+      "time": "2026-08-14 13:20:48",
+      "ai_summary": "外资重返韩国股市，亚洲资金回流",
+      "impact_analysis": "外资回流韩国，可能分流部分亚洲资金，但整体反映全球风险偏好回升，对A股外资流向有间接影响，需关注北向资金动向。",
+      "affected_sectors": [
+        "外资重仓股"
       ],
       "affected_stocks": [
         "600519.SS",
-        "300750.SZ"
+        "000858.SZ"
       ],
-      "importance": 6
-    },
-    {
-      "title": "存货超82亿元！寒武纪开启“买买买”模式，陈天石回应称为应对原材料涨价压力",
-      "source": "新浪财经",
-      "url": "https://finance.sina.com.cn/wm/2026-08-14/doc-ininhait2889511.shtml",
-      "time": "2026-08-14 10:49",
-      "ai_summary": "寒武纪存货超82亿，应对涨价",
-      "impact_analysis": "寒武纪战略备货反映AI芯片需求旺盛，但高存货也带来风险，市场关注其后续业绩兑现。",
-      "affected_sectors": [
-        "AI芯片",
-        "半导体"
-      ],
-      "affected_stocks": [
-        "688256.SS",
-        "688041.SS"
-      ],
-      "importance": 6
+      "importance": 5
     }
   ]
 }
