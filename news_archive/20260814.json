@@ -1,177 +1,175 @@
 {
   "date": "20260814",
-  "market_summary": "今日市场消息面以AI算力产业链为核心，中芯国际业绩超预期带动半导体板块走强，同时医药、稀土等板块活跃，但高位股回调及电力板块回落带来一定分化，整体情绪偏多。",
+  "market_summary": "今日市场消息面偏多，存储芯片、液冷、CPO等科技板块受利好刺激活跃，日韩股市大涨提振亚太情绪，但高位股杀跌和缩量显示市场分化加剧。",
   "sentiment_impact": "偏多",
   "news": [
     {
-      "title": "中芯国际赵海军：AI配套芯片需求旺盛 Q2中国区收入增长22%",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608143841189921.html",
-      "time": "2026-08-14 09:04:04",
-      "ai_summary": "中芯国际Q2业绩超预期，AI需求旺盛",
-      "impact_analysis": "中芯国际作为半导体龙头，业绩超预期直接提振半导体板块，带动科创板及创业板情绪，对大盘指数有正面影响。",
+      "title": "长江存储首入全球NAND市占率前3！科创半导体设备ETF华泰柏瑞(588710)标的指数\"存储芯片\"含量超80%有望受益",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/money/fund/jjh/2026-08-14/doc-ininhaiv9444638.shtml",
+      "time": "2026-08-14 11:23",
+      "ai_summary": "长江存储首入全球NAND市占率前三",
+      "impact_analysis": "国产存储芯片里程碑，验证国产替代加速，利好存储产业链，相关设备及材料公司有望受益。",
       "affected_sectors": [
-        "半导体",
-        "芯片"
+        "存储芯片",
+        "半导体设备"
       ],
       "affected_stocks": [
         "688981.SS",
-        "00981.HK"
-      ],
-      "importance": 10
-    },
-    {
-      "title": "中芯国际赵海军：三季度计入新增产能后的利用率预计维持在约95%高位",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608143841262450.html",
-      "time": "2026-08-14 09:14:09",
-      "ai_summary": "中芯国际AH股大涨，带动半导体板块",
-      "impact_analysis": "中芯国际股价大涨直接带动半导体板块及科创板指数，对市场情绪有显著提振作用。",
-      "affected_sectors": [
-        "半导体",
-        "科创板"
-      ],
-      "affected_stocks": [
-        "688981.SS",
-        "00981.HK"
+        "688012.SS"
       ],
       "importance": 9
     },
     {
-      "title": "稀有金属ETF华富(561800)早盘冲高涨超2%，AI需求持续释放，2026年上半年算力金属价格飙涨",
+      "title": "数据中心液冷技术国标发布！液冷概念股集体大涨 康盛股份涨停",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608143841485385.html",
-      "time": "2026-08-14 10:01:49",
-      "ai_summary": "AI需求带动算力金属价格飙涨",
-      "impact_analysis": "稀有金属价格上涨反映AI产业链上游需求强劲，利好相关资源股，同时可能带动有色金属板块整体走强。",
+      "url": "https://finance.eastmoney.com/a/202608143841515643.html",
+      "time": "2026-08-14 10:32:00",
+      "ai_summary": "数据中心液冷国标发布，概念股大涨",
+      "impact_analysis": "首部液冷国标发布，利好数据中心散热产业链，提升行业规范化水平，相关概念股集体涨停，预计短期持续活跃。",
       "affected_sectors": [
-        "有色金属",
-        "稀有金属"
+        "液冷服务器",
+        "数据中心"
       ],
       "affected_stocks": [
-        "000831.SZ",
-        "600111.SS"
+        "000619.SZ",
+        "603019.SS"
       ],
       "importance": 8
     },
     {
-      "title": "中芯国际赵海军：下半年人工智能产生的产业推动与溢出效应还将持续",
+      "title": "刚刚大涨超1200点！日股爆拉 韩股重回“牛市”！",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608143841288048.html",
-      "time": "2026-08-14 09:17:58",
-      "ai_summary": "苏州工业园区进出口破万亿，AI硬件占比过半",
-      "impact_analysis": "数据印证AI算力硬件出口强劲，利好光模块、存储等板块，同时显示外贸韧性，对市场信心有提振。",
+      "url": "https://finance.eastmoney.com/a/202608143841536024.html",
+      "time": "2026-08-14 10:58:33",
+      "ai_summary": "日韩股市大涨，芯片股领涨",
+      "impact_analysis": "亚太市场情绪回暖，日韩芯片股大涨带动A股半导体板块，外资风险偏好提升，利好科技成长股。",
       "affected_sectors": [
-        "光模块",
-        "存储芯片"
-      ],
-      "affected_stocks": [
-        "300308.SZ",
-        "002371.SZ"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "中芯国际赵海军：二季度海外订单回流 在地化制造继续加强",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608143841185126.html",
-      "time": "2026-08-14 09:03:34",
-      "ai_summary": "医药路演热度追平科技，资金回流",
-      "impact_analysis": "医药板块关注度提升，研究资源回流预示资金可能从科技向医药轮动，利好医药股表现，对市场风格切换有指示作用。",
-      "affected_sectors": [
-        "医药生物",
-        "CRO"
-      ],
-      "affected_stocks": [
-        "300347.SZ",
-        "603259.SS"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "江苏：面向集成电路、人工智能、遥感、纳米、低空等急需领域大力发展新兴交叉学科",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608143841480543.html",
-      "time": "2026-08-14 10:02:09",
-      "ai_summary": "应用材料订单强劲，半导体设备需求旺",
-      "impact_analysis": "海外半导体设备龙头业绩强劲，印证全球AI资本开支上行，利好国内半导体设备及材料板块。",
-      "affected_sectors": [
-        "半导体设备",
-        "半导体材料"
+        "半导体",
+        "消费电子"
       ],
       "affected_stocks": [
         "002371.SZ",
-        "688012.SS"
+        "603986.SS"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "新能源活跃！宁德时代拿下3GWh海外储能大单！创业板新能源ETF（159076）多头格局稳固",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/money/fund/etf/2026-08-14/doc-ininhaiv9419343.shtml",
+      "time": "2026-08-14 10:50",
+      "ai_summary": "宁德时代获3GWh海外储能大单",
+      "impact_analysis": "海外储能订单验证锂电需求，新能源赛道活跃，利好锂电池及储能产业链，带动创业板走强。",
+      "affected_sectors": [
+        "锂电池",
+        "储能"
+      ],
+      "affected_stocks": [
+        "300750.SZ",
+        "002074.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "CPO概念持续走高 阿莱德20cm涨停",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608143841519428.html",
+      "time": "2026-08-14 10:33:40",
+      "ai_summary": "CPO概念持续走高，光模块散热领涨",
+      "impact_analysis": "光模块高景气延续，Lumentum财报验证需求，CPO概念受资金追捧，带动算力产业链。",
+      "affected_sectors": [
+        "CPO",
+        "光模块"
+      ],
+      "affected_stocks": [
+        "300308.SZ",
+        "300502.SZ"
       ],
       "importance": 7
     },
     {
-      "title": "中国铁建签约罗马尼亚大型光伏电站项目",
+      "title": "存储巨头大规模扩产，六氟化钨供需缺口持续扩大，科创新材料ETF博时高开高走涨超2%",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608143841328642.html",
-      "time": "2026-08-14 09:33:20",
-      "ai_summary": "电子板块年内涨幅第一，达37.86%",
-      "impact_analysis": "电子板块持续领涨，显示市场主线仍在科技，但需警惕高位回调风险，对指数贡献较大。",
+      "url": "https://finance.eastmoney.com/a/202608143841535488.html",
+      "time": "2026-08-14 10:54:21",
+      "ai_summary": "存储巨头扩产，六氟化钨供需缺口扩大",
+      "impact_analysis": "存储扩产带动上游材料需求，六氟化钨供需紧张，利好新材料板块，相关ETF大涨。",
       "affected_sectors": [
-        "电子",
+        "半导体材料",
+        "电子化学品"
+      ],
+      "affected_stocks": [
+        "688268.SS",
+        "688234.SS"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "人形机器人试验方法系列国家标准编制工作启动",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608143841548385.html",
+      "time": "2026-08-14 11:11:51",
+      "ai_summary": "人形机器人试验方法国标编制启动",
+      "impact_analysis": "国家标准制定推动人形机器人产业规范化，利好机器人核心零部件及整机企业，主题投资升温。",
+      "affected_sectors": [
+        "人形机器人",
+        "自动化设备"
+      ],
+      "affected_stocks": [
+        "002472.SZ",
+        "688017.SS"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "沪深两市成交额突破1万亿 较上一日此时缩量超1400亿",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608143841515214.html",
+      "time": "2026-08-14 10:28:51",
+      "ai_summary": "沪深两市成交额突破1万亿，缩量",
+      "impact_analysis": "成交额虽破万亿但较昨日缩量，显示市场观望情绪浓厚，资金分歧加大，短期大盘或震荡。",
+      "affected_sectors": [
+        "大盘"
+      ],
+      "affected_stocks": [
+        "000001.SS",
+        "399001.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "272只基金持股突破“双十”限制 近期为何批量“时点破线”？",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608143841559347.html",
+      "time": "2026-08-14 11:29:15",
+      "ai_summary": "272只基金持股突破双十限制",
+      "impact_analysis": "监管警示基金投资集中度，可能引发部分基金调仓，对高集中度个股和行业形成压力。",
+      "affected_sectors": [
+        "基金重仓股"
+      ],
+      "affected_stocks": [
+        "600519.SS",
+        "300750.SZ"
+      ],
+      "importance": 6
+    },
+    {
+      "title": "存货超82亿元！寒武纪开启“买买买”模式，陈天石回应称为应对原材料涨价压力",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/wm/2026-08-14/doc-ininhait2889511.shtml",
+      "time": "2026-08-14 10:49",
+      "ai_summary": "寒武纪存货超82亿，应对涨价",
+      "impact_analysis": "寒武纪战略备货反映AI芯片需求旺盛，但高存货也带来风险，市场关注其后续业绩兑现。",
+      "affected_sectors": [
+        "AI芯片",
         "半导体"
       ],
       "affected_stocks": [
-        "002475.SZ",
-        "600584.SS"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "卖方医药路演热度正追平科技 研报站上前三 研究资源明显回流",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608143841479680.html",
-      "time": "2026-08-14 10:00:49",
-      "ai_summary": "江苏支持集成电路、AI等学科建设",
-      "impact_analysis": "政策利好科技产业长期发展，对半导体、AI等板块形成政策支撑，但短期影响有限，属于中长期利好。",
-      "affected_sectors": [
-        "半导体",
-        "人工智能"
-      ],
-      "affected_stocks": [
-        "688981.SS",
-        "002230.SZ"
+        "688256.SS",
+        "688041.SS"
       ],
       "importance": 6
-    },
-    {
-      "title": "中芯国际赵海军：客户提前拉货抵消了部分终端下行影响",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608143841223327.html",
-      "time": "2026-08-14 09:08:47",
-      "ai_summary": "人形机器人运动会参赛数量翻两番",
-      "impact_analysis": "事件催化机器人板块热度，叠加产业趋势，利好机器人概念股，但需注意短期炒作风险。",
-      "affected_sectors": [
-        "机器人",
-        "智能制造"
-      ],
-      "affected_stocks": [
-        "300024.SZ",
-        "002747.SZ"
-      ],
-      "importance": 6
-    },
-    {
-      "title": "中芯国际赵海军：中国互联网公司硬件投资超预期 算力及配套芯片供不应求",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608143841312130.html",
-      "time": "2026-08-14 09:27:25",
-      "ai_summary": "央行逆回购操作量为零",
-      "impact_analysis": "央行零操作显示流动性维持中性，对市场影响有限，但需关注后续资金面变化。",
-      "affected_sectors": [
-        "银行",
-        "全市场"
-      ],
-      "affected_stocks": [
-        "601398.SS",
-        "600036.SS"
-      ],
-      "importance": 5
     }
   ]
 }
