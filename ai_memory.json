@@ -499,6 +499,29 @@
       "why_wrong": null,
       "missed_signal": null,
       "lesson": null
+    },
+    {
+      "date": "20260814",
+      "signal_date": "20260807",
+      "mode": "strict",
+      "entry_price": 1.72,
+      "pullback_pct": 24.0,
+      "limit_days": 4,
+      "analysis": "**量**：缩量至极（20%），OBV下降资金流出，反弹动能不足。  \n**价**：MA5/10粘合（1.72-1.73），MA20支撑（1.68），现价贴近短期均线，但距高点1.83仍远。  \n**形**：4连板后24日深度回调24%，呈弱势整理形态，无明确反转信号。  \n**时**：回调24天超常规窗口，缩量横盘但未现启动迹象，时间窗口偏长。  \n\n**反弹概率**：低（≤30%）  \n**仓位建议**：1成仓（启动期3档）  \n**最终结论**：【观望】",
+      "sentiment": "",
+      "position": "",
+      "opinion": "",
+      "verified": false,
+      "return_7d": null,
+      "exit_reason": null,
+      "exit_day": null,
+      "verdict": null,
+      "review_analysis": null,
+      "review_quality": null,
+      "what_happened": null,
+      "why_wrong": null,
+      "missed_signal": null,
+      "lesson": null
     }
   ]
 }
