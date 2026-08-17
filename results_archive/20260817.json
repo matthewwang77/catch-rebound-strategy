@@ -19,20 +19,28 @@
   "regime": {
     "status": "neutral",
     "label": "3档: 启动期 — 谨慎入场",
-    "avg_trend": 0.52,
+    "avg_trend": 0.53,
     "recommended_mode": "strict"
   },
   "modes": {
     "strict": {
-      "count": 2,
+      "count": 3,
       "candidates": [
         {
           "code": "002841.SZ",
-          "price": 49.49,
+          "price": 49.46,
           "signal_date": "20260813",
           "pullback_pct": 10.7,
           "limit_days": 3,
           "entity_ratio": 67.0
+        },
+        {
+          "code": "603903.SS",
+          "price": 14.31,
+          "signal_date": "20260813",
+          "pullback_pct": 8.8,
+          "limit_days": 3,
+          "entity_ratio": 100.0
         },
         {
           "code": "000078.SZ",
