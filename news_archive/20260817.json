@@ -1,171 +1,193 @@
 {
   "date": "20260817",
-  "market_summary": "今日A股市场消息面偏多，半导体芯片产业链全面爆发，AI算力与存储双轮驱动，科创板领涨；同时湖南发布智能机器人产业政策，CXO板块受业绩催化走强，市场成交活跃，资金聚焦科技成长。",
+  "market_summary": "今日A股市场情绪高涨，半导体、AI、存储芯片等科技板块全面爆发，带动创业板指涨超2%，上证指数涨1%，成交额突破1.5万亿。海外方面，美国通胀数据回落缓解加息预期，但厄尔尼诺预警引发粮食安全担忧，农业股大涨。整体消息面偏多，科技成长风格占优。",
   "sentiment_impact": "偏多",
   "news": [
     {
-      "title": "SK海力士预判明年存储芯片将现史上最大供应缺口，科创芯片设计ETF天弘、芯片ETF天弘标的指数双双大涨超3%",
+      "title": "AI浪潮驱动存储芯片、光通信多板块迎来上涨行情，科创100ETF鹏华涨超2%",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608173842941266.html",
-      "time": "2026-08-17 11:08:47",
-      "ai_summary": "SK海力士预判存储芯片现史上最大缺口",
-      "impact_analysis": "存储芯片供需紧张预期强化，涨价周期持续，利好国内存储产业链，推动芯片设计、设备材料板块上涨。",
+      "url": "https://finance.eastmoney.com/a/202608173843035088.html",
+      "time": "2026-08-17 13:52:19",
+      "ai_summary": "SK海力士警告存储荒，半导体产业链爆发",
+      "impact_analysis": "SK海力士强调存储需求爆发及投资384亿美元建厂，直接催化A股半导体、存储芯片板块大涨，带动科创50、芯片ETF涨超3%，对科技成长风格形成强支撑，利好相关产业链公司。",
       "affected_sectors": [
+        "半导体",
+        "存储芯片",
+        "AI算力"
+      ],
+      "affected_stocks": [
+        "688981.SS",
+        "688012.SS",
+        "603986.SS"
+      ],
+      "importance": 9
+    },
+    {
+      "title": "PCB上游材料涨价潮持续扩大，南亚塑料上调CCL及PP报价，科创新材料ETF博时(588010)盘中上涨3.40%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608173843046721.html",
+      "time": "2026-08-17 13:49:54",
+      "ai_summary": "长鑫科技市值破4万亿，芯片设计板块爆发",
+      "impact_analysis": "长鑫科技股价创新高，市值突破4万亿，成为半导体板块的龙头标杆，带动芯片设计、存储芯片等板块集体走强，科创芯片设计ETF涨超4%，市场情绪高涨，资金聚焦科技核心资产。",
+      "affected_sectors": [
+        "芯片设计",
         "存储芯片",
         "半导体设备"
       ],
       "affected_stocks": [
         "688981.SS",
-        "002371.SZ"
+        "688012.SS",
+        "603986.SS"
       ],
       "importance": 9
     },
     {
-      "title": "湖南：完善对各类智能机器人企业的上市服务机制 支持企业加快对接资本市场",
+      "title": "半导体芯片产业链直线拉升，科创50ETF鹏华涨超3%",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608173842895493.html",
-      "time": "2026-08-17 10:33:56",
-      "ai_summary": "湖南发布智能机器人产业实施意见",
-      "impact_analysis": "地方政策明确支持机器人企业上市，有望提升板块估值，带动产业链相关公司受益，对智能制造、机器人概念形成直接利好。",
+      "url": "https://finance.eastmoney.com/a/202608173843036141.html",
+      "time": "2026-08-17 13:53:44",
+      "ai_summary": "摩根大通预警粮食危机，农业股大涨",
+      "impact_analysis": "摩根大通警告全球粮食危机可能明年爆发，叠加厄尔尼诺概率超90%，引发市场对粮食安全的担忧，农业种植、农化板块受资金追捧，粮食ETF涨超3%，天山生物等涨停，短期主题性机会明显。",
       "affected_sectors": [
-        "机器人",
-        "智能制造"
+        "农业种植",
+        "农化制品",
+        "粮食概念"
       ],
       "affected_stocks": [
-        "300024.SZ",
-        "688017.SS"
+        "300313.SZ",
+        "300189.SZ",
+        "600598.SS"
       ],
       "importance": 8
     },
     {
-      "title": "A股市值“一哥”大涨！市值重回4万亿",
+      "title": "科技巨头掀融资狂潮！Alphabet拟首次发行澳元债 为AI大战补弹药",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608173842900321.html",
-      "time": "2026-08-17 10:38:00",
-      "ai_summary": "A股市值一哥长鑫科技大涨，市值重回4万亿",
-      "impact_analysis": "龙头大涨带动半导体产业链情绪，提升市场风险偏好，对科创板及芯片板块形成显著提振。",
-      "affected_sectors": [
-        "半导体",
-        "科创板"
-      ],
-      "affected_stocks": [
-        "688981.SS",
-        "688012.SS"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "深成指、创业板指涨逾1% 科创50涨超3%",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608173842923786.html",
-      "time": "2026-08-17 10:53:50",
-      "ai_summary": "深成指创业板涨逾1%，科创50涨超3%",
-      "impact_analysis": "指数走强显示市场做多情绪浓厚，科技成长领涨，短期大盘有望延续反弹，但需关注量能持续性。",
-      "affected_sectors": [
-        "科创板",
-        "创业板"
-      ],
-      "affected_stocks": [
-        "588000.SS",
-        "159915.SZ"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "人工智能ETF华富(515980)冲击4连涨，国内日均Token调用量两年增长超1000倍，AI商业化正跨越投入期进入回报周期",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608173842925256.html",
-      "time": "2026-08-17 10:56:13",
-      "ai_summary": "AI Token调用量两年增千倍，商业化加速",
-      "impact_analysis": "AI商业化进入回报期，验证行业高景气，利好AI算力、大模型及应用端企业，推动相关板块持续走强。",
-      "affected_sectors": [
-        "人工智能",
-        "算力"
-      ],
-      "affected_stocks": [
-        "688256.SS",
-        "002230.SZ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "股票ETF连续两周净流出 8月以来流出1286亿元",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608173842926241.html",
-      "time": "2026-08-17 10:58:57",
-      "ai_summary": "股票ETF连续两周净流出1286亿元",
-      "impact_analysis": "资金流出反映市场情绪谨慎，但半导体ETF逆势获流入，显示结构性机会，短期大盘或承压，但科技主线受青睐。",
-      "affected_sectors": [
-        "半导体",
-        "ETF"
-      ],
-      "affected_stocks": [
-        "512480.SS",
-        "159995.SZ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "沪深两市成交额突破1万亿 较上一日此时放量超700亿",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608173842881811.html",
-      "time": "2026-08-17 10:20:21",
-      "ai_summary": "沪深两市成交额突破1万亿，放量明显",
-      "impact_analysis": "成交放量显示资金入场积极，市场活跃度提升，支撑行情延续，但需警惕高位分歧。",
-      "affected_sectors": [
-        "全市场"
-      ],
-      "affected_stocks": [],
-      "importance": 7
-    },
-    {
-      "title": "CXO中报密集验证高景气、WCLC中国研究入选创新高！港股医疗ETF永赢盘中涨超2%，CXO方向领涨",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608173842885611.html",
-      "time": "2026-08-17 10:21:09",
-      "ai_summary": "CXO中报高景气，港股医疗ETF涨超2%",
-      "impact_analysis": "CXO行业景气验证，业绩催化下板块估值修复，带动医药医疗产业链反弹，A股相关标的或跟涨。",
-      "affected_sectors": [
-        "CXO",
-        "医药"
-      ],
-      "affected_stocks": [
-        "603259.SS",
-        "002821.SZ"
-      ],
-      "importance": 6
-    },
-    {
-      "title": "预告：国新办8月18日将举行新闻发布会 介绍激发下沉市场活力活跃县域消费有关情况",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608173842890517.html",
-      "time": "2026-08-17 10:25:34",
-      "ai_summary": "国新办明日介绍激发县域消费情况",
-      "impact_analysis": "政策聚焦下沉市场，有望刺激消费板块，利好零售、家电、食品饮料等县域消费相关行业。",
-      "affected_sectors": [
-        "消费",
-        "零售"
-      ],
-      "affected_stocks": [
-        "601933.SS",
-        "000333.SZ"
-      ],
-      "importance": 6
-    },
-    {
-      "title": "迎宏观与产业共振！机构：铜价新高近在咫尺，金价仍处顺风期，上游矿业弹性更足",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608173842891320.html",
-      "time": "2026-08-17 10:27:03",
-      "ai_summary": "机构看好铜价新高，有色板块走强",
-      "impact_analysis": "宏观与产业共振，铜金价格上行预期利好上游矿业，带动有色金属板块估值提升。",
+      "url": "https://finance.eastmoney.com/a/202608173842976024.html",
+      "time": "2026-08-17 13:02:10",
+      "ai_summary": "美国CPI回落，美联储加息预期降温",
+      "impact_analysis": "美国7月CPI和PPI双双回落，缓解了市场对美联储加息的担忧，利好全球风险资产。对A股而言，外资流入预期增强，有色金属、贵金属等板块受益，同时成长股估值压力减轻。",
       "affected_sectors": [
         "有色金属",
-        "矿业"
+        "贵金属",
+        "成长风格"
       ],
       "affected_stocks": [
-        "601899.SS",
-        "600362.SS"
+        "000630.SZ",
+        "600362.SS",
+        "002460.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "电投绿能：公司近期完成绿氨首单规模化出口 正持续开发欧盟、日韩等地区客户",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608173842977978.html",
+      "time": "2026-08-17 13:00:26",
+      "ai_summary": "创业板指涨超2%，市场放量普涨",
+      "impact_analysis": "创业板指涨超2%，深证成指涨1.57%，沪指涨0.82%，全市场超3700只个股上涨，成交额突破1.5万亿，市场赚钱效应显著，资金风险偏好提升，短期指数有望延续强势。",
+      "affected_sectors": [
+        "成长风格",
+        "科技",
+        "新能源"
+      ],
+      "affected_stocks": [
+        "300750.SZ",
+        "002594.SZ",
+        "688981.SS"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "超级厄尔尼诺要来了！摩根大通预警粮食安全 农业股大涨（附股）",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608173843009219.html",
+      "time": "2026-08-17 13:32:03",
+      "ai_summary": "广州拟立法支持AI初创企业融资",
+      "impact_analysis": "广州发布AI促进条例征求意见，明确政府基金引导支持AI初创企业，政策利好AI产业链，尤其是本地AI公司及创投概念，有望提振市场对AI产业的政策预期，带动相关板块活跃。",
+      "affected_sectors": [
+        "人工智能",
+        "创投"
+      ],
+      "affected_stocks": [
+        "002230.SZ",
+        "300496.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "广州征求意见：充分发挥产业发展基金、科技创新基金等政府投资基金的引导作用 带动国有资本、社会资本重点支持本市人工智能初创型高成长性企业",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608173843003015.html",
+      "time": "2026-08-17 13:17:40",
+      "ai_summary": "PCB上游材料涨价，CCL及PP报价上调",
+      "impact_analysis": "南亚塑料上调CCL及PP报价，PCB上游材料涨价潮持续，利好具备涨价传导能力的覆铜板及PCB龙头，同时新材料板块受关注，科创新材料ETF涨超3%，相关公司盈利预期提升。",
+      "affected_sectors": [
+        "PCB",
+        "覆铜板",
+        "新材料"
+      ],
+      "affected_stocks": [
+        "002463.SZ",
+        "600183.SS",
+        "300476.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "莱茵河极端枯水重创欧洲化工，国内聚醚价格有望延续反弹态势，化工ETF博时(158006)涨近1%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608173843020669.html",
+      "time": "2026-08-17 13:39:20",
+      "ai_summary": "绿色算力大会将开，百亿级项目签约",
+      "impact_analysis": "绿色算力大会即将举办，将发布权威报告并签约百亿级项目，政策催化下算力租赁、数据中心等板块活跃，算力租赁概念震荡回升，东方材料涨停，行业景气度提升。",
+      "affected_sectors": [
+        "算力租赁",
+        "数据中心",
+        "绿色电力"
+      ],
+      "affected_stocks": [
+        "300308.SZ",
+        "600745.SS",
+        "000977.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "绿色算力（人工智能）大会即将于呼和浩特举办 一批百亿级项目将集中签约",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608173843006963.html",
+      "time": "2026-08-17 13:24:01",
+      "ai_summary": "中际旭创成交额超300亿，光通信受关注",
+      "impact_analysis": "中际旭创成交额超300亿元，显示光通信板块交投活跃，英伟达硅光交换机量产催化，AI算力需求驱动光模块景气度上行，龙头股受资金追捧，板块热度有望持续。",
+      "affected_sectors": [
+        "光通信",
+        "光模块",
+        "AI算力"
+      ],
+      "affected_stocks": [
+        "300308.SZ",
+        "002281.SZ",
+        "300502.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "哪些券商的Skills率先在work buddy上线了？AI竞争换了战场",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608173842966040.html",
+      "time": "2026-08-17 12:55:00",
+      "ai_summary": "莱茵河枯水影响欧洲化工，国内聚醚价格反弹",
+      "impact_analysis": "莱茵河极端枯水重创欧洲化工生产，导致全球化工供给收缩，国内聚醚等产品价格有望延续反弹，利好国内化工龙头，化工ETF涨近1%，相关公司业绩弹性增大。",
+      "affected_sectors": [
+        "化工",
+        "聚醚",
+        "农药"
+      ],
+      "affected_stocks": [
+        "600141.SS",
+        "002064.SZ",
+        "600426.SS"
       ],
       "importance": 6
     }
