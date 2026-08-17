@@ -1,176 +1,173 @@
 {
   "date": "20260817",
-  "market_summary": "今日消息面偏多，存储芯片、CPO、黄金等板块活跃，但白酒、影视等消费板块承压，市场结构性分化明显。",
-  "sentiment_impact": "中性",
+  "market_summary": "今日A股市场消息面偏多，半导体芯片产业链全面爆发，AI算力与存储双轮驱动，科创板领涨；同时湖南发布智能机器人产业政策，CXO板块受业绩催化走强，市场成交活跃，资金聚焦科技成长。",
+  "sentiment_impact": "偏多",
   "news": [
     {
-      "title": "PandaAI连续完成三轮融资",
+      "title": "SK海力士预判明年存储芯片将现史上最大供应缺口，科创芯片设计ETF天弘、芯片ETF天弘标的指数双双大涨超3%",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608173842867241.html",
-      "time": "2026-08-17 09:57:01",
-      "ai_summary": "日本10年期国债收益率创近30年新高",
-      "impact_analysis": "日本国债收益率上升反映全球利率环境收紧，可能引发资金回流日本，对A股外资流入构成压力，同时影响全球风险偏好。",
-      "affected_sectors": [
-        "银行",
-        "债券"
-      ],
-      "affected_stocks": [
-        "600036.SS",
-        "601988.SS"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "海尔携手天津大学脑机海河实验室 签署全面战略合作协议",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608173842635183.html",
-      "time": "2026-08-17 09:12:47",
-      "ai_summary": "汽车芯片五项认证标准发布",
-      "impact_analysis": "该标准构建全球首个汽车芯片全产业链评价体系，利好国内汽车芯片自主可控，推动相关企业技术升级和市场拓展。",
-      "affected_sectors": [
-        "汽车芯片",
-        "半导体"
-      ],
-      "affected_stocks": [
-        "603501.SS",
-        "002049.SZ"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "微灵医疗宣布完成超亿元人民币融资",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608173842859728.html",
-      "time": "2026-08-17 09:57:02",
-      "ai_summary": "全球存储芯片大涨，科创芯片ETF涨超2%",
-      "impact_analysis": "存储芯片涨价周期带动相关概念股走强，利好国内存储产业链，提升半导体板块整体估值。",
+      "url": "https://finance.eastmoney.com/a/202608173842941266.html",
+      "time": "2026-08-17 11:08:47",
+      "ai_summary": "SK海力士预判存储芯片现史上最大缺口",
+      "impact_analysis": "存储芯片供需紧张预期强化，涨价周期持续，利好国内存储产业链，推动芯片设计、设备材料板块上涨。",
       "affected_sectors": [
         "存储芯片",
-        "半导体"
+        "半导体设备"
       ],
       "affected_stocks": [
-        "688766.SS",
-        "603986.SS"
+        "688981.SS",
+        "002371.SZ"
+      ],
+      "importance": 9
+    },
+    {
+      "title": "湖南：完善对各类智能机器人企业的上市服务机制 支持企业加快对接资本市场",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608173842895493.html",
+      "time": "2026-08-17 10:33:56",
+      "ai_summary": "湖南发布智能机器人产业实施意见",
+      "impact_analysis": "地方政策明确支持机器人企业上市，有望提升板块估值，带动产业链相关公司受益，对智能制造、机器人概念形成直接利好。",
+      "affected_sectors": [
+        "机器人",
+        "智能制造"
+      ],
+      "affected_stocks": [
+        "300024.SZ",
+        "688017.SS"
       ],
       "importance": 8
     },
     {
-      "title": "Omdia：第二季度全球可穿戴腕带设备出货量同比下降2%",
+      "title": "A股市值“一哥”大涨！市值重回4万亿",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608173842853426.html",
-      "time": "2026-08-17 09:59:30",
-      "ai_summary": "CPO概念活跃，英伟达官宣量产",
-      "impact_analysis": "英伟达CPO交换机量产，带动CPO概念股大涨，利好光通信和AI算力产业链。",
+      "url": "https://finance.eastmoney.com/a/202608173842900321.html",
+      "time": "2026-08-17 10:38:00",
+      "ai_summary": "A股市值一哥长鑫科技大涨，市值重回4万亿",
+      "impact_analysis": "龙头大涨带动半导体产业链情绪，提升市场风险偏好，对科创板及芯片板块形成显著提振。",
       "affected_sectors": [
-        "CPO",
-        "光通信"
-      ],
-      "affected_stocks": [
-        "300308.SZ",
-        "300502.SZ"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "一根鱼竿的“乘数效应” 海钓热如何拉动暑期多元消费",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608173842777486.html",
-      "time": "2026-08-17 09:45:52",
-      "ai_summary": "茅台利润下滑，食品饮料ETF跌1.76%",
-      "impact_analysis": "白酒龙头业绩下滑拖累整个食品饮料板块，消费信心不足，短期板块承压。",
-      "affected_sectors": [
-        "白酒",
-        "食品饮料"
-      ],
-      "affected_stocks": [
-        "600519.SS",
-        "000858.SZ"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "具身智能大脑已成核心竞争壁垒",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608173842863224.html",
-      "time": "2026-08-17 10:05:38",
-      "ai_summary": "社保基金二季度持有科创板股名单",
-      "impact_analysis": "社保基金作为长期资金，其持仓变动对市场有风向标作用，新进科创板个股或受关注，提升科创板投资信心。",
-      "affected_sectors": [
+        "半导体",
         "科创板"
       ],
       "affected_stocks": [
-        "688538.SS",
-        "688126.SS"
+        "688981.SS",
+        "688012.SS"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "深成指、创业板指涨逾1% 科创50涨超3%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608173842923786.html",
+      "time": "2026-08-17 10:53:50",
+      "ai_summary": "深成指创业板涨逾1%，科创50涨超3%",
+      "impact_analysis": "指数走强显示市场做多情绪浓厚，科技成长领涨，短期大盘有望延续反弹，但需关注量能持续性。",
+      "affected_sectors": [
+        "科创板",
+        "创业板"
+      ],
+      "affected_stocks": [
+        "588000.SS",
+        "159915.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "人工智能ETF华富(515980)冲击4连涨，国内日均Token调用量两年增长超1000倍，AI商业化正跨越投入期进入回报周期",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608173842925256.html",
+      "time": "2026-08-17 10:56:13",
+      "ai_summary": "AI Token调用量两年增千倍，商业化加速",
+      "impact_analysis": "AI商业化进入回报期，验证行业高景气，利好AI算力、大模型及应用端企业，推动相关板块持续走强。",
+      "affected_sectors": [
+        "人工智能",
+        "算力"
+      ],
+      "affected_stocks": [
+        "688256.SS",
+        "002230.SZ"
       ],
       "importance": 7
     },
     {
-      "title": "产品有害物质超标等 20家儿童寝具生产企业被约谈",
+      "title": "股票ETF连续两周净流出 8月以来流出1286亿元",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608173842633113.html",
-      "time": "2026-08-17 09:05:27",
-      "ai_summary": "财政部续发行5年期国债1400亿元",
-      "impact_analysis": "国债发行增加供给，可能对债市形成压力，但体现积极财政政策，对基建等板块有提振作用。",
+      "url": "https://finance.eastmoney.com/a/202608173842926241.html",
+      "time": "2026-08-17 10:58:57",
+      "ai_summary": "股票ETF连续两周净流出1286亿元",
+      "impact_analysis": "资金流出反映市场情绪谨慎，但半导体ETF逆势获流入，显示结构性机会，短期大盘或承压，但科技主线受青睐。",
       "affected_sectors": [
-        "债券",
-        "基建"
+        "半导体",
+        "ETF"
       ],
       "affected_stocks": [
-        "601668.SS",
-        "601390.SS"
+        "512480.SS",
+        "159995.SZ"
       ],
       "importance": 7
     },
     {
-      "title": "订单排到2030年 前7个月上海船舶增长超6成",
+      "title": "沪深两市成交额突破1万亿 较上一日此时放量超700亿",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608173842839046.html",
-      "time": "2026-08-17 09:51:15",
-      "ai_summary": "黄金股ETF涨超2%，黄金持续上涨",
-      "impact_analysis": "黄金价格持续上涨，带动黄金股表现，避险情绪升温，利好贵金属板块。",
+      "url": "https://finance.eastmoney.com/a/202608173842881811.html",
+      "time": "2026-08-17 10:20:21",
+      "ai_summary": "沪深两市成交额突破1万亿，放量明显",
+      "impact_analysis": "成交放量显示资金入场积极，市场活跃度提升，支撑行情延续，但需警惕高位分歧。",
       "affected_sectors": [
-        "黄金",
-        "有色金属"
+        "全市场"
       ],
-      "affected_stocks": [
-        "600547.SS",
-        "002155.SZ"
-      ],
+      "affected_stocks": [],
       "importance": 7
     },
     {
-      "title": "日本10年期国债收益率再创近30年来新高",
+      "title": "CXO中报密集验证高景气、WCLC中国研究入选创新高！港股医疗ETF永赢盘中涨超2%，CXO方向领涨",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608173842638036.html",
-      "time": "2026-08-17 09:16:39",
-      "ai_summary": "集运指数（欧线）主力合约涨超10%",
-      "impact_analysis": "集运指数大涨反映航运需求强劲，利好航运板块，同时可能推升运输成本，影响相关行业。",
+      "url": "https://finance.eastmoney.com/a/202608173842885611.html",
+      "time": "2026-08-17 10:21:09",
+      "ai_summary": "CXO中报高景气，港股医疗ETF涨超2%",
+      "impact_analysis": "CXO行业景气验证，业绩催化下板块估值修复，带动医药医疗产业链反弹，A股相关标的或跟涨。",
       "affected_sectors": [
-        "航运",
-        "港口"
+        "CXO",
+        "医药"
       ],
       "affected_stocks": [
-        "601919.SS",
-        "600018.SS"
+        "603259.SS",
+        "002821.SZ"
       ],
-      "importance": 7
+      "importance": 6
     },
     {
-      "title": "我国汽车芯片五项认证认可行业标准发布",
+      "title": "预告：国新办8月18日将举行新闻发布会 介绍激发下沉市场活力活跃县域消费有关情况",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608173842869084.html",
-      "time": "2026-08-17 10:03:27",
-      "ai_summary": "央行逆回购操作量为零",
-      "impact_analysis": "央行暂停逆回购操作，显示流动性投放谨慎，市场资金面或边际收紧，对短期利率有影响。",
+      "url": "https://finance.eastmoney.com/a/202608173842890517.html",
+      "time": "2026-08-17 10:25:34",
+      "ai_summary": "国新办明日介绍激发县域消费情况",
+      "impact_analysis": "政策聚焦下沉市场，有望刺激消费板块，利好零售、家电、食品饮料等县域消费相关行业。",
       "affected_sectors": [
-        "银行",
-        "债券"
+        "消费",
+        "零售"
       ],
       "affected_stocks": [
-        "601398.SS",
-        "600036.SS"
+        "601933.SS",
+        "000333.SZ"
       ],
-      "importance": 7
+      "importance": 6
+    },
+    {
+      "title": "迎宏观与产业共振！机构：铜价新高近在咫尺，金价仍处顺风期，上游矿业弹性更足",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608173842891320.html",
+      "time": "2026-08-17 10:27:03",
+      "ai_summary": "机构看好铜价新高，有色板块走强",
+      "impact_analysis": "宏观与产业共振，铜金价格上行预期利好上游矿业，带动有色金属板块估值提升。",
+      "affected_sectors": [
+        "有色金属",
+        "矿业"
+      ],
+      "affected_stocks": [
+        "601899.SS",
+        "600362.SS"
+      ],
+      "importance": 6
     }
   ]
 }
