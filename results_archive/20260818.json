@@ -1,5 +1,5 @@
 {
-  "scan_time": "2026-08-18 14:02",
+  "scan_time": "2026-08-18 15:04",
   "scan_date": "20260818",
   "data_date": "2026-08-17",
   "market": {
@@ -19,7 +19,7 @@
   "regime": {
     "status": "neutral",
     "label": "4档: 发酵期 — 势头良好",
-    "avg_trend": 1.44,
+    "avg_trend": 1.95,
     "recommended_mode": "loose"
   },
   "modes": {
@@ -28,7 +28,7 @@
       "candidates": [
         {
           "code": "002841.SZ",
-          "price": 50.81,
+          "price": 51.29,
           "signal_date": "20260817",
           "pullback_pct": 8.7,
           "limit_days": 3,
