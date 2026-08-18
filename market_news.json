@@ -1,170 +1,175 @@
 {
   "date": "20260818",
-  "market_summary": "今日A股市场整体偏弱，创业板指跌2%，但农业、养殖、油气等板块逆势走强，科技股回调明显，市场呈现结构性分化。",
-  "sentiment_impact": "偏空",
+  "market_summary": "今日市场消息面多空交织，地缘风险升温压制风险偏好，但国内政策面持续释放积极信号，汽车、县域消费等促消费政策加码，创新药、机器人等产业催化不断，市场结构性机会明显。",
+  "sentiment_impact": "中性",
   "news": [
     {
-      "title": "创业板指跌2%",
+      "title": "艾力斯回应甲磺酸伏美替尼片被湘雅二院暂停采购传闻：正在核查真实性",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608183844358149.html",
-      "time": "2026-08-18 11:09:46",
-      "ai_summary": "创业板指跌2%，市场普跌",
-      "impact_analysis": "创业板指跌2%，上证跌0.64%，深证跌1.61%，近4200只个股下跌，显示市场情绪低迷，短期大盘承压，可能引发进一步调整。",
+      "url": "https://finance.eastmoney.com/a/202608183844376455.html",
+      "time": "2026-08-18 12:13:45",
+      "ai_summary": "30年美债收益率创19年新高",
+      "impact_analysis": "美债收益率飙升反映全球流动性收紧预期，对A股估值形成压制，尤其高估值成长板块承压，外资流向或受影响，需关注北向资金动向。",
       "affected_sectors": [
-        "医药医疗",
-        "文化传媒",
-        "软件服务",
-        "军工装备"
-      ],
-      "affected_stocks": [],
-      "importance": 10
-    },
-    {
-      "title": "GLM-5.3不及预期？智谱重挫15%！规模最大港股通信息技术ETF华宝（159131）跌近3%，标的指数纳入6只硬核龙头",
-      "source": "新浪财经",
-      "url": "https://finance.sina.com.cn/money/fund/etf/2026-08-18/doc-inintatv7379318.shtml",
-      "time": "2026-08-18 10:51",
-      "ai_summary": "智谱重挫15%，港股科技回调",
-      "impact_analysis": "智谱等AI龙头大跌，带动港股科技板块下挫，A股科技股或受情绪拖累，AI、软件等板块短期面临调整压力。",
-      "affected_sectors": [
-        "人工智能",
-        "软件服务",
-        "信息技术"
+        "成长股",
+        "外资重仓股"
       ],
       "affected_stocks": [
-        "688111.SS",
-        "300454.SZ"
+        "000300.SS",
+        "510300.SS"
+      ],
+      "importance": 9
+    },
+    {
+      "title": "我国创新药市场加速爆发，上半年38个“全球新”创新药获批，港股创新药ETF博时(520690)午后翻红涨0.14%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608183844438378.html",
+      "time": "2026-08-18 13:49:43",
+      "ai_summary": "九部门出台县域消费支持政策",
+      "impact_analysis": "政策聚焦县域消费，利好消费板块，尤其农业、食品饮料等基础消费领域，政策催化下相关个股活跃，消费ETF上涨，短期提振市场情绪。",
+      "affected_sectors": [
+        "消费",
+        "农业"
+      ],
+      "affected_stocks": [
+        "600598.SS",
+        "000876.SZ"
       ],
       "importance": 8
     },
     {
-      "title": "农业板块持续走高 秋乐种业等十余股涨停",
+      "title": "汽车促消费政策“升级” 多地将二手车纳入补贴范围、单台至高4000元",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608183844302997.html",
-      "time": "2026-08-18 10:22:58",
-      "ai_summary": "农业板块涨停潮，种业股大涨",
-      "impact_analysis": "农业板块持续走高，秋乐种业等十余股涨停，受厄尔尼诺和粮食安全预期催化，资金涌入，短期板块热度高。",
+      "url": "https://finance.eastmoney.com/a/202608183844367990.html",
+      "time": "2026-08-18 12:39:18",
+      "ai_summary": "汽车促消费政策升级，多地补贴二手车",
+      "impact_analysis": "汽车消费刺激政策加码，直接利好汽车整车及零部件板块，尤其二手车市场活跃度提升，带动产业链相关公司业绩预期改善。",
       "affected_sectors": [
-        "农业种植",
-        "种业",
-        "粮食"
+        "汽车整车",
+        "汽车零部件"
       ],
       "affected_stocks": [
-        "300087.SZ",
-        "600598.SS"
+        "601633.SS",
+        "600104.SS"
       ],
       "importance": 8
     },
     {
-      "title": "猪价连涨与产能去化预期共振，养殖ETF永赢盘中涨超2%！生猪产能去化持续加速",
+      "title": "哈佛大学和麻省理工造出83亿个“AI人” 模拟全球人类行为",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608183844313243.html",
-      "time": "2026-08-18 10:31:52",
-      "ai_summary": "猪价连涨，养殖板块走强",
-      "impact_analysis": "猪价上涨与产能去化预期共振，养殖ETF涨超2%，天邦食品等涨停，板块景气度提升，短期有望持续。",
+      "url": "https://finance.eastmoney.com/a/202608183844423533.html",
+      "time": "2026-08-18 13:35:01",
+      "ai_summary": "宇树科技明日科创板上市",
+      "impact_analysis": "人形机器人龙头上市，将带动机器人板块热度，产业链相关标的受关注，但需警惕上市后估值过高风险，短期概念股或冲高回落。",
       "affected_sectors": [
-        "养殖业",
-        "饲料"
+        "人形机器人",
+        "智能制造"
       ],
       "affected_stocks": [
-        "002124.SZ",
-        "603609.SS"
+        "688836.SS",
+        "002747.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "远东股份：AIDC用全合成光纤预制棒制造项目主体封顶",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608183844381756.html",
+      "time": "2026-08-18 12:47:01",
+      "ai_summary": "特朗普政府施压苹果不买中国存储芯片",
+      "impact_analysis": "美国打压中国存储芯片，短期利空存储板块，但加速国产替代进程，利好国内存储芯片设计及制造企业，政策支持预期增强。",
+      "affected_sectors": [
+        "存储芯片",
+        "半导体设备"
+      ],
+      "affected_stocks": [
+        "603986.SS",
+        "002049.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "宇树科技明天上市！机器人概念冲高回落 关注产业链核心标的",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608183844369491.html",
+      "time": "2026-08-18 12:48:00",
+      "ai_summary": "霍尔木兹海峡船只被击中，地缘风险升温",
+      "impact_analysis": "中东局势紧张推升油价，利好石油天然气板块，但增加全球市场不确定性，压制风险偏好，A股或受拖累，关注油气及军工板块。",
+      "affected_sectors": [
+        "石油天然气",
+        "军工"
+      ],
+      "affected_stocks": [
+        "601857.SS",
+        "600150.SS"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "狂揽订单151亿 半导体IP龙头芯原股份仍陷亏损 一边股权激励员工一边遭老股东减持",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608183844376696.html",
+      "time": "2026-08-18 12:57:00",
+      "ai_summary": "创新药市场加速爆发，上半年38个新药获批",
+      "impact_analysis": "创新药获批数量增加，行业景气度提升，利好创新药研发企业，政策支持及市场需求双驱动，板块估值有望修复。",
+      "affected_sectors": [
+        "创新药",
+        "生物医药"
+      ],
+      "affected_stocks": [
+        "600276.SS",
+        "300558.SZ"
       ],
       "importance": 7
     },
     {
-      "title": "中国7月份稀土及其制品出口10314吨 同比降16.9%",
+      "title": "国家医保局赴基层一线开展基层病种调研",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608183844363774.html",
-      "time": "2026-08-18 11:19:39",
-      "ai_summary": "稀土出口同比降16.9%",
-      "impact_analysis": "稀土出口数据下滑，可能引发市场对稀土需求担忧，但年累计仍增7%，影响有限，板块或短期承压。",
+      "url": "https://finance.eastmoney.com/a/202608183844376516.html",
+      "time": "2026-08-18 12:15:37",
+      "ai_summary": "国产算力底座转向质量引领",
+      "impact_analysis": "算力产业从规模转向质量，利好国产算力硬件及软件企业，信通院报告发布，政策支持明确，相关概念股或受提振。",
       "affected_sectors": [
-        "稀土永磁"
-      ],
-      "affected_stocks": [
-        "600111.SS",
-        "000831.SZ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "散户成为新增量 科技ETF遭个人抢购 多只被买走九成以上份额",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608183844250781.html",
-      "time": "2026-08-18 10:39:12",
-      "ai_summary": "散户抢购科技ETF，多只超九成",
-      "impact_analysis": "个人投资者大量买入科技ETF，显示市场对科技板块热情高，但散户主导可能加剧波动，短期科技板块活跃。",
-      "affected_sectors": [
-        "云计算",
-        "科技ETF"
-      ],
-      "affected_stocks": [],
-      "importance": 6
-    },
-    {
-      "title": "费城半导体指数重返牛市及存储股强势反弹 谁是背后推手？一文读懂",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608183844336916.html",
-      "time": "2026-08-18 10:52:32",
-      "ai_summary": "费城半导体指数重返牛市",
-      "impact_analysis": "美股半导体走强，带动A股半导体情绪，但今日A股芯片股普跌，外部利好未能传导，板块短期或震荡。",
-      "affected_sectors": [
-        "半导体",
-        "存储芯片"
-      ],
-      "affected_stocks": [
-        "688981.SS",
-        "603986.SS"
-      ],
-      "importance": 6
-    },
-    {
-      "title": "地缘火药桶引爆油气行情，华宝基金石油ETF（159019）逆市上探1.82%！油价宽幅震荡中谁将突围？",
-      "source": "新浪财经",
-      "url": "https://finance.sina.com.cn/money/fund/etf/2026-08-18/doc-inintaty3427960.shtml",
-      "time": "2026-08-18 11:18",
-      "ai_summary": "地缘风险推升油气板块",
-      "impact_analysis": "霍尔木兹海峡遇袭事件推升油价，石油ETF涨近2%，油气板块受益，短期或持续走强。",
-      "affected_sectors": [
-        "石油石化",
-        "油气开采"
-      ],
-      "affected_stocks": [
-        "600028.SS",
-        "601857.SS"
-      ],
-      "importance": 6
-    },
-    {
-      "title": "沪深两市成交额突破1.5万亿 较上一个交易日此时放量超1200亿元",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608183844357024.html",
-      "time": "2026-08-18 11:09:12",
-      "ai_summary": "两市成交额突破1.5万亿",
-      "impact_analysis": "成交额放量超1200亿，显示市场交投活跃，但指数下跌，放量下跌或暗示资金分歧加大，短期波动加剧。",
-      "affected_sectors": [
-        "全部A股"
-      ],
-      "affected_stocks": [],
-      "importance": 6
-    },
-    {
-      "title": "优刻得公有云正式上线海光天曦系列",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608183844347994.html",
-      "time": "2026-08-18 11:01:17",
-      "ai_summary": "海光天曦系列上线公有云",
-      "impact_analysis": "国产算力上云取得里程碑，利好国产芯片和云计算产业链，相关个股或受提振。",
-      "affected_sectors": [
-        "国产芯片",
-        "云计算"
+        "算力",
+        "人工智能"
       ],
       "affected_stocks": [
         "688041.SS",
-        "600588.SS"
+        "000977.SZ"
       ],
-      "importance": 5
+      "importance": 7
+    },
+    {
+      "title": "30年美债破5.31%创19年新高 海外大买家撤退 美股被拖下水",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608183844381063.html",
+      "time": "2026-08-18 12:42:36",
+      "ai_summary": "招商证券76亿增资国际业务",
+      "impact_analysis": "头部券商加码国际业务，反映行业国际化趋势，利好券商板块，尤其龙头券商，增强市场信心，但短期对股价影响有限。",
+      "affected_sectors": [
+        "券商"
+      ],
+      "affected_stocks": [
+        "600999.SS",
+        "300059.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "九部门出台县域消费支持政策，加快存量商业设施更新，消费ETF博时(159672)小幅上涨",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608183844434778.html",
+      "time": "2026-08-18 13:31:25",
+      "ai_summary": "光伏设备板块午后拉升，迈为股份涨超12%",
+      "impact_analysis": "光伏设备板块异动，可能受技术突破或订单消息催化，行业景气度回升，利好光伏设备龙头，但需关注持续性。",
+      "affected_sectors": [
+        "光伏设备"
+      ],
+      "affected_stocks": [
+        "300751.SZ",
+        "002459.SZ"
+      ],
+      "importance": 6
     }
   ]
 }
