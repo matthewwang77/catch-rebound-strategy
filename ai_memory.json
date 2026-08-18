@@ -495,6 +495,29 @@
       "why_wrong": null,
       "missed_signal": null,
       "lesson": null
+    },
+    {
+      "date": "20260818",
+      "signal_date": "20260817",
+      "mode": "loose",
+      "entry_price": 50.88,
+      "pullback_pct": 8.7,
+      "limit_days": 3,
+      "analysis": "量：缩量明显，近3日均量仅为涨停日33%，抛压衰竭；OBV趋势上升，资金仍净流入，量能配合健康。\n价：股价站稳MA5/MA10/MA20三线之上，回调未破20日均线（48.92），下方支撑有效；距20日高点55.98仅回调8.7%，强势整理。\n形：3连板后高位横盘10日，形成“缩量旗形”整理形态，属典型强势股中继结构。\n时：回调10天，处于3-13天黄金窗口期；MACD死叉但柱体收窄，RSI 62.9未超买，调整接近尾声。\n仓位建议：4成仓（发酵期4档）\n反弹概率：中（30-60%）\n最终结论：【参与】",
+      "sentiment": "发酵期4档",
+      "position": "4成仓",
+      "opinion": "【参与】",
+      "verified": false,
+      "return_7d": null,
+      "exit_reason": null,
+      "exit_day": null,
+      "verdict": null,
+      "review_analysis": null,
+      "review_quality": null,
+      "what_happened": null,
+      "why_wrong": null,
+      "missed_signal": null,
+      "lesson": null
     }
   ],
   "603903.SS": [
