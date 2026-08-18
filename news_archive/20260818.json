@@ -1,177 +1,170 @@
 {
   "date": "20260818",
-  "market_summary": "今日A股市场消息面偏多，油气、农业、CPO等板块表现活跃，但大盘指数低开，市场情绪谨慎。央行开展大额逆回购操作，外资连续增持中国国债，显示资金面宽松和人民币资产吸引力增强。",
-  "sentiment_impact": "偏多",
+  "market_summary": "今日A股市场整体偏弱，创业板指跌2%，但农业、养殖、油气等板块逆势走强，科技股回调明显，市场呈现结构性分化。",
+  "sentiment_impact": "偏空",
   "news": [
     {
-      "title": "山东出台11项措施规范绿电直连发展",
+      "title": "创业板指跌2%",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608183844286219.html",
-      "time": "2026-08-18 10:12:55",
-      "ai_summary": "央行开展4697亿元隔夜逆回购",
-      "impact_analysis": "央行大额逆回购操作释放流动性，缓解市场资金压力，利好股市整体表现，尤其对资金敏感型板块如金融、地产有积极影响。",
+      "url": "https://finance.eastmoney.com/a/202608183844358149.html",
+      "time": "2026-08-18 11:09:46",
+      "ai_summary": "创业板指跌2%，市场普跌",
+      "impact_analysis": "创业板指跌2%，上证跌0.64%，深证跌1.61%，近4200只个股下跌，显示市场情绪低迷，短期大盘承压，可能引发进一步调整。",
       "affected_sectors": [
-        "银行",
-        "房地产"
+        "医药医疗",
+        "文化传媒",
+        "软件服务",
+        "军工装备"
       ],
-      "affected_stocks": [
-        "601398.SS",
-        "600048.SS"
-      ],
-      "importance": 9
+      "affected_stocks": [],
+      "importance": 10
     },
     {
-      "title": "美国前三大海外“债主”6月美债持仓齐降 日本减持幅度最大！",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608183844264960.html",
-      "time": "2026-08-18 09:59:56",
-      "ai_summary": "油气十五五规划正式印发",
-      "impact_analysis": "国家层面油气规划落地，明确发展路径，利好油气开采、服务及设备板块，推动相关企业投资和业绩增长。",
+      "title": "GLM-5.3不及预期？智谱重挫15%！规模最大港股通信息技术ETF华宝（159131）跌近3%，标的指数纳入6只硬核龙头",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/money/fund/etf/2026-08-18/doc-inintatv7379318.shtml",
+      "time": "2026-08-18 10:51",
+      "ai_summary": "智谱重挫15%，港股科技回调",
+      "impact_analysis": "智谱等AI龙头大跌，带动港股科技板块下挫，A股科技股或受情绪拖累，AI、软件等板块短期面临调整压力。",
       "affected_sectors": [
-        "油气开采",
-        "油服"
+        "人工智能",
+        "软件服务",
+        "信息技术"
       ],
       "affected_stocks": [
-        "601857.SS",
-        "600583.SS"
-      ],
-      "importance": 9
-    },
-    {
-      "title": "美债收益率飙升！华尔街拉响警报：美联储9月加息风险并未解除",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608183844067181.html",
-      "time": "2026-08-18 09:09:12",
-      "ai_summary": "外资连续三月增持中国国债",
-      "impact_analysis": "外资持续流入中国债市，反映人民币资产避险属性增强，有助于稳定汇率和市场信心，对A股形成间接支撑。",
-      "affected_sectors": [
-        "银行",
-        "债券"
-      ],
-      "affected_stocks": [
-        "600036.SS",
-        "601988.SS"
+        "688111.SS",
+        "300454.SZ"
       ],
       "importance": 8
     },
     {
-      "title": "离境退税2.0版政策上线 郑州海关离境退税业务量暴涨",
+      "title": "农业板块持续走高 秋乐种业等十余股涨停",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608183843985222.html",
-      "time": "2026-08-18 08:59:38",
-      "ai_summary": "美债收益率飙升，加息风险未除",
-      "impact_analysis": "美债收益率上行可能引发全球资金回流美国，对A股外资流入形成压力，但国内政策独立，影响有限。",
+      "url": "https://finance.eastmoney.com/a/202608183844302997.html",
+      "time": "2026-08-18 10:22:58",
+      "ai_summary": "农业板块涨停潮，种业股大涨",
+      "impact_analysis": "农业板块持续走高，秋乐种业等十余股涨停，受厄尔尼诺和粮食安全预期催化，资金涌入，短期板块热度高。",
       "affected_sectors": [
-        "外资重仓股",
-        "科技"
+        "农业种植",
+        "种业",
+        "粮食"
       ],
       "affected_stocks": [
-        "600519.SS",
-        "300750.SZ"
+        "300087.SZ",
+        "600598.SS"
       ],
       "importance": 8
     },
     {
-      "title": "四川产业振兴基金等新设西部商业航天股权投资基金",
+      "title": "猪价连涨与产能去化预期共振，养殖ETF永赢盘中涨超2%！生猪产能去化持续加速",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608183844277621.html",
-      "time": "2026-08-18 10:06:43",
-      "ai_summary": "农牧渔板块掀涨停潮",
-      "impact_analysis": "农业板块受粮食安全预期和涨价催化，资金关注度高，短期有望持续活跃，带动种业、养殖等细分领域。",
+      "url": "https://finance.eastmoney.com/a/202608183844313243.html",
+      "time": "2026-08-18 10:31:52",
+      "ai_summary": "猪价连涨，养殖板块走强",
+      "impact_analysis": "猪价上涨与产能去化预期共振，养殖ETF涨超2%，天邦食品等涨停，板块景气度提升，短期有望持续。",
       "affected_sectors": [
-        "农业",
-        "养殖"
+        "养殖业",
+        "饲料"
       ],
       "affected_stocks": [
-        "600598.SS",
-        "000998.SZ"
+        "002124.SZ",
+        "603609.SS"
       ],
       "importance": 7
     },
     {
-      "title": "社保基金现身13只科创板股前十大流通股东榜",
+      "title": "中国7月份稀土及其制品出口10314吨 同比降16.9%",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608183844084664.html",
-      "time": "2026-08-18 09:20:00",
-      "ai_summary": "CPO概念反复活跃，中石科技3连板",
-      "impact_analysis": "CPO作为AI算力核心方向，市场热度不减，产业链公司业绩预期向好，但需注意高位回调风险。",
+      "url": "https://finance.eastmoney.com/a/202608183844363774.html",
+      "time": "2026-08-18 11:19:39",
+      "ai_summary": "稀土出口同比降16.9%",
+      "impact_analysis": "稀土出口数据下滑，可能引发市场对稀土需求担忧，但年累计仍增7%，影响有限，板块或短期承压。",
       "affected_sectors": [
-        "CPO",
-        "光通信"
+        "稀土永磁"
       ],
       "affected_stocks": [
-        "300684.SZ",
-        "002281.SZ"
+        "600111.SS",
+        "000831.SZ"
       ],
       "importance": 7
     },
     {
-      "title": "国内商品期货早盘开盘 主力合约多数上涨",
+      "title": "散户成为新增量 科技ETF遭个人抢购 多只被买走九成以上份额",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608183843969170.html",
-      "time": "2026-08-18 09:00:32",
-      "ai_summary": "社保基金现身13只科创板股",
-      "impact_analysis": "社保基金增持科创板显示长期资金对科技成长股的认可，提振市场信心，利好科创板整体表现。",
+      "url": "https://finance.eastmoney.com/a/202608183844250781.html",
+      "time": "2026-08-18 10:39:12",
+      "ai_summary": "散户抢购科技ETF，多只超九成",
+      "impact_analysis": "个人投资者大量买入科技ETF，显示市场对科技板块热情高，但散户主导可能加剧波动，短期科技板块活跃。",
       "affected_sectors": [
-        "科创板",
-        "半导体"
+        "云计算",
+        "科技ETF"
+      ],
+      "affected_stocks": [],
+      "importance": 6
+    },
+    {
+      "title": "费城半导体指数重返牛市及存储股强势反弹 谁是背后推手？一文读懂",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608183844336916.html",
+      "time": "2026-08-18 10:52:32",
+      "ai_summary": "费城半导体指数重返牛市",
+      "impact_analysis": "美股半导体走强，带动A股半导体情绪，但今日A股芯片股普跌，外部利好未能传导，板块短期或震荡。",
+      "affected_sectors": [
+        "半导体",
+        "存储芯片"
       ],
       "affected_stocks": [
         "688981.SS",
-        "688126.SS"
+        "603986.SS"
       ],
-      "importance": 7
+      "importance": 6
     },
     {
-      "title": "粮食ETF景顺涨近4%！新一轮全球粮食危机或于2027年上半年爆发",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608183844279749.html",
-      "time": "2026-08-18 10:05:19",
-      "ai_summary": "国内商品期货多数上涨，原油涨近5%",
-      "impact_analysis": "商品价格上涨利好相关周期股，尤其油气、化工板块，但可能加剧通胀预期，对货币政策形成制约。",
+      "title": "地缘火药桶引爆油气行情，华宝基金石油ETF（159019）逆市上探1.82%！油价宽幅震荡中谁将突围？",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/money/fund/etf/2026-08-18/doc-inintaty3427960.shtml",
+      "time": "2026-08-18 11:18",
+      "ai_summary": "地缘风险推升油气板块",
+      "impact_analysis": "霍尔木兹海峡遇袭事件推升油价，石油ETF涨近2%，油气板块受益，短期或持续走强。",
       "affected_sectors": [
-        "石油",
-        "化工"
+        "石油石化",
+        "油气开采"
       ],
       "affected_stocks": [
         "600028.SS",
-        "600346.SS"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "擎天租新设子公司 含工业机器人相关业务",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608183844250851.html",
-      "time": "2026-08-18 09:54:26",
-      "ai_summary": "离境退税2.0政策上线，业务量暴涨",
-      "impact_analysis": "政策促进境外消费回流，利好免税、零售、旅游板块，但短期对A股整体影响有限。",
-      "affected_sectors": [
-        "免税",
-        "旅游"
-      ],
-      "affected_stocks": [
-        "601888.SS",
-        "000069.SZ"
+        "601857.SS"
       ],
       "importance": 6
     },
     {
-      "title": "频准激光盘中股价超越寒武纪 位列科创板第三",
+      "title": "沪深两市成交额突破1.5万亿 较上一个交易日此时放量超1200亿元",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608183844268979.html",
-      "time": "2026-08-18 09:59:20",
-      "ai_summary": "山东规范绿电直连发展",
-      "impact_analysis": "绿电直连政策推动新能源消纳，利好绿电运营商和新能源设备商，但政策力度温和，影响中等。",
+      "url": "https://finance.eastmoney.com/a/202608183844357024.html",
+      "time": "2026-08-18 11:09:12",
+      "ai_summary": "两市成交额突破1.5万亿",
+      "impact_analysis": "成交额放量超1200亿，显示市场交投活跃，但指数下跌，放量下跌或暗示资金分歧加大，短期波动加剧。",
       "affected_sectors": [
-        "绿电",
-        "新能源"
+        "全部A股"
+      ],
+      "affected_stocks": [],
+      "importance": 6
+    },
+    {
+      "title": "优刻得公有云正式上线海光天曦系列",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608183844347994.html",
+      "time": "2026-08-18 11:01:17",
+      "ai_summary": "海光天曦系列上线公有云",
+      "impact_analysis": "国产算力上云取得里程碑，利好国产芯片和云计算产业链，相关个股或受提振。",
+      "affected_sectors": [
+        "国产芯片",
+        "云计算"
       ],
       "affected_stocks": [
-        "600905.SS",
-        "601012.SS"
+        "688041.SS",
+        "600588.SS"
       ],
-      "importance": 6
+      "importance": 5
     }
   ]
 }
