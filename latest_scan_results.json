@@ -1,5 +1,5 @@
 {
-  "scan_time": "2026-08-20 11:32",
+  "scan_time": "2026-08-20 15:44",
   "scan_date": "20260820",
   "data_date": "2026-08-19",
   "market": {
@@ -36,7 +36,7 @@
         },
         {
           "code": "002841.SZ",
-          "price": 49.86,
+          "price": 49.47,
           "signal_date": "20260813",
           "pullback_pct": 10.7,
           "limit_days": 3,
@@ -44,7 +44,7 @@
         },
         {
           "code": "603903.SS",
-          "price": 14.65,
+          "price": 14.54,
           "signal_date": "20260818",
           "pullback_pct": 5.2,
           "limit_days": 3,
