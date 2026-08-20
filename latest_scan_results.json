@@ -1,5 +1,5 @@
 {
-  "scan_time": "2026-08-20 10:04",
+  "scan_time": "2026-08-20 10:05",
   "scan_date": "20260820",
   "data_date": "2026-08-19",
   "market": {
@@ -19,7 +19,7 @@
   "regime": {
     "status": "bear",
     "label": "2档: 低迷期 — 建议观望",
-    "avg_trend": -1.13,
+    "avg_trend": -1.14,
     "recommended_mode": "bear"
   },
   "modes": {
@@ -28,7 +28,7 @@
       "candidates": [
         {
           "code": "600113.SS",
-          "price": 30.26,
+          "price": 30.36,
           "signal_date": "20260818",
           "pullback_pct": 3.6,
           "limit_days": 3,
@@ -36,15 +36,15 @@
         },
         {
           "code": "002841.SZ",
-          "price": 50.0,
-          "signal_date": "20260806",
-          "pullback_pct": 10.6,
+          "price": 49.99,
+          "signal_date": "20260813",
+          "pullback_pct": 10.7,
           "limit_days": 3,
           "entity_ratio": 67.0
         },
         {
           "code": "603903.SS",
-          "price": 14.88,
+          "price": 14.95,
           "signal_date": "20260818",
           "pullback_pct": 5.2,
           "limit_days": 3,
