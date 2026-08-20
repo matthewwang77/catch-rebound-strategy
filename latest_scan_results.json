@@ -19,7 +19,7 @@
   "regime": {
     "status": "bear",
     "label": "2档: 低迷期 — 建议观望",
-    "avg_trend": -1.62,
+    "avg_trend": -1.63,
     "recommended_mode": "bear"
   },
   "modes": {
@@ -44,7 +44,7 @@
         },
         {
           "code": "603903.SS",
-          "price": 14.64,
+          "price": 14.65,
           "signal_date": "20260818",
           "pullback_pct": 5.2,
           "limit_days": 3,
