@@ -1,5 +1,5 @@
 {
-  "scan_time": "2026-08-21 11:32",
+  "scan_time": "2026-08-21 11:33",
   "scan_date": "20260821",
   "data_date": "2026-08-20",
   "market": {
@@ -28,7 +28,7 @@
       "candidates": [
         {
           "code": "002841.SZ",
-          "price": 49.2,
+          "price": 49.16,
           "signal_date": "20260813",
           "pullback_pct": 10.7,
           "limit_days": 3,

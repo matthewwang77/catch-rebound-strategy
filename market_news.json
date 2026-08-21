@@ -1,175 +1,181 @@
 {
   "date": "20260821",
-  "market_summary": "今日A股市场消息面偏多，黄金、油气、AI、消费电子等板块活跃，但创新药、煤炭等板块走弱，大盘低开后分化，创业板指涨超1%。",
+  "market_summary": "今日财政部密集释放积极信号，包括提高中小微企业贷款贴息额度、下半年增量政策预期及2万多亿专项债待发行，叠加贵金属与锂电板块强势，市场情绪偏多，但成交额缩量显示观望情绪仍存。",
   "sentiment_impact": "偏多",
   "news": [
     {
-      "title": "财政部：“十五五”时期我国将建设更为强大稳固的财政",
+      "title": "宏观利好催化贵金属行情，有色ETF鹏华涨超2%",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608213849031946.html",
-      "time": "2026-08-21 10:17:04",
-      "ai_summary": "财政部称十五五将建设更强大稳固财政",
-      "impact_analysis": "财政政策基调积极，有助于稳定市场预期，利好基建、公用事业等板块，对大盘形成支撑。",
+      "url": "https://finance.eastmoney.com/a/202608213849093479.html",
+      "time": "2026-08-21 11:26:17",
+      "ai_summary": "财政部称下半年将推出财政金融协同新政策",
+      "impact_analysis": "明确增量政策预期，增强市场对经济稳增长的信心，利好基建、地产及金融板块，可能推动大盘上行。",
       "affected_sectors": [
         "基建",
-        "公用事业"
+        "房地产",
+        "金融"
       ],
       "affected_stocks": [
         "601668.SS",
-        "600900.SS"
+        "000002.SZ"
       ],
-      "importance": 8
+      "importance": 9
     },
     {
-      "title": "美光科技CEO：数据中心客户需求约为公司实际可承诺供应量约150%",
+      "title": "财政部：中长期将通过提升社会保障能力、收入分配制度改革等再分配调节 提升居民消费能力",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608213848945474.html",
-      "time": "2026-08-21 10:01:22",
-      "ai_summary": "美光CEO称数据中心存储需求超供给50%",
-      "impact_analysis": "存储芯片需求强劲，利好A股存储芯片及半导体设备材料板块，提升科技股估值。",
+      "url": "https://finance.eastmoney.com/a/202608213849066972.html",
+      "time": "2026-08-21 10:48:58",
+      "ai_summary": "财政部：下半年2万多亿专项债和特别国债待发行",
+      "impact_analysis": "大规模政府债券发行将支撑基建投资，利好建筑、建材、工程机械等板块，同时可能对资金面形成一定扰动。",
       "affected_sectors": [
-        "存储芯片",
-        "半导体设备"
+        "基建",
+        "建材",
+        "工程机械"
       ],
       "affected_stocks": [
-        "603986.SS",
-        "002371.SZ"
+        "601390.SS",
+        "600585.SS"
+      ],
+      "importance": 9
+    },
+    {
+      "title": "长江存储IPO进入辅导验收，NAND份额跃居全球第三！科创芯片设计ETF国联安（588780）涨近2%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608213849092773.html",
+      "time": "2026-08-21 11:23:20",
+      "ai_summary": "财政部提高中小微企业贷款贴息额度上限",
+      "impact_analysis": "直接利好中小微企业，降低融资成本，提振实体经济信心，对银行板块形成一定压力但整体利好市场风险偏好，尤其利好消费和服务业。",
+      "affected_sectors": [
+        "中小微企业",
+        "消费",
+        "银行"
+      ],
+      "affected_stocks": [
+        "600000.SS",
+        "000001.SZ"
       ],
       "importance": 8
     },
     {
-      "title": "美财政部扩大长债回购、现货黄金站上4500美元！黄金股ETF永赢盘中涨超2%弹性更足",
+      "title": "中国平安H股绩后涨超3% 上半年净利润增36.1%",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608213848938725.html",
-      "time": "2026-08-21 10:00:01",
-      "ai_summary": "现货黄金站上4500美元，黄金股大涨",
-      "impact_analysis": "金价创新高直接利好黄金开采和冶炼企业，带动黄金概念股走强，避险情绪升温，对大盘影响中性偏多。",
+      "url": "https://finance.eastmoney.com/a/202608213849094480.html",
+      "time": "2026-08-21 11:30:10",
+      "ai_summary": "财政部优化财政金融协同扩内需一揽子政策",
+      "impact_analysis": "政策从供需两端发力促消费，拓宽贴息范围，利好消费服务、中小微企业，对零售、餐饮、旅游等板块有直接提振。",
       "affected_sectors": [
-        "黄金",
+        "消费服务",
+        "零售",
+        "旅游"
+      ],
+      "affected_stocks": [
+        "601888.SS",
+        "000069.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "财政部：将动态调整进口暂定税率 自主优化完善关税税目 支持进出口贸易",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608213849073281.html",
+      "time": "2026-08-21 10:54:34",
+      "ai_summary": "美国财政部扩大国债回购，贵金属大涨",
+      "impact_analysis": "美债回购引发美元贬值预期，黄金、白银等贵金属价格走强，利好A股黄金、有色板块，相关个股有望持续受益。",
+      "affected_sectors": [
+        "贵金属",
         "有色金属"
       ],
       "affected_stocks": [
-        "600489.SS",
-        "000603.SZ"
+        "600547.SS",
+        "000060.SZ"
       ],
-      "importance": 7
+      "importance": 8
     },
     {
-      "title": "消费电子板块震荡走高！消费电子ETF易方达（562950）涨2.28%，CPO、PCB联动走强",
+      "title": "有色ETF易方达（560470）涨2.55%，锂矿、黄金共振走强，有色板块领涨大盘",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608213849031268.html",
-      "time": "2026-08-21 10:13:41",
-      "ai_summary": "消费电子板块震荡走高，CPO、PCB联动",
-      "impact_analysis": "消费电子需求回暖，龙头股走强带动板块，对科技成长风格有提振作用，利好相关产业链。",
+      "url": "https://finance.eastmoney.com/a/202608213849063011.html",
+      "time": "2026-08-21 10:44:02",
+      "ai_summary": "8月锂电排产环比增7%-9%，碳酸锂期货涨超4%",
+      "impact_analysis": "锂电需求回暖，排产增加带动锂价上涨，利好锂矿、电池材料及电池制造企业，板块景气度提升。",
       "affected_sectors": [
-        "消费电子",
-        "半导体"
-      ],
-      "affected_stocks": [
-        "002241.SZ",
-        "002475.SZ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "美联储穆萨勒姆：美债抛售源于AI争夺资金 当前通胀仍过高！",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608213849009415.html",
-      "time": "2026-08-21 10:11:52",
-      "ai_summary": "美联储官员称美债抛售源于AI资金争夺",
-      "impact_analysis": "美联储鹰派言论可能加剧全球流动性担忧，对A股外资流向有一定影响，但AI产业趋势强化，利好科技成长。",
-      "affected_sectors": [
-        "AI算力",
-        "半导体"
-      ],
-      "affected_stocks": [
-        "300308.SZ",
-        "688041.SS"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "霍尔木兹日均通航量骤降超70%！招商轮船、中远海能领涨，石油ETF高开高走",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608213848883654.html",
-      "time": "2026-08-21 09:49:31",
-      "ai_summary": "霍尔木兹通航量骤降，油价上涨油气股走强",
-      "impact_analysis": "地缘风险推升油价，利好石油开采、油运板块，但可能加大通胀压力，对大盘影响中性。",
-      "affected_sectors": [
-        "石油开采",
-        "油运"
-      ],
-      "affected_stocks": [
-        "601857.SS",
-        "600026.SS"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "国产AI芯片成长空间打开！20cm的科创芯片设计ETF永赢盘中涨超2%",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608213849028622.html",
-      "time": "2026-08-21 10:12:46",
-      "ai_summary": "国产AI芯片成长空间打开，科创芯片走强",
-      "impact_analysis": "国产替代逻辑强化，AI芯片需求旺盛，利好半导体设计板块，带动科创板活跃。",
-      "affected_sectors": [
-        "AI芯片",
-        "半导体设计"
-      ],
-      "affected_stocks": [
-        "688256.SS",
-        "688008.SS"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "美总统签署太空运输新备忘录，全球商业航天竞争加速！卫星ETF永赢盘中涨超2%",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608213849026220.html",
-      "time": "2026-08-21 10:08:22",
-      "ai_summary": "美总统签署太空运输备忘录，商业航天加速",
-      "impact_analysis": "全球商业航天竞争加剧，政策催化下A股卫星互联网、航天板块受关注，相关个股活跃。",
-      "affected_sectors": [
-        "商业航天",
-        "卫星互联网"
-      ],
-      "affected_stocks": [
-        "600118.SS",
-        "688066.SS"
-      ],
-      "importance": 6
-    },
-    {
-      "title": "锂矿概念震荡反弹 融捷股份逼近涨停",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608213849003330.html",
-      "time": "2026-08-21 10:10:25",
-      "ai_summary": "锂矿概念反弹，碳酸锂期货涨近2%",
-      "impact_analysis": "碳酸锂价格反弹，利好锂矿及电池材料企业，带动新能源产业链情绪回暖。",
-      "affected_sectors": [
+        "锂电池",
         "锂矿",
-        "电池材料"
+        "新能源"
       ],
       "affected_stocks": [
-        "002466.SZ",
-        "002460.SZ"
+        "002460.SZ",
+        "300750.SZ"
       ],
-      "importance": 6
+      "importance": 8
     },
     {
-      "title": "集运指数（欧线）主力合约日内涨超9%",
+      "title": "财政部：中小微企业贷款贴息的贷款规模上限由每年5000万元提高至7500万元",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202608213848997969.html",
-      "time": "2026-08-21 10:06:39",
-      "ai_summary": "集运指数欧线主力合约涨超9%",
-      "impact_analysis": "集运价格上涨，利好航运板块，尤其欧线相关公司，同时反映全球贸易紧张，对大盘影响有限。",
+      "url": "https://finance.eastmoney.com/a/202608213849085255.html",
+      "time": "2026-08-21 11:09:20",
+      "ai_summary": "财政部称中长期提升社保和收入分配促消费",
+      "impact_analysis": "政策指向长期消费能力提升，短期对消费板块有情绪提振，但实际效果需时间显现，利好食品饮料、家电等大消费板块。",
       "affected_sectors": [
-        "航运",
-        "港口"
+        "消费",
+        "食品饮料",
+        "家电"
       ],
       "affected_stocks": [
-        "601919.SS",
-        "600018.SS"
+        "600519.SS",
+        "000333.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "稀有金属ETF易方达（561050）涨2.29%，稀土磁材与锂钴共振，稀缺资源重获资金青睐",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608213849068669.html",
+      "time": "2026-08-21 10:44:08",
+      "ai_summary": "长江存储IPO进入辅导验收，半导体板块拉升",
+      "impact_analysis": "长江存储作为存储芯片龙头，IPO进展利好半导体产业链，尤其存储芯片、设备材料相关公司，带动科创板块活跃。",
+      "affected_sectors": [
+        "半导体",
+        "存储芯片",
+        "科创板"
+      ],
+      "affected_stocks": [
+        "688981.SS",
+        "002049.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "中汽协：7月中国品牌乘用车共销售175.4万辆 环比下降3.2%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608213849084014.html",
+      "time": "2026-08-21 11:13:04",
+      "ai_summary": "中国平安上半年净利润增36.1%，股价大涨",
+      "impact_analysis": "保险龙头业绩超预期，带动保险板块走强，对金融权重股有正面影响，有助于稳定大盘指数。",
+      "affected_sectors": [
+        "保险",
+        "金融"
+      ],
+      "affected_stocks": [
+        "601318.SS",
+        "601628.SS"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "今年以来消费品以旧换新政策惠及1.78亿人次",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202608213849082657.html",
+      "time": "2026-08-21 11:10:50",
+      "ai_summary": "沪深两市成交额缩量超900亿元",
+      "impact_analysis": "成交额缩量显示市场观望情绪浓厚，资金入场意愿不足，可能制约指数上行空间，需关注后续量能变化。",
+      "affected_sectors": [
+        "大盘"
+      ],
+      "affected_stocks": [
+        "000001.SS",
+        "399001.SZ"
       ],
       "importance": 6
     }
