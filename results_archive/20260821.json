@@ -1,5 +1,5 @@
 {
-  "scan_time": "2026-08-21 14:42",
+  "scan_time": "2026-08-21 15:28",
   "scan_date": "20260821",
   "data_date": "2026-08-20",
   "market": {
@@ -19,7 +19,7 @@
   "regime": {
     "status": "bear",
     "label": "1档: 冰点期 — 坚决不参与",
-    "avg_trend": -2.94,
+    "avg_trend": -3.05,
     "recommended_mode": "bear"
   },
   "modes": {
@@ -28,7 +28,7 @@
       "candidates": [
         {
           "code": "002841.SZ",
-          "price": 49.24,
+          "price": 49.15,
           "signal_date": "20260813",
           "pullback_pct": 10.7,
           "limit_days": 3,
@@ -36,7 +36,7 @@
         },
         {
           "code": "603903.SS",
-          "price": 14.31,
+          "price": 14.19,
           "signal_date": "20260814",
           "pullback_pct": 9.3,
           "limit_days": 3,
