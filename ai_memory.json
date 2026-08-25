@@ -564,6 +564,29 @@
       "why_wrong": null,
       "missed_signal": null,
       "lesson": null
+    },
+    {
+      "date": "20260825",
+      "signal_date": "20260813",
+      "mode": "bear",
+      "entry_price": 46.66,
+      "pullback_pct": 10.7,
+      "limit_days": 3,
+      "analysis": "量：今日量比0.74x，近3日均量仅为涨停日31%，已现地量；但OBV下降，资金仍净流出，缩量止跌但未现回流信号。\n\n价：股价46.66跌破MA5/MA10/MA20三线，均线空头排列；下方布林中轨48.46已失守，关键支撑看布林下轨43.17，上方压力位49.2。\n\n形：连板后回调10.7%，横盘区间49.2-51.8已破位，三重底支撑失效，形态转弱为下降旗形末端。\n\n时：距涨停9日，处于变盘窗口末期；大盘低迷期2档，创业板大跌3.21%，消息面偏空，无板块催化。\n\n反弹概率：低(≤30%)。仓位建议：0成仓（低迷期2档）。最终结论：【放弃】。",
+      "sentiment": "低迷期2档",
+      "position": "0成仓",
+      "opinion": "【放弃】。",
+      "verified": false,
+      "return_7d": null,
+      "exit_reason": null,
+      "exit_day": null,
+      "verdict": null,
+      "review_analysis": null,
+      "review_quality": null,
+      "what_happened": null,
+      "why_wrong": null,
+      "missed_signal": null,
+      "lesson": null
     }
   ],
   "603903.SS": [
@@ -651,6 +674,29 @@
       "return_7d": null,
       "exit_reason": "",
       "exit_day": 0,
+      "verdict": null,
+      "review_analysis": null,
+      "review_quality": null,
+      "what_happened": null,
+      "why_wrong": null,
+      "missed_signal": null,
+      "lesson": null
+    },
+    {
+      "date": "20260825",
+      "signal_date": "20260824",
+      "mode": "bear",
+      "entry_price": 13.98,
+      "pullback_pct": 7.6,
+      "limit_days": 3,
+      "analysis": "**量**：量比0.38x极度缩量，近3日均量仅为涨停日51%，OBV虽上升但今日缩量回调，资金承接力度弱，观望情绪浓。\n\n**价**：股价13.98跌破MA5(14.23)与MA10(14.10)，勉强站上MA20(13.60)，下方关键支撑13.60。距涨停高点16.60回调7.6%，未破位但反弹乏力。\n\n**形**：3连板后高位缩量横盘整理，呈“旗形”回调末端形态，但缺乏放量突破信号，形态偏中性。\n\n**时**：距涨停已8天，回调窗口偏长，市场低迷期(2档)压制反弹动能，时间窗口不利。\n\n**仓位建议**：0成仓（低迷期2档）\n\n**最终结论**：【观望】",
+      "sentiment": "",
+      "position": "",
+      "opinion": "",
+      "verified": false,
+      "return_7d": null,
+      "exit_reason": null,
+      "exit_day": null,
       "verdict": null,
       "review_analysis": null,
       "review_quality": null,
@@ -827,6 +873,31 @@
       "why_wrong": "上次判断“反弹概率低、观望”方向正确，但入场逻辑存在矛盾：既然判定概率低且建议0成仓，就不应入场。实际走势验证了“缩量回调无资金回流”的判断，股价连续3日阴跌，但跌幅温和（累计-3.0%），未出现恐慌性抛售。对“消息面偏多”的评估过于乐观，上海地产政策利好未能传导至该股，市场整体缩量环境下个股缺乏独立行情。",
       "missed_signal": "量：08-21放量至562万股（量比1.2x）但收长下影，显示上方抛压沉重，这是明显的出货信号，未在入场前识别。价：入场价30.36恰为MA20（30.56）下方，未确认支撑有效性即入场，且08-24跌破30元整数关口后无反弹，说明30元心理支撑失效。形：3连板后回调仅2天即入场，时间窗口过短，实际回调延续至5天以上（08-21至08-25共3个交易日仍未见底）。时：大盘缩量上涨但成交额连续18日破2万亿，量能充沛但个股分化，未考虑该股所属板块（地产链）是否真正受益。",
       "lesson": "严格执行“0成仓”结论，不应在分析明确建议观望时入场。入场前必须确认MA20支撑有效（至少收盘价站稳2日），而非盘中触及即入场。对“消息面偏多”需区分板块受益程度，上海地产政策利好的是地产开发商而非该股所属行业。设置更短的观察期（如3日），若3日内无法收复MA5（当时约31.2），应提前手动退出而非等待到期截断。"
+    }
+  ],
+  "300862.SZ": [
+    {
+      "date": "20260825",
+      "signal_date": "20260821",
+      "mode": "bear",
+      "entry_price": 53.3,
+      "pullback_pct": 3.9,
+      "limit_days": 5,
+      "analysis": "量：缩量至涨停日40%，OBV资金流出，量价背离明显，承接力度弱。\n价：跌破MA5（55.30），勉强守MA10（53.27），下方MA20（36.74）遥远，支撑真空。\n形：5连板后高位横盘7日，呈“高位放量滞涨”后缩量阴跌形态，非标准强势回调。\n时：回调7日已超3日黄金窗口，且大盘低迷期（2档），反弹动能衰竭。\n反弹概率：低（≤30%）。\n仓位建议：0成仓（低迷期2档）。\n最终结论：【放弃】",
+      "sentiment": "低迷期2档",
+      "position": "0成仓",
+      "opinion": "【放弃】",
+      "verified": false,
+      "return_7d": null,
+      "exit_reason": null,
+      "exit_day": null,
+      "verdict": null,
+      "review_analysis": null,
+      "review_quality": null,
+      "what_happened": null,
+      "why_wrong": null,
+      "missed_signal": null,
+      "lesson": null
     }
   ]
 }
