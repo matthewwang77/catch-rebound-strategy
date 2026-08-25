@@ -848,6 +848,29 @@
       "why_wrong": null,
       "missed_signal": null,
       "lesson": null
+    },
+    {
+      "date": "20260825",
+      "signal_date": "20260813",
+      "mode": "strict",
+      "entry_price": 9.7,
+      "pullback_pct": 26.2,
+      "limit_days": 3,
+      "analysis": "量：缩量回调（近3日均量/涨停日量85%），OBV仍上升显示资金未大幅出逃，但量比0.64x显示承接乏力。  \n价：跌破MA20（11.01）且远离，现价9.70贴近MA5（9.77）下方，MACD死叉向下，RSI=24.3超卖但无支撑确认。  \n形：3连板后5日回调26.2%，接近“缩量急跌”形态，但未现止跌信号（如长下影或阳包阴）。  \n时：回调5日处于3-8日窗口中期，大盘偏空（创业板跌3.21%），情绪弱势，反弹窗口或延后。  \n反弹概率：低（≤30%）。  \n仓位建议：0成仓（弱势观望档）。  \n最终结论：【观望】",
+      "sentiment": "弱势观望档",
+      "position": "0成仓",
+      "opinion": "【观望】",
+      "verified": false,
+      "return_7d": null,
+      "exit_reason": null,
+      "exit_day": null,
+      "verdict": null,
+      "review_analysis": null,
+      "review_quality": null,
+      "what_happened": null,
+      "why_wrong": null,
+      "missed_signal": null,
+      "lesson": null
     }
   ],
   "600113.SS": [
