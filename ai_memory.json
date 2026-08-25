@@ -798,6 +798,29 @@
       "why_wrong": null,
       "missed_signal": null,
       "lesson": null
+    },
+    {
+      "date": "20260825",
+      "signal_date": "20260807",
+      "mode": "strict",
+      "entry_price": 1.6,
+      "pullback_pct": 24.0,
+      "limit_days": 4,
+      "analysis": "量：缩量至涨停日13%，OBV持续下降，资金流出明确，反弹动能不足。  \n价：股价跌破MA10/MA20，1.60处MA5支撑薄弱，上方1.65-1.77密集套牢区压制。  \n形：4连板后25日深度回调24%，呈弱势下降通道，无企稳形态。  \n时：回调25天超常规窗口，MACD死叉向下，短期无反转信号。  \n反弹概率：低（≤30%）  \n仓位建议：0成仓（放弃档）  \n最终结论：【放弃】",
+      "sentiment": "放弃档",
+      "position": "0成仓",
+      "opinion": "【放弃】",
+      "verified": false,
+      "return_7d": null,
+      "exit_reason": null,
+      "exit_day": null,
+      "verdict": null,
+      "review_analysis": null,
+      "review_quality": null,
+      "what_happened": null,
+      "why_wrong": null,
+      "missed_signal": null,
+      "lesson": null
     }
   ],
   "603580.SS": [
