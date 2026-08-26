@@ -1,5 +1,5 @@
 {
-  "scan_time": "2026-08-26 12:36",
+  "scan_time": "2026-08-26 12:37",
   "scan_date": "20260826",
   "data_date": "2026-08-25",
   "market": {
@@ -36,7 +36,7 @@
         },
         {
           "code": "000078.SZ",
-          "price": 1.6,
+          "price": 1.65,
           "signal_date": "20260807",
           "pullback_pct": 24.0,
           "limit_days": 4,
