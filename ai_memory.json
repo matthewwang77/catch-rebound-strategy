@@ -945,5 +945,30 @@
       "missed_signal": null,
       "lesson": null
     }
+  ],
+  "000820.SZ": [
+    {
+      "date": "20260827",
+      "signal_date": "20260825",
+      "mode": "strict",
+      "entry_price": 3.62,
+      "pullback_pct": 15.7,
+      "limit_days": 3,
+      "analysis": "量：近3日均量仅为涨停日27%，极度缩量，但OBV趋势上升显示资金未离场，属缩量回调蓄势。  \n价：现价3.62紧贴MA5/MA20，MA10=3.55构成强支撑，上方关键压力位4.24（布林上轨）。  \n形：3连板后13天回调15.7%，形成“缩量回踩均线”形态，未破位，符合强势股回调特征。  \n时：回调13天已超常规5-8天窗口，但缩量企稳，MACD死叉初现，需警惕时间过长导致人气涣散。  \n\n反弹概率：中（45%）  \n仓位建议：2成仓（启动期3档）  \n最终结论：【观望】",
+      "sentiment": "启动期3档",
+      "position": "2成仓",
+      "opinion": "【观望】",
+      "verified": false,
+      "return_7d": null,
+      "exit_reason": null,
+      "exit_day": null,
+      "verdict": null,
+      "review_analysis": null,
+      "review_quality": null,
+      "what_happened": null,
+      "why_wrong": null,
+      "missed_signal": null,
+      "lesson": null
+    }
   ]
 }

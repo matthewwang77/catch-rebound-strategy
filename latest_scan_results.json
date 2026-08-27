@@ -1,5 +1,5 @@
 {
-  "scan_time": "2026-08-27 14:46",
+  "scan_time": "2026-08-27 15:47",
   "scan_date": "20260827",
   "data_date": "2026-08-26",
   "market": {
@@ -19,7 +19,7 @@
   "regime": {
     "status": "neutral",
     "label": "3档: 启动期 — 谨慎入场",
-    "avg_trend": 0.36,
+    "avg_trend": 0.5,
     "recommended_mode": "strict"
   },
   "modes": {
@@ -28,7 +28,7 @@
       "candidates": [
         {
           "code": "000820.SZ",
-          "price": 3.61,
+          "price": 3.62,
           "signal_date": "20260825",
           "pullback_pct": 15.7,
           "limit_days": 3,
