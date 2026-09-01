@@ -1,5 +1,5 @@
 {
-  "scan_time": "2026-09-01 10:14",
+  "scan_time": "2026-09-01 11:36",
   "scan_date": "20260901",
   "data_date": "2026-08-31",
   "market": {
@@ -19,24 +19,16 @@
   "regime": {
     "status": "neutral",
     "label": "4档: 发酵期 — 势头良好",
-    "avg_trend": 1.6,
+    "avg_trend": 1.61,
     "recommended_mode": "loose"
   },
   "modes": {
     "strict": {
-      "count": 2,
+      "count": 1,
       "candidates": [
         {
-          "code": "000078.SZ",
-          "price": 1.61,
-          "signal_date": "20260807",
-          "pullback_pct": 24.0,
-          "limit_days": 4,
-          "entity_ratio": 100.0
-        },
-        {
           "code": "000820.SZ",
-          "price": 3.63,
+          "price": 3.67,
           "signal_date": "20260825",
           "pullback_pct": 15.7,
           "limit_days": 3,
