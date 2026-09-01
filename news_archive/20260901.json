@@ -1,181 +1,174 @@
 {
   "date": "20260901",
-  "market_summary": "今日市场消息面偏多，农产品价格大涨带动种植链涨停潮，但算力硬件等科技板块回调拖累创业板指。央行开展逆回购操作，流动性平稳。",
-  "sentiment_impact": "偏多",
+  "market_summary": "今日A股市场整体震荡分化，沪指微涨，深成指和创业板指下跌，农业、AI应用、金融科技等板块表现活跃，而AI硬件、电子化学品等板块走弱。消息面上，政策利好频出，如杭州支持科创企业上市、数字人民币扩容等，但美联储加息预期和全球粮价上涨等因素也带来不确定性。",
+  "sentiment_impact": "中性",
   "news": [
     {
-      "title": "微创机器人：延迟刊发2026年中期业绩 股票停牌",
+      "title": "Stellantis集团新设公共政策与监管战略及国际贸易负责人 直接向CEO汇报",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609013860964273.html",
-      "time": "2026-09-01 09:14:53",
-      "ai_summary": "农产品价格创近14年最大单月涨幅",
-      "impact_analysis": "农产品价格大涨直接利好种植业、种业板块，多股涨停，带动农业板块整体走强，对大盘有支撑作用。",
+      "url": "https://finance.eastmoney.com/a/202609013861267335.html",
+      "time": "2026-09-01 10:42:16",
+      "ai_summary": "杭州支持未盈利科创企业上市",
+      "impact_analysis": "杭州政策明确支持前沿赛道未盈利科创企业利用科创板、创业板改革政策上市，利好科技创新企业，提升市场对科创板和创业板的预期，带动相关板块活跃。",
       "affected_sectors": [
+        "科创板",
+        "创业板"
+      ],
+      "affected_stocks": [
+        "688001.SS",
+        "300001.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "杰克逊霍尔最惊悚预言：你还没听懂政策 AI已经把你的钱赚走了！",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202609013861253291.html",
+      "time": "2026-09-01 10:34:52",
+      "ai_summary": "粮食概念股涨停潮，粮价预期推升",
+      "impact_analysis": "超强厄尔尼诺推升全球粮价预期，芝加哥玉米、小麦价格创三年新高，农业板块逆市大涨，种植、种业等细分方向表现强势，资金关注度显著提升。",
+      "affected_sectors": [
+        "农业",
         "种植业",
-        "种业",
-        "农业"
+        "种业"
       ],
       "affected_stocks": [
-        "300087.SZ",
-        "600313.SS",
-        "600354.SS"
-      ],
-      "importance": 9
-    },
-    {
-      "title": "农产品价格有望创2012年以来最大月涨幅，粮食ETF鹏华涨超5%",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609013861223716.html",
-      "time": "2026-09-01 10:08:05",
-      "ai_summary": "俄小麦出口大幅回落，粮食ETF涨超4%",
-      "impact_analysis": "俄小麦出口减少加剧全球粮食供应担忧，推动粮价上涨，利好粮食种植及加工企业，相关ETF和个股表现强势。",
-      "affected_sectors": [
-        "粮食",
-        "种植业"
-      ],
-      "affected_stocks": [
-        "600313.SS",
-        "300087.SZ",
-        "600354.SS"
+        "000998.SZ",
+        "600598.SS"
       ],
       "importance": 8
     },
     {
-      "title": "俄小麦出口大幅回落，9月出口预计同比腰斩，粮食ETF博时(159031)跟踪指数强势涨超4%",
+      "title": "比利时土豆危机或殃及薯条供应 极端天气下欧洲多种作物产量告急",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609013861174266.html",
-      "time": "2026-09-01 09:55:49",
-      "ai_summary": "创业板指跌逾1%，算力硬件领跌",
-      "impact_analysis": "算力硬件、半导体等科技板块回调拖累创业板指，市场情绪受挫，短期科技股或继续调整，需关注资金流向。",
+      "url": "https://finance.eastmoney.com/a/202609013861229546.html",
+      "time": "2026-09-01 10:56:58",
+      "ai_summary": "美联储9月加息预期存分歧",
+      "impact_analysis": "美联储主席鹰派讲话引发加息预期，但华尔街对是否加息存在分歧，市场不确定性增加，影响全球风险偏好，对A股外资流向和成长股估值形成压力。",
       "affected_sectors": [
-        "算力硬件",
-        "半导体",
-        "机器人"
+        "外资重仓股",
+        "成长股"
       ],
       "affected_stocks": [
-        "300308.SZ",
-        "688981.SS",
-        "002230.SZ"
+        "600519.SS",
+        "300750.SZ"
       ],
       "importance": 8
     },
     {
-      "title": "2025年中国与东盟双边贸易额首次突破万亿美元大关",
+      "title": "数字人民币扩容叠加市场活跃度回升，金融科技ETF易方达（159299）盘中涨2.36%，金融IT板块估值修复行情延续",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609013860974458.html",
-      "time": "2026-09-01 09:15:56",
-      "ai_summary": "中国与东盟贸易额首破万亿美元",
-      "impact_analysis": "中国与东盟贸易增长利好港口、物流、跨境电商等板块，提升外贸相关企业业绩预期，对大盘有积极影响。",
+      "url": "https://finance.eastmoney.com/a/202609013861286070.html",
+      "time": "2026-09-01 11:07:57",
+      "ai_summary": "数字人民币扩容，金融科技ETF涨",
+      "impact_analysis": "数字人民币扩容叠加市场活跃度回升，金融科技板块估值修复行情延续，资金关注度提升，利好金融IT、数字人民币相关概念股。",
       "affected_sectors": [
-        "港口航运",
-        "跨境电商",
-        "物流"
+        "金融科技",
+        "数字货币"
       ],
       "affected_stocks": [
-        "601018.SS",
-        "002120.SZ",
-        "600009.SS"
+        "300468.SZ",
+        "002152.SZ"
       ],
       "importance": 7
     },
     {
-      "title": "安徽国恒阜合股权投资基金完成备案 总规模6亿元",
+      "title": "身高仅25cm 这款桌面AI机器人火了 主控芯片系A股公司产品",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609013860976133.html",
-      "time": "2026-09-01 09:15:57",
-      "ai_summary": "央行开展50亿元7天期逆回购操作",
-      "impact_analysis": "央行逆回购操作规模较小，利率维持1.4%，显示流动性保持合理充裕，对市场影响中性偏积极。",
+      "url": "https://finance.eastmoney.com/a/202609013861284375.html",
+      "time": "2026-09-01 11:07:38",
+      "ai_summary": "AI视频板块活跃，管理办法施行",
+      "impact_analysis": "《微短剧发展管理办法》今日施行，AI视频板块持续活跃，多股涨停，规范化管理推动行业转向综合实力较量，利好有内容和技术优势的传媒公司。",
       "affected_sectors": [
-        "银行",
-        "整体市场"
+        "AI视频",
+        "传媒"
       ],
       "affected_stocks": [
-        "601398.SS",
-        "600036.SS"
+        "300413.SZ",
+        "000892.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "杭州：支持前沿赛道未盈利的科创企业用好科创板、创业板改革政策 实现资本市场上市",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202609013861251794.html",
+      "time": "2026-09-01 10:31:30",
+      "ai_summary": "AI应用端拉升，多股涨停",
+      "impact_analysis": "AI应用端再度拉升，壹网壹创、遥望科技等涨停，AI应用商业化加速，市场对AI应用端关注度提升，带动相关概念股走强。",
+      "affected_sectors": [
+        "AI应用",
+        "传媒"
+      ],
+      "affected_stocks": [
+        "300792.SZ",
+        "002291.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "创业板指下跌0.92% 农业股爆发 AI硬件表现不佳",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202609013861299410.html",
+      "time": "2026-09-01 11:30:51",
+      "ai_summary": "银行板块强势，理财行业规范整改",
+      "impact_analysis": "国内理财行业迎来全面规范整改浪潮，银行板块继续强势，银行ETF涨超1%，规范整改有利于行业长期健康发展，利好大型银行。",
+      "affected_sectors": [
+        "银行"
+      ],
+      "affected_stocks": [
+        "601658.SS",
+        "601398.SS"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "阿里巴巴、上汽集团入股低轨卫星星座运营商垣信卫星",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202609013861269159.html",
+      "time": "2026-09-01 10:44:26",
+      "ai_summary": "集运指数欧线期货跌7%",
+      "impact_analysis": "集运指数欧线期货主力合约日内跌7%，反映航运市场需求或预期走弱，利空航运板块，可能影响相关公司盈利预期。",
+      "affected_sectors": [
+        "航运",
+        "港口"
+      ],
+      "affected_stocks": [
+        "601919.SS",
+        "600018.SS"
       ],
       "importance": 6
     },
     {
-      "title": "吉伦泰研制的靶向整合素αvβ3治疗核药获得国家药监局临床试验批件",
+      "title": "粮食概念股掀涨停潮，粮食ETF易方达（159038）盘中涨5.69%，超强厄尔尼诺推升全球粮价预期",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609013861162587.html",
-      "time": "2026-09-01 09:54:03",
-      "ai_summary": "澳大利亚10年期国债收益率升至2011年以来最高",
-      "impact_analysis": "全球债市压力上升，可能引发全球利率上行预期，对A股估值形成压制，尤其是高估值成长股。",
+      "url": "https://finance.eastmoney.com/a/202609013861280932.html",
+      "time": "2026-09-01 10:59:29",
+      "ai_summary": "阿里巴巴、上汽入股垣信卫星",
+      "impact_analysis": "阿里巴巴、上汽集团入股低轨卫星星座运营商垣信卫星，显示产业资本看好卫星互联网前景，利好商业航天、卫星通信板块。",
       "affected_sectors": [
-        "成长股",
-        "科技股"
+        "卫星互联网",
+        "商业航天"
       ],
       "affected_stocks": [
-        "300750.SZ",
-        "002594.SZ"
+        "600104.SS",
+        "002025.SZ"
       ],
       "importance": 6
     },
     {
-      "title": "优必选在天津成立机器人公司 含多项AI业务",
+      "title": "AI视频板块持续活跃 相关管理办法今日施行",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609013861005717.html",
-      "time": "2026-09-01 09:28:33",
-      "ai_summary": "韩国提议2027年拨款2.6万亿韩元支持芯片产业",
-      "impact_analysis": "韩国加大芯片产业支持，可能加剧全球半导体竞争，对国内半导体产业有刺激作用，利好国产替代概念。",
+      "url": "https://finance.eastmoney.com/a/202609013861291177.html",
+      "time": "2026-09-01 11:16:00",
+      "ai_summary": "中钢协：7月钢材出口环比下降",
+      "impact_analysis": "7月钢材出口环比下降1.9%，但同比仍增长，出口均价上涨，整体影响中性，但出口量下滑可能对钢铁行业需求预期产生一定压力。",
       "affected_sectors": [
-        "半导体",
-        "芯片"
+        "钢铁"
       ],
       "affected_stocks": [
-        "688981.SS",
-        "002371.SZ"
-      ],
-      "importance": 6
-    },
-    {
-      "title": "大众中国：已启动星宇股份投诉相关的专项调查，调查正在进行中",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609013861213727.html",
-      "time": "2026-09-01 10:08:00",
-      "ai_summary": "韩国总统称利率上升不可避免",
-      "impact_analysis": "韩国加息预期可能影响亚太市场流动性，对A股外资流向有一定影响，但整体影响有限。",
-      "affected_sectors": [
-        "外资重仓股"
-      ],
-      "affected_stocks": [
-        "600519.SS",
-        "000858.SZ"
-      ],
-      "importance": 5
-    },
-    {
-      "title": "厦门国贸投资成立智算科技公司 含多项AI业务",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609013861167638.html",
-      "time": "2026-09-01 09:56:41",
-      "ai_summary": "出版板块持续走强，多股涨停",
-      "impact_analysis": "出版板块走强可能受政策或市场情绪驱动，带动文化传媒板块活跃，对大盘影响有限。",
-      "affected_sectors": [
-        "出版",
-        "文化传媒"
-      ],
-      "affected_stocks": [
-        "002181.SZ",
-        "603999.SS"
-      ],
-      "importance": 5
-    },
-    {
-      "title": "劲旅环境成立智行科技公司 含AI及机器人业务",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609013861110650.html",
-      "time": "2026-09-01 09:47:14",
-      "ai_summary": "黄金概念震荡反弹，曼卡龙涨超10%",
-      "impact_analysis": "黄金概念反弹受避险情绪和通胀预期影响，利好黄金股，但整体对大盘影响较小。",
-      "affected_sectors": [
-        "黄金",
-        "贵金属"
-      ],
-      "affected_stocks": [
-        "600988.SS",
-        "002731.SZ"
+        "600019.SS",
+        "000898.SZ"
       ],
       "importance": 5
     }
