@@ -1,5 +1,5 @@
 {
-  "scan_time": "2026-09-02 10:01",
+  "scan_time": "2026-09-02 11:31",
   "scan_date": "20260902",
   "data_date": "2026-09-01",
   "market": {
@@ -18,8 +18,8 @@
   },
   "regime": {
     "status": "neutral",
-    "label": "数据不足，默认非熊市",
-    "avg_trend": 0,
+    "label": "3档: 启动期 — 谨慎入场",
+    "avg_trend": -0.41,
     "recommended_mode": "strict"
   },
   "modes": {
@@ -28,7 +28,7 @@
       "candidates": [
         {
           "code": "000936.SZ",
-          "price": 5.64,
+          "price": 5.62,
           "signal_date": "20260831",
           "pullback_pct": 18.5,
           "limit_days": 3,
@@ -36,7 +36,7 @@
         },
         {
           "code": "002329.SZ",
-          "price": 3.98,
+          "price": 4.0,
           "signal_date": "20260831",
           "pullback_pct": 14.3,
           "limit_days": 4,
@@ -44,9 +44,9 @@
         },
         {
           "code": "000820.SZ",
-          "price": 3.67,
-          "signal_date": "20260825",
-          "pullback_pct": 15.7,
+          "price": 3.72,
+          "signal_date": "20260831",
+          "pullback_pct": 14.6,
           "limit_days": 3,
           "entity_ratio": 67.0
         }
