@@ -1,176 +1,179 @@
 {
   "date": "20260902",
-  "market_summary": "今日A股三大指数集体低开，创业板指跌幅扩大至2%，市场情绪偏弱。消息面上，国际油价大涨带动油气、煤炭等资源板块活跃，但AI、互联网板块因利润预期下修承压，整体市场呈现结构性分化。",
-  "sentiment_impact": "偏空",
+  "market_summary": "今日A股市场消息面偏空，三大指数低开，电子板块资金大幅流出，但军工、电网设备等板块逆势走强。政策面聚焦AI与新型电网建设，瑞银看好A股盈利增长，但短期市场情绪谨慎。",
+  "sentiment_impact": "中性",
   "news": [
     {
-      "title": "国内商品期货早盘开盘 主力合约多数上涨",
+      "title": "外国对德直接投资同比增长50% 经济疲弱缘何外国资本加速流入？",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609023862214693.html",
-      "time": "2026-09-02 09:00:01",
-      "ai_summary": "商品期货多数上涨，原油涨近10%",
-      "impact_analysis": "国际油价大涨带动国内商品期货，利好石油、化工等周期板块，但可能加剧通胀担忧，对货币政策形成制约。",
+      "url": "https://finance.eastmoney.com/a/202609023862596113.html",
+      "time": "2026-09-02 11:06:39",
+      "ai_summary": "国家能源局部署新型电网建设，点名AI+",
+      "impact_analysis": "政策利好电网设备、AI算力板块，推动相关投资，提升市场对智能电网和储能技术的关注度，短期利好相关概念股。",
       "affected_sectors": [
-        "石油石化",
-        "化工"
+        "电网设备",
+        "人工智能",
+        "储能"
       ],
       "affected_stocks": [
-        "601857.SS",
-        "600028.SS"
+        "600406.SS",
+        "300274.SZ"
+      ],
+      "importance": 9
+    },
+    {
+      "title": "ZINOVA联合逐际动力完成双臂机器人复杂建筑施工验证",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202609023862569297.html",
+      "time": "2026-09-02 10:28:24",
+      "ai_summary": "主力资金净流出电子板块超112亿",
+      "impact_analysis": "电子板块遭大幅抛售，中际旭创等龙头净卖出居前，显示资金短期撤离，可能拖累创业板和科技股表现，需警惕回调风险。",
+      "affected_sectors": [
+        "电子",
+        "半导体",
+        "通信设备"
+      ],
+      "affected_stocks": [
+        "300308.SZ",
+        "300502.SZ"
       ],
       "importance": 8
     },
     {
-      "title": "瑞银证券熊玮：中国大模型性价比优势凸显 多模态变现快于美国同行",
+      "title": "智谱独家入驻天猫 将售卖Coding Plan套餐等",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609023862257551.html",
-      "time": "2026-09-02 09:06:01",
-      "ai_summary": "瑞银看好中国大模型性价比优势",
-      "impact_analysis": "瑞银对中国AI大模型的积极评价，有望提振市场对AI板块的信心，尤其是模型能力提升和变现加速的预期，可能带动相关科技股反弹。",
+      "url": "https://finance.eastmoney.com/a/202609023862560024.html",
+      "time": "2026-09-02 10:19:33",
+      "ai_summary": "瑞银预计2026年A股盈利增长15%",
+      "impact_analysis": "外资机构看好A股盈利复苏，提振市场信心，但需关注美债和公募赎回等阻力，短期或支撑指数稳步反弹。",
       "affected_sectors": [
-        "人工智能",
-        "云计算"
+        "大盘蓝筹",
+        "金融",
+        "消费"
       ],
       "affected_stocks": [
-        "688111.SS",
-        "300308.SZ"
+        "510300.SS",
+        "000001.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "第十五届中国知识产权年会将围绕人工智能与知识产权设置多个议题",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202609023862605784.html",
+      "time": "2026-09-02 11:21:50",
+      "ai_summary": "北交所五周年，总市值8500亿",
+      "impact_analysis": "北交所发展提速，专精特新企业聚集，政策支持预期增强，利好北交所个股及创投概念，但整体对主板影响有限。",
+      "affected_sectors": [
+        "北交所概念",
+        "专精特新"
+      ],
+      "affected_stocks": [
+        "835185.BJ",
+        "430047.BJ"
       ],
       "importance": 7
     },
     {
-      "title": "单日回购降至1亿港元！腾讯“资本大挪移”全面转战AI",
+      "title": "北交所五周年：总市值8500亿元 专精特新主阵地加速成型",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609023862510691.html",
-      "time": "2026-09-02 09:53:00",
-      "ai_summary": "腾讯回购降温，转战AI投资",
-      "impact_analysis": "腾讯减少回购，加大AI投入，反映互联网巨头战略转向，可能影响港股科技股估值，但对A股AI产业链公司构成利好。",
+      "url": "https://finance.eastmoney.com/a/202609023862597265.html",
+      "time": "2026-09-02 11:09:29",
+      "ai_summary": "礼来29亿美元收购，创新药板块活跃",
+      "impact_analysis": "海外巨头加码创新药，提振行业估值，港股创新药上涨带动A股相关板块，关注创新药产业链投资机会。",
       "affected_sectors": [
-        "人工智能",
-        "互联网"
+        "创新药",
+        "生物医药"
       ],
       "affected_stocks": [
-        "00700.HK",
-        "300418.SZ"
+        "600276.SS",
+        "300347.SZ"
       ],
       "importance": 7
     },
     {
-      "title": "“本源悟空”真机实现相干量子路由系统 破解QRAM扩展难题",
+      "title": "礼来加码创新药赛道，斥资近29亿美元收购生物科技公司，港股创新药ETF博时(520690)跟踪指数上涨0.49%",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609023862526188.html",
-      "time": "2026-09-02 09:56:10",
-      "ai_summary": "本源悟空实现相干量子路由系统",
-      "impact_analysis": "量子计算技术突破，利好量子通信和量子计算概念股，可能引发市场对相关题材的炒作。",
+      "url": "https://finance.eastmoney.com/a/202609023862578743.html",
+      "time": "2026-09-02 10:33:02",
+      "ai_summary": "军工板块涨势扩大，多股涨停",
+      "impact_analysis": "地缘政治紧张及政策支持，军工板块逆势走强，资金流入明显，短期或持续活跃，关注国防军工主题。",
       "affected_sectors": [
-        "量子通信",
-        "量子计算"
+        "国防军工",
+        "航空航天"
       ],
       "affected_stocks": [
-        "002335.SZ",
-        "600260.SS"
+        "600760.SS",
+        "002013.SZ"
       ],
-      "importance": 6
+      "importance": 7
     },
     {
-      "title": "瑞银方锦聪：互联网大厂利润预期下修 看好云厂商、大模型、线上游戏",
+      "title": "今年前7个月医保共拨付即时结算资金9457.31亿元",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609023862259471.html",
-      "time": "2026-09-02 09:07:01",
-      "ai_summary": "瑞银下调互联网大厂利润预期",
-      "impact_analysis": "互联网大厂利润预期下修，反映AI开支对利润的挤压，短期可能压制互联网板块估值，但长期看AI投入或带来增长。",
+      "url": "https://finance.eastmoney.com/a/202609023862584348.html",
+      "time": "2026-09-02 10:47:40",
+      "ai_summary": "碳酸锂期货主力合约日内跌4%",
+      "impact_analysis": "碳酸锂价格下跌利空锂矿板块，但利好下游电池厂商，成本降低或提升利润，关注新能源产业链分化。",
       "affected_sectors": [
-        "互联网",
-        "软件服务"
+        "锂矿",
+        "锂电池"
       ],
       "affected_stocks": [
-        "00700.HK",
-        "BABA.N"
+        "002460.SZ",
+        "300750.SZ"
       ],
-      "importance": 6
+      "importance": 7
     },
     {
-      "title": "江苏省政府发文：落实带薪休假 增加中小型演唱会",
+      "title": "鼎犀智创完成Pre-A轮融资",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609023862332517.html",
-      "time": "2026-09-02 09:17:48",
-      "ai_summary": "江苏发放消费券，增加演唱会频次",
-      "impact_analysis": "江苏促消费政策，利好文旅、消费板块，尤其是旅游、演艺相关公司，可能带动区域消费股活跃。",
+      "url": "https://finance.eastmoney.com/a/202609023862575483.html",
+      "time": "2026-09-02 10:34:33",
+      "ai_summary": "上市银行加大核销力度，工行超800亿",
+      "impact_analysis": "银行加大核销或影响短期利润，但有助于资产质量改善，长期利好，市场对银行板块情绪或偏谨慎。",
       "affected_sectors": [
-        "旅游",
-        "文化传媒"
-      ],
-      "affected_stocks": [
-        "600054.SS",
-        "300144.SZ"
-      ],
-      "importance": 6
-    },
-    {
-      "title": "央行：2026年9月2日7天期逆回购操作量为零",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609023862357982.html",
-      "time": "2026-09-02 09:21:40",
-      "ai_summary": "央行逆回购操作量为零",
-      "impact_analysis": "央行暂停逆回购操作，显示流动性维持紧平衡，短期资金面或偏紧，对股市有一定压力，但影响温和。",
-      "affected_sectors": [
-        "银行",
-        "非银金融"
+        "银行"
       ],
       "affected_stocks": [
         "601398.SS",
-        "600030.SS"
+        "601939.SS"
       ],
       "importance": 6
     },
     {
-      "title": "廖岷出席2026年二十国集团财长和央行行长第二次会议",
+      "title": "AI数据中心耗水引爆担忧？OpenAI CEO反驳：还比不上种植杏仁！",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609023862465095.html",
-      "time": "2026-09-02 09:42:59",
-      "ai_summary": "G20会议召开，廖岷强调多边主义",
-      "impact_analysis": "G20会议聚焦全球经济协调，中国表态支持多边主义，有助于稳定市场对全球宏观环境的预期，对A股整体影响中性偏多。",
+      "url": "https://finance.eastmoney.com/a/202609023862605095.html",
+      "time": "2026-09-02 11:21:16",
+      "ai_summary": "中央网信办整治AI应用乱象",
+      "impact_analysis": "监管加强短期或压制AI应用概念，但长期规范行业健康发展，关注合规能力强的AI公司。",
       "affected_sectors": [
-        "银行",
-        "外贸"
+        "人工智能",
+        "网络安全"
       ],
       "affected_stocks": [
-        "601398.SS",
-        "600036.SS"
+        "002230.SZ",
+        "300454.SZ"
       ],
-      "importance": 5
+      "importance": 6
     },
     {
-      "title": "北交所合格投资者突破1100万户 是开市时近三倍",
+      "title": "汇川技术：下半年将加大变频器、伺服等高价值优势业务的资源投入",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609023862463181.html",
-      "time": "2026-09-02 09:45:05",
-      "ai_summary": "北交所投资者突破1100万户",
-      "impact_analysis": "北交所投资者数量大幅增长，市场活跃度提升，利好北交所上市公司，但整体规模较小，对主板影响有限。",
+      "url": "https://finance.eastmoney.com/a/202609023862580945.html",
+      "time": "2026-09-02 10:43:33",
+      "ai_summary": "美光科技现劳资纠纷，半导体供应链风险",
+      "impact_analysis": "存储芯片大厂罢工风险或影响全球供应，利好国内存储芯片替代，关注半导体设备及材料板块。",
       "affected_sectors": [
-        "北交所概念"
+        "半导体",
+        "存储芯片"
       ],
       "affected_stocks": [
-        "832000.BJ",
-        "833171.BJ"
+        "603986.SS",
+        "002049.SZ"
       ],
-      "importance": 5
-    },
-    {
-      "title": "日本央行审议委员高田创：需要灵活地进行升息操作",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609023862445248.html",
-      "time": "2026-09-02 09:37:15",
-      "ai_summary": "日本央行官员呼吁灵活加息",
-      "impact_analysis": "日本央行加息预期升温，可能引发日元升值，对全球资金流向产生影响，A股外资或面临波动，但整体影响有限。",
-      "affected_sectors": [
-        "银行",
-        "外汇"
-      ],
-      "affected_stocks": [
-        "601988.SS",
-        "600000.SS"
-      ],
-      "importance": 5
+      "importance": 6
     }
   ]
 }
