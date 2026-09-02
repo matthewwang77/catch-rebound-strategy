@@ -1,177 +1,175 @@
 {
   "date": "20260902",
-  "market_summary": "今日A股市场消息面偏空，三大指数低开，电子板块资金大幅流出，但军工、电网设备等板块逆势走强。政策面聚焦AI与新型电网建设，瑞银看好A股盈利增长，但短期市场情绪谨慎。",
-  "sentiment_impact": "中性",
+  "market_summary": "今日A股三大指数缩量收跌，市场情绪偏弱，主要受全球加息预期升温、地缘风险推升油价及外围股市大跌影响。盘面上，地面兵装、航空装备等军工板块逆市走强，而能源金属、煤炭等周期板块领跌。",
+  "sentiment_impact": "偏空",
   "news": [
     {
-      "title": "外国对德直接投资同比增长50% 经济疲弱缘何外国资本加速流入？",
+      "title": "中指研究院：1—8月北京房地产销售额TOP20企业商品房销售额合计2086.6亿元",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609023862596113.html",
-      "time": "2026-09-02 11:06:39",
-      "ai_summary": "国家能源局部署新型电网建设，点名AI+",
-      "impact_analysis": "政策利好电网设备、AI算力板块，推动相关投资，提升市场对智能电网和储能技术的关注度，短期利好相关概念股。",
+      "url": "https://finance.eastmoney.com/a/202609023862712268.html",
+      "time": "2026-09-02 14:50:44",
+      "ai_summary": "A股三大指数缩量收跌，军工逆市大涨",
+      "impact_analysis": "直接反映今日市场整体走势，沪指跌0.97%、创业板指跌2.39%，成交额缩量至1.8万亿，显示市场风险偏好下降。军工板块逆市大涨，或受地缘局势催化，短期可关注军工板块持续性。",
       "affected_sectors": [
-        "电网设备",
-        "人工智能",
-        "储能"
+        "地面兵装",
+        "航空装备"
       ],
       "affected_stocks": [
-        "600406.SS",
-        "300274.SZ"
+        "600893.SS",
+        "000768.SZ"
+      ],
+      "importance": 10
+    },
+    {
+      "title": "大晓机器人ACE-Ego-Hand实现双手3D手形重建 推理提速约33倍",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202609023862706813.html",
+      "time": "2026-09-02 14:40:31",
+      "ai_summary": "油价突破90美元，美债收益率攀升",
+      "impact_analysis": "油价大涨推升通胀预期，压缩美联储降息空间，美债收益率上行，对全球风险资产形成压制，A股高估值成长板块承压，但利好石油石化板块。",
+      "affected_sectors": [
+        "石油石化",
+        "煤炭"
+      ],
+      "affected_stocks": [
+        "601857.SS",
+        "600028.SS"
       ],
       "importance": 9
     },
     {
-      "title": "ZINOVA联合逐际动力完成双臂机器人复杂建筑施工验证",
+      "title": "中信证券：继续看好国产半导体设备及核心零部件产业链",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609023862569297.html",
-      "time": "2026-09-02 10:28:24",
-      "ai_summary": "主力资金净流出电子板块超112亿",
-      "impact_analysis": "电子板块遭大幅抛售，中际旭创等龙头净卖出居前，显示资金短期撤离，可能拖累创业板和科技股表现，需警惕回调风险。",
+      "url": "https://finance.eastmoney.com/a/202609023862699086.html",
+      "time": "2026-09-02 14:30:44",
+      "ai_summary": "韩国KOSPI收盘大跌4%，半导体汽车下挫",
+      "impact_analysis": "韩国股市大跌，半导体、汽车股领跌，可能对A股半导体、汽车板块形成情绪冲击，但A股相关板块走势或更受国内基本面影响，需关注联动风险。",
       "affected_sectors": [
-        "电子",
         "半导体",
-        "通信设备"
+        "汽车整车"
       ],
       "affected_stocks": [
-        "300308.SZ",
-        "300502.SZ"
+        "002371.SZ",
+        "600104.SS"
       ],
       "importance": 8
     },
     {
-      "title": "智谱独家入驻天猫 将售卖Coding Plan套餐等",
+      "title": "紫微科技完成数亿元新一轮融资",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609023862560024.html",
-      "time": "2026-09-02 10:19:33",
-      "ai_summary": "瑞银预计2026年A股盈利增长15%",
-      "impact_analysis": "外资机构看好A股盈利复苏，提振市场信心，但需关注美债和公募赎回等阻力，短期或支撑指数稳步反弹。",
+      "url": "https://finance.eastmoney.com/a/202609023862685066.html",
+      "time": "2026-09-02 14:10:40",
+      "ai_summary": "中信证券看好国产半导体设备及零部件",
+      "impact_analysis": "券商研报看好半导体设备产业链，认为订单景气度提升，对半导体设备板块形成正面催化，但需注意市场整体偏弱，板块表现或分化。",
       "affected_sectors": [
-        "大盘蓝筹",
-        "金融",
-        "消费"
+        "半导体设备",
+        "半导体材料"
       ],
       "affected_stocks": [
-        "510300.SS",
-        "000001.SZ"
+        "002371.SZ",
+        "300604.SZ"
       ],
       "importance": 8
     },
     {
-      "title": "第十五届中国知识产权年会将围绕人工智能与知识产权设置多个议题",
+      "title": "国内商品期货收盘 主力合约跌多涨少",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609023862605784.html",
-      "time": "2026-09-02 11:21:50",
-      "ai_summary": "北交所五周年，总市值8500亿",
-      "impact_analysis": "北交所发展提速，专精特新企业聚集，政策支持预期增强，利好北交所个股及创投概念，但整体对主板影响有限。",
+      "url": "https://finance.eastmoney.com/a/202609023862719522.html",
+      "time": "2026-09-02 15:00:15",
+      "ai_summary": "日经225收盘下跌2.9%，市场全面抛售",
+      "impact_analysis": "日股大跌反映全球风险情绪恶化，叠加日本央行加息预期升温，可能引发亚太资金回流，对A股外资流向构成压力，但影响或有限。",
       "affected_sectors": [
-        "北交所概念",
-        "专精特新"
-      ],
-      "affected_stocks": [
-        "835185.BJ",
-        "430047.BJ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "北交所五周年：总市值8500亿元 专精特新主阵地加速成型",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609023862597265.html",
-      "time": "2026-09-02 11:09:29",
-      "ai_summary": "礼来29亿美元收购，创新药板块活跃",
-      "impact_analysis": "海外巨头加码创新药，提振行业估值，港股创新药上涨带动A股相关板块，关注创新药产业链投资机会。",
-      "affected_sectors": [
-        "创新药",
-        "生物医药"
-      ],
-      "affected_stocks": [
-        "600276.SS",
-        "300347.SZ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "礼来加码创新药赛道，斥资近29亿美元收购生物科技公司，港股创新药ETF博时(520690)跟踪指数上涨0.49%",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609023862578743.html",
-      "time": "2026-09-02 10:33:02",
-      "ai_summary": "军工板块涨势扩大，多股涨停",
-      "impact_analysis": "地缘政治紧张及政策支持，军工板块逆势走强，资金流入明显，短期或持续活跃，关注国防军工主题。",
-      "affected_sectors": [
-        "国防军工",
-        "航空航天"
-      ],
-      "affected_stocks": [
-        "600760.SS",
-        "002013.SZ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "今年前7个月医保共拨付即时结算资金9457.31亿元",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609023862584348.html",
-      "time": "2026-09-02 10:47:40",
-      "ai_summary": "碳酸锂期货主力合约日内跌4%",
-      "impact_analysis": "碳酸锂价格下跌利空锂矿板块，但利好下游电池厂商，成本降低或提升利润，关注新能源产业链分化。",
-      "affected_sectors": [
-        "锂矿",
-        "锂电池"
-      ],
-      "affected_stocks": [
-        "002460.SZ",
-        "300750.SZ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "鼎犀智创完成Pre-A轮融资",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609023862575483.html",
-      "time": "2026-09-02 10:34:33",
-      "ai_summary": "上市银行加大核销力度，工行超800亿",
-      "impact_analysis": "银行加大核销或影响短期利润，但有助于资产质量改善，长期利好，市场对银行板块情绪或偏谨慎。",
-      "affected_sectors": [
-        "银行"
+        "银行",
+        "出口导向"
       ],
       "affected_stocks": [
         "601398.SS",
-        "601939.SS"
+        "600036.SS"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "法国兴业银行：韩国投资者从杠杆ETF转向结构化产品",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202609023862714965.html",
+      "time": "2026-09-02 14:52:08",
+      "ai_summary": "MLCC巨头三星电机订单锁定至2027年底",
+      "impact_analysis": "三星电机获AI服务器MLCC大单，显示AI算力需求强劲，对A股MLCC及被动元件板块形成利好，相关公司有望受益。",
+      "affected_sectors": [
+        "被动元件",
+        "AI服务器"
+      ],
+      "affected_stocks": [
+        "603501.SS",
+        "002138.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "算力扩张遭遇互联瓶颈 硅光技术从“可选”走向“必选”",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202609023862700827.html",
+      "time": "2026-09-02 14:33:44",
+      "ai_summary": "硅光技术从可选走向必选，算力互联关键",
+      "impact_analysis": "算力扩张遭遇互联瓶颈，硅光技术重要性提升，对光模块、硅光芯片等板块构成利好，相关公司有望受益于算力基础设施建设。",
+      "affected_sectors": [
+        "光模块",
+        "硅光芯片"
+      ],
+      "affected_stocks": [
+        "300308.SZ",
+        "002281.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "酷哇开源自适应世界模型架构RISE",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202609023862717522.html",
+      "time": "2026-09-02 14:57:47",
+      "ai_summary": "沪深两市成交额缩量超2100亿元",
+      "impact_analysis": "成交额较昨日同期缩量超2100亿，显示市场交投活跃度下降，资金观望情绪浓厚，短期大盘或维持震荡，需关注量能变化。",
+      "affected_sectors": [
+        "券商",
+        "金融科技"
+      ],
+      "affected_stocks": [
+        "600030.SS",
+        "300059.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "东升宇航年内计划出厂三颗高性能卫星",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202609023862689470.html",
+      "time": "2026-09-02 14:18:25",
+      "ai_summary": "马斯克预计未来十年10亿台人形机器人",
+      "impact_analysis": "马斯克对人形机器人前景的乐观预期，提振机器人板块情绪，但短期业绩兑现尚需时日，关注产业链核心零部件企业。",
+      "affected_sectors": [
+        "机器人",
+        "减速器"
+      ],
+      "affected_stocks": [
+        "300124.SZ",
+        "002472.SZ"
       ],
       "importance": 6
     },
     {
-      "title": "AI数据中心耗水引爆担忧？OpenAI CEO反驳：还比不上种植杏仁！",
+      "title": "京东方智驭与星源智达成深度战略合作",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609023862605095.html",
-      "time": "2026-09-02 11:21:16",
-      "ai_summary": "中央网信办整治AI应用乱象",
-      "impact_analysis": "监管加强短期或压制AI应用概念，但长期规范行业健康发展，关注合规能力强的AI公司。",
+      "url": "https://finance.eastmoney.com/a/202609023862709655.html",
+      "time": "2026-09-02 14:44:38",
+      "ai_summary": "IMF总裁称全球经济前景高不确定性",
+      "impact_analysis": "IMF对全球经济前景的谨慎表态，叠加全球加息潮，可能影响市场风险偏好，对A股外资流入构成一定压力，但国内政策或提供对冲。",
       "affected_sectors": [
-        "人工智能",
-        "网络安全"
+        "黄金",
+        "公用事业"
       ],
       "affected_stocks": [
-        "002230.SZ",
-        "300454.SZ"
-      ],
-      "importance": 6
-    },
-    {
-      "title": "汇川技术：下半年将加大变频器、伺服等高价值优势业务的资源投入",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609023862580945.html",
-      "time": "2026-09-02 10:43:33",
-      "ai_summary": "美光科技现劳资纠纷，半导体供应链风险",
-      "impact_analysis": "存储芯片大厂罢工风险或影响全球供应，利好国内存储芯片替代，关注半导体设备及材料板块。",
-      "affected_sectors": [
-        "半导体",
-        "存储芯片"
-      ],
-      "affected_stocks": [
-        "603986.SS",
-        "002049.SZ"
+        "600547.SS",
+        "600900.SS"
       ],
       "importance": 6
     }
