@@ -1254,5 +1254,30 @@
       "missed_signal": null,
       "lesson": null
     }
+  ],
+  "002762.SZ": [
+    {
+      "date": "20260903",
+      "signal_date": "20260901",
+      "mode": "bear",
+      "entry_price": 9.14,
+      "pullback_pct": 9.6,
+      "limit_days": 3,
+      "analysis": "量：缩量至涨停日24%，但OBV持续下行，资金流出未止，量能萎缩属弱势整理而非蓄势。  \n价：股价跌破MA5/10/20，均线空头排列，下方布林下轨8.77为唯一支撑，距现价4%空间。  \n形：3连板后19天回调仅9.6%，属高位横盘弱反弹形态，MACD死叉且柱体扩大，无底部反转结构。  \n时：回调已超13个交易日窗口，反弹窗口关闭，且市场情绪低迷（2档），消息面利好难传导至个股。  \n反弹概率：低（≤30%）  \n仓位建议：0成仓（低迷期2档）  \n最终结论：【放弃】",
+      "sentiment": "低迷期2档",
+      "position": "0成仓",
+      "opinion": "【放弃】",
+      "verified": false,
+      "return_7d": null,
+      "exit_reason": null,
+      "exit_day": null,
+      "verdict": null,
+      "review_analysis": null,
+      "review_quality": null,
+      "what_happened": null,
+      "why_wrong": null,
+      "missed_signal": null,
+      "lesson": null
+    }
   ]
 }

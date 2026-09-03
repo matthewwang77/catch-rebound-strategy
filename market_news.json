@@ -1,174 +1,175 @@
 {
   "date": "20260903",
-  "market_summary": "今日市场消息面偏暖，港股券商、保险、黄金等板块走强带动A股情绪，美国小非农数据爆冷强化降息预期，黄金、有色板块受益；体育产业政策目标明确，机器人、AI等科技题材持续活跃。整体市场风险偏好回升，但需关注高位股回调风险。",
+  "market_summary": "今日A股市场消息面偏多，政策面聚焦体育产业、上海住房及大宗商品市场建设，产业面动力电池、创新药、有色等板块利好频出，但市场缩量，资金面中性。",
   "sentiment_impact": "偏多",
   "news": [
     {
-      "title": "港股券商集体拉升 香港证券ETF易方达（513090）涨超2%，成交额突破26亿",
+      "title": "纽欧申医药完成超8000万美元B轮融资",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609033863831749.html",
-      "time": "2026-09-03 10:28:06",
-      "ai_summary": "美国小非农爆冷，金价上涨",
-      "impact_analysis": "美国8月ADP就业数据不及预期，强化美联储降息预期，美元走弱，利好黄金及有色金属板块。A股黄金股、有色股有望受提振，相关ETF及个股或表现活跃。",
+      "url": "https://finance.eastmoney.com/a/202609033863839348.html",
+      "time": "2026-09-03 10:35:52",
+      "ai_summary": "上海发布住房建设十五五规划",
+      "impact_analysis": "规划明确新增商品住房供应，利好地产链，但规模温和，政策基调以稳为主，对地产板块有提振，但持续性需观察。",
       "affected_sectors": [
-        "贵金属",
+        "房地产",
+        "建筑建材"
+      ],
+      "affected_stocks": [
+        "000002.SZ",
+        "600048.SS"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "信达生物2030年营收冲刺400亿元，恒生生物科技ETF鹏华涨超2%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202609033863857784.html",
+      "time": "2026-09-03 11:04:11",
+      "ai_summary": "欧阳明高预计2030年锂电池出货超3600GWh",
+      "impact_analysis": "锂电池出货量翻倍增长预期，利好锂电产业链，包括电池、材料及设备，行业景气度提升，龙头受益明显。",
+      "affected_sectors": [
+        "锂电池",
+        "新能源"
+      ],
+      "affected_stocks": [
+        "300750.SZ",
+        "002460.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "上海市住房和城乡建设管理“十五五”规划：新增供应商品住房2500万—2800万平方米",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202609033863847398.html",
+      "time": "2026-09-03 10:47:36",
+      "ai_summary": "高盛看涨黄金年底至4900美元",
+      "impact_analysis": "高盛上调金价目标，叠加现货黄金站上4400美元，黄金股及有色板块受提振，避险需求增加，板块有望持续走强。",
+      "affected_sectors": [
+        "黄金",
         "有色金属"
-      ],
-      "affected_stocks": [
-        "600489.SS",
-        "601899.SS"
-      ],
-      "importance": 9
-    },
-    {
-      "title": "美国“小非农”爆冷、荷兰央行86吨黄金移仓伦敦！黄金股ETF永赢涨近2%，港股金矿股领涨",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609033863816285.html",
-      "time": "2026-09-03 10:10:17",
-      "ai_summary": "港股券商集体拉升，情绪传导",
-      "impact_analysis": "港股券商板块大涨，香港证券ETF放量，反映市场对券商板块信心增强。A股券商股有望跟涨，带动非银金融板块走强，对大盘指数形成支撑。",
-      "affected_sectors": [
-        "证券",
-        "保险"
-      ],
-      "affected_stocks": [
-        "600030.SS",
-        "601318.SS"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "比亚迪：物理AI复杂度极高 公司正从简单场景逐步推进机器人应用",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609033863809057.html",
-      "time": "2026-09-03 10:06:41",
-      "ai_summary": "台积电称AI需求远超产能",
-      "impact_analysis": "台积电高管表示AI芯片需求极其旺盛，设备需求持续上调，凸显AI产业高景气。A股半导体、AI算力相关板块有望受益，带动科技股情绪。",
-      "affected_sectors": [
-        "半导体",
-        "AI算力"
-      ],
-      "affected_stocks": [
-        "688981.SS",
-        "002371.SZ"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "台积电：同时盖20座晶圆厂也不够应付AI需求",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609033863810561.html",
-      "time": "2026-09-03 10:07:50",
-      "ai_summary": "体育总局提出2030年产业目标",
-      "impact_analysis": "国家体育总局明确到2030年体育产业总规模超7万亿元，人均体育场地面积达4平方米，政策利好体育产业，相关概念股如舒华体育等或受提振。",
-      "affected_sectors": [
-        "体育产业",
-        "健身器材"
-      ],
-      "affected_stocks": [
-        "002899.SZ",
-        "300651.SZ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "现代摩比斯在斯洛伐克启动电驱系统量产 年产能达28万套",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609033863832392.html",
-      "time": "2026-09-03 10:30:50",
-      "ai_summary": "券商保险板块走强，中报业绩支撑",
-      "impact_analysis": "证券保险ETF大涨，中报业绩与低估值修复共振，非银金融板块情绪回暖。A股券商、保险股有望持续走强，带动大盘上行。",
-      "affected_sectors": [
-        "证券",
-        "保险"
-      ],
-      "affected_stocks": [
-        "600837.SS",
-        "601601.SS"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "华润新能源投资公司增资至227.4亿 增幅约10%",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609033863826742.html",
-      "time": "2026-09-03 10:24:50",
-      "ai_summary": "荷兰央行转移黄金，避险需求增",
-      "impact_analysis": "荷兰央行将黄金从美加转移至伦敦，反映地缘政治风险加剧，央行购金行为支撑金价。A股黄金股及贵金属板块或受提振。",
-      "affected_sectors": [
-        "贵金属"
       ],
       "affected_stocks": [
         "600547.SS",
-        "002155.SZ"
+        "000975.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "奥迪创新技术中心于上海正式成立",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202609033863878941.html",
+      "time": "2026-09-03 11:34:38",
+      "ai_summary": "央行连续两日逆回购零投放",
+      "impact_analysis": "央行暂停逆回购但资金面未收紧，体现精细化调控，短期流动性充裕，对市场影响中性，但需关注后续货币政策信号。",
+      "affected_sectors": [
+        "银行",
+        "货币市场"
+      ],
+      "affected_stocks": [
+        "000001.SZ",
+        "600036.SS"
       ],
       "importance": 7
     },
     {
-      "title": "国家体育总局：到2030年实现人均体育场地面积达4平方米左右",
+      "title": "中国科学院院士欧阳明高：未来五年将是电池研发由传统模式转向AI智能研发的关键窗口期",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609033863814043.html",
-      "time": "2026-09-03 10:08:06",
-      "ai_summary": "高盛看涨黄金至4900美元",
-      "impact_analysis": "高盛预测金价年底达4900美元，央行购金及衍生品对冲需求支撑，黄金中长期看涨。A股黄金股及有色板块有望受益。",
+      "url": "https://finance.eastmoney.com/a/202609033863874826.html",
+      "time": "2026-09-03 11:27:58",
+      "ai_summary": "欧阳明高：电池研发转向AI驱动",
+      "impact_analysis": "院士强调AI赋能电池研发，利好固态电池及AI+材料板块，未来五年是关键窗口期，相关概念股有望受益。",
       "affected_sectors": [
-        "贵金属",
+        "固态电池",
+        "AI应用"
+      ],
+      "affected_stocks": [
+        "300750.SZ",
+        "002594.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "上海：“十五五”时期将分层构建“上海价格” 丰富场外大宗商品衍生品供给",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202609033863879126.html",
+      "time": "2026-09-03 11:36:49",
+      "ai_summary": "瑞银上调铜价目标至1.55万美元",
+      "impact_analysis": "铜市结构性短缺加剧，铜价中长期看涨，利好铜矿及有色加工企业，工业有色板块表现活跃。",
+      "affected_sectors": [
+        "工业金属",
         "有色金属"
       ],
       "affected_stocks": [
-        "600988.SS",
-        "000630.SZ"
+        "000630.SZ",
+        "601899.SS"
       ],
       "importance": 7
     },
     {
-      "title": "券商保险板块走强，证券保险ETF易方达（512070）盘中涨2.24%，中报业绩与低估值修复共振",
+      "title": "中国科学院院士欧阳明高：预计2030年中国锂离子电池出货量将超过3600GWh",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609033863822594.html",
-      "time": "2026-09-03 10:11:05",
-      "ai_summary": "液冷服务器概念反复走强",
-      "impact_analysis": "液冷服务器概念多股涨停，AI算力需求带动散热技术升级，相关产业链公司受资金追捧，短期热度有望延续。",
+      "url": "https://finance.eastmoney.com/a/202609033863850884.html",
+      "time": "2026-09-03 10:55:14",
+      "ai_summary": "三部门发布汽车出海合规指引",
+      "impact_analysis": "规范汽车出海竞争行为，短期或增加合规成本，但长期利于行业健康发展，龙头车企表态支持，影响偏中性。",
       "affected_sectors": [
-        "液冷服务器",
-        "AI算力"
-      ],
-      "affected_stocks": [
-        "002837.SZ",
-        "300570.SZ"
-      ],
-      "importance": 6
-    },
-    {
-      "title": "二十国集团创新部长会议在美国北卡罗来纳州举行",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609033863775057.html",
-      "time": "2026-09-03 09:51:12",
-      "ai_summary": "比亚迪称AI加速落地窗口期",
-      "impact_analysis": "比亚迪表示未来两三年是智驾、座舱及AI技术加速落地关键期，利好智能驾驶、汽车电子板块，相关概念股或受关注。",
-      "affected_sectors": [
-        "智能驾驶",
-        "汽车电子"
+        "汽车整车",
+        "汽车零部件"
       ],
       "affected_stocks": [
         "002594.SZ",
-        "002920.SZ"
+        "601633.SS"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "国家体育总局：培育壮大体育线上直播、线上培训、虚拟体育、智慧运营等新业",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202609033863864976.html",
+      "time": "2026-09-03 11:15:07",
+      "ai_summary": "主力资金净流出电子板块超45亿",
+      "impact_analysis": "电子板块遭主力大幅净流出，资金转向非银金融、有色，短期电子股承压，市场风格或切换，需注意风险。",
+      "affected_sectors": [
+        "电子",
+        "半导体"
+      ],
+      "affected_stocks": [
+        "002371.SZ",
+        "603986.SS"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "国家体育总局：支持高校、家庭等多元主体参与竞技体育竞赛",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202609033863855597.html",
+      "time": "2026-09-03 10:58:15",
+      "ai_summary": "体育总局支持多元主体参与竞技体育",
+      "impact_analysis": "政策推动体育产业发展，利好体育服务、赛事运营及体育用品板块，市场机制激发活力，相关个股受益。",
+      "affected_sectors": [
+        "体育产业",
+        "体育用品"
+      ],
+      "affected_stocks": [
+        "002858.SZ",
+        "600158.SS"
       ],
       "importance": 6
     },
     {
-      "title": "美国8月“小非农”不及预期，金价震荡回升，黄金ETF博时(159937)高开高走",
+      "title": "石药集团多项新药临床取得进展，创新药进入兑现期，港股创新药ETF博时(520690)跟踪指数早盘最高涨超2%",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609033863823810.html",
-      "time": "2026-09-03 10:18:52",
-      "ai_summary": "国家发改委推进六张网重大项目",
-      "impact_analysis": "发改委召开重大项目协调会，完善政银企协作机制，基建投资有望加速，利好基建、建材等板块。",
+      "url": "https://finance.eastmoney.com/a/202609033863840779.html",
+      "time": "2026-09-03 10:38:05",
+      "ai_summary": "山西拟废止2.28GW新能源项目",
+      "impact_analysis": "废止部分风电光伏项目，短期或影响相关企业预期，但利于行业优胜劣汰，长期利好优质运营商，影响偏空。",
       "affected_sectors": [
-        "基建",
-        "建材"
+        "光伏",
+        "风电"
       ],
       "affected_stocks": [
-        "601668.SS",
-        "600585.SS"
+        "601012.SS",
+        "002129.SZ"
       ],
       "importance": 6
     }
