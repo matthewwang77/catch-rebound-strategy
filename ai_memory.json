@@ -1279,5 +1279,30 @@
       "missed_signal": null,
       "lesson": null
     }
+  ],
+  "002080.SZ": [
+    {
+      "date": "20260903",
+      "signal_date": "20260901",
+      "mode": "bear",
+      "entry_price": 49.41,
+      "pullback_pct": 10.3,
+      "limit_days": 3,
+      "analysis": "量：缩量至涨停日42%，OBV资金流出，量价背离，反弹动能不足。  \n价：跌破MA5/10/20，现价49.41距20日高63.70回调22%，布林下轨45.44有支撑，但均线空头压制。  \n形：3连板后19天回调10.3%，非典型强势整理，更似趋势转弱。  \n时：回调19天超常规窗口，MACD金叉但RSI26.3超卖，短线或有技术反抽，但大盘冰点期压制。  \n\n反弹概率：低(≤30%)  \n仓位建议：0成仓（冰点期1档）  \n最终结论：【放弃】",
+      "sentiment": "冰点期1档",
+      "position": "0成仓",
+      "opinion": "【放弃】",
+      "verified": false,
+      "return_7d": null,
+      "exit_reason": null,
+      "exit_day": null,
+      "verdict": null,
+      "review_analysis": null,
+      "review_quality": null,
+      "what_happened": null,
+      "why_wrong": null,
+      "missed_signal": null,
+      "lesson": null
+    }
   ]
 }
