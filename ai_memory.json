@@ -1322,6 +1322,29 @@
       "why_wrong": null,
       "missed_signal": null,
       "lesson": null
+    },
+    {
+      "date": "20260904",
+      "signal_date": "20260827",
+      "mode": "bear",
+      "entry_price": 66.15,
+      "pullback_pct": 1.3,
+      "limit_days": 4,
+      "analysis": "量：今日量比0.76x缩量，但近3日均量/涨停日量120%显示承接尚可；OBV上升，资金未明显出逃。  \n价：股价66.15封板，站上MA5/MA10/MA20多头排列，逼近20日高点，强势特征明显。  \n形：4连板后仅回调1.3%即再封板，属极强“空中加油”形态，非标准回调。  \n时：距涨停日0天，无有效回调窗口，追高需警惕连板断板风险；大盘低迷期压制情绪。  \n反弹概率：中（60%）。  \n仓位建议：0成仓（低迷期2档）。  \n最终结论：【放弃】",
+      "sentiment": "低迷期2档",
+      "position": "0成仓",
+      "opinion": "【放弃】",
+      "verified": false,
+      "return_7d": null,
+      "exit_reason": null,
+      "exit_day": null,
+      "verdict": null,
+      "review_analysis": null,
+      "review_quality": null,
+      "what_happened": null,
+      "why_wrong": null,
+      "missed_signal": null,
+      "lesson": null
     }
   ],
   "002762.SZ": [
