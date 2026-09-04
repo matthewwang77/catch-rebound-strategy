@@ -1,35 +1,70 @@
 {
   "date": "20260904",
-  "market_summary": "今日A股市场消息面多空交织，消费、养殖板块回暖，但半导体、液冷服务器等科技板块回调，大盘震荡翻绿。海外AI动态密集，GPT-6发布及沙特AI合作等消息对AI产业链形成催化，但国内科技股表现分化。",
+  "market_summary": "今日A股市场冲高回落，成交额突破2万亿，农林牧渔、船舶制造等板块逆市走强，而半导体、电子化学品等科技板块跌幅居前。消息面上，工信部发布人工智能中小企业创业支持计划，对AI相关板块形成政策利好，但市场整体情绪偏谨慎。",
   "sentiment_impact": "中性",
   "news": [
     {
-      "title": "股价大涨70% ChargePoint CEO称增长势头才刚开始",
+      "title": "“大空头”伯里减持Veeva但仍看多 直言Snowflake“严重高估”",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609043865225359.html",
-      "time": "2026-09-04 12:50:42",
-      "ai_summary": "GPT-6发布，全球AI模型升级",
-      "impact_analysis": "GPT-6作为全球最强大模型发布，将催化AI产业链投资热情，利好国内AI算力、应用及大模型相关公司，但需注意A股已部分消化预期，短期或带动相关板块反弹。",
+      "url": "https://finance.eastmoney.com/a/202609043865373171.html",
+      "time": "2026-09-04 14:49:44",
+      "ai_summary": "工信部印发AI中小企业创业支持计划",
+      "impact_analysis": "该计划明确培育AI创业企业，推动算力、开源生态建设，对人工智能、算力、中小企业相关板块形成直接政策利好，有望提振市场对AI产业链的投资热情。",
       "affected_sectors": [
         "人工智能",
-        "算力"
+        "算力",
+        "云计算"
       ],
       "affected_stocks": [
         "002230.SZ",
-        "688256.SS"
+        "688111.SS"
       ],
       "importance": 9
     },
     {
-      "title": "泰国下令暂停49个数据中心项目建设 等待新规出台",
+      "title": "工信部：推动形成“中小企业人工智能应用探索”与“人工智能中小企业创业创新”双向促进的良性循环",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609043865306956.html",
-      "time": "2026-09-04 13:55:09",
-      "ai_summary": "沪深成交额突破1.5万亿，放量1700亿",
-      "impact_analysis": "成交额显著放大表明市场交投活跃，资金参与度高，通常预示行情波动加大，可能吸引增量资金入场，对大盘构成支撑，但需关注放量方向。",
+      "url": "https://finance.eastmoney.com/a/202609043865359283.html",
+      "time": "2026-09-04 14:42:44",
+      "ai_summary": "工信部推进算力资源池化整合",
+      "impact_analysis": "依托中国算力平台提供低成本算力，利好算力基础设施和云计算服务商，降低AI创业企业成本，促进AI应用落地，相关板块有望受益。",
       "affected_sectors": [
-        "券商",
-        "金融科技"
+        "算力",
+        "云计算",
+        "数据中心"
+      ],
+      "affected_stocks": [
+        "000977.SZ",
+        "600845.SS"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "工信部：引导各类投资基金加强对优质开源项目的支持力度",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202609043865357610.html",
+      "time": "2026-09-04 14:40:50",
+      "ai_summary": "芯片产业链跌势扩大，多股跌超10%",
+      "impact_analysis": "半导体板块尾盘加速下跌，华虹宏力等跌超10%，显示市场对芯片行业短期信心不足，可能受外部因素或获利回吐影响，短期偏空。",
+      "affected_sectors": [
+        "半导体",
+        "芯片"
+      ],
+      "affected_stocks": [
+        "688981.SS",
+        "002371.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "厦门国贸成立新智算科技公司 注册资本5000万",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202609043865371951.html",
+      "time": "2026-09-04 14:48:10",
+      "ai_summary": "A股成交额突破2万亿，放量超2600亿",
+      "impact_analysis": "成交额显著放大，显示市场交投活跃，资金博弈加剧，可能预示市场波动加大，需关注量能持续性，对大盘有中性影响。",
+      "affected_sectors": [
+        "券商"
       ],
       "affected_stocks": [
         "600030.SS",
@@ -38,138 +73,104 @@
       "importance": 8
     },
     {
-      "title": "保险业赔付多个强台风灾害损失63亿元",
+      "title": "工信部：依托中国算力平台推进算力资源池化整合、弹性配置 为创业企业提供高效集约的低成本算力支撑",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609043865275766.html",
-      "time": "2026-09-04 13:41:02",
-      "ai_summary": "白酒Q2业绩低点已现，板块大涨",
-      "impact_analysis": "机构判断白酒板块业绩低点已现，叠加消费回暖，食品饮料板块大涨，带动消费股走强，对大盘有正面拉动作用，可关注白酒龙头后续表现。",
+      "url": "https://finance.eastmoney.com/a/202609043865359925.html",
+      "time": "2026-09-04 14:42:18",
+      "ai_summary": "工信部鼓励AI创业企业参与开源生态",
+      "impact_analysis": "支持开源社区发展，鼓励企业贡献开源资源，利好开源软件、AI平台类公司，促进技术共享和创新，对软件服务板块有积极影响。",
       "affected_sectors": [
-        "白酒",
-        "食品饮料"
+        "软件服务",
+        "人工智能"
       ],
       "affected_stocks": [
-        "600519.SS",
-        "000858.SZ"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "9月中秋、国庆双节备货即将启动，“猪周期”拐点分歧显著升温，养殖ETF万家跟踪指数涨近4%，“猪”含量超44%",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609043865292755.html",
-      "time": "2026-09-04 13:26:49",
-      "ai_summary": "三大指数集体翻绿，科技股回调",
-      "impact_analysis": "指数翻绿显示市场短期调整压力，半导体、液冷服务器等板块跌幅居前，拖累创业板和科创50，但成交放量表明多空博弈激烈，需关注后续方向。",
-      "affected_sectors": [
-        "半导体",
-        "液冷服务器"
-      ],
-      "affected_stocks": [
-        "688981.SS",
-        "000977.SZ"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "银河通用人形机器人“银河星仔”全网预售 首日订单突破200台",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609043865285229.html",
-      "time": "2026-09-04 13:50:04",
-      "ai_summary": "养殖板块持续走高，多股涨停",
-      "impact_analysis": "猪周期拐点预期升温，叠加双节备货需求，养殖板块大涨，带动农业股走强，对相关行业指数有直接拉动，但需警惕周期分歧。",
-      "affected_sectors": [
-        "养殖业",
-        "农林牧渔"
-      ],
-      "affected_stocks": [
-        "002714.SZ",
-        "300498.SZ"
+        "600588.SS",
+        "300454.SZ"
       ],
       "importance": 7
+    },
+    {
+      "title": "紫金矿业等在福建成立新铜研科技公司 注册资本1亿",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202609043865372654.html",
+      "time": "2026-09-04 14:50:10",
+      "ai_summary": "工信部引导基金支持AI开源项目",
+      "impact_analysis": "发挥国家基金引导作用，带动社会资本投资AI早期企业，利好创投概念和AI初创公司，有望提升市场对AI板块的风险偏好。",
+      "affected_sectors": [
+        "创投",
+        "人工智能"
+      ],
+      "affected_stocks": [
+        "600783.SS",
+        "000935.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "工信部：鼓励人工智能创业企业积极参与开源生态建设",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202609043865359537.html",
+      "time": "2026-09-04 14:41:25",
+      "ai_summary": "乘联会称汽车行业深度转型存量竞争",
+      "impact_analysis": "汽车行业增收不增利，利润向上游电池集中，下游经销商承压，提示汽车产业链利润分配不均，对整车厂和经销商偏空，但利好电池龙头。",
+      "affected_sectors": [
+        "汽车整车",
+        "动力电池"
+      ],
+      "affected_stocks": [
+        "002594.SZ",
+        "300750.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "工信部印发《人工智能中小企业创业支持计划（2026-2028年）》",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202609043865352420.html",
+      "time": "2026-09-04 14:37:48",
+      "ai_summary": "船舶制造板块走强，中国船舶触及涨停",
+      "impact_analysis": "船舶板块受订单增长和行业景气带动，中国船舶涨停，中船防务等跟涨，显示造船业高景气，利好船舶制造和军工相关个股。",
+      "affected_sectors": [
+        "船舶制造",
+        "军工"
+      ],
+      "affected_stocks": [
+        "600150.SS",
+        "600685.SS"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "乘联分会崔东树：上半年中国汽车行业正处于深度转型与激烈的存量竞争中",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202609043865360811.html",
+      "time": "2026-09-04 14:44:10",
+      "ai_summary": "工信部支持高新区培育AI中小企业",
+      "impact_analysis": "鼓励高新区聚焦AI新赛道，培育特色产业集群，利好高新区内AI企业，促进区域经济发展，对相关园区和AI概念股有提振。",
+      "affected_sectors": [
+        "人工智能",
+        "园区开发"
+      ],
+      "affected_stocks": [
+        "600736.SS",
+        "000031.SZ"
+      ],
+      "importance": 6
     },
     {
       "title": "创始人张俊杰卸任霸王茶姬董事长",
       "source": "东方财富",
       "url": "https://finance.eastmoney.com/a/202609043865314163.html",
       "time": "2026-09-04 14:07:00",
-      "ai_summary": "上海国投发行AI产业链科创债",
-      "impact_analysis": "全国首单超长期AI科创债发行，体现政策对AI产业的支持，有助于降低AI企业融资成本，利好AI基础设施和产业链发展，对相关板块形成提振。",
+      "ai_summary": "长安汽车称产业链利润倒挂",
+      "impact_analysis": "电芯利润率远高于整车厂，反映产业链利润分配失衡，可能影响整车厂盈利预期，对汽车零部件和电池板块有分化影响。",
       "affected_sectors": [
-        "人工智能",
-        "债券"
+        "汽车整车",
+        "动力电池"
       ],
       "affected_stocks": [
-        "688256.SS",
-        "002230.SZ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "多家机构判断白酒板块Q2业绩低点已现，食品饮料ETF天弘标的指数大涨近2.5%",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609043865293081.html",
-      "time": "2026-09-04 13:49:16",
-      "ai_summary": "沙特AI公司设数据中心基金，借力MiniMax",
-      "impact_analysis": "沙特AI公司与国内大模型合作，显示中国AI技术出海，利好相关合作公司，同时数据中心建设需求增加，对算力基础设施板块有积极影响。",
-      "affected_sectors": [
-        "人工智能",
-        "数据中心"
-      ],
-      "affected_stocks": [
-        "688256.SS",
-        "000977.SZ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "首都机场临空经济区“十五五”规划正式发布",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609043865227915.html",
-      "time": "2026-09-04 12:56:11",
-      "ai_summary": "碳酸锂主力合约跌超4%",
-      "impact_analysis": "碳酸锂价格下跌利空锂矿及材料板块，但利好下游电池和新能源车成本，对相关产业链影响分化，需关注锂价后续走势。",
-      "affected_sectors": [
-        "锂矿",
-        "新能源电池"
-      ],
-      "affected_stocks": [
-        "002460.SZ",
+        "000625.SZ",
         "300750.SZ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "持续聚焦硬科技IPO 银行理财子或再中“大肉签” 四家机构获配燧原科技超2300万",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609043865227645.html",
-      "time": "2026-09-04 12:56:08",
-      "ai_summary": "船舶制造板块走强，中国船舶涨停",
-      "impact_analysis": "船舶板块大涨或受行业景气度提升及订单预期影响，中国船舶触及涨停带动板块，对国防军工和高端制造有正面效应，但持续性待观察。",
-      "affected_sectors": [
-        "船舶制造",
-        "国防军工"
-      ],
-      "affected_stocks": [
-        "600150.SS",
-        "600685.SS"
-      ],
-      "importance": 6
-    },
-    {
-      "title": "沙特人工智能企业Humain寻求设立25亿美元数据中心基金",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609043865258532.html",
-      "time": "2026-09-04 13:21:43",
-      "ai_summary": "大消费板块持续回暖，多股涨停",
-      "impact_analysis": "消费板块回暖受中秋国庆双节预期及政策提振，食品饮料、商业百货等走强，有助于稳定市场情绪，对大盘形成支撑。",
-      "affected_sectors": [
-        "食品饮料",
-        "商业百货"
-      ],
-      "affected_stocks": [
-        "600827.SS",
-        "000759.SZ"
       ],
       "importance": 6
     }
