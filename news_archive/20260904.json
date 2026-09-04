@@ -1,51 +1,52 @@
 {
   "date": "20260904",
-  "market_summary": "今日A股市场受美联储鸽派言论、港股科技大涨及AI应用、数字货币等题材活跃带动，三大指数集体高开，市场情绪偏暖。同时发改委推进重大工程建设，为基建投资提供支撑。",
+  "market_summary": "今日市场消息面偏多，AI产业链（GPT-6发布、固态电池标准推进、Token出海）与政策利好（北京消费补助、医保集采扩面）共振，大金融、数字货币、养殖等板块活跃，两市成交额放量突破万亿，市场情绪高涨。",
   "sentiment_impact": "偏多",
   "news": [
     {
-      "title": "国家发改委召开“十五五”规划《纲要》重大工程建设推进会议 调度109项重大工程项目实施",
+      "title": "和黄医药续升 与GSK达成近13亿美元授权后获花旗上调目标价",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609043864896752.html",
-      "time": "2026-09-04 09:17:26",
-      "ai_summary": "发改委推进109项重大工程项目建设",
-      "impact_analysis": "发改委调度重大工程，强化要素保障，利好基建、建材及工程机械等板块，为稳增长提供政策支撑。",
+      "url": "https://finance.eastmoney.com/a/202609043865210530.html",
+      "time": "2026-09-04 11:19:16",
+      "ai_summary": "GPT-6发布，AI应用加速发展",
+      "impact_analysis": "OpenAI发布GPT-6 Astra，性能全面领先，将加速AI应用落地，利好A股AI算力、软件开发、金融科技等板块，带动相关概念股上涨。",
       "affected_sectors": [
-        "基建",
-        "建材"
+        "AI应用",
+        "软件开发",
+        "金融科技"
       ],
       "affected_stocks": [
-        "601668.SS",
-        "600585.SS"
+        "300468.SZ",
+        "300377.SZ"
       ],
-      "importance": 8
+      "importance": 9
     },
     {
-      "title": "沃勒“鸽声”砸落美债收益率！今晚焦点转向美国非农数据",
+      "title": "推动餐饮、超市等业态提质扩容 北京将为符合条件项目发放补助",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609043864810868.html",
-      "time": "2026-09-04 09:06:51",
-      "ai_summary": "沃勒鸽声致美债收益率回落",
-      "impact_analysis": "美联储官员鸽派言论降低加息预期，利好全球风险资产，对A股外资流入及成长股估值有正面影响。",
+      "url": "https://finance.eastmoney.com/a/202609043865211429.html",
+      "time": "2026-09-04 11:24:05",
+      "ai_summary": "固态电池国标年底出征求意见稿",
+      "impact_analysis": "固态电池国家标准加速制定，利好固态电池产业链，推动技术研发和产业化进程，相关概念股有望受益。",
       "affected_sectors": [
-        "成长股",
-        "外资重仓"
+        "固态电池",
+        "动力电池"
       ],
       "affected_stocks": [
         "300750.SZ",
-        "600519.SS"
+        "002074.SZ"
       ],
       "importance": 8
     },
     {
-      "title": "A股开盘：三大指数集体高开",
+      "title": "星网锐捷成立智能科技公司 含多项AI业务",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609043864916039.html",
-      "time": "2026-09-04 09:26:05",
-      "ai_summary": "A股三大指数集体高开",
-      "impact_analysis": "三大指数高开反映市场情绪乐观，受多重利好提振，预计全天维持强势，对投资者信心有积极影响。",
+      "url": "https://finance.eastmoney.com/a/202609043865168165.html",
+      "time": "2026-09-04 10:34:43",
+      "ai_summary": "沪深两市成交额突破1万亿",
+      "impact_analysis": "成交额放量突破万亿，显示市场情绪回暖，资金入场意愿增强，对大盘形成支撑，但需警惕过热风险。",
       "affected_sectors": [
-        "全市场"
+        "大盘"
       ],
       "affected_stocks": [
         "000001.SS",
@@ -54,121 +55,122 @@
       "importance": 8
     },
     {
-      "title": "GPT-6点燃AI应用行情 软件开发板块活跃 软件ETF易方达（562930）涨超2.5%",
+      "title": "英伟达重掌“铁王座”？追踪美股七巨头的ETF逼近历史峰值！",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609043865069525.html",
-      "time": "2026-09-04 09:54:15",
-      "ai_summary": "GPT-6点燃AI应用行情，软件板块活跃",
-      "impact_analysis": "AI应用概念持续走强，带动软件开发板块活跃，提升市场科技股风险偏好，对创业板及科创板相关个股有直接提振作用。",
+      "url": "https://finance.eastmoney.com/a/202609043865136869.html",
+      "time": "2026-09-04 10:50:57",
+      "ai_summary": "医保局持续扩大集采覆盖面",
+      "impact_analysis": "集采扩面持续，医药行业面临降价压力，但有利于行业集中度提升，创新药企和龙头公司相对受益。",
       "affected_sectors": [
-        "软件开发",
-        "AI应用"
+        "医药",
+        "医疗器械"
       ],
       "affected_stocks": [
-        "300766.SZ",
-        "688111.SS"
+        "600276.SS",
+        "300760.SZ"
       ],
       "importance": 7
     },
     {
-      "title": "数字货币概念涨停潮 AI应用接力 金融科技ETF易方达（159299）涨超4%",
+      "title": "长江存储、中国互联网投资基金等成立新公司",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609043865075330.html",
-      "time": "2026-09-04 09:54:08",
-      "ai_summary": "数字货币概念涨停潮，金融科技ETF大涨",
-      "impact_analysis": "数字货币和金融科技板块集体走强，反映市场对数字人民币及金融科技政策预期升温，带动相关概念股活跃。",
+      "url": "https://finance.eastmoney.com/a/202609043865196551.html",
+      "time": "2026-09-04 11:06:52",
+      "ai_summary": "8月能繁母猪存栏环比减少2.94%",
+      "impact_analysis": "生猪去产能加速，供给收缩预期增强，猪价有望上行，利好养殖板块，相关个股表现活跃。",
+      "affected_sectors": [
+        "养殖",
+        "猪肉"
+      ],
+      "affected_stocks": [
+        "002714.SZ",
+        "000876.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "国家医保局：医保基金监管将实现七个“全覆盖”",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202609043865190031.html",
+      "time": "2026-09-04 10:56:59",
+      "ai_summary": "港股内房股拉升，五部门组合拳",
+      "impact_analysis": "房地产政策组合拳出台，利好地产链，但机构称系长期改革，短期刺激有限，关注政策落地效果。",
+      "affected_sectors": [
+        "房地产",
+        "建材"
+      ],
+      "affected_stocks": [
+        "000002.SZ",
+        "600048.SS"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "炸板后再涨停！002472终止分拆子公司上市",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202609043865208227.html",
+      "time": "2026-09-04 11:20:26",
+      "ai_summary": "数字货币概念爆发涨停潮",
+      "impact_analysis": "数字货币概念受GPT-6及政策预期推动，金融科技板块大涨，带动相关个股涨停，短期热度较高。",
       "affected_sectors": [
         "数字货币",
         "金融科技"
       ],
       "affected_stocks": [
         "300468.SZ",
-        "002152.SZ"
+        "002177.SZ"
       ],
       "importance": 7
     },
     {
-      "title": "美联储加息悬念再起？“美联储喉舌”：沃勒立场悄然转变 下周CPI将是关键",
+      "title": "车用固态电池三项国标将在年底出台征求意见稿",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609043864800354.html",
-      "time": "2026-09-04 09:03:01",
-      "ai_summary": "美联储加息悬念再起，下周CPI关键",
-      "impact_analysis": "美联储政策不确定性增加，可能引发市场波动，但当前鸽派倾向对A股影响偏正面，需关注后续数据。",
+      "url": "https://finance.eastmoney.com/a/202609043865212087.html",
+      "time": "2026-09-04 11:22:07",
+      "ai_summary": "北京发放餐饮超市等补助",
+      "impact_analysis": "北京财政补助餐饮、超市等生活服务业，刺激消费，利好相关板块，但影响范围有限，对大盘影响较小。",
       "affected_sectors": [
-        "宏观",
-        "贵金属"
+        "餐饮",
+        "超市",
+        "商业百货"
       ],
       "affected_stocks": [
-        "518880.SS",
-        "159937.SZ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "美联储9月加息预期降温，现货黄金一度站上4500美元，黄金ETF博时(159937)近1年累计上涨超17%",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609043865066275.html",
-      "time": "2026-09-04 09:50:55",
-      "ai_summary": "美联储加息预期降温，现货黄金站上4500美元",
-      "impact_analysis": "黄金价格大涨，利好A股黄金股及贵金属板块，同时反映市场避险情绪和流动性预期变化。",
-      "affected_sectors": [
-        "黄金",
-        "贵金属"
-      ],
-      "affected_stocks": [
-        "600547.SS",
-        "002155.SZ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "智能驾驶概念集体高开 大众交通2连板",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609043864919512.html",
-      "time": "2026-09-04 09:27:00",
-      "ai_summary": "智能驾驶概念高开，特斯拉Cybercab发布",
-      "impact_analysis": "特斯拉无人驾驶出租车发布，刺激A股智能驾驶、车联网等概念股活跃，带动相关产业链。",
-      "affected_sectors": [
-        "智能驾驶",
-        "汽车电子"
-      ],
-      "affected_stocks": [
-        "600611.SS",
-        "002920.SZ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "恒生科技指数放量大涨 明星科网股集体走强 恒生科技ETF易方达（513010）涨近3%",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609043865073542.html",
-      "time": "2026-09-04 09:54:49",
-      "ai_summary": "恒生科技指数放量大涨，港股科技走强",
-      "impact_analysis": "港股科技大涨对A股科技板块有联动效应，提振市场情绪，尤其是与港股关联度高的A+H股及科技龙头。",
-      "affected_sectors": [
-        "恒生科技",
-        "互联网"
-      ],
-      "affected_stocks": [
-        "00700.HK",
-        "09988.HK"
+        "600859.SS",
+        "601933.SS"
       ],
       "importance": 6
     },
     {
-      "title": "IFA柏林消费电子展今日开幕，港股通互联网ETF永赢盘中涨超3%！港股科技板块集体走强",
+      "title": "大模型更新不断，AI应用迎来快速发展期，金融科技ETF鹏华涨超5%",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609043865088595.html",
-      "time": "2026-09-04 09:56:09",
-      "ai_summary": "IFA柏林消费电子展开幕，港股科技走强",
-      "impact_analysis": "消费电子展催化科技板块，港股科技大涨带动A股消费电子、半导体等产业链活跃。",
+      "url": "https://finance.eastmoney.com/a/202609043865172828.html",
+      "time": "2026-09-04 10:29:09",
+      "ai_summary": "医保基金监管实现七个全覆盖",
+      "impact_analysis": "医保基金监管加强，长期利好行业规范，但短期可能对医药板块形成压力，需关注政策执行力度。",
       "affected_sectors": [
-        "消费电子",
+        "医药",
+        "医疗器械"
+      ],
+      "affected_stocks": [
+        "300760.SZ",
+        "600276.SS"
+      ],
+      "importance": 6
+    },
+    {
+      "title": "北方跨境Token出海“第一单”！",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202609043865171570.html",
+      "time": "2026-09-04 10:45:57",
+      "ai_summary": "主力资金净流出电子板块超55亿",
+      "impact_analysis": "电子板块资金大幅流出，显示短期调整压力，但可能为中长期布局提供机会，需关注板块轮动。",
+      "affected_sectors": [
+        "电子",
         "半导体"
       ],
       "affected_stocks": [
-        "002475.SZ",
-        "688981.SS"
+        "002049.SZ",
+        "603986.SS"
       ],
       "importance": 6
     }
