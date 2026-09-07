@@ -1,175 +1,176 @@
 {
   "date": "20260907",
-  "market_summary": "今日A股市场科技板块全面爆发，半导体、算力硬件、CPO等方向领涨，创业板指大涨3%，科创50涨2%，市场情绪高涨。同时，财政部领衔注资银行和保险等金融央企，释放政策托底信号。",
+  "market_summary": "今日A股市场消息面偏多，AI算力、芯片、存储等科技板块受多重利好催化表现强势，创业板指大涨超3%；同时财政部3000亿特别国债注资计划落地，为银行等金融板块提供支撑。",
   "sentiment_impact": "偏多",
   "news": [
     {
-      "title": "消息称1c nm有望2027年初成为SK海力士主流工艺",
+      "title": "黄仁勋发文祝贺OpenAI：GPT-6 Astra用10万NVLink 72芯片完成训练 AGI正式到来",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609073866549111.html",
-      "time": "2026-09-07 12:59:05",
-      "ai_summary": "财政部领衔注资8家金融央企3600亿",
-      "impact_analysis": "财政部认购3000亿，显著提升银行资本实力，增强信贷投放能力，利好银行板块及整体经济，对大盘有直接提振作用。",
+      "url": "https://finance.eastmoney.com/a/202609073866618827.html",
+      "time": "2026-09-07 14:09:15",
+      "ai_summary": "黄仁勋称GPT-6用10万芯片训练，AGI到来",
+      "impact_analysis": "AI算力需求预期大幅提升，直接利好A股算力产业链，包括光模块、服务器、芯片等板块，带动相关个股走强。",
+      "affected_sectors": [
+        "AI算力",
+        "光模块",
+        "半导体"
+      ],
+      "affected_stocks": [
+        "300308.SZ",
+        "002281.SZ"
+      ],
+      "importance": 9
+    },
+    {
+      "title": "华为时隔六年再次发布高性能芯片",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202609073866641930.html",
+      "time": "2026-09-07 15:07:42",
+      "ai_summary": "华为时隔六年发布高性能芯片麒麟9050 Pro",
+      "impact_analysis": "华为芯片突破标志国产半导体技术进展，利好国产替代概念，带动半导体设备、材料及华为产业链相关公司。",
+      "affected_sectors": [
+        "半导体",
+        "华为产业链"
+      ],
+      "affected_stocks": [
+        "688981.SS",
+        "002371.SZ"
+      ],
+      "importance": 9
+    },
+    {
+      "title": "3000亿特别国债注资计划落地 债市或交易大行配债能力改善预期",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202609073866639914.html",
+      "time": "2026-09-07 15:02:01",
+      "ai_summary": "3000亿特别国债注资计划落地",
+      "impact_analysis": "注资国有大行和金融机构，增强资本实力，利好银行板块，同时改善债市供给预期，对金融稳定有积极作用。",
       "affected_sectors": [
         "银行",
         "保险"
       ],
       "affected_stocks": [
         "601398.SS",
-        "601288.SS"
-      ],
-      "importance": 10
-    },
-    {
-      "title": "科创板芯片放量大涨 存储+国产算力双轮驱动 科创芯片ETF易方达（589130）涨超3.6%",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609073866597453.html",
-      "time": "2026-09-07 13:39:19",
-      "ai_summary": "创业板指放量大涨3%，算力硬件走强",
-      "impact_analysis": "创业板指涨超3%，成交额显著放大，反映资金积极涌入成长板块，市场风险偏好提升，带动深成指和科创50上行。",
-      "affected_sectors": [
-        "算力硬件",
-        "半导体"
-      ],
-      "affected_stocks": [
-        "300750.SZ",
-        "688981.SS"
+        "601628.SS"
       ],
       "importance": 9
     },
     {
-      "title": "存储景气持续兑现 国产算力加速 半导体设备ETF易方达（159558）放量涨超4%",
+      "title": "主力资金监控：电子板块净流入超276亿",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609073866597371.html",
-      "time": "2026-09-07 13:39:58",
-      "ai_summary": "半导体设备ETF放量涨超4%，行业景气",
-      "impact_analysis": "全球半导体设备销售额同比增23%，国产替代加速，半导体设备板块景气度高涨，资金配置热情升温，利好相关个股。",
+      "url": "https://finance.eastmoney.com/a/202609073866621263.html",
+      "time": "2026-09-07 14:18:27",
+      "ai_summary": "主力资金净流入电子板块超276亿",
+      "impact_analysis": "电子板块获巨额资金流入，显示市场对科技股信心增强，有望持续推动相关板块上涨，形成赚钱效应。",
       "affected_sectors": [
-        "半导体设备",
-        "芯片"
-      ],
-      "affected_stocks": [
-        "002371.SZ",
-        "688012.SS"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "创业板指放量大涨 算力硬件集体走强 创业板ETF易方达（159915）涨超3.5%",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609073866597597.html",
-      "time": "2026-09-07 13:39:39",
-      "ai_summary": "高盛唱多中际旭创，目标价涨幅225%",
-      "impact_analysis": "高盛给予中际旭创A股目标价潜在涨幅225%，并首次覆盖H股给予买入，带动CPO、光通信板块大涨，市场关注度提升。",
-      "affected_sectors": [
-        "CPO",
-        "光通信"
+        "电子",
+        "通信"
       ],
       "affected_stocks": [
         "300308.SZ",
-        "002281.SZ"
+        "300502.SZ"
       ],
       "importance": 8
     },
     {
-      "title": "财通福鑫定开混合：9月7日下午开盘起至当日收盘停牌",
+      "title": "豆包手机将在9月16日上市！人工智能ETF天弘标的指数盘中大涨近3%，已连续20日净流入近10亿元",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609073866536596.html",
-      "time": "2026-09-07 12:41:20",
-      "ai_summary": "存储芯片概念震荡走强，聚辰股份涨超10%",
-      "impact_analysis": "存储芯片景气持续兑现，SK海力士1c nm产能扩张，带动存储板块上涨，国产存储厂商受益，资金关注度提升。",
+      "url": "https://finance.eastmoney.com/a/202609073866623990.html",
+      "time": "2026-09-07 14:26:52",
+      "ai_summary": "豆包手机9月16日上市，AI板块大涨",
+      "impact_analysis": "AI终端产品密集发布，催化人工智能板块行情，带动光模块、算力、消费电子等相关个股上涨。",
+      "affected_sectors": [
+        "人工智能",
+        "消费电子"
+      ],
+      "affected_stocks": [
+        "002281.SZ",
+        "688256.SS"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "机构：三星电子、SK海力士内存库存已不足10天",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202609073866639673.html",
+      "time": "2026-09-07 15:01:19",
+      "ai_summary": "三星、SK海力士内存库存不足10天",
+      "impact_analysis": "存储芯片供应紧张，价格有望上涨，利好A股存储芯片相关公司，带动半导体板块情绪。",
       "affected_sectors": [
         "存储芯片",
         "半导体"
       ],
       "affected_stocks": [
-        "688123.SS",
-        "603986.SS"
+        "603986.SS",
+        "688012.SS"
       ],
-      "importance": 7
+      "importance": 8
     },
     {
-      "title": "1.2亿播放量创收80元？六连板龙版传媒回应",
+      "title": "A股三大指数走势分化 创业板指涨超3% CPO概念股爆发",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609073866596171.html",
-      "time": "2026-09-07 13:38:17",
-      "ai_summary": "液冷服务器、IDC电源概念持续走高",
-      "impact_analysis": "AI算力需求爆发，液冷服务器和IDC电源作为基础设施，多股涨停，板块热度高，带动相关产业链上涨。",
+      "url": "https://finance.eastmoney.com/a/202609073866639128.html",
+      "time": "2026-09-07 15:00:35",
+      "ai_summary": "A股收盘：创业板指涨3.41%，CPO爆发",
+      "impact_analysis": "市场整体走强，创业板领涨，CPO概念爆发，显示资金偏好科技成长，短期市场情绪积极。",
       "affected_sectors": [
-        "液冷服务器",
-        "IDC电源"
+        "CPO",
+        "创业板"
       ],
       "affected_stocks": [
-        "300684.SZ",
-        "002837.SZ"
+        "300308.SZ",
+        "300502.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "中信建投：AI芯片电感从2025年到2028年市场规模扩容10倍以上",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202609073866644650.html",
+      "time": "2026-09-07 15:14:25",
+      "ai_summary": "中信建投：AI芯片电感市场扩容10倍",
+      "impact_analysis": "AI芯片电感需求爆发，利好电子元器件板块，相关公司有望受益于市场规模快速扩大。",
+      "affected_sectors": [
+        "电子元器件",
+        "AI芯片"
+      ],
+      "affected_stocks": [
+        "300602.SZ",
+        "603893.SS"
       ],
       "importance": 7
     },
     {
-      "title": "财政部大手笔“领衔”注资这三家银行！将撬动多大信贷空间？",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609073866552548.html",
-      "time": "2026-09-07 13:03:00",
-      "ai_summary": "新兴市场指数触及两个月高位，科技股领涨",
-      "impact_analysis": "MSCI新兴市场指数上涨1.4%，科技股乐观情绪提振，对A股科技板块形成外部利好，增强外资流入预期。",
+      "title": "韩国KOSPI指数收涨4.6% 连涨三个交易日上涨",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/stock/usstock/c/2026-09-07/doc-iniqyriw9635925.shtml",
+      "time": "2026-09-07 14:44",
+      "ai_summary": "韩国KOSPI收涨4.6%，芯片股走高",
+      "impact_analysis": "亚太股市芯片股大涨，提振A股半导体板块情绪，增强全球科技股联动上涨预期。",
       "affected_sectors": [
-        "科技股",
         "半导体"
       ],
       "affected_stocks": [
-        "000001.SS",
-        "399006.SZ"
+        "688981.SS",
+        "002371.SZ"
       ],
       "importance": 7
     },
     {
-      "title": "北京AI产投基金入股3D算力芯片研发商算苗科技",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609073866599571.html",
-      "time": "2026-09-07 13:48:21",
-      "ai_summary": "五家保险央企获注资700亿元",
-      "impact_analysis": "保险机构首次被系统性纳入资本补充版图，增强保险业资本实力和风险防控，利好保险板块，稳定金融体系。",
+      "title": "Anthropic最快下周提交IPO文件 摩根士丹利与高盛有望领衔承销",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/stock/usstock/c/2026-09-07/doc-iniqyvrz0337932.shtml",
+      "time": "2026-09-07 15:08",
+      "ai_summary": "Anthropic最快下周提交IPO文件",
+      "impact_analysis": "AI头部公司上市将提升AI板块估值，带动A股人工智能产业链相关个股表现。",
       "affected_sectors": [
-        "保险"
+        "人工智能"
       ],
       "affected_stocks": [
-        "601628.SS",
-        "601319.SS"
+        "688111.SS",
+        "300454.SZ"
       ],
       "importance": 7
-    },
-    {
-      "title": "高盛给予中际旭创A股目标价潜在涨幅达225%！通信ETF广发（159507）标的指数大涨超3%，机构称新技术演进推动行业进入“扩产+升级”双轮驱动周期",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609073866605324.html",
-      "time": "2026-09-07 13:49:48",
-      "ai_summary": "厄尔尼诺等多因素共振，农业股活跃",
-      "impact_analysis": "厄尔尼诺、粮价上涨、地缘扰动等推升农业板块，多股涨停，政策托底预期增强，农业板块防御性凸显。",
-      "affected_sectors": [
-        "农业",
-        "粮食"
-      ],
-      "affected_stocks": [
-        "600108.SS",
-        "000998.SZ"
-      ],
-      "importance": 6
-    },
-    {
-      "title": "高盛唱多！中国光博会开幕在即 “易中天”集体大涨",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609073866535030.html",
-      "time": "2026-09-07 12:41:00",
-      "ai_summary": "沪深两市成交额突破1.5万亿，放量",
-      "impact_analysis": "成交额突破1.5万亿，较昨日放量，显示市场交投活跃，资金入场意愿强，支撑指数上行，市场情绪偏多。",
-      "affected_sectors": [
-        "全部"
-      ],
-      "affected_stocks": [
-        "000001.SS",
-        "399001.SZ"
-      ],
-      "importance": 6
     }
   ]
 }
