@@ -1199,6 +1199,29 @@
       "why_wrong": null,
       "missed_signal": null,
       "lesson": null
+    },
+    {
+      "date": "20260907",
+      "signal_date": "20260825",
+      "mode": "strict",
+      "entry_price": 3.65,
+      "pullback_pct": 15.7,
+      "limit_days": 3,
+      "analysis": "量：缩量至涨停日14%，OBV仍升但量能枯竭，资金观望为主。\n价：价贴MA5/MA10，MA20支撑3.62，上方4.04布林上轨压制，反弹空间有限。\n形：3连板后17日回调15.7%，呈高位横盘弱整理，非标准强势回踩形态。\n时：回调17日超常规窗口，MACD死叉，反弹动能衰减，今日科技大涨未带动该股。\n反弹概率：低\n仓位建议：1成仓（情绪1档）\n最终结论：【观望】",
+      "sentiment": "情绪1档",
+      "position": "1成仓",
+      "opinion": "【观望】",
+      "verified": false,
+      "return_7d": null,
+      "exit_reason": null,
+      "exit_day": null,
+      "verdict": null,
+      "review_analysis": null,
+      "review_quality": null,
+      "what_happened": null,
+      "why_wrong": null,
+      "missed_signal": null,
+      "lesson": null
     }
   ],
   "000936.SZ": [
