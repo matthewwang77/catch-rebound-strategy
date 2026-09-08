@@ -1316,6 +1316,29 @@
       "why_wrong": null,
       "missed_signal": null,
       "lesson": null
+    },
+    {
+      "date": "20260908",
+      "signal_date": "20260907",
+      "mode": "strict",
+      "entry_price": 5.72,
+      "pullback_pct": 18.8,
+      "limit_days": 3,
+      "analysis": "量：近3日均量仅为涨停日15%，极度缩量，OBV虽上升但资金承接弱，反弹动能不足。  \n价：股价5.72位于MA5/MA10上方但受MA20=5.77压制，关键位6.0未收复，回调幅度18.8%未及黄金坑。  \n形：3连板后19天横盘，非标准N形或老鸭头，呈弱势箱体震荡，无明确启动形态。  \n时：回调19天超常规窗口（通常5-10天），时间过长导致筹码松动，反弹概率低。  \n反弹概率：低（≤30%）  \n仓位建议：0成仓（启动期3档）  \n最终结论：【放弃】",
+      "sentiment": "启动期3档",
+      "position": "0成仓",
+      "opinion": "【放弃】",
+      "verified": false,
+      "return_7d": null,
+      "exit_reason": null,
+      "exit_day": null,
+      "verdict": null,
+      "review_analysis": null,
+      "review_quality": null,
+      "what_happened": null,
+      "why_wrong": null,
+      "missed_signal": null,
+      "lesson": null
     }
   ],
   "002329.SZ": [
