@@ -1268,6 +1268,29 @@
       "why_wrong": null,
       "missed_signal": null,
       "lesson": null
+    },
+    {
+      "date": "20260908",
+      "signal_date": "20260825",
+      "mode": "strict",
+      "entry_price": 3.66,
+      "pullback_pct": 15.7,
+      "limit_days": 3,
+      "analysis": "量：量比0.33x极度缩量，近3日均量仅为涨停日11%，OBV持续下降，资金明确流出，无承接迹象。\n价：股价3.66勉强站上MA5/MA10，但MA20=3.57支撑尚远，20日高点3.79构成强压力，反弹空间有限。\n形：涨停后20日回调15.7%，MACD死叉且绿柱扩大，RSI=61中性偏弱，属典型弱势回调形态，无企稳反转信号。\n时：距涨停20日已超标准回调窗口（3-8日），时间过长导致筹码松动，当前处于下跌中继而非底部区域。\n\n反弹概率：低（≤30%）\n仓位建议：1成仓（情绪1档）\n最终结论：【放弃】",
+      "sentiment": "情绪1档",
+      "position": "1成仓",
+      "opinion": "【放弃】",
+      "verified": false,
+      "return_7d": null,
+      "exit_reason": null,
+      "exit_day": null,
+      "verdict": null,
+      "review_analysis": null,
+      "review_quality": null,
+      "what_happened": null,
+      "why_wrong": null,
+      "missed_signal": null,
+      "lesson": null
     }
   ],
   "000936.SZ": [
