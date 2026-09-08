@@ -1,175 +1,175 @@
 {
   "date": "20260908",
-  "market_summary": "今日消息面多空交织：外贸数据强劲、集成电路出口大增利好经济基本面，但地缘冲突升级推升油价、美债收益率高企及通胀预期错配构成外部压力，市场结构性行情明显，资源品与农业板块受资金追捧。",
+  "market_summary": "今日市场消息面呈现结构性分化：资源品（铜、尿素、粮食）价格大涨带动相关板块活跃，北交所主题基金获批为市场注入流动性，但新能源车零售数据下滑及成交缩量显示市场情绪偏谨慎。",
   "sentiment_impact": "中性",
   "news": [
     {
-      "title": "延续快速增长态势 前8个月我国外贸增长17.6%",
+      "title": "仁烁光能全钙钛矿叠层组件认证效率达26.4% 再次刷新世界纪录",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609083867804276.html",
-      "time": "2026-09-08 10:30:25",
-      "ai_summary": "前8月外贸增长17.6%超预期",
-      "impact_analysis": "外贸数据强劲，出口连续增长显示外需韧性，利好宏观经济预期，提振市场信心，对出口导向型行业形成支撑。",
-      "affected_sectors": [
-        "港口航运",
-        "跨境电商"
-      ],
-      "affected_stocks": [
-        "601880.SS",
-        "002120.SZ"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "地缘扰动支撑油价！石油ETF标的指数涨近2%",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609083867816267.html",
-      "time": "2026-09-08 10:40:22",
-      "ai_summary": "地缘冲突升级，油价大涨",
-      "impact_analysis": "美伊冲突加剧，霍尔木兹海峡风险推升油价，利好石油开采及油运板块，但增加制造业成本，对通胀形成压力。",
-      "affected_sectors": [
-        "石油开采",
-        "油运"
-      ],
-      "affected_stocks": [
-        "600028.SS",
-        "601857.SS"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "海关总署：1至8月集成电路累计出口金额达2567.51亿美元 同比增长103.9%",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609083867816615.html",
-      "time": "2026-09-08 10:42:49",
-      "ai_summary": "集成电路出口同比增103.9%",
-      "impact_analysis": "集成电路出口暴增显示半导体产业高景气，利好芯片设计、制造及设备板块，强化国产替代逻辑，吸引资金关注。",
-      "affected_sectors": [
-        "半导体",
-        "芯片"
-      ],
-      "affected_stocks": [
-        "688981.SS",
-        "002371.SZ"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "中国8月以美元计价出口同比增长25.0% 进口同比增长28.2%",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609083867810426.html",
-      "time": "2026-09-08 10:36:18",
-      "ai_summary": "8月出口同比增25%进口增28.2%",
-      "impact_analysis": "进出口数据远超预期，显示内外需强劲，利好宏观经济，提振市场风险偏好，出口导向型行业如电子、机械受益。",
-      "affected_sectors": [
-        "出口导向",
-        "电子制造"
-      ],
-      "affected_stocks": [
-        "000725.SZ",
-        "601138.SS"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "稀有金属ETF华富(561800)跟踪指数盘中涨超1%，锂电板块处于周期上行阶段，伦铜突破14530美元创盘中历史新高",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609083867835231.html",
-      "time": "2026-09-08 11:00:39",
-      "ai_summary": "伦铜创历史新高，稀有金属走强",
-      "impact_analysis": "铜价创新高反映全球需求复苏和供给约束，利好有色金属板块，带动稀有金属相关个股上涨，提升资源品估值。",
+      "url": "https://finance.eastmoney.com/a/202609083867928531.html",
+      "time": "2026-09-08 13:42:00",
+      "ai_summary": "铜价连续刷新历史纪录",
+      "impact_analysis": "伦铜突破14600美元/吨，年内涨幅超17%，直接利好A股铜矿及有色板块，同时反映全球算力基建对铜需求的拉动，提升资源品估值。",
       "affected_sectors": [
         "有色金属",
-        "稀有金属"
+        "铜矿"
       ],
       "affected_stocks": [
-        "603993.SS",
-        "000060.SZ"
+        "000630.SZ",
+        "601899.SS"
       ],
-      "importance": 7
+      "importance": 9
     },
     {
-      "title": "异常气候+粮价新高+国内政策扶持催化板块行情，粮食ETF鹏华涨超3%",
+      "title": "乘联分会：8月比亚迪新能源乘用车出口184446辆 特斯拉中国出口36119辆",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609083867797845.html",
-      "time": "2026-09-08 10:24:40",
-      "ai_summary": "异常气候+粮价新高，粮食板块大涨",
-      "impact_analysis": "厄尔尼诺和全球粮库收紧推升粮价，叠加政策扶持，农业种植和粮食加工板块受益，短期主题性机会明显。",
+      "url": "https://finance.eastmoney.com/a/202609083867921560.html",
+      "time": "2026-09-08 13:28:04",
+      "ai_summary": "首批北交所主题基金获批",
+      "impact_analysis": "8只北交所主题基金获批，引入增量资金，提升北交所流动性与关注度，利好北交所优质中小企业，同时提振市场情绪。",
+      "affected_sectors": [
+        "北交所",
+        "主题基金"
+      ],
+      "affected_stocks": [
+        "920000.BJ",
+        "920001.BJ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "燕东微：上半年8英寸SiN产线产能达3000片/月",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202609083867885785.html",
+      "time": "2026-09-08 12:38:42",
+      "ai_summary": "尿素价格单日涨超100元",
+      "impact_analysis": "尿素价格大涨带动农化板块多股涨停，厄尔尼诺预期强化农业供给担忧，化肥、农药企业盈利预期改善，板块短期强势。",
+      "affected_sectors": [
+        "化肥",
+        "农药"
+      ],
+      "affected_stocks": [
+        "600426.SS",
+        "000792.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "乘联分会：8月乘用车出口同比增长77.8% 环比下降4.2%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202609083867919259.html",
+      "time": "2026-09-08 13:24:18",
+      "ai_summary": "8月新能源乘用车零售同比降10.1%",
+      "impact_analysis": "新能源车国内零售下滑，显示内需疲软，对整车及产业链构成压力，但出口高增提供缓冲，板块分化加剧。",
+      "affected_sectors": [
+        "新能源汽车",
+        "汽车整车"
+      ],
+      "affected_stocks": [
+        "002594.SZ",
+        "601633.SS"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "中国500MW首台自主可控重型燃气轮机出口马来西亚",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202609083867882941.html",
+      "time": "2026-09-08 12:16:14",
+      "ai_summary": "粮食概念持续火热，10只ETF涨超5%",
+      "impact_analysis": "粮食板块大涨，受厄尔尼诺及全球供给担忧驱动，农业种植、粮食加工个股涨停潮，短期资金聚焦，但需警惕炒作风险。",
       "affected_sectors": [
         "农业种植",
         "粮食加工"
       ],
       "affected_stocks": [
-        "600108.SS",
+        "600598.SS",
         "000930.SZ"
       ],
       "importance": 7
     },
     {
-      "title": "警告声不绝于耳！法兴：一旦10年期美债收益率升破5.5% 股市将受重创",
+      "title": "电力金属转向算力底层材料 铜价连续刷新纪录！这些个股或受益",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609083867802464.html",
-      "time": "2026-09-08 10:29:29",
-      "ai_summary": "法兴警告美债收益率升破5.5%",
-      "impact_analysis": "外部风险警示，若美债收益率持续上行，将压制全球风险资产估值，A股高估值成长板块或承压，需关注外资流向。",
+      "url": "https://finance.eastmoney.com/a/202609083867884471.html",
+      "time": "2026-09-08 12:46:16",
+      "ai_summary": "炼厂受袭冲击全球炼能供给",
+      "impact_analysis": "炼化资产重估预期升温，化工板块走强，炼化企业受益于供给收缩带来的产品涨价，但需关注事件持续性。",
       "affected_sectors": [
-        "高估值成长股",
-        "外资重仓股"
+        "石油化工",
+        "化学制品"
       ],
       "affected_stocks": [
-        "300750.SZ",
-        "600519.SS"
+        "600028.SS",
+        "002648.SZ"
       ],
       "importance": 7
     },
     {
-      "title": "农产品涨价远未结束！高盛：霍尔木兹、厄尔尼诺之外，贸易壁垒才是真正风险放大器",
-      "source": "新浪财经",
-      "url": "https://finance.sina.com.cn/money/future/fmnews/2026-09-08/doc-inirapza6102086.shtml",
-      "time": "2026-09-08 11:12",
-      "ai_summary": "高盛：农产品涨价远未结束",
-      "impact_analysis": "贸易壁垒、地缘冲突和气候三重风险推升农产品价格，利好农业板块，化肥、农药需求增加，相关个股受益。",
+      "title": "今年河南首笔新型政策性金融工具落地",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202609083867901064.html",
+      "time": "2026-09-08 13:04:17",
+      "ai_summary": "A股中期分红规模延续增长",
+      "impact_analysis": "中期分红增加提升红利资产吸引力，叠加中美利差走扩，红利板块配置价值凸显，资金流入高股息个股。",
       "affected_sectors": [
-        "农产品",
-        "化肥农药"
+        "红利资产",
+        "高股息"
       ],
       "affected_stocks": [
-        "000930.SZ",
-        "002470.SZ"
+        "601088.SS",
+        "600900.SS"
       ],
       "importance": 7
     },
     {
-      "title": "动力电池企业业绩普增背后：毛利率多数下滑 业界提醒需防范“竞争失序”",
+      "title": "博众精工：中南鸿思针对CPO/NPO光纤阵列与光芯片耦合的设备已获客户订单",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609083867865191.html",
-      "time": "2026-09-08 11:29:28",
-      "ai_summary": "动力电池毛利率下滑，竞争加剧",
-      "impact_analysis": "行业规模扩张但盈利承压，提示竞争风险，短期或压制板块估值，但龙头公司凭借技术优势仍具长期竞争力。",
+      "url": "https://finance.eastmoney.com/a/202609083867923136.html",
+      "time": "2026-09-08 13:32:18",
+      "ai_summary": "恒生科技指数纳入GPU龙头",
+      "impact_analysis": "恒生科技指数调整提升硬科技权重，利好AI算力板块，A股相关映射标的受情绪提振，但影响相对间接。",
       "affected_sectors": [
-        "动力电池",
-        "新能源"
+        "AI算力",
+        "半导体"
       ],
       "affected_stocks": [
-        "300750.SZ",
-        "300014.SZ"
+        "002371.SZ",
+        "688981.SS"
       ],
       "importance": 6
     },
     {
-      "title": "央行连续22个月增持黄金！紫金矿业、江西铜业强势上涨",
+      "title": "超强厄尔尼诺来袭 尿素价格单日涨超100元！农化板块多股涨停",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609083867811984.html",
-      "time": "2026-09-08 10:35:07",
-      "ai_summary": "央行连续22个月增持黄金",
-      "impact_analysis": "央行增持黄金彰显储备多元化趋势，利好黄金及有色板块，紫金矿业等龙头受益，资金持续流入上游资源。",
+      "url": "https://finance.eastmoney.com/a/202609083867904483.html",
+      "time": "2026-09-08 13:16:00",
+      "ai_summary": "8月乘用车出口同比增长77.8%",
+      "impact_analysis": "出口高增显示海外需求强劲，对汽车产业链形成支撑，尤其新能源出口占比提升，利好出口型车企及零部件。",
       "affected_sectors": [
-        "黄金",
-        "有色金属"
+        "汽车整车",
+        "汽车零部件"
       ],
       "affected_stocks": [
-        "601899.SS",
-        "600362.SS"
+        "601238.SS",
+        "600104.SS"
+      ],
+      "importance": 6
+    },
+    {
+      "title": "首批8家北交所三个月持有期主题基金获批 产品发行进入倒计时",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202609083867939074.html",
+      "time": "2026-09-08 13:49:14",
+      "ai_summary": "沪深两市成交额突破1.5万亿",
+      "impact_analysis": "成交额虽缩量但仍维持高位，显示市场活跃度尚可，资金博弈明显，关注后续量能变化对指数方向的影响。",
+      "affected_sectors": [
+        "券商",
+        "金融科技"
+      ],
+      "affected_stocks": [
+        "600030.SS",
+        "300059.SZ"
       ],
       "importance": 6
     }
