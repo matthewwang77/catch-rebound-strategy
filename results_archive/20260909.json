@@ -1,5 +1,5 @@
 {
-  "scan_time": "2026-09-09 15:09",
+  "scan_time": "2026-09-09 15:11",
   "scan_date": "20260909",
   "data_date": "2026-09-08",
   "market": {
@@ -19,13 +19,21 @@
   "regime": {
     "status": "neutral",
     "label": "3档: 启动期 — 谨慎入场",
-    "avg_trend": 0.5,
+    "avg_trend": 0.52,
     "recommended_mode": "strict"
   },
   "modes": {
     "strict": {
-      "count": 1,
+      "count": 2,
       "candidates": [
+        {
+          "code": "002329.SZ",
+          "price": 3.96,
+          "signal_date": "20260907",
+          "pullback_pct": 12.6,
+          "limit_days": 4,
+          "entity_ratio": 100.0
+        },
         {
           "code": "000820.SZ",
           "price": 3.65,
