@@ -1,177 +1,172 @@
 {
   "date": "20260909",
-  "market_summary": "今日市场消息面偏暖，政策催化集中于商业航天、AI算力及军工板块，CPI温和回升为宏观政策提供空间，但量能有所萎缩，市场结构性行情明显。",
-  "sentiment_impact": "偏多",
+  "market_summary": "今日市场消息面偏多，算力、机器人、半导体等科技板块政策与产业动态密集，但大盘午后翻绿，成交缩量，市场情绪谨慎。",
+  "sentiment_impact": "中性",
   "news": [
     {
-      "title": "低轨组网政策催化，航空航天ETF华泰柏瑞涨超2%",
+      "title": "沪光股份、大洋电机等入股机器人租赁平台擎天租",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609093869144969.html",
-      "time": "2026-09-09 11:01:24",
-      "ai_summary": "低轨组网政策催化，航空航天板块走强",
-      "impact_analysis": "信息通信行业“十五五”规划将卫星与地面网络融合列入建设目标，政策预期强烈，直接利好商业航天、卫星互联网产业链，带动相关ETF及个股上涨，对市场情绪有积极提振。",
+      "url": "https://finance.eastmoney.com/a/202609093869219986.html",
+      "time": "2026-09-09 13:48:25",
+      "ai_summary": "韶关规划算力产业，目标2030年75万PFLOPS",
+      "impact_analysis": "地方政策明确算力规模目标，利好数据中心、智算中心产业链，带动服务器、光模块等需求，对相关板块有提振作用。",
       "affected_sectors": [
-        "商业航天",
-        "卫星互联网"
-      ],
-      "affected_stocks": [
-        "600893.SS",
-        "002025.SZ"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "能源价格上涨带动CPI温和回升 下阶段走势如何",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609093869145373.html",
-      "time": "2026-09-09 11:20:51",
-      "ai_summary": "CPI温和回升，为政策提供空间",
-      "impact_analysis": "8月CPI与PPI双正增长，反映内需修复，为宏观政策逆周期调节创造有利环境，利好消费及周期板块，对大盘构成支撑。",
-      "affected_sectors": [
-        "消费",
-        "周期"
-      ],
-      "affected_stocks": [
-        "600887.SS",
-        "601088.SS"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "OpenAI称使用内部模型破解千禧年大奖难题",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609093869113320.html",
-      "time": "2026-09-09 10:30:42",
-      "ai_summary": "OpenAI破解千禧年难题，AI能力突破",
-      "impact_analysis": "OpenAI内部模型能力显著强于GPT-6，引发市场对AI技术跃迁的想象，利好AI算力、大模型及应用板块，可能催化科技股行情，但需注意概念炒作风险。",
-      "affected_sectors": [
-        "人工智能",
-        "算力"
+        "算力",
+        "数据中心"
       ],
       "affected_stocks": [
         "000977.SZ",
-        "688256.SS"
+        "600845.SS"
       ],
-      "importance": 7
+      "importance": 8
     },
     {
-      "title": "量化交易巨头：存储芯片已稳坐“半导体王座” 看好美光和闪迪！",
+      "title": "广东韶关：打造支撑大湾区发展的“湾区算谷” 到2030年具备超75万PFLOPS智算装机能力",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609093869144587.html",
-      "time": "2026-09-09 11:12:16",
-      "ai_summary": "存储芯片成半导体王者，行业景气上行",
-      "impact_analysis": "机构看好存储芯片在AI时代的核心地位，行业收入有望翻倍，直接利好A股存储芯片产业链，如内存接口、模组及设备公司，有望带动半导体板块走强。",
-      "affected_sectors": [
-        "存储芯片",
-        "半导体"
-      ],
-      "affected_stocks": [
-        "002049.SZ",
-        "688981.SS"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "燃气轮机、商业航天、地缘局势多线催化板块行情，国防ETF鹏华涨超2%",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609093869152331.html",
-      "time": "2026-09-09 11:14:49",
-      "ai_summary": "燃气轮机、商业航天、地缘局势催化军工",
-      "impact_analysis": "军工板块受多重利好催化，燃气轮机需求增加、商业航天进展及地缘局势紧张，推动国防ETF大涨，相关个股如应流股份涨停，板块热度有望持续。",
-      "affected_sectors": [
-        "国防军工",
-        "燃气轮机"
-      ],
-      "affected_stocks": [
-        "603308.SS",
-        "600760.SS"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "京东曹鹏：京东云与摩尔线程等合作打造十万卡国产算力集群",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609093869119295.html",
-      "time": "2026-09-09 10:36:37",
-      "ai_summary": "京东云与摩尔线程打造十万卡算力集群",
-      "impact_analysis": "国产算力集群规模扩大，体现自主可控趋势，利好国产GPU、AI服务器及云计算产业链，摩尔线程等国产芯片企业将受益，但需关注摩尔线程跌停后的市场情绪。",
-      "affected_sectors": [
-        "国产算力",
-        "AI芯片"
-      ],
-      "affected_stocks": [
-        "688256.SS",
-        "000977.SZ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "加总理称不允许美商品免税进入加拿大",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609093869132033.html",
-      "time": "2026-09-09 10:47:31",
-      "ai_summary": "加拿大反制美国关税，贸易摩擦升温",
-      "impact_analysis": "加拿大对美实施报复性关税，显示全球贸易摩擦仍在发酵，可能影响市场风险偏好，对出口导向型板块形成压力，但国内自主可控逻辑或受强化。",
-      "affected_sectors": [
-        "外贸",
-        "自主可控"
-      ],
-      "affected_stocks": [
-        "600519.SS",
-        "000858.SZ"
-      ],
-      "importance": 6
-    },
-    {
-      "title": "京东启动“物理AI加速计划” 打造全球最大的机器人产业基地网络",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609093869119043.html",
-      "time": "2026-09-09 10:35:27",
-      "ai_summary": "京东启动物理AI加速计划，布局机器人",
-      "impact_analysis": "京东大规模布局具身智能和机器人产业基地，显示产业资本加速涌入，利好机器人、智能制造板块，相关概念股有望活跃。",
+      "url": "https://finance.eastmoney.com/a/202609093869195191.html",
+      "time": "2026-09-09 13:24:36",
+      "ai_summary": "京东物流5年采购300万台机器人",
+      "impact_analysis": "京东物流大规模采购计划显示物流无人化加速，直接利好机器人及自动化设备制造商，提升行业景气预期。",
       "affected_sectors": [
         "机器人",
-        "智能制造"
+        "物流自动化"
       ],
       "affected_stocks": [
         "300024.SZ",
-        "688017.SS"
+        "002527.SZ"
       ],
-      "importance": 6
+      "importance": 8
     },
     {
-      "title": "聚力AI算力基础设施 光博会等三展联动 算力产业链相关板块延续回暖态势",
+      "title": "和顺石油：未来将持续加大在半导体领域的投入",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609093869115252.html",
-      "time": "2026-09-09 10:37:08",
-      "ai_summary": "光博会等三展联动，算力产业链回暖",
-      "impact_analysis": "深圳三展联动聚焦AI算力基础设施，产业协同效应明显，有助于提升市场对算力硬件、光模块、半导体设备等板块的关注度，催化相关个股表现。",
+      "url": "https://finance.eastmoney.com/a/202609093869172125.html",
+      "time": "2026-09-09 12:30:18",
+      "ai_summary": "火山引擎基于Arm构建下一代云服务",
+      "impact_analysis": "云计算向Arm架构迁移趋势明确，可能冲击x86生态，利好国内Arm服务器芯片厂商，对传统x86服务器厂商形成压力。",
       "affected_sectors": [
-        "算力",
-        "光模块"
+        "云计算",
+        "芯片"
       ],
       "affected_stocks": [
-        "300308.SZ",
-        "002463.SZ"
+        "688041.SS",
+        "002371.SZ"
       ],
-      "importance": 6
+      "importance": 7
     },
     {
-      "title": "灵巧手相关国标预计年底对外公示",
+      "title": "普通县域停电首次被纳入事故分级管控 县域用电怎么管？新规来了",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609093869127526.html",
-      "time": "2026-09-09 10:45:46",
-      "ai_summary": "灵巧手国标年底公示，机器人标准化提速",
-      "impact_analysis": "灵巧手国标制定进入快车道，有助于行业规范化发展，利好机器人核心零部件企业，尤其灵巧手相关公司，板块有望受催化。",
+      "url": "https://finance.eastmoney.com/a/202609093869209251.html",
+      "time": "2026-09-09 13:36:49",
+      "ai_summary": "8月挖机出口增33%超预期",
+      "impact_analysis": "工程机械出口数据强劲，显示海外需求旺盛，利好工程机械板块，龙头股已有所表现，有望带动板块持续走强。",
+      "affected_sectors": [
+        "工程机械"
+      ],
+      "affected_stocks": [
+        "000338.SZ",
+        "600031.SS"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "广东韶关：扩大算力基础设施规模 推动联通与腾讯尽快签约确定新增50MW算力规模",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202609093869199260.html",
+      "time": "2026-09-09 13:30:01",
+      "ai_summary": "医保药品目录谈判收官，创新药有望纳入",
+      "impact_analysis": "医保谈判结果将影响创新药放量预期，纳入目录的品种有望快速放量，利好创新药企，但谈判降价压力仍需关注。",
+      "affected_sectors": [
+        "创新药"
+      ],
+      "affected_stocks": [
+        "600276.SS",
+        "300759.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "云计算战场 x86阵营失守？",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202609093869165840.html",
+      "time": "2026-09-09 12:56:16",
+      "ai_summary": "京东零售投入百亿助力机器人产业",
+      "impact_analysis": "京东零售加码机器人零售渠道，将推动机器人终端应用普及，利好机器人产业链，尤其是服务机器人相关企业。",
       "affected_sectors": [
         "机器人",
-        "精密制造"
+        "零售"
       ],
       "affected_stocks": [
-        "300124.SZ",
-        "688017.SS"
+        "300024.SZ",
+        "002050.SZ"
       ],
       "importance": 6
+    },
+    {
+      "title": "京东物流：5年内采购300万台机器人",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202609093869187972.html",
+      "time": "2026-09-09 13:14:34",
+      "ai_summary": "优必选中标1.5亿元人形机器人项目",
+      "impact_analysis": "人形机器人商业化落地案例增加，显示产业从概念走向实际应用，利好优必选产业链及人形机器人相关公司。",
+      "affected_sectors": [
+        "人形机器人"
+      ],
+      "affected_stocks": [
+        "688169.SS",
+        "300124.SZ"
+      ],
+      "importance": 6
+    },
+    {
+      "title": "世界铂金投资协会：铂金市场2026年预计将出现8吨盈余",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202609093869185216.html",
+      "time": "2026-09-09 13:10:35",
+      "ai_summary": "铠侠承诺遏制存储芯片价格飙升",
+      "impact_analysis": "存储芯片价格涨势或受抑制，短期利空存储芯片厂商，但长期有利于AI需求健康发展，对下游消费电子构成利好。",
+      "affected_sectors": [
+        "存储芯片",
+        "消费电子"
+      ],
+      "affected_stocks": [
+        "603986.SS",
+        "002049.SZ"
+      ],
+      "importance": 6
+    },
+    {
+      "title": "格科微：2亿像素产品与部分客户达成初步合作意向 临港工厂上半年维持满产运行",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202609093869174951.html",
+      "time": "2026-09-09 12:55:39",
+      "ai_summary": "新华传媒收购界面财联社，传媒重组预期升温",
+      "impact_analysis": "国有传媒资产整合案例出现，引发市场对传媒国企重组潮的预期，利好传媒板块，尤其是具有国资背景的出版类公司。",
+      "affected_sectors": [
+        "传媒"
+      ],
+      "affected_stocks": [
+        "600825.SS",
+        "601928.SS"
+      ],
+      "importance": 6
+    },
+    {
+      "title": "车百会张永伟：亟需突破具身智能产业四大核心底层硬件技术",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202609093869175828.html",
+      "time": "2026-09-09 12:59:17",
+      "ai_summary": "黄金概念午后异动拉升",
+      "impact_analysis": "黄金股午后异动，可能与避险情绪或金价波动有关，短期资金关注黄金板块，但持续性需观察国际金价走势。",
+      "affected_sectors": [
+        "黄金"
+      ],
+      "affected_stocks": [
+        "600547.SS",
+        "002155.SZ"
+      ],
+      "importance": 5
     }
   ]
 }
