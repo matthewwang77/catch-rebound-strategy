@@ -1,39 +1,39 @@
 {
   "date": "20260909",
-  "market_summary": "今日市场消息面偏多，AI与机器人产业链催化密集，军工、农业、PCB等板块活跃，但成交额缩量显示市场情绪谨慎。",
+  "market_summary": "今日市场消息面偏暖，政策催化集中于商业航天、AI算力及军工板块，CPI温和回升为宏观政策提供空间，但量能有所萎缩，市场结构性行情明显。",
   "sentiment_impact": "偏多",
   "news": [
     {
-      "title": "京东物流发布五款“狼族”机器人 打造规模最大的物流具身机器人军团",
+      "title": "低轨组网政策催化，航空航天ETF华泰柏瑞涨超2%",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609093869102572.html",
-      "time": "2026-09-09 10:13:57",
-      "ai_summary": "京东启动物理AI加速计划，采购机器人等",
-      "impact_analysis": "京东宣布5年采购300万台机器人等，直接利好机器人产业链，带动相关概念股活跃，提升市场对AI+制造板块的关注度。",
+      "url": "https://finance.eastmoney.com/a/202609093869144969.html",
+      "time": "2026-09-09 11:01:24",
+      "ai_summary": "低轨组网政策催化，航空航天板块走强",
+      "impact_analysis": "信息通信行业“十五五”规划将卫星与地面网络融合列入建设目标，政策预期强烈，直接利好商业航天、卫星互联网产业链，带动相关ETF及个股上涨，对市场情绪有积极提振。",
       "affected_sectors": [
-        "机器人",
-        "物流自动化"
+        "商业航天",
+        "卫星互联网"
       ],
       "affected_stocks": [
-        "300024.SZ",
-        "002472.SZ"
+        "600893.SS",
+        "002025.SZ"
       ],
       "importance": 8
     },
     {
-      "title": "京东启动“物理AI加速计划” 五年内将采购300万台机器人、100万台无人车及10万架无人机",
+      "title": "能源价格上涨带动CPI温和回升 下阶段走势如何",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609093869102775.html",
-      "time": "2026-09-09 10:15:32",
-      "ai_summary": "韩国存储芯片库存告急，芯片设计指数涨",
-      "impact_analysis": "存储芯片供应紧张推升价格预期，直接利好国内存储芯片设计及制造企业，带动科创芯片板块走强。",
+      "url": "https://finance.eastmoney.com/a/202609093869145373.html",
+      "time": "2026-09-09 11:20:51",
+      "ai_summary": "CPI温和回升，为政策提供空间",
+      "impact_analysis": "8月CPI与PPI双正增长，反映内需修复，为宏观政策逆周期调节创造有利环境，利好消费及周期板块，对大盘构成支撑。",
       "affected_sectors": [
-        "半导体",
-        "存储芯片"
+        "消费",
+        "周期"
       ],
       "affected_stocks": [
-        "688981.SS",
-        "603986.SS"
+        "600887.SS",
+        "601088.SS"
       ],
       "importance": 8
     },
@@ -43,48 +43,65 @@
       "url": "https://finance.eastmoney.com/a/202609093869113320.html",
       "time": "2026-09-09 10:30:42",
       "ai_summary": "OpenAI破解千禧年难题，AI能力突破",
-      "impact_analysis": "OpenAI在数学难题上的突破展示了AI模型能力的飞跃，强化市场对AI技术进步的预期，利好AI算力、算法及应用板块。",
+      "impact_analysis": "OpenAI内部模型能力显著强于GPT-6，引发市场对AI技术跃迁的想象，利好AI算力、大模型及应用板块，可能催化科技股行情，但需注意概念炒作风险。",
       "affected_sectors": [
         "人工智能",
         "算力"
       ],
       "affected_stocks": [
-        "688111.SS",
-        "603019.SS"
+        "000977.SZ",
+        "688256.SS"
       ],
       "importance": 7
     },
     {
-      "title": "韩国两大巨头存储芯片库存告急，科创芯片设计ETF国联安(588780)跟踪指数涨超2%",
+      "title": "量化交易巨头：存储芯片已稳坐“半导体王座” 看好美光和闪迪！",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609093869101615.html",
-      "time": "2026-09-09 10:15:14",
-      "ai_summary": "京东云与摩尔线程打造十万卡国产算力集群",
-      "impact_analysis": "国产算力集群建设加速，利好国产GPU及算力基础设施相关企业，提升自主可控算力板块的投资热度。",
+      "url": "https://finance.eastmoney.com/a/202609093869144587.html",
+      "time": "2026-09-09 11:12:16",
+      "ai_summary": "存储芯片成半导体王者，行业景气上行",
+      "impact_analysis": "机构看好存储芯片在AI时代的核心地位，行业收入有望翻倍，直接利好A股存储芯片产业链，如内存接口、模组及设备公司，有望带动半导体板块走强。",
+      "affected_sectors": [
+        "存储芯片",
+        "半导体"
+      ],
+      "affected_stocks": [
+        "002049.SZ",
+        "688981.SS"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "燃气轮机、商业航天、地缘局势多线催化板块行情，国防ETF鹏华涨超2%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202609093869152331.html",
+      "time": "2026-09-09 11:14:49",
+      "ai_summary": "燃气轮机、商业航天、地缘局势催化军工",
+      "impact_analysis": "军工板块受多重利好催化，燃气轮机需求增加、商业航天进展及地缘局势紧张，推动国防ETF大涨，相关个股如应流股份涨停，板块热度有望持续。",
+      "affected_sectors": [
+        "国防军工",
+        "燃气轮机"
+      ],
+      "affected_stocks": [
+        "603308.SS",
+        "600760.SS"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "京东曹鹏：京东云与摩尔线程等合作打造十万卡国产算力集群",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202609093869119295.html",
+      "time": "2026-09-09 10:36:37",
+      "ai_summary": "京东云与摩尔线程打造十万卡算力集群",
+      "impact_analysis": "国产算力集群规模扩大，体现自主可控趋势，利好国产GPU、AI服务器及云计算产业链，摩尔线程等国产芯片企业将受益，但需关注摩尔线程跌停后的市场情绪。",
       "affected_sectors": [
         "国产算力",
-        "GPU"
+        "AI芯片"
       ],
       "affected_stocks": [
         "688256.SS",
-        "002049.SZ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "央行副行长宣昌能出席国际清算银行行长例会",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609093869095138.html",
-      "time": "2026-09-09 10:07:31",
-      "ai_summary": "军工板块走强，中证军工指数涨逾2%",
-      "impact_analysis": "军工板块异动拉升，受地缘政治及商业航天催化，资金关注度提升，带动相关个股涨停潮。",
-      "affected_sectors": [
-        "军工",
-        "航空航天"
-      ],
-      "affected_stocks": [
-        "600760.SS",
-        "002190.SZ"
+        "000977.SZ"
       ],
       "importance": 7
     },
@@ -93,15 +110,15 @@
       "source": "东方财富",
       "url": "https://finance.eastmoney.com/a/202609093869132033.html",
       "time": "2026-09-09 10:47:31",
-      "ai_summary": "二氯二氢硅反倾销初裁落地，国产替代加速",
-      "impact_analysis": "反倾销初裁利好国内电子特气企业，加速国产化替代进程，相关新材料板块受提振。",
+      "ai_summary": "加拿大反制美国关税，贸易摩擦升温",
+      "impact_analysis": "加拿大对美实施报复性关税，显示全球贸易摩擦仍在发酵，可能影响市场风险偏好，对出口导向型板块形成压力，但国内自主可控逻辑或受强化。",
       "affected_sectors": [
-        "电子特气",
-        "新材料"
+        "外贸",
+        "自主可控"
       ],
       "affected_stocks": [
-        "688268.SS",
-        "300236.SZ"
+        "600519.SS",
+        "000858.SZ"
       ],
       "importance": 6
     },
@@ -110,15 +127,15 @@
       "source": "东方财富",
       "url": "https://finance.eastmoney.com/a/202609093869119043.html",
       "time": "2026-09-09 10:35:27",
-      "ai_summary": "灵巧手国标年底公示，机器人标准化推进",
-      "impact_analysis": "灵巧手国标制定将规范行业，利好具备技术优势的机器人核心零部件企业，推动机器人产业健康发展。",
+      "ai_summary": "京东启动物理AI加速计划，布局机器人",
+      "impact_analysis": "京东大规模布局具身智能和机器人产业基地，显示产业资本加速涌入，利好机器人、智能制造板块，相关概念股有望活跃。",
       "affected_sectors": [
         "机器人",
-        "精密制造"
+        "智能制造"
       ],
       "affected_stocks": [
-        "688017.SS",
-        "002747.SZ"
+        "300024.SZ",
+        "688017.SS"
       ],
       "importance": 6
     },
@@ -127,51 +144,34 @@
       "source": "东方财富",
       "url": "https://finance.eastmoney.com/a/202609093869115252.html",
       "time": "2026-09-09 10:37:08",
-      "ai_summary": "全球食品通胀再起，种植链多股涨停",
-      "impact_analysis": "全球食品通胀预期升温，农业种植板块估值低位，资金涌入，多股涨停，板块行情有望延续。",
+      "ai_summary": "光博会等三展联动，算力产业链回暖",
+      "impact_analysis": "深圳三展联动聚焦AI算力基础设施，产业协同效应明显，有助于提升市场对算力硬件、光模块、半导体设备等板块的关注度，催化相关个股表现。",
       "affected_sectors": [
-        "农业",
-        "食品"
+        "算力",
+        "光模块"
       ],
       "affected_stocks": [
-        "600540.SS",
-        "000998.SZ"
+        "300308.SZ",
+        "002463.SZ"
       ],
       "importance": 6
     },
     {
-      "title": "二氯二氢硅反倾销初裁落地！国产电子特气替代加速，科创新材料ETF博时(588010)跟踪指数涨超1%",
+      "title": "灵巧手相关国标预计年底对外公示",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609093869098711.html",
-      "time": "2026-09-09 10:12:18",
-      "ai_summary": "PCB概念持续走强，多股创历史新高",
-      "impact_analysis": "PCB板块受AI算力需求拉动，景气度提升，多股涨停或创新高，带动电子产业链活跃。",
+      "url": "https://finance.eastmoney.com/a/202609093869127526.html",
+      "time": "2026-09-09 10:45:46",
+      "ai_summary": "灵巧手国标年底公示，机器人标准化提速",
+      "impact_analysis": "灵巧手国标制定进入快车道，有助于行业规范化发展，利好机器人核心零部件企业，尤其灵巧手相关公司，板块有望受催化。",
       "affected_sectors": [
-        "PCB",
-        "电子"
+        "机器人",
+        "精密制造"
       ],
       "affected_stocks": [
-        "002913.SZ",
-        "603228.SS"
+        "300124.SZ",
+        "688017.SS"
       ],
       "importance": 6
-    },
-    {
-      "title": "中创物流：第三季度归母盈利能力明显提升",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609093869109349.html",
-      "time": "2026-09-09 10:25:43",
-      "ai_summary": "易方达ETF登陆泰国，外资配置中国资产",
-      "impact_analysis": "ETF在泰国上市拓宽外资投资A股渠道，提升中国资产国际吸引力，利好市场资金面。",
-      "affected_sectors": [
-        "ETF",
-        "大盘蓝筹"
-      ],
-      "affected_stocks": [
-        "510300.SS",
-        "159919.SZ"
-      ],
-      "importance": 5
     }
   ]
 }
