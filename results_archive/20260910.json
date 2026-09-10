@@ -1,5 +1,5 @@
 {
-  "scan_time": "2026-09-10 11:28",
+  "scan_time": "2026-09-10 15:02",
   "scan_date": "20260910",
   "data_date": "2026-09-09",
   "market": {
@@ -19,20 +19,28 @@
   "regime": {
     "status": "neutral",
     "label": "3档: 启动期 — 谨慎入场",
-    "avg_trend": 0.62,
+    "avg_trend": 0.47,
     "recommended_mode": "strict"
   },
   "modes": {
     "strict": {
-      "count": 1,
+      "count": 2,
       "candidates": [
         {
-          "code": "600892.SS",
-          "price": 4.39,
-          "signal_date": "20260826",
-          "pullback_pct": 11.6,
+          "code": "000936.SZ",
+          "price": 5.58,
+          "signal_date": "20260907",
+          "pullback_pct": 18.8,
           "limit_days": 3,
           "entity_ratio": 100.0
+        },
+        {
+          "code": "000820.SZ",
+          "price": 3.58,
+          "signal_date": "20260825",
+          "pullback_pct": 15.7,
+          "limit_days": 3,
+          "entity_ratio": 67.0
         }
       ]
     }
