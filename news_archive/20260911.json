@@ -1,184 +1,180 @@
 {
   "date": "20260911",
-  "market_summary": "今日市场消息面整体偏空，A股出现大幅调整，上证指数跌2%，超5200只个股下跌，科创综指跌超3%，半导体、贵金属、证券等板块领跌。外部方面，日元飙升引发套利交易平仓担忧，全球股市涨势面临考验；内部方面，储能电芯产能摸底剑指过剩，多晶硅期货大跌，市场情绪明显承压。",
+  "market_summary": "今日消息面多空交织，国内成品油临时调控缓解通胀压力，工信部推进智能网联汽车标准提升，但美国CPI公布前市场情绪谨慎，叠加商品期货大跌和港股走弱，A股三大指数收跌。整体看，外部不确定性主导短期情绪，内部政策利好结构性板块。",
   "sentiment_impact": "偏空",
   "news": [
     {
-      "title": "天岳先进：已围绕先进封装散热中介层等方向持续布局",
+      "title": "小摩：维持宁德时代“增持”评级 目标价725港元",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609113871888442.html",
-      "time": "2026-09-11 11:12:59",
-      "ai_summary": "上证指数跌2%，超5200股下跌",
-      "impact_analysis": "上证指数跌2%，深证成指跌2.36%，全市超5200只个股下跌，市场呈现普跌格局，恐慌情绪蔓延，短期需警惕进一步调整。",
+      "url": "https://finance.eastmoney.com/a/202609113872040373.html",
+      "time": "2026-09-11 15:29:59",
+      "ai_summary": "美国8月CPI今晚公布，全球市场屏息",
+      "impact_analysis": "作为美联储议息前最后一份通胀数据，CPI超预期将强化加息预期，压制全球风险资产，A股外资流入或放缓，成长股承压。",
       "affected_sectors": [
-        "全市场"
+        "大盘蓝筹",
+        "成长股",
+        "外资重仓"
       ],
       "affected_stocks": [],
       "importance": 10
     },
     {
-      "title": "大禹集团与津巴布韦副总统在京会谈",
+      "title": "AI公司已经等不起电网了：算力战火烧至电厂",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609113871865887.html",
-      "time": "2026-09-11 10:50:00",
-      "ai_summary": "日元飙升引发套利交易平仓担忧",
-      "impact_analysis": "日元急升可能迫使全球套利交易平仓，资金从新兴市场回流，对A股外资流入形成压力，全球风险偏好下降拖累A股情绪。",
+      "url": "https://finance.eastmoney.com/a/202609113872000515.html",
+      "time": "2026-09-11 14:43:39",
+      "ai_summary": "成品油临时调控，涨幅减半",
+      "impact_analysis": "国家调控成品油价格，缓解输入性通胀压力，利好下游交运、物流、化工等成本敏感行业，但石油开采板块承压。",
       "affected_sectors": [
-        "外资重仓板块",
-        "金融",
-        "出口"
+        "石油石化",
+        "交通运输",
+        "化工"
       ],
       "affected_stocks": [
-        "600519.SS",
-        "000858.SZ",
-        "601318.SS"
+        "601857.SS",
+        "600028.SS"
       ],
-      "importance": 9
+      "importance": 8
     },
     {
-      "title": "半导体公司Analog Devices拟收购Alif Semiconductor",
+      "title": "三安光电：计划将光芯片产能规模扩充至4500片/月",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609113871828031.html",
-      "time": "2026-09-11 10:33:01",
-      "ai_summary": "科创综指跌超3%，半导体领跌",
-      "impact_analysis": "科创综指大跌超3%，中芯国际、寒武纪等半导体龙头集体下滑，宇树科技、摩尔线程创上市新低，科技板块情绪极度低迷。",
+      "url": "https://finance.eastmoney.com/a/202609113872049522.html",
+      "time": "2026-09-11 15:38:36",
+      "ai_summary": "工信部推进智能网联汽车试点",
+      "impact_analysis": "政策持续加码智能网联汽车，利好自动驾驶、车联网、汽车电子板块，但标准提升可能加速行业洗牌，头部企业受益。",
+      "affected_sectors": [
+        "智能驾驶",
+        "汽车电子",
+        "车联网"
+      ],
+      "affected_stocks": [
+        "002920.SZ",
+        "600745.SS"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "国家对成品油价格实施调控 调控后汽、柴油每吨实际上调260元、250元",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202609113872026566.html",
+      "time": "2026-09-11 15:01:12",
+      "ai_summary": "长鑫存储利润率82%反超三星",
+      "impact_analysis": "国产存储芯片盈利能力和增速全球领先，提振半导体国产替代信心，利好存储芯片、半导体设备及材料板块。",
       "affected_sectors": [
         "半导体",
-        "AI芯片",
-        "科创板"
+        "存储芯片",
+        "国产替代"
       ],
       "affected_stocks": [
         "688981.SS",
-        "688256.SS",
-        "688041.SS"
+        "002049.SZ"
       ],
-      "importance": 9
+      "importance": 8
     },
     {
-      "title": "天岳先进：8英寸产线产能利用率持续爬坡",
+      "title": "高达82%！长鑫利润率反超三星SK海力士 成最高盈利水平存储厂商",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609113871865387.html",
-      "time": "2026-09-11 10:50:08",
-      "ai_summary": "储能电芯产能摸底剑指过剩",
-      "impact_analysis": "监管对储能电芯产能摸底，剑指产能过剩，短期利空锂电池及储能板块，但中长期有利于行业出清和龙头集中度提升。",
+      "url": "https://finance.eastmoney.com/a/202609113872019758.html",
+      "time": "2026-09-11 14:52:36",
+      "ai_summary": "AI算力战烧至电厂，电力需求激增",
+      "impact_analysis": "全球AI基础设施电力投资加速，利好电力设备、核电、储能及数据中心板块，A股相关产业链有望受益。",
       "affected_sectors": [
-        "锂电池",
+        "电力设备",
+        "核电",
         "储能",
-        "新能源"
+        "数据中心"
       ],
       "affected_stocks": [
-        "300750.SZ",
-        "002594.SZ",
-        "300014.SZ"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "太空光伏企业上翼完成近亿元融资",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609113871867722.html",
-      "time": "2026-09-11 10:52:52",
-      "ai_summary": "新能源车税收优惠政策定调",
-      "impact_analysis": "九部门发文落实新能源车税收优惠，政策支持延续，利好新能源汽车产业链，但购置税减半已实施，边际增量有限。",
-      "affected_sectors": [
-        "新能源汽车",
-        "汽车零部件",
-        "智能驾驶"
-      ],
-      "affected_stocks": [
-        "002594.SZ",
-        "601633.SS",
-        "600104.SS"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "厄尔尼诺冲击下：国际糖价大涨25% 国内白糖会涨价吗？",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609113871882554.html",
-      "time": "2026-09-11 11:11:36",
-      "ai_summary": "多晶硅期货主力跌超4%",
-      "impact_analysis": "多晶硅期货大跌创8月以来新低，光伏产业链上游价格承压，利空多晶硅及光伏板块，但下游组件成本压力有望缓解。",
-      "affected_sectors": [
-        "光伏",
-        "多晶硅",
-        "新能源"
-      ],
-      "affected_stocks": [
-        "600438.SS",
-        "002129.SZ",
-        "601012.SS"
+        "600900.SS",
+        "601985.SS"
       ],
       "importance": 7
     },
     {
-      "title": "东软集团等成立智能科技公司 含AI及智能机器人业务",
+      "title": "美国企业对特定垂直电力传输系统及其组成部分和下游计算机系统提起337调查申请",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609113871885027.html",
-      "time": "2026-09-11 11:09:23",
-      "ai_summary": "宽基ETF成交额显著放量",
-      "impact_analysis": "科创50ETF、创业板ETF等多只宽基ETF成交额显著放量，显示资金借道ETF逆势布局，可能为市场提供一定支撑。",
+      "url": "https://finance.eastmoney.com/a/202609113872024723.html",
+      "time": "2026-09-11 14:52:58",
+      "ai_summary": "商品期货大面积飘绿，原油独涨",
+      "impact_analysis": "商品期货普跌反映需求担忧，利空有色、钢铁、煤炭等周期板块；原油大涨则利好石油产业链，但加剧通胀担忧。",
       "affected_sectors": [
-        "科创板",
-        "创业板",
-        "中证500"
+        "有色金属",
+        "钢铁",
+        "煤炭",
+        "石油"
+      ],
+      "affected_stocks": [
+        "601899.SS",
+        "600019.SS"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "国内商品期货收盘 主力合约大面积飘绿",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202609113872026295.html",
+      "time": "2026-09-11 15:00:08",
+      "ai_summary": "美国对华发起337调查，涉五家企业",
+      "impact_analysis": "美国贸易保护主义升级，涉及电力传输系统及计算机，短期利空相关出口企业，加剧科技板块外部风险。",
+      "affected_sectors": [
+        "电子",
+        "电力设备",
+        "计算机"
       ],
       "affected_stocks": [],
       "importance": 7
     },
     {
-      "title": "跨境业务成果不止港股IPO 多家券商投洽会亮出新选项",
+      "title": "工信部：将持续开展智能网联汽车生产准入和上路通行试点 稳妥推进高速领航等场景拓展",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609113871875818.html",
-      "time": "2026-09-11 11:03:00",
-      "ai_summary": "国产GPU四小龙齐聚资本市场",
-      "impact_analysis": "燧原科技科创板上市，国产GPU四小龙齐聚，彰显芯片产业资本市场支持力度，但短期市场情绪低迷，对板块提振有限。",
+      "url": "https://finance.eastmoney.com/a/202609113872017338.html",
+      "time": "2026-09-11 14:44:05",
+      "ai_summary": "三安光电光芯片产能扩至4500片/月",
+      "impact_analysis": "AI光模块需求激增带动光芯片扩产，利好光通信、光芯片板块，但需关注产能释放后的供需变化。",
       "affected_sectors": [
-        "AI芯片",
-        "GPU",
+        "光通信",
+        "光芯片",
         "半导体"
       ],
       "affected_stocks": [
-        "688801.SS",
-        "688256.SS",
-        "688041.SS"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "日元飙升令市场聚焦套利交易平仓 全球股市涨势面临考验",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609113871879188.html",
-      "time": "2026-09-11 11:03:29",
-      "ai_summary": "贵金属板块持续走低",
-      "impact_analysis": "贵金属板块持续走低，兴业银锡逼近跌停，受通胀与油价推升加息预期影响，贵金属承压，短期利空黄金白银板块。",
-      "affected_sectors": [
-        "贵金属",
-        "黄金",
-        "白银"
-      ],
-      "affected_stocks": [
-        "601899.SS",
-        "600547.SS",
-        "000426.SZ"
+        "600703.SS",
+        "300308.SZ"
       ],
       "importance": 6
     },
     {
-      "title": "官方最新定调新能源车税收优惠政策",
+      "title": "国轩高科拿下沙特首批大型电池储能项目6GWh储能订单",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202609113871862016.html",
-      "time": "2026-09-11 10:43:47",
-      "ai_summary": "证券板块震荡走弱",
-      "impact_analysis": "证券板块震荡走弱，锦龙股份逼近跌停，多只券商股跌超5%，作为市场风向标，券商走弱反映市场对后市信心不足。",
+      "url": "https://finance.eastmoney.com/a/202609113872035098.html",
+      "time": "2026-09-11 15:20:38",
+      "ai_summary": "国轩高科拿下沙特6GWh储能订单",
+      "impact_analysis": "中国储能企业突破中东高端市场，利好储能、锂电池板块，彰显中国新能源产业链全球竞争力。",
       "affected_sectors": [
-        "证券",
-        "金融"
+        "储能",
+        "锂电池",
+        "新能源"
       ],
       "affected_stocks": [
-        "000712.SZ",
-        "600095.SS",
-        "600030.SS"
+        "002074.SZ",
+        "300750.SZ"
+      ],
+      "importance": 6
+    },
+    {
+      "title": "华润创新发展深圳公司增资至67.45亿",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202609113872010676.html",
+      "time": "2026-09-11 14:33:00",
+      "ai_summary": "中证发布港股通AI应用指数",
+      "impact_analysis": "为AI应用提供新投资标的，引导资金关注港股AI板块，利好AI应用、港股科技股，长期吸引增量资金。",
+      "affected_sectors": [
+        "人工智能",
+        "港股科技"
+      ],
+      "affected_stocks": [
+        "00700.HK",
+        "09988.HK"
       ],
       "importance": 6
     }
