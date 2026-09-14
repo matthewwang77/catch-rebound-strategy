@@ -1,15 +1,15 @@
 {
-  "scan_time": "2026-09-14 15:05",
+  "scan_time": "2026-09-14 15:06",
   "scan_date": "20260914",
   "data_date": "2026-09-14",
   "market": {
     "上证": {
-      "price": 3886.25,
-      "pct": -0.05
+      "price": 3885.23,
+      "pct": -0.07
     },
     "深证": {
-      "price": 13388.58,
-      "pct": -0.61
+      "price": 13384.59,
+      "pct": -0.64
     },
     "创业板": {
       "price": 3322.04,
@@ -19,7 +19,7 @@
   "regime": {
     "status": "bear",
     "label": "2档: 低迷期 — 建议观望",
-    "avg_trend": -1.84,
+    "avg_trend": -1.86,
     "recommended_mode": "bear"
   },
   "modes": {
@@ -28,7 +28,7 @@
       "candidates": [
         {
           "code": "600892.SS",
-          "price": 4.06,
+          "price": 4.07,
           "signal_date": "20260831",
           "pullback_pct": 3.5,
           "limit_days": 3,
@@ -44,7 +44,7 @@
         },
         {
           "code": "603903.SS",
-          "price": 14.17,
+          "price": 14.13,
           "signal_date": "20260824",
           "pullback_pct": 7.6,
           "limit_days": 3,
@@ -52,7 +52,7 @@
         },
         {
           "code": "002827.SZ",
-          "price": 61.21,
+          "price": 61.19,
           "signal_date": "20260827",
           "pullback_pct": 1.3,
           "limit_days": 4,
