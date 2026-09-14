@@ -19,7 +19,7 @@
   "regime": {
     "status": "bear",
     "label": "2档: 低迷期 — 建议观望",
-    "avg_trend": -1.51,
+    "avg_trend": -1.48,
     "recommended_mode": "bear"
   },
   "modes": {
@@ -28,7 +28,7 @@
       "candidates": [
         {
           "code": "600892.SS",
-          "price": 4.1,
+          "price": 4.11,
           "signal_date": "20260831",
           "pullback_pct": 3.5,
           "limit_days": 3,
@@ -44,7 +44,7 @@
         },
         {
           "code": "603903.SS",
-          "price": 14.21,
+          "price": 14.22,
           "signal_date": "20260824",
           "pullback_pct": 7.6,
           "limit_days": 3,
@@ -52,7 +52,7 @@
         },
         {
           "code": "002827.SZ",
-          "price": 61.55,
+          "price": 61.58,
           "signal_date": "20260827",
           "pullback_pct": 1.3,
           "limit_days": 4,
