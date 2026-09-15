@@ -1828,6 +1828,29 @@
       "why_wrong": null,
       "missed_signal": null,
       "lesson": null
+    },
+    {
+      "date": "20260915",
+      "signal_date": "20260827",
+      "mode": "bear",
+      "entry_price": 64.15,
+      "pullback_pct": 1.3,
+      "limit_days": 4,
+      "analysis": "- 量：今日暴跌9.71%但量比仅1.51x，3日均量达涨停日202%，属高位放量派发而非缩量回调，OBV虽升但量价背离。\n- 价：收盘64.15勉强贴MA5=64.04，MA10=59.98为下一支撑；20日高71.80已远，破位风险大。\n- 形：4连板后仅回调2天即放量长阴，非健康回调形态，接近\"高位放量滞涨→破位\"派发结构。\n- 时：回调仅2天，窗口过短，洗盘不充分；情绪低迷期2档压制连板高度。\n- 仓位建议：0成仓（低迷期2档）\n- 反弹概率：低（≤30%）\n- 最终结论：【放弃】\n\n前次误判教训：高位放量+RSI超买+逼近前高=派发信号，本次长阴验证。不接飞刀，等缩量企稳MA10再评估。",
+      "sentiment": "低迷期2档",
+      "position": "0成仓",
+      "opinion": "【放弃】",
+      "verified": false,
+      "return_7d": null,
+      "exit_reason": null,
+      "exit_day": null,
+      "verdict": null,
+      "review_analysis": null,
+      "review_quality": null,
+      "what_happened": null,
+      "why_wrong": null,
+      "missed_signal": null,
+      "lesson": null
     }
   ],
   "002762.SZ": [
