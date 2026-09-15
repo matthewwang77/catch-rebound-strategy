@@ -842,6 +842,29 @@
       "why_wrong": null,
       "missed_signal": null,
       "lesson": null
+    },
+    {
+      "date": "20260915",
+      "signal_date": "20260824",
+      "mode": "bear",
+      "entry_price": 14.1,
+      "pullback_pct": 7.6,
+      "limit_days": 3,
+      "analysis": "- 量：今日量比0.35x，近3日均量仅为涨停日48%，OBV持续下降，资金流出未止，缩量尚不充分。\n- 价：股价14.10跌破MA5/MA10，勉强守MA20（14.05），距20日高15.45约9.6%，支撑脆弱。\n- 形：3连板后回调4天、幅度7.6%，属浅回调但MACD死叉向下，形态偏弱，未现企稳信号。\n- 时：回调仅4天，时间窗口偏早，缩量+死叉组合下不宜抢反弹。\n- 仓位建议：0成仓（冰点期1档，情绪低迷）\n- 反弹概率：低（≤30%）\n- 最终结论：【放弃】——量价形时四项均未给出介入条件，等待放量阳线站回MA10再评估。",
+      "sentiment": "冰点期1档，情绪低迷",
+      "position": "0成仓",
+      "opinion": "【放弃】——量价形时四项均未给出介入条件，等待放量阳线站回MA10再评估。",
+      "verified": false,
+      "return_7d": null,
+      "exit_reason": null,
+      "exit_day": null,
+      "verdict": null,
+      "review_analysis": null,
+      "review_quality": null,
+      "what_happened": null,
+      "why_wrong": null,
+      "missed_signal": null,
+      "lesson": null
     }
   ],
   "000078.SZ": [
