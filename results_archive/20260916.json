@@ -1,26 +1,13 @@
 {
-  "scan_time": "2026-09-16 10:29",
+  "scan_time": "2026-09-16 12:21",
   "scan_date": "20260916",
-  "data_date": "2026-09-15",
-  "market": {
-    "上证": {
-      "price": 3864.28,
-      "pct": -0.54
-    },
-    "深证": {
-      "price": 13287.97,
-      "pct": -0.72
-    },
-    "创业板": {
-      "price": 3247.92,
-      "pct": -1.15
-    }
-  },
+  "data_date": "2026-09-16",
+  "market": {},
   "regime": {
-    "status": "bear",
-    "label": "1档: 冰点期 — 坚决不参与",
-    "avg_trend": -2.39,
-    "recommended_mode": "bear"
+    "status": "neutral",
+    "label": "数据不足，默认非熊市",
+    "avg_trend": 0,
+    "recommended_mode": "strict"
   },
   "modes": {
     "strict": {
@@ -36,7 +23,7 @@
         },
         {
           "code": "000820.SZ",
-          "price": 3.44,
+          "price": 3.66,
           "signal_date": "20260825",
           "pullback_pct": 15.7,
           "limit_days": 3,
