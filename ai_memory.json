@@ -1707,6 +1707,29 @@
       "why_wrong": null,
       "missed_signal": null,
       "lesson": null
+    },
+    {
+      "date": "20260918",
+      "signal_date": "20260907",
+      "mode": "strict",
+      "entry_price": 5.54,
+      "pullback_pct": 18.8,
+      "limit_days": 3,
+      "analysis": "- 量：近3日均量仅为涨停日12%，极度缩量，但OBV上升显示资金暗中回流，量价背离偏多。\n- 价：现价5.54站上MA5/MA10（5.46），逼近MA20与布林中轨5.55，20日高5.85为压力，5.30为下轨支撑。\n- 形：3连板后回调18.8%，属深度回调形态，但25天已超常规回调窗口，形态钝化。\n- 时：距涨停25天，远超3-8天最佳窗口，时间成本过高，反弹动能衰减。\n- 仓位建议：2成仓（发酵期4档，但个股时效不匹配，降档处理）\n- 反弹概率：中（30-60%）\n- 最终结论：【观望】——缩量+OBV流入有支撑，但时间窗口严重超期、MACD死叉未修复，等站上MA20且放量再介入。",
+      "sentiment": "发酵期4档，但个股时效不匹配，降档处理",
+      "position": "2成仓",
+      "opinion": "【观望】——缩量+OBV流入有支撑，但时间窗口严重超期、MACD死叉未修复，等站上MA20且放量再介入。",
+      "verified": false,
+      "return_7d": null,
+      "exit_reason": null,
+      "exit_day": null,
+      "verdict": null,
+      "review_analysis": null,
+      "review_quality": null,
+      "what_happened": null,
+      "why_wrong": null,
+      "missed_signal": null,
+      "lesson": null
     }
   ],
   "002329.SZ": [
