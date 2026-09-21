@@ -1,5 +1,5 @@
 {
-  "scan_time": "2026-09-21 11:32",
+  "scan_time": "2026-09-21 14:14",
   "scan_date": "20260921",
   "data_date": "2026-09-18",
   "market": {
@@ -18,14 +18,23 @@
   },
   "regime": {
     "status": "neutral",
-    "label": "4档: 发酵期 — 势头良好",
-    "avg_trend": 2.41,
-    "recommended_mode": "loose"
+    "label": "数据不足，默认非熊市",
+    "avg_trend": 0,
+    "recommended_mode": "strict"
   },
   "modes": {
     "loose": {
-      "count": 0,
-      "candidates": []
+      "count": 1,
+      "candidates": [
+        {
+          "code": "002827.SZ",
+          "price": 70.36,
+          "signal_date": "20260827",
+          "pullback_pct": 1.3,
+          "limit_days": 4,
+          "entity_ratio": 75.0
+        }
+      ]
     }
   }
 }
