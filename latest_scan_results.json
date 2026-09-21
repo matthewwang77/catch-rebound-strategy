@@ -1,15 +1,15 @@
 {
-  "scan_time": "2026-09-21 14:14",
+  "scan_time": "2026-09-21 15:02",
   "scan_date": "20260921",
-  "data_date": "2026-09-18",
+  "data_date": "2026-09-21",
   "market": {
     "上证": {
-      "price": 3911.87,
+      "price": 3948.58,
       "pct": 0.94
     },
     "深证": {
-      "price": 13640.87,
-      "pct": 1.72
+      "price": 13722.53,
+      "pct": 0.6
     },
     "创业板": {
       "price": 3372.68,
@@ -18,9 +18,9 @@
   },
   "regime": {
     "status": "neutral",
-    "label": "数据不足，默认非熊市",
-    "avg_trend": 0,
-    "recommended_mode": "strict"
+    "label": "4档: 发酵期 — 势头良好",
+    "avg_trend": 2.73,
+    "recommended_mode": "loose"
   },
   "modes": {
     "loose": {
