@@ -19,7 +19,7 @@
   "regime": {
     "status": "neutral",
     "label": "4档: 发酵期 — 势头良好",
-    "avg_trend": 2.54,
+    "avg_trend": 2.55,
     "recommended_mode": "loose"
   },
   "modes": {
@@ -28,7 +28,7 @@
       "candidates": [
         {
           "code": "603958.SS",
-          "price": 18.92,
+          "price": 18.91,
           "signal_date": "20260921",
           "pullback_pct": 18.8,
           "limit_days": 3,
