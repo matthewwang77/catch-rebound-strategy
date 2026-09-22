@@ -1,15 +1,15 @@
 {
-  "scan_time": "2026-09-22 15:01",
+  "scan_time": "2026-09-22 15:08",
   "scan_date": "20260922",
   "data_date": "2026-09-22",
   "market": {
     "上证": {
-      "price": 3951.2,
-      "pct": 0.03
+      "price": 3952.82,
+      "pct": 0.07
     },
     "深证": {
-      "price": 13716.42,
-      "pct": -0.1
+      "price": 13728.9,
+      "pct": -0.01
     },
     "创业板": {
       "price": 3399.59,
@@ -19,22 +19,13 @@
   "regime": {
     "status": "neutral",
     "label": "4档: 发酵期 — 势头良好",
-    "avg_trend": 1.74,
+    "avg_trend": 1.81,
     "recommended_mode": "loose"
   },
   "modes": {
-    "strict": {
-      "count": 1,
-      "candidates": [
-        {
-          "code": "000936.SZ",
-          "price": 5.59,
-          "signal_date": "20260907",
-          "pullback_pct": 18.8,
-          "limit_days": 3,
-          "entity_ratio": 100.0
-        }
-      ]
+    "loose": {
+      "count": 0,
+      "candidates": []
     }
   }
 }
