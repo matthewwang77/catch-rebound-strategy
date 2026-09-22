@@ -1,5 +1,5 @@
 {
-  "scan_time": "2026-09-22 13:04",
+  "scan_time": "2026-09-22 14:13",
   "scan_date": "20260922",
   "data_date": "2026-09-21",
   "market": {
@@ -19,13 +19,22 @@
   "regime": {
     "status": "neutral",
     "label": "4档: 发酵期 — 势头良好",
-    "avg_trend": 2.2,
+    "avg_trend": 2.03,
     "recommended_mode": "loose"
   },
   "modes": {
-    "loose": {
-      "count": 0,
-      "candidates": []
+    "strict": {
+      "count": 1,
+      "candidates": [
+        {
+          "code": "000936.SZ",
+          "price": 5.59,
+          "signal_date": "20260907",
+          "pullback_pct": 18.8,
+          "limit_days": 3,
+          "entity_ratio": 100.0
+        }
+      ]
     }
   }
 }
