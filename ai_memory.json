@@ -1776,6 +1776,29 @@
       "why_wrong": null,
       "missed_signal": null,
       "lesson": null
+    },
+    {
+      "date": "20260924",
+      "signal_date": "20260907",
+      "mode": "strict",
+      "entry_price": 5.51,
+      "pullback_pct": 18.8,
+      "limit_days": 3,
+      "analysis": "- 量：缩量至涨停日11%，但量比0.16x属极度萎缩，OBV上升显示资金未大幅流出，惜售为主。\n- 价：现价5.51跌破MA5/MA10，仅靠MA20（5.58）下方挣扎，布林中轨5.58构成反压，关键位5.49若破则看下轨5.34。\n- 形：3连板后深度回调18.8%，形态已破坏，非标准缩量回踩，更像退潮阴跌。\n- 时：距涨停日26天，严重超期，连板回调窗口通常5-10天，时效完全失效。\n- 仓位建议：0成仓（冰点偏空档，大盘失守3900点、超4200股下跌）\n- 反弹概率：低（≤30%）\n- 最终结论：【放弃】——时效严重超期+MACD死叉+大盘偏空，缩量仅为无人问津而非蓄势，不参与。",
+      "sentiment": "冰点偏空档，大盘失守3900点、超4200股下跌",
+      "position": "0成仓",
+      "opinion": "【放弃】——时效严重超期+MACD死叉+大盘偏空，缩量仅为无人问津而非蓄势，不参与。",
+      "verified": false,
+      "return_7d": null,
+      "exit_reason": null,
+      "exit_day": null,
+      "verdict": null,
+      "review_analysis": null,
+      "review_quality": null,
+      "what_happened": null,
+      "why_wrong": null,
+      "missed_signal": null,
+      "lesson": null
     }
   ],
   "002329.SZ": [
