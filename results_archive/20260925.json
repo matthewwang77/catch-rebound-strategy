@@ -24,7 +24,7 @@
   },
   "modes": {
     "strict": {
-      "count": 2,
+      "count": 3,
       "candidates": [
         {
           "code": "600551.SS",
@@ -38,6 +38,14 @@
           "code": "603958.SS",
           "price": 18.7,
           "signal_date": "20260921",
+          "pullback_pct": 18.8,
+          "limit_days": 3,
+          "entity_ratio": 100.0
+        },
+        {
+          "code": "000936.SZ",
+          "price": 5.51,
+          "signal_date": "20260907",
           "pullback_pct": 18.8,
           "limit_days": 3,
           "entity_ratio": 100.0
