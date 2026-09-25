@@ -2531,5 +2531,30 @@
       "missed_signal": null,
       "lesson": null
     }
+  ],
+  "002942.SZ": [
+    {
+      "date": "20260925",
+      "signal_date": "20260922",
+      "mode": "strict",
+      "entry_price": 16.77,
+      "pullback_pct": 18.6,
+      "limit_days": 3,
+      "analysis": "- 量：近3日均量仅涨停日13%，极度缩量，但OBV下降，资金持续流出，无承接。\n- 价：现价16.77贴MA10，MA20=17.82上方压制，20日高23.00回落18.6%，支撑弱。\n- 形：3连板后深度回调，MACD死叉、柱-0.338，RSI 29.4超卖但无背离，形态偏空。\n- 时：距涨停已20天，远超连板回调3-8天黄金窗口，时间窗口失效。\n- 仓位建议：2成仓（启动期3档，谨慎）\n- 反弹概率：低（≤30%）\n- 最终结论：【放弃】",
+      "sentiment": "启动期3档，谨慎",
+      "position": "2成仓",
+      "opinion": "【放弃】",
+      "verified": false,
+      "return_7d": null,
+      "exit_reason": null,
+      "exit_day": null,
+      "verdict": null,
+      "review_analysis": null,
+      "review_quality": null,
+      "what_happened": null,
+      "why_wrong": null,
+      "missed_signal": null,
+      "lesson": null
+    }
   ]
 }

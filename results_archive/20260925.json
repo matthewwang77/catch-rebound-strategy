@@ -1,5 +1,5 @@
 {
-  "scan_time": "2026-09-25 14:02",
+  "scan_time": "2026-09-25 14:03",
   "scan_date": "20260925",
   "data_date": "2026-09-24",
   "market": {
@@ -43,12 +43,12 @@
           "entity_ratio": 100.0
         },
         {
-          "code": "000936.SZ",
-          "price": 5.51,
-          "signal_date": "20260907",
-          "pullback_pct": 18.8,
+          "code": "002942.SZ",
+          "price": 16.77,
+          "signal_date": "20260922",
+          "pullback_pct": 18.6,
           "limit_days": 3,
-          "entity_ratio": 100.0
+          "entity_ratio": 67.0
         }
       ]
     }
