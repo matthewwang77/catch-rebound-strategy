@@ -1,41 +1,104 @@
 {
   "date": "20261005",
-  "market_summary": "今日消息面整体偏暖，AI基础设施投资逻辑发生根本性转变，推理算力需求爆发成为核心主线；美联储10月维持利率不变概率升至77.9%缓解外部流动性压力；中东地缘冲突升级推升油价与避险情绪；港股AI、半导体、医药板块集体走强，对A股相关板块形成映射效应。",
+  "market_summary": "今日消息面整体偏暖，全球AI产业链利好频出，华为与高通达成专利协议、鸿海AI业务高增、星展坚定看好AI非泡沫，叠加亚太股市集体大涨，节后A股科技板块有望迎来开门红。但全球债券抛售加剧、美债收益率飙升构成潜在风险，需关注外资流向变化。",
   "sentiment_impact": "偏多",
   "news": [
     {
-      "title": "推理支出2026年首超训练：“Token工厂”崛起 AI基础设施投资逻辑生变",
+      "title": "一汽丰田发布声明：“一汽丰田或将彻底退出历史舞台”“丰田大降价”等均为不实言论 将保留法律追责权利",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610043888573083.html",
-      "time": "2026-10-05 03:27:52",
-      "ai_summary": "推理算力占比首超70%，AI投资逻辑转向",
-      "impact_analysis": "中国信通院报告显示推理算力占比将达70.5%，标志AI基础设施从训练驱动转向推理驱动，利好推理芯片、算力租赁、AI应用端，利空纯训练算力概念，板块内部将剧烈分化。",
+      "url": "https://finance.eastmoney.com/a/202610053888601367.html",
+      "time": "2026-10-05 10:39:00",
+      "ai_summary": "华为高通达成广泛专利交叉许可协议",
+      "impact_analysis": "消除华为在5G、AI、算力领域的专利风险，利好华为产业链及国产替代逻辑，提振通信、半导体、AI板块情绪，强化科技自主可控预期。",
       "affected_sectors": [
-        "AI算力",
+        "通信",
         "半导体",
-        "云计算",
-        "AI应用"
+        "人工智能",
+        "消费电子"
       ],
       "affected_stocks": [
-        "688256.SS",
-        "603019.SS",
-        "000977.SZ",
-        "300474.SZ"
+        "002415.SZ",
+        "300308.SZ",
+        "688981.SS",
+        "002475.SZ"
       ],
       "importance": 9
     },
     {
-      "title": "突发！多家银行客户数据泄露！韩国金融业炸锅 系统遭黑客攻击",
+      "title": "星展：英伟达估值仍低 AI股远未泡沫化",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610053888582675.html",
-      "time": "2026-10-05 07:24:00",
-      "ai_summary": "美联储10月按兵不动概率升至77.9%",
-      "impact_analysis": "美联储10月维持利率不变概率升至77.9%，12月加息概率上升至68.7%，短期缓解人民币贬值压力，利好外资流入A股，但12月加息预期升温对中期流动性构成隐忧。",
+      "url": "https://finance.eastmoney.com/a/202610053888628088.html",
+      "time": "2026-10-05 15:25:50",
+      "ai_summary": "星展称英伟达估值仍低AI远未泡沫化",
+      "impact_analysis": "国际大行力挺AI估值，缓解市场对科技股泡沫担忧，提振A股AI算力、芯片、服务器等板块风险偏好，节后科技主线有望延续强势。",
+      "affected_sectors": [
+        "人工智能",
+        "算力",
+        "半导体",
+        "CPO"
+      ],
+      "affected_stocks": [
+        "300308.SZ",
+        "002230.SZ",
+        "688256.SS",
+        "300502.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "华为与高通宣布达成广泛专利许可协议",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610053888623383.html",
+      "time": "2026-10-05 14:37:39",
+      "ai_summary": "鸿海Q3销售额同比增47%AI业务持续增长",
+      "impact_analysis": "全球AI服务器代工龙头业绩大超预期，验证AI算力需求高景气，直接利好A股AI服务器、液冷、PCB、光模块等产业链，强化算力基建投资逻辑。",
+      "affected_sectors": [
+        "AI服务器",
+        "液冷",
+        "PCB",
+        "光模块"
+      ],
+      "affected_stocks": [
+        "000977.SZ",
+        "002837.SZ",
+        "002463.SZ",
+        "300308.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "鸿海第三季度销售额3.03万亿元台币 同比增长47.1％",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610053888630231.html",
+      "time": "2026-10-05 15:43:11",
+      "ai_summary": "亚太股市集体大涨日股涨超2%港股AI爆发",
+      "impact_analysis": "A股休市期间外围持续走强，日股剑指7万点、港股AI半导体大涨，节后A股大概率补涨，科技成长风格有望领跑，提振市场整体风险偏好。",
+      "affected_sectors": [
+        "人工智能",
+        "半导体",
+        "光通信",
+        "券商"
+      ],
+      "affected_stocks": [
+        "688981.SS",
+        "300308.SZ",
+        "002230.SZ",
+        "600030.SS"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "克普勒：9月末中东原油出口量超过伊朗战事前水平",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610053888620768.html",
+      "time": "2026-10-05 14:12:44",
+      "ai_summary": "全球债券抛售加剧美债收益率突破5.2%",
+      "impact_analysis": "美债收益率飙升压制全球风险资产估值，可能导致外资流出新兴市场，对A股高估值成长板块形成压力，需警惕节后外资动向及汇率波动。",
       "affected_sectors": [
         "银行",
         "保险",
         "房地产",
-        "外资重仓"
+        "外资重仓股"
       ],
       "affected_stocks": [
         "600036.SS",
@@ -45,161 +108,103 @@
       "importance": 8
     },
     {
-      "title": "一油轮在也门西南部海域航行时附近发生多次爆炸",
+      "title": "欧洲央行管委内格尔：目前尚无明确迹象表明通胀已传导至价格和工资设定",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610053888576435.html",
-      "time": "2026-10-05 04:53:36",
-      "ai_summary": "机构看好AI四大领域四季度机会",
-      "impact_analysis": "机构明确看好AI产业链四季度机会，经历三季度巨幅调整后AI板块估值趋于合理，资金有望重新聚焦AI主线，利好算力、应用、数据、安全四大细分方向。",
+      "url": "https://finance.eastmoney.com/a/202610053888630943.html",
+      "time": "2026-10-05 15:46:36",
+      "ai_summary": "17国支持京都愿景扩大科研AI与算力使用",
+      "impact_analysis": "全球主要国家联合推动AI科研应用，强化AI产业长期确定性，利好A股AI应用、算力基础设施、数据要素等板块，催化主题投资热情。",
       "affected_sectors": [
-        "AI算力",
-        "AI应用",
+        "人工智能",
+        "算力",
         "数据要素",
+        "科研服务"
+      ],
+      "affected_stocks": [
+        "002230.SZ",
+        "300308.SZ",
+        "600570.SS"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "凯乐士科技午后涨超12% 公司盈利能力有望逐步改善",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/stock/hkstock/marketalerts/2026-10-05/doc-iniueeuc2845959.shtml",
+      "time": "2026-10-05 15:28",
+      "ai_summary": "特朗普成立超级智能工作组协调联邦AI事务",
+      "impact_analysis": "美国将AI提升至国家安全战略高度，加剧中美科技竞争预期，利好A股国产算力、信创、自主可控板块，强化国产替代投资主线。",
+      "affected_sectors": [
+        "信创",
+        "国产算力",
+        "半导体",
         "网络安全"
       ],
       "affected_stocks": [
-        "688256.SS",
-        "002230.SZ",
-        "600570.SS",
+        "688981.SS",
+        "002415.SZ",
         "300454.SZ"
       ],
-      "importance": 8
-    },
-    {
-      "title": "美股通宵交易 要来了",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610043888570478.html",
-      "time": "2026-10-05 02:49:00",
-      "ai_summary": "韩国多家银行遭黑客攻击数据泄露",
-      "impact_analysis": "韩国头部银行集体遭黑客攻击，引发全球金融网络安全担忧，利好A股网络安全板块，金融IT安全投入有望加大，同时可能引发监管层对国内金融系统安全审查升级。",
-      "affected_sectors": [
-        "网络安全",
-        "金融科技",
-        "信创"
-      ],
-      "affected_stocks": [
-        "300454.SZ",
-        "688561.SS",
-        "002439.SZ",
-        "300369.SZ"
-      ],
       "importance": 7
     },
     {
-      "title": "美联储10月维持利率不变的概率升至77.9%",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610053888580246.html",
-      "time": "2026-10-05 06:01:16",
-      "ai_summary": "也门油轮附近多次爆炸，中东局势升级",
-      "impact_analysis": "红海油轮遇袭事件升级，中东地缘风险加剧，短期推升国际油价和航运保险成本，利好石油石化、油运板块，利空航空、化工等用油行业，避险情绪升温。",
-      "affected_sectors": [
-        "石油石化",
-        "油运",
-        "军工",
-        "黄金"
-      ],
-      "affected_stocks": [
-        "601857.SS",
-        "600028.SS",
-        "601872.SS",
-        "600547.SS"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "国海证券：光大环境收入结构转型成效巩固 维持“增持”评级",
+      "title": "兑吧午后涨逾11% 公司AI短剧业务展现强劲增长势头",
       "source": "新浪财经",
-      "url": "https://finance.sina.com.cn/stock/hkstock/hkgg/2026-10-05/doc-iniucuep6497556.shtml",
-      "time": "2026-10-05 09:40",
-      "ai_summary": "MLCC年内掀涨价潮，结构性缺货显现",
-      "impact_analysis": "MLCC行业从价格周期走向结构性缺货，海外龙头率先涨价，行业景气度上行，利好国内被动元件龙头，关注三环集团、风华高科等标的的业绩弹性。",
-      "affected_sectors": [
-        "被动元件",
-        "电子元器件",
-        "消费电子"
-      ],
-      "affected_stocks": [
-        "300408.SZ",
-        "000636.SZ",
-        "600183.SS"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "部分医药股高开 近期医药行业利好不断 诺华近78亿美元押注mRNA-TCE",
-      "source": "新浪财经",
-      "url": "https://finance.sina.com.cn/stock/relnews/hk/2026-10-05/doc-iniucpwp4727655.shtml",
-      "time": "2026-10-05 09:25",
-      "ai_summary": "诺华78亿美元押注mRNA-TCE，医药利好",
-      "impact_analysis": "诺华巨额押注mRNA-TCE技术路线，叠加近期医药行业利好不断，创新药板块情绪回暖，利好mRNA疫苗、CXO、创新药产业链，港股医药已率先反应。",
-      "affected_sectors": [
-        "创新药",
-        "CXO",
-        "疫苗",
-        "生物医药"
-      ],
-      "affected_stocks": [
-        "300759.SZ",
-        "603259.SS",
-        "300122.SZ",
-        "688185.SS"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "商米科技-W盘中涨近15% 德银给予公司未来12个月目标价为78.30港元",
-      "source": "新浪财经",
-      "url": "https://finance.sina.com.cn/stock/hkstock/marketalerts/2026-10-05/doc-iniucuep6557977.shtml",
-      "time": "2026-10-05 11:31",
-      "ai_summary": "港股半导体板块走强，澜起科技领涨",
-      "impact_analysis": "港股半导体板块盘初走强，澜起科技涨超5%，AI推理算力需求爆发直接利好半导体产业链，A股半导体板块有望跟随走强，关注算力芯片和存储芯片方向。",
+      "url": "https://finance.sina.com.cn/stock/hkstock/marketalerts/2026-10-05/doc-iniueeuc2848545.shtml",
+      "time": "2026-10-05 15:34",
+      "ai_summary": "港股半导体板块走强澜起科技涨超5%",
+      "impact_analysis": "港股半导体率先反应全球AI芯片景气，澜起科技等龙头领涨，节后A股半导体板块有望联动走强，关注存储、先进封装、设备等细分方向。",
       "affected_sectors": [
         "半导体",
-        "芯片设计",
-        "存储芯片"
+        "芯片",
+        "先进封装",
+        "半导体设备"
       ],
       "affected_stocks": [
         "688008.SS",
-        "603986.SS",
-        "688981.SS",
-        "002049.SZ"
+        "002371.SZ",
+        "688012.SS",
+        "603501.SS"
       ],
       "importance": 7
     },
     {
-      "title": "一汽丰田发布声明：“一汽丰田或将彻底退出历史舞台”“丰田大降价”等均为不实言论 将保留法律追责权利",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610053888601367.html",
-      "time": "2026-10-05 10:39:00",
-      "ai_summary": "美股拟推通宵交易，全球流动性竞争加剧",
-      "impact_analysis": "纳斯达克等拟新增夜间交易时段，全球资本市场流动性竞争加剧，长期或分流部分A股跨境资金，但短期对A股直接影响有限，利好跨境券商和金融IT基础设施。",
+      "title": "一汽丰田发布声明：“退出历史舞台”“丰田大降价”等言论不实",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/chanjing/gsnews/2026-10-05/doc-iniueeuf9662630.shtml",
+      "time": "2026-10-05 15:41",
+      "ai_summary": "前三季度港股IPO募资超3800亿港元A+H龙头领衔",
+      "impact_analysis": "港股IPO火热反映国际资金对中国资产配置意愿增强，A+H龙头赴港上市提升估值锚定效应，利好券商及A股核心资产估值修复。",
       "affected_sectors": [
         "券商",
-        "金融科技",
-        "跨境支付"
+        "A+H蓝筹",
+        "创投"
       ],
       "affected_stocks": [
         "600030.SS",
-        "300059.SZ",
-        "601688.SS"
+        "601688.SS",
+        "300308.SZ"
       ],
       "importance": 6
     },
     {
-      "title": "部分医药股早盘高开 德琪医药-B涨超5%康希诺生物涨超3%",
+      "title": "全球债券抛售加剧 量化对冲基金大幅获利",
       "source": "新浪财经",
-      "url": "https://finance.sina.com.cn/stock/hkstock/marketalerts/2026-10-05/doc-iniucpwr6623848.shtml",
-      "time": "2026-10-05 09:34",
-      "ai_summary": "日本央行副行长：AI影响中性利率",
-      "impact_analysis": "日本央行副行长表态AI推高通胀压力和长期利率，全球央行关注AI对货币政策的影响，暗示AI驱动的需求冲击可能延缓全球降息节奏，对A股流动性预期形成中期扰动。",
+      "url": "https://finance.sina.com.cn/stock/usstock/c/2026-10-05/doc-iniueeui6406011.shtml",
+      "time": "2026-10-05 14:50",
+      "ai_summary": "汇丰大幅上调Marvell目标价至450美元",
+      "impact_analysis": "国际投行大幅上调AI芯片龙头目标价，强化全球AI算力芯片高景气预期，利好A股光模块、AI芯片、服务器等算力产业链估值提升。",
       "affected_sectors": [
-        "银行",
-        "保险",
-        "债券"
+        "光模块",
+        "AI芯片",
+        "服务器",
+        "CPO"
       ],
       "affected_stocks": [
-        "600036.SS",
-        "601318.SS"
+        "300308.SZ",
+        "300502.SZ",
+        "000977.SZ",
+        "688256.SS"
       ],
       "importance": 6
     }
