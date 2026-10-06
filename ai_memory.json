@@ -2923,6 +2923,29 @@
       "why_wrong": null,
       "missed_signal": null,
       "lesson": null
+    },
+    {
+      "date": "20261006",
+      "signal_date": "20260930",
+      "mode": "strict",
+      "entry_price": 17.06,
+      "pullback_pct": 18.4,
+      "limit_days": 3,
+      "analysis": "- 量：近3日均量仅为涨停日14%，极度缩量但量比1.33x，OBV上升，资金暗中回流。\n- 价：现价17.06站上MA5/MA10，但MA20=17.49构成反压，布林中轨同位置，关键压力17.49。\n- 形：3连板后回调18.4%，属浅回调，但MACD死叉、柱-0.298，形态未修复。\n- 时：距涨停21天，超出连板回调有效窗口（通常5-10天），时间成本过高。\n- 仓位建议：0成仓（冰点期1档，坚决不参与）\n- 反弹概率：低（≤30%）\n- 最终结论：【放弃】",
+      "sentiment": "冰点期1档，坚决不参与",
+      "position": "0成仓",
+      "opinion": "【放弃】",
+      "verified": false,
+      "return_7d": null,
+      "exit_reason": null,
+      "exit_day": null,
+      "verdict": null,
+      "review_analysis": null,
+      "review_quality": null,
+      "what_happened": null,
+      "why_wrong": null,
+      "missed_signal": null,
+      "lesson": null
     }
   ]
 }
