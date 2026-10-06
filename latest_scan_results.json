@@ -1,5 +1,5 @@
 {
-  "scan_time": "2026-10-06 11:01",
+  "scan_time": "2026-10-06 12:11",
   "scan_date": "20261006",
   "data_date": "2026-09-30",
   "market": {
@@ -24,7 +24,7 @@
   },
   "modes": {
     "strict": {
-      "count": 2,
+      "count": 3,
       "candidates": [
         {
           "code": "600551.SS",
@@ -41,6 +41,14 @@
           "pullback_pct": 18.8,
           "limit_days": 3,
           "entity_ratio": 100.0
+        },
+        {
+          "code": "002942.SZ",
+          "price": 17.06,
+          "signal_date": "20260930",
+          "pullback_pct": 18.4,
+          "limit_days": 3,
+          "entity_ratio": 67.0
         }
       ]
     }
