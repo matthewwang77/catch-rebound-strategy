@@ -1,5 +1,5 @@
 {
-  "scan_time": "2026-10-06 14:18",
+  "scan_time": "2026-10-06 16:10",
   "scan_date": "20261006",
   "data_date": "2026-10-06",
   "market": {},
@@ -10,32 +10,16 @@
     "recommended_mode": "strict"
   },
   "modes": {
-    "strict": {
-      "count": 3,
+    "bear": {
+      "count": 1,
       "candidates": [
         {
-          "code": "600551.SS",
-          "price": 7.98,
-          "signal_date": "20260922",
-          "pullback_pct": 13.0,
+          "code": "002762.SZ",
+          "price": 9.26,
+          "signal_date": "20260909",
+          "pullback_pct": 9.8,
           "limit_days": 3,
           "entity_ratio": 100.0
-        },
-        {
-          "code": "603958.SS",
-          "price": 18.0,
-          "signal_date": "20260921",
-          "pullback_pct": 18.8,
-          "limit_days": 3,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "002942.SZ",
-          "price": 17.06,
-          "signal_date": "20260930",
-          "pullback_pct": 18.4,
-          "limit_days": 3,
-          "entity_ratio": 67.0
         }
       ]
     }
