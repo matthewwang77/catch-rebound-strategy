@@ -1,72 +1,89 @@
 {
   "date": "20261007",
-  "market_summary": "国庆假期消息面整体偏暖，央行节后大额流动性投放与财政部增量政策表态构成双重利好，叠加美国非农爆冷导致美联储加息概率骤降，外部流动性压力缓解；但港股医药股大幅走弱及部分行业事件性扰动仍需关注。",
+  "market_summary": "国庆假期消息面整体偏暖，央行节后大额流动性投放和财政增量政策信号提振市场信心，但港股医药、半导体板块大跌可能对A股相关板块形成情绪压制。",
   "sentiment_impact": "偏多",
   "news": [
     {
-      "title": "Anthropic扩大先进AI模型访问权限 允许特定机构开展网络安全测试",
+      "title": "假期要闻汇总：非农数据意外“爆冷” 美联储10月加息概率骤降",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610073888830275.html",
-      "time": "2026-10-07 04:45:59",
-      "ai_summary": "央行节后开展1.2万亿买断式逆回购",
-      "impact_analysis": "节后首日即投放1.2万亿3个月期流动性，规模超预期，直接缓解资金面压力，释放货币政策偏宽松信号，利好银行、券商及整体大盘估值修复。",
+      "url": "https://finance.eastmoney.com/a/202610073888840232.html",
+      "time": "2026-10-07 07:30:08",
+      "ai_summary": "央行节后投放1.2万亿逆回购",
+      "impact_analysis": "央行10月8日开展12000亿元买断式逆回购，释放强烈呵护流动性信号，直接利好银行间资金面和A股整体估值，对大盘指数构成正面支撑。",
       "affected_sectors": [
         "银行",
         "券商",
         "房地产"
       ],
       "affected_stocks": [
-        "600036.SS",
-        "601318.SS",
-        "600030.SS"
+        "601398.SS",
+        "600030.SS",
+        "000002.SZ"
       ],
       "importance": 10
     },
     {
-      "title": "假期要闻汇总：非农数据意外“爆冷” 美联储10月加息概率骤降",
+      "title": "北部湾港成功开辟重庆铝土矿进口直达通道",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610073888840232.html",
-      "time": "2026-10-07 07:30:08",
-      "ai_summary": "美国非农爆冷 美联储加息概率骤降",
-      "impact_analysis": "非农数据意外疲软使美联储10月加息概率降至20.5%，全球流动性收紧预期显著缓解，美元走弱利好人民币资产，外资回流预期升温，对A股形成正面支撑。",
+      "url": "https://finance.eastmoney.com/a/202610073888841597.html",
+      "time": "2026-10-07 08:07:24",
+      "ai_summary": "财政部研究增量政策扩内需",
+      "impact_analysis": "财政部表态研究针对性增量政策、扩大国内有效需求，强化政策加码预期，利好消费、基建等内需板块，对大盘指数有正面提振。",
       "affected_sectors": [
-        "外资重仓股",
-        "科技",
-        "消费"
+        "消费",
+        "基建",
+        "建材"
       ],
       "affected_stocks": [
         "600519.SS",
-        "300750.SZ",
+        "601668.SS",
         "000858.SZ"
       ],
       "importance": 9
     },
     {
-      "title": "苹果将推出与LG联合研发的智能门铃、智能门锁与智能温控器",
+      "title": "国家医保局：前8个月医保统筹基金收入约2.07万亿元",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610073888831870.html",
-      "time": "2026-10-07 05:22:50",
-      "ai_summary": "财政部研究制定增量政策扩内需",
-      "impact_analysis": "财政部明确将出台针对性增量政策并注重扩大国内有效需求，预示财政发力加码，利好基建、消费及民生相关板块，提振市场对经济复苏的信心。",
+      "url": "https://finance.eastmoney.com/a/202610073888853872.html",
+      "time": "2026-10-07 10:25:24",
+      "ai_summary": "美国非农爆冷加息概率骤降",
+      "impact_analysis": "美国非农意外爆冷使美联储加息概率骤降，全球流动性收紧压力缓解，人民币汇率压力减轻，利好外资流入A股，对大盘偏多。",
       "affected_sectors": [
-        "基建",
-        "消费",
-        "建材"
+        "外资重仓",
+        "科技",
+        "消费"
       ],
       "affected_stocks": [
-        "601668.SS",
-        "600585.SS",
-        "000333.SZ"
+        "600519.SS",
+        "000333.SZ",
+        "300750.SZ"
       ],
       "importance": 9
     },
     {
-      "title": "OpenAI发布前沿大模型的全新数学能力测试成果",
+      "title": "媒体：越南考虑股市午间不休市、扩大涨跌幅区间",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610073888837554.html",
-      "time": "2026-10-07 06:26:18",
+      "url": "https://finance.eastmoney.com/a/202610073888847163.html",
+      "time": "2026-10-07 08:59:09",
+      "ai_summary": "9月外储3.4万亿美元",
+      "impact_analysis": "9月末外汇储备报34002.51亿美元，规模保持稳定，显示跨境资金流动平稳，人民币汇率预期稳定，对A股市场情绪有正面支撑。",
+      "affected_sectors": [
+        "银行",
+        "外贸"
+      ],
+      "affected_stocks": [
+        "601988.SS",
+        "600036.SS"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "港股医药股多数走弱 金斯瑞生物科技跌近14%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610073888850369.html",
+      "time": "2026-10-07 09:51:33",
       "ai_summary": "央行连续23个月增持黄金",
-      "impact_analysis": "央行持续增持黄金储备，叠加非农爆冷美元走弱，强化黄金中长期配置逻辑，利好黄金采掘及贵金属板块，金价上行预期升温。",
+      "impact_analysis": "央行连续第23个月增持黄金，彰显对黄金储备的持续重视，利好黄金及有色金属板块，对相关个股形成催化。",
       "affected_sectors": [
         "黄金",
         "有色金属"
@@ -76,80 +93,6 @@
         "601899.SS",
         "600489.SS"
       ],
-      "importance": 8
-    },
-    {
-      "title": "美联储10月维持利率不变的概率为79.5%",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610073888834764.html",
-      "time": "2026-10-07 06:02:13",
-      "ai_summary": "9月外汇储备报3.4万亿美元",
-      "impact_analysis": "外储规模保持稳定，叠加央行增持黄金，显示跨境资金流动平稳，人民币汇率预期稳定，为A股提供稳定的外部金融环境。",
-      "affected_sectors": [
-        "银行",
-        "外汇相关"
-      ],
-      "affected_stocks": [
-        "601988.SS",
-        "601288.SS"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "北部湾港成功开辟重庆铝土矿进口直达通道",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610073888841597.html",
-      "time": "2026-10-07 08:07:24",
-      "ai_summary": "三星电机50亿美元扩产半导体基板",
-      "impact_analysis": "三星电机巨额扩产半导体基板，反映AI服务器与高性能计算需求旺盛，利好国内半导体封装基板及上游材料国产替代概念。",
-      "affected_sectors": [
-        "半导体",
-        "PCB",
-        "电子材料"
-      ],
-      "affected_stocks": [
-        "002916.SZ",
-        "600183.SS",
-        "688981.SS"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "媒体：越南考虑股市午间不休市、扩大涨跌幅区间",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610073888847163.html",
-      "time": "2026-10-07 08:59:09",
-      "ai_summary": "SpaceX筹400亿美元采购英伟达芯片",
-      "impact_analysis": "SpaceX巨额融资采购英伟达芯片，凸显全球AI算力军备竞赛持续升温，利好A股AI算力、光模块及服务器产业链，强化科技成长主线。",
-      "affected_sectors": [
-        "AI算力",
-        "光模块",
-        "服务器"
-      ],
-      "affected_stocks": [
-        "300308.SZ",
-        "000977.SZ",
-        "300502.SZ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "港股医药股多数走弱 金斯瑞生物科技跌近14%",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610073888850369.html",
-      "time": "2026-10-07 09:51:33",
-      "ai_summary": "港股医药股集体重挫金斯瑞跌14%",
-      "impact_analysis": "港股生物医药板块大幅走弱，金斯瑞、昭衍新药等CXO龙头重挫，情绪或传导至A股医药板块，短期对CXO及生物医药形成压制。",
-      "affected_sectors": [
-        "医药",
-        "CXO",
-        "生物科技"
-      ],
-      "affected_stocks": [
-        "603259.SS",
-        "300347.SZ",
-        "688180.SS"
-      ],
       "importance": 7
     },
     {
@@ -157,36 +100,89 @@
       "source": "东方财富",
       "url": "https://finance.eastmoney.com/a/202610073888847574.html",
       "time": "2026-10-07 09:07:57",
-      "ai_summary": "谷歌与星座能源达成890兆瓦核电协议",
-      "impact_analysis": "科技巨头加码核电采购，全球核电需求预期升温，利好A股核电运营及核燃料产业链，中广核矿业港股已率先反应。",
+      "ai_summary": "港股医药股集体大跌",
+      "impact_analysis": "港股医药股多数走弱，金斯瑞生物科技跌近14%，可能对A股医药板块形成情绪压制，尤其是CXO和创新药方向。",
       "affected_sectors": [
-        "核电",
-        "核燃料",
-        "电力"
+        "医药",
+        "CXO",
+        "创新药"
       ],
       "affected_stocks": [
-        "601985.SS",
-        "003816.SZ",
-        "600886.SS"
+        "603259.SS",
+        "300347.SZ",
+        "300760.SZ"
       ],
-      "importance": 6
+      "importance": 7
     },
     {
       "title": "周三（10月7日）重点关注财经事件和经济数据",
       "source": "东方财富",
       "url": "https://finance.eastmoney.com/a/202610073888838449.html",
       "time": "2026-10-07 06:48:49",
-      "ai_summary": "潍柴动力AIDC业务带动估值提升",
-      "impact_analysis": "数据中心备用发电机需求爆发，潍柴动力AIDC业务有望带动中期业绩增长，利好A股数据中心配套电力设备及发动机产业链。",
+      "ai_summary": "港股半导体股集体下跌",
+      "impact_analysis": "港股半导体股集体下跌，澜起科技跌近8%，可能对A股半导体板块形成负面情绪传导，短期压制相关个股表现。",
       "affected_sectors": [
-        "数据中心",
-        "电力设备",
-        "发动机"
+        "半导体",
+        "芯片"
       ],
       "affected_stocks": [
-        "000338.SZ",
-        "600875.SS",
-        "002080.SZ"
+        "688008.SS",
+        "603986.SS",
+        "688981.SS"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "中国央行连续第23个月增持黄金",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610073888851580.html",
+      "time": "2026-10-07 10:00:59",
+      "ai_summary": "节后近百只基金排队发行",
+      "impact_analysis": "节后公募基金发行火热，近百只基金排队，节后首日20只集中亮相，有望为A股带来增量资金，利好市场整体流动性。",
+      "affected_sectors": [
+        "券商",
+        "基金重仓"
+      ],
+      "affected_stocks": [
+        "600030.SS",
+        "300059.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "三星电机计划斥资近50亿美元在韩国和越南扩产半导体基板",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610073888849329.html",
+      "time": "2026-10-07 09:35:27",
+      "ai_summary": "三星电机50亿美元扩产半导体基板",
+      "impact_analysis": "三星电机计划斥资近50亿美元扩产半导体基板，反映AI服务器需求旺盛，利好A股半导体基板、封装及AI算力产业链。",
+      "affected_sectors": [
+        "半导体",
+        "AI算力",
+        "PCB"
+      ],
+      "affected_stocks": [
+        "002916.SZ",
+        "600183.SS",
+        "002463.SZ"
+      ],
+      "importance": 6
+    },
+    {
+      "title": "本末科技早盘涨超9% 携手中稀科创推动稀土新材料与机器人产业深度耦合",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/stock/hkstock/marketalerts/2026-10-07/doc-iniukhkr4939623.shtml",
+      "time": "2026-10-07 11:16",
+      "ai_summary": "谷歌与星座能源签核电协议",
+      "impact_analysis": "谷歌与星座能源达成890兆瓦核电装机协议，核电需求受关注，利好A股核电及核能产业链相关个股。",
+      "affected_sectors": [
+        "核电",
+        "核能"
+      ],
+      "affected_stocks": [
+        "601985.SS",
+        "600886.SS",
+        "000777.SZ"
       ],
       "importance": 6
     }
