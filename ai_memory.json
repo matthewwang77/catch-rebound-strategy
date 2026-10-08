@@ -2428,6 +2428,29 @@
       "why_wrong": null,
       "missed_signal": null,
       "lesson": null
+    },
+    {
+      "date": "20261008",
+      "signal_date": "20260909",
+      "mode": "bear",
+      "entry_price": 9.12,
+      "pullback_pct": 9.8,
+      "limit_days": 3,
+      "analysis": "- 量：近3日均量/涨停日量=111%，不缩反放，OBV下降，资金持续流出，无承接。\n- 价：股价9.12跌破MA5/MA10/MA20，仅靠布林下轨8.76支撑，20日高10.47回落9.8%，弱势。\n- 形：3连板后回调8天，非缩量洗盘形态，MACD死叉柱扩大，属破位下行。\n- 时：回调8天已超短线窗口，情绪冰点期1档，普跌无涨停，窗口关闭。\n- 仓位建议：0成仓（冰点期1档）\n- 反弹概率：低（≤30%）\n- 最终结论：【放弃】",
+      "sentiment": "冰点期1档",
+      "position": "0成仓",
+      "opinion": "【放弃】",
+      "verified": false,
+      "return_7d": null,
+      "exit_reason": null,
+      "exit_day": null,
+      "verdict": null,
+      "review_analysis": null,
+      "review_quality": null,
+      "what_happened": null,
+      "why_wrong": null,
+      "missed_signal": null,
+      "lesson": null
     }
   ],
   "002080.SZ": [
