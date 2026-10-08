@@ -1,5 +1,5 @@
 {
-  "scan_time": "2026-10-08 15:33",
+  "scan_time": "2026-10-08 15:36",
   "scan_date": "20261008",
   "data_date": "2026-10-08",
   "market": {
@@ -28,7 +28,7 @@
       "candidates": [
         {
           "code": "002762.SZ",
-          "price": 9.03,
+          "price": 9.02,
           "signal_date": "20260909",
           "pullback_pct": 9.8,
           "limit_days": 3,
