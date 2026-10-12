@@ -1,26 +1,13 @@
 {
-  "scan_time": "2026-10-12 14:06",
+  "scan_time": "2026-10-12 15:17",
   "scan_date": "20261012",
-  "data_date": "2026-10-09",
-  "market": {
-    "上证": {
-      "price": 3813.79,
-      "pct": 0.05
-    },
-    "深证": {
-      "price": 12641.86,
-      "pct": 0.17
-    },
-    "创业板": {
-      "price": 3043.34,
-      "pct": 0.22
-    }
-  },
+  "data_date": "2026-10-12",
+  "market": {},
   "regime": {
-    "status": "bear",
-    "label": "1档: 冰点期 — 坚决不参与",
-    "avg_trend": -2.18,
-    "recommended_mode": "bear"
+    "status": "neutral",
+    "label": "数据不足，默认非熊市",
+    "avg_trend": 0,
+    "recommended_mode": "strict"
   },
   "modes": {
     "bear": {
@@ -28,7 +15,7 @@
       "candidates": [
         {
           "code": "600551.SS",
-          "price": 8.17,
+          "price": 8.18,
           "signal_date": "20261009",
           "pullback_pct": 9.4,
           "limit_days": 3,
