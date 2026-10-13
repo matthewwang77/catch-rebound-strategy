@@ -1,0 +1,158 @@
+{
+  "date": "20261013",
+  "market_summary": "今日消息面整体偏空，A股三大指数集体低开，创业板指跌幅扩大至3%，算力硬件、半导体、MLCC等科技板块领跌，全市场近4900只个股下跌。海外AI相关股票承压、韩国芯片股下挫以及国内商品期货多数下跌共同压制市场情绪，但央行逆回购操作和人民币中间价上调提供一定支撑。",
+  "sentiment_impact": "偏空",
+  "news": [
+    {
+      "title": "摩根大通和高盛降低对AI云初创公司Volta 50亿美元贷款交易的风险敞口",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610133893378594.html",
+      "time": "2026-10-13 08:56:02",
+      "ai_summary": "A股三大指数集体低开，算力硬件领跌",
+      "impact_analysis": "三大指数低开且创业板指迅速扩大跌幅至3%，算力硬件、半导体、MLCC等板块领跌，全市场近4900只个股下跌，直接反映市场情绪极度悲观，对大盘指数形成显著压制。",
+      "affected_sectors": [
+        "算力硬件",
+        "半导体",
+        "MLCC"
+      ],
+      "affected_stocks": [],
+      "importance": 9
+    },
+    {
+      "title": "进出口银行前三季度投放外贸领域贷款近万亿元",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610133893693531.html",
+      "time": "2026-10-13 09:50:54",
+      "ai_summary": "美国光通信板块跳水，AI概念承压",
+      "impact_analysis": "美股光通信和网络设备股大跌，引发A股算力硬件板块跟跌，光纤、存储芯片等跌幅居前，对科技成长股形成直接负面传导，压制创业板和科创50指数。",
+      "affected_sectors": [
+        "光通信",
+        "算力硬件",
+        "半导体"
+      ],
+      "affected_stocks": [],
+      "importance": 8
+    },
+    {
+      "title": "海内外市场双驱动 9月挖掘机销量同比增长14.4%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610133893638940.html",
+      "time": "2026-10-13 09:47:30",
+      "ai_summary": "韩国芯片股下挫拖累Kospi",
+      "impact_analysis": "三星电子和SK海力士连续下跌，美光科技隔夜下挫，全球芯片股疲软直接拖累A股半导体板块，存储芯片、MLCC等细分领域跌幅居前，对科技板块形成压力。",
+      "affected_sectors": [
+        "半导体",
+        "存储芯片",
+        "MLCC"
+      ],
+      "affected_stocks": [],
+      "importance": 8
+    },
+    {
+      "title": "美的旗下两家公司携新品亮相上海工博会",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610133893664458.html",
+      "time": "2026-10-13 09:44:00",
+      "ai_summary": "央行开展650亿元7天期逆回购",
+      "impact_analysis": "央行通过逆回购操作向市场注入流动性，全额满足一级交易商需求，有助于缓解资金面紧张情绪，对大盘指数形成一定支撑，但规模有限，影响偏中性。",
+      "affected_sectors": [
+        "银行",
+        "券商"
+      ],
+      "affected_stocks": [],
+      "importance": 7
+    },
+    {
+      "title": "尊界V800公布制动踏板第三方检测结果",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610133893620056.html",
+      "time": "2026-10-13 09:43:09",
+      "ai_summary": "高盛上调全球股市评级至增持",
+      "impact_analysis": "高盛看多全球股市，认为企业盈利增长构成支撑，估值更具吸引力，可能提振外资对A股的风险偏好，对大盘指数有正面情绪引导，但需关注实际资金流向。",
+      "affected_sectors": [
+        "大盘蓝筹",
+        "外资重仓股"
+      ],
+      "affected_stocks": [],
+      "importance": 7
+    },
+    {
+      "title": "A股一天两起“天价离婚”！分手费合计超25亿元",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610133893627397.html",
+      "time": "2026-10-13 09:58:59",
+      "ai_summary": "9月挖掘机销量同比增长14.4%",
+      "impact_analysis": "挖掘机销量数据超预期，国内和出口双增长，显示基建和制造业需求回暖，对工程机械板块形成直接利好，可能带动相关产业链走强。",
+      "affected_sectors": [
+        "工程机械",
+        "基建",
+        "高端制造"
+      ],
+      "affected_stocks": [
+        "600031.SS",
+        "000425.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "取消20年期美债发行？华尔街猜测：贝森特要“动真格”！",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610133893338627.html",
+      "time": "2026-10-13 08:53:52",
+      "ai_summary": "华为麒麟芯片终端发货过亿",
+      "impact_analysis": "华为披露麒麟芯片回归后终端发货过亿，显示国产半导体产业链取得进展，对华为产业链、半导体设备及材料板块形成正面催化，但需注意市场整体情绪偏空。",
+      "affected_sectors": [
+        "半导体",
+        "华为产业链",
+        "消费电子"
+      ],
+      "affected_stocks": [],
+      "importance": 7
+    },
+    {
+      "title": "华为披露麒麟芯片回归后的最新进展：相关终端产品累计发货过亿",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610133893674757.html",
+      "time": "2026-10-13 09:49:23",
+      "ai_summary": "商品期货多数下跌，甲醇碳酸锂领跌",
+      "impact_analysis": "国内商品期货早盘多数下跌，甲醇跌超5%，碳酸锂跌超4%，反映工业品需求预期偏弱，对周期股和新能源上游材料板块形成压力，拖累相关指数。",
+      "affected_sectors": [
+        "化工",
+        "锂电池",
+        "有色金属"
+      ],
+      "affected_stocks": [],
+      "importance": 7
+    },
+    {
+      "title": "10亿元→34亿元！行云科技算力大单金额再次上调",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610133893434084.html",
+      "time": "2026-10-13 09:09:00",
+      "ai_summary": "人民币中间价上调15点",
+      "impact_analysis": "人民币兑美元中间价上调，显示汇率企稳，有助于稳定外资预期和北向资金流向，对A股市场情绪有轻微正面影响，但幅度较小，影响有限。",
+      "affected_sectors": [
+        "外资重仓股",
+        "金融"
+      ],
+      "affected_stocks": [],
+      "importance": 6
+    },
+    {
+      "title": "美国光通信板块周一跳水！华尔街热议成因",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610133893499776.html",
+      "time": "2026-10-13 09:19:00",
+      "ai_summary": "高位人气股大面积走弱多股跌停",
+      "impact_analysis": "哈药股份等多只高位人气股跌停，显示市场风险偏好急剧下降，短线资金撤离明显，对市场情绪和中小盘指数形成负面冲击，可能加剧调整压力。",
+      "affected_sectors": [
+        "题材股",
+        "中小盘"
+      ],
+      "affected_stocks": [
+        "600664.SS"
+      ],
+      "importance": 6
+    }
+  ]
+}

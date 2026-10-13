@@ -2497,6 +2497,29 @@
       "why_wrong": null,
       "missed_signal": null,
       "lesson": null
+    },
+    {
+      "date": "20261013",
+      "signal_date": "20260909",
+      "mode": "bear",
+      "entry_price": 8.69,
+      "pullback_pct": 9.8,
+      "limit_days": 3,
+      "analysis": "- 量：今日量比1.01x，近3日均量为涨停日120%，属放量下跌而非缩量，OBV持续下行，资金流出明确。\n- 价：现价8.69已跌破MA5/10/20全部均线，逼近布林下轨8.63，8.60前低岌岌可危，无有效支撑。\n- 形：3连板后放量阴跌，MACD死叉绿柱扩大，属\"破位下行\"形态，非健康回调。\n- 时：距涨停仅3天，回调9.8%仍在下跌通道，无变盘窗口信号，时间不充分。\n- 仓位建议：0成仓（冰点期1档）\n- 反弹概率：低（≤30%）\n- 最终结论：【放弃】",
+      "sentiment": "冰点期1档",
+      "position": "0成仓",
+      "opinion": "【放弃】",
+      "verified": false,
+      "return_7d": null,
+      "exit_reason": null,
+      "exit_day": null,
+      "verdict": null,
+      "review_analysis": null,
+      "review_quality": null,
+      "what_happened": null,
+      "why_wrong": null,
+      "missed_signal": null,
+      "lesson": null
     }
   ],
   "002080.SZ": [
