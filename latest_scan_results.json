@@ -1,34 +1,42 @@
 {
-  "scan_time": "2026-10-13 15:25",
-  "scan_date": "20261013",
-  "data_date": "2026-10-12",
+  "scan_time": "2026-10-14 10:02",
+  "scan_date": "20261014",
+  "data_date": "2026-10-13",
   "market": {
     "上证": {
-      "price": 3797.24,
-      "pct": -0.43
+      "price": 3800.86,
+      "pct": 0.1
     },
     "深证": {
-      "price": 12384.87,
-      "pct": -2.03
+      "price": 12353.7,
+      "pct": -0.25
     },
     "创业板": {
-      "price": 2963.82,
-      "pct": -2.61
+      "price": 2958.34,
+      "pct": -0.18
     }
   },
   "regime": {
-    "status": "bear",
-    "label": "1档: 冰点期 — 坚决不参与",
-    "avg_trend": -2.61,
-    "recommended_mode": "bear"
+    "status": "neutral",
+    "label": "数据不足，默认非熊市",
+    "avg_trend": 0,
+    "recommended_mode": "strict"
   },
   "modes": {
     "bear": {
-      "count": 1,
+      "count": 2,
       "candidates": [
         {
+          "code": "600551.SS",
+          "price": 7.99,
+          "signal_date": "20261012",
+          "pullback_pct": 10.0,
+          "limit_days": 3,
+          "entity_ratio": 100.0
+        },
+        {
           "code": "002762.SZ",
-          "price": 8.79,
+          "price": 8.6,
           "signal_date": "20260909",
           "pullback_pct": 9.8,
           "limit_days": 3,
