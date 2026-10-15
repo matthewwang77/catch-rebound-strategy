@@ -28,7 +28,7 @@
       "candidates": [
         {
           "code": "603636.SS",
-          "price": 7.41,
+          "price": 7.42,
           "signal_date": "20261013",
           "pullback_pct": 10.6,
           "limit_days": 3,
@@ -36,7 +36,7 @@
         },
         {
           "code": "600551.SS",
-          "price": 8.19,
+          "price": 8.21,
           "signal_date": "20261012",
           "pullback_pct": 10.0,
           "limit_days": 3,
@@ -44,7 +44,7 @@
         },
         {
           "code": "002762.SZ",
-          "price": 8.39,
+          "price": 8.38,
           "signal_date": "20260909",
           "pullback_pct": 9.8,
           "limit_days": 3,
