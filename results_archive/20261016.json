@@ -1,0 +1,43 @@
+{
+  "scan_time": "2026-10-16 10:06",
+  "scan_date": "20261016",
+  "data_date": "2026-10-16",
+  "market": {},
+  "regime": {
+    "status": "neutral",
+    "label": "数据不足，默认非熊市",
+    "avg_trend": 0,
+    "recommended_mode": "strict"
+  },
+  "modes": {
+    "strict": {
+      "count": 3,
+      "candidates": [
+        {
+          "code": "600551.SS",
+          "price": 8.31,
+          "signal_date": "20261009",
+          "pullback_pct": 9.4,
+          "limit_days": 3,
+          "entity_ratio": 100.0
+        },
+        {
+          "code": "000798.SZ",
+          "price": 9.55,
+          "signal_date": "20261009",
+          "pullback_pct": 19.0,
+          "limit_days": 3,
+          "entity_ratio": 100.0
+        },
+        {
+          "code": "603958.SS",
+          "price": 17.71,
+          "signal_date": "20260921",
+          "pullback_pct": 18.8,
+          "limit_days": 3,
+          "entity_ratio": 100.0
+        }
+      ]
+    }
+  }
+}
