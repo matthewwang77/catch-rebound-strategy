@@ -1,5 +1,5 @@
 {
-  "scan_time": "2026-10-16 15:01",
+  "scan_time": "2026-10-16 15:06",
   "scan_date": "20261016",
   "data_date": "2026-10-15",
   "market": {
@@ -19,7 +19,7 @@
   "regime": {
     "status": "bear",
     "label": "1档: 冰点期 — 坚决不参与",
-    "avg_trend": -3.96,
+    "avg_trend": -3.69,
     "recommended_mode": "bear"
   },
   "modes": {
@@ -28,7 +28,7 @@
       "candidates": [
         {
           "code": "600551.SS",
-          "price": 8.06,
+          "price": 8.07,
           "signal_date": "20261012",
           "pullback_pct": 10.0,
           "limit_days": 3,
@@ -36,7 +36,7 @@
         },
         {
           "code": "002762.SZ",
-          "price": 8.11,
+          "price": 8.15,
           "signal_date": "20260909",
           "pullback_pct": 9.8,
           "limit_days": 3,
