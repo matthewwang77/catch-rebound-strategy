@@ -1,5 +1,5 @@
 {
-  "scan_time": "2026-10-20 15:04",
+  "scan_time": "2026-10-20 15:07",
   "scan_date": "20261020",
   "data_date": "2026-10-19",
   "market": {
@@ -19,7 +19,7 @@
   "regime": {
     "status": "bear",
     "label": "2档: 低迷期 — 建议观望",
-    "avg_trend": -1.95,
+    "avg_trend": -1.83,
     "recommended_mode": "bear"
   },
   "modes": {
@@ -44,7 +44,7 @@
         },
         {
           "code": "002762.SZ",
-          "price": 8.19,
+          "price": 8.18,
           "signal_date": "20260909",
           "pullback_pct": 9.8,
           "limit_days": 3,
