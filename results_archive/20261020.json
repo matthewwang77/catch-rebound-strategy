@@ -1,5 +1,5 @@
 {
-  "scan_time": "2026-10-20 11:54",
+  "scan_time": "2026-10-20 12:00",
   "scan_date": "20261020",
   "data_date": "2026-10-19",
   "market": {
@@ -28,7 +28,7 @@
       "candidates": [
         {
           "code": "603636.SS",
-          "price": 8.2,
+          "price": 8.35,
           "signal_date": "20261019",
           "pullback_pct": 8.3,
           "limit_days": 3,
@@ -36,7 +36,7 @@
         },
         {
           "code": "600551.SS",
-          "price": 7.89,
+          "price": 7.94,
           "signal_date": "20261012",
           "pullback_pct": 10.0,
           "limit_days": 3,
@@ -44,7 +44,7 @@
         },
         {
           "code": "002762.SZ",
-          "price": 8.69,
+          "price": 8.25,
           "signal_date": "20260909",
           "pullback_pct": 9.8,
           "limit_days": 3,
