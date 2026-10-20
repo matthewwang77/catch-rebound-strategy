@@ -1,54 +1,49 @@
 {
-  "scan_time": "2026-10-19 15:06",
-  "scan_date": "20261019",
-  "data_date": "2026-10-19",
-  "market": {
-    "上证": {
-      "price": 3734.49,
-      "pct": 0.49
-    },
-    "深证": {
-      "price": 11827.1,
-      "pct": 0.21
-    },
-    "创业板": {
-      "price": 2772.38,
-      "pct": -0.39
-    }
-  },
+  "scan_time": "2026-10-20 10:55",
+  "scan_date": "20261020",
+  "data_date": "2026-10-20",
+  "market": {},
   "regime": {
-    "status": "bear",
-    "label": "1档: 冰点期 — 坚决不参与",
-    "avg_trend": -3.0,
-    "recommended_mode": "bear"
+    "status": "neutral",
+    "label": "数据不足，默认非熊市",
+    "avg_trend": 0,
+    "recommended_mode": "strict"
   },
   "modes": {
-    "bear": {
-      "count": 3,
+    "strict": {
+      "count": 4,
       "candidates": [
         {
-          "code": "603636.SS",
-          "price": 7.96,
-          "signal_date": "20261019",
-          "pullback_pct": 6.9,
+          "code": "600551.SS",
+          "price": 7.85,
+          "signal_date": "20261009",
+          "pullback_pct": 9.4,
+          "limit_days": 3,
+          "entity_ratio": 100.0
+        },
+        {
+          "code": "000798.SZ",
+          "price": 9.21,
+          "signal_date": "20261009",
+          "pullback_pct": 19.0,
+          "limit_days": 3,
+          "entity_ratio": 100.0
+        },
+        {
+          "code": "603958.SS",
+          "price": 16.91,
+          "signal_date": "20260921",
+          "pullback_pct": 18.8,
+          "limit_days": 3,
+          "entity_ratio": 100.0
+        },
+        {
+          "code": "002942.SZ",
+          "price": 16.22,
+          "signal_date": "20261008",
+          "pullback_pct": 17.2,
           "limit_days": 3,
           "entity_ratio": 67.0
-        },
-        {
-          "code": "600551.SS",
-          "price": 7.95,
-          "signal_date": "20261012",
-          "pullback_pct": 10.0,
-          "limit_days": 3,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "002762.SZ",
-          "price": 8.41,
-          "signal_date": "20260909",
-          "pullback_pct": 9.8,
-          "limit_days": 3,
-          "entity_ratio": 100.0
         }
       ]
     }
