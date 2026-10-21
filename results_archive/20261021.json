@@ -1,5 +1,5 @@
 {
-  "scan_time": "2026-10-21 10:55",
+  "scan_time": "2026-10-21 12:55",
   "scan_date": "20261021",
   "data_date": "2026-10-20",
   "market": {
@@ -19,16 +19,16 @@
   "regime": {
     "status": "neutral",
     "label": "3档: 启动期 — 谨慎入场",
-    "avg_trend": 0.16,
+    "avg_trend": 0.0,
     "recommended_mode": "strict"
   },
   "modes": {
     "strict": {
-      "count": 5,
+      "count": 3,
       "candidates": [
         {
           "code": "600551.SS",
-          "price": 8.01,
+          "price": 7.97,
           "signal_date": "20261009",
           "pullback_pct": 9.4,
           "limit_days": 3,
@@ -36,31 +36,15 @@
         },
         {
           "code": "000798.SZ",
-          "price": 9.19,
+          "price": 9.53,
           "signal_date": "20261009",
           "pullback_pct": 19.0,
           "limit_days": 3,
           "entity_ratio": 100.0
         },
         {
-          "code": "603958.SS",
-          "price": 17.55,
-          "signal_date": "20260921",
-          "pullback_pct": 18.8,
-          "limit_days": 3,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "002403.SZ",
-          "price": 11.19,
-          "signal_date": "20261020",
-          "pullback_pct": 18.3,
-          "limit_days": 3,
-          "entity_ratio": 100.0
-        },
-        {
           "code": "002942.SZ",
-          "price": 16.58,
+          "price": 16.61,
           "signal_date": "20261008",
           "pullback_pct": 17.2,
           "limit_days": 3,
