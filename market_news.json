@@ -1,179 +1,200 @@
 {
-  "date": "20261021",
-  "market_summary": "今日消息面多空交织，工信部零碳工厂目标与能源局煤电新能源融合政策利好绿色产业，但摩根大通下调宁德时代评级引发创业板权重股暴跌，叠加碳酸锂期货重挫，市场情绪明显偏空，三大指数收跌且成交萎缩。",
-  "sentiment_impact": "偏空",
+  "date": "20261022",
+  "market_summary": "今日消息面多空交织，AI与机器人产业催化密集（马斯克人形机器人量产预期、宇树大会、L3准入推进），但光模块龙头集体大跌拖累科技板块，主力资金大幅流出电子通信。宏观层面上海GDP超预期、广东企业贷款利率下行，流动性环境偏暖，但居民用电负增长引发内需担忧。",
+  "sentiment_impact": "中性",
   "news": [
     {
-      "title": "小摩：宁德时代降至“中性”评级 整车厂盈利能力已承压",
-      "source": "新浪财经",
-      "url": "https://finance.sina.com.cn/stock/hkstock/hkgg/2026-10-21/doc-inivynsp6123987.shtml",
-      "time": "2026-10-21 14:48",
-      "ai_summary": "小摩下调宁德时代H股评级",
-      "impact_analysis": "摩根大通将宁德时代H股降至中性并下调盈利预测，引发A股宁德时代暴跌超12%，直接拖累创业板指跌2%，成为今日市场最大空头力量。",
+      "title": "宇树科技王兴兴：AI模型的输入输出和真实机器人的对齐是具身智能迈过ChatGPT时刻最核心挑战",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610223903840494.html",
+      "time": "2026-10-22 11:14:23",
+      "ai_summary": "马斯克：人形机器人将成全球最大产业",
+      "impact_analysis": "特斯拉CEO明确人形机器人赛道为全球最大产业，并给出明年末Optimus对外交付时间表，强化产业爆发预期，直接催化A股人形机器人产业链情绪，减速器、电机、灵巧手等核心零部件环节受益。",
       "affected_sectors": [
+        "人形机器人",
+        "减速器",
+        "电机",
+        "自动化设备"
+      ],
+      "affected_stocks": [
+        "002472.SZ",
+        "603728.SS",
+        "002050.SZ",
+        "300124.SZ"
+      ],
+      "importance": 9
+    },
+    {
+      "title": "中微公司全球首台高选择性刻蚀设备顺利付运",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610223903842517.html",
+      "time": "2026-10-22 11:15:00",
+      "ai_summary": "光模块龙头集体大跌，主力大幅流出",
+      "impact_analysis": "新易盛跌近10%、中际旭创跌破600元，主力净卖出中际旭创超19亿，电子板块净流出超123亿。算力硬件高位调整压力集中释放，短期拖累创业板及科技成长风格，需警惕资金从AI硬件向机器人等新方向切换。",
+      "affected_sectors": [
+        "光模块",
+        "通信设备",
+        "算力硬件",
+        "电子"
+      ],
+      "affected_stocks": [
+        "300502.SZ",
+        "300308.SZ",
+        "300394.SZ"
+      ],
+      "importance": 9
+    },
+    {
+      "title": "“易中天”股价再度大跌 “光”还在不在？",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610223903833972.html",
+      "time": "2026-10-22 11:09:06",
+      "ai_summary": "L3自动驾驶第二批准入试点进行中",
+      "impact_analysis": "工信部明确L3级自动驾驶第二批准入试点推进，叠加自动驾驶标志灯统一标准征求意见，智能驾驶政策落地节奏加快，利好整车、域控制器、激光雷达及智能底盘产业链，主题催化持续。",
+      "affected_sectors": [
+        "智能驾驶",
+        "汽车电子",
+        "激光雷达",
+        "整车"
+      ],
+      "affected_stocks": [
+        "002920.SZ",
+        "601127.SS",
+        "688326.SS",
+        "002906.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "美国ITC发布对车辆零部件及其组件的337部分终裁",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610223903797982.html",
+      "time": "2026-10-22 10:39:19",
+      "ai_summary": "DeepSeek完成千亿融资，宁德腾讯参投",
+      "impact_analysis": "DeepSeek完成约1000亿元融资，为中国史上最大融资之一，宁德时代与腾讯参投，凸显AI大模型资本热度与产业资本深度绑定，利好AI算力、数据中心及参投方相关概念，提振AI应用板块信心。",
+      "affected_sectors": [
+        "AI大模型",
+        "算力",
+        "数据中心",
+        "AI应用"
+      ],
+      "affected_stocks": [
+        "300750.SZ",
+        "000938.SZ",
+        "603019.SS"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "马斯克：人形机器人将成为全球最大产业 明年年末有望实现Optimus对外交付",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610223903837056.html",
+      "time": "2026-10-22 11:09:32",
+      "ai_summary": "中微公司高选择性刻蚀设备全球首台付运",
+      "impact_analysis": "中微公司面向GAA、3D NAND、3D DRAM的高选择性刻蚀设备全球首台付运，填补国内下一代3D半导体制造关键工艺空白，强化半导体设备国产替代逻辑，利好刻蚀及先进封装设备链。",
+      "affected_sectors": [
+        "半导体设备",
+        "刻蚀设备",
+        "先进封装"
+      ],
+      "affected_stocks": [
+        "688012.SS",
+        "002371.SZ",
+        "688072.SS"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "清陶动力固态动力电池项目（一期）投产",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610223903798550.html",
+      "time": "2026-10-22 10:41:05",
+      "ai_summary": "清陶固态电池一期10GWh投产",
+      "impact_analysis": "上汽与清陶合资固态动力电池一期10GWh投产，固态电池技术已应用于量产车型，产业化提速信号明确，利好固态电池材料、设备及上汽产业链，催化新能源电池技术升级主题。",
+      "affected_sectors": [
+        "固态电池",
         "锂电池",
         "新能源汽车"
       ],
       "affected_stocks": [
-        "300750.SZ"
-      ],
-      "importance": 9
-    },
-    {
-      "title": "创业板指跌2% 宁德时代跌超12%",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610213902578132.html",
-      "time": "2026-10-21 14:48:13",
-      "ai_summary": "创业板指跌2%宁德跌超12%",
-      "impact_analysis": "宁德时代暴跌直接击穿创业板指权重支撑，引发锂电池、汽车、风电等新能源赛道集体下挫，市场恐慌情绪升温，需警惕基金赎回负反馈。",
-      "affected_sectors": [
-        "锂电池",
-        "新能源汽车",
-        "风电"
-      ],
-      "affected_stocks": [
+        "600104.SS",
         "300750.SZ",
         "002460.SZ"
       ],
-      "importance": 9
-    },
-    {
-      "title": "500亿增持投向来了！中国国新三季度增持、新进个股揭晓",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610213902588767.html",
-      "time": "2026-10-21 15:01:11",
-      "ai_summary": "国新500亿增持投向硬科技",
-      "impact_analysis": "国家队真金白银增持硬科技，释放维稳信号，提振半导体、新材料等板块信心，但短期市场情绪受宁德拖累，对冲效果有限。",
-      "affected_sectors": [
-        "半导体",
-        "新材料"
-      ],
-      "affected_stocks": [
-        "600176.SS",
-        "688146.SS"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "国内商品期货收盘 主力合约互有涨跌",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610213902586958.html",
-      "time": "2026-10-21 15:00:05",
-      "ai_summary": "碳酸锂期货跌超4%",
-      "impact_analysis": "碳酸锂主力合约重挫，反映锂电上游供给过剩预期加剧，直接压制锂矿及电池板块估值，与宁德时代暴跌形成共振，拖累创业板。",
-      "affected_sectors": [
-        "锂矿",
-        "锂电池"
-      ],
-      "affected_stocks": [
-        "002466.SZ",
-        "300750.SZ"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "工信部：2030年建设500个左右国家级零碳工厂和零碳算力设施",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610213902596245.html",
-      "time": "2026-10-21 15:11:29",
-      "ai_summary": "工信部目标2030年建500个零碳工厂",
-      "impact_analysis": "明确工业绿色转型长期目标，直接利好节能环保、碳交易、新能源装备等板块，但短期对指数拉动有限，更多为结构性主题催化。",
-      "affected_sectors": [
-        "节能环保",
-        "碳交易",
-        "新能源"
-      ],
-      "affected_stocks": [
-        "300070.SZ",
-        "600292.SS"
-      ],
       "importance": 7
     },
     {
-      "title": "日本关键稀土元素储备即将耗尽 外交部：中方依法依规对日实施出口管制",
+      "title": "自动驾驶标志灯将有统一标尺 一盏小蓝灯明确“谁在承担后果”",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610213902597557.html",
-      "time": "2026-10-21 15:17:14",
-      "ai_summary": "中国对日稀土出口管制持续",
-      "impact_analysis": "稀土战略资源地位强化，供给收缩预期推升稀土价格，利好稀土开采及磁材板块，但需关注外交博弈对市场风险偏好的扰动。",
+      "url": "https://finance.eastmoney.com/a/202610223903783655.html",
+      "time": "2026-10-22 10:28:23",
+      "ai_summary": "多只宽基ETF临近午盘集中放量",
+      "impact_analysis": "中证500ETF半小时成交超30亿、创业板ETF及科创50ETF成交超76亿，宽基ETF集中放量往往指向国家队或机构资金入场托底，对指数形成支撑信号，缓解科技股调整带来的抛压。",
       "affected_sectors": [
-        "稀土永磁",
-        "小金属"
-      ],
-      "affected_stocks": [
-        "600111.SS",
-        "000831.SZ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "A股三大指数收跌 成交额不足1.5万亿 IT服务板块逆市走强",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610213902586860.html",
-      "time": "2026-10-21 15:00:46",
-      "ai_summary": "三大指数收跌成交不足1.5万亿",
-      "impact_analysis": "指数缩量下跌，IT服务逆市走强显示资金转向低位科技题材，但电池、白酒、机器人等权重板块领跌，市场赚钱效应差，短期或延续震荡。",
-      "affected_sectors": [
-        "IT服务",
-        "传媒"
-      ],
-      "affected_stocks": [
-        "600845.SS",
-        "300413.SZ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "北京：前三季度服务机器人、工业机器人等产品产量分别增长1.7倍、47.6%",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610213902595375.html",
-      "time": "2026-10-21 15:08:53",
-      "ai_summary": "北京机器人产量暴增",
-      "impact_analysis": "服务机器人产量增1.7倍、工业机器人增47.6%，验证高端制造高景气，强化机器人板块基本面预期，但今日机器人板块仍随大盘调整。",
-      "affected_sectors": [
-        "机器人",
-        "工业自动化"
-      ],
-      "affected_stocks": [
-        "300124.SZ",
-        "002747.SZ"
-      ],
-      "importance": 6
-    },
-    {
-      "title": "国家能源局：推动煤电与新能源融合发展",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610213902568220.html",
-      "time": "2026-10-21 14:38:32",
-      "ai_summary": "能源局推动煤电新能源融合",
-      "impact_analysis": "政策引导煤电与新能源协同发展，利好火电灵活性改造、储能及绿电运营，但煤电与新能源利益协调难度大，短期影响偏主题。",
-      "affected_sectors": [
-        "电力",
-        "储能",
-        "绿电"
-      ],
-      "affected_stocks": [
-        "600900.SS",
-        "300274.SZ"
-      ],
-      "importance": 6
-    },
-    {
-      "title": "尾盘多只宽基ETF小幅放量",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610213902584617.html",
-      "time": "2026-10-21 14:57:05",
-      "ai_summary": "尾盘宽基ETF小幅放量",
-      "impact_analysis": "尾盘沪深300、创业板等宽基ETF放量，疑似资金借道ETF护盘或抄底，但量级有限，未能扭转指数跌势，信号意义大于实质。",
-      "affected_sectors": [
-        "大盘蓝筹",
+        "宽基指数",
+        "中小盘",
         "创业板"
       ],
       "affected_stocks": [
-        "510300.SS",
-        "159915.SZ"
+        "510500.SS",
+        "159915.SZ",
+        "588000.SS"
       ],
-      "importance": 5
+      "importance": 7
+    },
+    {
+      "title": "2026年前三季度湖北GDP同比增长4.7%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610223903829260.html",
+      "time": "2026-10-22 11:00:29",
+      "ai_summary": "上海前三季度GDP增长5.5%超预期",
+      "impact_analysis": "上海GDP增速高于全国0.9个百分点，动能向新、结构向优，显示核心城市经济韧性，对市场整体风险偏好形成支撑，利好上海本地股及新质生产力相关产业，但单区域数据对大盘直接拉动有限。",
+      "affected_sectors": [
+        "上海本地股",
+        "新质生产力",
+        "科技"
+      ],
+      "affected_stocks": [
+        "600009.SS",
+        "600104.SS"
+      ],
+      "importance": 6
+    },
+    {
+      "title": "芜湖国资、中国中铁等成立多式联运公司，注册资本8亿元",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610223903823982.html",
+      "time": "2026-10-22 10:53:11",
+      "ai_summary": "广东企业贷款利率降至2.46%",
+      "impact_analysis": "广东新发放企业贷款利率同比降0.22个百分点至2.46%，社会综合融资成本维持低位，印证宽松货币环境延续，利好高负债行业与中小企业盈利修复，对银行息差形成一定压力但整体偏暖。",
+      "affected_sectors": [
+        "银行",
+        "中小企业",
+        "地产"
+      ],
+      "affected_stocks": [
+        "600036.SS",
+        "000001.SZ"
+      ],
+      "importance": 6
+    },
+    {
+      "title": "工信部装备工业一司郭守刚：L3级自动驾驶产品第二批准入试点工作正在进行",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610223903788448.html",
+      "time": "2026-10-22 10:32:17",
+      "ai_summary": "居民用电十年来首现负增长",
+      "impact_analysis": "1-9月城乡居民用电量同比降0.3%，为近十年首次转负，或反映居民消费与内需走弱及气温因素，对电力需求及消费复苏预期形成压制，需关注后续内需数据是否持续走弱。",
+      "affected_sectors": [
+        "电力",
+        "消费",
+        "家电"
+      ],
+      "affected_stocks": [
+        "600900.SS",
+        "600011.SS"
+      ],
+      "importance": 6
     }
   ]
 }
