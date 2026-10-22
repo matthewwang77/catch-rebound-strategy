@@ -1,15 +1,15 @@
 {
-  "scan_time": "2026-10-22 15:02",
+  "scan_time": "2026-10-22 15:07",
   "scan_date": "20261022",
   "data_date": "2026-10-22",
   "market": {
     "上证": {
-      "price": 3663.29,
-      "pct": -1.93
+      "price": 3672.35,
+      "pct": -1.69
     },
     "深证": {
-      "price": 11399.72,
-      "pct": -3.4
+      "price": 11436.56,
+      "pct": -3.09
     },
     "创业板": {
       "price": 2694.71,
@@ -19,7 +19,7 @@
   "regime": {
     "status": "bear",
     "label": "1档: 冰点期 — 坚决不参与",
-    "avg_trend": -2.36,
+    "avg_trend": -2.08,
     "recommended_mode": "bear"
   },
   "modes": {
@@ -36,7 +36,7 @@
         },
         {
           "code": "600551.SS",
-          "price": 7.51,
+          "price": 7.5,
           "signal_date": "20261012",
           "pullback_pct": 10.0,
           "limit_days": 3,
