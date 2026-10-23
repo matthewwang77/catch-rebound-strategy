@@ -3781,5 +3781,30 @@
       "missed_signal": null,
       "lesson": null
     }
+  ],
+  "002514.SZ": [
+    {
+      "date": "20261023",
+      "signal_date": "20261021",
+      "mode": "bear",
+      "entry_price": 2.24,
+      "pullback_pct": 2.8,
+      "limit_days": 3,
+      "analysis": "- 量：近3日均量为涨停日78%，缩量不足且OBV下降，资金持续流出，承接乏力。\n- 价：现价2.24跌破MA5/10/20，逼近布林下轨2.20，仅此一线支撑，破位则打开下行空间。\n- 形：3连板后仅回调2天、幅度2.8%，回调不充分，属高位滞涨转弱形态，非标准回调买点。\n- 时：回调第2天，冰点期窗口未到，时间与情绪均不支持。\n- 仓位建议：0成仓（冰点期1档，坚决不参与）\n- 反弹概率：低（≤30%）\n- 最终结论：【放弃】",
+      "sentiment": "冰点期1档，坚决不参与",
+      "position": "0成仓",
+      "opinion": "【放弃】",
+      "verified": false,
+      "return_7d": null,
+      "exit_reason": null,
+      "exit_day": null,
+      "verdict": null,
+      "review_analysis": null,
+      "review_quality": null,
+      "what_happened": null,
+      "why_wrong": null,
+      "missed_signal": null,
+      "lesson": null
+    }
   ]
 }
