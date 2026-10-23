@@ -1,190 +1,178 @@
 {
-  "date": "20261022",
-  "market_summary": "今日A股三大指数集体收跌，创业板指重挫4.37%，成交额超1.5万亿放量近900亿，电子、通信、半导体板块资金大幅流出，全球AI估值担忧与美债收益率高企压制风险偏好，但尾盘沪深300ETF及上证50ETF爆量显示护盘资金介入，银行等权重股逆势走强。",
+  "date": "20261023",
+  "market_summary": "今日A股市场大幅调整，创业板指跌逾3%跌破2500点，沪指跌2%，超5000只个股下跌，主要受海外AI军备竞赛烧钱担忧及科技股抛售情绪传导影响。同时，多只沪深300ETF显著放量，显示有资金逆势布局，市场情绪在恐慌中暗藏分歧。",
   "sentiment_impact": "偏空",
   "news": [
     {
-      "title": "工信部NVDB发布关于防范PHP远程代码执行超危漏洞的风险提示",
+      "title": "苹果首款折叠iPhone Duo开售火爆：门店外排长龙 “黄牛”加价2000元回收",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610223903985989.html",
-      "time": "2026-10-22 14:18:48",
-      "ai_summary": "三大指数收跌，创业板重挫4.37%",
-      "impact_analysis": "指数大幅收跌且成交放量，显示抛压释放与多空激烈博弈，创业板跌幅远超主板，成长股承压明显，短期市场情绪偏谨慎，需关注止跌信号。",
+      "url": "https://finance.eastmoney.com/a/202610233905335629.html",
+      "time": "2026-10-23 10:04:18",
+      "ai_summary": "创业板指跌破2500点，三市超5000股下跌",
+      "impact_analysis": "市场出现系统性下跌，创业板指较6月高点回落近43%，科技成长板块领跌，恐慌情绪蔓延。短期指数承压明显，需关注政策面是否出手维稳及资金面变化。",
       "affected_sectors": [
-        "传媒",
-        "电子元件",
-        "教育",
-        "医疗美容",
-        "机器人"
+        "科技成长",
+        "半导体",
+        "算力硬件"
       ],
       "affected_stocks": [
-        "399006.SZ",
-        "000001.SS",
-        "399001.SZ"
+        "300750.SZ",
+        "688981.SS"
       ],
-      "importance": 9
+      "importance": 10
     },
     {
-      "title": "中信证券、国轩高科等入股吉利旗下远程商用车科技公司",
+      "title": "开源主题生态体验馆将亮相2026年世界互联网大会乌镇峰会",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610223903974420.html",
-      "time": "2026-10-22 14:00:03",
-      "ai_summary": "沪深300ETF尾盘爆量，护盘资金入场",
-      "impact_analysis": "多只宽基ETF尾盘成交激增，华泰柏瑞沪深300ETF成交145.6亿，疑似国家队护盘资金介入，对大盘指数形成托底支撑，释放积极信号。",
+      "url": "https://finance.eastmoney.com/a/202610233905552637.html",
+      "time": "2026-10-23 10:41:07",
+      "ai_summary": "多只沪深300ETF成交显著放量",
+      "impact_analysis": "沪深300ETF华泰柏瑞成交额突破50亿元，易方达产品成交超昨日全天，显示有资金借道ETF逆势抄底。宽基ETF放量往往被视为国家队或机构资金入场信号，对市场情绪有托底作用。",
       "affected_sectors": [
         "大盘蓝筹",
-        "银行",
-        "保险"
+        "金融"
       ],
       "affected_stocks": [
         "510300.SS",
-        "510050.SS",
-        "159919.SZ"
+        "510310.SS"
       ],
       "importance": 9
     },
     {
-      "title": "中国电信入股合肥市数算科技公司",
+      "title": "商务部：1-9月全国网上商品和服务零售额对社会消费商品和服务零售总额增长贡献率45.4%",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610223904018316.html",
-      "time": "2026-10-22 14:39:39",
-      "ai_summary": "电子半导体板块主力净流出145亿",
-      "impact_analysis": "电子板块单日净流出145.38亿元，新易盛遭净卖出21.17亿，半导体、通信资金大幅撤离，科技成长股短期承压明显，需警惕板块轮动加速。",
+      "url": "https://finance.eastmoney.com/a/202610233905517357.html",
+      "time": "2026-10-23 10:33:46",
+      "ai_summary": "Meta引发AI烧钱担忧，科技股遭抛售",
+      "impact_analysis": "Meta发股筹资建设AI基础设施引发投资者对AI军备竞赛成本失控的恐慌，隔夜美股AI核心公司被抛售。情绪传导至A股，算力硬件、半导体芯片等方向跌幅居前，短期压制科技板块估值。",
       "affected_sectors": [
-        "电子",
+        "AI算力",
         "半导体",
-        "通信",
-        "光模块"
+        "数据中心"
       ],
       "affected_stocks": [
-        "300502.SZ",
-        "300308.SZ",
-        "002185.SZ"
+        "000977.SZ",
+        "300308.SZ"
+      ],
+      "importance": 9
+    },
+    {
+      "title": "管涛：理性看待海外资本市场动荡对国内的溢出影响",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610233905359065.html",
+      "time": "2026-10-23 10:04:00",
+      "ai_summary": "股指期货震荡下行，IM主力跌超4%",
+      "impact_analysis": "中证500股指期货主力合约跌3.56%，IM跌超4%，期货贴水扩大反映市场对中小盘股悲观预期加剧。期指大幅贴水可能引发套保盘进一步抛压，短期中小盘风格承压。",
+      "affected_sectors": [
+        "中小盘",
+        "期货概念"
+      ],
+      "affected_stocks": [
+        "IC主力",
+        "IM主力"
       ],
       "importance": 8
     },
     {
-      "title": "Anthropic“史上最大IPO” 李大霄：或引发美股科技板块乃至全球股市资金虹吸效应",
+      "title": "爱马仕股价较高点蒸发超50%",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610223903994636.html",
-      "time": "2026-10-22 14:29:45",
-      "ai_summary": "Anthropic万亿IPO或引发全球资金虹吸",
-      "impact_analysis": "Anthropic万亿级估值IPO可能吸走全球科技板块资金，叠加日韩股市大跌，A股AI及科技板块风险偏好受压制，外资流入节奏或放缓。",
+      "url": "https://finance.eastmoney.com/a/202610233905550973.html",
+      "time": "2026-10-23 10:44:00",
+      "ai_summary": "宁德时代回购近5亿元，股价拉升涨超2%",
+      "impact_analysis": "宁德时代公告回购227.1万股耗资近5亿元，早盘低开后拉升涨超2%，万亿市值龙头逆势走强对创业板指形成一定支撑，并提振新能源板块情绪。",
       "affected_sectors": [
-        "人工智能",
-        "科技",
-        "半导体"
+        "锂电池",
+        "新能源车"
       ],
       "affected_stocks": [
-        "588000.SS",
-        "159915.SZ"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "超41亿元 保险巨头体系内股权转让！有何布局？",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610223903974050.html",
-      "time": "2026-10-22 14:03:53",
-      "ai_summary": "韩国KOSPI重挫3.52%，芯片抛售潮",
-      "impact_analysis": "全球半导体获利回吐加剧，韩国芯片股大跌传导至A股半导体板块，叠加美债收益率冲高，科技股估值承压，短期半导体板块波动加大。",
-      "affected_sectors": [
-        "半导体",
-        "芯片",
-        "电子"
-      ],
-      "affected_stocks": [
-        "002185.SZ",
-        "688981.SS",
-        "603986.SS"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "智元开源首个真实场景Physical Agent数据集",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610223904032086.html",
-      "time": "2026-10-22 14:50:00",
-      "ai_summary": "工商银行涨超2%创历史新高",
-      "impact_analysis": "银行板块逆势走强，工行创历史新高，高股息防御属性凸显，资金从成长向价值切换，对大盘指数形成一定支撑，红利策略短期占优。",
-      "affected_sectors": [
-        "银行",
-        "保险",
-        "高股息"
-      ],
-      "affected_stocks": [
-        "601398.SS",
-        "601939.SS",
-        "601288.SS"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "斯莱克：金刚石铜复合冷板项目获阶段性成果 将启动量产前置工作",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610223903975957.html",
-      "time": "2026-10-22 13:59:00",
-      "ai_summary": "中证协发文规范券商并购重组",
-      "impact_analysis": "中证协发文促进券商并购重组规范有序开展，利好券商板块整合预期，头部券商做大做强逻辑强化，对非银金融板块形成政策催化。",
-      "affected_sectors": [
-        "证券",
-        "非银金融"
-      ],
-      "affected_stocks": [
-        "600030.SS",
-        "601688.SS",
-        "601995.SS"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "主力资金监控：华天科技净买入超6亿",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610223904049313.html",
-      "time": "2026-10-22 14:56:32",
-      "ai_summary": "花旗积极推进境内券商牌照申请",
-      "impact_analysis": "外资巨头加码中国机构业务，花旗谋求全资券商牌照，显示外资对中国资本市场长期信心，利好券商板块竞争格局优化，情绪面偏多。",
-      "affected_sectors": [
-        "证券",
-        "非银金融"
-      ],
-      "affected_stocks": [
-        "600030.SS",
-        "600837.SS"
-      ],
-      "importance": 6
-    },
-    {
-      "title": "国内商品期货收盘 主力合约跌多涨少",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610223904050011.html",
-      "time": "2026-10-22 15:00:05",
-      "ai_summary": "债基近八成上涨，债券ETF净流入815亿",
-      "impact_analysis": "股债跷跷板效应显现，债券ETF近一月净流入超815亿，资金从权益转向固收避险，反映市场风险偏好下降，对A股资金面形成分流压力。",
-      "affected_sectors": [
-        "债券",
-        "固收"
-      ],
-      "affected_stocks": [
-        "159650.SZ"
-      ],
-      "importance": 6
-    },
-    {
-      "title": "沪深300ETF尾盘爆量",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610223904043160.html",
-      "time": "2026-10-22 14:55:44",
-      "ai_summary": "白马蓝筹回调，市场重审确定性溢价",
-      "impact_analysis": "三季报窗口出现杀白马行情，机构抱团龙头业绩不及预期引发估值重估，短期蓝筹股波动加大，资金对确定性溢价重新定价，影响指数稳定性。",
-      "affected_sectors": [
-        "白马蓝筹",
-        "消费",
-        "医药"
-      ],
-      "affected_stocks": [
-        "600519.SS",
         "300750.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "可灵新模型Kling 4.0 API正式上线，恒生科技ETF博时(159742)跟踪指数盘初最高涨近2%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610233905586387.html",
+      "time": "2026-10-23 10:45:15",
+      "ai_summary": "智能网联汽车大会催化，汽车板块活跃",
+      "impact_analysis": "2026世界智能网联汽车大会开幕，已发布相关标准90项，自动驾驶加速商业化。政策催化下港股通汽车ETF涨超2%，A股智能驾驶、汽车电子板块有望获得资金关注。",
+      "affected_sectors": [
+        "智能驾驶",
+        "汽车电子",
+        "汽车整车"
+      ],
+      "affected_stocks": [
+        "002920.SZ",
+        "601127.SS"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "PayPay将于11月上旬前取消证件拍照验证，统一采用IC芯片读取方式",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610233905418596.html",
+      "time": "2026-10-23 10:16:11",
+      "ai_summary": "人形机器人板块局部走高，兆威机电涨停",
+      "impact_analysis": "福建人形机器人创新中心完成Pre-A+轮融资，叠加理想汽车以电力加算力支持具身智能，人形机器人板块逆势活跃。产业资本持续加码，主题热度有望延续，但需注意大盘拖累。",
+      "affected_sectors": [
+        "人形机器人",
+        "具身智能"
+      ],
+      "affected_stocks": [
+        "002913.SZ",
+        "300124.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "国泰海通于博：人民币温和升值不会影响出口韧性",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610233905256343.html",
+      "time": "2026-10-23 09:48:00",
+      "ai_summary": "商务部：网上零售贡献率45.4%",
+      "impact_analysis": "1-9月网上零售额增长4.4%，对消费增长贡献率45.4%，线上带动线下作用增强。数据印证消费复苏结构分化，电商及互联网平台受益，但整体消费板块提振有限。",
+      "affected_sectors": [
+        "电商",
+        "互联网平台",
+        "消费"
+      ],
+      "affected_stocks": [
+        "603214.SS",
+        "300792.SZ"
+      ],
+      "importance": 6
+    },
+    {
+      "title": "Meta引爆雷管！AI军备竞赛的烧钱“账单” 又成了市场的“催命符”？",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610233905346445.html",
+      "time": "2026-10-23 10:06:00",
+      "ai_summary": "创新药、CRO概念震荡下挫",
+      "impact_analysis": "泓博医药、百普赛斯跌超10%，普洛药业触及跌停，创新药与CRO板块大幅调整。可能与海外融资环境收紧及部分公司业绩预期下修有关，短期医药板块情绪偏空。",
+      "affected_sectors": [
+        "创新药",
+        "CRO"
+      ],
+      "affected_stocks": [
+        "301230.SZ",
+        "300725.SZ"
+      ],
+      "importance": 6
+    },
+    {
+      "title": "智能网联汽车大会催化板块行情，港股通汽车ETF鹏华涨超2%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610233905305650.html",
+      "time": "2026-10-23 09:56:31",
+      "ai_summary": "首批主动ETF开售，南方基金正式发行",
+      "impact_analysis": "南方均衡配置主动管理ETF正式发行，标志主动ETF落地进程加速。产品创新有望为市场引入增量资金，利好券商及资产管理行业，长期改善A股投资者结构。",
+      "affected_sectors": [
+        "券商",
+        "资产管理"
+      ],
+      "affected_stocks": [
+        "600030.SS",
+        "300059.SZ"
       ],
       "importance": 6
     }

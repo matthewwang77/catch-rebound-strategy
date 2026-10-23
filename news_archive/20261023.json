@@ -1,0 +1,180 @@
+{
+  "date": "20261023",
+  "market_summary": "今日A股市场大幅调整，创业板指跌逾3%跌破2500点，沪指跌2%，超5000只个股下跌，主要受海外AI军备竞赛烧钱担忧及科技股抛售情绪传导影响。同时，多只沪深300ETF显著放量，显示有资金逆势布局，市场情绪在恐慌中暗藏分歧。",
+  "sentiment_impact": "偏空",
+  "news": [
+    {
+      "title": "苹果首款折叠iPhone Duo开售火爆：门店外排长龙 “黄牛”加价2000元回收",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610233905335629.html",
+      "time": "2026-10-23 10:04:18",
+      "ai_summary": "创业板指跌破2500点，三市超5000股下跌",
+      "impact_analysis": "市场出现系统性下跌，创业板指较6月高点回落近43%，科技成长板块领跌，恐慌情绪蔓延。短期指数承压明显，需关注政策面是否出手维稳及资金面变化。",
+      "affected_sectors": [
+        "科技成长",
+        "半导体",
+        "算力硬件"
+      ],
+      "affected_stocks": [
+        "300750.SZ",
+        "688981.SS"
+      ],
+      "importance": 10
+    },
+    {
+      "title": "开源主题生态体验馆将亮相2026年世界互联网大会乌镇峰会",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610233905552637.html",
+      "time": "2026-10-23 10:41:07",
+      "ai_summary": "多只沪深300ETF成交显著放量",
+      "impact_analysis": "沪深300ETF华泰柏瑞成交额突破50亿元，易方达产品成交超昨日全天，显示有资金借道ETF逆势抄底。宽基ETF放量往往被视为国家队或机构资金入场信号，对市场情绪有托底作用。",
+      "affected_sectors": [
+        "大盘蓝筹",
+        "金融"
+      ],
+      "affected_stocks": [
+        "510300.SS",
+        "510310.SS"
+      ],
+      "importance": 9
+    },
+    {
+      "title": "商务部：1-9月全国网上商品和服务零售额对社会消费商品和服务零售总额增长贡献率45.4%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610233905517357.html",
+      "time": "2026-10-23 10:33:46",
+      "ai_summary": "Meta引发AI烧钱担忧，科技股遭抛售",
+      "impact_analysis": "Meta发股筹资建设AI基础设施引发投资者对AI军备竞赛成本失控的恐慌，隔夜美股AI核心公司被抛售。情绪传导至A股，算力硬件、半导体芯片等方向跌幅居前，短期压制科技板块估值。",
+      "affected_sectors": [
+        "AI算力",
+        "半导体",
+        "数据中心"
+      ],
+      "affected_stocks": [
+        "000977.SZ",
+        "300308.SZ"
+      ],
+      "importance": 9
+    },
+    {
+      "title": "管涛：理性看待海外资本市场动荡对国内的溢出影响",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610233905359065.html",
+      "time": "2026-10-23 10:04:00",
+      "ai_summary": "股指期货震荡下行，IM主力跌超4%",
+      "impact_analysis": "中证500股指期货主力合约跌3.56%，IM跌超4%，期货贴水扩大反映市场对中小盘股悲观预期加剧。期指大幅贴水可能引发套保盘进一步抛压，短期中小盘风格承压。",
+      "affected_sectors": [
+        "中小盘",
+        "期货概念"
+      ],
+      "affected_stocks": [
+        "IC主力",
+        "IM主力"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "爱马仕股价较高点蒸发超50%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610233905550973.html",
+      "time": "2026-10-23 10:44:00",
+      "ai_summary": "宁德时代回购近5亿元，股价拉升涨超2%",
+      "impact_analysis": "宁德时代公告回购227.1万股耗资近5亿元，早盘低开后拉升涨超2%，万亿市值龙头逆势走强对创业板指形成一定支撑，并提振新能源板块情绪。",
+      "affected_sectors": [
+        "锂电池",
+        "新能源车"
+      ],
+      "affected_stocks": [
+        "300750.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "可灵新模型Kling 4.0 API正式上线，恒生科技ETF博时(159742)跟踪指数盘初最高涨近2%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610233905586387.html",
+      "time": "2026-10-23 10:45:15",
+      "ai_summary": "智能网联汽车大会催化，汽车板块活跃",
+      "impact_analysis": "2026世界智能网联汽车大会开幕，已发布相关标准90项，自动驾驶加速商业化。政策催化下港股通汽车ETF涨超2%，A股智能驾驶、汽车电子板块有望获得资金关注。",
+      "affected_sectors": [
+        "智能驾驶",
+        "汽车电子",
+        "汽车整车"
+      ],
+      "affected_stocks": [
+        "002920.SZ",
+        "601127.SS"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "PayPay将于11月上旬前取消证件拍照验证，统一采用IC芯片读取方式",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610233905418596.html",
+      "time": "2026-10-23 10:16:11",
+      "ai_summary": "人形机器人板块局部走高，兆威机电涨停",
+      "impact_analysis": "福建人形机器人创新中心完成Pre-A+轮融资，叠加理想汽车以电力加算力支持具身智能，人形机器人板块逆势活跃。产业资本持续加码，主题热度有望延续，但需注意大盘拖累。",
+      "affected_sectors": [
+        "人形机器人",
+        "具身智能"
+      ],
+      "affected_stocks": [
+        "002913.SZ",
+        "300124.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "国泰海通于博：人民币温和升值不会影响出口韧性",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610233905256343.html",
+      "time": "2026-10-23 09:48:00",
+      "ai_summary": "商务部：网上零售贡献率45.4%",
+      "impact_analysis": "1-9月网上零售额增长4.4%，对消费增长贡献率45.4%，线上带动线下作用增强。数据印证消费复苏结构分化，电商及互联网平台受益，但整体消费板块提振有限。",
+      "affected_sectors": [
+        "电商",
+        "互联网平台",
+        "消费"
+      ],
+      "affected_stocks": [
+        "603214.SS",
+        "300792.SZ"
+      ],
+      "importance": 6
+    },
+    {
+      "title": "Meta引爆雷管！AI军备竞赛的烧钱“账单” 又成了市场的“催命符”？",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610233905346445.html",
+      "time": "2026-10-23 10:06:00",
+      "ai_summary": "创新药、CRO概念震荡下挫",
+      "impact_analysis": "泓博医药、百普赛斯跌超10%，普洛药业触及跌停，创新药与CRO板块大幅调整。可能与海外融资环境收紧及部分公司业绩预期下修有关，短期医药板块情绪偏空。",
+      "affected_sectors": [
+        "创新药",
+        "CRO"
+      ],
+      "affected_stocks": [
+        "301230.SZ",
+        "300725.SZ"
+      ],
+      "importance": 6
+    },
+    {
+      "title": "智能网联汽车大会催化板块行情，港股通汽车ETF鹏华涨超2%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610233905305650.html",
+      "time": "2026-10-23 09:56:31",
+      "ai_summary": "首批主动ETF开售，南方基金正式发行",
+      "impact_analysis": "南方均衡配置主动管理ETF正式发行，标志主动ETF落地进程加速。产品创新有望为市场引入增量资金，利好券商及资产管理行业，长期改善A股投资者结构。",
+      "affected_sectors": [
+        "券商",
+        "资产管理"
+      ],
+      "affected_stocks": [
+        "600030.SS",
+        "300059.SZ"
+      ],
+      "importance": 6
+    }
+  ]
+}
