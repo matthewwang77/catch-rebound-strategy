@@ -1,173 +1,180 @@
 {
   "date": "20261026",
-  "market_summary": "今日消息面多空交织：多地GDP数据稳健、银行资产扩张及理财规模回升支撑基本面，但主力资金大幅流出电子半导体、AI概念退潮及白酒三季报预期悲观压制市场情绪。整体呈现结构性分化，机器人、物理AI等题材活跃，而科技成长股承压。",
-  "sentiment_impact": "中性",
+  "market_summary": "今日消息面多空交织，近600亿资金驰援股票ETF和宽基ETF单周净流入1552亿创年内新高，显示托底资金积极入场；同时科创债发行破1.5万亿、银行间债市监管升级等政策面偏暖。但市场分化明显，科技题材回撤拖累双创指数，红利资产和医药医疗逆势走强。",
+  "sentiment_impact": "偏多",
   "news": [
     {
-      "title": "星展银行：10年期美债收益率有望回落至4.8%",
+      "title": "年内科创债发行规模突破1.5万亿元，科创债ETF博时(551000)盘中飘红",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610263907769097.html",
-      "time": "2026-10-26 10:53:55",
-      "ai_summary": "主力资金流出电子超98亿，新易盛遭净卖出",
-      "impact_analysis": "早盘主力资金净流出电子板块超98亿元，新易盛净卖出超8亿，显示科技成长股面临资金撤离压力，对创业板及半导体板块构成短期利空。",
+      "url": "https://finance.eastmoney.com/a/202610263907876522.html",
+      "time": "2026-10-26 13:36:05",
+      "ai_summary": "近600亿资金单日驰援股票ETF",
+      "impact_analysis": "宽基ETF获超560亿净流入，为7月以来最大单日流入，直接托底大盘指数，释放国家队或机构抄底信号，提振市场信心，利好沪深300等宽基权重股。",
       "affected_sectors": [
-        "电子",
-        "通信",
-        "半导体"
+        "宽基ETF",
+        "大盘蓝筹"
       ],
       "affected_stocks": [
-        "300502.SZ",
-        "002185.SZ"
+        "510300.SS",
+        "510050.SS"
+      ],
+      "importance": 9
+    },
+    {
+      "title": "蜂助手：算力服务器采购成本不会受市场价格波动影响",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610263907826795.html",
+      "time": "2026-10-26 12:52:44",
+      "ai_summary": "宽基ETF单周净流入1552亿创新高",
+      "impact_analysis": "连续7日净申购、两日成交超百亿，显示资金持续借道ETF布局，岁末窗口机构建议均衡配置，对大盘形成有力支撑，利好沪深300成分股。",
+      "affected_sectors": [
+        "宽基ETF",
+        "大盘蓝筹"
+      ],
+      "affected_stocks": [
+        "510300.SS",
+        "159919.SZ"
+      ],
+      "importance": 9
+    },
+    {
+      "title": "制药巨头BMS密集押注AI制药，港股创新药ETF博时(520690)跟踪指数午后翻红，机构：AI制药赋能新药研发，产业链有望迎新机遇",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610263907885334.html",
+      "time": "2026-10-26 13:52:53",
+      "ai_summary": "科创债发行破1.5万亿政策加码",
+      "impact_analysis": "两办发文高质量建设债市科技板，科创债规模同比大增，科技型企业占比89%，拓宽科技企业融资渠道，利好科创板和科技成长板块估值。",
+      "affected_sectors": [
+        "科创板",
+        "科技成长",
+        "券商"
+      ],
+      "affected_stocks": [
+        "588000.SS",
+        "688981.SS"
       ],
       "importance": 8
     },
     {
-      "title": "9月末我国银行业金融机构总资产4943525亿元 较上年同期增长6.1%",
+      "title": "抄底资金又来了！近600亿元资金驰援股票ETF",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610263907752960.html",
-      "time": "2026-10-26 10:32:45",
-      "ai_summary": "银行业总资产增长6.1%，理财规模站上36万亿",
-      "impact_analysis": "银行业资产稳步扩张，理财规模回升至36万亿，含权产品贡献增量，利好银行板块及资本市场资金面，对大盘指数有正面支撑。",
+      "url": "https://finance.eastmoney.com/a/202610263907871435.html",
+      "time": "2026-10-26 13:41:46",
+      "ai_summary": "银行间债市发行规则重大调整",
+      "impact_analysis": "首次以行政规章形式堵住自融、返费、代持等暗门，监管重心转向全流程管控，短期或增加债市合规成本，长期利于债市健康发展，对券商投行影响中性偏紧。",
       "affected_sectors": [
-        "银行",
-        "非银金融"
+        "债券市场",
+        "券商"
       ],
       "affected_stocks": [
-        "601009.SS",
-        "600036.SS"
+        "600030.SS",
+        "601211.SS"
       ],
       "importance": 7
     },
     {
-      "title": "物理AI概念延续强势 创维数字2连板 关注三条主线机会",
+      "title": "离岸信托限期申报纳税 多地送达税务通知书",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610263907778153.html",
-      "time": "2026-10-26 11:08:02",
-      "ai_summary": "物理AI概念延续强势，机器人主线活跃",
-      "impact_analysis": "物理AI及机器人概念持续走强，宇树科技等龙头大涨，带动市场对人工智能硬件落地的预期，利好机器人、传感器及AI算力板块。",
+      "url": "https://finance.eastmoney.com/a/202610263907883666.html",
+      "time": "2026-10-26 13:52:00",
+      "ai_summary": "首批主动ETF正式发行",
+      "impact_analysis": "国内ETF迈入主动时代，华安均衡慧选首发，丰富产品供给，吸引增量资金入市，利好公募基金行业和ETF生态，中长期提升市场活跃度。",
+      "affected_sectors": [
+        "公募基金",
+        "券商"
+      ],
+      "affected_stocks": [
+        "600030.SS",
+        "300059.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "龙头公司三季度营收净利双增，医疗器械ETF鹏华涨超2%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610263907860297.html",
+      "time": "2026-10-26 13:14:34",
+      "ai_summary": "医疗设备招投标大增板块逆势走强",
+      "impact_analysis": "医疗ETF涨超2%，迈瑞医疗9连阳，鱼跃医疗三季度净利增9.55%，招投标大增叠加政策利好，医疗板块基本面改善，资金避险流入医药医疗。",
+      "affected_sectors": [
+        "医疗器械",
+        "医药医疗"
+      ],
+      "affected_stocks": [
+        "300760.SZ",
+        "002223.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "远程商用车科技公司增资至约11.5亿元",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610263907883163.html",
+      "time": "2026-10-26 13:50:51",
+      "ai_summary": "油气板块走强中石油创18年新高",
+      "impact_analysis": "中国石油涨近4%创2008年以来新高，欧洲天然气价格升至2022年最高，高股息红利资产受追捧，利好石油石化板块和红利指数。",
+      "affected_sectors": [
+        "石油石化",
+        "红利资产"
+      ],
+      "affected_stocks": [
+        "601857.SS",
+        "600028.SS"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "光模块头部厂商获社保基金加仓",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610263907834752.html",
+      "time": "2026-10-26 13:09:11",
+      "ai_summary": "光模块龙头获社保基金加仓",
+      "impact_analysis": "光迅科技前三季净利增78.65%，社保基金和国新投资增持，显示长线资金看好AI算力产业链，利好光模块、CPO等算力硬件板块。",
+      "affected_sectors": [
+        "光模块",
+        "算力",
+        "CPO"
+      ],
+      "affected_stocks": [
+        "002281.SZ",
+        "300308.SZ"
+      ],
+      "importance": 6
+    },
+    {
+      "title": "联想创投入股环启新肽，后者含多项AI业务",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610263907887557.html",
+      "time": "2026-10-26 13:54:12",
+      "ai_summary": "机器人概念持续走高十余股涨停",
+      "impact_analysis": "江苏北人20cm涨停，物理AI和机器人板块情绪升温，家庭机器人催化，资金追捧题材股，利好机器人、减速器、传感器等产业链。",
       "affected_sectors": [
         "机器人",
-        "人工智能",
-        "传感器"
+        "物理AI",
+        "智能制造"
       ],
       "affected_stocks": [
-        "688169.SS",
-        "002050.SZ"
+        "688218.SS",
+        "300024.SZ"
       ],
-      "importance": 7
+      "importance": 6
     },
     {
-      "title": "洽洽食品：目前电商渠道略有亏损 将提升电商整体经营质量",
+      "title": "全国多所财经高校布局“AI+财经”",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610263907783933.html",
-      "time": "2026-10-26 11:08:00",
-      "ai_summary": "存储板块被严重低估，野村维持正面看法",
-      "impact_analysis": "野村研报认为存储芯片短缺持续至2028年，估值已入严重低估区间，有望提振A股存储芯片板块情绪，对冲部分电子板块资金流出压力。",
-      "affected_sectors": [
-        "半导体",
-        "存储芯片"
-      ],
-      "affected_stocks": [
-        "603986.SS",
-        "688008.SS"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "含权产品贡献增量 银行理财规模站上36万亿元",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610263907743020.html",
-      "time": "2026-10-26 10:34:00",
-      "ai_summary": "A股估值接近历史底部，年底或迎修复窗口",
-      "impact_analysis": "中金及机构指出A股多项指标接近历史底部，大盘价值ETF上涨，年底年初或迎修复窗口，有助于提振市场信心，利好大盘价值风格。",
-      "affected_sectors": [
-        "大盘价值",
-        "红利"
-      ],
-      "affected_stocks": [
-        "600028.SS",
-        "601857.SS"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "瑞浦兰钧等成立精密制造公司，含电池制造业务",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610263907760571.html",
-      "time": "2026-10-26 10:40:40",
-      "ai_summary": "银行板块震荡拉升，南京银行涨近3%",
-      "impact_analysis": "银行板块盘中拉升，南京银行、建行等涨超2%，红利风格相对占优，显示资金避险情绪升温，对大盘指数有护盘作用，利好银行及红利板块。",
+      "url": "https://finance.eastmoney.com/a/202610263907879751.html",
+      "time": "2026-10-26 13:47:44",
+      "ai_summary": "红利资产热度攀升资金风格再平衡",
+      "impact_analysis": "10月成长板块承压，银行、煤炭、石油石化等红利板块升温，资金主动再平衡，高股息策略受青睐，利好红利指数和银行板块。",
       "affected_sectors": [
         "银行",
-        "红利低波"
+        "煤炭",
+        "红利资产"
       ],
       "affected_stocks": [
-        "601009.SS",
-        "601939.SS"
+        "601398.SS",
+        "601088.SS"
       ],
-      "importance": 7
-    },
-    {
-      "title": "前三季度浙江实现社会消费品零售总额28858亿元 同比增长1.6%",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610263907735874.html",
-      "time": "2026-10-26 10:23:00",
-      "ai_summary": "多地GDP稳健增长，安徽广州增速超5%",
-      "impact_analysis": "安徽、广州前三季度GDP分别增长5.3%和5.7%，显示经济韧性，有助于稳定市场对基本面的预期，对区域板块及大盘指数形成温和支撑。",
-      "affected_sectors": [
-        "区域经济",
-        "基建",
-        "消费"
-      ],
-      "affected_stocks": [],
-      "importance": 6
-    },
-    {
-      "title": "佳贤通信董事长任恩贤：英伟达要靠算力基站实现端侧物理AI",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610263907773360.html",
-      "time": "2026-10-26 11:03:28",
-      "ai_summary": "英伟达加码AI-RAN基站，通信设备受益",
-      "impact_analysis": "英伟达寻求中国AI-RAN基站合作，佳贤通信等进入视野，通宇通讯拟入股，利好通信设备及算力基站产业链，催化5G/6G板块。",
-      "affected_sectors": [
-        "通信设备",
-        "5G",
-        "算力"
-      ],
-      "affected_stocks": [
-        "002792.SZ"
-      ],
-      "importance": 6
-    },
-    {
-      "title": "长鑫科技震荡 存储板块被严重低估？",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610263907756439.html",
-      "time": "2026-10-26 10:41:16",
-      "ai_summary": "白酒三季报本周密集出炉，多数预期下滑",
-      "impact_analysis": "白酒三季报本周密集披露，双节动销下滑致大部分酒企业绩同比下滑，但板块逆势走强，皇台酒业涨停，显示利空部分消化，板块内部分化。",
-      "affected_sectors": [
-        "白酒",
-        "食品饮料"
-      ],
-      "affected_stocks": [
-        "600519.SS",
-        "000995.SZ"
-      ],
-      "importance": 6
-    },
-    {
-      "title": "上纬新材盘中涨超17% 机构预测机器人行业需求加速释放",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610263907774572.html",
-      "time": "2026-10-26 11:02:03",
-      "ai_summary": "指数新规设权重上限15%，防一股独大",
-      "impact_analysis": "A股指数换算法，单样本权重上限15%，防止未来科技巨头左右指数，长期利于指数稳定，短期对现有权重股影响有限，中性偏多。",
-      "affected_sectors": [
-        "指数基金",
-        "大盘蓝筹"
-      ],
-      "affected_stocks": [],
       "importance": 6
     }
   ]
