@@ -3895,6 +3895,29 @@
       "why_wrong": null,
       "missed_signal": null,
       "lesson": null
+    },
+    {
+      "date": "20261027",
+      "signal_date": "20261020",
+      "mode": "strict",
+      "entry_price": 11.17,
+      "pullback_pct": 18.3,
+      "limit_days": 3,
+      "analysis": "- 量：今日量比0.42x，近3日均量/涨停日量=111%，缩量不足且OBV下降，资金持续流出。\n- 价：MA5=11.06支撑，现价11.17贴近布林上轨11.38，20日高11.55为关键压力。\n- 形：3连板后回调18.3%，MACD金叉向上，但量价背离，形态偏弱。\n- 时：回调4天，处于3-5天观察窗口，但缩量不充分，窗口质量差。\n- 仓位建议：0-1成仓（情绪2档低迷期）\n- 反弹概率：低（≤30%）\n- 最终结论：【放弃】",
+      "sentiment": "情绪2档低迷期",
+      "position": "0-1成仓",
+      "opinion": "【放弃】",
+      "verified": false,
+      "return_7d": null,
+      "exit_reason": null,
+      "exit_day": null,
+      "verdict": null,
+      "review_analysis": null,
+      "review_quality": null,
+      "what_happened": null,
+      "why_wrong": null,
+      "missed_signal": null,
+      "lesson": null
     }
   ],
   "002514.SZ": [
