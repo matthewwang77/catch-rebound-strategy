@@ -1,5 +1,5 @@
 {
-  "scan_time": "2026-10-28 11:41",
+  "scan_time": "2026-10-28 15:45",
   "scan_date": "20261028",
   "data_date": "2026-10-27",
   "market": {
@@ -18,9 +18,9 @@
   },
   "regime": {
     "status": "neutral",
-    "label": "4档: 发酵期 — 势头良好",
-    "avg_trend": 1.02,
-    "recommended_mode": "loose"
+    "label": "3档: 启动期 — 谨慎入场",
+    "avg_trend": 0.83,
+    "recommended_mode": "strict"
   },
   "modes": {
     "strict": {
@@ -28,7 +28,7 @@
       "candidates": [
         {
           "code": "603958.SS",
-          "price": 16.02,
+          "price": 16.12,
           "signal_date": "20260921",
           "pullback_pct": 18.8,
           "limit_days": 3,
