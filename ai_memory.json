@@ -3728,6 +3728,29 @@
       "why_wrong": null,
       "missed_signal": null,
       "lesson": null
+    },
+    {
+      "date": "20261029",
+      "signal_date": "20261008",
+      "mode": "strict",
+      "entry_price": 15.35,
+      "pullback_pct": 17.2,
+      "limit_days": 3,
+      "analysis": "- 量：近3日均量仅为涨停日8%，极度缩量但OBV下降，资金持续流出，无承接迹象。\n- 价：现价15.35跌破MA5/10/20全部均线，逼近布林下轨15.15，MA20=16.42构成反压，关键支撑看15.15。\n- 形：3连板后29天回调17.2%，属高位板后深度回调，MACD死叉、柱体扩大，无企稳形态。\n- 时：回调29天已超常规窗口（3-8天），时间窗口失效，非有效回调买点。\n- 仓位建议：0成仓（冰点期1档）\n- 反弹概率：低（≤30%）\n- 最终结论：【放弃】",
+      "sentiment": "冰点期1档",
+      "position": "0成仓",
+      "opinion": "【放弃】",
+      "verified": false,
+      "return_7d": null,
+      "exit_reason": null,
+      "exit_day": null,
+      "verdict": null,
+      "review_analysis": null,
+      "review_quality": null,
+      "what_happened": null,
+      "why_wrong": null,
+      "missed_signal": null,
+      "lesson": null
     }
   ],
   "603636.SS": [
