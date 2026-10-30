@@ -3960,6 +3960,29 @@
       "why_wrong": null,
       "missed_signal": null,
       "lesson": null
+    },
+    {
+      "date": "20261030",
+      "signal_date": "20261019",
+      "mode": "bear",
+      "entry_price": 7.91,
+      "pullback_pct": 8.3,
+      "limit_days": 3,
+      "analysis": "- 量：近3日均量为涨停日58%，缩量未达枯竭标准（<40%），OBV上升但今日量比0.80x无承接，资金偏流出。\n- 价：现价7.91跌破MA5/MA10/MA20，仅靠布林中轨下方，MA20=8.21转为压力，关键位7.05下轨。\n- 形：3连板后跌破全部短期均线，无平台构筑，属下跌中继而非整理形态。\n- 时：距涨停10天处黄金窗口，但MACD死叉、柱-0.170，窗口有效性被技术破位抵消。\n- 仓位建议：0成仓（冰点期1档，坚决不参与）\n- 反弹概率：低(≤30%)\n- 最终结论：【放弃】",
+      "sentiment": "冰点期1档，坚决不参与",
+      "position": "0成仓",
+      "opinion": "【放弃】",
+      "verified": false,
+      "return_7d": null,
+      "exit_reason": null,
+      "exit_day": null,
+      "verdict": null,
+      "review_analysis": null,
+      "review_quality": null,
+      "what_happened": null,
+      "why_wrong": null,
+      "missed_signal": null,
+      "lesson": null
     }
   ],
   "000798.SZ": [
