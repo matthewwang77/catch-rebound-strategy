@@ -1,5 +1,5 @@
 {
-  "scan_time": "2026-10-30 12:13",
+  "scan_time": "2026-10-30 14:01",
   "scan_date": "20261030",
   "data_date": "2026-10-29",
   "market": {
@@ -17,28 +17,20 @@
     }
   },
   "regime": {
-    "status": "bear",
-    "label": "1档: 冰点期 — 坚决不参与",
-    "avg_trend": -2.77,
-    "recommended_mode": "bear"
+    "status": "neutral",
+    "label": "数据不足，默认非熊市",
+    "avg_trend": 0,
+    "recommended_mode": "strict"
   },
   "modes": {
-    "strict": {
-      "count": 2,
+    "bear": {
+      "count": 1,
       "candidates": [
         {
-          "code": "002403.SZ",
-          "price": 10.6,
-          "signal_date": "20261020",
-          "pullback_pct": 18.3,
-          "limit_days": 3,
-          "entity_ratio": 100.0
-        },
-        {
-          "code": "002942.SZ",
-          "price": 15.01,
-          "signal_date": "20261008",
-          "pullback_pct": 17.2,
+          "code": "603636.SS",
+          "price": 7.91,
+          "signal_date": "20261019",
+          "pullback_pct": 8.3,
           "limit_days": 3,
           "entity_ratio": 67.0
         }
