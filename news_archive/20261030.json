@@ -1,182 +1,189 @@
 {
   "date": "20261030",
-  "market_summary": "今日消息面多空交织，银行对公贷款增速骤降及超长债大跌反映宽信用与流动性预期波动，但消费刺激政策加码、白酒食品等内需板块强势反弹，叠加AI与机器人产业催化不断，市场情绪午后明显回暖，沪指翻红。",
-  "sentiment_impact": "中性偏多",
+  "market_summary": "今日A股三大指数集体收跌，创业板指重挫4.13%，科技成长板块遭大幅抛售，但内需消费与医药板块逆市走强。国家发改委研究制定扩大内需战略实施方案，叠加公募基金三季度巨亏1.5万亿，市场风格切换迹象明显。",
+  "sentiment_impact": "偏空",
   "news": [
     {
-      "title": "贵州：到2030年，力争实现电信业务收入438亿元、互联网业务收入1100亿元",
+      "title": "国家发改委研究制定扩大内需战略实施方案（2026-2030年），食品饮料ETF天弘标的指数逆市大涨近3%，成交额超2500万元为同标的第一",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610303916208070.html",
-      "time": "2026-10-30 13:37:13",
-      "ai_summary": "上市银行对公贷款增速骤降",
-      "impact_analysis": "三季度对公贷款增量仅为上半年季均一成，反映信贷需求疲弱，压制银行板块盈利预期，同时强化经济复苏偏弱担忧，对大盘指数构成一定压力，但亦增加政策宽松预期。",
+      "url": "https://finance.eastmoney.com/a/202610303916270027.html",
+      "time": "2026-10-30 14:14:43",
+      "ai_summary": "发改委研究扩大内需战略方案",
+      "impact_analysis": "国家层面推动内需扩张，食品饮料等消费板块逆市大涨，政策预期强化下消费板块有望持续获得资金青睐，对冲科技成长板块下行压力。",
       "affected_sectors": [
-        "银行",
-        "房地产"
+        "食品饮料",
+        "消费",
+        "零售"
       ],
       "affected_stocks": [
-        "600036.SS",
-        "601166.SS"
+        "600519.SS",
+        "000858.SZ",
+        "603345.SS"
       ],
       "importance": 9
     },
     {
-      "title": "上市银行对公贷款增速“降档踩刹车” 三季度增量仅为上半年季均一成 多家银行由增转降",
+      "title": "摩根士丹利：维持中国联通H股“与大市同步”评级及7港元目标价",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610303916216335.html",
-      "time": "2026-10-30 13:53:30",
-      "ai_summary": "30年国债期货创最大跌幅",
-      "impact_analysis": "超长债收益率快速上行，反映市场对宽信用及流动性预期修正，债市调整可能引发资金再配置，部分资金或回流权益市场，但需警惕理财赎回负反馈对股市的间接冲击。",
+      "url": "https://finance.eastmoney.com/a/202610303916284797.html",
+      "time": "2026-10-30 14:26:40",
+      "ai_summary": "公募基金三季度巨亏1.5万亿",
+      "impact_analysis": "基金巨额亏损反映市场赚钱效应极差，投资者信心受挫，可能引发赎回压力，对市场资金面构成持续压制，中小盘成长股承压更明显。",
       "affected_sectors": [
-        "债券",
-        "银行",
-        "保险"
+        "券商",
+        "基金",
+        "大金融"
       ],
       "affected_stocks": [
-        "601318.SS",
-        "601601.SS"
-      ],
-      "importance": 9
-    },
-    {
-      "title": "均胜电子发布机器人触觉传感器新技术",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610303916215866.html",
-      "time": "2026-10-30 13:44:00",
-      "ai_summary": "以旧换新带动销售超2万亿",
-      "impact_analysis": "商务部强调加大以旧换新力度，政策成效持续显现，直接利好家电、汽车、消费电子等可选消费板块，提振内需预期，对消费股及大盘指数形成正面支撑。",
-      "affected_sectors": [
-        "家电",
-        "汽车",
-        "消费电子"
-      ],
-      "affected_stocks": [
-        "000333.SZ",
-        "600690.SS",
-        "002594.SZ"
+        "600030.SS",
+        "300059.SZ"
       ],
       "importance": 8
     },
     {
-      "title": "西安出台商品房销售新政",
+      "title": "生物医药被列为战略性新兴产业，生物医药ETF天弘标的指数大涨超2%，申购8820万份为深市同标的第一",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610303916211528.html",
-      "time": "2026-10-30 13:41:13",
-      "ai_summary": "白酒龙头大面积上攻",
-      "impact_analysis": "业绩超预期叠加消费政策催化，白酒板块放量拉升，泸州老窖涨停，食品饮料ETF涨超2%，作为权重板块对指数贡献显著，并带动市场情绪回暖。",
+      "url": "https://finance.eastmoney.com/a/202610303916268432.html",
+      "time": "2026-10-30 14:14:17",
+      "ai_summary": "生物医药列为战略性新兴产业",
+      "impact_analysis": "生物医药产业地位提升至国家战略层面，政策扶持预期增强，医药板块逆市大涨，创新药及CXO赛道有望获得持续资金配置。",
+      "affected_sectors": [
+        "生物医药",
+        "创新药",
+        "CXO"
+      ],
+      "affected_stocks": [
+        "300347.SZ",
+        "300122.SZ",
+        "603259.SS"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "大晓机器人联合南洋理工大学发布机器人世界模型Mundo",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610303916384167.html",
+      "time": "2026-10-30 14:54:01",
+      "ai_summary": "主力资金净流出计算机超34亿",
+      "impact_analysis": "计算机板块单日净流出超34亿，科技成长股遭系统性减仓，叠加创业板指大跌4%，短期科技板块调整压力仍待释放。",
+      "affected_sectors": [
+        "计算机",
+        "电子",
+        "通信"
+      ],
+      "affected_stocks": [
+        "002230.SZ",
+        "000977.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "上海石化午后涨停 第三季度净利润同比大增2463.62%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610303916309478.html",
+      "time": "2026-10-30 14:35:00",
+      "ai_summary": "多只沪深300ETF尾盘成交激增",
+      "impact_analysis": "尾盘沪深300ETF成交额激增超90亿，疑似国家队资金入场护盘，释放维稳信号，短期指数下行空间或有限，大盘蓝筹有望获支撑。",
+      "affected_sectors": [
+        "大盘蓝筹",
+        "沪深300"
+      ],
+      "affected_stocks": [
+        "510310.SS",
+        "159919.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "现代摩比斯将为波士顿动力生产人形机器人核心部件",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610303916357863.html",
+      "time": "2026-10-30 14:44:00",
+      "ai_summary": "三星洽谈另外10份存储器长约",
+      "impact_analysis": "存储芯片长期合同需求从AI扩展至移动、汽车等领域，行业景气度持续上行，利好国内存储产业链及半导体设备材料板块。",
+      "affected_sectors": [
+        "半导体",
+        "存储芯片",
+        "消费电子"
+      ],
+      "affected_stocks": [
+        "603986.SS",
+        "688008.SS",
+        "002049.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "三星正在洽谈另外10份长期存储器合同",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610303916357953.html",
+      "time": "2026-10-30 14:44:00",
+      "ai_summary": "美银预计中国IDC资本开支450亿美元",
+      "impact_analysis": "IDC行业五年资本开支需求高达450亿美元，算力基础设施建设提速，利好数据中心、服务器、光模块等算力产业链上游环节。",
+      "affected_sectors": [
+        "IDC",
+        "算力",
+        "光模块"
+      ],
+      "affected_stocks": [
+        "300308.SZ",
+        "300502.SZ",
+        "000938.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "德商银行：日本央行12月加息已几乎被市场完全消化",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610303916360942.html",
+      "time": "2026-10-30 14:46:06",
+      "ai_summary": "日本央行鹰派信号12月或加息",
+      "impact_analysis": "日本央行释放持续加息信号，全球流动性收紧预期升温，日元套利交易平仓风险上升，对A股外资流入构成潜在压制，北向资金或承压。",
+      "affected_sectors": [
+        "大金融",
+        "外资重仓"
+      ],
+      "affected_stocks": [
+        "600519.SS",
+        "000333.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "主力资金监控：计算机板块净流出超34亿",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610303916264841.html",
+      "time": "2026-10-30 14:21:17",
+      "ai_summary": "家电厂商称遭遇史上最难双11",
+      "impact_analysis": "家电终端需求走弱叠加原材料成本上涨，行业盈利空间受挤压，双11销售不及预期将拖累家电板块四季度业绩表现。",
+      "affected_sectors": [
+        "家电",
+        "消费电子"
+      ],
+      "affected_stocks": [
+        "000333.SZ",
+        "000651.SZ",
+        "600690.SS"
+      ],
+      "importance": 6
+    },
+    {
+      "title": "有家电厂商感叹遭遇“史上最难双11”：需求走弱、成本上涨",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610303916249355.html",
+      "time": "2026-10-30 14:14:40",
+      "ai_summary": "茅台股价逼近1400元创半年新高",
+      "impact_analysis": "白酒龙头股价创半年新高，叠加扩大内需政策预期，白酒板块作为消费核心资产有望持续吸引避险资金，对大盘指数形成一定支撑。",
       "affected_sectors": [
         "白酒",
         "食品饮料"
       ],
       "affected_stocks": [
         "600519.SS",
-        "000568.SZ",
-        "600809.SS"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "伊利股份三季报营收及核心经营利润双增 积极分红回购持续回报股东 长线资金大举增持",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610303916201097.html",
-      "time": "2026-10-30 13:34:00",
-      "ai_summary": "西安出台商品房销售新政",
-      "impact_analysis": "西安从预售管理、现房销售等七方面推出24条举措，地方楼市政策持续优化，有助于稳定地产链预期，但实际效果待观察，对地产及建材板块影响偏中性。",
-      "affected_sectors": [
-        "房地产",
-        "建筑材料"
-      ],
-      "affected_stocks": [
-        "600048.SS",
-        "001979.SZ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "启元机器人推出PrimeSim世界模型，登顶WorldSimProbe LIBERO榜单",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610303916213841.html",
-      "time": "2026-10-30 13:41:54",
-      "ai_summary": "腾讯推出AI办公套件",
-      "impact_analysis": "腾讯发布Buddy One及混元新模型，港股通互联网ETF涨超2%，AI应用加速落地提振互联网科技板块情绪，对A股AI应用及云计算概念有映射效应。",
-      "affected_sectors": [
-        "人工智能",
-        "云计算",
-        "互联网"
-      ],
-      "affected_stocks": [
-        "00700.HK",
-        "002230.SZ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "山东印发高端化工产业高质量发展行动计划，化工ETF博时(158006)跟踪指数午后翻红",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610303916202871.html",
-      "time": "2026-10-30 13:28:59",
-      "ai_summary": "科创板ETF总规模3400亿",
-      "impact_analysis": "科创板ETF规模占沪市股票ETF比例超20%，较去年底提升超10个百分点，显示资金持续增配科创板块，利好科创板流动性及科技成长风格。",
-      "affected_sectors": [
-        "科创板",
-        "科技"
-      ],
-      "affected_stocks": [
-        "588000.SS",
-        "588080.SS"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "大疆入股一科技公司 后者新增AI及机器人业务",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610303916197648.html",
-      "time": "2026-10-30 13:25:01",
-      "ai_summary": "山东印发高端化工行动计划",
-      "impact_analysis": "地方政策推动化工产业高质量发展，化工ETF午后翻红，细分化工指数上涨，利好化工新材料及龙头公司，但板块整体弹性有限，属结构性机会。",
-      "affected_sectors": [
-        "化工",
-        "新材料"
-      ],
-      "affected_stocks": [
-        "002466.SZ",
-        "002601.SZ"
+        "000858.SZ",
+        "000568.SZ"
       ],
       "importance": 6
-    },
-    {
-      "title": "政策利好频出板块强势反弹，港股消费ETF鹏华均涨超3%",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610303916202718.html",
-      "time": "2026-10-30 13:27:39",
-      "ai_summary": "霍尔木兹海峡油轮遇袭",
-      "impact_analysis": "油轮遇袭事件引发地缘紧张，石油概念震荡反弹，上海石化涨停，短期提振油气板块，但事件影响可控，对大盘整体影响偏中性。",
-      "affected_sectors": [
-        "石油",
-        "油气"
-      ],
-      "affected_stocks": [
-        "600028.SS",
-        "600688.SS"
-      ],
-      "importance": 6
-    },
-    {
-      "title": "腾讯推出AI办公套件Buddy One，港股通互联网ETF鹏华涨超2%",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202610303916213180.html",
-      "time": "2026-10-30 13:42:46",
-      "ai_summary": "脑机接口概念异动拉升",
-      "impact_analysis": "脑机接口概念午后异动，百洋医药、美好医疗涨超10%，题材催化下资金博弈明显，但产业尚处早期，对指数影响有限，属短线主题机会。",
-      "affected_sectors": [
-        "脑机接口",
-        "医疗器械"
-      ],
-      "affected_stocks": [
-        "301015.SZ",
-        "300633.SZ"
-      ],
-      "importance": 5
     }
   ]
 }
