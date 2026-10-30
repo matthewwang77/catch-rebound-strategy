@@ -1,5 +1,5 @@
 {
-  "scan_time": "2026-10-30 11:19",
+  "scan_time": "2026-10-30 12:13",
   "scan_date": "20261030",
   "data_date": "2026-10-29",
   "market": {
@@ -19,7 +19,7 @@
   "regime": {
     "status": "bear",
     "label": "1档: 冰点期 — 坚决不参与",
-    "avg_trend": -3.52,
+    "avg_trend": -2.77,
     "recommended_mode": "bear"
   },
   "modes": {
