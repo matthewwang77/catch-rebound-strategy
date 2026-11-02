@@ -1,188 +1,195 @@
 {
   "date": "20261102",
-  "market_summary": "今日消息面整体偏暖，AI与科技主线全面爆发，Deepseek发布新架构、Google推出Genie 4等事件催化软件、算力、金融科技板块大涨；宽基ETF成交额突破百亿，增量资金入场迹象明显；政策预期升温，金融法草案二审强化投资者保护，券商板块异动。",
+  "market_summary": "今日消息面整体偏暖，中办国办将集成电路列为攻关之首、金融管理部门召集机构稳市、半导体景气验证及AI应用爆发共同提振科技成长板块，三大指数反弹近2%，电子板块主力净流入近58亿；但贵金属与商品期货大跌、银行逆市下跌显示资金从防御转向进攻。",
   "sentiment_impact": "偏多",
   "news": [
     {
-      "title": "原奶价格下跌53个月后转正 乳业盈利点生变 深加工能否破局？",
+      "title": "全球半导体景气验证 半导体设备ETF易方达涨4.46%",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202611023918484459.html",
-      "time": "2026-11-02 13:13:31",
-      "ai_summary": "Deepseek发布Super-agent架构，软件板块大涨",
-      "impact_analysis": "AI应用端重大突破，直接催化软件、金融科技板块涨停潮，提升市场对AI商业化信心，带动创业板和科创50指数上行。",
+      "url": "https://finance.eastmoney.com/a/202611023918667594.html",
+      "time": "2026-11-02 14:52:24",
+      "ai_summary": "中办国办将集成电路列攻关之首",
+      "impact_analysis": "顶层政策将集成电路置于关键核心技术攻关首位，强化国产替代与自主可控预期，直接提振芯片设计、设备、材料全产业链估值，是今日科技行情核心催化。",
       "affected_sectors": [
-        "软件",
-        "金融科技",
-        "人工智能"
+        "半导体",
+        "芯片设计",
+        "半导体设备"
       ],
       "affected_stocks": [
-        "600570.SS",
+        "688981.SS",
+        "603986.SS",
+        "002371.SZ"
+      ],
+      "importance": 9
+    },
+    {
+      "title": "前9个月生育保险基金支出超1000亿元 惠及3355万人次",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611023918652712.html",
+      "time": "2026-11-02 14:36:20",
+      "ai_summary": "金融管理部门一日两场会稳市",
+      "impact_analysis": "央行与证监会召集券商基金开会释放稳市信号，叠加三部门重磅会议落地，显著改善市场风险偏好，是今日指数反弹与软件开发等板块飙涨的重要政策背景。",
+      "affected_sectors": [
+        "券商",
+        "软件开发",
+        "大盘蓝筹"
+      ],
+      "affected_stocks": [
+        "600030.SS",
         "300033.SZ",
-        "601519.SS"
+        "601688.SS"
       ],
       "importance": 9
     },
     {
-      "title": "Deepseek于10月31日发布Super-agent架构，软件ETF天弘标的指数大涨近5%，连续6日累计净流入超1亿元",
+      "title": "“九章四号”光量子计算原型机等20项成果获2026年世界互联网大会领先科技奖",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202611023918537945.html",
-      "time": "2026-11-02 13:29:46",
-      "ai_summary": "宽基ETF成交额突破百亿，增量资金入场",
-      "impact_analysis": "多只宽基ETF成交额破百亿，显示机构和大资金加速入场，市场流动性充裕，对大盘指数形成直接支撑，提振市场情绪。",
+      "url": "https://finance.eastmoney.com/a/202611023918669872.html",
+      "time": "2026-11-02 15:03:13",
+      "ai_summary": "半导体景气验证设备ETF大涨",
+      "impact_analysis": "韩国10月半导体出口超500亿美元叠加设备厂三季报扎实，全球半导体景气获验证，设备材料方向领涨，强化A股半导体板块业绩与估值双升逻辑。",
       "affected_sectors": [
-        "大盘蓝筹",
-        "科技成长"
+        "半导体设备",
+        "半导体材料",
+        "电子"
       ],
       "affected_stocks": [
-        "510300.SS",
-        "588000.SS",
-        "159915.SZ"
+        "002371.SZ",
+        "688012.SS",
+        "300604.SZ"
       ],
-      "importance": 9
+      "importance": 8
     },
     {
-      "title": "券商自营业务冷暖不一：招商证券拿下三季度榜首 部分机构凭一级市场突围",
+      "title": "中办国办印发意见将集成电路列为关键核心技术攻关之首，科创芯片设计ETF天弘标的指数大涨超3%，成交额超2亿元为同标的第一",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202611023918490873.html",
-      "time": "2026-11-02 12:53:14",
-      "ai_summary": "Google发布Genie 4世界模型，AI板块走强",
-      "impact_analysis": "全球AI技术迭代加速，提振A股人工智能产业链情绪，算力、应用端个股活跃，科创人工智能ETF大涨，强化科技成长主线。",
+      "url": "https://finance.eastmoney.com/a/202611023918646766.html",
+      "time": "2026-11-02 14:28:36",
+      "ai_summary": "电子板块主力净流入近58亿",
+      "impact_analysis": "主力资金大幅流入电子、半导体，流出银行与工业金属，显示资金从防御切换至科技成长，对指数结构性行情与板块轮动方向有直接指引意义。",
       "affected_sectors": [
-        "人工智能",
-        "算力",
-        "云计算"
+        "电子",
+        "半导体",
+        "文化传媒"
       ],
       "affected_stocks": [
-        "688169.SS",
-        "300418.SZ",
+        "002384.SZ",
+        "603986.SS",
+        "300750.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "三部门重磅会议落地 创业板200ETF易方达涨3.28%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611023918667750.html",
+      "time": "2026-11-02 14:52:23",
+      "ai_summary": "AI应用集体爆发软件ETF飙涨",
+      "impact_analysis": "AI短剧、AI Agent驱动软件开发效率跃升，软件指数一度涨8%，AI应用端从主题走向业绩兑现，带动传媒、计算机板块成为今日最强主线之一。",
+      "affected_sectors": [
+        "软件开发",
+        "传媒",
+        "AI应用"
+      ],
+      "affected_stocks": [
+        "300413.SZ",
+        "300033.SZ",
         "002230.SZ"
       ],
       "importance": 8
     },
     {
-      "title": "放量行情持续发酵 沪深300ETF华泰柏瑞突破百亿成交",
+      "title": "巴菲特自曝已经“48年没喝过白开水” 此前曾调侃称自己的身体“有四分之一是可口可乐”",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202611023918622258.html",
-      "time": "2026-11-02 14:00:31",
-      "ai_summary": "金融法草案二审强化投资者保护",
-      "impact_analysis": "金融立法完善提升市场长期信心，强化投资者保护有助于吸引中长期资金，对券商、金融科技板块形成政策利好。",
-      "affected_sectors": [
-        "券商",
-        "金融科技"
-      ],
-      "affected_stocks": [
-        "600030.SS",
-        "601211.SS",
-        "300059.SZ"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "恒瑞医药与十方云签署战略合作协议，共建医药AI智能体生态，港股创新药ETF博时(520690)跟踪指数午后涨超1%",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202611023918607887.html",
-      "time": "2026-11-02 13:53:37",
-      "ai_summary": "券商板块异动，两场重磅会议预期升温",
-      "impact_analysis": "市场憧憬政策组合拳，券商板块大涨超4%，作为牛市旗手带动市场情绪，若政策落地将直接推动指数上行。",
-      "affected_sectors": [
-        "券商"
-      ],
-      "affected_stocks": [
-        "600109.SS",
-        "601099.SS",
-        "000776.SZ"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "金融科技ETF午后批量涨停 多只创业板金融科技ETF涨超10%",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202611023918600818.html",
-      "time": "2026-11-02 13:50:56",
-      "ai_summary": "AI漫剧概念爆发，十余股涨停",
-      "impact_analysis": "AI应用新场景落地，传媒、短剧板块获资金追捧，显示AI赋能传统行业逻辑强化，带动创业板题材活跃。",
-      "affected_sectors": [
-        "传媒",
-        "短剧",
-        "AI应用"
-      ],
-      "affected_stocks": [
-        "301052.SZ",
-        "300413.SZ",
-        "000917.SZ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "艾芬达：浙江云芯机器人技术有限公司相关业务订单稳步推进",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202611023918492032.html",
-      "time": "2026-11-02 12:45:00",
-      "ai_summary": "白酒股反攻，茅台收复1400元",
-      "impact_analysis": "白酒板块大涨，茅台重返1400元提振消费股信心，作为权重板块对沪深300和上证指数形成支撑，市场风格趋于均衡。",
-      "affected_sectors": [
-        "白酒",
-        "消费"
-      ],
-      "affected_stocks": [
-        "600519.SS",
-        "000858.SZ",
-        "000568.SZ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "华泰证券：2027年预计更大范围城市房价或将迎来企稳",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202611023918498087.html",
-      "time": "2026-11-02 12:59:00",
-      "ai_summary": "全球云厂商资本开支增速上调至50%",
-      "impact_analysis": "云厂商资本开支预期上调，直接利好算力基础设施、光模块、服务器等产业链，强化AI算力主线投资逻辑。",
+      "url": "https://finance.eastmoney.com/a/202611023918632383.html",
+      "time": "2026-11-02 14:16:51",
+      "ai_summary": "算力产业扩产PCB订单饱满",
+      "impact_analysis": "产业链企业订单超产能启动扩产，花旗测算2026年全球AI PCB市场增86%，算力硬件景气持续验证，利好PCB、光模块、算力基础设施板块。",
       "affected_sectors": [
         "算力",
-        "光模块",
-        "服务器"
+        "PCB",
+        "光模块"
+      ],
+      "affected_stocks": [
+        "002384.SZ",
+        "300308.SZ",
+        "002463.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "青岛市11月汽车以旧换新补贴配额2.5亿元",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611023918647392.html",
+      "time": "2026-11-02 14:29:00",
+      "ai_summary": "上海二手房成交创6年同期新高",
+      "impact_analysis": "上海10月一二手成交同比增33%，居民入市节奏加快，释放地产销售企稳信号，对地产链及市场整体风险偏好形成边际支撑。",
+      "affected_sectors": [
+        "房地产",
+        "建材",
+        "家电"
+      ],
+      "affected_stocks": [
+        "600048.SS",
+        "000002.SZ",
+        "000651.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "主力资金监控：电子板块净流入近58亿",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611023918638982.html",
+      "time": "2026-11-02 14:21:21",
+      "ai_summary": "贵金属商品期货大跌银行提示风险",
+      "impact_analysis": "沪银跌近4%、沪金跌近3%，工行提示贵金属波动加大，商品普跌反映避险与通胀交易降温，贵金属板块承压，资金进一步流向科技成长。",
+      "affected_sectors": [
+        "贵金属",
+        "有色金属",
+        "银行"
+      ],
+      "affected_stocks": [
+        "600547.SS",
+        "601899.SS",
+        "601398.SS"
+      ],
+      "importance": 6
+    },
+    {
+      "title": "国内商品期货收盘 主力合约跌多涨少",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611023918668140.html",
+      "time": "2026-11-02 15:00:10",
+      "ai_summary": "量子计算等20项成果获领先科技奖",
+      "impact_analysis": "九章四号光量子计算等前沿成果获奖，涵盖量子计算、AI、空天信息，强化科技前沿主题热度，对量子科技与AI概念股形成情绪催化。",
+      "affected_sectors": [
+        "量子科技",
+        "人工智能",
+        "空天信息"
+      ],
+      "affected_stocks": [
+        "600487.SS",
+        "002230.SZ",
+        "688027.SS"
+      ],
+      "importance": 6
+    },
+    {
+      "title": "美中期选战即将来袭：选情远比民调复杂 地方博弈牵动AI算力命运",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611023918663831.html",
+      "time": "2026-11-02 14:49:28",
+      "ai_summary": "美中期选举临近牵动AI算力",
+      "impact_analysis": "美国中期选举结果将影响特朗普政策推进与AI算力产业政策走向，外部不确定性上升，对A股算力链情绪与外资风险偏好构成潜在扰动。",
+      "affected_sectors": [
+        "算力",
+        "人工智能",
+        "出口链"
       ],
       "affected_stocks": [
         "300308.SZ",
-        "000977.SZ",
-        "300502.SZ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "广东小天才科技有限公司发生工商变更",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202611023918492553.html",
-      "time": "2026-11-02 12:49:00",
-      "ai_summary": "A股三季报收官，营收净利润创新高",
-      "impact_analysis": "上市公司盈利端持续修复，基本面支撑估值修复逻辑，增强市场对经济复苏信心，利好大盘蓝筹和绩优成长股。",
-      "affected_sectors": [
-        "大盘蓝筹",
-        "绩优成长"
-      ],
-      "affected_stocks": [
-        "510300.SS",
-        "000001.SZ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "沈阳招盈房地产开发有限公司成立，注册资本10亿元",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202611023918615217.html",
-      "time": "2026-11-02 13:59:20",
-      "ai_summary": "低空经济博览会启幕，通用航空板块活跃",
-      "impact_analysis": "低空经济政策与产业共振，通用航空ETF涨超2%，板块热度持续，利好无人机、飞行汽车等新兴成长方向。",
-      "affected_sectors": [
-        "低空经济",
-        "通用航空",
-        "无人机"
-      ],
-      "affected_stocks": [
-        "600038.SS",
-        "002526.SZ",
-        "300719.SZ"
+        "002384.SZ",
+        "603986.SS"
       ],
       "importance": 6
     }
