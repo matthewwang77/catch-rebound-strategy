@@ -1,5 +1,5 @@
 {
-  "scan_time": "2026-11-02 14:05",
+  "scan_time": "2026-11-02 14:06",
   "scan_date": "20261102",
   "data_date": "2026-10-30",
   "market": {
@@ -19,7 +19,7 @@
   "regime": {
     "status": "bear",
     "label": "2档: 低迷期 — 建议观望",
-    "avg_trend": -0.89,
+    "avg_trend": -0.86,
     "recommended_mode": "bear"
   },
   "modes": {
