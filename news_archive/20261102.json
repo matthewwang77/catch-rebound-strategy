@@ -1,0 +1,181 @@
+{
+  "date": "20261102",
+  "market_summary": "今日消息面整体偏暖，AI与机器人产业催化密集，软件、金融科技、机器人等板块大涨；宽基ETF显著放量，增量资金入场迹象明显；白酒、券商等权重板块反弹，市场情绪积极。",
+  "sentiment_impact": "偏多",
+  "news": [
+    {
+      "title": "原奶价格下跌53个月后转正 乳业盈利点生变 深加工能否破局？",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611023918484459.html",
+      "time": "2026-11-02 13:13:31",
+      "ai_summary": "宽基ETF放量成交超百亿",
+      "impact_analysis": "多只宽基ETF成交额突破百亿，较上周五大幅放量，显示大资金逆市布局，增量资金入场，对大盘指数形成直接支撑，提振市场信心。",
+      "affected_sectors": [
+        "大盘指数",
+        "ETF"
+      ],
+      "affected_stocks": [
+        "510300.SS",
+        "588000.SS",
+        "159915.SZ"
+      ],
+      "importance": 9
+    },
+    {
+      "title": "Deepseek于10月31日发布Super-agent架构，软件ETF天弘标的指数大涨近5%，连续6日累计净流入超1亿元",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611023918537945.html",
+      "time": "2026-11-02 13:29:46",
+      "ai_summary": "Deepseek发布新架构软件股大涨",
+      "impact_analysis": "Deepseek发布Super-agent架构，软件板块大涨近5%，连续6日净流入超1亿元，AI应用端催化不断，提升软件行业估值预期。",
+      "affected_sectors": [
+        "软件",
+        "人工智能"
+      ],
+      "affected_stocks": [
+        "600570.SS",
+        "300033.SZ",
+        "300803.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "券商自营业务冷暖不一：招商证券拿下三季度榜首 部分机构凭一级市场突围",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611023918490873.html",
+      "time": "2026-11-02 12:53:14",
+      "ai_summary": "金融科技板块爆发涨停潮",
+      "impact_analysis": "金融科技指数涨超8%，多股涨停，市场对金融科技政策及创新预期升温，带动互联网金融板块活跃，提升市场风险偏好。",
+      "affected_sectors": [
+        "金融科技",
+        "互联网金融"
+      ],
+      "affected_stocks": [
+        "300085.SZ",
+        "300773.SZ",
+        "300377.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "特斯拉与无锡对接深化合作",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611023918488451.html",
+      "time": "2026-11-02 12:25:00",
+      "ai_summary": "两市超100只个股涨停",
+      "impact_analysis": "市场赚钱效应显著，超百股涨停显示交投活跃，投资者情绪高涨，有利于吸引场外资金入场，推动指数进一步上行。",
+      "affected_sectors": [
+        "大盘指数"
+      ],
+      "affected_stocks": [],
+      "importance": 8
+    },
+    {
+      "title": "AI存储超级周期生变？铠侠股价暴跌17% 较历史高点“膝盖斩”",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611023918487892.html",
+      "time": "2026-11-02 12:19:04",
+      "ai_summary": "金融法草案二审强化投资者保护",
+      "impact_analysis": "金融法草案二审充实投资者保护内容，增加互联网营销规定，长期利好市场生态建设，提振投资者信心，对券商板块有积极影响。",
+      "affected_sectors": [
+        "券商",
+        "金融科技"
+      ],
+      "affected_stocks": [
+        "600030.SS",
+        "601688.SS"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "麒麟信安：智能云业务尚未对经营业绩产生重大影响",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611023918491076.html",
+      "time": "2026-11-02 12:35:00",
+      "ai_summary": "白酒股反攻茅台收复1400元",
+      "impact_analysis": "白酒板块大涨，茅台重返1400元，收复年内跌幅，作为权重板块，白酒反弹对指数贡献较大，提振消费板块情绪。",
+      "affected_sectors": [
+        "白酒",
+        "消费"
+      ],
+      "affected_stocks": [
+        "600519.SS",
+        "000858.SZ",
+        "000568.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "艾芬达：浙江云芯机器人技术有限公司相关业务订单稳步推进",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611023918492032.html",
+      "time": "2026-11-02 12:45:00",
+      "ai_summary": "券商板块异动多股大涨",
+      "impact_analysis": "券商先锋指数涨超4%，国金证券等大涨，市场对政策利好及流动性宽松预期升温，券商作为牛市旗手，其上涨提振市场整体情绪。",
+      "affected_sectors": [
+        "券商"
+      ],
+      "affected_stocks": [
+        "600109.SS",
+        "601099.SS",
+        "000776.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "数据局座谈会要求摸清“用数需求” 物理AI爆发前数采环节或先行",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611023918491195.html",
+      "time": "2026-11-02 12:41:03",
+      "ai_summary": "数据局推动高质量数据集建设",
+      "impact_analysis": "国家数据局强调摸清AI用数需求，推进数据集建设，利好数据要素、AI算力及数据服务板块，政策催化下相关概念股活跃。",
+      "affected_sectors": [
+        "数据要素",
+        "人工智能",
+        "算力"
+      ],
+      "affected_stocks": [
+        "600756.SS",
+        "300229.SZ",
+        "603986.SS"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "华泰证券：2027年预计更大范围城市房价或将迎来企稳",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611023918498087.html",
+      "time": "2026-11-02 12:59:00",
+      "ai_summary": "机器人概念持续活跃多股涨停",
+      "impact_analysis": "机器人登泰山大赛、宇树科技合作等事件催化，机器人概念股持续活跃，具身智能方向受关注，板块热度有望延续。",
+      "affected_sectors": [
+        "机器人",
+        "具身智能"
+      ],
+      "affected_stocks": [
+        "688836.SS",
+        "300024.SZ",
+        "002527.SZ"
+      ],
+      "importance": 6
+    },
+    {
+      "title": "广东小天才科技有限公司发生工商变更",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611023918492553.html",
+      "time": "2026-11-02 12:49:00",
+      "ai_summary": "华泰证券预计2027年房价企稳",
+      "impact_analysis": "华泰研报称一线城市房价已企稳超半年，2027年更大范围企稳，地产板块预期改善，对地产链及银行板块有正面影响。",
+      "affected_sectors": [
+        "房地产",
+        "银行"
+      ],
+      "affected_stocks": [
+        "600048.SS",
+        "001979.SZ",
+        "600036.SS"
+      ],
+      "importance": 6
+    }
+  ]
+}

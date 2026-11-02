@@ -3983,6 +3983,29 @@
       "why_wrong": null,
       "missed_signal": null,
       "lesson": null
+    },
+    {
+      "date": "20261102",
+      "signal_date": "20261019",
+      "mode": "bear",
+      "entry_price": 8.04,
+      "pullback_pct": 8.3,
+      "limit_days": 3,
+      "analysis": "- 量：近3日均量/涨停日量=83%，缩量不充分，OBV下降显示资金持续流出，今日量比0.96x无放量确认。\n- 价：现价8.04站上MA5=7.84，但仍在MA10=8.14、MA20=8.17下方，均线压制明显，关键位8.17未收复。\n- 形：3连板后回调8.3%属浅回调，获利盘未出清，MACD死叉+柱-0.208，无企稳平台，下跌中继形态未破。\n- 时：距涨停日59天，远超黄金窗口，回调周期失效，窗口评估归零。\n- 仓位建议：0成仓（情绪2档低迷，仓位≤1成）\n- 反弹概率：低(≤30%)\n- 最终结论：【放弃】",
+      "sentiment": "情绪2档低迷，仓位≤1成",
+      "position": "0成仓",
+      "opinion": "【放弃】",
+      "verified": false,
+      "return_7d": null,
+      "exit_reason": null,
+      "exit_day": null,
+      "verdict": null,
+      "review_analysis": null,
+      "review_quality": null,
+      "what_happened": null,
+      "why_wrong": null,
+      "missed_signal": null,
+      "lesson": null
     }
   ],
   "000798.SZ": [
