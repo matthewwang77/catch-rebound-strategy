@@ -1,40 +1,31 @@
 {
-  "scan_time": "2026-11-02 15:13",
-  "scan_date": "20261102",
+  "scan_time": "2026-11-03 13:31",
+  "scan_date": "20261103",
   "data_date": "2026-11-02",
   "market": {
     "上证": {
-      "price": 3632.31,
-      "pct": 0.93
+      "price": 3638.03,
+      "pct": 1.08
     },
     "深证": {
-      "price": 11010.65,
+      "price": 11010.68,
       "pct": 1.63
     },
     "创业板": {
-      "price": 2413.63,
-      "pct": -4.13
+      "price": 2458.7,
+      "pct": 1.87
     }
   },
   "regime": {
     "status": "bear",
-    "label": "2档: 低迷期 — 建议观望",
-    "avg_trend": -1.26,
+    "label": "1档: 冰点期 — 坚决不参与",
+    "avg_trend": -3.56,
     "recommended_mode": "bear"
   },
   "modes": {
     "bear": {
-      "count": 1,
-      "candidates": [
-        {
-          "code": "603636.SS",
-          "price": 8.34,
-          "signal_date": "20261019",
-          "pullback_pct": 8.3,
-          "limit_days": 3,
-          "entity_ratio": 67.0
-        }
-      ]
+      "count": 0,
+      "candidates": []
     }
   }
 }
