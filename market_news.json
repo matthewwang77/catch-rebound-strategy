@@ -1,194 +1,195 @@
 {
   "date": "20261104",
-  "market_summary": "今日消息面整体偏暖，股票ETF单日净流入838亿元创年内新高，显示资金借道ETF积极入场；创新药对外授权数据亮眼、半导体设备逆势拉升，成长板块情绪回暖；央行互换便利操作持续推进，政策托底信号明确。",
+  "market_summary": "今日消息面整体偏暖，半导体设备、AI智能体、机器人等科技成长板块受多重利好催化领涨，但大盘指数弱势震荡，资金向科技板块集中，市场结构性特征明显。",
   "sentiment_impact": "偏多",
   "news": [
     {
-      "title": "CXO订单业绩兑现、创新药政策预期升温！港股医疗ETF永赢早盘涨2.79%，公募三季度集中加仓港股医药",
+      "title": "机器人板块强势反弹 机器人ETF易方达+3.63%",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202611043921259054.html",
-      "time": "2026-11-04 09:46:49",
-      "ai_summary": "股票ETF单日净流入838亿创年内新高",
-      "impact_analysis": "巨额资金借道ETF入场，是市场底部区域的重要资金信号，直接利好宽基指数及权重蓝筹，有望提振市场信心并推动指数企稳反弹。",
+      "url": "https://finance.eastmoney.com/a/202611043921450247.html",
+      "time": "2026-11-04 10:56:47",
+      "ai_summary": "SEMI预测全球半导体设备销售增23.2%",
+      "impact_analysis": "全球半导体设备支出高增长预期强化，直接利好国内半导体设备及材料公司，叠加国产替代逻辑，板块有望持续获得资金关注。",
       "affected_sectors": [
-        "宽基指数",
-        "权重蓝筹",
-        "券商"
+        "半导体设备",
+        "半导体材料",
+        "电子"
       ],
       "affected_stocks": [
-        "510300.SS",
-        "510050.SS",
-        "159915.SZ"
+        "688012.SS",
+        "002371.SZ",
+        "688072.SS"
       ],
       "importance": 9
     },
     {
-      "title": "前三季度创新药对外技术授权约1300亿美元，创新药ETF天弘标的指数大涨超2%，成交额超1300万为同标的第一",
+      "title": "中国黄金协会：2026年前三季度我国黄金消费量同比增长0.28%",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202611043921322423.html",
-      "time": "2026-11-04 09:56:33",
-      "ai_summary": "创新药对外授权1300亿美元板块大涨",
-      "impact_analysis": "对外技术授权数据验证国产创新药全球竞争力，叠加政策预期升温，创新药及CXO产业链有望持续获得资金关注，成为成长主线之一。",
+      "url": "https://finance.eastmoney.com/a/202611043921441735.html",
+      "time": "2026-11-04 10:45:00",
+      "ai_summary": "企业级AI智能体市场规模跃升至212亿",
+      "impact_analysis": "AI应用商业化加速获数据验证，提升市场对AI产业链盈利信心，催化AI应用、算力及数据服务板块估值修复。",
       "affected_sectors": [
-        "创新药",
-        "CXO",
-        "生物医药"
+        "人工智能",
+        "算力",
+        "数据服务"
       ],
       "affected_stocks": [
-        "688235.SS",
-        "603259.SS",
-        "300759.SZ"
+        "002230.SZ",
+        "300033.SZ",
+        "688111.SS"
       ],
       "importance": 8
     },
     {
-      "title": "浙商证券中标央行第三批互换便利操作40亿元",
+      "title": "我国企业级AI智能体市场规模跃升至212亿元，科创AIETF鹏华涨超2%",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202611043921140920.html",
-      "time": "2026-11-04 09:27:43",
-      "ai_summary": "浙商证券中标央行互换便利40亿元",
-      "impact_analysis": "互换便利工具持续落地，为券商提供低成本资金并增强市场流动性，传递政策维稳信号，利好券商板块及整体市场风险偏好。",
+      "url": "https://finance.eastmoney.com/a/202611043921475139.html",
+      "time": "2026-11-04 11:21:50",
+      "ai_summary": "苹果智能接入阿里千问催化端侧AI",
+      "impact_analysis": "海外头部终端首次接入国产大模型，标志国产AI生态获国际认可，端侧AI芯片、模组及消费电子产业链迎来主题催化。",
+      "affected_sectors": [
+        "端侧AI",
+        "消费电子",
+        "AI芯片"
+      ],
+      "affected_stocks": [
+        "688608.SS",
+        "300782.SZ",
+        "002241.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "长鑫科技旗下芯聚股权投资公司增资至约78.8亿",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611043921472973.html",
+      "time": "2026-11-04 11:20:15",
+      "ai_summary": "发改委明确十五五交通投资维持较大规模",
+      "impact_analysis": "交通基建投资规模明确，铁路、公路、机场建设目标量化，利好建筑、工程机械、建材等稳增长板块，但需防炒作降温。",
+      "affected_sectors": [
+        "基建",
+        "工程机械",
+        "建筑材料"
+      ],
+      "affected_stocks": [
+        "601390.SS",
+        "600031.SS",
+        "600585.SS"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "福斯特：推进服务器PCB中高端电子材料进口替代",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611043921432547.html",
+      "time": "2026-11-04 10:38:00",
+      "ai_summary": "长鑫科技大幅上调回购额度",
+      "impact_analysis": "科创板龙头大手笔回购彰显产业资本信心，提振半导体及科创板整体情绪，带动科创100指数强势上涨。",
+      "affected_sectors": [
+        "半导体",
+        "科创板"
+      ],
+      "affected_stocks": [
+        "688981.SS",
+        "688008.SS",
+        "688041.SS"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "SEMI预测2026年全球半导体设备销售额同比增23.2%，科创半导体设备ETF鹏华涨超5%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611043921475492.html",
+      "time": "2026-11-04 11:22:17",
+      "ai_summary": "三季度医药生物获公募加仓最多",
+      "impact_analysis": "公募大幅加仓医药，叠加创新药业绩高增，医药板块资金面与基本面共振，创新药及CXO方向有望延续强势。",
+      "affected_sectors": [
+        "医药生物",
+        "创新药",
+        "CXO"
+      ],
+      "affected_stocks": [
+        "600276.SS",
+        "300760.SZ",
+        "603259.SS"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "国家发改委：“十五五”交通领域投资预计维持较大规模 严防项目跟风炒作",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611043921445830.html",
+      "time": "2026-11-04 10:53:15",
+      "ai_summary": "主力资金净流入半导体超24亿",
+      "impact_analysis": "主力资金集中流入半导体、电子板块，显示机构调仓方向明确，科技成长风格短期占优，但需关注资金持续性。",
+      "affected_sectors": [
+        "半导体",
+        "电子",
+        "机械设备"
+      ],
+      "affected_stocks": [
+        "002371.SZ",
+        "688012.SS",
+        "300782.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "为何选择开源路线？多家大模型负责人：加速通用人工智能到来",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611043921447384.html",
+      "time": "2026-11-04 10:56:00",
+      "ai_summary": "机器人板块强势反弹ETF涨3.63%",
+      "impact_analysis": "机器人板块低开高走，物理AI概念催化叠加优必选新品发布，产业趋势强化，机器人执行器、减速器等核心零部件受关注。",
+      "affected_sectors": [
+        "机器人",
+        "减速器",
+        "伺服系统"
+      ],
+      "affected_stocks": [
+        "002472.SZ",
+        "688017.SS",
+        "300124.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "创业板指上涨0.1% 半导体产业链领涨 饮料乳品跌幅居前",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611043921477932.html",
+      "time": "2026-11-04 11:30:08",
+      "ai_summary": "多部门部署加强消费基础设施建设",
+      "impact_analysis": "政策加码促消费基建，利好商贸零售、冷链物流、消费场景相关板块，但短期对指数拉动有限，偏主题性机会。",
+      "affected_sectors": [
+        "消费基础设施",
+        "商贸零售",
+        "冷链物流"
+      ],
+      "affected_stocks": [
+        "601933.SS",
+        "600693.SS",
+        "603708.SS"
+      ],
+      "importance": 6
+    },
+    {
+      "title": "苹果智能开启测试，催化端侧AI行情，科创100ETF鹏华涨超2%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611043921433268.html",
+      "time": "2026-11-04 10:39:52",
+      "ai_summary": "华泰证券参与央行第三批互换便利",
+      "impact_analysis": "互换便利工具持续落地，为资本市场引入增量资金，提振券商及市场信心，但单家机构参与对整体影响偏温和。",
       "affected_sectors": [
         "券商",
         "非银金融"
       ],
       "affected_stocks": [
-        "601878.SS",
+        "601688.SS",
         "600030.SS",
-        "300059.SZ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "快手系芯片公司凌川科技完成10亿元B轮融资",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202611043921359388.html",
-      "time": "2026-11-04 10:03:42",
-      "ai_summary": "半导体设备逆势拉升ETF涨超3%",
-      "impact_analysis": "半导体设备板块在调整后逆势反弹，国产替代逻辑持续强化，若资金持续回流，有望带动科技成长板块情绪修复。",
-      "affected_sectors": [
-        "半导体设备",
-        "半导体材料",
-        "国产替代"
-      ],
-      "affected_stocks": [
-        "002371.SZ",
-        "688012.SS",
-        "688072.SS"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "世界黄金协会：三季度央行购金同比增42%！黄金股ETF永赢早盘涨超2%，机构称金价企稳或成板块反弹信号",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202611043921199084.html",
-      "time": "2026-11-04 09:38:40",
-      "ai_summary": "央行购金同比增42%黄金股大涨",
-      "impact_analysis": "全球央行持续购金强化黄金中长期逻辑，金价企稳后黄金股弹性显现，避险与抗通胀属性下板块配置价值提升。",
-      "affected_sectors": [
-        "黄金",
-        "有色金属"
-      ],
-      "affected_stocks": [
-        "600547.SS",
-        "601899.SS",
-        "600489.SS"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "华商基金张永志：科技产业下一步真正要跟踪的是订单、毛利率、现金流与资本开支的匹配",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202611043921397626.html",
-      "time": "2026-11-04 10:11:31",
-      "ai_summary": "港股医药再突围百济神州领涨6%",
-      "impact_analysis": "港股医药股强势表现对A股医药板块形成映射效应，创新药及CXO产业链联动上涨，医药板块情绪有望持续升温。",
-      "affected_sectors": [
-        "创新药",
-        "CXO",
-        "医疗器械"
-      ],
-      "affected_stocks": [
-        "688235.SS",
-        "300760.SZ",
-        "603259.SS"
+        "601211.SS"
       ],
       "importance": 6
-    },
-    {
-      "title": "巴西财政部：政府债务占GDP比重将于2030年见顶",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202611043921398319.html",
-      "time": "2026-11-04 10:14:37",
-      "ai_summary": "算力链利益重新分配多源算力崛起",
-      "impact_analysis": "海外算力多源化趋势或影响英伟达产业链预期，但国产算力替代逻辑强化，算力板块内部分化中关注国产算力及光模块龙头。",
-      "affected_sectors": [
-        "算力",
-        "光模块",
-        "AI芯片"
-      ],
-      "affected_stocks": [
-        "300308.SZ",
-        "300502.SZ",
-        "688041.SS"
-      ],
-      "importance": 6
-    },
-    {
-      "title": "贵州省人民政府：推荐陈光虎为贵州银行副行长人选，建议安鹏不再担任该行副行长职务",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202611043921399242.html",
-      "time": "2026-11-04 10:13:37",
-      "ai_summary": "服务贸易进出口同比增长8.5%",
-      "impact_analysis": "服务贸易数据稳健增长，出口增速达14.8%显示外需韧性，逆差收窄利好国际收支平衡，对市场整体影响偏中性正面。",
-      "affected_sectors": [
-        "服务贸易",
-        "跨境电商",
-        "旅游"
-      ],
-      "affected_stocks": [
-        "601888.SS",
-        "300783.SZ"
-      ],
-      "importance": 5
-    },
-    {
-      "title": "股票ETF昨日净流入838亿元 924行情以来第三高",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202611043921356379.html",
-      "time": "2026-11-04 09:59:53",
-      "ai_summary": "固态电池概念延续强势多股连板",
-      "impact_analysis": "固态电池产业化预期持续发酵，题材热度较高但短期涨幅较大，需关注资金接力情况，对新能源板块情绪有正面带动。",
-      "affected_sectors": [
-        "固态电池",
-        "锂电池",
-        "新能源"
-      ],
-      "affected_stocks": [
-        "300750.SZ",
-        "002460.SZ",
-        "688567.SS"
-      ],
-      "importance": 5
-    },
-    {
-      "title": "今年国内已有超30款肿瘤创新药获批，港股通创新药ETF鹏华、恒生生物科技ETF鹏华均涨超2%",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202611043921338078.html",
-      "time": "2026-11-04 10:01:25",
-      "ai_summary": "日本芯片股大幅下挫铠侠跌13%",
-      "impact_analysis": "海外芯片股大跌或对A股半导体板块情绪形成短期扰动，但国产替代逻辑独立，若A股半导体逆势走强则显示内资定价权增强。",
-      "affected_sectors": [
-        "半导体",
-        "芯片",
-        "存储"
-      ],
-      "affected_stocks": [
-        "002049.SZ",
-        "603986.SS",
-        "688008.SS"
-      ],
-      "importance": 5
     }
   ]
 }
