@@ -1,0 +1,179 @@
+{
+  "date": "20261105",
+  "market_summary": "今日A股市场消息面整体偏暖，科技成长板块（半导体、AI、新能源）受产业景气与龙头回购催化集体大涨，叠加港股互联网及创新药走强，市场风险偏好显著提升；但高股息红利股受油价暴跌拖累走弱，形成结构性分化。",
+  "sentiment_impact": "偏多",
+  "news": [
+    {
+      "title": "中国创新药ESMO入选数创新高！港股医疗ETF永赢涨超3%，创新药与CXO产业链走强",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611053923231482.html",
+      "time": "2026-11-05 10:27:48",
+      "ai_summary": "沪指重回3700点，创业板涨逾3%",
+      "impact_analysis": "沪指重回3700点提振市场信心，创业板大涨显示成长风格占优，增量资金入场迹象明显，短期指数有望延续强势。",
+      "affected_sectors": [
+        "大盘指数",
+        "成长股"
+      ],
+      "affected_stocks": [
+        "000001.SS",
+        "399006.SZ"
+      ],
+      "importance": 9
+    },
+    {
+      "title": "腾讯发布Hy4正式版，港股互联网ETF博时(159568)跟踪指数高开高走涨超6%，机构：港股估值回归合理，成长修复可期",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611053923140087.html",
+      "time": "2026-11-05 10:14:51",
+      "ai_summary": "两市成交额破万亿，放量超3700亿",
+      "impact_analysis": "开盘50分钟成交破万亿，较昨日放量超3700亿，显示资金加速入场，市场活跃度大幅提升，对券商及大盘构成直接利好。",
+      "affected_sectors": [
+        "券商",
+        "大盘指数"
+      ],
+      "affected_stocks": [
+        "600030.SS",
+        "000001.SS"
+      ],
+      "importance": 9
+    },
+    {
+      "title": "阿里通义接入苹果AI引爆中国互联网资产 中概互联网ETF易方达涨6.26%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611053923292484.html",
+      "time": "2026-11-05 10:41:35",
+      "ai_summary": "半导体设备ETF涨停，龙头回购超百亿",
+      "impact_analysis": "科创板半导体公司回购超100亿传递信心，叠加硅晶圆出货增长，半导体设备材料板块涨停潮，产业链景气度持续验证。",
+      "affected_sectors": [
+        "半导体设备",
+        "半导体材料"
+      ],
+      "affected_stocks": [
+        "002371.SZ",
+        "688012.SS"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "中信金石等在青岛成立新股权投资合伙企业 出资额2.02亿",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611053923247133.html",
+      "time": "2026-11-05 10:27:46",
+      "ai_summary": "高股息红利股重挫，中国石油跌超8%",
+      "impact_analysis": "国际油价暴跌拖累石油煤炭等高股息板块，资金从红利股流向成长股，风格切换明显，短期对沪指形成一定压制。",
+      "affected_sectors": [
+        "石油",
+        "煤炭",
+        "高股息"
+      ],
+      "affected_stocks": [
+        "601857.SS",
+        "600028.SS"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "港股科技高开共振走强 港股通科技ETF易方达涨5.58%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611053923291852.html",
+      "time": "2026-11-05 10:40:56",
+      "ai_summary": "阿里通义接入苹果AI，中概互联网大涨",
+      "impact_analysis": "阿里通义与苹果合作标志中国AI生态获国际认可，中概互联网ETF涨超6%，提振A股AI应用及互联网相关板块情绪。",
+      "affected_sectors": [
+        "AI应用",
+        "互联网"
+      ],
+      "affected_stocks": [
+        "002230.SZ",
+        "300059.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "反攻行情选全产业链指数！科创芯片设计ETF国联安(588780)跟踪指数涨超3%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611053923295551.html",
+      "time": "2026-11-05 10:46:08",
+      "ai_summary": "腾讯发布Hy4大模型，港股科技共振",
+      "impact_analysis": "腾讯Hy4大模型发布推动港股科技股大涨，恒生科技涨超5%，对A股AI算力、大模型及应用端形成映射利好。",
+      "affected_sectors": [
+        "AI算力",
+        "大模型"
+      ],
+      "affected_stocks": [
+        "000977.SZ",
+        "300308.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "“十五五”末我国社零总额预计达到60万亿元左右，港股消费ETF鹏华、港股通消费ETF鹏华均涨超2%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611053923180533.html",
+      "time": "2026-11-05 10:20:05",
+      "ai_summary": "新能源产业链全面爆发，电池ETF涨超6%",
+      "impact_analysis": "长时储能与固态电池产业化进展催化，宁德时代获主力净买入超9亿，新能源车及锂电产业链情绪高涨，带动创业板走强。",
+      "affected_sectors": [
+        "锂电池",
+        "储能",
+        "新能源车"
+      ],
+      "affected_stocks": [
+        "300750.SZ",
+        "300274.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "世界互联网大会蓝皮书发布，AI智能体与具身智能加速兴起，科创AIETF博时(588790)跟踪指数盘中一度涨近5%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611053923307840.html",
+      "time": "2026-11-05 11:05:25",
+      "ai_summary": "高盛喊话逢低买入A股，尤其AI",
+      "impact_analysis": "高盛报告认为中国AI标的回调近54%后具备反弹条件，外资机构看多信号有助于提振市场情绪，吸引外资回流。",
+      "affected_sectors": [
+        "AI",
+        "大盘指数"
+      ],
+      "affected_stocks": [
+        "000001.SS",
+        "399006.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "关键变量出现，新能源预期改善！港股通汽车ETF华宝标的指数涨超5%，理想、小米集体上攻",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611053923302634.html",
+      "time": "2026-11-05 10:59:48",
+      "ai_summary": "五部门发文推进化工节能降碳改造",
+      "impact_analysis": "政策推动化工行业节能降碳，短期利好化工龙头及节能设备企业，但落后产能约束或加剧行业分化，关注供给侧改革机会。",
+      "affected_sectors": [
+        "化工",
+        "节能环保"
+      ],
+      "affected_stocks": [
+        "600309.SS",
+        "000830.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "科德数控：燃气轮机、半导体等领域订单均按期履约交付",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611053923185178.html",
+      "time": "2026-11-05 10:20:00",
+      "ai_summary": "创新药ESMO入选数创新高，CRO涨停",
+      "impact_analysis": "中国创新药ESMO入选数创新高，凯莱英涨停，CRO及创新药产业链持续走强，医药板块情绪回暖，关注研发外包及创新药龙头。",
+      "affected_sectors": [
+        "创新药",
+        "CRO"
+      ],
+      "affected_stocks": [
+        "002821.SZ",
+        "300347.SZ"
+      ],
+      "importance": 7
+    }
+  ]
+}

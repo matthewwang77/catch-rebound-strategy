@@ -4217,6 +4217,29 @@
       "why_wrong": null,
       "missed_signal": null,
       "lesson": null
+    },
+    {
+      "date": "20261105",
+      "signal_date": "20261020",
+      "mode": "strict",
+      "entry_price": 11.17,
+      "pullback_pct": 18.3,
+      "limit_days": 3,
+      "analysis": "- 量：近3日均量/涨停日量=104%，未缩量，OBV下降资金流出，量价背离。\n- 价：MA5=10.94上方运行，但逼近布林上轨11.35与20日高11.92双重压力，回调18.3%后反弹力度偏弱。\n- 形：3连板后回调5天，未形成有效缩量止跌形态，属弱反弹结构。\n- 时：回调5天处于窗口边缘，情绪高潮期(5档)风险积聚，快进快出为主。\n- 仓位建议：1成仓（高潮期5档，严控风险）\n- 反弹概率：低(≤30%)\n- 最终结论：【观望】",
+      "sentiment": "高潮期5档，严控风险",
+      "position": "1成仓",
+      "opinion": "【观望】",
+      "verified": false,
+      "return_7d": null,
+      "exit_reason": null,
+      "exit_day": null,
+      "verdict": null,
+      "review_analysis": null,
+      "review_quality": null,
+      "what_happened": null,
+      "why_wrong": null,
+      "missed_signal": null,
+      "lesson": null
     }
   ],
   "002514.SZ": [
