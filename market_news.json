@@ -1,197 +1,185 @@
 {
   "date": "20261105",
-  "market_summary": "今日消息面整体偏暖，科技成长主线全面爆发，半导体、AI、新能源车产业链领涨，港股科技与创新药共振走强；但高股息红利板块受油价暴跌拖累走弱，市场风格切换明显。政策面国务院重申适度宽松货币政策，高盛喊话逢低买入A股AI，外资情绪改善。",
+  "market_summary": "今日消息面整体偏暖，国务院金融工作报告明确支持汇金发挥类平准基金作用，稳市机制强化；摩根大通看好A股反弹空间，叠加成交额显著放量，市场情绪积极。AI算力、创新药、半导体等板块表现活跃，但创业板指冲高回落显示结构性分化。",
   "sentiment_impact": "偏多",
   "news": [
     {
-      "title": "阿里通义接入苹果AI引爆中国互联网资产 中概互联网ETF易方达涨6.26%",
+      "title": "卡特彼勒进博会全球首发FG Wilson发电机组 专为数据中心需求打造",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202611053923292484.html",
-      "time": "2026-11-05 10:41:35",
-      "ai_summary": "国务院重申适度宽松货币政策",
-      "impact_analysis": "货币政策基调延续宽松，强化市场流动性预期，利好券商、银行及整体估值修复，对大盘指数构成中期支撑。",
+      "url": "https://finance.eastmoney.com/a/202611053923404180.html",
+      "time": "2026-11-05 13:53:46",
+      "ai_summary": "国务院支持汇金发挥类平准基金作用",
+      "impact_analysis": "明确稳市机制，强化政策托底预期，提振市场信心，利好大盘指数，券商、保险等金融板块直接受益。",
       "affected_sectors": [
-        "银行",
         "券商",
-        "房地产"
+        "保险",
+        "银行"
       ],
       "affected_stocks": [
         "601398.SS",
+        "601318.SS",
+        "600030.SS"
+      ],
+      "importance": 10
+    },
+    {
+      "title": "乌镇峰会推动算力数据共建共享，云计算ETF鹏华涨超2%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611053923360279.html",
+      "time": "2026-11-05 13:11:39",
+      "ai_summary": "摩根大通看好A股还有10%-15%反弹空间",
+      "impact_analysis": "外资机构看多叠加AI交易松动，引导资金轮动至中国资产，提振市场风险偏好，利好整体指数。",
+      "affected_sectors": [
+        "大盘蓝筹",
+        "科技"
+      ],
+      "affected_stocks": [
+        "510300.SS",
+        "159919.SZ"
+      ],
+      "importance": 9
+    },
+    {
+      "title": "第140届广交会现场意向出口成交额267.5亿美元",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611053923345797.html",
+      "time": "2026-11-05 12:52:47",
+      "ai_summary": "两市成交额突破1.5万亿，放量超5200亿",
+      "impact_analysis": "成交显著放量显示资金加速入场，市场活跃度提升，直接利好券商板块及大盘指数。",
+      "affected_sectors": [
+        "券商",
+        "金融科技"
+      ],
+      "affected_stocks": [
         "600030.SS",
-        "000002.SZ"
+        "300059.SZ"
       ],
       "importance": 9
     },
     {
-      "title": "国电投（嵊泗）能源有限公司成立，注册资本2亿元",
+      "title": "为操盘团伙介绍公募接盘锁仓，知名券商原首席策略分析师获刑",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202611053923310776.html",
-      "time": "2026-11-05 11:08:33",
-      "ai_summary": "沪指重回3700点创业板涨逾3%",
-      "impact_analysis": "指数放量突破关键点位，市场情绪显著升温，上涨个股近4700只，增量资金入场迹象明显，短期趋势偏强。",
+      "url": "https://finance.eastmoney.com/a/202611053923401818.html",
+      "time": "2026-11-05 13:49:49",
+      "ai_summary": "超6000亿长钱年内入市",
+      "impact_analysis": "社保、年金、保险等中长期资金净买入超6000亿，增强市场稳定性，利好高股息蓝筹及红利策略。",
       "affected_sectors": [
-        "半导体",
-        "光伏",
-        "锂电池"
+        "高股息",
+        "红利",
+        "蓝筹"
       ],
       "affected_stocks": [
-        "300750.SZ",
-        "002594.SZ",
-        "601012.SS"
-      ],
-      "importance": 9
-    },
-    {
-      "title": "温州金醇苑士创业投资合伙企业（有限合伙）成立，出资额2亿",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202611053923325678.html",
-      "time": "2026-11-05 11:24:29",
-      "ai_summary": "高盛喊话逢低买入A股尤其AI",
-      "impact_analysis": "外资投行明确看多中国AI资产，叠加前期回调充分，有望吸引北向资金回流，提振科技成长板块风险偏好。",
-      "affected_sectors": [
-        "人工智能",
-        "半导体",
-        "云计算"
-      ],
-      "affected_stocks": [
-        "002230.SZ",
-        "688981.SS",
-        "300308.SZ"
+        "510880.SS",
+        "601088.SS"
       ],
       "importance": 8
     },
     {
-      "title": "港股科技高开共振走强 港股通科技ETF易方达涨5.58%",
+      "title": "中生制药年内第三笔对外授权落地，潜在交易金额达70亿美元，港股创新药ETF博时(520690)跟踪指数盘中最高涨超3%",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202611053923291852.html",
-      "time": "2026-11-05 10:40:56",
-      "ai_summary": "阿里通义接入苹果AI引爆互联网",
-      "impact_analysis": "AI应用端重大落地催化，中概互联网ETF大涨6%，映射至A股AI应用、算力及消费电子板块，强化科技主线逻辑。",
+      "url": "https://finance.eastmoney.com/a/202611053923372888.html",
+      "time": "2026-11-05 13:22:20",
+      "ai_summary": "乌镇峰会推动算力数据共建共享",
+      "impact_analysis": "倡议呼吁共建算力池和数据集，直接催化云计算、算力租赁概念，相关板块热度有望延续。",
       "affected_sectors": [
-        "人工智能",
-        "消费电子",
-        "云计算"
+        "云计算",
+        "算力租赁",
+        "数据中心"
       ],
       "affected_stocks": [
-        "002475.SZ",
-        "300496.SZ",
-        "688111.SS"
+        "300474.SZ",
+        "688316.SS",
+        "300383.SZ"
       ],
       "importance": 8
     },
     {
-      "title": "反攻行情选全产业链指数！科创芯片设计ETF国联安(588780)跟踪指数涨超3%",
+      "title": "光通信上游再添IPO后备军：华兴光电启动A股辅导 系化合物半导体外延片厂商",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202611053923295551.html",
-      "time": "2026-11-05 10:46:08",
-      "ai_summary": "半导体设备ETF连续涨停景气看至2029",
-      "impact_analysis": "全球芯片销售额连续三季环比增超20%，龙头预订三年后产能，设备材料板块涨停潮，产业景气度确认，半导体成最强主线。",
-      "affected_sectors": [
-        "半导体设备",
-        "半导体材料",
-        "芯片设计"
-      ],
-      "affected_stocks": [
-        "002371.SZ",
-        "688012.SS",
-        "688072.SS"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "中国生物制药×BI 70亿美元大单落地！港股创新药ETF广发（513120）、恒生生物科技ETF广发（159169）标的指数盘中均涨超4%",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202611053923320832.html",
-      "time": "2026-11-05 11:20:05",
-      "ai_summary": "中国生物制药70亿美元大单落地",
-      "impact_analysis": "创新药出海授权大单提振板块情绪，港股创新药ETF涨超4%，A股创新药、CXO板块联动走强，医药赛道景气回升。",
+      "url": "https://finance.eastmoney.com/a/202611053923345213.html",
+      "time": "2026-11-05 12:50:00",
+      "ai_summary": "中生制药对外授权潜在70亿美元",
+      "impact_analysis": "创新药出海授权大单落地，提振创新药板块情绪，港股及A股创新药产业链有望联动上涨。",
       "affected_sectors": [
         "创新药",
-        "CXO",
-        "生物科技"
+        "CRO"
       ],
       "affected_stocks": [
         "600276.SS",
         "300759.SZ",
-        "688180.SS"
+        "603259.SS"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "国家市场监管总局发布多则汽车召回公告 总量超80万 涉及奥迪、丰田、大众、雷克萨斯、MINI、路特斯、Jeep等",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611053923383254.html",
+      "time": "2026-11-05 13:35:09",
+      "ai_summary": "长江存储暂停330亿IPO计划",
+      "impact_analysis": "监管指导投行放缓AI和芯片IPO，短期缓解半导体板块供给压力，但反映监管审慎，影响中性偏多。",
+      "affected_sectors": [
+        "半导体",
+        "芯片"
+      ],
+      "affected_stocks": [
+        "688981.SS",
+        "002371.SZ"
       ],
       "importance": 7
     },
     {
-      "title": "世界互联网大会蓝皮书发布，AI智能体与具身智能加速兴起，科创AIETF博时(588790)跟踪指数盘中一度涨近5%",
+      "title": "中国电信入股合肥市数算科技公司",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202611053923307840.html",
-      "time": "2026-11-05 11:05:25",
-      "ai_summary": "油价暴跌超10%中国石油跌逾8%",
-      "impact_analysis": "布伦特原油日内一度跌超10%，石油煤炭高股息板块领跌，中国石油跌幅第一，拖累上证指数，风格从红利转向成长。",
+      "url": "https://finance.eastmoney.com/a/202611053923370254.html",
+      "time": "2026-11-05 13:19:07",
+      "ai_summary": "国资委加快培育新兴产业和未来产业",
+      "impact_analysis": "政策定调科技强牵引产业强，利好半导体、AI、机器人等战略新兴产业，强化科技成长主线。",
       "affected_sectors": [
-        "石油",
-        "煤炭",
-        "高股息"
+        "半导体",
+        "人工智能",
+        "机器人"
       ],
       "affected_stocks": [
-        "601857.SS",
-        "600938.SS",
-        "601088.SS"
+        "688981.SS",
+        "300024.SZ"
       ],
       "importance": 7
     },
     {
-      "title": "广交会期间白云机场口岸入出境外国人超67.5万人次 刷新历史纪录",
+      "title": "美国“蓝色浪潮”将会限制AI资本投入？高盛：恰恰相反！",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202611053923315087.html",
-      "time": "2026-11-05 11:15:22",
-      "ai_summary": "新能源车产业链全面大涨",
-      "impact_analysis": "港股理想小米涨超7%，A股锂电池、储能、固态电池集体爆发，宁德时代成交超百亿涨近7%，新能源赛道预期改善资金回流。",
+      "url": "https://finance.eastmoney.com/a/202611053923386223.html",
+      "time": "2026-11-05 13:36:31",
+      "ai_summary": "广交会意向出口成交267.5亿美元创新高",
+      "impact_analysis": "出口成交超预期，欧美采购商大幅增长，利好外贸出口链及跨境电商，提振经济复苏预期。",
       "affected_sectors": [
-        "锂电池",
-        "储能",
-        "新能源汽车"
+        "跨境电商",
+        "外贸",
+        "物流"
       ],
       "affected_stocks": [
-        "300750.SZ",
-        "300274.SZ",
-        "002460.SZ"
+        "002352.SZ",
+        "300783.SZ"
       ],
       "importance": 7
     },
     {
-      "title": "Arm业绩指引双双超预期 AI算力需求拉动授权收入翻倍",
+      "title": "芒果TV崩了 芒果超媒股价暴力拉升",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202611053923318987.html",
-      "time": "2026-11-05 11:28:16",
-      "ai_summary": "科创50ETF一小时成交破百亿",
-      "impact_analysis": "科创50ETF成交额环比增超2倍，创业板ETF成交超87亿，显示增量资金集中涌入科技成长宽基，强化指数上行趋势。",
+      "url": "https://finance.eastmoney.com/a/202611053923379667.html",
+      "time": "2026-11-05 13:31:07",
+      "ai_summary": "宽基ETF规模飙升，沪深300ETF逼近2000亿",
+      "impact_analysis": "宽基ETF规模快速增长显示配置资金持续流入，为大盘提供流动性支撑，利好指数稳定。",
       "affected_sectors": [
-        "科创板",
-        "创业板",
-        "科技成长"
+        "宽基ETF",
+        "大盘蓝筹"
       ],
       "affected_stocks": [
-        "588000.SS",
-        "159915.SZ",
-        "512100.SS"
+        "510300.SS",
+        "159919.SZ"
       ],
-      "importance": 6
-    },
-    {
-      "title": "vivo与比亚迪正式签署战略合作协议",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202611053923325586.html",
-      "time": "2026-11-05 11:24:29",
-      "ai_summary": "美国中期选举民主党大胜",
-      "impact_analysis": "共和党惨败或制约特朗普关税与对伊政策，全球贸易摩擦预期缓和，风险偏好回升利好出口链及全球科技股，但AI监管不确定性上升。",
-      "affected_sectors": [
-        "出口贸易",
-        "消费电子",
-        "人工智能"
-      ],
-      "affected_stocks": [
-        "002415.SZ",
-        "000333.SZ",
-        "300308.SZ"
-      ],
-      "importance": 6
+      "importance": 7
     }
   ]
 }
