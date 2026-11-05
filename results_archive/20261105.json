@@ -1,5 +1,5 @@
 {
-  "scan_time": "2026-11-05 14:17",
+  "scan_time": "2026-11-05 15:02",
   "scan_date": "20261105",
   "data_date": "2026-11-04",
   "market": {
@@ -19,7 +19,7 @@
   "regime": {
     "status": "neutral",
     "label": "5档: 高潮期 — 短期风险积聚",
-    "avg_trend": 3.53,
+    "avg_trend": 4.03,
     "recommended_mode": "loose"
   },
   "modes": {
