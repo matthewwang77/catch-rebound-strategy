@@ -1,0 +1,27 @@
+{
+  "scan_time": "2026-11-06 10:38",
+  "scan_date": "20261106",
+  "data_date": "2026-11-06",
+  "market": {},
+  "regime": {
+    "status": "neutral",
+    "label": "数据不足，默认非熊市",
+    "avg_trend": 0,
+    "recommended_mode": "strict"
+  },
+  "modes": {
+    "strict": {
+      "count": 1,
+      "candidates": [
+        {
+          "code": "002403.SZ",
+          "price": 11.17,
+          "signal_date": "20261020",
+          "pullback_pct": 18.3,
+          "limit_days": 3,
+          "entity_ratio": 100.0
+        }
+      ]
+    }
+  }
+}
