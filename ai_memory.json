@@ -4240,6 +4240,29 @@
       "why_wrong": null,
       "missed_signal": null,
       "lesson": null
+    },
+    {
+      "date": "20261106",
+      "signal_date": "20261020",
+      "mode": "strict",
+      "entry_price": 10.4,
+      "pullback_pct": 18.3,
+      "limit_days": 3,
+      "analysis": "- 量：近3日均量为涨停日76%，缩量不足，OBV上升但主力电子板块净流出127亿，资金承接偏弱。\n- 价：跌破MA5/MA10（10.62），仅靠MA20（10.52）勉强支撑，10.40已失守中轨，关键位10.52若破则看布林下轨9.69。\n- 形：3连板后13天回调18.3%，属高位回落而非缩量横盘蓄势，形态偏弱，无有效企稳信号。\n- 时：回调13天已超常规窗口（5-8天），MACD死叉、柱线走弱，时间窗口已过，反弹动能衰减。\n- 仓位建议：1成仓（启动期3档，但个股信号弱于大盘，降档处理）\n- 反弹概率：低（≤30%）\n- 最终结论：【放弃】",
+      "sentiment": "启动期3档，但个股信号弱于大盘，降档处理",
+      "position": "1成仓",
+      "opinion": "【放弃】",
+      "verified": false,
+      "return_7d": null,
+      "exit_reason": null,
+      "exit_day": null,
+      "verdict": null,
+      "review_analysis": null,
+      "review_quality": null,
+      "what_happened": null,
+      "why_wrong": null,
+      "missed_signal": null,
+      "lesson": null
     }
   ],
   "002514.SZ": [
