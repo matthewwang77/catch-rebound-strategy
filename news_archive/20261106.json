@@ -1,0 +1,192 @@
+{
+  "date": "20261106",
+  "market_summary": "今日消息面多空交织，国内政策聚焦算力基建、电力保供和粮食安全，中国移动千亿算力投资与何立峰调研强调金融支持AI构成利好；但海外AI监管担忧引发日韩股市暴跌，A股半导体板块早盘重挫后翻红，资金流向红利与农业等防御板块，整体情绪偏谨慎。",
+  "sentiment_impact": "中性",
+  "news": [
+    {
+      "title": "2027年中国移动计划算力投资逾1000亿元",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611063924629950.html",
+      "time": "2026-11-06 10:39:12",
+      "ai_summary": "中国移动2027年算力投资超千亿",
+      "impact_analysis": "算力投资加码直接利好AI基础设施产业链，包括服务器、光模块、IDC等，但需注意海外AI监管风险对科技股情绪的压制。",
+      "affected_sectors": [
+        "算力",
+        "通信设备",
+        "光模块"
+      ],
+      "affected_stocks": [
+        "600941.SS",
+        "300308.SZ",
+        "000063.SZ"
+      ],
+      "importance": 9
+    },
+    {
+      "title": "国家能源局：“十五五”时期推动2030年虚拟电厂调节能力达到5000万千瓦以上",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611063924639883.html",
+      "time": "2026-11-06 10:53:00",
+      "ai_summary": "2030年虚拟电厂调节能力达5000万千瓦",
+      "impact_analysis": "政策明确虚拟电厂发展目标，利好智能电网、储能和电力信息化板块，推动新型电力系统建设。",
+      "affected_sectors": [
+        "虚拟电厂",
+        "智能电网",
+        "储能"
+      ],
+      "affected_stocks": [
+        "300274.SZ",
+        "002028.SZ",
+        "300682.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "中荷出口管制对话机制会议在深圳举行",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611063924639930.html",
+      "time": "2026-11-06 10:52:13",
+      "ai_summary": "中荷出口管制对话维护半导体供应链",
+      "impact_analysis": "中荷就半导体出口管制加强沟通，有助于缓解供应链担忧，对半导体设备及材料板块构成情绪利好。",
+      "affected_sectors": [
+        "半导体",
+        "芯片"
+      ],
+      "affected_stocks": [
+        "688012.SS",
+        "002371.SZ",
+        "688981.SS"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "“以为到底了 没想到还有地下” 日韩股市集体跌入“熊市”",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611063924648965.html",
+      "time": "2026-11-06 11:13:10",
+      "ai_summary": "日韩股市暴跌触发熔断",
+      "impact_analysis": "海外AI及半导体股大跌拖累日韩市场，对A股科技板块形成情绪压制，但早盘半导体ETF已翻红显示韧性。",
+      "affected_sectors": [
+        "半导体",
+        "AI"
+      ],
+      "affected_stocks": [
+        "688981.SS",
+        "002371.SZ",
+        "300308.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "何立峰北京调研：加大对人工智能、算力网建设金融支持",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/stock/roll/2026-11-06/doc-inixucth5611115.shtml",
+      "time": "2026-11-06 10:36",
+      "ai_summary": "何立峰调研强调金融支持AI算力",
+      "impact_analysis": "高层表态加大对人工智能、算力网的金融支持，强化政策预期，利好AI算力基础设施板块。",
+      "affected_sectors": [
+        "人工智能",
+        "算力",
+        "金融科技"
+      ],
+      "affected_stocks": [
+        "600941.SS",
+        "000977.SZ",
+        "300308.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "四季度红利“日历效应”显现，资金从成长向红利倾斜，红利低波100ETF博时(159307)跟踪指数逆市上涨",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611063924639038.html",
+      "time": "2026-11-06 10:44:33",
+      "ai_summary": "四季度红利日历效应显现",
+      "impact_analysis": "资金从成长向红利低波板块切换，反映市场风险偏好下降，利好高股息公用事业、银行等防御板块。",
+      "affected_sectors": [
+        "红利低波",
+        "银行",
+        "公用事业"
+      ],
+      "affected_stocks": [
+        "600941.SS",
+        "601728.SS",
+        "600377.SS"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "黑龙江年度电力外送首次突破200亿千瓦时，电力ETF博时(561700)跟踪指数涨超1%，机构：电力板块具备长期投资价值",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611063924631293.html",
+      "time": "2026-11-06 10:41:26",
+      "ai_summary": "黑龙江电力外送突破200亿千瓦时",
+      "impact_analysis": "电力外送创新高叠加冬季保供预期，电力板块逆市上涨，机构看好长期投资价值，利好电力运营股。",
+      "affected_sectors": [
+        "电力",
+        "公用事业"
+      ],
+      "affected_stocks": [
+        "600900.SS",
+        "600886.SS",
+        "000875.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "主力资金监控：东山精密净卖出超12亿",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611063924640447.html",
+      "time": "2026-11-06 10:55:20",
+      "ai_summary": "主力资金净流出电子超117亿",
+      "impact_analysis": "电子板块主力资金大幅净流出，显示科技股短期承压，资金转向铁路公路、农林牧渔等防御板块。",
+      "affected_sectors": [
+        "电子",
+        "半导体",
+        "农林牧渔"
+      ],
+      "affected_stocks": [
+        "002384.SZ",
+        "603986.SS",
+        "601138.SS"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "国家能源局：“十五五”时期我国用电需求预计年均增量达到约6000亿度",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611063924639741.html",
+      "time": "2026-11-06 10:52:00",
+      "ai_summary": "十五五年均用电增量约6000亿度",
+      "impact_analysis": "算力等新兴产业带动用电刚性增长，电力需求预期强化，利好电力运营及电网建设板块。",
+      "affected_sectors": [
+        "电力",
+        "电网设备"
+      ],
+      "affected_stocks": [
+        "600900.SS",
+        "600406.SS",
+        "601877.SS"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "逆市猛攻！种植链大面积拉升，农牧渔ETF华宝（159275）标的指数涨超1%！",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/money/fund/etf/2026-11-06/doc-inixucsw8354222.shtml",
+      "time": "2026-11-06 10:33",
+      "ai_summary": "种植链大面积拉升农牧渔ETF涨超1%",
+      "impact_analysis": "农业板块逆市走强，受粮食安全政策及种业振兴预期催化，资金避险切换至农业主题。",
+      "affected_sectors": [
+        "农业",
+        "种业"
+      ],
+      "affected_stocks": [
+        "600371.SS",
+        "000998.SZ",
+        "600598.SS"
+      ],
+      "importance": 6
+    }
+  ]
+}
