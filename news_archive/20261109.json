@@ -1,0 +1,194 @@
+{
+  "date": "20261109",
+  "market_summary": "今日消息面整体偏暖，中美关税暂停加征释放贸易缓和信号，叠加卫星互联网、机器人、AI等科技产业催化密集，市场风险偏好回升，但两市成交缩量显示资金追高意愿有限。",
+  "sentiment_impact": "偏多",
+  "news": [
+    {
+      "title": "国务院关税税则委员会：11月10日起2个月内继续暂停实施24%的对美加征关税税率 保留10%的对美加征关税税率",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611093926051572.html",
+      "time": "2026-11-09 10:31:45",
+      "ai_summary": "中美关税暂停加征24%",
+      "impact_analysis": "直接利好出口链和风险偏好，关税暂停缓解贸易摩擦担忧，对美出口占比较高的机电、轻工、纺服板块受益，但保留10%税率显示缓和有限，整体提振市场情绪。",
+      "affected_sectors": [
+        "出口贸易",
+        "机电设备",
+        "轻工制造"
+      ],
+      "affected_stocks": [
+        "600690.SS",
+        "000333.SZ",
+        "002032.SZ"
+      ],
+      "importance": 9
+    },
+    {
+      "title": "深市ETF连续19日净流入 合计金额1418亿",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611093926093116.html",
+      "time": "2026-11-09 11:18:47",
+      "ai_summary": "深市ETF连续19日净流入",
+      "impact_analysis": "深市ETF连续19日净流入合计1418亿，创业板ETF净流入610亿，显示资金持续借道ETF布局成长板块，对创业板指数形成托底支撑，增量资金信号积极。",
+      "affected_sectors": [
+        "创业板",
+        "宽基ETF",
+        "成长风格"
+      ],
+      "affected_stocks": [
+        "159915.SZ",
+        "159949.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "台积电拟布局3D DRAM生产，港股通信息技术ETF鹏华涨超2%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611093926059132.html",
+      "time": "2026-11-09 10:41:25",
+      "ai_summary": "台积电布局3D DRAM",
+      "impact_analysis": "先进存储芯片竞争加剧，台积电切入DRAM领域或重塑存储格局，短期提振芯片板块情绪，但中长期对国内存储厂商形成竞争压力，关注国产替代逻辑。",
+      "affected_sectors": [
+        "半导体",
+        "存储芯片",
+        "集成电路"
+      ],
+      "affected_stocks": [
+        "688981.SS",
+        "603986.SS",
+        "002049.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "合肥布局太空算力 中科星图、海光信息、中科曙光等16家主体参与设立中科星云",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611093926054747.html",
+      "time": "2026-11-09 10:35:45",
+      "ai_summary": "合肥设立太空算力公司",
+      "impact_analysis": "16家主体联合设立中科星云，布局太空算力芯片和星间互联，标志太空计算产业化提速，利好卫星互联网、算力芯片及航天产业链，主题催化明确。",
+      "affected_sectors": [
+        "卫星互联网",
+        "算力芯片",
+        "航天装备"
+      ],
+      "affected_stocks": [
+        "688568.SS",
+        "688041.SS",
+        "603019.SS"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "人工智能将迎来背水一战！今年剩下的唯一要事就是Anthropic的IPO",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611093926048754.html",
+      "time": "2026-11-09 10:27:44",
+      "ai_summary": "Anthropic IPO估值下调",
+      "impact_analysis": "AI龙头IPO估值从2万亿下调至1.25-1.75万亿美元，反映资本市场对AI投资趋于谨慎，对全球AI板块情绪形成压制，A股AI概念短期承压。",
+      "affected_sectors": [
+        "人工智能",
+        "AI算力",
+        "科技成长"
+      ],
+      "affected_stocks": [
+        "688256.SS",
+        "300308.SZ",
+        "002230.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "沪指上涨0.46% 元件、航天装备领涨 两市半日缩量超1100亿",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611093926101470.html",
+      "time": "2026-11-09 11:30:53",
+      "ai_summary": "沪指半日涨0.46%缩量",
+      "impact_analysis": "三大指数集体上涨但成交缩量超1100亿，显示反弹动能不足，元件、航天装备领涨，能源金属、光伏领跌，市场结构性分化明显，短期震荡格局延续。",
+      "affected_sectors": [
+        "元件",
+        "航天装备",
+        "能源金属"
+      ],
+      "affected_stocks": [
+        "002463.SZ",
+        "600893.SS",
+        "002466.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "十五五“规划拟新建约15个民用运输机场，通用航空ETF华泰柏瑞涨超2.64%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611093926056524.html",
+      "time": "2026-11-09 10:34:00",
+      "ai_summary": "十五五拟新建15个机场",
+      "impact_analysis": "规划新建约15个民用运输机场，通用航空和低空经济直接受益，国防军工板块领涨2.71%，政策催化下低空经济产业链关注度持续提升。",
+      "affected_sectors": [
+        "通用航空",
+        "低空经济",
+        "国防军工"
+      ],
+      "affected_stocks": [
+        "600038.SS",
+        "002526.SZ",
+        "300719.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "谷歌斥170亿美元收购数据中心，加码人工智能布局，科创AIETF博时(588790)跟踪指数早盘最高涨超4%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611093926056244.html",
+      "time": "2026-11-09 10:31:42",
+      "ai_summary": "谷歌170亿美元收购数据中心",
+      "impact_analysis": "谷歌加码AI基础设施，全球算力军备竞赛延续，科创AI指数早盘涨超4%，对A股算力硬件、数据中心、光模块板块形成正面催化，AI主线仍具韧性。",
+      "affected_sectors": [
+        "AI算力",
+        "数据中心",
+        "光模块"
+      ],
+      "affected_stocks": [
+        "300308.SZ",
+        "300502.SZ",
+        "603019.SS"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "外国企业对特定动态随机存取存储器(DRAM)设备、NAND闪存设备及其下游产品和组件提起337调查申请",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611093926058287.html",
+      "time": "2026-11-09 10:34:18",
+      "ai_summary": "美企对DRAM提起337调查",
+      "impact_analysis": "337调查针对DRAM和NAND设备，短期增加存储产业链不确定性，对出口美国的相关企业构成潜在风险，但可能强化国产替代预期，影响偏中性。",
+      "affected_sectors": [
+        "半导体",
+        "存储芯片"
+      ],
+      "affected_stocks": [
+        "603986.SS",
+        "688981.SS"
+      ],
+      "importance": 6
+    },
+    {
+      "title": "国泰基金梁杏：AI硬件进入“鱼尾行情” 2027年更需做好配置",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611093926079545.html",
+      "time": "2026-11-09 11:12:25",
+      "ai_summary": "国泰基金称AI硬件鱼尾行情",
+      "impact_analysis": "机构判断AI上游硬件进入鱼尾行情，收益收窄波动放大，提示通信板块风险，看好国产算力半导体设备，对AI硬件板块形成降温信号，资金或转向应用端。",
+      "affected_sectors": [
+        "AI硬件",
+        "半导体设备",
+        "通信"
+      ],
+      "affected_stocks": [
+        "688012.SS",
+        "002371.SZ",
+        "300502.SZ"
+      ],
+      "importance": 6
+    }
+  ]
+}
