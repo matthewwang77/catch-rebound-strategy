@@ -1,7 +1,7 @@
 {
-  "scan_time": "2026-11-09 15:55",
-  "scan_date": "20261109",
-  "data_date": "2026-11-09",
+  "scan_time": "2026-11-10 11:24",
+  "scan_date": "20261110",
+  "data_date": "2026-11-10",
   "market": {},
   "regime": {
     "status": "neutral",
@@ -10,7 +10,7 @@
     "recommended_mode": "strict"
   },
   "modes": {
-    "loose": {
+    "strict": {
       "count": 0,
       "candidates": []
     }
