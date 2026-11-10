@@ -4263,6 +4263,29 @@
       "why_wrong": null,
       "missed_signal": null,
       "lesson": null
+    },
+    {
+      "date": "20261110",
+      "signal_date": "20261020",
+      "mode": "strict",
+      "entry_price": 10.12,
+      "pullback_pct": 18.3,
+      "limit_days": 3,
+      "analysis": "- 量：近3日均量仅为涨停日77%，量比0.55x，缩量明显但OBV上升，资金未大幅流出。\n- 价：跌破MA5/MA10，仅靠MA20（10.41）支撑，现价10.12已破中轨，关键位10.41失守则看9.55。\n- 形：3连板后7日回调18.3%，呈破位下行形态，非缩量横盘蓄势，形态偏弱。\n- 时：回调7天已超短回调窗口（3-5天），且大盘5日-0.8%低迷，窗口已过。\n- 仓位建议：0-1成仓（低迷期2档）\n- 反弹概率：低（≤30%）\n- 最终结论：【放弃】",
+      "sentiment": "低迷期2档",
+      "position": "0-1成仓",
+      "opinion": "【放弃】",
+      "verified": false,
+      "return_7d": null,
+      "exit_reason": null,
+      "exit_day": null,
+      "verdict": null,
+      "review_analysis": null,
+      "review_quality": null,
+      "what_happened": null,
+      "why_wrong": null,
+      "missed_signal": null,
+      "lesson": null
     }
   ],
   "002514.SZ": [
