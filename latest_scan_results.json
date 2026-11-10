@@ -1,5 +1,5 @@
 {
-  "scan_time": "2026-11-10 11:24",
+  "scan_time": "2026-11-10 12:24",
   "scan_date": "20261110",
   "data_date": "2026-11-10",
   "market": {},
@@ -11,8 +11,17 @@
   },
   "modes": {
     "strict": {
-      "count": 0,
-      "candidates": []
+      "count": 1,
+      "candidates": [
+        {
+          "code": "002403.SZ",
+          "price": 10.12,
+          "signal_date": "20261020",
+          "pullback_pct": 18.3,
+          "limit_days": 3,
+          "entity_ratio": 100.0
+        }
+      ]
     }
   }
 }
