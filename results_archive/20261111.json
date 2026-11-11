@@ -1,12 +1,25 @@
 {
-  "scan_time": "2026-11-11 14:25",
+  "scan_time": "2026-11-11 15:14",
   "scan_date": "20261111",
-  "data_date": "2026-11-11",
-  "market": {},
+  "data_date": "2026-11-10",
+  "market": {
+    "上证": {
+      "price": 3663.72,
+      "pct": 0.08
+    },
+    "深证": {
+      "price": 11241.54,
+      "pct": 0.86
+    },
+    "创业板": {
+      "price": 2494.4,
+      "pct": 1.46
+    }
+  },
   "regime": {
     "status": "neutral",
-    "label": "数据不足，默认非熊市",
-    "avg_trend": 0,
+    "label": "3档: 启动期 — 谨慎入场",
+    "avg_trend": -0.45,
     "recommended_mode": "strict"
   },
   "modes": {
