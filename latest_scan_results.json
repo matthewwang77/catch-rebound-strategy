@@ -1,5 +1,5 @@
 {
-  "scan_time": "2026-11-11 11:20",
+  "scan_time": "2026-11-11 13:22",
   "scan_date": "20261111",
   "data_date": "2026-11-10",
   "market": {
@@ -19,22 +19,13 @@
   "regime": {
     "status": "bear",
     "label": "2档: 低迷期 — 建议观望",
-    "avg_trend": -1.52,
+    "avg_trend": -1.1,
     "recommended_mode": "bear"
   },
   "modes": {
-    "strict": {
-      "count": 1,
-      "candidates": [
-        {
-          "code": "002403.SZ",
-          "price": 11.54,
-          "signal_date": "20261020",
-          "pullback_pct": 18.3,
-          "limit_days": 3,
-          "entity_ratio": 100.0
-        }
-      ]
+    "bear": {
+      "count": 0,
+      "candidates": []
     }
   }
 }
