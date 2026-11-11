@@ -4286,6 +4286,29 @@
       "why_wrong": null,
       "missed_signal": null,
       "lesson": null
+    },
+    {
+      "date": "20261111",
+      "signal_date": "20261020",
+      "mode": "strict",
+      "entry_price": 11.54,
+      "pullback_pct": 18.3,
+      "limit_days": 3,
+      "analysis": "- 量：近3日均量/涨停日量=80%，缩量不充分；OBV上升但量比0.62x，资金流入力度弱。\n- 价：MA5/10/20多头排列，11.54逼近布林上轨11.61及20日高11.92，压力位密集。\n- 形：3连板后回调18.3%，MACD金叉、RSI60.5，属高位平台整理，非典型缩量回踩形态。\n- 时：回调10天，超出3-5天最佳窗口，动能衰减，反弹时效性差。\n- 仓位建议：0-1成仓（低迷期2档，仓位≤1成）\n- 反弹概率：低（≤30%）\n- 最终结论：【放弃】",
+      "sentiment": "低迷期2档，仓位≤1成",
+      "position": "0-1成仓",
+      "opinion": "【放弃】",
+      "verified": false,
+      "return_7d": null,
+      "exit_reason": null,
+      "exit_day": null,
+      "verdict": null,
+      "review_analysis": null,
+      "review_quality": null,
+      "what_happened": null,
+      "why_wrong": null,
+      "missed_signal": null,
+      "lesson": null
     }
   ],
   "002514.SZ": [

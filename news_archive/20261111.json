@@ -1,0 +1,173 @@
+{
+  "date": "20261111",
+  "market_summary": "今日消息面多空交织：海外美联储加息预期升温压制风险偏好，但国内AI算力、机器人等科技产业催化密集，光模块板块获主力资金大幅流入，银行等红利资产延续强势，市场呈现结构性分化。",
+  "sentiment_impact": "中性",
+  "news": [
+    {
+      "title": "上汽乘用车年销量首破百万辆",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611113928237336.html",
+      "time": "2026-11-11 10:42:56",
+      "ai_summary": "美联储加息预期升温",
+      "impact_analysis": "高盛预测美联储12月及明年3月加息，美CPI超预期强化紧缩预期，美债收益率上行压制全球风险资产估值，外资流入A股节奏或放缓，成长股承压。",
+      "affected_sectors": [
+        "外资重仓股",
+        "成长板块"
+      ],
+      "affected_stocks": [],
+      "importance": 9
+    },
+    {
+      "title": "2026世界计算大会将于11月19日至21日在长沙举行",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611113928231410.html",
+      "time": "2026-11-11 10:21:25",
+      "ai_summary": "光模块订单旺盛主力抢筹",
+      "impact_analysis": "高速光模块需求旺盛，通信板块主力净流入超50亿，中际旭创净买入18亿，算力硬件产业链景气度获资金验证，有望带动创业板人工智能方向继续修复。",
+      "affected_sectors": [
+        "光模块",
+        "通信设备",
+        "算力硬件"
+      ],
+      "affected_stocks": [
+        "300308.SZ",
+        "300502.SZ",
+        "603083.SS"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "高盛料美联储明年3月第三度升息 降息预测则推迟一季",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611113928249869.html",
+      "time": "2026-11-11 11:10:43",
+      "ai_summary": "世界计算大会聚焦算力",
+      "impact_analysis": "大会将解读“十五五”计算产业方向并发布算力趋势报告，政策预期催化算力基础设施、具身智能等主题，计算产业博览会展示前沿成果，提升板块关注度。",
+      "affected_sectors": [
+        "算力",
+        "人工智能",
+        "具身智能"
+      ],
+      "affected_stocks": [],
+      "importance": 7
+    },
+    {
+      "title": "卖不动还可能上不了牌？雅迪、爱玛等多品牌被撤销3C证书",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611113928239445.html",
+      "time": "2026-11-11 10:51:00",
+      "ai_summary": "具身智能出海提速",
+      "impact_analysis": "机器人ETF逆势上涨，具身智能从测试走向商用，叠加宇树科技产业平台启动，人形机器人产业化预期强化，产业链零部件及本体厂商受资金追捧。",
+      "affected_sectors": [
+        "机器人",
+        "具身智能",
+        "减速器"
+      ],
+      "affected_stocks": [
+        "300024.SZ",
+        "002472.SZ",
+        "603667.SS"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "晋拓股份、南大开发与宇树科技设立的具身智能产业平台正式启动",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611113928236230.html",
+      "time": "2026-11-11 10:38:45",
+      "ai_summary": "台积电投资OpenAI",
+      "impact_analysis": "台积电拟向OpenAI和Anthropic投资10亿美元，强化AI算力需求长期逻辑，利好A股AI算力链及半导体设备材料，但英伟达大跌或引发短期情绪波动。",
+      "affected_sectors": [
+        "半导体",
+        "AI算力",
+        "芯片"
+      ],
+      "affected_stocks": [
+        "688981.SS",
+        "002371.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "广州科技创新基金创业投资合伙企业成立 出资额约52.4亿",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611113928234585.html",
+      "time": "2026-11-11 10:29:41",
+      "ai_summary": "银行红利资产创新高",
+      "impact_analysis": "银行板块六连阳，南京银行等多股创历史新高，年末风偏下行叠加红利ETF分红，资金抱团低估值高股息资产，对大盘指数形成支撑但分流成长资金。",
+      "affected_sectors": [
+        "银行",
+        "红利资产",
+        "保险"
+      ],
+      "affected_stocks": [
+        "601009.SS",
+        "601577.SS",
+        "601838.SS"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "国家发改委：1—10月西部陆海新通道铁海联运班列集装箱运输量已超100万标箱",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611113928235526.html",
+      "time": "2026-11-11 10:32:58",
+      "ai_summary": "广州52亿科创基金成立",
+      "impact_analysis": "广州金控出资52.4亿设立科创创投基金，地方政府引导基金加码硬科技，利好粤港澳大湾区创投生态及半导体、AI等科创企业融资环境。",
+      "affected_sectors": [
+        "创投",
+        "科创板块",
+        "半导体"
+      ],
+      "affected_stocks": [],
+      "importance": 6
+    },
+    {
+      "title": "中性原子量子计算企业原基量子完成亿元级天使轮融资",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611113928233512.html",
+      "time": "2026-11-11 10:23:57",
+      "ai_summary": "上海加码AI开源生态",
+      "impact_analysis": "上海推进开源平台建设并连续出台AI支持措施，政策持续加码人工智能产业，利好本地AI大模型、算力及开发者生态相关标的。",
+      "affected_sectors": [
+        "人工智能",
+        "大模型",
+        "算力"
+      ],
+      "affected_stocks": [],
+      "importance": 6
+    },
+    {
+      "title": "上海推进开源平台建设打造“最懂开发者的城市”",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611113928245554.html",
+      "time": "2026-11-11 11:06:31",
+      "ai_summary": "一带一路资金融通多元",
+      "impact_analysis": "发改委强调丝路基金、亚投行运营稳健，推进数字绿色健康新兴领域合作，利好基建、港口航运及一带一路概念，但短期对指数拉动有限。",
+      "affected_sectors": [
+        "一带一路",
+        "基建",
+        "港口航运"
+      ],
+      "affected_stocks": [],
+      "importance": 5
+    },
+    {
+      "title": "国家发展改革委：共建“一带一路”资金融通日益多元",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611113928235215.html",
+      "time": "2026-11-11 10:29:00",
+      "ai_summary": "两轮电动车3C证书撤销",
+      "impact_analysis": "雅迪、爱玛等多品牌3C证书被撤销，面临无法上牌风险，行业销量低迷叠加合规冲击，两轮电动车板块短期承压，龙头份额或进一步集中。",
+      "affected_sectors": [
+        "两轮电动车",
+        "电动自行车"
+      ],
+      "affected_stocks": [
+        "603529.SS",
+        "689009.SS"
+      ],
+      "importance": 5
+    }
+  ]
+}
