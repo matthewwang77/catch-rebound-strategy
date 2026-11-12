@@ -1,0 +1,31 @@
+{
+  "scan_time": "2026-11-12 11:43",
+  "scan_date": "20261112",
+  "data_date": "2026-11-11",
+  "market": {
+    "上证": {
+      "price": 3680.64,
+      "pct": 0.46
+    },
+    "深证": {
+      "price": 11389.74,
+      "pct": 1.32
+    },
+    "创业板": {
+      "price": 2572.07,
+      "pct": 3.11
+    }
+  },
+  "regime": {
+    "status": "neutral",
+    "label": "4档: 发酵期 — 势头良好",
+    "avg_trend": 1.52,
+    "recommended_mode": "loose"
+  },
+  "modes": {
+    "loose": {
+      "count": 0,
+      "candidates": []
+    }
+  }
+}
