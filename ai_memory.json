@@ -4309,6 +4309,29 @@
       "why_wrong": null,
       "missed_signal": null,
       "lesson": null
+    },
+    {
+      "date": "20261113",
+      "signal_date": "20261020",
+      "mode": "strict",
+      "entry_price": 11.33,
+      "pullback_pct": 18.3,
+      "limit_days": 3,
+      "analysis": "- 量：今日量比0.41x，近3日均量仅为涨停日69%，缩量充分但资金流入偏弱，OBV上升提供支撑。\n- 价：股价站上MA5/MA10/MA20，均线多头排列，但距20日高11.92仍有5%空间，11.77布林上轨为关键压力。\n- 形：3连板后回调18.3%，缩量回踩MA10企稳，符合连板回调形态，但反弹力度待确认。\n- 时：距涨停日13天，回调窗口偏长，已过最佳反弹期，时间维度不利。\n- 仓位建议：1成仓（情绪低迷期2档）\n- 反弹概率：中（30-60%）\n- 最终结论：【观望】",
+      "sentiment": "情绪低迷期2档",
+      "position": "1成仓",
+      "opinion": "【观望】",
+      "verified": false,
+      "return_7d": null,
+      "exit_reason": null,
+      "exit_day": null,
+      "verdict": null,
+      "review_analysis": null,
+      "review_quality": null,
+      "what_happened": null,
+      "why_wrong": null,
+      "missed_signal": null,
+      "lesson": null
     }
   ],
   "002514.SZ": [
