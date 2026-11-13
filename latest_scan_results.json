@@ -1,27 +1,31 @@
 {
-  "scan_time": "2026-11-12 15:39",
-  "scan_date": "20261112",
+  "scan_time": "2026-11-13 10:29",
+  "scan_date": "20261113",
   "data_date": "2026-11-12",
-  "market": {},
+  "market": {
+    "上证": {
+      "price": 3655.83,
+      "pct": -0.67
+    },
+    "深证": {
+      "price": 11197.98,
+      "pct": -1.68
+    },
+    "创业板": {
+      "price": 2509.43,
+      "pct": -2.44
+    }
+  },
   "regime": {
     "status": "neutral",
-    "label": "数据不足，默认非熊市",
-    "avg_trend": 0,
+    "label": "3档: 启动期 — 谨慎入场",
+    "avg_trend": 0.23,
     "recommended_mode": "strict"
   },
   "modes": {
     "strict": {
-      "count": 1,
-      "candidates": [
-        {
-          "code": "002403.SZ",
-          "price": 10.12,
-          "signal_date": "20261020",
-          "pullback_pct": 18.3,
-          "limit_days": 3,
-          "entity_ratio": 100.0
-        }
-      ]
+      "count": 0,
+      "candidates": []
     }
   }
 }
