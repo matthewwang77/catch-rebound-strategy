@@ -1,182 +1,196 @@
 {
-  "date": "20261113",
-  "market_summary": "今日消息面多空交织，新型储能实施方案落地为新能源板块提供长期政策支撑，但电子板块主力资金大幅净流出超209亿，叠加美股做空利率敏感股及美联储紧缩预期升温，市场风险偏好承压，A股三大指数收跌，创业板指跌超3%。",
+  "date": "20261116",
+  "market_summary": "今日A股三大指数集体收跌，创业板指重挫4.37%，成交额不足1.5万亿，市场情绪明显偏空。半导体、电子板块资金大幅流出，而银行、保险等防御性板块逆市走强，资金避险特征显著。",
   "sentiment_impact": "偏空",
   "news": [
     {
-      "title": "国家发改委、国家能源局印发《“十五五”新型储能实施方案》",
+      "title": "巨星传奇与Galaxy Corporation合作升级 将联合开发机器人",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202611133930659978.html",
-      "time": "2026-11-13 15:01:45",
-      "ai_summary": "十五五新型储能方案印发",
-      "impact_analysis": "明确2030年装机3亿千瓦目标，为储能行业提供长期增长空间，直接利好储能产业链，但短期市场情绪受资金流出压制，板块或有结构性机会。",
+      "url": "https://finance.eastmoney.com/a/202611163931737913.html",
+      "time": "2026-11-16 14:27:53",
+      "ai_summary": "三大指数收跌，创业板重挫4.37%",
+      "impact_analysis": "创业板指大跌超4%，成交额萎缩至1.5万亿以下，显示市场风险偏好急剧下降，科技成长股遭抛售，短期指数承压明显，需警惕进一步调整风险。",
       "affected_sectors": [
-        "储能",
-        "新能源",
-        "电力设备"
+        "半导体",
+        "电子",
+        "军工",
+        "小金属"
       ],
       "affected_stocks": [
         "300750.SZ",
-        "002594.SZ",
-        "300274.SZ"
+        "688981.SS",
+        "002371.SZ"
       ],
-      "importance": 9
+      "importance": 10
     },
     {
-      "title": "A股三大指数收跌 影视板块逆市大涨 银行板块走强",
+      "title": "电冰箱等四项家电售后服务国家标准修订发布",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202611133930659580.html",
-      "time": "2026-11-13 15:00:03",
-      "ai_summary": "三大指数收跌创业板跌3.32%",
-      "impact_analysis": "市场放量下跌，创业板指跌超3%，影视、银行逆市走强，显示资金防御性切换，短期市场情绪偏弱，需关注止跌信号。",
-      "affected_sectors": [
-        "影视院线",
-        "银行",
-        "保险"
-      ],
-      "affected_stocks": [
-        "601398.SS",
-        "600036.SS"
-      ],
-      "importance": 9
-    },
-    {
-      "title": "主力资金监控：电子板块净流出超209亿",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202611133930641295.html",
-      "time": "2026-11-13 14:21:34",
-      "ai_summary": "电子板块主力净流出超209亿",
-      "impact_analysis": "电子板块单日净流出超209亿，显示资金从科技成长股撤离，直接压制创业板及半导体、通信板块表现，短期调整压力大。",
+      "url": "https://finance.eastmoney.com/a/202611163931725222.html",
+      "time": "2026-11-16 14:01:43",
+      "ai_summary": "电子板块主力净流出180亿",
+      "impact_analysis": "电子板块单日净流出180亿元，长鑫科技遭净卖出19亿，半导体、通信板块资金撤离明显，反映机构对科技股短期估值担忧，板块调整压力大。",
       "affected_sectors": [
         "电子",
         "半导体",
         "通信"
       ],
       "affected_stocks": [
-        "300308.SZ",
         "002371.SZ",
-        "300502.SZ"
+        "300308.SZ",
+        "601138.SS"
+      ],
+      "importance": 9
+    },
+    {
+      "title": "黄金跌至2025年10月以来最低 因美国加息预期升温",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611163931753975.html",
+      "time": "2026-11-16 14:53:54",
+      "ai_summary": "黄金大跌至一年新低，加息预期升温",
+      "impact_analysis": "美国通胀高企强化加息预期，黄金跌至2025年10月以来最低，白银重挫6%，贵金属板块承压，同时全球流动性收紧预期压制风险资产估值。",
+      "affected_sectors": [
+        "黄金",
+        "有色金属",
+        "白银"
+      ],
+      "affected_stocks": [
+        "600547.SS",
+        "600489.SS",
+        "000975.SZ"
       ],
       "importance": 8
     },
     {
-      "title": "尾盘2只沪深300ETF显著放量",
+      "title": "DeepSeek推出限额使用措施 近期因调用量飙升出现多次故障",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202611133930659274.html",
-      "time": "2026-11-13 14:58:47",
-      "ai_summary": "尾盘沪深300ETF显著放量",
-      "impact_analysis": "尾盘沪深300ETF成交额激增，疑似国家队或机构资金入场护盘，对大盘指数形成短期支撑，释放积极信号。",
+      "url": "https://finance.eastmoney.com/a/202611163931742662.html",
+      "time": "2026-11-16 14:31:02",
+      "ai_summary": "多只银行股创历史新高，防御资金涌入",
+      "impact_analysis": "工商银行、建设银行等多只银行股创历史新高，银行ETF涨超2%，资金明显流向高股息防御板块，市场风格切换至低估值蓝筹，对指数形成一定支撑。",
+      "affected_sectors": [
+        "银行",
+        "保险",
+        "高股息"
+      ],
+      "affected_stocks": [
+        "601398.SS",
+        "601939.SS",
+        "601009.SS"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "主力资金监控：长鑫科技净卖出超19亿",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611163931738660.html",
+      "time": "2026-11-16 14:22:22",
+      "ai_summary": "宽基ETF尾盘放量，资金逆势布局",
+      "impact_analysis": "沪深300ETF尾盘成交额放量3倍，显示有资金借道ETF逆势布局，可能为国家队或机构护盘行为，对市场情绪有边际稳定作用，但力度有限。",
       "affected_sectors": [
         "大盘蓝筹",
         "沪深300"
       ],
       "affected_stocks": [
         "510300.SS",
-        "159919.SZ"
+        "510330.SS"
       ],
-      "importance": 8
+      "importance": 7
     },
     {
-      "title": "CPI再超预期，美联储紧缩路径重定价",
-      "source": "新浪财经",
-      "url": "https://finance.sina.com.cn/jjxw/2026-11-13/doc-iniyqfwf1326431.shtml",
-      "time": "2026-11-13 12:53",
-      "ai_summary": "美国CPI超预期紧缩重定价",
-      "impact_analysis": "美国通胀超预期强化美联储紧缩预期，全球流动性收紧压力上升，压制A股风险偏好及外资流入，利空成长股估值。",
-      "affected_sectors": [
-        "成长股",
-        "外资重仓",
-        "科技"
-      ],
-      "affected_stocks": [
-        "300750.SZ",
-        "002475.SZ"
-      ],
-      "importance": 8
-    },
-    {
-      "title": "美银：美股“空军”正再度集结“利率敏感股”",
+      "title": "云从科技入选武汉市算力券算力供给方",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202611133930657538.html",
-      "time": "2026-11-13 14:51:59",
-      "ai_summary": "美银称对冲基金做空利率敏感股",
-      "impact_analysis": "美股做空头寸新周期可能加剧全球利率敏感资产波动，通过风险偏好渠道传导至A股，压制外资流入及成长股估值。",
+      "url": "https://finance.eastmoney.com/a/202611163931757490.html",
+      "time": "2026-11-16 15:03:00",
+      "ai_summary": "存储涨价挤压汽车利润，博世叫苦",
+      "impact_analysis": "博世称DDR涨价致中国区成本增数十亿，存储芯片涨价潮向下游传导，汽车零部件及整车企业利润承压，利空汽车板块，但利好存储芯片厂商。",
       "affected_sectors": [
-        "科技",
-        "成长股",
-        "外资重仓"
+        "汽车零部件",
+        "汽车整车",
+        "存储芯片"
       ],
       "affected_stocks": [
-        "600519.SS",
-        "300059.SZ"
+        "002594.SZ",
+        "601689.SS",
+        "603986.SS"
       ],
       "importance": 7
     },
     {
-      "title": "韩国未来资产证券上海首席代表查凌睿：韩国资金流入中国资产速度加快",
+      "title": "Rapidus 社长小池淳义重申企业计划：2027 年末 ~2028 年初启动 2nm 量产",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202611133930657349.html",
-      "time": "2026-11-13 14:51:30",
-      "ai_summary": "韩国资金流入中国资产加速",
-      "impact_analysis": "外资流入提速，聚焦AI、智能制造等方向，对A股相关板块形成资金面支撑，但短期流入规模有限，影响偏结构性。",
+      "url": "https://finance.eastmoney.com/a/202611163931750275.html",
+      "time": "2026-11-16 14:48:41",
+      "ai_summary": "红利ETF连续4天净申购，避险需求强",
+      "impact_analysis": "中证红利ETF连续4日获净申购，规模达113亿，高股息策略持续受追捧，反映市场避险情绪浓厚，红利板块相对收益优势明显。",
       "affected_sectors": [
-        "AI",
-        "智能制造",
-        "算力"
+        "红利",
+        "高股息",
+        "公用事业"
       ],
       "affected_stocks": [
-        "002230.SZ",
-        "300308.SZ"
+        "515080.SS",
+        "601088.SS",
+        "600900.SS"
       ],
-      "importance": 7
+      "importance": 6
     },
     {
-      "title": "沪深两市成交额突破1.5万亿 较上一日此时缩量超2600亿",
+      "title": "快手旗下北京云掣科技公司增资至32.55亿",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202611133930648559.html",
-      "time": "2026-11-13 14:37:16",
-      "ai_summary": "两市成交额缩量超2600亿",
-      "impact_analysis": "成交额较昨日缩量超2600亿，显示市场交投活跃度下降，增量资金不足，对指数反弹形成制约，短期震荡格局延续。",
+      "url": "https://finance.eastmoney.com/a/202611163931741295.html",
+      "time": "2026-11-16 14:25:59",
+      "ai_summary": "中国东盟自贸区3.0升级，AI合作",
+      "impact_analysis": "中国—东盟自贸区3.0版升级议定书生效，涵盖数字、绿色、供应链等领域，并将就人工智能开展磋商，利好跨境电商、数字贸易及AI相关板块。",
       "affected_sectors": [
-        "全市场"
-      ],
-      "affected_stocks": [],
-      "importance": 7
-    },
-    {
-      "title": "太阳能制造设备关税豁免再延期、光伏能效国标将落地，光伏ETF华泰柏瑞（515790）助力聚焦光伏产业链",
-      "source": "新浪财经",
-      "url": "https://finance.sina.com.cn/money/fund/jjh/2026-11-13/doc-iniyqfwi3741020.shtml",
-      "time": "2026-11-13 13:05",
-      "ai_summary": "光伏设备关税豁免延期",
-      "impact_analysis": "美国延长太阳能制造设备关税豁免至2027年，利好光伏设备出口企业，叠加光伏能效国标落地，光伏板块迎双重催化。",
-      "affected_sectors": [
-        "光伏",
-        "新能源设备"
+        "跨境电商",
+        "数字经济",
+        "人工智能"
       ],
       "affected_stocks": [
-        "300274.SZ",
-        "601012.SS"
+        "002315.SZ",
+        "300059.SZ",
+        "002230.SZ"
       ],
-      "importance": 7
+      "importance": 6
     },
     {
-      "title": "险资加码硬科技：全链条布局科创，长期资本接力国产GPU、人形机器人赛道",
-      "source": "新浪财经",
-      "url": "https://finance.sina.com.cn/money/insurance/xzdt/2026-11-13/doc-iniyqfvz1069410.shtml",
-      "time": "2026-11-13 12:47",
-      "ai_summary": "险资加码硬科技长期布局",
-      "impact_analysis": "险资全链条布局科创，长期资本接力国产GPU、人形机器人赛道，为硬科技板块提供增量资金，利好科技成长方向。",
+      "title": "杭叉集团董秘江韵：未来三到五年无人叉车渗透率有望从2%提升至10%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611163931755610.html",
+      "time": "2026-11-16 14:57:35",
+      "ai_summary": "欧线集运指数涨4.1%，航运景气回升",
+      "impact_analysis": "上海出口集装箱结算运价指数欧洲航线涨4.1%，集运运价持续回升，航运板块基本面改善，利好集运龙头及港口板块。",
       "affected_sectors": [
-        "GPU",
-        "人形机器人",
-        "硬科技"
+        "航运",
+        "港口",
+        "物流"
       ],
       "affected_stocks": [
-        "688256.SS",
-        "002472.SZ"
+        "601919.SS",
+        "600018.SS",
+        "601866.SS"
       ],
-      "importance": 7
+      "importance": 5
+    },
+    {
+      "title": "李成钢会见加拿大总理驻议会秘书布洛伊斯、加中贸易理事会主席德马雷并出席加中贸易理事会第48届年会",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611163931745365.html",
+      "time": "2026-11-16 14:33:46",
+      "ai_summary": "商品期货多数下跌，沪银跌超6%",
+      "impact_analysis": "国内商品期货主力合约多数下跌，沪银跌超6%，碳酸锂、铁矿石跌超3%，反映工业需求预期偏弱，利空有色金属及资源板块，加剧周期股调整压力。",
+      "affected_sectors": [
+        "有色金属",
+        "钢铁",
+        "锂电池"
+      ],
+      "affected_stocks": [
+        "600111.SS",
+        "000831.SZ",
+        "002460.SZ"
+      ],
+      "importance": 5
     }
   ]
 }
