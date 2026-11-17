@@ -1,26 +1,13 @@
 {
-  "scan_time": "2026-11-16 15:14",
-  "scan_date": "20261116",
-  "data_date": "2026-11-16",
-  "market": {
-    "上证": {
-      "price": 3601.26,
-      "pct": -0.91
-    },
-    "深证": {
-      "price": 10690.64,
-      "pct": -2.54
-    },
-    "创业板": {
-      "price": 2426.08,
-      "pct": -3.32
-    }
-  },
+  "scan_time": "2026-11-17 11:48",
+  "scan_date": "20261117",
+  "data_date": "2026-11-17",
+  "market": {},
   "regime": {
-    "status": "bear",
-    "label": "1档: 冰点期 — 坚决不参与",
-    "avg_trend": -3.3,
-    "recommended_mode": "bear"
+    "status": "neutral",
+    "label": "数据不足，默认非熊市",
+    "avg_trend": 0,
+    "recommended_mode": "strict"
   },
   "modes": {
     "bear": {

@@ -1,0 +1,18 @@
+{
+  "scan_time": "2026-11-17 11:48",
+  "scan_date": "20261117",
+  "data_date": "2026-11-17",
+  "market": {},
+  "regime": {
+    "status": "neutral",
+    "label": "数据不足，默认非熊市",
+    "avg_trend": 0,
+    "recommended_mode": "strict"
+  },
+  "modes": {
+    "bear": {
+      "count": 0,
+      "candidates": []
+    }
+  }
+}
