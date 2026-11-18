@@ -1,186 +1,193 @@
 {
-  "date": "20261117",
-  "market_summary": "今日A股三大指数收跌，创业板指跌1.2%，成交额不足1.5万亿，市场情绪偏谨慎。半导体产业链（光刻机、材料、设备）逆市爆发，而文化传媒、AI应用及机器人概念大幅回调，资金高低切换明显。政策面关注中加金融合作及企业减负，外部强美元与全球科技股波动带来扰动。",
+  "date": "20261118",
+  "market_summary": "今日消息面多空交织，习近平APEC演讲强调开放合作，但美国升级AI芯片管制引发科技博弈担忧；国内首批主动ETF即将上市带来增量资金，晶圆代工涨价与算力芯片走强支撑半导体主线，而AI泡沫论调及美股科技股分化压制风险偏好。",
   "sentiment_impact": "中性",
   "news": [
     {
-      "title": "半年跌超20% 这些债基为何跌的像股基？",
+      "title": "美国收紧海外先进算力访问 如何影响中国AI公司？",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202611173932770255.html",
-      "time": "2026-11-17 13:22:35",
-      "ai_summary": "半导体材料光刻机概念集体爆发",
-      "impact_analysis": "光刻机、半导体材料板块午后爆发，多股涨停，芯片ETF放量上涨，显示资金集中涌入国产替代主线，提振科技成长情绪，但需警惕短期过热。",
+      "url": "https://finance.eastmoney.com/a/202611183933790424.html",
+      "time": "2026-11-18 10:54:00",
+      "ai_summary": "美国收紧海外算力访问管制",
+      "impact_analysis": "BIS新规限制中国企业远程访问先进算力，短期加剧AI芯片供应担忧，但强化国产替代逻辑，半导体设备与算力芯片板块分化中偏强。",
       "affected_sectors": [
-        "半导体设备",
-        "半导体材料",
-        "光刻机"
+        "半导体",
+        "AI算力",
+        "国产替代"
       ],
       "affected_stocks": [
-        "002409.SZ",
-        "300346.SZ",
-        "688012.SS",
-        "688981.SS"
+        "688256.SS",
+        "688041.SS",
+        "002371.SZ"
+      ],
+      "importance": 9
+    },
+    {
+      "title": "首批主动ETF下周一上市，超33万户认购募资360亿",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611183933845159.html",
+      "time": "2026-11-18 11:05:00",
+      "ai_summary": "首批主动ETF下周一上市募资360亿",
+      "impact_analysis": "主动ETF首次落地带来约360亿增量资金，建仓方向聚焦茅台、美的、宁德等核心资产，利好大盘蓝筹及主动管理生态。",
+      "affected_sectors": [
+        "大消费",
+        "新能源",
+        "核心资产"
+      ],
+      "affected_stocks": [
+        "600519.SS",
+        "000333.SZ",
+        "300750.SZ"
       ],
       "importance": 8
     },
     {
-      "title": "伯克希尔三季度持仓曝光：新建仓软件公司Bending Spoons",
+      "title": "晶圆代工厂酝酿新一轮涨价，涨幅最高超20%，半导体ETF博时(159582)跟踪指数探底回升涨超2%",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202611173932803914.html",
-      "time": "2026-11-17 14:11:10",
-      "ai_summary": "主力资金净流出文化传媒超45亿",
-      "impact_analysis": "文化传媒板块主力净流出45.96亿元，影视、游戏、广告营销等细分领域领跌，资金撤离明显，短期板块承压，需警惕进一步调整。",
-      "affected_sectors": [
-        "文化传媒",
-        "影视院线",
-        "游戏"
-      ],
-      "affected_stocks": [
-        "300251.SZ",
-        "002624.SZ",
-        "300413.SZ"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "光刻机爆发点燃情绪 芯片ETF易方达+1.84%",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202611173932791228.html",
-      "time": "2026-11-17 13:46:54",
-      "ai_summary": "部分宽基ETF尾盘放量创天量",
-      "impact_analysis": "创业板ETF广发成交超50亿创历史天量，多只宽基ETF尾盘放量，显示机构资金逆市布局，可能为市场提供底部支撑，缓解下跌压力。",
-      "affected_sectors": [
-        "宽基ETF",
-        "创业板"
-      ],
-      "affected_stocks": [
-        "159952.SZ",
-        "510300.SS",
-        "512100.SS"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "科创新材料板块集体走强 科创新材料ETF易方达涨2.06%",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202611173932791391.html",
-      "time": "2026-11-17 13:46:15",
-      "ai_summary": "中信建投称市场底已现11月修复",
-      "impact_analysis": "中信建投研报认为十月底低点大概率是本轮市场底，11月开启“进二退一”修复行情，稳市政策转向机制建设，提振市场信心，但修复斜率受限。",
-      "affected_sectors": [
-        "大盘指数",
-        "券商"
-      ],
-      "affected_stocks": [
-        "601066.SS"
-      ],
-      "importance": 7
-    },
-    {
-      "title": "天风证券吴开达：国内半导体产业正迈向全产业链制造体系建设",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202611173932822564.html",
-      "time": "2026-11-17 14:52:21",
-      "ai_summary": "晶圆厂调价涨幅10%-20%",
-      "impact_analysis": "台积电等晶圆厂明年调价10%-20%，芯片设计业者毛利率承压，但反映半导体需求旺盛，对晶圆制造及设备板块偏多，设计公司分化。",
+      "url": "https://finance.eastmoney.com/a/202611183933830231.html",
+      "time": "2026-11-18 10:29:06",
+      "ai_summary": "晶圆代工厂酝酿涨价超20%",
+      "impact_analysis": "代工涨价反映半导体需求旺盛与产能紧张，直接增厚晶圆厂盈利预期，并带动设备、材料等全产业链情绪，半导体板块短期强势。",
       "affected_sectors": [
         "半导体",
-        "芯片设计",
-        "晶圆制造"
+        "晶圆代工",
+        "半导体设备"
       ],
       "affected_stocks": [
         "688981.SS",
-        "603501.SS",
-        "688008.SS"
+        "002371.SZ",
+        "688012.SS"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "AI叙事强化！寒武纪大涨5%，国产半导体链再度走强",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611183933844793.html",
+      "time": "2026-11-18 11:07:26",
+      "ai_summary": "寒武纪大涨5%国产半导体链走强",
+      "impact_analysis": "AI叙事强化叠加管制升级，国产算力芯片低开高走，半导体设备ETF翻红，自主可控主线持续获得资金共识，提振科技板块人气。",
+      "affected_sectors": [
+        "半导体",
+        "AI算力",
+        "国产替代"
+      ],
+      "affected_stocks": [
+        "688256.SS",
+        "688041.SS",
+        "688072.SS"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "习近平出席亚太经合组织工商领导人峰会开幕式并发表主旨演讲",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611183933842323.html",
+      "time": "2026-11-18 11:07:17",
+      "ai_summary": "习近平APEC演讲强调开放合作",
+      "impact_analysis": "高层表态坚持全球化与多边主义，有助于稳定外资预期和外贸产业链信心，对大盘构成温和利好，但短期直接催化有限。",
+      "affected_sectors": [
+        "外贸",
+        "跨境电商",
+        "一带一路"
+      ],
+      "affected_stocks": [
+        "600018.SS",
+        "002352.SZ"
       ],
       "importance": 7
     },
     {
-      "title": "中广天择：AI算料业务已成为公司新的增长曲线",
+      "title": "主力资金监控：寒武纪净买入超5亿",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202611173932820063.html",
-      "time": "2026-11-17 14:44:00",
-      "ai_summary": "中加同意扩大本币使用鼓励投资",
-      "impact_analysis": "中加经济财金对话成果包括探索本币使用、鼓励双向投资，利好跨境金融、人民币国际化及外资流入预期，对市场情绪有温和提振。",
+      "url": "https://finance.eastmoney.com/a/202611183933840534.html",
+      "time": "2026-11-18 10:55:17",
+      "ai_summary": "主力资金净买入寒武纪超5亿",
+      "impact_analysis": "资金集中流入电子、半导体、通信板块，净流出有色金属超25亿，显示市场风格向科技成长切换，算力芯片成短线主线。",
       "affected_sectors": [
-        "金融",
-        "跨境支付",
-        "外贸"
+        "半导体",
+        "通信",
+        "有色金属"
       ],
       "affected_stocks": [
-        "601398.SS",
-        "600036.SS"
+        "688256.SS",
+        "601899.SS",
+        "000988.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "业内惊呼“活久见” ！苹果和三星电子或达成长期DRAM供应协议",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611183933851859.html",
+      "time": "2026-11-18 11:29:21",
+      "ai_summary": "苹果三星或签长期DRAM供应协议",
+      "impact_analysis": "存储芯片价格快速上涨扭转供需格局，长期协议锁定需求印证行业景气，利好A股存储芯片及模组厂商，强化半导体涨价逻辑。",
+      "affected_sectors": [
+        "存储芯片",
+        "半导体"
+      ],
+      "affected_stocks": [
+        "603986.SS",
+        "688008.SS",
+        "002049.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "电价修复与需求增长共振！电力指数涨超1%，冲击四连阳",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611183933838367.html",
+      "time": "2026-11-18 10:42:44",
+      "ai_summary": "电价修复与需求增长共振电力走强",
+      "impact_analysis": "电力板块四连阳，电价修复叠加用电需求增长，高股息公用事业属性吸引防御资金，对大盘指数有稳定支撑作用。",
+      "affected_sectors": [
+        "电力",
+        "公用事业",
+        "核电"
+      ],
+      "affected_stocks": [
+        "600795.SS",
+        "600011.SS",
+        "600900.SS"
       ],
       "importance": 6
     },
     {
-      "title": "国内商品期货收盘 主力合约大面积飘绿",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202611173932826645.html",
-      "time": "2026-11-17 15:00:59",
-      "ai_summary": "多只银行股创历史新高",
-      "impact_analysis": "四季度日历效应下银行股受资金关注，多只创历史新高，红利资产配置价值凸显，支撑大盘指数，但可能分流成长股资金。",
+      "title": "油价高位+地缘扰动！石油石化逆市拉升，石油ETF华宝（159019）标的指数盘中涨超1%",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/money/fund/etf/2026-11-18/doc-inizcmff1189117.shtml",
+      "time": "2026-11-18 11:01",
+      "ai_summary": "油价高位地缘扰动石油石化拉升",
+      "impact_analysis": "中东局势扰动叠加油价高位，石油石化逆市走强，资金避险与涨价逻辑共振，但板块权重有限，对指数拉动偏温和。",
       "affected_sectors": [
-        "银行",
-        "红利资产"
+        "石油石化",
+        "油服",
+        "航运"
       ],
       "affected_stocks": [
-        "600036.SS",
-        "601166.SS",
-        "601398.SS"
+        "600938.SS",
+        "601857.SS",
+        "601872.SS"
       ],
       "importance": 6
     },
     {
-      "title": "中信建投：十月底低点大概率已是本轮市场底，11 月开启“进二退一”修复行情",
+      "title": "CRO、AI制药概念震荡下挫 成都先导跌超13%",
       "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202611173932822929.html",
-      "time": "2026-11-17 14:53:50",
-      "ai_summary": "天风证券看好半导体全产业链",
-      "impact_analysis": "天风证券认为半导体产业迈向全产业链制造体系建设，国产GPU及设备为重点，强化国产替代逻辑，提振半导体板块情绪。",
+      "url": "https://finance.eastmoney.com/a/202611183933845777.html",
+      "time": "2026-11-18 11:09:59",
+      "ai_summary": "CRO与AI制药概念震荡下挫",
+      "impact_analysis": "成都先导跌超13%拖累CRO板块，AI制药前期涨幅较大后资金获利了结，医药外包情绪受挫，短期压制创业板医药权重。",
       "affected_sectors": [
-        "半导体设备",
-        "国产GPU"
+        "CRO",
+        "AI制药",
+        "医药外包"
       ],
       "affected_stocks": [
-        "688981.SS",
-        "688012.SS",
-        "300661.SZ"
-      ],
-      "importance": 6
-    },
-    {
-      "title": "半导体材料、光刻机概念，集体爆发！发生了什么？",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202611173932784774.html",
-      "time": "2026-11-17 13:40:14",
-      "ai_summary": "强美元或冲击全球股市",
-      "impact_analysis": "强美元吸引资金回流美国，可能对新兴市场包括A股造成外资流出压力，压制风险偏好，尤其影响外资重仓股及成长板块。",
-      "affected_sectors": [
-        "大盘",
-        "外资重仓"
-      ],
-      "affected_stocks": [
-        "600519.SS",
-        "300750.SZ"
-      ],
-      "importance": 6
-    },
-    {
-      "title": "主力资金监控：文化传媒板块净流出超45亿",
-      "source": "东方财富",
-      "url": "https://finance.eastmoney.com/a/202611173932806552.html",
-      "time": "2026-11-17 14:23:26",
-      "ai_summary": "物理AI及人形机器人概念大跌",
-      "impact_analysis": "物理AI、人形机器人概念持续下挫，多股跌停或跌超10%，显示前期热点退潮，资金撤离，短期拖累科技成长情绪。",
-      "affected_sectors": [
-        "机器人",
-        "人工智能"
-      ],
-      "affected_stocks": [
-        "688169.SS",
-        "300124.SZ",
-        "002527.SZ"
+        "688222.SS",
+        "603127.SS",
+        "300725.SZ"
       ],
       "importance": 6
     }

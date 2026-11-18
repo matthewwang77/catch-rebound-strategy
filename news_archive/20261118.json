@@ -1,0 +1,195 @@
+{
+  "date": "20261118",
+  "market_summary": "今日消息面多空交织，习近平APEC演讲强调开放合作，但美国升级AI芯片管制引发科技博弈担忧；国内首批主动ETF即将上市带来增量资金，晶圆代工涨价与算力芯片走强支撑半导体主线，而AI泡沫论调及美股科技股分化压制风险偏好。",
+  "sentiment_impact": "中性",
+  "news": [
+    {
+      "title": "美国收紧海外先进算力访问 如何影响中国AI公司？",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611183933790424.html",
+      "time": "2026-11-18 10:54:00",
+      "ai_summary": "美国收紧海外算力访问管制",
+      "impact_analysis": "BIS新规限制中国企业远程访问先进算力，短期加剧AI芯片供应担忧，但强化国产替代逻辑，半导体设备与算力芯片板块分化中偏强。",
+      "affected_sectors": [
+        "半导体",
+        "AI算力",
+        "国产替代"
+      ],
+      "affected_stocks": [
+        "688256.SS",
+        "688041.SS",
+        "002371.SZ"
+      ],
+      "importance": 9
+    },
+    {
+      "title": "首批主动ETF下周一上市，超33万户认购募资360亿",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611183933845159.html",
+      "time": "2026-11-18 11:05:00",
+      "ai_summary": "首批主动ETF下周一上市募资360亿",
+      "impact_analysis": "主动ETF首次落地带来约360亿增量资金，建仓方向聚焦茅台、美的、宁德等核心资产，利好大盘蓝筹及主动管理生态。",
+      "affected_sectors": [
+        "大消费",
+        "新能源",
+        "核心资产"
+      ],
+      "affected_stocks": [
+        "600519.SS",
+        "000333.SZ",
+        "300750.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "晶圆代工厂酝酿新一轮涨价，涨幅最高超20%，半导体ETF博时(159582)跟踪指数探底回升涨超2%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611183933830231.html",
+      "time": "2026-11-18 10:29:06",
+      "ai_summary": "晶圆代工厂酝酿涨价超20%",
+      "impact_analysis": "代工涨价反映半导体需求旺盛与产能紧张，直接增厚晶圆厂盈利预期，并带动设备、材料等全产业链情绪，半导体板块短期强势。",
+      "affected_sectors": [
+        "半导体",
+        "晶圆代工",
+        "半导体设备"
+      ],
+      "affected_stocks": [
+        "688981.SS",
+        "002371.SZ",
+        "688012.SS"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "AI叙事强化！寒武纪大涨5%，国产半导体链再度走强",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611183933844793.html",
+      "time": "2026-11-18 11:07:26",
+      "ai_summary": "寒武纪大涨5%国产半导体链走强",
+      "impact_analysis": "AI叙事强化叠加管制升级，国产算力芯片低开高走，半导体设备ETF翻红，自主可控主线持续获得资金共识，提振科技板块人气。",
+      "affected_sectors": [
+        "半导体",
+        "AI算力",
+        "国产替代"
+      ],
+      "affected_stocks": [
+        "688256.SS",
+        "688041.SS",
+        "688072.SS"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "习近平出席亚太经合组织工商领导人峰会开幕式并发表主旨演讲",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611183933842323.html",
+      "time": "2026-11-18 11:07:17",
+      "ai_summary": "习近平APEC演讲强调开放合作",
+      "impact_analysis": "高层表态坚持全球化与多边主义，有助于稳定外资预期和外贸产业链信心，对大盘构成温和利好，但短期直接催化有限。",
+      "affected_sectors": [
+        "外贸",
+        "跨境电商",
+        "一带一路"
+      ],
+      "affected_stocks": [
+        "600018.SS",
+        "002352.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "主力资金监控：寒武纪净买入超5亿",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611183933840534.html",
+      "time": "2026-11-18 10:55:17",
+      "ai_summary": "主力资金净买入寒武纪超5亿",
+      "impact_analysis": "资金集中流入电子、半导体、通信板块，净流出有色金属超25亿，显示市场风格向科技成长切换，算力芯片成短线主线。",
+      "affected_sectors": [
+        "半导体",
+        "通信",
+        "有色金属"
+      ],
+      "affected_stocks": [
+        "688256.SS",
+        "601899.SS",
+        "000988.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "业内惊呼“活久见” ！苹果和三星电子或达成长期DRAM供应协议",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611183933851859.html",
+      "time": "2026-11-18 11:29:21",
+      "ai_summary": "苹果三星或签长期DRAM供应协议",
+      "impact_analysis": "存储芯片价格快速上涨扭转供需格局，长期协议锁定需求印证行业景气，利好A股存储芯片及模组厂商，强化半导体涨价逻辑。",
+      "affected_sectors": [
+        "存储芯片",
+        "半导体"
+      ],
+      "affected_stocks": [
+        "603986.SS",
+        "688008.SS",
+        "002049.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "电价修复与需求增长共振！电力指数涨超1%，冲击四连阳",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611183933838367.html",
+      "time": "2026-11-18 10:42:44",
+      "ai_summary": "电价修复与需求增长共振电力走强",
+      "impact_analysis": "电力板块四连阳，电价修复叠加用电需求增长，高股息公用事业属性吸引防御资金，对大盘指数有稳定支撑作用。",
+      "affected_sectors": [
+        "电力",
+        "公用事业",
+        "核电"
+      ],
+      "affected_stocks": [
+        "600795.SS",
+        "600011.SS",
+        "600900.SS"
+      ],
+      "importance": 6
+    },
+    {
+      "title": "油价高位+地缘扰动！石油石化逆市拉升，石油ETF华宝（159019）标的指数盘中涨超1%",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/money/fund/etf/2026-11-18/doc-inizcmff1189117.shtml",
+      "time": "2026-11-18 11:01",
+      "ai_summary": "油价高位地缘扰动石油石化拉升",
+      "impact_analysis": "中东局势扰动叠加油价高位，石油石化逆市走强，资金避险与涨价逻辑共振，但板块权重有限，对指数拉动偏温和。",
+      "affected_sectors": [
+        "石油石化",
+        "油服",
+        "航运"
+      ],
+      "affected_stocks": [
+        "600938.SS",
+        "601857.SS",
+        "601872.SS"
+      ],
+      "importance": 6
+    },
+    {
+      "title": "CRO、AI制药概念震荡下挫 成都先导跌超13%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611183933845777.html",
+      "time": "2026-11-18 11:09:59",
+      "ai_summary": "CRO与AI制药概念震荡下挫",
+      "impact_analysis": "成都先导跌超13%拖累CRO板块，AI制药前期涨幅较大后资金获利了结，医药外包情绪受挫，短期压制创业板医药权重。",
+      "affected_sectors": [
+        "CRO",
+        "AI制药",
+        "医药外包"
+      ],
+      "affected_stocks": [
+        "688222.SS",
+        "603127.SS",
+        "300725.SZ"
+      ],
+      "importance": 6
+    }
+  ]
+}
