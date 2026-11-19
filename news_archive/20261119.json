@@ -1,0 +1,197 @@
+{
+  "date": "20261119",
+  "market_summary": "今日消息面多空交织，AI算力需求强劲与半导体国产替代逻辑强化，但计算机板块主力资金大幅流出、商品期货普跌及外围加息预期压制风险偏好。宽基ETF尾盘爆量显示资金借道布局，市场结构性特征明显。",
+  "sentiment_impact": "中性",
+  "news": [
+    {
+      "title": "猎奇智能启动IPO 中际旭创拟参与战略配售 前三季净利增长332%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611193934969274.html",
+      "time": "2026-11-19 13:58:57",
+      "ai_summary": "宽基ETF尾盘爆量，四只成交超百亿",
+      "impact_analysis": "多只宽基ETF尾盘成交额较昨日放量数倍，显示大资金借道ETF逆势布局，对大盘指数形成托底效应，短期市场下行空间有限，风格上科创50等成长类ETF更受青睐。",
+      "affected_sectors": [
+        "宽基指数",
+        "ETF"
+      ],
+      "affected_stocks": [
+        "588080.SS",
+        "510500.SS",
+        "159915.SZ",
+        "510300.SS"
+      ],
+      "importance": 9
+    },
+    {
+      "title": "吉林：到2030年新一代智能终端、智能体等应用普及率超90%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611193934969591.html",
+      "time": "2026-11-19 13:57:00",
+      "ai_summary": "亚马逊AI算力预订排至2029年",
+      "impact_analysis": "全球AI算力需求持续超预期，亚马逊资本开支指引强化AI基建景气周期，直接利好A股算力产业链（光模块、服务器、液冷等），提振科技成长板块情绪。",
+      "affected_sectors": [
+        "算力",
+        "光模块",
+        "服务器",
+        "液冷"
+      ],
+      "affected_stocks": [
+        "300308.SZ",
+        "300502.SZ",
+        "000977.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "临近尾盘宽基ETF持续放量 2只ETF成交超100亿",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611193934994893.html",
+      "time": "2026-11-19 14:52:06",
+      "ai_summary": "大厂加码AI基建，半导体设备ETF涨超2%",
+      "impact_analysis": "腾讯资本开支同比增179%、英伟达扩大供应链合作，半导体设备材料国产替代逻辑强化，科创半导体设备ETF大涨，资金持续流入半导体板块，利好设备材料龙头。",
+      "affected_sectors": [
+        "半导体设备",
+        "半导体材料",
+        "先进封装"
+      ],
+      "affected_stocks": [
+        "688072.SS",
+        "002371.SZ",
+        "688012.SS"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "摩根大通：腾讯控股AI亏损扩大或令短期股价受压 维持“增持”评级",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611193934972198.html",
+      "time": "2026-11-19 14:05:45",
+      "ai_summary": "计算机板块主力净流出超51亿",
+      "impact_analysis": "计算机板块单日净流出51亿，IT服务、机械设备同步流出，显示资金从软件应用向硬件半导体切换，短期计算机板块承压，但半导体获净流入形成对冲。",
+      "affected_sectors": [
+        "计算机",
+        "IT服务",
+        "半导体"
+      ],
+      "affected_stocks": [
+        "002230.SZ",
+        "000977.SZ",
+        "688981.SS"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "先锋精科游利：陶瓷加热器将实现量产爬坡 在手订单处于高增长状态",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611193934989745.html",
+      "time": "2026-11-19 14:36:50",
+      "ai_summary": "韩国出口破万亿，芯片需求旺盛",
+      "impact_analysis": "韩国半导体出口驱动出口额历史性破万亿，印证全球芯片景气度上行，对A股半导体板块形成外部验证，利好存储、芯片设计及设备材料环节。",
+      "affected_sectors": [
+        "半导体",
+        "存储芯片",
+        "芯片设计"
+      ],
+      "affected_stocks": [
+        "603986.SS",
+        "688008.SS",
+        "002049.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "主力资金监控：计算机板块净流出超51亿",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611193934981722.html",
+      "time": "2026-11-19 14:23:44",
+      "ai_summary": "10月动力储能电池销量增38.8%",
+      "impact_analysis": "动力和储能电池销量同比高增38.8%，储能需求持续超预期，利好锂电池产业链及储能板块，尤其是储能电池占比高的龙头，对新能源赛道形成基本面支撑。",
+      "affected_sectors": [
+        "锂电池",
+        "储能",
+        "新能源车"
+      ],
+      "affected_stocks": [
+        "300750.SZ",
+        "300014.SZ",
+        "002074.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "大厂加码AI基建，行业进入景气扩张期，科创半导体设备ETF鹏华涨超2%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611193934966630.html",
+      "time": "2026-11-19 13:45:35",
+      "ai_summary": "商品期货普跌，沪铜跌超5%",
+      "impact_analysis": "国内商品期货主力合约多数下跌，沪铜、沪锡等工业金属大跌超4%，反映宏观需求预期转弱及风险偏好下降，对有色金属板块形成直接压制，拖累周期股表现。",
+      "affected_sectors": [
+        "有色金属",
+        "铜",
+        "锡",
+        "化工"
+      ],
+      "affected_stocks": [
+        "600362.SS",
+        "000630.SZ",
+        "600547.SS"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "吉林：统筹布局算力基础设施 科学谋划算力设施建设",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611193934971633.html",
+      "time": "2026-11-19 14:04:00",
+      "ai_summary": "吉林发布人工智能+十五五规划",
+      "impact_analysis": "地方性AI规划密集落地，吉林提出算力基础设施、智能网联汽车、新能源智能化等方向，虽地方政策级别有限，但强化AI+产业趋势预期，利好算力、自动驾驶板块。",
+      "affected_sectors": [
+        "人工智能",
+        "算力",
+        "智能网联汽车",
+        "新能源"
+      ],
+      "affected_stocks": [
+        "002920.SZ",
+        "300496.SZ"
+      ],
+      "importance": 6
+    },
+    {
+      "title": "多只热门宽基ETF尾盘爆量",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611193934999564.html",
+      "time": "2026-11-19 15:00:41",
+      "ai_summary": "微软高管称客户或转向其他AI芯片",
+      "impact_analysis": "英伟达内部风波或促使客户寻求替代AI芯片，中长期利好国产AI芯片及ASIC定制芯片产业链，强化A股算力芯片自主可控逻辑，短期情绪面提振半导体设计板块。",
+      "affected_sectors": [
+        "AI芯片",
+        "半导体设计",
+        "ASIC"
+      ],
+      "affected_stocks": [
+        "688256.SS",
+        "300474.SZ",
+        "603893.SS"
+      ],
+      "importance": 6
+    },
+    {
+      "title": "国内商品期货收盘 主力合约多数下跌",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611193934998985.html",
+      "time": "2026-11-19 15:00:20",
+      "ai_summary": "上海社保科创基金成立，出资200亿",
+      "impact_analysis": "上海社保科创股权投资基金出资额200亿成立，引导长期资金投向科技创新领域，利好科创类企业融资环境，对一级市场及科创板块形成资金面正面预期。",
+      "affected_sectors": [
+        "科创板块",
+        "股权投资",
+        "科技创新"
+      ],
+      "affected_stocks": [
+        "588000.SS"
+      ],
+      "importance": 6
+    }
+  ]
+}
