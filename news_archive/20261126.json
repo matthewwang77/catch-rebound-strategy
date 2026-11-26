@@ -1,0 +1,196 @@
+{
+  "date": "20261126",
+  "market_summary": "今日消息面整体偏暖，政策端《新一代通信网建设实施方案》与《服务贸易发展“十五五”规划》双轮驱动，算力、AI、半导体等科技成长板块领涨；同时两融保证金比例下调落地，增量资金预期升温，创业板指盘中涨逾2%。",
+  "sentiment_impact": "偏多",
+  "news": [
+    {
+      "title": "算力网纳入国家六张网战略资源，科创创业人工智能ETF华富(588560)标的指数盘中反转拉升一度涨近2%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611263940453382.html",
+      "time": "2026-11-26 10:49:58",
+      "ai_summary": "算力网纳入国家战略资源",
+      "impact_analysis": "算力网上升为国家战略资源，强化AI基础设施长期确定性，直接提振算力硬件、光模块、IDC等板块，创业板人工智能指数盘中反转拉升，科技成长风格受益。",
+      "affected_sectors": [
+        "算力硬件",
+        "光模块",
+        "人工智能"
+      ],
+      "affected_stocks": [
+        "300308.SZ",
+        "300502.SZ",
+        "688256.SS"
+      ],
+      "importance": 9
+    },
+    {
+      "title": "上海国投IC邵冬杰：中国半导体依托本土终端产业优势 有机会走出差异化创新路线",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611263940447560.html",
+      "time": "2026-11-26 10:40:24",
+      "ai_summary": "新一代通信网建设方案印发",
+      "impact_analysis": "三部委印发方案，明确2030年建成新一代通信网，强化算网协同与全国算力调度平台，利好通信设备、云计算、算力基础设施，是数字基建的顶层设计利好。",
+      "affected_sectors": [
+        "通信设备",
+        "云计算",
+        "算力基础设施"
+      ],
+      "affected_stocks": [
+        "000063.SZ",
+        "600050.SS",
+        "300383.SZ"
+      ],
+      "importance": 9
+    },
+    {
+      "title": "供给收缩与战略储备逻辑共振 有色ETF易方达涨3.25%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611263940454073.html",
+      "time": "2026-11-26 10:50:41",
+      "ai_summary": "两融保证金比例降至80%",
+      "impact_analysis": "头部券商落地两融保证金比例下调，杠杆资金入市门槛降低，直接增加市场增量资金，利好券商板块及整体市场流动性，对大盘指数构成正面支撑。",
+      "affected_sectors": [
+        "券商",
+        "非银金融"
+      ],
+      "affected_stocks": [
+        "600030.SS",
+        "300059.SZ",
+        "601688.SS"
+      ],
+      "importance": 9
+    },
+    {
+      "title": "DeepSeek关联公司新增增值电信业务",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611263940430841.html",
+      "time": "2026-11-26 10:19:02",
+      "ai_summary": "服务贸易十五五规划发布",
+      "impact_analysis": "八部门联合印发服务贸易规划，明确数字贸易、AI服务出海、高端制造服务融合等方向，利好数字贸易、跨境电商、AI应用及高端制造服务商，政策覆盖面广。",
+      "affected_sectors": [
+        "数字贸易",
+        "跨境电商",
+        "人工智能"
+      ],
+      "affected_stocks": [
+        "002315.SZ",
+        "300792.SZ",
+        "002230.SZ"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "复旦大学教授范益波：本土半导体生态建设要打破技术突破与应用落地鸿沟",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611263940447481.html",
+      "time": "2026-11-26 10:40:23",
+      "ai_summary": "MiniMax转向国产AI芯片",
+      "impact_analysis": "大模型企业加速转向阿里、昇腾等国产芯片，国产算力生态加速闭环，利好国产AI芯片、半导体设备及先进封装，强化自主可控逻辑。",
+      "affected_sectors": [
+        "国产AI芯片",
+        "半导体设备",
+        "先进封装"
+      ],
+      "affected_stocks": [
+        "688256.SS",
+        "002371.SZ",
+        "688072.SS"
+      ],
+      "importance": 8
+    },
+    {
+      "title": "政策利好叠加业绩催化，港股大模型、新能源汽车盘中走高，恒生科技ETF鹏华涨超3%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611263940439353.html",
+      "time": "2026-11-26 10:27:34",
+      "ai_summary": "有色供给收缩与战略储备共振",
+      "impact_analysis": "供给收缩叠加战略储备逻辑，有色ETF涨3.25%，贵金属与工业金属齐涨，金价V形反弹强化避险配置需求，利好有色金属板块估值修复。",
+      "affected_sectors": [
+        "有色金属",
+        "贵金属",
+        "工业金属"
+      ],
+      "affected_stocks": [
+        "601899.SS",
+        "600547.SS",
+        "000630.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "商务部等8部门：到2030年 服务贸易规模稳步扩大 “中国服务”国际竞争力提升",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611263940422648.html",
+      "time": "2026-11-26 10:06:03",
+      "ai_summary": "创新药出海BD持续升温",
+      "impact_analysis": "创新药出海授权交易频现重磅，叠加医保目录新增1类创新药51个创历年新高，政策与产业双催化，利好创新药、CXO及生物科技板块。",
+      "affected_sectors": [
+        "创新药",
+        "CXO",
+        "生物科技"
+      ],
+      "affected_stocks": [
+        "600276.SS",
+        "300759.SZ",
+        "688180.SS"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "政策产业利好持续催化创新药行情，恒生生物科技ETF鹏华、港股通医药ETF鹏华均涨超2%",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611263940436179.html",
+      "time": "2026-11-26 10:26:00",
+      "ai_summary": "AI服务出海获政策支持",
+      "impact_analysis": "规划明确推动云计算、大模型等AI服务出海，培育服务贸易新业态，利好AI应用、云计算及出海科技企业，打开成长空间。",
+      "affected_sectors": [
+        "人工智能",
+        "云计算",
+        "出海科技"
+      ],
+      "affected_stocks": [
+        "002230.SZ",
+        "300454.SZ",
+        "688111.SS"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "强化算网协同服务，《新一代通信网建设实施方案》印发 云计算50ETF东方红（562110）标的指数今日开盘上涨",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611263940430689.html",
+      "time": "2026-11-26 10:16:14",
+      "ai_summary": "光模块出口前10月增67.4%",
+      "impact_analysis": "光模块出口高增验证算力硬件产业链高景气，机构上调市场空间，光模块龙头超跌反弹，利好光通信及AI算力硬件板块基本面预期修复。",
+      "affected_sectors": [
+        "光模块",
+        "光通信",
+        "算力硬件"
+      ],
+      "affected_stocks": [
+        "300308.SZ",
+        "300502.SZ",
+        "002281.SZ"
+      ],
+      "importance": 7
+    },
+    {
+      "title": "现代汽车高管调整：现代坦迪斯负责人将出任现代摩比斯CEO",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202611263940444486.html",
+      "time": "2026-11-26 10:33:18",
+      "ai_summary": "SpaceX百万卫星计划获批",
+      "impact_analysis": "SpaceX获准部署百万颗卫星，太空算力验证推进，商业航天与卫星通信板块活跃，利好卫星制造、通信设备及商业航天产业链主题投资。",
+      "affected_sectors": [
+        "卫星通信",
+        "商业航天",
+        "太空算力"
+      ],
+      "affected_stocks": [
+        "600118.SS",
+        "002446.SZ",
+        "300136.SZ"
+      ],
+      "importance": 6
+    }
+  ]
+}
