@@ -1,11 +1,11 @@
 {
-  "scan_time": "2026-11-27 11:32",
+  "scan_time": "2026-11-27 14:27",
   "scan_date": "20261127",
-  "data_date": "2026-11-26",
+  "data_date": "2026-11-27",
   "market": {
     "上证": {
-      "price": 3476.88,
-      "pct": 0.01
+      "price": 3589.75,
+      "pct": 3.25
     },
     "深证": {
       "price": 10084.04,
@@ -17,13 +17,13 @@
     }
   },
   "regime": {
-    "status": "bear",
-    "label": "2档: 低迷期 — 建议观望",
-    "avg_trend": -1.47,
-    "recommended_mode": "bear"
+    "status": "neutral",
+    "label": "4档: 发酵期 — 势头良好",
+    "avg_trend": 2.03,
+    "recommended_mode": "loose"
   },
   "modes": {
-    "bear": {
+    "loose": {
       "count": 0,
       "candidates": []
     }
