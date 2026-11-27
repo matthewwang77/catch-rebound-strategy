@@ -1,0 +1,31 @@
+{
+  "scan_time": "2026-11-27 10:42",
+  "scan_date": "20261127",
+  "data_date": "2026-11-26",
+  "market": {
+    "上证": {
+      "price": 3476.88,
+      "pct": 0.01
+    },
+    "深证": {
+      "price": 10084.04,
+      "pct": -0.02
+    },
+    "创业板": {
+      "price": 2189.82,
+      "pct": 0.29
+    }
+  },
+  "regime": {
+    "status": "bear",
+    "label": "1档: 冰点期 — 坚决不参与",
+    "avg_trend": -2.35,
+    "recommended_mode": "bear"
+  },
+  "modes": {
+    "bear": {
+      "count": 0,
+      "candidates": []
+    }
+  }
+}
